@@ -1,13 +1,13 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { CheckCircle, Zap, BrainCircuit } from 'lucide-react';
 import { Logo } from '@/components/icons';
 import Image from 'next/image';
 
 export default function LandingPage() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
       <header className="container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Logo className="h-8 w-8 text-primary" />
@@ -25,7 +25,7 @@ export default function LandingPage() {
 
       <main className="flex-1">
         <section className="relative text-center py-20 md:py-32 flex flex-col items-center justify-center">
-          <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 z-0 bg-black">
              <Image 
                 src="https://picsum.photos/1200/800" 
                 alt="Hero Background"
@@ -37,10 +37,10 @@ export default function LandingPage() {
              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background" />
           </div>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <h1 className="text-4xl md:text-6xl font-extrabold font-headline tracking-tight">
+            <h1 className="text-4xl md:text-6xl font-extrabold font-headline tracking-tight text-white">
               Master In-Demand Skills.
               <br />
-              <span className="text-primary">Unlock Your Future.</span>
+              <span className="text-primary-foreground/80">Unlock Your Future.</span>
             </h1>
             <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
               YouthSkillSet is your personal AI mentor for mastering essential career skills. Learn at your own pace, get instant feedback, and build a portfolio that stands out.
@@ -80,6 +80,118 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
+
+        <section id="pricing" className="bg-muted/40 py-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-extrabold font-headline">
+                Find a plan that's right for you
+              </h2>
+              <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+                Start for free and upgrade when you're ready to unlock your full potential.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {/* Free Plan */}
+              <Card className="flex flex-col bg-card">
+                <CardHeader>
+                  <CardTitle className="font-headline text-2xl">Free</CardTitle>
+                  <p className="text-4xl font-bold">$0<span className="text-lg font-normal text-muted-foreground">/month</span></p>
+                  <p className="text-muted-foreground pt-2">For individuals starting their learning journey.</p>
+                </CardHeader>
+                <CardContent className="flex-grow space-y-4">
+                  <ul className="space-y-2">
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span>Access to free lessons</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span>Basic AI Mentor chat</span>
+                    </li>
+                     <li className="flex items-center gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span>Practice exercises</span>
+                    </li>
+                  </ul>
+                </CardContent>
+                <CardFooter>
+                  <Button className="w-full" variant="outline" asChild>
+                     <Link href="/dashboard">Start for Free</Link>
+                  </Button>
+                </CardFooter>
+              </Card>
+
+              {/* Premium Plan */}
+              <Card className="flex flex-col border-primary shadow-lg bg-card">
+                <CardHeader className="relative">
+                   <div className="absolute top-0 right-6 -mt-3">
+                      <div className="bg-primary text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full">Most Popular</div>
+                   </div>
+                  <CardTitle className="font-headline text-2xl">Premium</CardTitle>
+                  <p className="text-4xl font-bold">$12<span className="text-lg font-normal text-muted-foreground">/month</span></p>
+                   <p className="text-muted-foreground pt-2">For dedicated learners who want to go pro.</p>
+                </CardHeader>
+                <CardContent className="flex-grow space-y-4">
+                   <ul className="space-y-2">
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span>Access to all lessons</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span>Unlimited AI Mentor chat</span>
+                    </li>
+                     <li className="flex items-center gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span>In-depth AI feedback</span>
+                    </li>
+                     <li className="flex items-center gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span>Career guidance</span>
+                    </li>
+                  </ul>
+                </CardContent>
+                <CardFooter>
+                  <Button className="w-full" asChild>
+                    <Link href="/dev/pay">Go Premium</Link>
+                  </Button>
+                </CardFooter>
+              </Card>
+
+              {/* Teams Plan */}
+              <Card className="flex flex-col bg-card">
+                <CardHeader>
+                  <CardTitle className="font-headline text-2xl">Teams</CardTitle>
+                  <p className="text-4xl font-bold">Custom</p>
+                  <p className="text-muted-foreground pt-2">For organizations and educational institutions.</p>
+                </CardHeader>
+                <CardContent className="flex-grow space-y-4">
+                   <ul className="space-y-2">
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span>Premium features for all members</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span>Team progress tracking</span>
+                    </li>
+                     <li className="flex items-center gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span>Dedicated support</span>
+                    </li>
+                  </ul>
+                </CardContent>
+                <CardFooter>
+                   <Button className="w-full" variant="outline">
+                    Contact Sales
+                  </Button>
+                </CardFooter>
+              </Card>
+            </div>
+          </div>
+        </section>
+
       </main>
 
       <footer className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-muted-foreground">
