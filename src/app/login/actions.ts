@@ -39,8 +39,9 @@ export async function signup(values: z.infer<typeof signupSchema>) {
         email: values.email,
         password: values.password,
         options: {
-            // If you want to send a verification email, configure it here
-            // emailRedirectTo: `${location.origin}/auth/callback`,
+            // This option is disabled by default, but we make it explicit.
+            // You must also disable "Enable email confirmations" in your Supabase project settings.
+            emailRedirectTo: undefined,
         },
     });
 
@@ -48,6 +49,6 @@ export async function signup(values: z.infer<typeof signupSchema>) {
         return { error: error.message };
     }
     
-    // Supabase automatically signs in the user after signup, so no need to call login()
+    // Supabase automatically signs in the user after signup if email confirmation is disabled.
     return { success: true };
 }
