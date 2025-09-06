@@ -25,16 +25,13 @@ export default function LandingPage() {
 
       <main className="flex-1">
         <section className="relative text-center py-20 md:py-32 flex flex-col items-center justify-center">
-          <div className="absolute inset-0 z-0 bg-black">
-             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background" />
-          </div>
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <h1 className="text-4xl md:text-6xl font-extrabold font-headline tracking-tight text-white">
+           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <h1 className="text-4xl md:text-6xl font-extrabold font-headline tracking-tight text-foreground">
               Master In-Demand Skills.
               <br />
-              <span className="text-primary-foreground/80">Unlock Your Future.</span>
+              <span className="text-primary">Unlock Your Future.</span>
             </h1>
-            <p className="mt-6 max-w-2xl mx-auto text-lg text-primary-foreground/90">
+            <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
               YouthSkillSet is your personal AI mentor for mastering essential career skills. Learn at your own pace, get instant feedback, and build a portfolio that stands out.
             </p>
             <div className="mt-8 flex justify-center gap-4">
@@ -45,7 +42,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="bg-background py-20">
+        <section className="bg-muted/40 py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div className="flex flex-col items-center">
@@ -73,7 +70,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section id="pricing" className="bg-muted/40 py-20">
+        <section id="pricing" className="bg-background py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-extrabold font-headline">
@@ -85,7 +82,7 @@ export default function LandingPage() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               {/* Free Plan */}
-              <Card className="flex flex-col bg-card">
+              <Card className="flex flex-col">
                 <CardHeader>
                   <CardTitle className="font-headline text-2xl">Free</CardTitle>
                   <p className="text-4xl font-bold">$0<span className="text-lg font-normal text-muted-foreground">/month</span></p>
@@ -115,7 +112,7 @@ export default function LandingPage() {
               </Card>
 
               {/* Premium Plan */}
-              <Card className="flex flex-col border-primary shadow-lg bg-card">
+              <Card className="flex flex-col border-primary shadow-lg">
                 <CardHeader className="relative">
                    <div className="absolute top-0 right-6 -mt-3">
                       <div className="bg-primary text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full">Most Popular</div>
@@ -155,7 +152,7 @@ export default function LandingPage() {
               </Card>
 
               {/* Yearly Plan */}
-              <Card className="flex flex-col bg-card">
+              <Card className="flex flex-col">
                 <CardHeader>
                   <CardTitle className="font-headline text-2xl">Yearly</CardTitle>
                   <div className="flex items-baseline gap-2">
@@ -181,7 +178,7 @@ export default function LandingPage() {
                   </ul>
                 </CardContent>
                 <CardFooter>
-                   <Button className="w-full" variant="default" asChild>
+                   <Button className="w-full" variant="outline" asChild>
                     <Link href="/dev/pay">Go Yearly</Link>
                   </Button>
                 </CardFooter>
