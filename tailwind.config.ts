@@ -19,8 +19,8 @@ const config = {
     },
     extend: {
       fontFamily: {
-        body: ['Inter', 'sans-serif'],
-        headline: ['"Space Grotesk"', 'sans-serif'],
+        headline: ['Manrope', 'sans-serif'],
+        body: ['"Noto Sans"', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
