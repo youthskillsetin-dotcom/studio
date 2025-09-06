@@ -437,7 +437,7 @@
     },
     {
       "title": "Module 8: Cybersecurity & Digital Safety",
-      "description": "A Complete 7-Day Learning Journey to become a digital safety expert.",
+      "description": "A complete 7-day learning journey to become a digital safety expert.",
       "is_free": false,
       "order_index": 8,
       "subtopics": [
@@ -560,6 +560,70 @@
           "practice_question": "Create your own “AI Ethics Code” with rules for AI use.",
           "practice_type": "text",
           "correct_answer": "The code should include personal rules regarding plagiarism, respecting privacy, avoiding the spread of misinformation, and using AI to help rather than harm."
+        }
+      ]
+    },
+    {
+      "title": "Module 10: Consumer Rights",
+      "description": "A complete 7-day learning journey into consumer rights, covering MRP, safety, choice, and seeking redressal.",
+      "is_free": false,
+      "order_index": 10,
+      "subtopics": [
+        {
+          "title": "Day 1: Introduction to Consumers and Consumer Rights",
+          "content": "<h1>Introduction to Consumers and Consumer Rights</h1><h3>Who is a Consumer?</h3><p><strong>Definition:</strong> A consumer is any person who buys goods or hires services for personal use, consumption, or benefit.</p><p><strong>Key characteristic:</strong> The purchase must be for personal use, not for business or resale.</p><h3>Why Do We Need Consumer Rights?</h3><p>Common problems consumers face:</p><ul><li>Overcharging</li><li>Defective products</li><li>False advertising</li><li>Expired products</li><li>Poor quality goods</li><li>Unfair return policies</li></ul><p>Example: Rohan was charged ₹25 for chips with MRP ₹20 — this is wrong!</p><h3>Key Takeaways</h3><ul><li>Anyone buying for personal use is a consumer.</li><li>Consumer rights protect buyers from unfair practices.</li><li>These rights are backed by law and enforceable.</li><li>Consumers must be aware and make informed choices.</li></ul>",
+          "order_index": 1,
+          "practice_question": "Is Meera a consumer if she buys a dress for her birthday?",
+          "practice_type": "text",
+          "correct_answer": "Yes, because she is buying the dress for personal use."
+        },
+        {
+          "title": "Day 2: Understanding MRP (Maximum Retail Price)",
+          "content": "<h1>Understanding MRP (Maximum Retail Price)</h1><h3>What is MRP?</h3><p>Maximum Retail Price, set by the manufacturer, is the highest price legally chargeable across India. It acts as a price ceiling. Shops can charge equal or less than MRP but never more.</p><h3>How to Find MRP</h3><p>It is usually printed on packaging, labels, and tags on products like food packets, medicines, electronics, and clothes.</p><h3>MRP vs Selling Price</h3><p>Example: A chocolate's MRP is ₹25. A shop can charge ₹25 or less, but charging ₹30 is illegal.</p><h3>Common Violations</h3><ul><li>Claiming a \"market rate\" higher than MRP.</li><li>Adding illegal surcharges for transport or during festivals.</li><li>Concealing or altering MRP labels.</li></ul><h3>What to Do When Overcharged</h3><ol><li>Politely show the MRP and ask for the correct price.</li><li>Ask for a manager if the request is refused.</li><li>Shop elsewhere if necessary.</li><li>Report to the Consumer Helpline (1915).</li></ol><h3>Key Takeaways</h3><ul><li>MRP is the maximum legal price.</li><li>Shopkeepers must not overcharge beyond MRP.</li><li>Discounts below MRP are allowed.</li><li>Know your rights and report violations.</li></ul>",
+          "order_index": 2,
+          "practice_question": "A shopkeeper charges ₹35 for a cookie packet with an MRP of ₹40. Is this legal?",
+          "practice_type": "text",
+          "correct_answer": "Yes, it is legal because the price charged is less than the MRP."
+        },
+        {
+          "title": "Day 3: Right to Safety",
+          "content": "<h1>Right to Safety</h1><p>The Right to Safety means that the goods you buy should not cause harm to your health or life.</p><h3>Types of Safety Risks:</h3><ul><li><strong>Physical:</strong> electric shocks, sharp edges</li><li><strong>Health:</strong> expired food, toxic medicines</li><li><strong>Chemical:</strong> harmful paints, pesticides in food</li></ul><p>Look for common safety marks like <strong>ISI</strong> for electricals, <strong>Agmark</strong> for food products, <strong>BIS</strong> for various goods, and <strong>Hallmark</strong> for precious metals.</p><h3>How to check for safety:</h3><ul><li>Always check expiry dates.</li><li>Look for official certification marks.</li><li>Inspect the packaging for damage or tampering.</li></ul><h3>What to do if a product is unsafe:</h3><ol><li>Stop using the product immediately.</li><li>Try to return it to the seller.</li><li>Keep evidence like the receipt and photos of the product.</li><li>Report it to the consumer helpline (1915) to protect others.</li></ol><h3>Key Takeaways</h3><ul><li>Never compromise on safety for a lower price.</li><li>Look for certification marks on products.</li><li>Reporting unsafe products is a social responsibility.</li><li>Safety is your most basic right as a consumer.</li></ul>",
+          "order_index": 3,
+          "practice_question": "Which safety mark should you look for on an electric iron?",
+          "practice_type": "text",
+          "correct_answer": "The ISI mark."
+        },
+        {
+          "title": "Day 4: Right to Choose",
+          "content": "<h1>Right to Choose</h1><p>The Right to Choose means you have the freedom to select from a variety of products, services, brands, qualities, and prices without being forced or pressured by the seller.</p><h3>Why Choice is Good:</h3><p>Choice and competition lead to better prices, higher quality products, more innovation, and improved customer service.</p><h3>Types of Choice:</h3><ul><li><strong>Product Choice:</strong> Different brands of phones, soaps, etc.</li><li><strong>Service Choice:</strong> Various mobile phone plans or internet providers.</li><li><strong>Shopping Choice:</strong> Deciding where and how to buy (online, local store).</li></ul><h3>Threats to Your Choice:</h3><ul><li><strong>Forced Bundling:</strong> Being forced to buy a phone case when you only want the phone.</li><li><strong>Limited Options:</strong> A shop only stocking one brand to push its sale.</li><li><strong>Misleading Information:</strong> False advertising that influences your decision.</li></ul><h3>Key Takeaways</h3><ul><li>Your right to choose empowers you as a consumer.</li><li>Resist forced purchases and bundled products you don't need.</li><li>Competition in the market benefits consumers.</li><li>Research and compare to make the best choices.</li></ul>",
+          "order_index": 4,
+          "practice_question": "A shopkeeper says you must buy a specific phone case with a new phone. Does this violate your rights?",
+          "practice_type": "text",
+          "correct_answer": "Yes, this is forced bundling and violates your Right to Choose."
+        },
+        {
+          "title": "Day 5: Right to Refund and Compensation",
+          "content": "<h1>Right to Refund and Compensation</h1><p>If a product is defective or a service is poor, you have the right to seek a remedy, which can be a refund, replacement, repair, or even monetary compensation for any loss or injury.</p><h3>When can you claim a remedy?</h3><ul><li>The product is defective or doesn't work as promised.</li><li>The service paid for was not provided properly.</li><li>The product is unsafe and caused harm.</li><li>The quantity is less than what you paid for.</li></ul><h3>How to Claim:</h3><ol><li><strong>Keep Proof:</strong> Always keep receipts, warranty cards, and any communication with the seller. Take photos or videos of the defect.</li><li><strong>Contact the Seller:</strong> First, approach the seller politely with your proof and ask for a resolution.</li><li><strong>Escalate:</strong> If the seller doesn't help, you can file a complaint with a consumer forum or call the national consumer helpline (1915).</li></ol><h3>Key Takeaways</h3><ul><li>You are entitled to a remedy for faulty goods or services.</li><li>Proper documentation (receipts, etc.) is crucial for your case.</li><li>Consumer courts are established to help resolve these disputes.</li><li>Be persistent and polite when seeking a resolution.</li></ul>",
+          "order_index": 5,
+          "practice_question": "You bought a new pen that doesn't write. What is the first step you should take?",
+          "practice_type": "text",
+          "correct_answer": "The first step is to go back to the shopkeeper with the pen and the receipt to ask for a replacement or refund."
+        },
+        {
+          "title": "Day 6: Role-Play Activity",
+          "content": "<h1>Role-Play Activity: Shopkeeper & Customer</h1><p>Today is about putting your knowledge into action! By role-playing common scenarios, you can gain the confidence to assert your consumer rights effectively and politely in real life. This also helps in understanding the seller's perspective.</p><h3>Activity Instructions:</h3><p>Pair up with a classmate. One person will be the 'Customer' and the other will be the 'Shopkeeper'.</p><p>Choose one of the following scenarios to act out:</p><ul><li><strong>Scenario 1:</strong> The shopkeeper is charging ₹5 more than the MRP on a cold drink.</li><li><strong>Scenario 2:</strong> The customer wants to return a t-shirt that has a hole they discovered after purchase.</li><li><strong>Scenario 3:</strong> The shopkeeper is forcing the customer to buy a notebook with a pen they don't want.</li><li><strong>Scenario 4:</strong> The customer finds an expired packet of biscuits on the shelf.</li></ul><p>The customer should calmly state the problem and their right. The shopkeeper can either agree or refuse, allowing the customer to practice how to respond.</p><h3>Key Takeaways</h3><ul><li>Practice helps build confidence.</li><li>Polite but firm communication is most effective.</li><li>Knowing your rights helps you stay calm and logical.</li></ul>",
+          "order_index": 6,
+          "practice_question": "In a role-play, if a shopkeeper refuses to give a refund for a defective product, what should the 'customer' say or do next?",
+          "practice_type": "text",
+          "correct_answer": "The customer should calmly state that they will escalate the issue by filing a complaint with the consumer forum and mention that they have the receipt as proof."
+        },
+        {
+          "title": "Day 7: Revision and Assessment",
+          "content": "<h1>Revision and Assessment</h1><p>Let's review everything we've learned about consumer rights this week. Being an aware consumer is a lifelong skill that protects you and promotes a fair marketplace for everyone.</p><h3>Quick Review of Your Rights:</h3><ul><li><strong>Right to Safety:</strong> Protection from hazardous goods.</li><li><strong>Right to be Informed:</strong> Access to information about quality, quantity, purity, price.</li><li><strong>Right to Choose:</strong> Freedom to select from a variety of goods and services.</li><li><strong>Right to be Heard:</strong> Your complaints must be listened to.</li><li><strong>Right to Seek Redressal:</strong> Right to get compensation for unfair trade practices.</li><li><strong>Right to Consumer Education:</strong> The right to acquire knowledge and skills to be an informed consumer.</li></ul><p>Remember the national consumer helpline number: <strong>1915</strong>.</p><h3>Key Takeaways</h3><ul><li>Your consumer rights are your power in the marketplace.</li><li>Always check MRP, expiry dates, and safety marks.</li><li>Keep receipts and documents as proof of purchase.</li><li>Don't hesitate to raise your voice against unfair practices.</li></ul>",
+          "order_index": 7,
+          "practice_question": "What is the national consumer helpline number in India?",
+          "practice_type": "text",
+          "correct_answer": "The national consumer helpline number is 1915."
         }
       ]
     }
