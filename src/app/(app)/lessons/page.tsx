@@ -1,39 +1,17 @@
 
-'use client';
-
-import { useState, useEffect } from 'react';
-import { LessonCard } from '@/components/lesson-card';
+import { cookies } from 'next/headers';
+import { createClient } from '@/lib/supabase/server';
 import { getLessons } from '@/lib/data';
 import type { Lesson } from '@/lib/types';
+import { LessonCard } from '@/components/lesson-card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { createClient } from '@/lib/supabase/client';
-import { Skeleton } from '@/components/ui/skeleton';
+import { BookOpenCheck } from 'lucide-react';
 
-export default function LessonsPage() {
+export default async function LessonsPage() {
+  const cookieStore = cookies();
+  const supabase = createClient(cookieStore);
+  const lessons = await getLessons(supabase);
   const hasPremium = false; // Placeholder for user subscription status
-  const [lessons, setLessons] = useState<Lesson[]>([]);
-  const [loading, setLoading] = useState(true);
-  const supabase = createClient();
-
-  useEffect(() => {
-    async function fetchData() {
-      setLoading(true);
-      const lessonsData = await getLessons(supabase);
-      setLessons(lessonsData);
-      setLoading(false);
-    }
-    fetchData();
-  }, [supabase]);
-  
-  const LessonSkeleton = () => (
-    <div className="flex flex-col space-y-3">
-        <Skeleton className="h-[225px] w-full rounded-xl" />
-        <div className="space-y-2">
-            <Skeleton className="h-4 w-[250px]" />
-            <Skeleton className="h-4 w-[200px]" />
-        </div>
-    </div>
-  )
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -50,15 +28,19 @@ export default function LessonsPage() {
         </TabsList>
         
         <TabsContent value="all" className="mt-6">
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {loading ? (
-              Array.from({length: 3}).map((_, i) => <LessonSkeleton key={i} />)
-            ) : (
-              lessons.map((lesson: Lesson) => (
-                <LessonCard key={lesson.id} lesson={lesson} hasPremium={hasPremium} />
-              ))
-            )}
-          </div>
+           {lessons && lessons.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {lessons.map((lesson: Lesson) => (
+                  <LessonCard key={lesson.id} lesson={lesson} hasPremium={hasPremium} />
+                ))}
+              </div>
+           ) : (
+             <div className="text-center text-muted-foreground py-20">
+                <BookOpenCheck className="mx-auto h-12 w-12 text-gray-400" />
+                <h3 className="mt-2 text-lg font-medium">No Lessons Found</h3>
+                <p className="mt-1 text-sm">It looks like there are no lessons available yet. Check back soon!</p>
+            </div>
+           )}
         </TabsContent>
          <TabsContent value="in-progress" className="mt-6">
             <div className="text-center text-muted-foreground py-10">

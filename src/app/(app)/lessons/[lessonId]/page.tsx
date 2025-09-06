@@ -22,8 +22,13 @@ export default async function LessonDetailPage({ params }: { params: { lessonId:
   const getNextUnlockTime = () => {
     const now = new Date();
     const result = new Date(now);
-    result.setDate(now.getDate() + (1 + 7 - now.getDay()) % 7);
-    if(result.getTime() < now.getTime()) result.setDate(result.getDate() + 7);
+    // Logic to set to next Monday 9 AM
+    const day = now.getDay();
+    const add = (1 - day + 7) % 7;
+    result.setDate(now.getDate() + add);
+    if (result.getTime() < now.getTime()) {
+      result.setDate(result.getDate() + 7);
+    }
     result.setHours(9, 0, 0, 0);
     return result;
   };
@@ -39,7 +44,7 @@ export default async function LessonDetailPage({ params }: { params: { lessonId:
 
       <Card>
         <CardHeader>
-          <CardTitle className="font-headline">Next Lesson Unlocks In</CardTitle>
+          <CardTitle className="font-headline">Next Weekly Lesson Unlocks In</CardTitle>
         </CardHeader>
         <CardContent>
           <CountdownTimer targetDate={nextUnlockDate} />
@@ -51,12 +56,20 @@ export default async function LessonDetailPage({ params }: { params: { lessonId:
           <CardTitle className="font-headline">Subtopics</CardTitle>
         </CardHeader>
         <CardContent className="space-y-2">
-          {subtopics.map(async (subtopic: Subtopic) => {
-            const progress = await getProgressForSubtopic(supabase, subtopic.id);
-            return (
-              <SubtopicRow key={subtopic.id} subtopic={subtopic} status={progress?.status ?? 'locked'} />
-            );
-          })}
+          {subtopics && subtopics.length > 0 ? (
+            subtopics.map(async (subtopic: Subtopic) => {
+              // Since there is no user, we can hardcode the status.
+              // 'unlocked' for free lessons, or based on some other logic.
+              const status = lesson.is_free ? 'unlocked' : 'locked';
+              return (
+                <SubtopicRow key={subtopic.id} subtopic={subtopic} status={status} />
+              );
+            })
+          ) : (
+            <div className="text-center text-muted-foreground py-8">
+                <p>No subtopics found for this lesson.</p>
+            </div>
+          )}
         </CardContent>
       </Card>
     </div>
