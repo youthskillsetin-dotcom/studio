@@ -498,6 +498,70 @@
           "correct_answer": "Phishing: don't click, delete, report. Harassment: block, report, tell a trusted adult."
         }
       ]
+    },
+    {
+      "title": "Module 9: Ethics & AI Safety",
+      "description": "A complete 7-day learning journey into the ethics and safety of Artificial Intelligence.",
+      "is_free": false,
+      "order_index": 9,
+      "subtopics": [
+        {
+          "title": "Day 1: Introduction to AI Ethics and Responsible Use",
+          "content": "<h1>Introduction to AI Ethics and Responsible Use</h1><h3>Topic Overview</h3><ul><li>What is AI Ethics? Understanding the moral principles that guide how we should develop and use artificial intelligence systems</li><li>The Foundation of Responsible AI: Learning why we need rules and guidelines for AI, just like we have rules for driving cars or using the internet safely</li><li>Your Role as an AI User: Recognizing that every time you use AI tools, you're making ethical choices that can impact yourself and others</li></ul><h3>Explanation</h3><p>AI ethics are like the rules of a sport: they ensure fairness, safety, and good conduct in how AI is created and used.</p><p>AI systems affect real people's lives (jobs, loans, etc.), so ethical guidelines prevent harm and unfairness.</p><p>Example: An AI hiring system favors male candidates unintentionally because it learned from biased past data. This shows the need for ethics.</p><p>The three pillars of ethical AI: fairness, transparency, and accountability.</p><p>Your responsibility as a user: use AI tools ethically, just like you wouldn't cheat or plagiarize.</p><h3>Key Takeaways</h3><ul><li>AI ethics ensure AI is used fairly, responsibly, and transparently.</li><li>AI can spread biases if not carefully guided.</li><li>Users play an important role in responsible AI use.</li><li>Understanding AI helps prevent misuse and unfairness.</li></ul>",
+          "order_index": 1,
+          "practice_question": "Your friend uses AI to write their whole essay and submits it. Is this fair? Explain.",
+          "practice_type": "text",
+          "correct_answer": "This is likely unfair and considered plagiarism as it misrepresents the student's own work and understanding."
+        },
+        {
+          "title": "Day 2: Understanding AI Biases and Fairness",
+          "content": "<h1>Understanding AI Biases and Fairness</h1><h3>Topic Overview</h3><ul><li>What is AI Bias? AI systems can learn unfair preferences from data.</li><li>Types of bias: historical, representation, measurement, evaluation.</li><li>AI often amplifies human biases rather than being neutral.</li></ul><h3>Explanation</h3><p>Bias is like learning from outdated, unfair data — imagine only reading old job ads that favor men.</p><p>Example: Google's AI incorrectly tagged people with darker skin due to lack of diverse training data.</p><p>Different biases explained with examples (hiring, voice recognition, crime prediction).</p><p>AI can amplify small human biases into big problems.</p><p>Recognizing bias helps prevent harm in important decisions (jobs, loans, justice).</p><h3>Key Takeaways</h3><ul><li>AI bias comes from biased data, not malicious intent.</li><li>Bias has real effects on fairness and opportunity.</li><li>Identifying and fixing bias needs diverse teams and ongoing checks.</li><li>Awareness helps challenge unfair systems.</li></ul>",
+          "order_index": 2,
+          "practice_question": "Identify the bias type if AI favors male college applicants over females equally qualified.",
+          "practice_type": "text",
+          "correct_answer": "This is an example of historical bias, where the AI learned from past data that may have favored male applicants."
+        },
+        {
+          "title": "Day 3: AI and Privacy/Data Protection",
+          "content": "<h1>AI and Privacy/Data Protection</h1><h3>Topic Overview</h3><ul><li>Your data is collected extensively by AI systems.</li><li>Learn what data is collected and why privacy matters.</li><li>Controlling personal data is vital for autonomy and safety.</li></ul><h3>Explanation</h3><p>Digital apps and devices collect everything from your posts to typing patterns.</p><p>Example: A smart speaker listening constantly and sharing data without full awareness.</p><p>Risks: identity theft, manipulation, discrimination, long-term misuse.</p><p>Protect privacy by reading policies, adjusting settings, and using privacy tools.</p><h3>Key Takeaways</h3><ul><li>AI collects much more data than you realize.</li><li>Privacy is about maintaining control, not hiding bad actions.</li><li>You have rights about how your data is used.</li><li>Protecting privacy keeps you safer and freer.</li></ul>",
+          "order_index": 3,
+          "practice_question": "Research five apps you use: what data do they collect? Any surprises?",
+          "practice_type": "text",
+          "correct_answer": "Answers will vary but should list apps and the types of data they collect, reflecting on any unexpected findings."
+        },
+        {
+          "title": "Day 4: AI Safety and Security Risks",
+          "content": "<h1>AI Safety and Security Risks</h1><h3>Topic Overview</h3><ul><li>AI can malfunction or be misused by attackers.</li><li>Learn common AI safety risks and how to protect yourself.</li><li>Build awareness for AI-related digital threats.</li></ul><h3>Explanation</h3><p>AI errors (medical mistakes, wrong decisions by self-driving cars).</p><p>Malicious use (deepfakes, scam messages, cyberbullying).</p><p>Systemic risks like misinformation spread, job loss, concentrated power.</p><p>Deepfakes are fake videos/images that look real and can cause harm.</p><p>Stay safe by verifying info, protecting personal data, and reporting abuse.</p><h3>Key Takeaways</h3><ul><li>AI can cause harm accidentally or by being exploited by bad actors.</li><li>Deepfakes threaten trust and reputation.</li><li>Staying informed and cautious can reduce risks.</li></ul>",
+          "order_index": 4,
+          "practice_question": "What risks should a school consider before using AI facial recognition?",
+          "practice_type": "text",
+          "correct_answer": "Risks include privacy violations, potential for bias against certain groups, data security breaches, and creating a surveillance environment."
+        },
+        {
+          "title": "Day 5: Recognizing AI Misuse - Deepfakes and Misinformation",
+          "content": "<h1>Recognizing AI Misuse - Deepfakes and Misinformation</h1><h3>Topic Overview</h3><ul><li>AI generated fake content spreads misinformation.</li><li>Learn to spot deepfakes and false content.</li><li>Critical thinking is vital in the AI information age.</li></ul><h3>Explanation</h3><p>Fake videos/images/audios created by AI.</p><p>Misinformation spreads fast and affects trust in news and politics.</p><p>Examples: fake Pentagon explosion image causing panic; voice cloning scams.</p><p>Red flags: unnatural face movements, robotic voice, strange URLs, emotional manipulation.</p><p>Always fact-check before sharing.</p><h3>Key Takeaways</h3><ul><li>AI fake content is increasingly realistic and harmful.</li><li>Verification skills are essential.</li><li>Sharing unverified content can cause damage.</li></ul>",
+          "order_index": 5,
+          "practice_question": "How to fact-check a viral video of a famous YouTuber quitting?",
+          "practice_type": "text",
+          "correct_answer": "Check the YouTuber's official social media channels, look for reports from reputable news sources, and use reverse image search on video thumbnails."
+        },
+        {
+          "title": "Day 6: The “Can AI Replace Humans?” Debate",
+          "content": "<h1>The “Can AI Replace Humans?” Debate</h1><h3>Topic Overview</h3><ul><li>Explore the debate on whether AI will replace humans.</li><li>Understand uniquely human skills vs AI strengths.</li><li>The future may be collaboration, not replacement.</li></ul><h3>Explanation</h3><p>AI is good at data analysis, speed, and routine tasks.</p><p>Humans excel at emotions, creativity, ethics, intuition.</p><p>Examples: AI wins at chess but not nursing care.</p><p>Many jobs are automated, but human qualities remain vital.</p><p>Humans and AI can work together for better outcomes.</p><h3>Key Takeaways</h3><ul><li>AI won't replace all humans but will change job nature.</li><li>Human skills like empathy and creativity remain crucial.</li><li>Preparing means learning to work effectively with AI.</li></ul>",
+          "order_index": 6,
+          "practice_question": "Prepare arguments for or against “AI will do any job better than humans by 2040.”",
+          "practice_type": "text",
+          "correct_answer": "Arguments should consider AI's strengths in computation and data processing versus human strengths in creativity, empathy, and complex problem-solving."
+        },
+        {
+          "title": "Day 7: Being a Responsible Digital Citizen with AI",
+          "content": "<h1>Being a Responsible Digital Citizen with AI</h1><h3>Topic Overview</h3><ul><li>What does good digital citizenship mean with AI?</li><li>Your AI usage affects society at large.</li><li>Ways to promote responsible AI use and ethics daily.</li></ul><h3>Explanation</h3><p>Responsible AI use means honesty, fairness, privacy, critical thinking, and empathy.</p><p>Small individual actions add up to big societal impact.</p><p>Example: Deciding whether to share a funny AI-generated video of your principal.</p><p>Be an AI advocate: educate, model good behavior, participate in policy.</p><h3>Key Takeaways</h3><ul><li>Responsible AI use benefits everyone.</li><li>Transparency and verification are key.</li><li>Citizenship is ongoing practice, adapting to new challenges.</li></ul>",
+          "order_index": 7,
+          "practice_question": "Create your own “AI Ethics Code” with rules for AI use.",
+          "practice_type": "text",
+          "correct_answer": "The code should include personal rules regarding plagiarism, respecting privacy, avoiding the spread of misinformation, and using AI to help rather than harm."
+        }
+      ]
     }
   ]
 }
