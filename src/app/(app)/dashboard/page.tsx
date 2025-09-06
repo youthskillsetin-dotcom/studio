@@ -21,7 +21,7 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-8">
-      <div>
+       <div className="mb-8">
         <h1 className="text-3xl font-bold font-headline">Welcome Back!</h1>
         <p className="text-muted-foreground mt-1">
           Let's continue making progress on your learning journey.
