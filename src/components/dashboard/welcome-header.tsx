@@ -2,6 +2,7 @@
 'use client';
 
 import { motion, type Variants } from 'framer-motion';
+import { useState, useEffect } from 'react';
 
 const quotes = [
     "The best way to predict the future is to create it.",
@@ -20,7 +21,11 @@ interface WelcomeHeaderProps {
 }
 
 export function WelcomeHeader({ variants }: WelcomeHeaderProps) {
-    const quote = getDailyQuote();
+    const [quote, setQuote] = useState('');
+
+    useEffect(() => {
+        setQuote(getDailyQuote());
+    }, []);
 
     return (
         <motion.div className="space-y-1.5" variants={variants}>
