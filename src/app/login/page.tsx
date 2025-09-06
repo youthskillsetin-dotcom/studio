@@ -57,6 +57,7 @@ export default function LoginPage() {
     } else {
       toast({ title: 'Success', description: 'Logged in successfully!' });
       router.push('/dashboard');
+      router.refresh();
     }
     setLoading(false);
   };
@@ -66,15 +67,16 @@ export default function LoginPage() {
     const { error } = await supabase.auth.signUp({
       email: values.email,
       password: values.password,
+      options: {
+        emailRedirectTo: `${location.origin}/auth/callback`,
+      }
     });
 
     if (error) {
       toast({ variant: 'destructive', title: 'Sign Up Failed', description: error.message });
     } else {
-      toast({ title: 'Success!', description: 'Account created. Please check your email to verify.' });
-      // In a real app, you'd want to show a message to check email.
-      // For this demo, we'll just redirect.
-      router.push('/dashboard');
+      toast({ title: 'Success!', description: 'Please check your email to verify your account.' });
+      router.push('/verify');
     }
     setLoading(false);
   };

@@ -62,11 +62,23 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
   
   const adminEmail = 'yashneetkundal@gmail.com';
+  const isVerified = session?.user?.email_confirmed_at;
 
   // Redirect logged-in users from login page to dashboard
   if (session && pathname === '/login') {
     return NextResponse.redirect(new URL('/dashboard', request.url))
   }
+
+  // If user is logged in but not verified, and not on the verify page, redirect them.
+  if (session && !isVerified && pathname !== '/verify' && !pathname.startsWith('/api')) {
+      return NextResponse.redirect(new URL('/verify', request.url));
+  }
+  
+  // If a user is verified but is on the verify page, redirect to dashboard.
+  if (session && isVerified && pathname === '/verify') {
+      return NextResponse.redirect(new URL('/dashboard', request.url));
+  }
+
 
   // Protect app routes for unauthenticated users
   const protectedRoutes = ['/dashboard', '/lessons', '/ai-mentor', '/career-guide', '/community', '/subtopic', '/admin', '/support', '/settings'];
