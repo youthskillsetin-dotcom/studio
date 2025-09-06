@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import Link from "next/link"
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -12,71 +12,44 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form"
 import { Logo } from "@/components/icons"
 import { useToast } from '@/hooks/use-toast';
 import { createClient } from '@/lib/supabase/client';
+import { Loader2 } from 'lucide-react';
 
-const signInSchema = z.object({
+const formSchema = z.object({
   email: z.string().email({ message: "Invalid email address." }),
-  password: z.string().min(6, { message: "Password must be at least 6 characters." }),
 });
-
-const signUpSchema = z.object({
-  email: z.string().email({ message: "Invalid email address." }),
-  password: z.string().min(6, { message: "Password must be at least 6 characters." }),
-});
-
 
 export default function LoginPage() {
   const router = useRouter();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const supabase = createClient();
+  const searchParams = useSearchParams();
+  const next = searchParams.get('next');
 
-  const signInForm = useForm<z.infer<typeof signInSchema>>({
-    resolver: zodResolver(signInSchema),
-    defaultValues: { email: "", password: "" },
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: { email: "" },
   });
 
-  const signUpForm = useForm<z.infer<typeof signUpSchema>>({
-    resolver: zodResolver(signUpSchema),
-    defaultValues: { email: "", password: "" },
-  });
-
-  const handleSignIn = async (values: z.infer<typeof signInSchema>) => {
+  const handleOtpLogin = async (values: z.infer<typeof formSchema>) => {
     setLoading(true);
-    const { error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signInWithOtp({
       email: values.email,
-      password: values.password,
-    });
-
-    if (error) {
-      toast({ variant: 'destructive', title: 'Sign In Failed', description: error.message });
-    } else {
-      toast({ title: 'Success', description: 'Logged in successfully!' });
-      router.push('/dashboard');
-      router.refresh();
-    }
-    setLoading(false);
-  };
-
-  const handleSignUp = async (values: z.infer<typeof signUpSchema>) => {
-    setLoading(true);
-    const { error } = await supabase.auth.signUp({
-      email: values.email,
-      password: values.password,
       options: {
-        emailRedirectTo: `${location.origin}/auth/callback`,
+        shouldCreateUser: true,
+        emailRedirectTo: `${location.origin}/auth/callback${next ? `?next=${next}` : ''}`,
       }
     });
 
     if (error) {
-      toast({ variant: 'destructive', title: 'Sign Up Failed', description: error.message });
+      toast({ variant: 'destructive', title: 'Error Sending Code', description: error.message });
     } else {
-      toast({ title: 'Success!', description: 'Please check your email to verify your account.' });
-      router.push('/verify');
+      toast({ title: 'Check your email', description: 'We sent a verification code to your email address.' });
+      router.push(`/verify?email=${encodeURIComponent(values.email)}${next ? `&next=${next}` : ''}`);
     }
     setLoading(false);
   };
@@ -99,91 +72,30 @@ export default function LoginPage() {
           <Link href="/" className="inline-block mb-4">
              <Logo className="h-10 w-10 text-primary mx-auto" />
           </Link>
-          <CardTitle className="text-2xl font-headline">Welcome</CardTitle>
-          <CardDescription>Enter your credentials to access or create your account</CardDescription>
+          <CardTitle className="text-2xl font-headline">Welcome to YouthSkillSet</CardTitle>
+          <CardDescription>Enter your email below to sign in or create an account.</CardDescription>
         </CardHeader>
         <CardContent>
-          <Tabs defaultValue="signin" className="w-full">
-            <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="signin">Sign In</TabsTrigger>
-              <TabsTrigger value="signup">Sign Up</TabsTrigger>
-            </TabsList>
-            <TabsContent value="signin">
-              <Form {...signInForm}>
-                <form onSubmit={signInForm.handleSubmit(handleSignIn)} className="space-y-4 pt-4">
-                  <FormField
-                    control={signInForm.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <Label htmlFor="signin-email">Email</Label>
-                        <FormControl>
-                          <Input id="signin-email" placeholder="m@example.com" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                   <FormField
-                    control={signInForm.control}
-                    name="password"
-                    render={({ field }) => (
-                      <FormItem>
-                         <div className="flex items-center">
-                            <Label htmlFor="signin-password">Password</Label>
-                            <Link href="#" className="ml-auto inline-block text-sm underline">
-                              Forgot your password?
-                            </Link>
-                          </div>
-                        <FormControl>
-                          <Input id="signin-password" type="password" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <Button type="submit" className="w-full" disabled={loading}>
-                    {loading ? 'Signing In...' : 'Sign In'}
-                  </Button>
-                </form>
-              </Form>
-            </TabsContent>
-            <TabsContent value="signup">
-               <Form {...signUpForm}>
-                <form onSubmit={signUpForm.handleSubmit(handleSignUp)} className="space-y-4 pt-4">
-                  <FormField
-                    control={signUpForm.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <Label htmlFor="signup-email">Email</Label>
-                        <FormControl>
-                          <Input id="signup-email" placeholder="m@example.com" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                   <FormField
-                    control={signUpForm.control}
-                    name="password"
-                    render={({ field }) => (
-                      <FormItem>
-                        <Label htmlFor="signup-password">Password</Label>
-                        <FormControl>
-                          <Input id="signup-password" type="password" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <Button type="submit" className="w-full" disabled={loading}>
-                    {loading ? 'Creating Account...' : 'Sign Up'}
-                  </Button>
-                </form>
-              </Form>
-            </TabsContent>
-          </Tabs>
+           <Form {...form}>
+            <form onSubmit={form.handleSubmit(handleOtpLogin)} className="space-y-4 pt-4">
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <Label htmlFor="email">Email</Label>
+                    <FormControl>
+                      <Input id="email" placeholder="m@example.com" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type="submit" className="w-full" disabled={loading}>
+                {loading ? <Loader2 className="animate-spin" /> : 'Continue with Email'}
+              </Button>
+            </form>
+          </Form>
           <div className="relative my-4">
             <div className="absolute inset-0 flex items-center">
               <span className="w-full border-t" />
@@ -195,7 +107,7 @@ export default function LoginPage() {
             </div>
           </div>
           <Button variant="outline" className="w-full" onClick={handleGoogleLogin} disabled={loading}>
-            Login with Google
+            {loading ? <Loader2 className="animate-spin" /> : 'Login with Google'}
           </Button>
         </CardContent>
       </Card>
