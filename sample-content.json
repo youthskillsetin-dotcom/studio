@@ -306,6 +306,70 @@
           "correct_answer": "Answers will vary but should be a short, structured pitch for their business idea."
         }
       ]
+    },
+    {
+      "title": "Module 6: Personal Branding & Careers",
+      "description": "A Complete 7-Day Journey to Discovering Your Unique Identity and Future Path.",
+      "is_free": false,
+      "order_index": 6,
+      "subtopics": [
+        {
+          "title": "Day 1: The Mirror Moment - Understanding Who You Are",
+          "content": "<h1>The Mirror Moment - Understanding Who You Are</h1><h2>Topic Overview</h2><ul><li><strong>Self-Discovery as Your Foundation:</strong> Like a house needs a foundation, your career journey needs self-awareness — knowing your personality, values, and strengths.</li><li><strong>The Power of Personal Reflection:</strong> Self-reflection is looking beyond physical appearance to understand your inner self.</li><li><strong>Building Your Personal Identity Map:</strong> Your identity is a recipe mixing interests, values, personality traits, and dreams.</li></ul><h2>Explanation</h2><p>Self-awareness is your internal GPS guiding life choices. (Example: Maya loves problem-solving and helping others; she considers counseling or engineering.)</p><p>Values are your life's operating system (what you hold important).</p><p>Strengths are your superpowers — natural talents and learned skills (e.g., empathy, organization).</p><p>Personality shows how you approach life (outgoing or reflective).</p><h2>Key Takeaways</h2><ul><li>Self-awareness is the starting point for career success.</li><li>Your uniqueness is your advantage.</li><li>Personal growth is ongoing.</li><li>Authenticity attracts the right opportunities.</li></ul>",
+          "order_index": 1,
+          "practice_question": "What 3 activities make you lose track of time?",
+          "practice_type": "text",
+          "correct_answer": "This is a reflective question; answers will vary based on personal experience."
+        },
+        {
+          "title": "Day 2: Treasure Hunt - Discovering Your Hidden Talents",
+          "content": "<h1>Treasure Hunt - Discovering Your Hidden Talents</h1><h2>Topic Overview</h2><ul><li>Everyone has multiple intelligences, including logic, language, spatial, musical, kinesthetic, interpersonal, intrapersonal, and naturalistic.</li><li>Strengths make you productive and engaged—discover yours!</li><li>Talents become powerful career capital when used strategically.</li></ul><h2>Explanation</h2><ul><li><strong>Logical-mathematical:</strong> Numbers and logic (e.g., love Sudoku).</li><li><strong>Linguistic:</strong> Words and writing (e.g., storytelling).</li><li><strong>Spatial:</strong> Visualizing and design (e.g., room design).</li><li><strong>Musical:</strong> Rhythm and pitch (e.g., guitar playing).</li><li><strong>Bodily-kinesthetic:</strong> Physical coordination (e.g., athletics).</li><li><strong>Interpersonal:</strong> Understanding others (e.g., conflict resolution).</li><li><strong>Intrapersonal:</strong> Self-awareness (e.g., journaling).</li><li><strong>Naturalistic:</strong> Nature connection (e.g., identifying plants).</li></ul><h2>Key Takeaways</h2><ul><li>Everyone has multiple intelligence types.</li><li>Talents show ideal careers.</li><li>Focus on strengths to grow.</li><li>Your talent mix is unique.</li></ul>",
+          "order_index": 2,
+          "practice_question": "Assess which intelligence types you identify with most; rate yourself 1-5 for each.",
+          "practice_type": "text",
+          "correct_answer": "This is a self-assessment; answers will be personal ratings."
+        },
+        {
+          "title": "Day 3: Dream Job GPS - Exploring Career Possibilities",
+          "content": "<h1>Dream Job GPS - Exploring Career Possibilities</h1><h2>Topic Overview</h2><ul><li>Most future jobs don’t exist yet; career flexibility is essential.</li><li>Link interests and values to industries and roles.</li><li>Understand typical day, salary, education, and work-life balance for careers.</li></ul><h2>Explanation</h2><p>Example careers across sectors: AI engineer, UX/UI designer, environmental scientist, genetic counselor, social entrepreneur.</p><p>Use a 3-layer career investigation: job title, daily life, and path planning.</p><p>Conduct informational interviews to learn firsthand.</p><h2>Key Takeaways</h2><ul><li>Career paths aren’t always linear.</li><li>Combine multiple interests.</li><li>Transferable skills are valuable.</li><li>Research saves regret.</li></ul>",
+          "order_index": 3,
+          "practice_question": "Reflect on passion vs. pay, envision your ideal workday, and identify world issues you care about.",
+          "practice_type": "text",
+          "correct_answer": "This is a reflective question; answers will vary."
+        },
+        {
+          "title": "Day 4: Skills Inventory - What's in Your Toolkit?",
+          "content": "<h1>Skills Inventory - What's in Your Toolkit?</h1><h2>Topic Overview</h2><ul><li>Skills are learned abilities; talents are natural abilities.</li><li>Employers value technical, soft, and hybrid skills.</li><li>Skill stacking (combining skills) increases value.</li></ul><h2>Explanation</h2><p><strong>Technical:</strong> coding, digital literacy, data analysis.</p><p><strong>Soft:</strong> communication, leadership, critical thinking.</p><p><strong>Hybrid:</strong> creative problem-solving, cultural intelligence.</p><p>Learning methods include 70-20-10 model and micro-learning. Use projects to practice skills.</p><h2>Key Takeaways</h2><ul><li>Skills can be learned at any age.</li><li>Combining skills increases career value.</li><li>Soft skills matter more as tech advances.</li><li>Lifelong learning is essential.</li></ul>",
+          "order_index": 4,
+          "practice_question": "List skills you have learned recently and identify key skills you need for a career you're interested in.",
+          "practice_type": "text",
+          "correct_answer": "This is a personal inventory; answers will vary."
+        },
+        {
+          "title": "Day 5: Brand Building - Crafting Your Personal Story",
+          "content": "<h1>Brand Building - Crafting Your Personal Story</h1><h2>Topic Overview</h2><ul><li>Personal brand is your authentic professional reputation.</li><li>Your online presence reflects your brand.</li><li>Storytelling helps make your personal brand memorable.</li></ul><h2>Explanation</h2><p>Build your brand foundation with values, unique value proposition, and professional personality.</p><p>Manage your digital brand on LinkedIn, Instagram, or personal websites.</p><p>Craft your story using the Hero's Journey: The Call, The Challenge, The Growth, The Vision.</p><h2>Key Takeaways</h2><ul><li>Authenticity over perfection.</li><li>Brand consistency matters.</li><li>Brand evolves over time.</li><li>Professional can be fun and personal.</li></ul>",
+          "order_index": 5,
+          "practice_question": "Compare how friends, teachers, and employers might describe you.",
+          "practice_type": "text",
+          "correct_answer": "This is a reflective exercise; answers will be personal."
+        },
+        {
+          "title": "Day 6: CV Workshop - Your Professional Introduction",
+          "content": "<h1>CV Workshop - Your Professional Introduction</h1><h2>Topic Overview</h2><ul><li>Your CV is your professional trailer.</li><li>Hobbies strategically included demonstrate skills.</li><li>Customize CV for college, scholarships, or internships.</li></ul><h2>Explanation</h2><p>Include: Header, Professional Summary, Education, Experience.</p><p>Use action verbs, quantify achievements.</p><p>Hobbies showing teamwork, creativity, leadership, or cultural awareness strengthen your CV.</p><h2>Key Takeaways</h2><ul><li>Tell a coherent story through your CV.</li><li>Quantify impact with numbers.</li><li>Focus on meaningful hobbies.</li><li>Maintain clean, professional formatting.</li></ul>",
+          "order_index": 6,
+          "practice_question": "Identify leadership examples from your own experience (in or out of school).",
+          "practice_type": "text",
+          "correct_answer": "This is based on personal experience; answers will vary."
+        },
+        {
+          "title": "Day 7: Action Planning - From Dreams to Reality",
+          "content": "<h1>Action Planning - From Dreams to Reality</h1><h2>Topic Overview</h2><ul><li>Break big goals into manageable steps.</li><li>Writing goals increases success rate.</li><li>Build your personal advisory board of mentors.</li></ul><h2>Explanation</h2><p>Use SMART-R goals (Specific, Measurable, Achievable, Relevant, Time-bound, and Reviewable).</p><p>Create 90-day, 1-year, and 5-year plans.</p><p>Mentorship, networking, and regular progress review are key.</p><h2>Key Takeaways</h2><ul><li>Small consistent steps matter most.</li><li>Stay flexible yet structured.</li><li>Network builds opportunity.</li><li>Reflect and adjust regularly.</li></ul>",
+          "order_index": 7,
+          "practice_question": "Set a specific, measurable, and achievable action you can take this week toward a career goal.",
+          "practice_type": "text",
+          "correct_answer": "This is a personal goal-setting exercise; answers will vary."
+        }
+      ]
     }
   ]
 }
