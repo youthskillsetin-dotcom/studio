@@ -160,7 +160,7 @@ export default function LandingPage() {
                   <CardTitle className="font-headline text-2xl">Yearly</CardTitle>
                   <div className="flex items-baseline gap-2">
                     <span className="text-2xl text-muted-foreground line-through">₹2499</span>
-                    <p className="text-4xl font-bold">₹1999<span className="text-lg font-normal text-muted-foreground">/year</span></p>
+                    <p className="text-4xl font-bold">₹1499<span className="text-lg font-normal text-muted-foreground">/year</span></p>
                   </div>
                   <p className="text-muted-foreground pt-2">Save big with our annual plan.</p>
                 </CardHeader>
