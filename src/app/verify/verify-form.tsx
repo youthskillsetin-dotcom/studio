@@ -105,7 +105,7 @@ export default function VerifyForm() {
                 name="token"
                 render={({ field }) => (
                   <FormItem>
-                    <Label>One-Time Code</Label>
+                    <FormLabel>One-Time Code</FormLabel>
                     <FormControl>
                         <Input placeholder="123456" {...field} />
                     </FormControl>
