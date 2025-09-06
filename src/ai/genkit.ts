@@ -1,11 +1,10 @@
 import {genkit} from 'genkit';
-import {openRouter} from 'genkitx-openrouter';
+import {googleAI} from '@genkit-ai/googleai';
 
 export const ai = genkit({
   plugins: [
-    openRouter({
-      apiKey: process.env.OPENROUTER_API_KEY,
+    googleAI({
+      apiKey: process.env.GEMINI_API_KEY,
     }),
   ],
-  model: 'openai/gpt-4o-mini',
 });
