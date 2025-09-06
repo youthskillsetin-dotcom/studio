@@ -41,7 +41,6 @@ export default function LoginPage() {
       email: values.email,
       options: {
         shouldCreateUser: true,
-        emailRedirectTo: `${location.origin}/auth/callback${next ? `?next=${next}` : ''}`,
       }
     });
 
