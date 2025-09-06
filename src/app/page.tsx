@@ -27,12 +27,12 @@ export default function LandingPage() {
         <section className="relative text-center py-20 md:py-32 flex flex-col items-center justify-center">
           <div className="absolute inset-0 z-0 bg-black">
              <Image 
-                src="https://picsum.photos/1200/801" 
+                src="https://picsum.photos/1200/800" 
                 alt="Hero Background"
                 fill
                 style={{objectFit: 'cover'}}
                 className="opacity-20"
-                data-ai-hint="modern workspace"
+                data-ai-hint="inspiring learning"
             />
              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background" />
           </div>
@@ -129,7 +129,10 @@ export default function LandingPage() {
                       <div className="bg-primary text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full">Most Popular</div>
                    </div>
                   <CardTitle className="font-headline text-2xl">Premium</CardTitle>
-                  <p className="text-4xl font-bold">$12<span className="text-lg font-normal text-muted-foreground">/month</span></p>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-2xl text-muted-foreground line-through">₹249</span>
+                    <p className="text-4xl font-bold">₹199<span className="text-lg font-normal text-muted-foreground">/month</span></p>
+                  </div>
                    <p className="text-muted-foreground pt-2">For dedicated learners who want to go pro.</p>
                 </CardHeader>
                 <CardContent className="flex-grow space-y-4">
