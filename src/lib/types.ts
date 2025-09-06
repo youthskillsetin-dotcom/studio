@@ -41,3 +41,12 @@ export interface UserSubscription {
   is_active: boolean;
   expires_at: Date | null;
 }
+
+export interface Post {
+  id: string;
+  created_at: string;
+  title: string;
+  content: string;
+  user_id: string;
+  author_email: string;
+}

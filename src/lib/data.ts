@@ -1,6 +1,6 @@
 
 import type { SupabaseClient } from '@supabase/supabase-js';
-import type { Lesson, Subtopic, UserSubtopicProgress } from './types';
+import type { Lesson, Subtopic, UserSubtopicProgress, Post } from './types';
 import { unstable_noStore as noStore } from 'next/cache';
 
 export async function getLessons(supabase: SupabaseClient): Promise<Lesson[]> {
@@ -96,4 +96,37 @@ export async function getProgressForSubtopic(supabase: SupabaseClient, subtopicI
         return null;
     }
     return data;
+}
+
+export async function getPosts(supabase: SupabaseClient): Promise<Post[]> {
+  noStore();
+  
+  // We need to join with the auth.users table to get author emails.
+  // This requires a more complex query.
+  const { data, error } = await supabase
+    .from('posts')
+    .select(`
+      id,
+      created_at,
+      title,
+      content,
+      user_id,
+      author_email:users(email)
+    `)
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Error fetching posts:', error);
+    return [];
+  }
+
+  // The join returns author_email as an object { email: "..." }. Let's flatten it.
+  const posts = data.map(p => ({
+      ...p,
+      // @ts-ignore: supabase-js typing for joins can be tricky
+      author_email: p.author_email?.email,
+  }));
+
+  // @ts-ignore
+  return posts;
 }

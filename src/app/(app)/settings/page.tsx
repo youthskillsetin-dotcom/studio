@@ -1,0 +1,68 @@
+
+import { cookies } from 'next/headers';
+import { createClient } from '@/lib/supabase/server';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { redirect } from 'next/navigation';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+
+export default async function SettingsPage() {
+  const cookieStore = cookies();
+  const supabase = createClient(cookieStore);
+
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect('/login');
+  }
+
+  // Placeholder for subscription status
+  const isPremium = false;
+
+  return (
+    <div>
+      <h1 className="text-3xl font-bold font-headline mb-6">Settings</h1>
+      <div className="grid gap-6 max-w-4xl mx-auto">
+        <Card>
+          <CardHeader>
+            <CardTitle>Account Information</CardTitle>
+            <CardDescription>Manage your account details.</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-sm font-medium">Email</p>
+              <p className="text-sm text-muted-foreground">{user.email}</p>
+            </div>
+             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-sm font-medium">User ID</p>
+              <p className="text-sm text-muted-foreground font-mono text-xs">{user.id}</p>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Subscription</CardTitle>
+            <CardDescription>Manage your subscription plan and billing.</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p className="text-sm font-medium">Current Plan</p>
+                <Badge variant={isPremium ? "default" : "secondary"}>
+                    {isPremium ? 'Premium' : 'Free'}
+                </Badge>
+              </div>
+              <Button asChild variant="outline" className="mt-4 sm:mt-0">
+                <Link href="/#pricing">
+                  {isPremium ? 'Manage Subscription' : 'Upgrade to Premium'}
+                </Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+}

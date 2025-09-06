@@ -134,14 +134,14 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <Link href="#" className="flex items-center">
+              <DropdownMenuItem asChild>
+                <Link href="/settings" className="flex items-center w-full">
                     <Settings className="mr-2 h-4 w-4" />
                     <span>Settings</span>
                 </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link href="/support" className="flex items-center">
+              <DropdownMenuItem asChild>
+                <Link href="/support" className="flex items-center w-full">
                     <LifeBuoy className="mr-2 h-4 w-4" />
                     <span>Support</span>
                 </Link>
