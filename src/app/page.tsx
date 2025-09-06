@@ -27,12 +27,12 @@ export default function LandingPage() {
         <section className="relative text-center py-20 md:py-32 flex flex-col items-center justify-center">
           <div className="absolute inset-0 z-0 bg-black">
              <Image 
-                src="https://picsum.photos/1200/800" 
+                src="https://picsum.photos/1200/801" 
                 alt="Hero Background"
                 fill
                 style={{objectFit: 'cover'}}
                 className="opacity-20"
-                data-ai-hint="technology learning"
+                data-ai-hint="modern workspace"
             />
              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background" />
           </div>
