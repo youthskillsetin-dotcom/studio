@@ -40,7 +40,7 @@ export default function LandingPage() {
             <h1 className="text-4xl md:text-6xl font-extrabold font-headline tracking-tight">
               Master In-Demand Skills.
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary/80 to-primary">Unlock Your Future.</span>
+              <span className="text-primary">Unlock Your Future.</span>
             </h1>
             <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
               YouthSkillSet is your personal AI mentor for mastering essential career skills. Learn at your own pace, get instant feedback, and build a portfolio that stands out.
