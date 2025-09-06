@@ -63,8 +63,8 @@ export async function middleware(request: NextRequest) {
   
   const adminEmail = 'yashneetkundal@gmail.com';
 
-  // Redirect logged-in users from login or verify page to dashboard
-  if (session && (pathname === '/login' || pathname === '/verify')) {
+  // Redirect logged-in users from login page to dashboard
+  if (session && pathname === '/login') {
     return NextResponse.redirect(new URL('/dashboard', request.url))
   }
 
