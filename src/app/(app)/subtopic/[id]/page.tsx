@@ -19,7 +19,7 @@ export default function SubtopicPage({ params }: { params: { id: string } }) {
         Back to {lesson?.title}
       </Link>
       <div className="grid md:grid-cols-2 gap-8">
-        <div className="prose dark:prose-invert max-w-none bg-white p-6 rounded-lg shadow-sm">
+        <div className="prose dark:prose-invert max-w-none bg-card p-6 rounded-lg shadow-sm">
            <h1 className="font-headline text-3xl mb-4">{subtopic.title}</h1>
            <div dangerouslySetInnerHTML={{ __html: subtopic.content }} />
         </div>

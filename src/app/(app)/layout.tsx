@@ -41,7 +41,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         <Sidebar>
           <SidebarHeader>
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-lg">
+              <div className="w-8 h-8 flex items-center justify-center bg-primary text-primary-foreground rounded-lg">
                 <School className="w-5 h-5" />
               </div>
               <span className="text-lg font-semibold font-headline">
@@ -90,7 +90,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         </Sidebar>
 
         <SidebarInset>
-          <header className="flex h-14 items-center gap-4 border-b bg-background/95 backdrop-blur-sm px-4 md:px-6 sticky top-0 z-30">
+          <header className="flex h-14 items-center gap-4 border-b bg-card/95 backdrop-blur-sm px-4 md:px-6 sticky top-0 z-30">
             <SidebarTrigger className="md:hidden" />
             <div className="w-full flex-1">
               {/* Optional: Breadcrumbs or search bar could go here */}
@@ -116,7 +116,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               </DropdownMenuContent>
             </DropdownMenu>
           </header>
-          <main className="flex-1 p-4 md:p-6 lg:p-10 xl:p-20">{children}</main>
+          <main className="flex-1 p-4 md:p-6 lg:p-10">{children}</main>
         </SidebarInset>
       </div>
     </SidebarProvider>
