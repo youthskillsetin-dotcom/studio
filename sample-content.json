@@ -178,6 +178,70 @@
           "correct_answer": "No"
         }
       ]
+    },
+    {
+      "title": "Module 4: Taxation in India",
+      "description": "Learn income tax basics (slabs, PAN, ITR) and GST (how businesses collect & pay).",
+      "is_free": false,
+      "order_index": 4,
+      "subtopics": [
+        {
+          "title": "Day 1: Introduction to Taxation & PAN",
+          "content": "<h1>Introduction to Taxation & PAN</h1><h2>Explanation</h2><p>Taxes finance roads, schools, and public services—like a club fee for the country.</p><p>PAN: A unique 10-character number for tracking financial activities.</p><p>PAN is needed for jobs, bank accounts, and big purchases.</p><h2>Key Takeaways</h2><ul><li>Taxes help build the nation.</li><li>PAN is your financial identity.</li><li>Everyone pays taxes in daily life.</li></ul>",
+          "order_index": 1,
+          "practice_question": "What is PAN’s full form?",
+          "practice_type": "text",
+          "correct_answer": "Permanent Account Number."
+        },
+        {
+          "title": "Day 2: Income Tax Slabs & Calculation",
+          "content": "<h1>Income Tax Slabs & Calculation</h1><h2>Explanation</h2><p>Income tax: Paid on money earned (salaries, business, gifts).</p><p>Slabs: The more you earn, the higher the tax rate.</p><p>Example: Up to ₹4 lakh = no tax; ₹4–8 lakh = 5%; above ₹24 lakh = 30%.</p><h2>Key Takeaways</h2><ul><li>Tax rates depend on income level.</li><li>Deductions can lower your taxable income.</li><li>Calculating tax helps plan spending.</li></ul>",
+          "order_index": 2,
+          "practice_question": "What income level pays zero tax?",
+          "practice_type": "text",
+          "correct_answer": "Up to ₹4 lakh (as per the example)."
+        },
+        {
+          "title": "Day 3: All About ITR (Income Tax Return)",
+          "content": "<h1>All About ITR (Income Tax Return)</h1><h2>Explanation</h2><p>ITR is like an annual report card for your income.</p><p>Filing ITR helps claim refunds and build financial history.</p><p>Forms vary (ITR-1 for salary, ITR-3 for business).</p><h2>Key Takeaways</h2><ul><li>Filing ITR is a legal duty.</li><li>Correct form choice is important.</li><li>Early ITR experience helps with future jobs and loans.</li></ul>",
+          "order_index": 3,
+          "practice_question": "What is Form 16?",
+          "practice_type": "text",
+          "correct_answer": "It's a certificate from an employer that TDS has been deducted and deposited with the authorities."
+        },
+        {
+          "title": "Day 4: GST Basics",
+          "content": "<h1>GST Basics</h1><h2>Explanation</h2><p>GST is a single, unified tax on goods/services, replacing older taxes.</p><p>Paid every time something is bought or sold.</p><p>Example: Buying a phone, GST is added to the bill.</p><h2>Key Takeaways</h2><ul><li>GST makes prices transparent.</li><li>Businesses register and collect GST for the government.</li><li>Different GST types handle state/national sales.</li></ul>",
+          "order_index": 4,
+          "practice_question": "What does GST stand for?",
+          "practice_type": "text",
+          "correct_answer": "Goods and Services Tax."
+        },
+        {
+          "title": "Day 5: GST in Daily Life",
+          "content": "<h1>GST in Daily Life</h1><h2>Explanation</h2><p>Essentials (milk/books) have low/no GST; luxuries (cars) have higher GST.</p><p>Businesses pay GST, but get credits for GST paid on purchases.</p><p>Check your next shopping bill for GST details.</p><h2>Key Takeaways</h2><ul><li>GST affects the cost of daily goods.</li><li>Businesses file GST returns, like homework for shopkeepers!</li><li>Input credit prevents “tax on tax.”</li></ul>",
+          "order_index": 5,
+          "practice_question": "What’s an Input Tax Credit?",
+          "practice_type": "text",
+          "correct_answer": "It allows businesses to subtract the tax they paid on inputs from the tax they collect on outputs."
+        },
+        {
+          "title": "Day 6: Project—Prepare a Dummy ITR",
+          "content": "<h1>Project—Prepare a Dummy ITR</h1><h2>Explanation</h2><p>Collect salary/slip, savings bank interest, investment proofs.</p><p>Calculate gross income, deductions, taxable income.</p><p>Simulate filling an ITR form.</p><h2>Key Takeaways</h2><ul><li>Filing ITR is systematic and easy with organized records.</li><li>Deductions help lower tax.</li><li>Practice prepares for real-life taxation.</li></ul>",
+          "order_index": 6,
+          "practice_question": "What documents do you need for ITR?",
+          "practice_type": "text",
+          "correct_answer": "Salary slip, savings bank interest statements, investment proofs."
+        },
+        {
+          "title": "Day 7: GST Practical—Bill Audit",
+          "content": "<h1>GST Practical—Bill Audit</h1><h2>Explanation</h2><p>Go through bills (internet, groceries, movie tickets).</p><p>For each, note GST rate, amount paid.</p><p>Simulate a month’s GST record for a small shop.</p><h2>Key Takeaways</h2><ul><li>Checking bills shows GST in daily life.</li><li>Understanding GST helps spot mistakes.</li><li>Practice running a GST record teaches business basics.</li></ul>",
+          "order_index": 7,
+          "practice_question": "Why is GST important for the government?",
+          "practice_type": "text",
+          "correct_answer": "It's a major source of revenue that helps fund public services and infrastructure."
+        }
+      ]
     }
   ]
 }
