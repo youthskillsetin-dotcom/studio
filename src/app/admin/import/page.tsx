@@ -9,6 +9,7 @@ import { Label } from '@/components/ui/label';
 import { Upload, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { importContent } from './actions';
+import { Checkbox } from '@/components/ui/checkbox';
 
 export default function AdminImportPage() {
   const { toast } = useToast();
@@ -46,7 +47,7 @@ export default function AdminImportPage() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-[calc(100vh-theme(spacing.24))] bg-muted/40">
+    <div className="flex items-center justify-center min-h-[calc(100vh-theme(spacing.24))]">
       <Card className="w-full max-w-md">
         <form onSubmit={handleSubmit}>
           <CardHeader>
@@ -59,12 +60,12 @@ export default function AdminImportPage() {
               <Input id="json-file" name="json-file" type="file" accept=".json" />
             </div>
             <div className="flex items-center space-x-2">
-              <Input type="checkbox" id="overwrite" name="overwrite" />
+              <Checkbox id="overwrite" name="overwrite" />
               <label
                 htmlFor="overwrite"
                 className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
               >
-                Overwrite existing content
+                Overwrite existing content (deletes all current lessons)
               </label>
             </div>
           </CardContent>

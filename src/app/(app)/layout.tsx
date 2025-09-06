@@ -73,7 +73,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               href={item.href}
               className={cn(
                 "transition-colors hover:text-foreground",
-                pathname === item.href ? "text-foreground" : "text-muted-foreground"
+                pathname.startsWith(item.href) ? "text-foreground" : "text-muted-foreground"
               )}
             >
               {item.label}
@@ -110,7 +110,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                     href={item.href}
                     className={cn(
                         "hover:text-foreground",
-                        pathname === item.href ? "text-foreground" : "text-muted-foreground"
+                        pathname.startsWith(item.href) ? "text-foreground" : "text-muted-foreground"
                     )}
                     >
                     {item.label}

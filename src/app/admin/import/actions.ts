@@ -38,6 +38,7 @@ export async function importContent(formData: FormData) {
 
   if (overwrite) {
     console.log('Overwriting existing content...');
+    // Important: The order of deletion matters due to foreign key constraints.
     await supabase.from('user_subtopic_progress').delete().neq('id', '00000000-0000-0000-0000-000000000000');
     await supabase.from('subtopics').delete().neq('id', '00000000-0000-0000-0000-000000000000');
     await supabase.from('lessons').delete().neq('id', '00000000-0000-0000-0000-000000000000');
@@ -80,17 +81,28 @@ export async function importContent(formData: FormData) {
   }
 
   if (firstSubtopicId) {
-      const { error: progressError } = await supabase
+      // Check if progress for this user and subtopic already exists
+      const { data: existingProgress, error: fetchError } = await supabase
         .from('user_subtopic_progress')
-        .insert({
-            user_id: user.id,
-            subtopic_id: firstSubtopicId,
-            status: 'unlocked',
-        });
+        .select('user_id')
+        .eq('user_id', user.id)
+        .limit(1);
 
-       if (progressError) {
-        console.error('Error unlocking first subtopic:', progressError);
-        return { error: `Failed to unlock the first lesson for the user. Reason: ${progressError.message}` };
+      // Only unlock the first lesson if the user has NO progress records at all.
+      // This prevents re-locking content if an admin re-imports.
+      if (!fetchError && existingProgress.length === 0) {
+        const { error: progressError } = await supabase
+          .from('user_subtopic_progress')
+          .insert({
+              user_id: user.id,
+              subtopic_id: firstSubtopicId,
+              status: 'unlocked',
+          });
+
+         if (progressError) {
+          console.error('Error unlocking first subtopic:', progressError);
+          return { error: `Failed to unlock the first lesson for the user. Reason: ${progressError.message}` };
+        }
       }
   }
 
