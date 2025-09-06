@@ -19,7 +19,7 @@ export type GenerateCareerSkillsInput = z.infer<typeof GenerateCareerSkillsInput
 const GenerateCareerSkillsOutputSchema = z.object({
   skills: z.array(z.object({
     skill: z.string().describe('The name of the skill.'),
-    description: z.string().describe('A brief description of why this skill is important for the career.'),
+    description: z.string().describe('A detailed description of why this skill is important for the career.'),
   })).describe('A list of recommended skills for the career path.'),
 });
 export type GenerateCareerSkillsOutput = z.infer<typeof GenerateCareerSkillsOutputSchema>;
@@ -32,10 +32,10 @@ const prompt = ai.definePrompt({
   name: 'generateCareerSkillsPrompt',
   input: {schema: GenerateCareerSkillsInputSchema},
   output: {schema: GenerateCareerSkillsOutputSchema},
-  prompt: `You are a career counselor AI.
+  prompt: `You are an expert career counselor AI.
   
   Based on the user's desired career path, generate a list of 5-7 essential skills required for that role.
-  For each skill, provide a short, one-sentence description of why it's important for the specified career.
+  For each skill, provide a detailed, 2-3 sentence description explaining its importance and what it entails in the context of the specified career.
 
   Career: {{{career}}}
   `,
