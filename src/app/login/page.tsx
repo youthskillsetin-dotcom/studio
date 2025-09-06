@@ -66,8 +66,8 @@ export default function LoginPage() {
         title: 'Login Failed',
         description: error.message,
       });
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const handleLogin = async (values: z.infer<typeof loginSchema>) => {
@@ -75,11 +75,12 @@ export default function LoginPage() {
     const result = await login(values);
     if (result.error) {
       toast({ variant: 'destructive', title: 'Login Failed', description: result.error });
+      setLoading(false);
     } else {
       router.push(next || '/dashboard');
       router.refresh();
+      // No need to set loading to false here as the page will redirect and unmount.
     }
-    setLoading(false);
   };
 
   const handleSignup = async (values: z.infer<typeof signupSchema>) => {
@@ -88,13 +89,14 @@ export default function LoginPage() {
     
     if (signupResult.error) {
       toast({ variant: 'destructive', title: 'Signup Failed', description: signupResult.error });
+      setLoading(false);
     } else {
         toast({ title: 'Account Created!', description: "Welcome!" });
         // Since Supabase signs the user in automatically, we just need to redirect.
         router.push(next || '/dashboard');
         router.refresh();
+        // No need to set loading to false here as the page will redirect and unmount.
     }
-    setLoading(false);
   };
 
   return (
