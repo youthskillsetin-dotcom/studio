@@ -4,6 +4,7 @@
 import { createClient } from '@/lib/supabase/server';
 import { revalidatePath } from 'next/cache';
 import { Subtopic, Lesson } from '@/lib/types';
+import { cookies } from 'next/headers';
 
 interface SubtopicData extends Omit<Subtopic, 'id' | 'lesson_id' | 'created_at'> {}
 
@@ -12,7 +13,8 @@ interface LessonData extends Omit<Lesson, 'id' | 'created_at'> {
 }
 
 export async function importContent(formData: FormData) {
-  const supabase = createClient();
+  const cookieStore = cookies();
+  const supabase = createClient(cookieStore);
   const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {

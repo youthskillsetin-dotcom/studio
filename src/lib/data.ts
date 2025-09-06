@@ -2,10 +2,12 @@
 import { createClient } from '@/lib/supabase/server';
 import type { Lesson, Subtopic, UserSubtopicProgress } from './types';
 import { unstable_noStore as noStore } from 'next/cache';
+import { cookies } from 'next/headers';
 
 export async function getLessons(): Promise<Lesson[]> {
   noStore();
-  const supabase = createClient();
+  const cookieStore = cookies();
+  const supabase = createClient(cookieStore);
   const { data, error } = await supabase
     .from('lessons')
     .select('*')
@@ -20,7 +22,8 @@ export async function getLessons(): Promise<Lesson[]> {
 
 export async function getLessonById(id: string): Promise<Lesson | null> {
     noStore();
-    const supabase = createClient();
+    const cookieStore = cookies();
+    const supabase = createClient(cookieStore);
     const { data, error } = await supabase
         .from('lessons')
         .select('*')
@@ -37,7 +40,8 @@ export async function getLessonById(id: string): Promise<Lesson | null> {
 
 export async function getSubtopicsByLessonId(lessonId: string): Promise<Subtopic[]> {
     noStore();
-    const supabase = createClient();
+    const cookieStore = cookies();
+    const supabase = createClient(cookieStore);
     const { data, error } = await supabase
         .from('subtopics')
         .select('*')
@@ -53,7 +57,8 @@ export async function getSubtopicsByLessonId(lessonId: string): Promise<Subtopic
 
 export async function getSubtopicById(id: string): Promise<Subtopic | null> {
     noStore();
-    const supabase = createClient();
+    const cookieStore = cookies();
+    const supabase = createClient(cookieStore);
     const { data, error } = await supabase
         .from('subtopics')
         .select('*')
@@ -68,7 +73,8 @@ export async function getSubtopicById(id: string): Promise<Subtopic | null> {
 
 export async function getUserProgress(): Promise<UserSubtopicProgress[]> {
     noStore();
-    const supabase = createClient();
+    const cookieStore = cookies();
+    const supabase = createClient(cookieStore);
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return [];
 
@@ -86,7 +92,8 @@ export async function getUserProgress(): Promise<UserSubtopicProgress[]> {
 
 export async function getProgressForSubtopic(subtopicId: string): Promise<UserSubtopicProgress | null> {
     noStore();
-    const supabase = createClient();
+    const cookieStore = cookies();
+    const supabase = createClient(cookieStore);
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return null;
 
