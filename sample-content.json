@@ -370,6 +370,70 @@
           "correct_answer": "This is a personal goal-setting exercise; answers will vary."
         }
       ]
+    },
+    {
+      "title": "Module 7: Excel & Data Skills",
+      "description": "A complete 7-day learning journey into data, spreadsheets, and basic coding.",
+      "is_free": false,
+      "order_index": 7,
+      "subtopics": [
+        {
+          "title": "Day 1: Understanding Data - The Building Blocks of Information",
+          "content": "<h1>Understanding Data - The Building Blocks of Information</h1><h2>Topic Overview</h2><ul><li>What is data and why is it everywhere around us?</li><li>Why keeping records is like having a superpower for making smart decisions</li><li>How data helps us understand patterns, solve problems, and plan for the future</li></ul><h2>Explanation</h2><h3>What is Data? Think of it as Digital Clues!</h3><p>Imagine you're a detective trying to solve a mystery. Every clue you collect - fingerprints, witness statements, photographs - these are all pieces of data! In the digital world, data is simply information that we collect and store.</p><h3>Why Keep Records? It's Like Having a Time Machine!</h3><p>Keeping records helps us: Track progress, make better decisions, spot patterns, and plan for the future.</p><h2>Key Takeaways</h2><ul><li>Data is information we collect to understand the world better</li><li>Keeping records helps us track progress and make smarter decisions</li><li>Good data organization leads to insights and better solutions</li><li>Everyone can be a data detective by asking good questions and collecting information</li></ul>",
+          "order_index": 1,
+          "practice_question": "If you were to track your happiness for a week, what data would you collect?",
+          "practice_type": "text",
+          "correct_answer": "Answers could include things like mood ratings, activities done, sleep hours, etc."
+        },
+        {
+          "title": "Day 2: Introduction to Spreadsheets - Your Digital Organization Tool",
+          "content": "<h1>Introduction to Spreadsheets - Your Digital Organization Tool</h1><h2>Topic Overview</h2><ul><li>Understanding spreadsheets as digital tables that organize information</li><li>Learning the basic structure: rows, columns, and cells</li><li>Exploring Excel and Google Sheets interfaces and tools</li></ul><h2>Explanation</h2><h3>What Are Spreadsheets? Your Digital Filing Cabinet!</h3><p>Spreadsheets are digital binders organizing information in rows, columns, and cells. Excel is powerful offline software, while Google Sheets is a free, online tool for easy collaboration.</p><h2>Key Takeaways</h2><ul><li>Spreadsheets organize data in rows and columns</li><li>Each cell has a unique address like A1, B2</li><li>Excel and Google Sheets have similar functions</li><li>Organized data is easier to find and analyze</li></ul>",
+          "order_index": 2,
+          "practice_question": "What columns would you use to organize your music library?",
+          "practice_type": "text",
+          "correct_answer": "Likely columns would be 'Song Title', 'Artist', 'Album', and 'Genre'."
+        },
+        {
+          "title": "Day 3: Creating Your First Data Table - The Pocket Money Tracker",
+          "content": "<h1>Creating Your First Data Table - The Pocket Money Tracker</h1><h2>Topic Overview</h2><ul><li>Designing a pocket money tracking system</li><li>Creating headers, entering data, formatting cells</li><li>Understanding income vs expenses</li></ul><h2>Explanation</h2><h3>Why Track Pocket Money? Become a Financial Detective!</h3><p>A pocket money tracker shows where your money comes and goes, helping you spot habits and save. Key columns include Date, Description, Income, Expense, Category, and Balance.</p><h2>Key Takeaways</h2><ul><li>Tracking helps find spending patterns</li><li>Categories aid analysis</li><li>Consistent entry makes data useful</li><li>Formatting helps readability</li></ul>",
+          "order_index": 3,
+          "practice_question": "If you spent $20 on candy this month, what would you ask yourself?",
+          "practice_type": "text",
+          "correct_answer": "A good question would be 'Is this spending preventing me from reaching a bigger goal?'"
+        },
+        {
+          "title": "Day 4: Hands-On Excel/Google Sheets Activity - Building Your Tracker",
+          "content": "<h1>Hands-On Excel/Google Sheets Activity - Building Your Tracker</h1><h2>Topic Overview</h2><ul><li>Opening Excel or Google Sheets</li><li>Entering pocket money data with formatting</li><li>Learning colors, borders, number formats</li></ul><h2>Explanation</h2><p>Set up your tracker with headers: Date, Description, Income, Expense, Category, Balance, Notes. Use formatting tools like bold, colors, and borders to make it readable. Format columns for dates and currency.</p><h2>Key Takeaways</h2><ul><li>Formatting aids reading and analyzing</li><li>Accurate data entry is vital</li><li>Spreadsheets automate calculations and formatting</li><li>Regular updates keep track true</li></ul>",
+          "order_index": 4,
+          "practice_question": "Enter one week of imaginary pocket money data.",
+          "practice_type": "text",
+          "correct_answer": "The answer should be a sample table with a few rows of data."
+        },
+        {
+          "title": "Day 5: Introduction to Coding - The Language of Computers",
+          "content": "<h1>Introduction to Coding - The Language of Computers</h1><h2>Topic Overview</h2><ul><li>What coding is: giving instructions to a computer</li><li>Logic building through step-by-step thinking</li><li>Introduction to Scratch with visual blocks</li></ul><h2>Explanation</h2><h3>Coding Means Teaching a Literal Friend</h3><p>You must give specific, step-by-step instructions that a computer can follow. Learning to code is a superpower that lets you create apps, websites, and games. Visual languages like Scratch use drag-and-drop blocks to make learning easier.</p><h2>Key Takeaways</h2><ul><li>Coding is clear, stepwise instructions for computers</li><li>Logical thinking and breaking problems down is key</li><li>Visual languages like Scratch ease learning</li><li>Coding skills are valuable and widely used</li></ul>",
+          "order_index": 5,
+          "practice_question": "Write detailed steps for brushing teeth as if for a robot.",
+          "practice_type": "text",
+          "correct_answer": "The steps should be very specific, e.g., '1. Pick up toothbrush. 2. Unscrew toothpaste cap. 3. Squeeze toothpaste onto bristles...'"
+        },
+        {
+          "title": "Day 6: Scratch Programming Basics - Your First Interactive Project",
+          "content": "<h1>Scratch Programming Basics - Your First Interactive Project</h1><h2>Topic Overview</h2><ul><li>Creating a Scratch project with sprites and backdrops</li><li>Learning sequences, loops, events</li><li>Gaining confidence through practice</li></ul><h2>Explanation</h2><p>Scratch uses a stage (backdrop) and sprites (characters). You build scripts with code blocks to make sprites move, talk, and interact. Key concepts include sequences (order of commands), loops (repeating actions), and events (triggers for code).</p><h2>Key Takeaways</h2><ul><li>Scratch uses puzzle-like code blocks</li><li>Programs respond to events and run sequences</li><li>Testing often catches errors early</li><li>Small projects build skill over time</li></ul>",
+          "order_index": 6,
+          "practice_question": "How would you program a Scratch cat to move in a square?",
+          "practice_type": "text",
+          "correct_answer": "Use a loop that repeats four times. Inside the loop, have a 'move 100 steps' block followed by a 'turn 90 degrees' block."
+        },
+        {
+          "title": "Day 7: Building Your Rock-Paper-Scissors Game - Putting It All Together",
+          "content": "<h1>Building Your Rock-Paper-Scissors Game - Putting It All Together</h1><h2>Topic Overview</h2><ul><li>Designing and programming a complete interactive game</li><li>Understanding random choice and if/then logic</li><li>Combining all concepts learned</li></ul><h2>Explanation</h2><p>Plan the game flow: welcome, player input, computer's random choice, decide winner, and replay. In Scratch, use variables for choices and scores, program key presses for the player, use a random number for the computer, and apply if/then logic to determine the winner.</p><h2>Key Takeaways</h2><ul><li>Complex programs come from simple building blocks</li><li>Planning helps avoid mistakes</li><li>Test features separately</li><li>Games teach important coding concepts</li></ul>",
+          "order_index": 7,
+          "practice_question": "Is the computer’s choice truly random? Why is that important?",
+          "practice_type": "text",
+          "correct_answer": "It's pseudo-random. It's important for the game to be fair and unpredictable."
+        }
+      ]
     }
   ]
 }
