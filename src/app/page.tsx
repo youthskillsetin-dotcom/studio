@@ -27,7 +27,7 @@ export default function LandingPage() {
         <section className="relative text-center py-20 md:py-32 flex flex-col items-center justify-center">
           <div className="absolute inset-0 z-0 bg-black">
              <Image 
-                src="https://picsum.photos/1200/800" 
+                src="https://picsum.photos/1200/801" 
                 alt="Hero Background"
                 fill
                 style={{objectFit: 'cover'}}
@@ -162,32 +162,35 @@ export default function LandingPage() {
                 </CardFooter>
               </Card>
 
-              {/* Teams Plan */}
+              {/* Yearly Plan */}
               <Card className="flex flex-col bg-card">
                 <CardHeader>
-                  <CardTitle className="font-headline text-2xl">Teams</CardTitle>
-                  <p className="text-4xl font-bold">Custom</p>
-                  <p className="text-muted-foreground pt-2">For organizations and educational institutions.</p>
+                  <CardTitle className="font-headline text-2xl">Yearly</CardTitle>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-2xl text-muted-foreground line-through">₹2499</span>
+                    <p className="text-4xl font-bold">₹1999<span className="text-lg font-normal text-muted-foreground">/year</span></p>
+                  </div>
+                  <p className="text-muted-foreground pt-2">Save big with our annual plan.</p>
                 </CardHeader>
                 <CardContent className="flex-grow space-y-4">
                    <ul className="space-y-2">
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span>Premium features for all members</span>
+                      <span>All Premium features</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span>Team progress tracking</span>
+                      <span>12 months of access</span>
                     </li>
                      <li className="flex items-center gap-2">
                       <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span>Dedicated support</span>
+                      <span>Priority support</span>
                     </li>
                   </ul>
                 </CardContent>
                 <CardFooter>
                    <Button className="w-full" variant="outline">
-                    Contact Sales
+                    Go Yearly
                   </Button>
                 </CardFooter>
               </Card>
