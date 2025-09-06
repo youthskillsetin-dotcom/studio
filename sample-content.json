@@ -434,6 +434,70 @@
           "correct_answer": "It's pseudo-random. It's important for the game to be fair and unpredictable."
         }
       ]
+    },
+    {
+      "title": "Module 8: Cybersecurity & Digital Safety",
+      "description": "A Complete 7-Day Learning Journey to become a digital safety expert.",
+      "is_free": false,
+      "order_index": 8,
+      "subtopics": [
+        {
+          "title": "Day 1: Introduction to Cybersecurity & Digital Safety Foundation",
+          "content": "<h1>Introduction to Cybersecurity & Digital Safety Foundation</h1><h2>Topic Overview</h2><ul><li>Understanding the digital landscape: The internet is everywhere—social media, games, schoolwork, entertainment. We need rules for safety here as much as in the physical world.</li><li>Why cybersecurity matters: Your digital life is like a house; cybersecurity is the locks and alarms. It protects your personal info and reputation.</li><li>Building your digital defense shield: Start assembling habits and skills to stay safe online.</li></ul><h2>Explanation</h2><p>Cybersecurity is your digital superhero shield; it protects your passwords, info, and reputation.</p><p>Common threats: cyberbullying, identity theft, phishing (fake emails/msgs), malware (harmful software).</p><p>Example: Sarah almost shared her password in a phishing email but recognized the scam and reported it instead.</p><h2>Key Takeaways</h2><ul><li>Cybersecurity protects your digital life like safety rules protect you physically.</li><li>Threats include cyberbullying, identity theft, phishing, malware.</li><li>Awareness is the first step to safety.</li><li>Everyone plays a part in making the digital world safe.</li></ul>",
+          "order_index": 1,
+          "practice_question": "What should you do if you get a text about winning a gift card that asks for info?",
+          "practice_type": "text",
+          "correct_answer": "Delete the text and block the number. It's likely a phishing scam."
+        },
+        {
+          "title": "Day 2: Strong Passwords - The Foundation of Digital Security",
+          "content": "<h1>Strong Passwords - The Foundation of Digital Security</h1><h2>Topic Overview</h2><ul><li>Passwords are digital keys; weak passwords are like flimsy locks.</li><li>Learn what makes passwords hard/easy to crack.</li><li>Create strong passwords that are almost impossible to break.</li></ul><h2>Explanation</h2><p>Weak passwords get hacked quickly.</p><p>Strong passwords are long (12+ characters), complex, unpredictable, and unique.</p><p>Passphrase method: Use 4+ unrelated words with symbols/numbers, e.g., “Coffee#Sunrise$Bicycle&Music”.</p><h2>Key Takeaways</h2><ul><li>Length is most important for password strength.</li><li>Don’t reuse passwords across accounts.</li><li>Passphrases can be strong and easier to remember.</li><li>Strong passwords protect your accounts cheaply and effectively.</li></ul>",
+          "order_index": 2,
+          "practice_question": "Rank passwords from weakest to strongest.",
+          "practice_type": "text",
+          "correct_answer": "Ranking depends on the provided passwords, but generally shorter, simpler passwords are weaker."
+        },
+        {
+          "title": "Day 3: Advanced Password Security & Management Tools",
+          "content": "<h1>Advanced Password Security & Management Tools</h1><h2>Topic Overview</h2><ul><li>Manage many passwords easily with password managers.</li><li>Use Two-Factor Authentication (2FA) for better protection.</li><li>Plan for losing access or forgetting passwords safely.</li></ul><h2>Explanation</h2><p>Password managers store all passwords securely; you only remember one master password.</p><p>2FA requires two proofs: password + phone/app/fingerprint.</p><p>Types of 2FA: SMS codes, authenticator apps, hardware keys, biometrics.</p><h2>Key Takeaways</h2><ul><li>Password managers solve remembering and reusing problems.</li><li>2FA blocks hackers even if passwords leak.</li><li>Set up these tools early to save time and stress.</li><li>2FA + password manager = very strong security.</li></ul>",
+          "order_index": 3,
+          "practice_question": "List problems solved by password managers.",
+          "practice_type": "text",
+          "correct_answer": "Remembering many unique passwords, creating strong random passwords, and avoiding password reuse."
+        },
+        {
+          "title": "Day 4: Understanding and Recognizing Cyberbullying",
+          "content": "<h1>Understanding and Recognizing Cyberbullying</h1><h2>Topic Overview</h2><ul><li>Cyberbullying is different: 24/7, viral, anonymous, permanent.</li><li>It causes serious harm socially and emotionally.</li><li>Bystanders have power to stop bullying by speaking up and reporting.</li></ul><h2>Explanation</h2><p>Types include harassment, denigration, impersonation, outing, exclusion, stalking.</p><p>Signs you or someone you know might be targeted.</p><p>Case study: Taylor’s photo altered and shared; classmates stopped the bullying by reporting.</p><h2>Key Takeaways</h2><ul><li>Cyberbullying is serious with lasting effects.</li><li>It spreads quickly and can be anonymous.</li><li>Everyone can help stop it by speaking out.</li><li>Early recognition and action are vital.</li></ul>",
+          "order_index": 4,
+          "practice_question": "Identify cyberbullying type in a scenario.",
+          "practice_type": "text",
+          "correct_answer": "Depends on the scenario provided, could be harassment, impersonation, etc."
+        },
+        {
+          "title": "Day 5: Reporting Cyberbullying and Getting Help",
+          "content": "<h1>Reporting Cyberbullying and Getting Help</h1><h2>Topic Overview</h2><ul><li>Learn how to document, report, and get help for cyberbullying.</li><li>Map your support network—who to talk to.</li><li>Understand legal consequences and when to involve police.</li></ul><h2>Explanation</h2><p>Documentation: screenshots, save evidence, write details.</p><p>Reporting hierarchy: platform tools, school, family, legal, support services.</p><p>When to escalate to law enforcement.</p><p>Support services and crisis contacts.</p><h2>Key Takeaways</h2><ul><li>Effective reporting requires good evidence and following up.</li><li>Use multiple channels for better results.</li><li>Support networks make a difference.</li><li>Know your legal rights and responsibilities.</li></ul>",
+          "order_index": 5,
+          "practice_question": "Document a threatening message scenario.",
+          "practice_type": "text",
+          "correct_answer": "Should include taking a screenshot, noting the date/time, and the sender's username."
+        },
+        {
+          "title": "Day 6: Creating Your Digital Safety Pledge Poster",
+          "content": "<h1>Creating Your Digital Safety Pledge Poster</h1><h2>Topic Overview</h2><ul><li>Turn learning into personal pledges to guide your digital behavior.</li><li>Use design principles to make your message clear and memorable.</li><li>Become a peer educator and digital safety leader.</li></ul><h2>Explanation</h2><p>Pledge elements: personal commitments, community promises, specific actions, visual impact.</p><p>Core pledges: passwords, respectful communication, privacy, reporting, critical thinking.</p><p>Design tips: hierarchy, contrast, simplicity, positive framing, personal voice.</p><h2>Key Takeaways</h2><ul><li>Personal pledges have power over rules.</li><li>Visuals make ideas easier to remember.</li><li>Student-created resources resonate more.</li><li>Leading digital safety reinforces good habits.</li></ul>",
+          "order_index": 6,
+          "practice_question": "Write 3 pledge statements for password security and respectful communication.",
+          "practice_type": "text",
+          "correct_answer": "Answers will be personal pledge statements."
+        },
+        {
+          "title": "Day 7: Comprehensive Review, Assessment & Future Action Planning",
+          "content": "<h1>Comprehensive Review, Assessment & Future Action Planning</h1><h2>Topic Overview</h2><ul><li>Connect all lessons for a strong cybersecurity foundation.</li><li>Apply knowledge through real-world scenarios and peer teaching.</li><li>Build habits and plans for ongoing digital safety.</li></ul><h2>Explanation</h2><p>Review: threats, password security, cyberbullying, reporting, teaching.</p><p>Critical thinking questions to analyze threats and responses.</p><p>Cybersecurity mindset: skepticism, risk assessment, proactive planning, community responsibility.</p><p>Future-proof skills and career links.</p><h2>Key Takeaways</h2><ul><li>You have a comprehensive digital safety toolkit.</li><li>Your skills protect not just you but your community.</li><li>Cybersecurity is an ongoing practice.</li><li>Principles apply beyond tech to respect and critical thinking.</li></ul>",
+          "order_index": 7,
+          "practice_question": "Analyze phishing and harassment scenarios, suggest responses.",
+          "practice_type": "text",
+          "correct_answer": "Phishing: don't click, delete, report. Harassment: block, report, tell a trusted adult."
+        }
+      ]
     }
   ]
 }
