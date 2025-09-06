@@ -26,14 +26,6 @@ export default function LandingPage() {
       <main className="flex-1">
         <section className="relative text-center py-20 md:py-32 flex flex-col items-center justify-center">
           <div className="absolute inset-0 z-0 bg-black">
-             <Image 
-                src="https://picsum.photos/1200/800" 
-                alt="Hero Background"
-                fill
-                style={{objectFit: 'cover'}}
-                className="opacity-20"
-                data-ai-hint="inspiring learning"
-            />
              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background" />
           </div>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
