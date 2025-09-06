@@ -8,4 +8,5 @@ export const ai = genkit({
       apiHost: "openrouter.ai/api/v1",
     }),
   ],
+  model: 'openai/gpt-3.5-turbo',
 });
