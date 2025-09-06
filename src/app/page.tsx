@@ -42,7 +42,7 @@ export default function LandingPage() {
               <br />
               <span className="text-primary-foreground/80">Unlock Your Future.</span>
             </h1>
-            <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
+            <p className="mt-6 max-w-2xl mx-auto text-lg text-primary-foreground/90">
               YouthSkillSet is your personal AI mentor for mastering essential career skills. Learn at your own pace, get instant feedback, and build a portfolio that stands out.
             </p>
             <div className="mt-8 flex justify-center gap-4">
@@ -189,8 +189,8 @@ export default function LandingPage() {
                   </ul>
                 </CardContent>
                 <CardFooter>
-                   <Button className="w-full">
-                    Go Yearly
+                   <Button className="w-full" variant="default" asChild>
+                    <Link href="/dev/pay">Go Yearly</Link>
                   </Button>
                 </CardFooter>
               </Card>
