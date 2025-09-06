@@ -309,7 +309,7 @@
     },
     {
       "title": "Module 6: Personal Branding & Careers",
-      "description": "A Complete 7-Day Journey to Discovering Your Unique Identity and Future Path.",
+      "description": "A complete 7-day journey to discovering your unique identity and future path.",
       "is_free": false,
       "order_index": 6,
       "subtopics": [
@@ -624,6 +624,70 @@
           "practice_question": "What is the national consumer helpline number in India?",
           "practice_type": "text",
           "correct_answer": "The national consumer helpline number is 1915."
+        }
+      ]
+    },
+    {
+      "title": "Module 11: Basic Law for Teens",
+      "description": "Introduction to Rights & Responsibilities, Cyber Laws, and Legal Awareness",
+      "is_free": false,
+      "order_index": 11,
+      "subtopics": [
+        {
+          "title": "Day 1: Introduction to Law and the Legal System",
+          "content": "<h1>Introduction to Law and the Legal System</h1><h2>What is Law?</h2><p><strong>Definition:</strong> Law is a system of rules created and enforced by society to regulate behavior and maintain order.</p><p><strong>Purpose:</strong> To protect people, property, and ensure fairness in society.</p><p><strong>Example:</strong> Traffic laws exist so everyone can travel safely - imagine if there were no traffic lights or speed limits!</p><h3>Types of Laws That Affect You</h3><ul><li><strong>Criminal Law:</strong> Deals with crimes like theft, assault, or cyberbullying.</li><li><strong>Civil Law:</strong> Handles disputes between people (like contract disagreements).</li><li><strong>Constitutional Law:</strong> Protects your fundamental rights like freedom of speech.</li></ul><p><strong>Example:</strong> If someone steals your bike, that's criminal law. If you buy something online and it doesn't arrive, that's civil law.</p><h3>The Court System - Like School Hierarchy</h3><p>Lower Courts: Handle smaller cases (like your class teacher handling minor issues).</p><p>Higher Courts: Deal with serious matters (like the principal handling major disciplinary cases).</p><p>Supreme Court: Final authority on constitutional matters (like the school board making final policy decisions).</p><h3>Rights vs Responsibilities</h3><p><strong>Rights:</strong> What you're entitled to (like the right to education, safety, privacy).</p><p><strong>Responsibilities:</strong> What you owe to others and society (like following laws, respecting others' rights).</p><p><strong>Balance:</strong> Your rights end where another person's rights begin.</p><h2>Key Takeaways</h2><ul><li>Law exists to protect everyone and maintain fairness - without laws, it would be chaos.</li><li>You have both rights and responsibilities as a citizen - these grow as you get older.</li><li>The legal system has different levels and types of laws designed for different purposes.</li><li>Knowledge of law empowers you to make informed decisions.</li></ul>",
+          "order_index": 1,
+          "practice_question": "What is the main purpose of having laws in society?",
+          "practice_type": "text",
+          "correct_answer": "To protect people and their property, maintain order, ensure fairness, and help resolve disputes peacefully."
+        },
+        {
+          "title": "Day 2: Understanding Rights - What You're Entitled To",
+          "content": "<h1>Understanding Rights - What You're Entitled To</h1><h2>Constitutional Rights</h2><p><strong>Right to Life and Personal Liberty:</strong> No one can harm or detain you without legal reason.</p><p><strong>Right to Education:</strong> Guaranteed free education up to a certain age.</p><p><strong>Right to Equality:</strong> No discrimination based on religion, race, gender, etc.</p><p><strong>Right to Freedom of Expression:</strong> You can share opinions responsibly.</p><h2>Rights at School</h2><ul><li>Right to Safety: Protection from bullying, harassment.</li><li>Right to Fair Treatment and Privacy.</li><li>Right to Express Views with respect for others.</li></ul><h2>Digital Rights</h2><ul><li>Right to data privacy and protection online.</li><li>Protection from cyberbullying and fake profiles.</li></ul><h2>Rights in Family</h2><ul><li>Protection from abuse.</li><li>Right to basic needs like food, shelter, education.</li><li>Right to cultural identity and to express opinions.</li></ul><h2>Rights with Authorities</h2><ul><li>Right to know why you’re questioned.</li><li>Right to remain silent without a guardian.</li><li>Right to legal representation and fair treatment.</li></ul><h2>Key Takeaways</h2><ul><li>Rights are protections, not privileges.</li><li>Special protections exist for minors.</li><li>Rights come balanced with responsibilities.</li><li>Knowing your rights helps protect you.</li></ul>",
+          "order_index": 2,
+          "practice_question": "What should you do if your right to education is violated?",
+          "practice_type": "text",
+          "correct_answer": "You can report it to school authorities, educational boards, or child rights organizations."
+        },
+        {
+          "title": "Day 3: Understanding Responsibilities - What You Owe Society",
+          "content": "<h1>Understanding Responsibilities - What You Owe Society</h1><p>The social contract means following rules to benefit everyone.</p><p>Legal duties include obeying laws, attending school, respecting others.</p><h2>School responsibilities</h2><p>Follow rules, show respect, do not bully, and care for school property.</p><h2>Digital responsibilities</h2><p>No cyberbullying, respect privacy, and be honest online.</p><h2>Family/community duties</h2><p>Help at home, respect shared spaces, and volunteer.</p><p>Take responsibility for your actions and learn from mistakes.</p><h2>Key Takeaways</h2><ul><li>Responsibilities keep society stable.</li><li>Teenagers must uphold their duties seriously.</li><li>Actions affect others in society.</li><li>Responsibility builds trust and character.</li></ul>",
+          "order_index": 3,
+          "practice_question": "What to do if you break something at a friend’s house?",
+          "practice_type": "text",
+          "correct_answer": "Take responsibility, apologize, and offer to pay for or replace the item."
+        },
+        {
+          "title": "Day 4: Cyber Laws - Digital Rights and Responsibilities",
+          "content": "<h1>Cyber Laws - Digital Rights and Responsibilities</h1><p>Cyber laws govern safe, fair digital behavior.</p><p>Cyberbullying can cause serious harm and legal penalties.</p><p>Identity theft includes fake profiles and information misuse.</p><p>Privacy laws ensure personal data protection online.</p><p>Copyright laws cover music, movies, writing—illegal copying is punished.</p><p>Online fraud includes scams like phishing and fake stores.</p><h2>Key Takeaways</h2><ul><li>Online actions have real consequences.</li><li>Cyberbullying and identity theft harm people seriously.</li><li>Privacy requires both rights and responsibilities.</li><li>Use “real world” thinking for online choices.</li></ul>",
+          "order_index": 4,
+          "practice_question": "Is sharing embarrassing photos without consent legal?",
+          "practice_type": "text",
+          "correct_answer": "No, it can be considered a form of harassment or cyberbullying and may have legal consequences."
+        },
+        {
+          "title": "Day 5: Social Media and Gaming Laws",
+          "content": "<h1>Social Media and Gaming Laws</h1><p>Minimum age for most social media is typically 13; violating terms can get you banned.</p><p>Content moderation balances free speech and safety.</p><p>Platforms collect data; users have some privacy controls.</p><p>Loot boxes in games can resemble gambling; some countries regulate or ban them.</p><p>Gaming addiction laws may limit minors’ playtime in some countries.</p><p>Messaging apps like WhatsApp have rules about privacy and misinformation.</p><h2>Key Takeaways</h2><ul><li>Using platforms involves legal contracts (Terms of Service).</li><li>Age restrictions are in place to protect teens.</li><li>Responsibility spans all digital platforms.</li><li>Platforms balance free speech with safety.</li></ul>",
+          "order_index": 5,
+          "practice_question": "What legal steps should you consider if starting a business on social media?",
+          "practice_type": "text",
+          "correct_answer": "You need to follow the platform's commercial use policies, be honest in advertising, and handle customer data securely."
+        },
+        {
+          "title": "Day 6: Case Studies and Real-World Applications",
+          "content": "<h1>Case Studies and Real-World Applications</h1><p>Real teen digital cases show consequences.</p><p>Juvenile justice focuses on rehabilitation.</p><h3>Case Examples:</h3><ul><li><strong>Cyberbullying:</strong> Can lead to legal charges and counseling.</li><li><strong>Gaming Loot Boxes:</strong> Lawsuits have led to required parental controls.</li><li><strong>Viral Videos:</strong> Invasion of privacy can result in penalties.</li><li><strong>Academic Fraud:</strong> Harms reputations and can have legal standing.</li><li><strong>Online Impersonation:</strong> Can lead to identity theft and stalking charges.</li></ul><p>Juvenile courts focus on rehabilitation, family involvement, and often have sealed records.</p><h2>Key Takeaways</h2><ul><li>Digital crimes are held seriously by courts.</li><li>Intent doesn’t excuse impact.</li><li>Early education is preferred over punishment.</li><li>The juvenile system balances fairness with opportunities for growth.</li></ul>",
+          "order_index": 6,
+          "practice_question": "How can you support a friend who is a victim of cyberbullying?",
+          "practice_type": "text",
+          "correct_answer": "Listen to them, save evidence, help them report it to trusted adults and the platform, and offer emotional support."
+        },
+        {
+          "title": "Day 7: Mock Court Activity and Review",
+          "content": "<h1>Mock Court Activity and Review</h1><p>Role-play a realistic court trial to understand the legal process.</p><h3>The Case:</h3><p>A student records and posts a private video of another student in the gym after an argument.</p><h3>Charges:</h3><p>Privacy invasion, harassment, and distribution of inappropriate content.</p><h3>Roles:</h3><p>Judge, prosecution, defense, witnesses, jury.</p><h3>Trial Steps:</h3><p>Opening statements, testimony, evidence, closing arguments, jury deliberation.</p><p>The activity involves discussing evidence, intent, impact, and consequences, followed by reflections on fairness and digital citizenship.</p><h2>Key Takeaways</h2><ul><li>Legal trials are complex and serious.</li><li>Multiple perspectives matter in justice.</li><li>Prevention is better than punishment.</li><li>Knowing the legal process empowers good citizenship.</li></ul>",
+          "order_index": 7,
+          "practice_question": "In the mock trial, what evidence could prove an intent to harm?",
+          "practice_type": "text",
+          "correct_answer": "Evidence could include threatening messages sent before the incident, captions on the video, or testimony about the argument."
         }
       ]
     }
