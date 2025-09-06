@@ -1,12 +1,7 @@
 import {genkit} from 'genkit';
-import {openAI} from 'genkitx-openai';
+import {googleAI} from '@genkit-ai/googleai';
 
 export const ai = genkit({
-  plugins: [
-    openAI({
-      apiKey: process.env.OPENROUTER_API_KEY,
-      apiHost: "openrouter.ai/api/v1",
-    }),
-  ],
-  model: 'openai/gpt-3.5-turbo',
+  plugins: [googleAI()],
+  model: 'googleai/gemini-1.5-flash-latest',
 });
