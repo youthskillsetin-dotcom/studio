@@ -242,6 +242,70 @@
           "correct_answer": "It's a major source of revenue that helps fund public services and infrastructure."
         }
       ]
+    },
+    {
+      "title": "Module 5: Entrepreneurship & Startups",
+      "description": "Learn to validate ideas, use the business model canvas, and understand costing, pricing, and profit margins.",
+      "is_free": false,
+      "order_index": 5,
+      "subtopics": [
+        {
+          "title": "Day 1: What Is Entrepreneurship?",
+          "content": "<h1>What Is Entrepreneurship?</h1><h3>Topic Overview</h3><ul><li>The difference between a business owner and an entrepreneur</li><li>Why creativity and risk-taking matter</li><li>Stories of young entrepreneurs</li></ul><h3>Explanation</h3><p>Entrepreneurs search for new ideas to solve real problems.</p><p>Example: A student creates an app to help classmates buy lunch quickly.</p><p>Unlike regular business owners, entrepreneurs create something new.</p><h3>Key Takeaways</h3><ul><li>Entrepreneurs are creative problem solvers.</li><li>Innovation means making something better or new.</li><li>Teenagers can be successful entrepreneurs.</li></ul>",
+          "order_index": 1,
+          "practice_question": "Write down two problems from your daily life that annoy you.",
+          "practice_type": "text",
+          "correct_answer": "Answers will vary but should identify two distinct problems from daily experience."
+        },
+        {
+          "title": "Day 2: Idea Validation",
+          "content": "<h1>Idea Validation</h1><h3>Topic Overview</h3><ul><li>What “validation” means in startups</li><li>Why most businesses fail: building something nobody wants</li><li>Validation through interviews, surveys, and “fake doors”</li></ul><h3>Explanation</h3><p>Validation checks if real people want the idea BEFORE making it.</p><p>Teen example: Ask classmates if they’d use a new lunch app—don't build it until they say “yes!”</p><p>Use simple surveys and open questions to test interest.</p><h3>Key Takeaways</h3><ul><li>Validate before you build.</li><li>Talk with future customers.</li><li>Only pursue ideas that solve a real, shared problem.</li></ul>",
+          "order_index": 2,
+          "practice_question": "Interview three people about one of your ideas.",
+          "practice_type": "text",
+          "correct_answer": "Answers will vary but should reflect feedback from three individuals on a specific idea."
+        },
+        {
+          "title": "Day 3: Business Model Canvas",
+          "content": "<h1>Business Model Canvas</h1><h3>Topic Overview</h3><ul><li>The business model canvas: mapping your idea on one page</li><li>Key blocks: Customers, Value, Revenue, Costs, Channels</li><li>Example using a popular youth business</li></ul><h3>Explanation</h3><p>A canvas is like a “game plan” for a startup.</p><p>Fill sections such as “Who are my customers?” and “How will I make money?”</p><p>Example: A tutoring service’s canvas lists students as customers, teachers as partners, flyers/social as marketing.</p><h3>Key Takeaways</h3><ul><li>Every business needs a plan.</li><li>The canvas helps spot what is missing or unclear.</li><li>Real examples make planning easier.</li></ul>",
+          "order_index": 3,
+          "practice_question": "Use a worksheet to complete your own canvas for one idea.",
+          "practice_type": "text",
+          "correct_answer": "Answers will vary but should demonstrate a basic attempt to fill out the business model canvas sections."
+        },
+        {
+          "title": "Day 4: Costing – What Does It Take To Start?",
+          "content": "<h1>Costing – What Does It Take To Start?</h1><h3>Topic Overview</h3><ul><li>Startup costs: One-time vs. monthly</li><li>Cost categories: Materials, marketing, tech, legal</li><li>Sample calculations for small teen businesses</li></ul><h3>Explanation</h3><p>List everything you need to buy (laptop, website, marketing flyers, supplies).</p><p>Real examples: A jewelry business spends ₹500 on supplies, ₹100 on packaging.</p><p>Tracking costs avoids surprise debt.</p><h3>Key Takeaways</h3><ul><li>Every business has costs, even if you work from home.</li><li>Know start-up costs vs. everyday running expenses.</li><li>Cost planning helps you avoid overspending.</li></ul>",
+          "order_index": 4,
+          "practice_question": "List all items needed for your business idea.",
+          "practice_type": "text",
+          "correct_answer": "Answers will vary but should be a list of potential costs for a specific business idea."
+        },
+        {
+          "title": "Day 5: Pricing Strategies",
+          "content": "<h1>Pricing Strategies</h1><h3>Topic Overview</h3><ul><li>How much should you charge?</li><li>Different pricing methods: cost-plus, competitive, value-based</li><li>Common mistakes and tips for smart pricing</li></ul><h3>Explanation</h3><p>Cost-plus: Add a profit to your real costs—simple but risky.</p><p>Competitive: Research what others charge; set your price close or slightly lower.</p><p>Value-based: If you offer a unique solution, set a price based on what people think it’s worth, not just your cost.</p><h3>Key Takeaways</h3><ul><li>Don’t just guess—research and test pricing.</li><li>Pricing too low can hurt profits; too high loses customers.</li><li>Try different prices and ask classmates what they would pay.</li></ul>",
+          "order_index": 5,
+          "practice_question": "Calculate costs for making one product or delivering one service.",
+          "practice_type": "text",
+          "correct_answer": "Answers will vary but should show a calculation of per-unit cost."
+        },
+        {
+          "title": "Day 6: Profit Margins",
+          "content": "<h1>Profit Margins</h1><h3>Topic Overview</h3><ul><li>What is profit margin?</li><li>Margins in practice—what’s “good”?</li><li>How to increase margins: cutting costs, raising prices, adding value</li></ul><h3>Explanation</h3><p>Profit margin = (Price – Cost) ÷ Price × 100%</p><p>Example: Product costs ₹500, sells for ₹700 → margin = ₹200 ÷ ₹700 × 100 = ~29%</p><p>Lower costs or higher prices = better margins. But always balance with customer expectations!</p><h3>Key Takeaways</h3><ul><li>Good margins for startups are typically 20–40%.</li><li>Monitor costs regularly; don’t race competitors to the lowest price.</li><li>Invest in quality and unique value.</li></ul>",
+          "order_index": 6,
+          "practice_question": "Calculate the profit margin on your business idea.",
+          "practice_type": "text",
+          "correct_answer": "Answers will vary but should apply the profit margin formula to their specific business idea's costs and prices."
+        },
+        {
+          "title": "Day 7: Bringing It Together",
+          "content": "<h1>Bringing It Together</h1><h3>Topic Overview</h3><ul><li>Crafting your simple pitch: problem, solution, market, pricing, margin</li><li>Presenting your business plan</li><li>Getting feedback and next steps</li></ul><h3>Explanation</h3><p>Your pitch should include what problem you’re solving, who needs it, how you’ll market, your prices, and your growth goals.</p><p>Practice with family, friends, or class—use feedback to improve!</p><h3>Key Takeaways</h3><ul><li>Clear, confident pitches attract interest and support.</li><li>Real feedback helps refine ideas.</li><li>Every business evolves—don’t be afraid to adjust.</li></ul>",
+          "order_index": 7,
+          "practice_question": "Write out your pitch (max two minutes).",
+          "practice_type": "text",
+          "correct_answer": "Answers will vary but should be a short, structured pitch for their business idea."
+        }
+      ]
     }
   ]
 }
