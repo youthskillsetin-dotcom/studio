@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { cookies } from 'next/headers';
 import { formatDistanceToNow } from 'date-fns';
@@ -21,8 +22,7 @@ export default async function CommunityPage() {
             <p className="text-muted-foreground">Ask questions, share projects, and connect with other learners.</p>
         </div>
         <Button asChild>
-          {/* This link is a placeholder for now */}
-          <Link href="#"> 
+          <Link href="/community/create"> 
             <PlusCircle className="mr-2" />
             Create Post
           </Link>
@@ -67,8 +67,7 @@ export default async function CommunityPage() {
                  It's quiet in here. Be the first to start a conversation!
                </p>
                <Button asChild>
-                {/* This link is a placeholder for now */}
-                <Link href="#"> 
+                <Link href="/community/create"> 
                   <PlusCircle className="mr-2" />
                   Create First Post
                 </Link>
