@@ -2,64 +2,61 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
 import type { Lesson, Subtopic, UserSubtopicProgress, Post } from './types';
 import { unstable_noStore as noStore } from 'next/cache';
+import sampleContent from '../../sample-content.json';
+
+// NOTE: Lesson and Subtopic data is now primarily sourced from sample-content.json
+// These functions are kept for other data types but are no longer used for lessons.
 
 export async function getLessons(supabase: SupabaseClient): Promise<Lesson[]> {
   noStore();
-  const { data, error } = await supabase
-    .from('lessons')
-    .select('*')
-    .order('order_index', { ascending: true });
-
-  if (error) {
-    console.error('Error fetching lessons:', error);
-    return [];
-  }
-  return data;
+  // This function now reads from the JSON file for simplicity.
+  // We cast it to satisfy the type, adding a placeholder ID.
+  return sampleContent.lessons.map((lesson, index) => ({
+    ...lesson,
+    id: String(index + 1), 
+  })) as Lesson[];
 }
 
 export async function getLessonById(supabase: SupabaseClient, id: string): Promise<Lesson | null> {
     noStore();
-    const { data, error } = await supabase
-        .from('lessons')
-        .select('*')
-        .eq('id', id)
-        .single();
-
-    if (error) {
-        console.error('Error fetching lesson by id:', error);
-        return null;
-    }
-    return data;
+    const lessonIndex = parseInt(id, 10) - 1;
+    const lesson = sampleContent.lessons[lessonIndex];
+    if (!lesson) return null;
+    return { ...lesson, id: String(lessonIndex + 1) } as Lesson;
 }
 
 
 export async function getSubtopicsByLessonId(supabase: SupabaseClient, lessonId: string): Promise<Subtopic[]> {
     noStore();
-    const { data, error } = await supabase
-        .from('subtopics')
-        .select('*')
-        .eq('lesson_id', lessonId)
-        .order('order_index', { ascending: true });
-
-    if (error) {
-        console.error('Error fetching subtopics:', error);
-        return [];
-    }
-    return data;
+    const lessonIndex = parseInt(lessonId, 10) - 1;
+    const lesson = sampleContent.lessons[lessonIndex];
+    if (!lesson) return [];
+    
+    return lesson.subtopics.map((sub, subIndex) => ({
+      ...sub,
+      id: `${lessonIndex + 1}-${subIndex + 1}`,
+      lesson_id: lessonId,
+    })) as Subtopic[];
 }
 
 export async function getSubtopicById(supabase: SupabaseClient, id: string): Promise<Subtopic | null> {
     noStore();
-    const { data, error } = await supabase
-        .from('subtopics')
-        .select('*')
-        .eq('id', id)
-        .single();
-    if (error) {
-        console.error('Error fetching subtopic:', error);
-        return null;
-    }
-    return data;
+    
+    // ID format is assumed to be "lessonIndex-subtopicIndex"
+    const ids = id.split('-').map(n => parseInt(n, 10));
+    if (ids.length !== 2 || isNaN(ids[0]) || isNaN(ids[1])) return null;
+
+    const lesson = sampleContent.lessons[ids[0] - 1];
+    if (!lesson) return null;
+    
+    const subtopic = lesson.subtopics[ids[1] - 1];
+    if (!subtopic) return null;
+    
+    return { 
+      ...subtopic, 
+      id,
+      lesson_id: String(ids[0])
+    } as Subtopic;
 }
 
 export async function getUserProgress(supabase: SupabaseClient): Promise<UserSubtopicProgress[]> {

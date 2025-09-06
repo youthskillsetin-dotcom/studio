@@ -1,22 +1,48 @@
 
 import { notFound } from 'next/navigation';
-import { getSubtopicById, getLessonById } from '@/lib/data';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { PracticeForm } from '@/components/practice-form';
 import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
-import { createClient } from '@/lib/supabase/server';
-import { cookies } from 'next/headers';
+import sampleContent from '../../../../../sample-content.json';
+import type { Subtopic, Lesson } from '@/lib/types';
+
+
+// Since we are not using a DB, we'll create a simple function to get data from the JSON
+function getSubtopicById(id: string): (Subtopic & { lesson: Lesson }) | null {
+  // ID format is assumed to be "lessonIndex-subtopicIndex"
+  const ids = id.split('-').map(n => parseInt(n, 10));
+  if (ids.length !== 2 || isNaN(ids[0]) || isNaN(ids[1])) return null;
+
+  const lessonIndex = ids[0] - 1;
+  const subtopicIndex = ids[1] - 1;
+
+  const lessonData = sampleContent.lessons[lessonIndex];
+  if (!lessonData) return null;
+  
+  const subtopicData = lessonData.subtopics[subtopicIndex];
+  if (!subtopicData) return null;
+  
+  // The JSON doesn't have IDs, so we'll add them dynamically.
+  return { 
+    ...subtopicData, 
+    id,
+    lesson_id: String(lessonIndex + 1),
+    lesson: {
+        ...lessonData,
+        id: String(lessonIndex + 1)
+    }
+  } as (Subtopic & { lesson: Lesson });
+}
+
 
 export default async function SubtopicPage({ params }: { params: { id: string } }) {
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
 
-  const subtopic = await getSubtopicById(supabase, params.id);
-  if (!subtopic) {
+  const data = getSubtopicById(params.id);
+  if (!data) {
     notFound();
   }
-  const lesson = await getLessonById(supabase, subtopic.lesson_id);
+  const { lesson, ...subtopic } = data;
 
   return (
     <div className="space-y-6">

@@ -1,18 +1,14 @@
 
-import { cookies } from 'next/headers';
-import { createClient } from '@/lib/supabase/server';
-import { getLessons } from '@/lib/data';
 import type { Lesson } from '@/lib/types';
 import { LessonCard } from '@/components/lesson-card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BookOpenCheck, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import sampleContent from '../../../../sample-content.json';
 
 export default async function LessonsPage() {
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
-  const lessons = await getLessons(supabase);
+  const lessons: Lesson[] = sampleContent.lessons as Lesson[];
   const hasPremium = false; // Placeholder for user subscription status
 
   return (
@@ -32,23 +28,17 @@ export default async function LessonsPage() {
         <TabsContent value="all" className="mt-6">
            {lessons && lessons.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {lessons.map((lesson: Lesson) => (
-                  <LessonCard key={lesson.id} lesson={lesson} hasPremium={hasPremium} />
+                {lessons.map((lesson: Lesson, index: number) => (
+                  <LessonCard key={index} lesson={{...lesson, id: String(index + 1)}} hasPremium={hasPremium} />
                 ))}
               </div>
            ) : (
              <div className="text-center text-muted-foreground py-20 bg-muted/40 rounded-lg">
                 <BookOpenCheck className="mx-auto h-12 w-12 text-gray-400" />
-                <h3 className="mt-4 text-lg font-medium">No Lessons Found in the Database</h3>
+                <h3 className="mt-4 text-lg font-medium">No Lessons Found</h3>
                 <p className="mt-2 text-sm max-w-md mx-auto">
-                    It looks like you haven't imported any lessons yet. Please go to the admin import page to upload the sample content.
+                    It looks like there are no lessons available yet. Please add content to `sample-content.json`.
                 </p>
-                <Button asChild className="mt-6">
-                    <Link href="/admin/import">
-                        <Upload className="mr-2" />
-                        Import Sample Lessons
-                    </Link>
-                </Button>
             </div>
            )}
         </TabsContent>

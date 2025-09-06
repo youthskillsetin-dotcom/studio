@@ -1,6 +1,6 @@
 
 export interface Lesson {
-  id: string;
+  id: string; // Will be dynamically generated (e.g., "1", "2")
   title: string;
   description: string;
   is_free: boolean;
@@ -8,7 +8,7 @@ export interface Lesson {
 }
 
 export interface Subtopic {
-  id: string;
+  id: string; // Will be dynamically generated (e.g., "1-1", "1-2")
   lesson_id: string;
   title: string;
   content: string;

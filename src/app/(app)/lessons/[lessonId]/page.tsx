@@ -1,23 +1,39 @@
 
 import { notFound } from 'next/navigation';
-import { getLessonById, getSubtopicsByLessonId, getProgressForSubtopic } from '@/lib/data';
-import type { Subtopic } from '@/lib/types';
+import type { Subtopic, Lesson } from '@/lib/types';
 import { SubtopicRow } from '@/components/subtopic-row';
 import { CountdownTimer } from '@/components/countdown-timer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { createClient } from '@/lib/supabase/server';
-import { cookies } from 'next/headers';
+import sampleContent from '../../../../../sample-content.json';
+
+// Since we are not using a DB, we'll create a simple function to get data from the JSON
+function getLessonById(id: string): (Lesson & { subtopics: Subtopic[] }) | null {
+  const lessonIndex = parseInt(id, 10) - 1;
+  const lessonData = sampleContent.lessons[lessonIndex];
+  
+  if (!lessonData) {
+    return null;
+  }
+  
+  // The JSON doesn't have IDs, so we'll add them dynamically.
+  return {
+    ...lessonData,
+    id: String(lessonIndex + 1),
+    subtopics: lessonData.subtopics.map((sub, subIndex) => ({
+      ...sub,
+      id: `${lessonIndex + 1}-${subIndex + 1}`,
+      lesson_id: String(lessonIndex + 1),
+    }))
+  };
+}
 
 export default async function LessonDetailPage({ params }: { params: { lessonId: string } }) {
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
-
-  const lesson = await getLessonById(supabase, params.lessonId);
+  const lesson = getLessonById(params.lessonId);
   if (!lesson) {
     notFound();
   }
 
-  const subtopics = await getSubtopicsByLessonId(supabase, params.lessonId);
+  const subtopics = lesson.subtopics;
 
   const getNextUnlockTime = () => {
     const now = new Date();
@@ -57,7 +73,7 @@ export default async function LessonDetailPage({ params }: { params: { lessonId:
         </CardHeader>
         <CardContent className="space-y-2">
           {subtopics && subtopics.length > 0 ? (
-            subtopics.map(async (subtopic: Subtopic) => {
+            subtopics.map((subtopic: Subtopic) => {
               // Since there is no user, we can hardcode the status.
               // 'unlocked' for free lessons, or based on some other logic.
               const status = lesson.is_free ? 'unlocked' : 'locked';
