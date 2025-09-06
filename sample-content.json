@@ -66,6 +66,56 @@
           "correct_answer": "Answers will be personal statements about valuing, budgeting, and saving money."
         }
       ]
+    },
+    {
+      "title": "Module 2: Banking & Digital Payments",
+      "description": "Learn the fundamentals of banking, from different account types to modern digital payment methods like UPI and Netbanking.",
+      "is_free": false,
+      "order_index": 2,
+      "subtopics": [
+        {
+          "title": "Day 1: What is a Bank?",
+          "content": "<h1>What is a Bank?</h1><h2>Topic Overview</h2><ul><li>A bank is a safe place to keep money where it grows and can be easily managed.</li><li>Banks help people store money, give loans, offer cards, and process payments.</li><li>Banks serve individuals, companies, and governments.</li></ul><h2>Explanation</h2><p>When you deposit money in a bank, you are lending it to the bank, which pays you interest.</p><p>Examples: Checking balances, withdrawing money, using debit cards, and online payments.</p><p>Your money is more secure in a bank than at home.</p><h2>Key Takeaways</h2><ul><li>Banks help manage money and keep it safe.</li><li>Money in banks can earn interest.</li><li>Banks let you access money anytime, anywhere.</li></ul>",
+          "order_index": 1,
+          "practice_question": "Why do people use banks?",
+          "practice_type": "text",
+          "correct_answer": "For safe storage, earning interest, and ease of payments."
+        },
+        {
+          "title": "Day 2: Types of Accounts",
+          "content": "<h1>Types of Accounts</h1><h2>Topic Overview</h2><ul><li><strong>Savings Account:</strong> For storing and growing money, earning interest, limited transactions.</li><li><strong>Current Account:</strong> For businesses or frequent transactions, little or no interest.</li></ul><h2>Explanation</h2><p><strong>Savings Account:</strong> Like a smart piggy bank, encourages saving, earns interest, usually needs a minimum balance.</p><p><strong>Current Account:</strong> Like a wallet for businesses—can deposit/withdraw money anytime; mostly for shopkeepers or freelancers.</p><h2>Key Takeaways</h2><ul><li>Most teens start with a savings account to begin saving money.</li><li>Interest earned differs between the two account types.</li><li>Choose the account based on personal needs.</li></ul>",
+          "order_index": 2,
+          "practice_question": "What is the main benefit of a savings account?",
+          "practice_type": "text",
+          "correct_answer": "It earns interest."
+        },
+        {
+          "title": "Day 3: UPI – Digital Payments Made Easy",
+          "content": "<h1>UPI – Digital Payments Made Easy</h1><h2>Topic Overview</h2><ul><li>UPI (Unified Payments Interface) lets you send money instantly by phone.</li><li>No need for cash or physical cards.</li><li>Safe, fast, works 24/7.</li></ul><h2>Explanation</h2><p>UPI apps (like PhonePe, Google Pay) connect your bank account to your phone.</p><p>You can pay shops, friends, or bills in seconds.</p><p>Parents can set limits or supervise as needed.</p><h2>Key Takeaways</h2><ul><li>UPI is a safe and easy way to pay.</li><li>You need a UPI PIN for every transaction.</li><li>Helps teens learn responsible digital money habits.</li></ul>",
+          "order_index": 3,
+          "practice_question": "What does UPI stand for?",
+          "practice_type": "text",
+          "correct_answer": "Unified Payments Interface."
+        },
+        {
+          "title": "Day 4: ATM – Your Cash Machine",
+          "content": "<h1>ATM – Your Cash Machine</h1><h2>Topic Overview</h2><ul><li>ATM: Lets you withdraw or deposit money anytime.</li><li>Uses your debit card and a PIN for security.</li></ul><h2>Explanation</h2><p>Insert card, enter PIN, choose withdrawal or balance inquiry.</p><p>Many banks offer up to 3–5 free ATM uses each month.</p><p>Protect your PIN and card like your wallet.</p><h2>Key Takeaways</h2><ul><li>ATMs work all day, every day.</li><li>PIN keeps your ATM transactions secure.</li><li>Never share or write down your PIN.</li></ul>",
+          "order_index": 4,
+          "practice_question": "What is an ATM?",
+          "practice_type": "text",
+          "correct_answer": "Automated Teller Machine—a machine to withdraw or deposit money."
+        },
+        {
+          "title": "Day 5: Netbanking – Manage Your Account Online",
+          "content": "<h1>Netbanking – Manage Your Account Online</h1><h2>Topic Overview</h2><ul><li>Netbanking: Banking over the internet.</li><li>Check balances, transfer money, pay bills from your computer or phone.</li></ul><h2>Explanation</h2><p>Requires a login ID and password, sometimes OTP.</p><p>Lets you do almost everything: pay bills, transfer money, open deposits.</p><p>Safer than cash if proper steps are followed.</p><h2>Key Takeaways</h2><ul><li>Netbanking is flexible—anytime, anywhere.</li><li>Never share passwords/OTP.</li><li>Use official bank apps/websites only.</li></ul>",
+          "order_index": 5,
+          "practice_question": "What is an OTP?",
+          "practice_type": "text",
+          "correct_answer": "One-Time Password, sent to your phone for security."
+        }
+      ]
     }
   ]
 }
+
+    
