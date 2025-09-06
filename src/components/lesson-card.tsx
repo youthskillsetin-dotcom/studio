@@ -1,9 +1,11 @@
+
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
-import { Lock, Zap } from 'lucide-react';
+import { Lock, Zap, CheckCircle } from 'lucide-react';
 import type { Lesson } from '@/lib/types';
 import { mockUserProgress, getSubtopicsByLessonId } from '@/lib/mock-data';
 
@@ -16,38 +18,88 @@ export function LessonCard({ lesson, hasPremium }: LessonCardProps) {
   const isLocked = !lesson.is_free && !hasPremium;
   
   const subtopics = getSubtopicsByLessonId(lesson.id);
-  const completedCount = subtopics.filter(st => {
+  const completedSubtopics = subtopics.filter(st => {
     const progress = mockUserProgress.find(p => p.subtopic_id === st.id);
     return progress?.status === 'completed';
   }).length;
 
-  const progress = subtopics.length > 0 ? (completedCount / subtopics.length) * 100 : 0;
+  const progress = subtopics.length > 0 ? (completedSubtopics / subtopics.length) * 100 : 0;
+  const isCompleted = progress === 100;
+  const isStarted = progress > 0 && progress < 100;
+
+  let buttonText = 'Start Lesson';
+  let buttonAction: 'default' | 'review' | 'premium' = 'default';
+  if(isLocked) {
+      buttonText = 'Unlock with Premium';
+      buttonAction = 'premium';
+  } else if (isCompleted) {
+      buttonText = 'Review Lesson';
+      buttonAction = 'review';
+  } else if (isStarted) {
+      buttonText = 'Continue';
+  }
+
 
   return (
-    <Card className={`flex flex-col ${isLocked ? 'bg-muted/50' : ''}`}>
-      <CardHeader>
-        <div className="flex justify-between items-start">
-          <CardTitle className="font-headline text-xl">{lesson.title}</CardTitle>
-          {isLocked ? (
-            <Lock className="w-5 h-5 text-muted-foreground" />
-          ) : (
-            <Zap className="w-5 h-5 text-accent" />
-          )}
+     <Card className="flex flex-col rounded-xl bg-card shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group">
+      <div className="relative">
+        <div className="w-full aspect-video relative overflow-hidden">
+          <Image 
+            src="https://picsum.photos/400/225"
+            alt={lesson.title}
+            fill
+            style={{objectFit: 'cover'}}
+            className={`transition-transform duration-300 group-hover:scale-105 ${isLocked ? 'filter grayscale' : ''}`}
+            data-ai-hint="learning education"
+          />
+           {isLocked && (
+            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+              <Lock className="text-primary-foreground h-12 w-12" />
+            </div>
+           )}
         </div>
-        <CardDescription>{lesson.description}</CardDescription>
-      </CardHeader>
-      <CardContent className="flex-grow">
-        <div className="flex justify-between items-center text-sm text-muted-foreground mb-2">
-          <span>Progress</span>
-          <span>{Math.round(progress)}%</span>
+        <div className={`absolute top-3 right-3 bg-card/80 backdrop-blur-sm text-xs font-bold uppercase px-2 py-1 rounded-full ${isLocked ? 'text-primary' : 'text-foreground'}`}>
+            {isLocked ? 'Premium' : 'Free'}
         </div>
-        <Progress value={progress} aria-label={`${lesson.title} progress`} />
+      </div>
+      <CardContent className="p-5 flex flex-col flex-1">
+        <CardTitle className="text-lg font-bold leading-tight mb-2">{lesson.title}</CardTitle>
+        <CardDescription className="text-sm font-normal leading-normal mb-4 flex-1">
+          {lesson.description}
+        </CardDescription>
+
+        {!isLocked && (
+          <div className="mb-4">
+              { isCompleted ? (
+                 <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    <p className="text-xs text-green-500 font-semibold mt-1">Completed!</p>
+                 </div>
+              ) : (
+                <>
+                <div className="h-2 w-full bg-muted rounded-full">
+                  <div className="h-2 bg-primary rounded-full" style={{ width: `${progress}%` }}></div>
+                </div>
+                <p className="text-xs text-right text-muted-foreground mt-1">
+                  {isStarted ? `${Math.round(progress)}% Complete` : 'Not Started'}
+                </p>
+                </>
+              )}
+          </div>
+        )}
       </CardContent>
-      <CardFooter>
-        <Button asChild className="w-full" disabled={isLocked}>
-          <Link href={isLocked ? '#' : `/lessons/${lesson.id}`}>
-            {isLocked ? 'Premium Required' : 'Start Lesson'}
-          </Link>
+      <CardFooter className="p-5">
+        <Button 
+            asChild={!isLocked}
+            className="w-full" 
+            variant={buttonAction === 'review' ? 'secondary' : 'default'}
+            disabled={isLocked && buttonAction !== 'premium'}
+        >
+          {isLocked ? (
+              <Link href="/">{buttonText}</Link>
+          ) : (
+             <Link href={`/lessons/${lesson.id}`}>{buttonText}</Link>
+          )}
         </Button>
       </CardFooter>
     </Card>
