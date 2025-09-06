@@ -81,7 +81,7 @@ export async function middleware(request: NextRequest) {
 
   // Protect admin routes for non-admin users
   if (session && pathname.startsWith('/admin')) {
-      if (session.user.email !== adminEmail) {
+      if (!session.user.email || session.user.email !== adminEmail) {
           return NextResponse.redirect(new URL('/dashboard', request.url));
       }
   }
