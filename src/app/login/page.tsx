@@ -79,7 +79,6 @@ export default function LoginPage() {
     } else {
       router.push(next || '/dashboard');
       router.refresh();
-      // No need to set loading to false here as the page will redirect and unmount.
     }
   };
 
@@ -91,11 +90,18 @@ export default function LoginPage() {
       toast({ variant: 'destructive', title: 'Signup Failed', description: signupResult.error });
       setLoading(false);
     } else {
-        toast({ title: 'Account Created!', description: "Welcome!" });
-        // Since Supabase signs the user in automatically, we just need to redirect.
-        router.push(next || '/dashboard');
-        router.refresh();
-        // No need to set loading to false here as the page will redirect and unmount.
+        toast({ title: 'Account Created!', description: "Welcome! Logging you in..." });
+        
+        // Automatically log in the user after successful signup
+        const loginResult = await login({ email: values.email, password: values.password });
+
+        if (loginResult.error) {
+            toast({ variant: 'destructive', title: 'Automatic Login Failed', description: loginResult.error });
+            setLoading(false);
+        } else {
+            router.push(next || '/dashboard');
+            router.refresh();
+        }
     }
   };
 
