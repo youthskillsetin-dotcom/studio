@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle, Zap, BrainCircuit } from 'lucide-react';
 import { Logo } from '@/components/icons';
+import Image from 'next/image';
 
 export default function LandingPage() {
   return (
@@ -23,23 +24,36 @@ export default function LandingPage() {
       </header>
 
       <main className="flex-1">
-        <section className="container mx-auto px-4 sm:px-6 lg:px-8 text-center py-20 md:py-32">
-          <h1 className="text-4xl md:text-6xl font-extrabold font-headline tracking-tight">
-            Master In-Demand Skills.
-            <br />
-            <span className="text-primary">Unlock Your Future.</span>
-          </h1>
-          <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
-            YouthSkillSet is your personal AI mentor for mastering essential career skills. Learn at your own pace, get instant feedback, and build a portfolio that stands out.
-          </p>
-          <div className="mt-8 flex justify-center gap-4">
-            <Button size="lg" asChild>
-              <Link href="/dashboard">Start Learning for Free</Link>
-            </Button>
+        <section className="relative text-center py-20 md:py-32 flex flex-col items-center justify-center">
+          <div className="absolute inset-0 z-0">
+             <Image 
+                src="https://picsum.photos/1200/800" 
+                alt="Hero Background"
+                fill
+                style={{objectFit: 'cover'}}
+                className="opacity-20"
+                data-ai-hint="technology learning"
+            />
+             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background" />
+          </div>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <h1 className="text-4xl md:text-6xl font-extrabold font-headline tracking-tight text-white">
+              Master In-Demand Skills.
+              <br />
+              <span className="text-primary">Unlock Your Future.</span>
+            </h1>
+            <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
+              YouthSkillSet is your personal AI mentor for mastering essential career skills. Learn at your own pace, get instant feedback, and build a portfolio that stands out.
+            </p>
+            <div className="mt-8 flex justify-center gap-4">
+              <Button size="lg" asChild>
+                <Link href="/dashboard">Start Learning for Free</Link>
+              </Button>
+            </div>
           </div>
         </section>
 
-        <section className="bg-white/50 py-20">
+        <section className="bg-background py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div className="flex flex-col items-center">
