@@ -60,16 +60,25 @@ export async function middleware(request: NextRequest) {
   } = await supabase.auth.getSession()
 
   const { pathname } = request.nextUrl
+  
+  const adminEmail = 'yashneetkundal@gmail.com';
 
   // Redirect logged-in users from login page to dashboard
   if (session && pathname === '/login') {
     return NextResponse.redirect(new URL('/dashboard', request.url))
   }
 
-  // Protect app routes
+  // Protect app routes for unauthenticated users
   const protectedRoutes = ['/dashboard', '/lessons', '/ai-mentor', '/career-guide', '/community', '/subtopic', '/admin', '/support', '/settings'];
   if (!session && protectedRoutes.some(path => pathname.startsWith(path))) {
     return NextResponse.redirect(new URL('/login', request.url))
+  }
+
+  // Protect admin routes for non-admin users
+  if (session && pathname.startsWith('/admin')) {
+      if (session.user.email !== adminEmail) {
+          return NextResponse.redirect(new URL('/dashboard', request.url));
+      }
   }
   
   // Protect assessment route
