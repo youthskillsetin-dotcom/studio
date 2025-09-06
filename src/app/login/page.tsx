@@ -39,8 +39,8 @@ export default function LoginPage() {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const supabase = createClient();
-  const searchParams = useSearchParams()
-  const next = searchParams.get('next')
+  const searchParams = useSearchParams();
+  const next = searchParams.get('next');
 
   const loginForm = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -66,8 +66,8 @@ export default function LoginPage() {
         title: 'Login Failed',
         description: error.message,
       });
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const handleLogin = async (values: z.infer<typeof loginSchema>) => {
@@ -75,11 +75,11 @@ export default function LoginPage() {
     const result = await login(values);
     if (result.error) {
       toast({ variant: 'destructive', title: 'Login Failed', description: result.error });
+      setLoading(false);
     } else {
       router.push(next || '/dashboard');
       router.refresh();
     }
-    setLoading(false);
   };
 
   const handleSignup = async (values: z.infer<typeof signupSchema>) => {
@@ -88,17 +88,18 @@ export default function LoginPage() {
     
     if (signupResult.error) {
       toast({ variant: 'destructive', title: 'Signup Failed', description: signupResult.error });
+      setLoading(false);
     } else {
         toast({ title: 'Account Created!', description: "Logging you in..." });
         const loginResult = await login({email: values.email, password: values.password});
          if (loginResult.error) {
             toast({ variant: 'destructive', title: 'Automatic login failed', description: 'Please log in manually.' });
+            setLoading(false);
         } else {
-            router.push('/dashboard');
+            router.push(next || '/dashboard');
             router.refresh();
         }
     }
-    setLoading(false);
   };
 
   return (
