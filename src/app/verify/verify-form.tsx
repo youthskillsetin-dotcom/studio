@@ -11,7 +11,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
-import { useState, useTransition } from 'react';
+import { useState, useTransition, useEffect } from 'react';
 import { Loader2 } from 'lucide-react';
 import { verifyOtp } from './actions';
 import { createClient } from '@/lib/supabase/client';
@@ -37,12 +37,16 @@ export default function VerifyForm() {
     defaultValues: { token: '' },
   });
   
-  if (!email) {
-    // This should ideally not happen if the user follows the flow.
-    // Redirecting to login provides a safe fallback.
-    if (typeof window !== 'undefined') {
-        router.push('/login');
+  useEffect(() => {
+    if (!email) {
+      // This should ideally not happen if the user follows the flow.
+      // Redirecting to login provides a safe fallback.
+      router.push('/login');
     }
+  }, [email, router]);
+  
+  if (!email) {
+    // Return null or a loading spinner while the redirect happens
     return null;
   }
 
