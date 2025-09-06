@@ -2,68 +2,66 @@
 {
   "lessons": [
     {
-      "title": "Module 1: Introduction to Money & Finance",
-      "description": "Week 1: What is Money? Why do we need it? Pocket Money vs. Income",
+      "title": "Module 1: Personal Finance 101",
+      "description": "A 7-Day Journey to Financial Mastery for Teens (Ages 16-20).",
       "is_free": true,
       "order_index": 1,
       "subtopics": [
         {
-          "title": "Day 1: What is Money?",
-          "content": "<h1>What is Money?</h1><h2>Topic Overview</h2><ul><li><strong>Definition:</strong> Money is anything widely accepted as payment for goods, services, and debt.</li><li><strong>Functions:</strong> It's a medium of exchange, a unit of account, and a store of value.</li><li><strong>History:</strong> Before money, people bartered goods directly (e.g., trading wheat for shoes).</li></ul><h2>Explanation</h2><p><strong>Medium of Exchange:</strong> Money replaces barter, making our daily trade easier and more flexible.</p><p><strong>Unit of Account:</strong> Prices are expressed in money, helping everyone compare value clearly.</p><p><strong>Store of Value:</strong> We can save money for future purchases.</p><h3>Why Not Barter?</h3><p>Imagine needing a pair of shoes but only having wheat to trade—the shoemaker may not want wheat! Money solves such problems.</p><h2>Key Takeaways</h2><ul><li>Money is crucial for trade and specialization.</li><li>It simplifies exchanges and boosts prosperity.</li><li>Modern money includes cash, coins, and digital money.</li></ul>",
+          "title": "Day 1: The Money Mindset Revolution",
+          "content": "<h1>The Money Mindset Revolution</h1><h2>Topic Overview</h2><ul><li>Understand how your money mindset impacts your financial future.</li><li>Learn the importance of delayed gratification and recognizing emotional spending.</li><li>See how small habits compound over time to powerful effects.</li></ul><h2>Explanation</h2><p>Learn about instant gratification and how to build delayed gratification habits. Recognize emotional triggers like stress, boredom, and social pressure that lead to impulsive spending. Uncover money scripts you’ve learned growing up and reframe them positively. Realize the hidden costs of small daily purchases that add up over time.</p><h2>Key Takeaways</h2><ul><li>Early money habits greatly influence your future financial outcomes.</li><li>Emotional awareness in spending leads to better control of money.</li><li>Consistency in small savings beats sudden larger effort later.</li><li>Financial literacy is a learnable skill with huge payoffs.</li></ul>",
           "order_index": 1,
-          "practice_question": "What problem does money solve in bartering?",
+          "practice_question": "Identify one impulsive purchase you made in the past month. What triggered it?",
           "practice_type": "text",
-          "correct_answer": "The double coincidence of wants: finding someone who wants what you have and offers what you want."
+          "correct_answer": "Answers will vary but should identify a purchase and a trigger like stress, social pressure, or boredom."
         },
         {
-          "title": "Day 2: Why Do We Need Money?",
-          "content": "<h1>Why Do We Need Money?</h1><h2>Topic Overview</h2><ul><li><strong>Facilitates trade:</strong> Money makes trading possible and easy.</li><li><strong>Builds trust:</strong> Allows transactions even among strangers.</li><li><strong>Helps specialization:</strong> People can focus on one skill/trade.</li></ul><h2>Explanation</h2><p><strong>Trade:</strong> Money lets us buy what we need, when we need it, from anyone.</p><p><strong>Trust Factor:</strong> Unlike barter, money doesn’t rely on knowing or trusting the other person.</p><p><strong>Specialization:</strong> E.g., a tailor doesn’t need to want fish; money lets them sell clothes and buy fish from someone else.</p><h2>Key Takeaways</h2><ul><li>Money increases prosperity and social cooperation.</li><li>Trust in money keeps the system working.</li><li>Specialization is possible thanks to money.</li></ul>",
+          "title": "Day 2: Mastering the 50-30-20 Rule",
+          "content": "<h1>Mastering the 50-30-20 Rule</h1><h2>Topic Overview</h2><ul><li>Breakdown of the simple yet effective 50-30-20 budgeting method.</li><li>Importance of balancing needs, wants, and savings.</li><li>Customizing the rule for teens with varying incomes and living situations.</li></ul><h2>Explanation</h2><p>The 50-30-20 rule allocates 50% of your income to Needs (essentials like food, transport), 30% to Wants (fun things like entertainment), and 20% to Savings (emergency fund, goals). It can be adapted for irregular income or living with parents.</p><h2>Key Takeaways</h2><ul><li>50-30-20 offers flexibility while promoting discipline.</li><li>Mastering needs vs wants is key to budgeting success.</li><li>The rule works at any income level by percentage allocation.</li><li>Consistency is more important than perfection.</li></ul>",
           "order_index": 2,
-          "practice_question": "True or False: Money is useful only for buying things.",
-          "practice_type": "mcq",
-          "practice_options": ["True", "False"],
-          "correct_answer": "False"
+          "practice_question": "Create a 50-30-20 budget for a teen earning $600 monthly who has parental support for major needs.",
+          "practice_type": "text",
+          "correct_answer": "A correct budget would allocate $300 for wants (50% of income, as needs are low), $180 for wants (30%), and $120 for savings (20%). The key is justifying the flexible allocation."
         },
         {
-          "title": "Day 3: Pocket Money — What Is It?",
-          "content": "<h1>Pocket Money — What Is It?</h1><h2>Topic Overview</h2><ul><li><strong>Definition:</strong> Pocket money is money given regularly by parents/caregivers for small personal expenses.</li><li><strong>Purpose:</strong> Teaches budgeting, independence, and basic money management.</li><li><strong>Limitations:</strong> Usually limited in amount and comes with recommended use.</li></ul><h2>Explanation</h2><p><strong>Practice Economy:</strong> Teens learn to negotiate spending with a fixed budget.</p><p><strong>Safe Introduction:</strong> Mistakes are small, letting teens learn without major risks.</p><p><strong>Varies:</strong> Some get pocket money for chores; some as regular allowance.</p><h2>Key Takeaways</h2><ul><li>Pocket money is a learning tool.</li><li>It’s for discretionary spending, not essentials.</li><li>The amount and frequency vary by family and culture.</li></ul>",
+          "title": "Day 3: Emergency Funds - Your Financial Safety Net",
+          "content": "<h1>Emergency Funds - Your Financial Safety Net</h1><h2>Topic Overview</h2><ul><li>Why building an emergency fund is crucial before major expenses.</li><li>How emergency funds empower you financially and emotionally.</li><li>Setting up emergency fund goals in phases.</li></ul><h2>Explanation</h2><p>An emergency fund covers true emergencies (e.g., unexpected car repair), not non-emergencies (e.g., concert tickets). It's best to build it in phases: a starter fund, a basic fund, and then a full fund. Keep this money in a safe, accessible account, separate from your daily spending account. It provides confidence, prevents debt, and can even create opportunities.</p><h2>Key Takeaways</h2><ul><li>An emergency fund is your financial freedom tool.</li><li>Start small, build the habit, then grow the fund.</li><li>Keep the emergency fund separate from spending money.</li><li>Emergency funds allow for calculated risks and prevent debt.</li></ul>",
           "order_index": 3,
-          "practice_question": "Why do parents give pocket money?",
+          "practice_question": "Create an emergency fund savings plan for a teen earning $800 monthly.",
           "practice_type": "text",
-          "correct_answer": "To teach budgeting and small-scale financial responsibility."
+          "correct_answer": "A good plan would involve setting a small starter goal (e.g., $200), automating a monthly transfer (e.g., $50-$100), and specifying what the fund is for."
         },
         {
-          "title": "Day 4: Income — Beyond Pocket Money",
-          "content": "<h1>Income — Beyond Pocket Money</h1><h2>Topic Overview</h2><ul><li><strong>Definition:</strong> Income is money earned through work, business, or investments.</li><li><strong>Types:</strong> Active (like salary, part-time job) and passive (gifts, interest).</li><li><strong>Values earned income:</strong> Creates sense of achievement, responsibility.</li></ul><h2>Explanation</h2><p><strong>Earned Money:</strong> Teens may earn through part-time jobs, tutoring, or creative work.</p><p><strong>Difference from pocket money:</strong> Income is earned, pocket money is given.</p><p><strong>Responsibility:</strong> More freedom, but also bigger decisions and real consequences.</p><h2>Key Takeaways</h2><ul><li>Income typically requires effort or skills.</li><li>It teaches real-life financial principles.</li><li>Earned money feels more valuable than given.</li></ul>",
+          "title": "Day 4: Needs vs Wants in the Digital Age",
+          "content": "<h1>Needs vs Wants in the Digital Age</h1><h2>Topic Overview</h2><ul><li>The blurring line between needs and wants in today’s marketing-heavy world.</li><li>Recognizing subscription traps and social media influences.</li><li>Decision strategies to avoid impulse spending.</li></ul><h2>Explanation</h2><p>In the digital age, needs and wants can get confusing, especially with technology and subscriptions. Marketers use techniques like urgency and social proof to influence you. Be aware of the real cost of many small subscriptions. Use strategies like the 24-hour rule, the opportunity cost test, or the one-year test to make smarter spending decisions.</p><h2>Key Takeaways</h2><ul><li>Modern marketing exploits spending emotions.</li><li>Subscriptions are a hidden cost trap.</li><li>Honest evaluation of your wants is vital.</li><li>Applying decision frameworks reduces emotional spending.</li></ul>",
           "order_index": 4,
-          "practice_question": "What’s the main difference between pocket money and income?",
+          "practice_question": "Audit your current subscriptions (or ones you want). Suggest one cost-saving action.",
           "practice_type": "text",
-          "correct_answer": "Pocket money is given; income is earned through active contribution or work."
+          "correct_answer": "Answers will vary but could include canceling an unused service, switching to a cheaper plan, or sharing a family plan."
         },
         {
-          "title": "Day 5: Comparing Pocket Money & Income",
-          "content": "<h1>Comparing Pocket Money & Income</h1><h2>Topic Overview</h2><ul><li><strong>Training vs. Real Life:</strong> Pocket money is for practice; income is for real financial independence.</li><li><strong>How it feels:</strong> Earned money is usually valued more.</li><li><strong>Choices:</strong> Income offers bigger opportunities and responsibilities.</li></ul><h2>Explanation</h2><p><strong>Budgeting:</strong> As teens start earning, they must budget differently.</p><p><strong>Value seen:</strong> Most teens spend pocket money quickly, but save earned money for bigger goals.</p><p><strong>Accountability:</strong> Mistakes with income have real consequences.</p><h2>Key Takeaways</h2><ul><li>Both types are valuable for learning, but income carries more meaning.</li><li>Budgeting changes as income increases.</li><li>Teens should try both for balanced experience.</li></ul>",
+          "title": "Day 5: Goal Setting and Priority Systems",
+          "content": "<h1>Goal Setting and Priority Systems</h1><h2>Topic Overview</h2><ul><li>Setting clear, motivating financial goals using the SMART-ER framework.</li><li>Prioritizing goals to manage limited resources effectively.</li><li>Systems and accountability that ensure goal progress.</li></ul><h2>Explanation</h2><p>Use the SMART-ER framework for your goals: Specific, Measurable, Achievable, Relevant, Time-bound, Exciting, and Reviewed. Organize goals into three tiers: foundational (like an emergency fund), lifestyle (like a new phone), and future-building (like college savings). Use a priority matrix to decide what to focus on. Track your progress visually and celebrate milestones.</p><h2>Key Takeaways</h2><ul><li>Specific written goals boost success odds.</li><li>Systems are better than relying on willpower.</li><li>Tiered goals build momentum without overwhelm.</li><li>Regular review keeps goals relevant and achievable.</li></ul>",
           "order_index": 5,
-          "practice_question": "True or False: Receiving only pocket money prepares you for adulthood fully.",
-          "practice_type": "mcq",
-          "practice_options": ["True", "False"],
-          "correct_answer": "False"
+          "practice_question": "Convert a vague goal like 'save more money' into a SMART-ER goal.",
+          "practice_type": "text",
+          "correct_answer": "A SMART-ER goal would be: 'I will save $500 (Specific, Measurable) for a new laptop (Exciting, Relevant) by saving $100 per month for 5 months (Achievable, Time-bound), and I will check my progress monthly (Reviewed).'"
         },
         {
-          "title": "Day 6: Money Management Skills",
-          "content": "<h1>Money Management Skills</h1><h2>Topic Overview</h2><ul><li><strong>Budgeting:</strong> Tracking income and expenses.</li><li><strong>Saving:</strong> Setting aside money for future needs/wants.</li><li><strong>Decision Making:</strong> Prioritizing choices.</li></ul><h2>Explanation</h2><p><strong>Record keeping:</strong> Write down all income (pocket money, earnings) and expenses.</p><p><strong>Setting goals:</strong> Make savings plans for short/long-term goals.</p><p><strong>Making comparisons:</strong> Weigh needs versus wants.</p><h2>Key Takeaways</h2><ul><li>Good habits start early—record, save, spend wisely.</li><li>Practice makes confident financial decisions.</li></ul>",
+          "title": "Day 6: Creating Your Personal Budget Sheet",
+          "content": "<h1>Creating Your Personal Budget Sheet</h1><h2>Topic Overview</h2><ul><li>Building a custom budget that reflects your income, expenses, goals, and unique life.</li><li>Budget tracking systems and adjustment protocols.</li></ul><h2>Explanation</h2><p>Your budget sheet should track your income, fixed & variable needs, wants, and savings categories. Consider seasonal costs and income variability. Common mistakes include being too restrictive or not tracking small expenses. It's crucial to have a monthly review cycle and a deeper quarterly review to stay on track.</p><h2>Key Takeaways</h2><ul><li>Budgets must evolve; perfection is not expected initially.</li><li>Tracking real spending is more informative than theories.</li><li>Keep budgeting simple to ensure consistency.</li><li>Regular reviews prevent drifting from goals.</li></ul>",
           "order_index": 6,
-          "practice_question": "Track your pocket money, income, and expenses for one week. What did you learn?",
+          "practice_question": "Create a simple monthly budget for a student with a $520 income, a $150 car payment, and a college savings goal.",
           "practice_type": "text",
-          "correct_answer": "Answers will vary, but should reflect on spending/saving habits."
+          "correct_answer": "A sample budget: Income: $520. Needs (50%=$260): Car payment $150, Gas $60, Phone $50. Wants (30%=$156): Fun/food $156. Savings (20%=$104): College fund $104. This shows understanding of allocating fixed costs first."
         },
         {
-          "title": "Day 7: Summary & Challenge",
-          "content": "<h1>Summary & Challenge</h1><h2>Topic Overview</h2><ul><li><strong>Review:</strong> What is money? Why do we need it? Pocket money vs. income.</li><li>Develop your money mission statement.</li><li>Prepare for next week's module!</li></ul><h2>Activities</h2><ul><li><strong>Summary Exercise:</strong> Write a paragraph on what you learned about money, pocket money, and income.</li><li><strong>Mission Statement:</strong> Create a personal money mission (e.g., “I will value earned income, budget pocket money wisely, and save for future goals.”)</li><li><strong>Group Discussion:</strong> How does understanding money change your choices?</li></ul><h2>Key Takeaways</h2><ul><li>Knowing how money works helps you make smart choices as you grow.</li><li>Practice budgeting, saving, and decision-making.</li><li>Both pocket money and earned income are steps toward financial independence.</li></ul>",
+          "title": "Day 7: Your Budget Sheet Project & Future Planning",
+          "content": "<h1>Your Budget Sheet Project & Future Planning</h1><h2>Topic Overview</h2><ul><li>Finalize your complete budget sheet integrating all lessons.</li><li>Build a sustainable financial system for continued success and scaling.</li></ul><h2>Explanation</h2><p>Your final budget sheet should include sections for income analysis, your 50-30-20 allocation, detailed expense categories, and goal integration. Set up automation where possible (e.g., auto-transfer to savings) and build in flexibility for unexpected events. Plan for how your budget will evolve as your income and life circumstances change.</p><h2>Key Takeaways</h2><ul><li>Your budget is a living document.</li><li>Imperfect implementation beats perfect planning that never starts.</li><li>Financial skills improve with practice.</li><li>Early habits give you exponential benefits over time.</li></ul>",
           "order_index": 7,
-          "practice_question": "Create your personal money mission statement.",
+          "practice_question": "Create a full budget for a teen with a $450 income, a $150 car payment, a college savings goal, and an emergency fund goal.",
           "practice_type": "text",
-          "correct_answer": "Answers will be personal statements about valuing, budgeting, and saving money."
+          "correct_answer": "A good answer would allocate income across all categories, likely splitting the 20% savings ($90) between the emergency fund (e.g., $40) and the college fund (e.g., $50), demonstrating prioritization."
         }
       ]
     },
