@@ -1,10 +1,15 @@
+
+'use client';
+
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   Bell,
   BookOpen,
   Bot,
   Briefcase,
   Home,
+  LogOut,
   PanelLeft,
   Settings,
   User,
@@ -33,8 +38,18 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Logo } from "@/components/icons";
+import { createClient } from "@/lib/supabase/client";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
+  const router = useRouter();
+  const supabase = createClient();
+  
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    router.push('/login');
+    router.refresh();
+  };
+
   return (
     <SidebarProvider>
       <div className="min-h-screen bg-muted/40">
@@ -112,7 +127,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 <DropdownMenuItem>Settings</DropdownMenuItem>
                 <DropdownMenuItem>Support</DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem asChild><Link href="/login">Logout</Link></DropdownMenuItem>
+                <DropdownMenuItem onClick={handleLogout}>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Logout</span>
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </header>
