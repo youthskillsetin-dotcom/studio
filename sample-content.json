@@ -66,50 +66,66 @@
       ]
     },
     {
-      "title": "Module 2: Banking & Digital Payments",
-      "description": "Learn the fundamentals of banking, from different account types to modern digital payment methods like UPI and Netbanking.",
+      "title": "Module 2: Banking & Investments Mastery",
+      "description": "A 7-Day Journey to Financial Growth for Teens (Ages 16-20).",
       "is_free": false,
       "order_index": 2,
       "subtopics": [
         {
-          "title": "Day 1: What is a Bank?",
-          "content": "<h1>What is a Bank?</h1><h2>Topic Overview</h2><ul><li>A bank is a safe place to keep money where it grows and can be easily managed.</li><li>Banks help people store money, give loans, offer cards, and process payments.</li><li>Banks serve individuals, companies, and governments.</li></ul><h2>Explanation</h2><p>When you deposit money in a bank, you are lending it to the bank, which pays you interest.</p><p>Examples: Checking balances, withdrawing money, using debit cards, and online payments.</p><p>Your money is more secure in a bank than at home.</p><h2>Key Takeaways</h2><ul><li>Banks help manage money and keep it safe.</li><li>Money in banks can earn interest.</li><li>Banks let you access money anytime, anywhere.</li></ul>",
+          "title": "Day 1: Banking Basics & Safe Investment Foundations",
+          "content": "<h1>Banking Basics & Safe Investment Foundations</h1><h2>The Banking Product Hierarchy</h2><h3>Savings Account (3-4% interest)</h3><ul><li>Money available anytime</li><li>No commitment required</li><li>Lowest interest</li><li>Ideal for emergency funds</li></ul><h3>Fixed Deposit - FD (6-7% interest)</h3><ul><li>Lump sum deposit for fixed period</li><li>Premature withdrawal penalty</li><li>Higher interest than savings accounts</li><li>Terms from 7 days to 10 years</li></ul><h3>Recurring Deposit - RD (6-8% interest)</h3><ul><li>Monthly fixed deposits</li><li>Builds saving discipline</li><li>Same interest rates as FD</li><li>Perfect for goal-based saving</li></ul><h2>Understanding Interest Calculations</h2><p>Simple interest: Principal × Rate × Time</p><p>Compound interest: Principal × (1 + Rate)^Time</p><p>Example: ₹10,000 for 3 years at 7%</p><ul><li>Simple: ₹10,000 + ₹2,100 = ₹12,100</li><li>Compound: ₹10,000 × (1.07)^3 ≈ ₹12,250</li></ul>",
           "order_index": 1,
-          "practice_question": "Why do people use banks?",
+          "practice_question": "Priya’s ₹15,000 FD + ₹2,000/month RD for 18 months goal ₹50,000 laptop — does the plan work?",
           "practice_type": "text",
-          "correct_answer": "For safe storage, earning interest, and ease of payments."
+          "correct_answer": "FD grows to ~₹16,575, RD to ~₹37,260, total ₹53,835, exceeding goal."
         },
         {
-          "title": "Day 2: Types of Accounts",
-          "content": "<h1>Types of Accounts</h1><h2>Topic Overview</h2><ul><li><strong>Savings Account:</strong> For storing and growing money, earning interest, limited transactions.</li><li><strong>Current Account:</strong> For businesses or frequent transactions, little or no interest.</li></ul><h2>Explanation</h2><p><strong>Savings Account:</strong> Like a smart piggy bank, encourages saving, earns interest, usually needs a minimum balance.</p><p><strong>Current Account:</strong> Like a wallet for businesses—can deposit/withdraw money anytime; mostly for shopkeepers or freelancers.</p><h2>Key Takeaways</h2><ul><li>Most teens start with a savings account to begin saving money.</li><li>Interest earned differs between the two account types.</li><li>Choose the account based on personal needs.</li></ul>",
+          "title": "Day 2: Fixed Deposits - Your Safe Investment Foundation",
+          "content": "<h1>Fixed Deposits - Your Safe Investment Foundation</h1><p>Types of FDs: Regular, Tax-saving, Senior Citizen with respective features.</p><p>Choosing between tenures involves considering interest rates, liquidity needs, and penalties.</p><p>FD Strategy: Laddering multiple FDs of different tenures to match liquidity and rate optimization.</p><p>Hybrid emergency fund: some savings account + some short-term FDs.</p><p>Advanced concepts: cumulative vs non-cumulative FDs, premature withdrawal penalties.</p>",
           "order_index": 2,
-          "practice_question": "What is the main benefit of a savings account?",
+          "practice_question": "Design FD ladder for ₹60,000 into 1, 2, 3-year deposits.",
           "practice_type": "text",
-          "correct_answer": "It earns interest."
+          "correct_answer": "₹20,000 each spread across FDs with 1, 2, and 3-year tenures, with respective interest rates."
         },
         {
-          "title": "Day 3: UPI – Digital Payments Made Easy",
-          "content": "<h1>UPI – Digital Payments Made Easy</h1><h2>Topic Overview</h2><ul><li>UPI (Unified Payments Interface) lets you send money instantly by phone.</li><li>No need for cash or physical cards.</li><li>Safe, fast, works 24/7.</li></ul><h2>Explanation</h2><p>UPI apps (like PhonePe, Google Pay) connect your bank account to your phone.</p><p>You can pay shops, friends, or bills in seconds.</p><p>Parents can set limits or supervise as needed.</p><h2>Key Takeaways</h2><ul><li>UPI is a safe and easy way to pay.</li><li>You need a UPI PIN for every transaction.</li><li>Helps teens learn responsible digital money habits.</li></ul>",
+          "title": "Day 3: Recurring Deposits - Wealth Through Discipline",
+          "content": "<h1>Recurring Deposits - Wealth Through Discipline</h1><p>This subtopic covers monthly auto-debit deposits, compound interest calculation for RDs, and practical examples.</p><p>We compare how RD start time & amount impact total returns and discuss goal-based RDs for short, medium, and long-term saving.</p><p>Advanced topics include multiple RDs for different goals and step-up RDs to increase deposits periodically. We also cover behavioral economic advantages over manual savings and common mistakes like overcommitting and their penalties.</p>",
           "order_index": 3,
-          "practice_question": "What does UPI stand for?",
+          "practice_question": "Kavya earning ₹12,000 monthly — create a dual RD plan for a bike and an emergency fund.",
           "practice_type": "text",
-          "correct_answer": "Unified Payments Interface."
+          "correct_answer": "A possible plan is splitting the savings portion into two RDs, one for the short-term bike goal and another for the long-term emergency fund, adjusting amounts based on priority."
         },
         {
-          "title": "Day 4: ATM – Your Cash Machine",
-          "content": "<h1>ATM – Your Cash Machine</h1><h2>Topic Overview</h2><ul><li>ATM: Lets you withdraw or deposit money anytime.</li><li>Uses your debit card and a PIN for security.</li></ul><h2>Explanation</h2><p>Insert card, enter PIN, choose withdrawal or balance inquiry.</p><p>Many banks offer up to 3–5 free ATM uses each month.</p><p>Protect your PIN and card like your wallet.</p><h2>Key Takeaways</h2><ul><li>ATMs work all day, every day.</li><li>PIN keeps your ATM transactions secure.</li><li>Never share or write down your PIN.</li></ul>",
+          "title": "Day 4: Introduction to Mutual Funds & SIP Magic",
+          "content": "<h1>Introduction to Mutual Funds & SIP Magic</h1><p>Mutual funds are explained via a group investment analogy. We cover types like Equity (large/mid/small cap), Debt, and Hybrid funds.</p><p>Systematic Investment Plans (SIP) are introduced as a way to make small, fixed monthly investments. The concept of rupee cost averaging is explained with examples, showcasing the power of compounding. We compare SIPs vs lump sum investments and discuss choosing funds based on risk appetite and age. Common mistakes like chasing past performance are also covered.</p>",
           "order_index": 4,
-          "practice_question": "What is an ATM?",
+          "practice_question": "Meera's ₹3,000 monthly SIP to make ₹10,00,000 in 10 years — calculate feasibility and required returns.",
           "practice_type": "text",
-          "correct_answer": "Automated Teller Machine—a machine to withdraw or deposit money."
+          "correct_answer": "This would require a high rate of return, likely over 15-20% annually, which is optimistic but illustrates the power of compounding. It highlights the need for realistic expectations."
         },
         {
-          "title": "Day 5: Netbanking – Manage Your Account Online",
-          "content": "<h1>Netbanking – Manage Your Account Online</h1><h2>Topic Overview</h2><ul><li>Netbanking: Banking over the internet.</li><li>Check balances, transfer money, pay bills from your computer or phone.</li></ul><h2>Explanation</h2><p>Requires a login ID and password, sometimes OTP.</p><p>Lets you do almost everything: pay bills, transfer money, open deposits.</p><p>Safer than cash if proper steps are followed.</p><h2>Key Takeaways</h2><ul><li>Netbanking is flexible—anytime, anywhere.</li><li>Never share passwords/OTP.</li><li>Use official bank apps/websites only.</li></ul>",
+          "title": "Day 5: Stock Market Fundamentals - Equity, Risk & Reward",
+          "content": "<h1>Stock Market Fundamentals - Equity, Risk & Reward</h1><p>This subtopic covers stock basics: owning company shares, and sources of returns (capital appreciation, dividends, compounding). We look at market indices like Nifty 50 and Sensex.</p><p>We discuss risk types (market risk, company risk, volatility) and risk management techniques like diversification, having a long investment horizon, and position sizing. A brief introduction to fundamental vs technical analysis is provided for beginners, along with key financial ratios and red flags.</p>",
           "order_index": 5,
-          "practice_question": "What is an OTP?",
+          "practice_question": "Why is a market crash an opportunity for a young SIP investor but a danger for retirees?",
           "practice_type": "text",
-          "correct_answer": "One-Time Password, sent to your phone for security."
+          "correct_answer": "A young investor has a long time horizon to recover and can buy more units at a lower cost (rupee cost averaging), while a retiree may need to sell assets for income at a loss."
+        },
+        {
+          "title": "Day 6: Investment Strategy & Portfolio Building",
+          "content": "<h1>Investment Strategy & Portfolio Building</h1><p>We explain asset allocation by age and goal horizon, and how to construct portfolios for emergency, short, medium, and long-term goals. The importance of diversification across geography, sector, and company size is covered.</p><p>We also discuss portfolio rebalancing methods and their benefits, and go over common portfolio mistakes to avoid.</p>",
+          "order_index": 6,
+          "practice_question": "Design a portfolio for a teen with ₹50,000 lump sum + ₹8,000 monthly savings with multiple goals (e.g., college, travel).",
+          "practice_type": "text",
+          "correct_answer": "A sample portfolio could allocate the lump sum to a mix of equity and debt funds, and the monthly SIP could be split between different funds based on the timeline of the goals."
+        },
+        {
+          "title": "Day 7: Virtual Trading Game & Real-World Application",
+          "content": "<h1>Virtual Trading Game & Real-World Application</h1><p>This subtopic recommends virtual trading platforms like Moneybhai or Investopedia Simulator. We go over setting up an account, defining a strategy, and constructing a virtual portfolio.</p><p>Common mistakes in virtual trading (e.g., treating it like a game, overtrading) are discussed. Finally, we cover the transition to real investing: how to open accounts, start small, and the importance of continuous learning.</p>",
+          "order_index": 7,
+          "practice_question": "Design a 30-day virtual trading plan with weekly tasks and learning goals.",
+          "practice_type": "text",
+          "correct_answer": "A plan could include: Week 1 - Research 5 companies. Week 2 - Make initial investments. Week 3 - Track performance and news. Week 4 - Rebalance one position and analyze results."
         }
       ]
     },
