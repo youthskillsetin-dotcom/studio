@@ -8,9 +8,6 @@ import { Lock } from 'lucide-react';
 import type { Lesson } from '@/lib/types';
 import { Progress } from '@/components/ui/progress';
 import { CheckCircle } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import { getSubtopicsByLessonId, getUserProgress } from '@/lib/data';
-import { createClient } from '@/lib/supabase/client';
 
 interface LessonCardProps {
   lesson: Lesson;
@@ -19,37 +16,16 @@ interface LessonCardProps {
 
 export function LessonCard({ lesson, hasPremium }: LessonCardProps) {
   const isLocked = !lesson.is_free && !hasPremium;
-  const [progress, setProgress] = useState(0);
-  const [isCompleted, setIsCompleted] = useState(false);
-  const [isStarted, setIsStarted] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const supabase = createClient();
+  const progress = 0; // Placeholder
+  const isCompleted = progress === 100;
+  const isStarted = progress > 0 && progress < 100;
 
-  useEffect(() => {
-    async function calculateProgress() {
-      setLoading(true);
-      const subtopics = await getSubtopicsByLessonId(supabase, lesson.id);
-      // Since users are not logged in, we can't get real progress.
-      // We'll simulate some progress for demonstration purposes.
-      const completedSubtopics = 0; //
-      
-      const newProgress = subtopics.length > 0 ? (completedSubtopics / subtopics.length) * 100 : 0;
-      setProgress(newProgress);
-      setIsCompleted(newProgress === 100);
-      setIsStarted(newProgress > 0 && newProgress < 100);
-      setLoading(false);
-    }
-    calculateProgress();
-  }, [lesson.id, supabase]);
 
   let buttonText = 'Start Lesson';
-  let buttonAction: 'default' | 'review' | 'premium' = 'default';
   if(isLocked) {
       buttonText = 'Unlock with Premium';
-      buttonAction = 'premium';
   } else if (isCompleted) {
       buttonText = 'Review Lesson';
-      buttonAction = 'review';
   } else if (isStarted) {
       buttonText = 'Continue';
   }
@@ -80,7 +56,7 @@ export function LessonCard({ lesson, hasPremium }: LessonCardProps) {
         </CardDescription>
       </CardHeader>
       <CardContent className="p-5 pt-0">
-        {!isLocked && !loading && (
+        {!isLocked && (
           <div className="space-y-2">
               { isCompleted ? (
                  <div className="flex items-center gap-2 text-sm font-semibold text-green-600">
@@ -102,7 +78,7 @@ export function LessonCard({ lesson, hasPremium }: LessonCardProps) {
         <Button 
             asChild
             className="w-full" 
-            variant={buttonAction === 'review' ? 'secondary' : 'default'}
+            variant={isCompleted ? 'secondary' : 'default'}
         >
           {isLocked ? (
               <Link href="/#pricing">{buttonText}</Link>
