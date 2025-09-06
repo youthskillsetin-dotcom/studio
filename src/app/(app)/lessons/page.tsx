@@ -5,7 +5,9 @@ import { getLessons } from '@/lib/data';
 import type { Lesson } from '@/lib/types';
 import { LessonCard } from '@/components/lesson-card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BookOpenCheck } from 'lucide-react';
+import { BookOpenCheck, Upload } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export default async function LessonsPage() {
   const cookieStore = cookies();
@@ -35,10 +37,18 @@ export default async function LessonsPage() {
                 ))}
               </div>
            ) : (
-             <div className="text-center text-muted-foreground py-20">
+             <div className="text-center text-muted-foreground py-20 bg-muted/40 rounded-lg">
                 <BookOpenCheck className="mx-auto h-12 w-12 text-gray-400" />
-                <h3 className="mt-2 text-lg font-medium">No Lessons Found</h3>
-                <p className="mt-1 text-sm">It looks like there are no lessons available yet. Check back soon!</p>
+                <h3 className="mt-4 text-lg font-medium">No Lessons Found in the Database</h3>
+                <p className="mt-2 text-sm max-w-md mx-auto">
+                    It looks like you haven't imported any lessons yet. Please go to the admin import page to upload the sample content.
+                </p>
+                <Button asChild className="mt-6">
+                    <Link href="/admin/import">
+                        <Upload className="mr-2" />
+                        Import Sample Lessons
+                    </Link>
+                </Button>
             </div>
            )}
         </TabsContent>
