@@ -84,14 +84,22 @@ export default function LoginPage() {
 
   const handleSignup = async (values: z.infer<typeof signupSchema>) => {
     setLoading(true);
-    const result = await signup(values);
-    if (result.error) {
-      toast({ variant: 'destructive', title: 'Signup Failed', description: result.error });
+    const signupResult = await signup({email: values.email, password: values.password});
+    
+    if (signupResult.error) {
+      toast({ variant: 'destructive', title: 'Signup Failed', description: signupResult.error });
       setLoading(false);
     } else {
-      toast({ title: 'Signup Successful!', description: "Please check your email to verify your account." });
-      router.push('/dashboard'); // Or a dedicated 'please-verify' page
-      router.refresh();
+        toast({ title: 'Account Created!', description: "Logging you in..." });
+        // Now, automatically log the user in
+        const loginResult = await login({email: values.email, password: values.password});
+         if (loginResult.error) {
+            toast({ variant: 'destructive', title: 'Automatic login failed', description: 'Please log in manually.' });
+            setLoading(false);
+        } else {
+            router.push('/dashboard');
+            router.refresh();
+        }
     }
   };
 
@@ -142,7 +150,7 @@ export default function LoginPage() {
                       )}
                     />
                     <Button type="submit" className="w-full" disabled={loading}>
-                      {loading && <Loader2 className="animate-spin" />}
+                      {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                       Login
                     </Button>
                   </form>
@@ -193,7 +201,7 @@ export default function LoginPage() {
                       )}
                     />
                     <Button type="submit" className="w-full" disabled={loading}>
-                      {loading && <Loader2 className="animate-spin" />}
+                      {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                       Create Account
                     </Button>
                   </form>
@@ -210,7 +218,7 @@ export default function LoginPage() {
             </div>
           </div>
           <Button variant="outline" className="w-full" onClick={handleGoogleLogin} disabled={loading}>
-            {loading ? <Loader2 className="animate-spin" /> : 'Continue with Google'}
+            {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Continue with Google'}
           </Button>
           <p className="mt-4 px-8 text-center text-xs text-muted-foreground">
             By clicking continue, you agree to our{' '}
