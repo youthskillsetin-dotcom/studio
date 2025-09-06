@@ -13,6 +13,7 @@ import {
   User,
   School,
   Menu,
+  Users,
 } from "lucide-react";
 import * as React from 'react';
 
@@ -34,6 +35,7 @@ const navItems = [
   { href: "/lessons", icon: BookOpen, label: "Lessons" },
   { href: "/ai-mentor", icon: Bot, label: "AI Mentor" },
   { href: "/career-guide", icon: Briefcase, label: "Career Guide" },
+  { href: "/community", icon: Users, label: "Community" },
   { href: "/admin/import", icon: Settings, label: "Admin" },
 ];
 

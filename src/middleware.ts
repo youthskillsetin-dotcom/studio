@@ -67,7 +67,7 @@ export async function middleware(request: NextRequest) {
   }
 
   // Protect app routes
-  const protectedRoutes = ['/dashboard', '/lessons', '/ai-mentor', '/career-guide', '/subtopic', '/admin'];
+  const protectedRoutes = ['/dashboard', '/lessons', '/ai-mentor', '/career-guide', '/community', '/subtopic', '/admin'];
   if (!session && protectedRoutes.some(path => pathname.startsWith(path))) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
