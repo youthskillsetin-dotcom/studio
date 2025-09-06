@@ -6,16 +6,13 @@ import { usePathname } from "next/navigation";
 import {
   Bell,
   BookOpen,
-  Bot,
   Briefcase,
-  Home,
-  User,
+  LayoutGrid,
   Menu,
   School,
-  Users,
-  Award,
   Sparkles,
-  LayoutGrid
+  User,
+  Users,
 } from "lucide-react";
 import * as React from 'react';
 import Image from "next/image";

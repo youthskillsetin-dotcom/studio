@@ -19,8 +19,8 @@ const config = {
     },
     extend: {
       fontFamily: {
-        headline: ['Manrope', 'sans-serif'],
-        body: ['"Noto Sans"', 'sans-serif'],
+        headline: ['var(--font-space-grotesk)', 'sans-serif'],
+        body: ['var(--font-inter)', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -78,7 +78,7 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 } satisfies Config
 
 export default config;

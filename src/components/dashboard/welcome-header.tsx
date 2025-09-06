@@ -24,6 +24,8 @@ export function WelcomeHeader({ variants }: WelcomeHeaderProps) {
     const [quote, setQuote] = useState('');
 
     useEffect(() => {
+        // This useEffect ensures the quote is only generated on the client,
+        // preventing a hydration mismatch between server and client renders.
         setQuote(getDailyQuote());
     }, []);
 
