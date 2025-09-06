@@ -8,6 +8,7 @@ import {
   PanelLeft,
   Settings,
   User,
+  School,
 } from "lucide-react";
 
 import {
@@ -36,11 +37,13 @@ import { Logo } from "@/components/icons";
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <SidebarProvider>
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-muted/40">
         <Sidebar>
           <SidebarHeader>
             <div className="flex items-center gap-2">
-              <Logo className="w-8 h-8 text-primary" />
+              <div className="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-lg">
+                <School className="w-5 h-5" />
+              </div>
               <span className="text-lg font-semibold font-headline">
                 YouthSkillSet
               </span>
@@ -113,7 +116,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               </DropdownMenuContent>
             </DropdownMenu>
           </header>
-          <main className="flex-1 p-4 md:p-6">{children}</main>
+          <main className="flex-1 p-4 md:p-6 lg:p-10 xl:p-20">{children}</main>
         </SidebarInset>
       </div>
     </SidebarProvider>
