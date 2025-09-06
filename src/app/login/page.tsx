@@ -57,7 +57,6 @@ export default function LoginPage() {
     } else {
       toast({ title: 'Success', description: 'Logged in successfully!' });
       router.push('/dashboard');
-      router.refresh();
     }
     setLoading(false);
   };
@@ -76,7 +75,6 @@ export default function LoginPage() {
       // In a real app, you'd want to show a message to check email.
       // For this demo, we'll just redirect.
       router.push('/dashboard');
-      router.refresh();
     }
     setLoading(false);
   };
