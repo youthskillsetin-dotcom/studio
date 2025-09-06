@@ -1,3 +1,4 @@
+
 export interface Lesson {
   id: string;
   title: string;
@@ -42,6 +43,14 @@ export interface UserSubscription {
   expires_at: Date | null;
 }
 
+export interface Comment {
+    id: string;
+    created_at: string;
+    content: string;
+    user_id: string;
+    author_email: string;
+}
+
 export interface Post {
   id: string;
   created_at: string;
@@ -49,4 +58,5 @@ export interface Post {
   content: string;
   user_id: string;
   author_email: string;
+  comments: Comment[];
 }

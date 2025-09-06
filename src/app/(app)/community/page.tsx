@@ -33,6 +33,7 @@ export default async function CommunityPage() {
         {posts && posts.length > 0 ? (
           posts.map(post => (
             <Card key={post.id} className="hover:border-primary transition-colors">
+                 <Link href={`/community/post/${post.id}`} className="block">
               <CardHeader>
                 <CardTitle className="text-xl font-headline">{post.title}</CardTitle>
                 <div className="text-xs text-muted-foreground flex items-center gap-4 pt-1">
@@ -48,10 +49,13 @@ export default async function CommunityPage() {
               <CardContent>
                 <p className="text-muted-foreground line-clamp-2">{post.content}</p>
               </CardContent>
+              </Link>
               <CardFooter>
-                 <Button variant="link" className="p-0 h-auto text-xs">
-                    <MessageSquare className="mr-2" />
-                    View Discussion (Coming Soon)
+                 <Button variant="link" className="p-0 h-auto text-xs" asChild>
+                    <Link href={`/community/post/${post.id}`}>
+                        <MessageSquare className="mr-2" />
+                        View Discussion
+                    </Link>
                  </Button>
               </CardFooter>
             </Card>

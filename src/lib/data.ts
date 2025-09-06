@@ -130,3 +130,48 @@ export async function getPosts(supabase: SupabaseClient): Promise<Post[]> {
   // @ts-ignore
   return posts;
 }
+
+export async function getPostById(supabase: SupabaseClient, id: string): Promise<Post | null> {
+  noStore();
+
+  const { data, error } = await supabase
+    .from('posts')
+    .select(`
+      id,
+      created_at,
+      title,
+      content,
+      user_id,
+      author_email:users(email),
+      comments (
+        id,
+        created_at,
+        content,
+        user_id,
+        author_email:users(email)
+      )
+    `)
+    .eq('id', id)
+    .order('created_at', { foreignTable: 'comments', ascending: true })
+    .single();
+
+  if (error) {
+    console.error('Error fetching post by ID:', error);
+    return null;
+  }
+
+  // Flatten author emails for post and comments
+  const post = {
+    ...data,
+    // @ts-ignore
+    author_email: data.author_email?.email,
+    comments: data.comments.map(c => ({
+        ...c,
+        // @ts-ignore
+        author_email: c.author_email?.email
+    }))
+  };
+  
+  // @ts-ignore
+  return post;
+}

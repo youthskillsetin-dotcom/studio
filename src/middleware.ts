@@ -71,6 +71,11 @@ export async function middleware(request: NextRequest) {
   // Protect app routes for unauthenticated users
   const protectedRoutes = ['/dashboard', '/lessons', '/ai-mentor', '/career-guide', '/community', '/subtopic', '/admin', '/support', '/settings'];
   if (!session && protectedRoutes.some(path => pathname.startsWith(path))) {
+    // Add logic to redirect to a specific page if they are trying to access a post
+    const communityPostRegex = /^\/community\/post\/[a-zA-Z0-9-]+$/;
+    if(communityPostRegex.test(pathname)) {
+        return NextResponse.redirect(new URL(`/login?next=${pathname}`, request.url))
+    }
     return NextResponse.redirect(new URL('/login', request.url))
   }
 
