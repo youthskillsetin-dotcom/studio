@@ -1,24 +1,35 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { LessonCard } from '@/components/lesson-card';
-import { mockLessons } from '@/lib/mock-data';
-import type { Lesson } from '@/lib/types';
-import { Button } from '@/components/ui/button';
+import { getLessons, getUserProgress } from '@/lib/data';
+import type { Lesson, UserSubtopicProgress } from '@/lib/types';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function LessonsPage() {
-  // In a real app, you would fetch user subscription status and progress
   const hasPremium = false;
-  const [filter, setFilter] = useState('all');
+  const [lessons, setLessons] = useState<Lesson[]>([]);
+  const [userProgress, setUserProgress] = useState<UserSubtopicProgress[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const filteredLessons = mockLessons.filter(lesson => {
-    // In a real app, you'd have more complex logic based on user progress
-    if (filter === 'in-progress') return true;
-    if (filter === 'completed') return false;
-    return true;
-  });
+  useEffect(() => {
+    async function fetchData() {
+      setLoading(true);
+      const [lessonsData, userProgressData] = await Promise.all([
+        getLessons(),
+        getUserProgress()
+      ]);
+      setLessons(lessonsData);
+      setUserProgress(userProgressData);
+      setLoading(false);
+    }
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -38,14 +49,14 @@ export default function LessonsPage() {
         
         <TabsContent value="all">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {mockLessons.map((lesson: Lesson) => (
+            {lessons.map((lesson: Lesson) => (
               <LessonCard key={lesson.id} lesson={lesson} hasPremium={hasPremium} />
             ))}
           </div>
         </TabsContent>
          <TabsContent value="in-progress">
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {mockLessons.slice(0,1).map((lesson: Lesson) => (
+            {lessons.slice(0,1).map((lesson: Lesson) => (
               <LessonCard key={lesson.id} lesson={lesson} hasPremium={hasPremium} />
             ))}
           </div>

@@ -1,23 +1,57 @@
 
+
 'use client';
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { mockLessons, mockUserProgress, getSubtopicsByLessonId, getSubtopicById } from '@/lib/mock-data';
 import { Play, Bot, Briefcase, ChevronRight, BookOpen } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
+import { useEffect, useState } from 'react';
+import { getLessons, getSubtopicsByLessonId, getUserProgress, getSubtopicById } from '@/lib/data';
+import type { Lesson, Subtopic, UserSubtopicProgress } from '@/lib/types';
+
 
 export default function DashboardPage() {
-  const lessonInProgress = mockLessons[0];
-  const allSubtopics = mockLessons.flatMap(l => getSubtopicsByLessonId(l.id));
-  const completedSubtopicsCount = mockUserProgress.filter(p => p.status === 'completed').length;
+  const [lessons, setLessons] = useState<Lesson[]>([]);
+  const [userProgress, setUserProgress] = useState<UserSubtopicProgress[]>([]);
+  const [subtopics, setSubtopics] = useState<Subtopic[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchData() {
+      setLoading(true);
+      const [lessonsData, userProgressData] = await Promise.all([
+        getLessons(),
+        getUserProgress()
+      ]);
+      
+      let allSubtopics: Subtopic[] = [];
+      if (lessonsData.length > 0) {
+        const subtopicPromises = lessonsData.map(l => getSubtopicsByLessonId(l.id));
+        const subtopicsByLesson = await Promise.all(subtopicPromises);
+        allSubtopics = subtopicsByLesson.flat();
+      }
+
+      setLessons(lessonsData);
+      setUserProgress(userProgressData);
+      setSubtopics(allSubtopics);
+      setLoading(false);
+    }
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
+
+  const lessonInProgress = lessons[0];
+  const completedSubtopicsCount = userProgress.filter(p => p.status === 'completed').length;
   
-  const progress = (completedSubtopicsCount / allSubtopics.length) * 100;
+  const progress = subtopics.length > 0 ? (completedSubtopicsCount / subtopics.length) * 100 : 0;
   
-  // Find the next subtopic that is 'unlocked'
-  const nextSubtopicProgress = mockUserProgress.find(p => p.status === 'unlocked');
-  const nextSubtopic = nextSubtopicProgress ? getSubtopicById(nextSubtopicProgress.subtopic_id) : null;
+  const nextSubtopicProgress = userProgress.find(p => p.status === 'unlocked');
+  const nextSubtopic = nextSubtopicProgress ? subtopics.find(s => s.id === nextSubtopicProgress.subtopic_id) : null;
 
   return (
     <div className="space-y-8">
@@ -106,7 +140,7 @@ export default function DashboardPage() {
                                 <p className="text-xs text-muted-foreground">Completed</p>
                             </div>
                         </div>
-                        <p className="text-lg font-bold">1 / {mockLessons.length}</p>
+                        <p className="text-lg font-bold">0 / {lessons.length}</p>
                     </div>
                      <div className="flex items-center justify-between">
                          <div className="flex items-center gap-3">
@@ -118,7 +152,7 @@ export default function DashboardPage() {
                                 <p className="text-xs text-muted-foreground">Completed</p>
                             </div>
                         </div>
-                        <p className="text-lg font-bold">{completedSubtopicsCount} / {allSubtopics.length}</p>
+                        <p className="text-lg font-bold">{completedSubtopicsCount} / {subtopics.length}</p>
                     </div>
                 </CardContent>
             </Card>

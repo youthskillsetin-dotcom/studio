@@ -1,19 +1,19 @@
+
 import { notFound } from 'next/navigation';
-import { getLessonById, getSubtopicsByLessonId, getProgressForSubtopic } from '@/lib/mock-data';
+import { getLessonById, getSubtopicsByLessonId, getProgressForSubtopic } from '@/lib/data';
 import type { Subtopic } from '@/lib/types';
 import { SubtopicRow } from '@/components/subtopic-row';
 import { CountdownTimer } from '@/components/countdown-timer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-export default function LessonDetailPage({ params }: { params: { lessonId: string } }) {
-  const lesson = getLessonById(params.lessonId);
+export default async function LessonDetailPage({ params }: { params: { lessonId: string } }) {
+  const lesson = await getLessonById(params.lessonId);
   if (!lesson) {
     notFound();
   }
 
-  const subtopics = getSubtopicsByLessonId(params.lessonId);
+  const subtopics = await getSubtopicsByLessonId(params.lessonId);
 
-  // Calculate next unlock time (e.g., next Monday at 9 AM)
   const getNextUnlockTime = () => {
     const now = new Date();
     const result = new Date(now);
@@ -46,8 +46,8 @@ export default function LessonDetailPage({ params }: { params: { lessonId: strin
           <CardTitle className="font-headline">Subtopics</CardTitle>
         </CardHeader>
         <CardContent className="space-y-2">
-          {subtopics.map((subtopic: Subtopic) => {
-            const progress = getProgressForSubtopic(subtopic.id);
+          {subtopics.map(async (subtopic: Subtopic) => {
+            const progress = await getProgressForSubtopic(subtopic.id);
             return (
               <SubtopicRow key={subtopic.id} subtopic={subtopic} status={progress?.status ?? 'locked'} />
             );

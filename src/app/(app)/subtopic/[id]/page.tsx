@@ -1,16 +1,17 @@
+
 import { notFound } from 'next/navigation';
-import { getSubtopicById, getLessonById } from '@/lib/mock-data';
+import { getSubtopicById, getLessonById } from '@/lib/data';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { PracticeForm } from '@/components/practice-form';
 import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
 
-export default function SubtopicPage({ params }: { params: { id: string } }) {
-  const subtopic = getSubtopicById(params.id);
+export default async function SubtopicPage({ params }: { params: { id: string } }) {
+  const subtopic = await getSubtopicById(params.id);
   if (!subtopic) {
     notFound();
   }
-  const lesson = getLessonById(subtopic.lesson_id);
+  const lesson = await getLessonById(subtopic.lesson_id);
 
   return (
     <div className="space-y-6">

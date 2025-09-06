@@ -3,11 +3,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
-import { Lock, Zap, CheckCircle } from 'lucide-react';
+import { Lock } from 'lucide-react';
 import type { Lesson } from '@/lib/types';
-import { mockUserProgress, getSubtopicsByLessonId } from '@/lib/mock-data';
+import { Progress } from '@/components/ui/progress';
+import { CheckCircle } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { getSubtopicsByLessonId, getUserProgress } from '@/lib/data';
 
 interface LessonCardProps {
   lesson: Lesson;
@@ -16,16 +18,30 @@ interface LessonCardProps {
 
 export function LessonCard({ lesson, hasPremium }: LessonCardProps) {
   const isLocked = !lesson.is_free && !hasPremium;
-  
-  const subtopics = getSubtopicsByLessonId(lesson.id);
-  const completedSubtopics = subtopics.filter(st => {
-    const progress = mockUserProgress.find(p => p.subtopic_id === st.id);
-    return progress?.status === 'completed';
-  }).length;
+  const [progress, setProgress] = useState(0);
+  const [isCompleted, setIsCompleted] = useState(false);
+  const [isStarted, setIsStarted] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  const progress = subtopics.length > 0 ? (completedSubtopics / subtopics.length) * 100 : 0;
-  const isCompleted = progress === 100;
-  const isStarted = progress > 0 && progress < 100;
+  useEffect(() => {
+    async function calculateProgress() {
+      setLoading(true);
+      const subtopics = await getSubtopicsByLessonId(lesson.id);
+      const userProgress = await getUserProgress();
+      
+      const completedSubtopics = subtopics.filter(st => {
+        const progressRecord = userProgress.find(p => p.subtopic_id === st.id);
+        return progressRecord?.status === 'completed';
+      }).length;
+
+      const newProgress = subtopics.length > 0 ? (completedSubtopics / subtopics.length) * 100 : 0;
+      setProgress(newProgress);
+      setIsCompleted(newProgress === 100);
+      setIsStarted(newProgress > 0 && newProgress < 100);
+      setLoading(false);
+    }
+    calculateProgress();
+  }, [lesson.id]);
 
   let buttonText = 'Start Lesson';
   let buttonAction: 'default' | 'review' | 'premium' = 'default';
@@ -68,7 +84,7 @@ export function LessonCard({ lesson, hasPremium }: LessonCardProps) {
           {lesson.description}
         </CardDescription>
 
-        {!isLocked && (
+        {!isLocked && !loading && (
           <div className="mb-4">
               { isCompleted ? (
                  <div className="flex items-center gap-2">
