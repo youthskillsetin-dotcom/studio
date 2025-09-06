@@ -27,7 +27,7 @@ export default function LandingPage() {
         <section className="relative text-center py-20 md:py-32 flex flex-col items-center justify-center">
           <div className="absolute inset-0 z-0 bg-black">
              <Image 
-                src="https://picsum.photos/1200/801" 
+                src="https://picsum.photos/1200/800" 
                 alt="Hero Background"
                 fill
                 style={{objectFit: 'cover'}}
@@ -189,7 +189,7 @@ export default function LandingPage() {
                   </ul>
                 </CardContent>
                 <CardFooter>
-                   <Button className="w-full" variant="outline">
+                   <Button className="w-full">
                     Go Yearly
                   </Button>
                 </CardFooter>
