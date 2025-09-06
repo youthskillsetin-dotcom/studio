@@ -10,6 +10,7 @@ import { Progress } from '@/components/ui/progress';
 import { CheckCircle } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { getSubtopicsByLessonId, getUserProgress } from '@/lib/data';
+import { createClient } from '@/lib/supabase/client';
 
 interface LessonCardProps {
   lesson: Lesson;
@@ -22,12 +23,13 @@ export function LessonCard({ lesson, hasPremium }: LessonCardProps) {
   const [isCompleted, setIsCompleted] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
   const [loading, setLoading] = useState(true);
+  const supabase = createClient();
 
   useEffect(() => {
     async function calculateProgress() {
       setLoading(true);
-      const subtopics = await getSubtopicsByLessonId(lesson.id);
-      const userProgress = await getUserProgress();
+      const subtopics = await getSubtopicsByLessonId(supabase, lesson.id);
+      const userProgress = await getUserProgress(supabase);
       
       const completedSubtopics = subtopics.filter(st => {
         const progressRecord = userProgress.find(p => p.subtopic_id === st.id);
@@ -41,7 +43,7 @@ export function LessonCard({ lesson, hasPremium }: LessonCardProps) {
       setLoading(false);
     }
     calculateProgress();
-  }, [lesson.id]);
+  }, [lesson.id, supabase]);
 
   let buttonText = 'Start Lesson';
   let buttonAction: 'default' | 'review' | 'premium' = 'default';

@@ -6,26 +6,23 @@ import { LessonCard } from '@/components/lesson-card';
 import { getLessons, getUserProgress } from '@/lib/data';
 import type { Lesson, UserSubtopicProgress } from '@/lib/types';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { createClient } from '@/lib/supabase/client';
 
 export default function LessonsPage() {
   const hasPremium = false;
   const [lessons, setLessons] = useState<Lesson[]>([]);
-  const [userProgress, setUserProgress] = useState<UserSubtopicProgress[]>([]);
   const [loading, setLoading] = useState(true);
+  const supabase = createClient();
 
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
-      const [lessonsData, userProgressData] = await Promise.all([
-        getLessons(),
-        getUserProgress()
-      ]);
+      const lessonsData = await getLessons(supabase);
       setLessons(lessonsData);
-      setUserProgress(userProgressData);
       setLoading(false);
     }
     fetchData();
-  }, []);
+  }, [supabase]);
 
   if (loading) {
     return <div>Loading...</div>

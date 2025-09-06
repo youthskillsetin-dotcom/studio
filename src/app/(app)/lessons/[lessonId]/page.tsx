@@ -5,14 +5,19 @@ import type { Subtopic } from '@/lib/types';
 import { SubtopicRow } from '@/components/subtopic-row';
 import { CountdownTimer } from '@/components/countdown-timer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { createClient } from '@/lib/supabase/server';
+import { cookies } from 'next/headers';
 
 export default async function LessonDetailPage({ params }: { params: { lessonId: string } }) {
-  const lesson = await getLessonById(params.lessonId);
+  const cookieStore = cookies();
+  const supabase = createClient(cookieStore);
+
+  const lesson = await getLessonById(supabase, params.lessonId);
   if (!lesson) {
     notFound();
   }
 
-  const subtopics = await getSubtopicsByLessonId(params.lessonId);
+  const subtopics = await getSubtopicsByLessonId(supabase, params.lessonId);
 
   const getNextUnlockTime = () => {
     const now = new Date();
@@ -47,7 +52,7 @@ export default async function LessonDetailPage({ params }: { params: { lessonId:
         </CardHeader>
         <CardContent className="space-y-2">
           {subtopics.map(async (subtopic: Subtopic) => {
-            const progress = await getProgressForSubtopic(subtopic.id);
+            const progress = await getProgressForSubtopic(supabase, subtopic.id);
             return (
               <SubtopicRow key={subtopic.id} subtopic={subtopic} status={progress?.status ?? 'locked'} />
             );

@@ -1,13 +1,10 @@
 
-import { createClient } from '@/lib/supabase/server';
+import type { SupabaseClient } from '@supabase/supabase-js';
 import type { Lesson, Subtopic, UserSubtopicProgress } from './types';
 import { unstable_noStore as noStore } from 'next/cache';
-import { cookies } from 'next/headers';
 
-export async function getLessons(): Promise<Lesson[]> {
+export async function getLessons(supabase: SupabaseClient): Promise<Lesson[]> {
   noStore();
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
   const { data, error } = await supabase
     .from('lessons')
     .select('*')
@@ -20,10 +17,8 @@ export async function getLessons(): Promise<Lesson[]> {
   return data;
 }
 
-export async function getLessonById(id: string): Promise<Lesson | null> {
+export async function getLessonById(supabase: SupabaseClient, id: string): Promise<Lesson | null> {
     noStore();
-    const cookieStore = cookies();
-    const supabase = createClient(cookieStore);
     const { data, error } = await supabase
         .from('lessons')
         .select('*')
@@ -38,10 +33,8 @@ export async function getLessonById(id: string): Promise<Lesson | null> {
 }
 
 
-export async function getSubtopicsByLessonId(lessonId: string): Promise<Subtopic[]> {
+export async function getSubtopicsByLessonId(supabase: SupabaseClient, lessonId: string): Promise<Subtopic[]> {
     noStore();
-    const cookieStore = cookies();
-    const supabase = createClient(cookieStore);
     const { data, error } = await supabase
         .from('subtopics')
         .select('*')
@@ -55,10 +48,8 @@ export async function getSubtopicsByLessonId(lessonId: string): Promise<Subtopic
     return data;
 }
 
-export async function getSubtopicById(id: string): Promise<Subtopic | null> {
+export async function getSubtopicById(supabase: SupabaseClient, id: string): Promise<Subtopic | null> {
     noStore();
-    const cookieStore = cookies();
-    const supabase = createClient(cookieStore);
     const { data, error } = await supabase
         .from('subtopics')
         .select('*')
@@ -71,10 +62,8 @@ export async function getSubtopicById(id: string): Promise<Subtopic | null> {
     return data;
 }
 
-export async function getUserProgress(): Promise<UserSubtopicProgress[]> {
+export async function getUserProgress(supabase: SupabaseClient): Promise<UserSubtopicProgress[]> {
     noStore();
-    const cookieStore = cookies();
-    const supabase = createClient(cookieStore);
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return [];
 
@@ -90,10 +79,8 @@ export async function getUserProgress(): Promise<UserSubtopicProgress[]> {
     return data;
 }
 
-export async function getProgressForSubtopic(subtopicId: string): Promise<UserSubtopicProgress | null> {
+export async function getProgressForSubtopic(supabase: SupabaseClient, subtopicId: string): Promise<UserSubtopicProgress | null> {
     noStore();
-    const cookieStore = cookies();
-    const supabase = createClient(cookieStore);
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return null;
 

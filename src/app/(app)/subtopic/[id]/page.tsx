@@ -5,13 +5,18 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { PracticeForm } from '@/components/practice-form';
 import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
+import { createClient } from '@/lib/supabase/server';
+import { cookies } from 'next/headers';
 
 export default async function SubtopicPage({ params }: { params: { id: string } }) {
-  const subtopic = await getSubtopicById(params.id);
+  const cookieStore = cookies();
+  const supabase = createClient(cookieStore);
+
+  const subtopic = await getSubtopicById(supabase, params.id);
   if (!subtopic) {
     notFound();
   }
-  const lesson = await getLessonById(subtopic.lesson_id);
+  const lesson = await getLessonById(supabase, subtopic.lesson_id);
 
   return (
     <div className="space-y-6">

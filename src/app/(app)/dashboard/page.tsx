@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import Link from 'next/link';
@@ -10,6 +9,7 @@ import { Progress } from '@/components/ui/progress';
 import { useEffect, useState } from 'react';
 import { getLessons, getSubtopicsByLessonId, getUserProgress, getSubtopicById } from '@/lib/data';
 import type { Lesson, Subtopic, UserSubtopicProgress } from '@/lib/types';
+import { createClient } from '@/lib/supabase/client';
 
 
 export default function DashboardPage() {
@@ -17,18 +17,20 @@ export default function DashboardPage() {
   const [userProgress, setUserProgress] = useState<UserSubtopicProgress[]>([]);
   const [subtopics, setSubtopics] = useState<Subtopic[]>([]);
   const [loading, setLoading] = useState(true);
+  
+  const supabase = createClient();
 
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
       const [lessonsData, userProgressData] = await Promise.all([
-        getLessons(),
-        getUserProgress()
+        getLessons(supabase),
+        getUserProgress(supabase)
       ]);
       
       let allSubtopics: Subtopic[] = [];
       if (lessonsData.length > 0) {
-        const subtopicPromises = lessonsData.map(l => getSubtopicsByLessonId(l.id));
+        const subtopicPromises = lessonsData.map(l => getSubtopicsByLessonId(supabase, l.id));
         const subtopicsByLesson = await Promise.all(subtopicPromises);
         allSubtopics = subtopicsByLesson.flat();
       }
@@ -39,7 +41,7 @@ export default function DashboardPage() {
       setLoading(false);
     }
     fetchData();
-  }, []);
+  }, [supabase]);
 
   if (loading) {
     return <div>Loading...</div>
