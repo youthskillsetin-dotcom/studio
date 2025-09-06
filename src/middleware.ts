@@ -65,8 +65,9 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/dashboard', request.url))
   }
 
-  // Protect dashboard routes
-  if (!session && pathname.startsWith('/dashboard')) {
+  // Protect app routes
+  const protectedRoutes = ['/dashboard', '/lessons', '/ai-mentor', '/career-guide', '/subtopic', '/admin'];
+  if (!session && protectedRoutes.some(path => pathname.startsWith(path))) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
   
