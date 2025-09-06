@@ -3,14 +3,14 @@
 
 import { useState, useEffect } from 'react';
 import { LessonCard } from '@/components/lesson-card';
-import { getLessons, getUserProgress } from '@/lib/data';
-import type { Lesson, UserSubtopicProgress } from '@/lib/types';
+import { getLessons } from '@/lib/data';
+import type { Lesson } from '@/lib/types';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { createClient } from '@/lib/supabase/client';
 import { Skeleton } from '@/components/ui/skeleton';
 
 export default function LessonsPage() {
-  const hasPremium = false;
+  const hasPremium = false; // Placeholder for user subscription status
   const [lessons, setLessons] = useState<Lesson[]>([]);
   const [loading, setLoading] = useState(true);
   const supabase = createClient();
