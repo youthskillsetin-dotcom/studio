@@ -1,0 +1,79 @@
+
+{
+  "lessons": [
+    {
+      "title": "Foundations of Web Development",
+      "description": "Learn the core technologies that power the web, including HTML, CSS, and JavaScript.",
+      "is_free": true,
+      "order_index": 1,
+      "subtopics": [
+        {
+          "title": "Introduction to HTML",
+          "content": "<h1>Introduction to HTML</h1><p>HTML (HyperText Markup Language) is the standard language for creating web pages. It describes the structure of a web page and consists of a series of elements. HTML elements tell the browser how to display the content.</p><h2>Key Concepts</h2><ul><li><strong>Elements:</strong> Building blocks of HTML (e.g., <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;img&gt;</code>).</li><li><strong>Tags:</strong> Labels you use to create HTML elements (e.g., <code>&lt;p&gt;</code> is a paragraph tag).</li><li><strong>Attributes:</strong> Provide additional information about elements (e.g., <code>&lt;img src='image.jpg'&gt;</code>).</li></ul><p>This subtopic will guide you through creating your first simple web page.</p>",
+          "order_index": 1,
+          "practice_question": "What does HTML stand for?",
+          "practice_type": "mcq",
+          "practice_options": [
+            "HyperText Markup Language",
+            "High-Level Text Language",
+            "Hyperlink and Text Markup Language",
+            "Home Tool Markup Language"
+          ],
+          "correct_answer": "HyperText Markup Language"
+        },
+        {
+          "title": "Styling with CSS",
+          "content": "<h1>Styling with CSS</h1><p>CSS (Cascading Style Sheets) is the language we use to style a web page. It describes how HTML elements should be displayed on screen, paper, or in other media.</p><h2>Key Concepts</h2><ul><li><strong>Selectors:</strong> Patterns used to select the element(s) you want to style (e.g., <code>h1</code>, <code>.my-class</code>, <code>#my-id</code>).</li><li><strong>Properties:</strong> The specific style you want to apply (e.g., <code>color</code>, <code>font-size</code>, <code>background-color</code>).</li><li><strong>Values:</strong> The value assigned to a property (e.g., <code>red</code>, <code>16px</code>, <code>#ffffff</code>).</li></ul><p>In this section, you'll learn how to apply basic styles to your HTML page.</p>",
+          "order_index": 2,
+          "practice_question": "Which CSS property is used to change the text color of an element?",
+          "practice_type": "text",
+          "correct_answer": "color"
+        },
+        {
+          "title": "Introduction to JavaScript",
+          "content": "<h1>Introduction to JavaScript</h1><p>JavaScript is a programming language that enables you to create dynamically updating content, control multimedia, animate images, and much more. It makes web pages interactive.</p><h2>Key Concepts</h2><ul><li><strong>Variables:</strong> Containers for storing data values (e.g., <code>let name = 'Alice';</code>).</li><li><strong>Functions:</strong> Blocks of code designed to perform a particular task.</li><li><strong>Events:</strong> Actions that can be detected by JavaScript, like a mouse click or a key press.</li></ul><p>We'll cover the basics of JavaScript syntax and how to include it in your web pages.</p>",
+          "order_index": 3,
+          "practice_question": "Which keyword is commonly used to declare a variable in modern JavaScript?",
+          "practice_type": "mcq",
+          "practice_options": [
+            "var",
+            "let",
+            "variable",
+            "int"
+          ],
+          "correct_answer": "let"
+        }
+      ]
+    },
+    {
+      "title": "React for Beginners",
+      "description": "Dive into the most popular JavaScript library for building user interfaces. Learn about components, state, and props.",
+      "is_free": false,
+      "order_index": 2,
+      "subtopics": [
+        {
+          "title": "What is React?",
+          "content": "<h1>What is React?</h1><p>React is a declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called “components”.</p><h2>Core Features</h2><ul><li><strong>Component-Based:</strong> Build encapsulated components that manage their own state.</li><li><strong>Declarative:</strong> React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.</li><li><strong>Learn Once, Write Anywhere:</strong> You can develop new features in React without rewriting existing code. React can also render on the server using Node and power mobile apps using React Native.</li></ul>",
+          "order_index": 1,
+          "practice_question": "What are the small, isolated pieces of code used to build UIs in React called?",
+          "practice_type": "text",
+          "correct_answer": "components"
+        },
+        {
+          "title": "Understanding JSX",
+          "content": "<h1>Understanding JSX</h1><p>JSX stands for JavaScript XML. It is a syntax extension to JavaScript and is used with React to describe what the UI should look like. JSX may remind you of a template language, but it comes with the full power of JavaScript.</p><p>For example, <code>const element = &lt;h1&gt;Hello, world!&lt;/h1&gt;;</code> is a valid JSX expression.</p>",
+          "order_index": 2,
+          "practice_question": "What does JSX stand for?",
+          "practice_type": "mcq",
+          "practice_options": [
+            "JavaScript Syntax Extension",
+            "JavaScript XML",
+            "Java Serialized XML",
+            "JSON Syntax Extension"
+          ],
+          "correct_answer": "JavaScript XML"
+        }
+      ]
+    }
+  ]
+}
