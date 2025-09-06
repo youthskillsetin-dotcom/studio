@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
@@ -16,9 +17,6 @@ export default function LandingPage() {
           <span className="text-xl font-bold font-headline">YouthSkillSet</span>
         </Link>
         <nav className="flex items-center gap-4">
-          <Button variant="ghost" asChild>
-            <Link href="/login">Log In</Link>
-          </Button>
           <Button asChild>
             <Link href="/dashboard">Get Started</Link>
           </Button>

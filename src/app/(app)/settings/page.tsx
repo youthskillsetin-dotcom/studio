@@ -1,21 +1,10 @@
 
-import { cookies } from 'next/headers';
-import { createClient } from '@/lib/supabase/server';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { redirect } from 'next/navigation';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 export default async function SettingsPage() {
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
-
-  const { data: { user } } = await supabase.auth.getUser();
-
-  if (!user) {
-    redirect('/login');
-  }
 
   // Placeholder for subscription status
   const isPremium = false;
@@ -27,16 +16,12 @@ export default async function SettingsPage() {
         <Card>
           <CardHeader>
             <CardTitle>Account Information</CardTitle>
-            <CardDescription>Manage your account details.</CardDescription>
+            <CardDescription>This application is in public mode. No account is needed.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-              <p className="text-sm font-medium">Email</p>
-              <p className="text-sm text-muted-foreground">{user.email}</p>
-            </div>
-             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-              <p className="text-sm font-medium">User ID</p>
-              <p className="text-sm text-muted-foreground font-mono text-xs">{user.id}</p>
+              <p className="text-sm font-medium">Status</p>
+              <p className="text-sm text-muted-foreground">Public Access</p>
             </div>
           </CardContent>
         </Card>

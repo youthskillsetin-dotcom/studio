@@ -64,38 +64,14 @@ export async function getSubtopicById(supabase: SupabaseClient, id: string): Pro
 
 export async function getUserProgress(supabase: SupabaseClient): Promise<UserSubtopicProgress[]> {
     noStore();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return [];
-
-    const { data, error } = await supabase
-        .from('user_subtopic_progress')
-        .select('*')
-        .eq('user_id', user.id);
-    
-    if (error) {
-        console.error('Error fetching user progress:', error);
-        return [];
-    }
-    return data;
+    // No user, so return empty progress
+    return [];
 }
 
 export async function getProgressForSubtopic(supabase: SupabaseClient, subtopicId: string): Promise<UserSubtopicProgress | null> {
     noStore();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return null;
-
-    const { data, error } = await supabase
-        .from('user_subtopic_progress')
-        .select('*')
-        .eq('user_id', user.id)
-        .eq('subtopic_id', subtopicId)
-        .maybeSingle();
-    
-    if (error) {
-        console.error('Error fetching progress for subtopic:', error);
-        return null;
-    }
-    return data;
+    // No user, so return null
+    return null;
 }
 
 export async function getPosts(supabase: SupabaseClient): Promise<Post[]> {
@@ -124,7 +100,7 @@ export async function getPosts(supabase: SupabaseClient): Promise<Post[]> {
   const posts = data.map(p => ({
       ...p,
       // @ts-ignore: supabase-js typing for joins can be tricky
-      author_email: p.author_email?.email,
+      author_email: p.author_email?.email ?? 'Anonymous',
   }));
 
   // @ts-ignore
@@ -164,11 +140,11 @@ export async function getPostById(supabase: SupabaseClient, id: string): Promise
   const post = {
     ...data,
     // @ts-ignore
-    author_email: data.author_email?.email,
+    author_email: data.author_email?.email ?? 'Anonymous',
     comments: data.comments.map(c => ({
         ...c,
         // @ts-ignore
-        author_email: c.author_email?.email
+        author_email: c.author_email?.email ?? 'Anonymous'
     }))
   };
   
