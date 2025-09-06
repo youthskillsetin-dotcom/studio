@@ -114,6 +114,70 @@
           "correct_answer": "One-Time Password, sent to your phone for security."
         }
       ]
+    },
+    {
+      "title": "Module 3: Artificial Intelligence in Real Life",
+      "description": "A Complete 7-Day Learning Journey for Teens (Ages 13-16) into AI in finance.",
+      "is_free": false,
+      "order_index": 3,
+      "subtopics": [
+        {
+          "title": "Day 1: The AI Revolution in Finance",
+          "content": "<h1>The AI Revolution in Finance</h1><h2>What is AI Really Doing with Our Money?</h2><h3>Topic Overview</h3><ul><li>AI acts like a digital guardian for your money, protecting bank accounts and detecting fraud 24/7. Over 90% of banks use AI to fight fraud, analyzing billions of transactions every day.</li><li>AI powers apps on your phone that catch suspicious charges and help your family manage money.</li><li>Criminals also use AI, but financial companies use stronger AI, creating a high-tech battle to keep your money safe.</li></ul><h3>Explanation</h3><ul><li>AI gives computers a brain-like power to learn and make decisions.</li><li>It recognizes unusual spending patterns (e.g., a morning latte vs. a $500 pizza at 3 AM far away).</li><li>This all happens instantly, faster than any human could check.</li></ul><h3>Key Takeaways</h3><ul><li>AI is everywhere in finance, quietly working to protect and help manage money.</li><li>Banks use AI to outsmart criminals using AI themselves.</li><li>AI analyzes millions of transactions every second, providing unmatched security.</li><li>You are part of this new financial world where AI is normal!</li></ul>",
+          "order_index": 1,
+          "practice_question": "What percentage of U.S. banks use AI for fraud detection?",
+          "practice_type": "text",
+          "correct_answer": "About 90%"
+        },
+        {
+          "title": "Day 2: Machine Learning vs. Deep Learning",
+          "content": "<h1>Machine Learning vs. Deep Learning</h1><h2>The Brains Behind the AI Operation</h2><h3>Topic Overview</h3><ul><li>Machine learning is like teaching someone to drive with lots of examples — it learns simple patterns like stopping at red lights.</li><li>Deep learning is like mastering Formula 1 racing — it uses multi-layered 'brain-like' neural networks to learn very complex patterns.</li><li>Financial companies use both: machine learning for simple fraud, deep learning for complex schemes.</li></ul><h3>Explanation</h3><ul><li>Machine learning finds patterns and makes clear predictions (email filters, basic fraud detection).</li><li>Deep learning uses multiple layers to analyze huge amounts of varied info for more sophisticated detection (voice assistants, advanced fraud rings).</li></ul><h3>Key Takeaways</h3><ul><li>Machine learning and deep learning are different AI tools for different problems.</li><li>Machine learning handles clear patterns, deep learning deals with complex data.</li><li>Both are essential in financial fraud detection and AI applications.</li></ul>",
+          "order_index": 2,
+          "practice_question": "Complete the analogy: Machine learning is to riding a bike as deep learning is to...?",
+          "practice_type": "text",
+          "correct_answer": "Flying a fighter jet"
+        },
+        {
+          "title": "Day 3: AI Fraud Detection - Your Money’s Bodyguard",
+          "content": "<h1>AI Fraud Detection - Your Money’s Bodyguard</h1><h3>Topic Overview</h3><ul><li>AI fraud systems analyze over 10 billion transactions daily in milliseconds.</li><li>91% of US banks use AI to detect fraud with 96% accuracy, reducing false alerts.</li><li>AI learns your unique spending habits (your “financial fingerprint”) and spots fraud fast.</li></ul><h3>Explanation</h3><ul><li>Behavioral analysis monitors usual purchase times, amounts, and merchant types.</li><li>AI detects fraud rings by analyzing links between suspicious transactions.</li><li>Real cases like blocking fake international money wiring demonstrate AI in action.</li></ul><h3>Key Takeaways</h3><ul><li>AI fraud detection is lightning fast and highly accurate.</li><li>AI learns your personal spending style to detect anomalies.</li><li>AI systems constantly improve to keep ahead of criminals.</li></ul>",
+          "order_index": 3,
+          "practice_question": "Why is AI better than humans at spotting fraud?",
+          "practice_type": "text",
+          "correct_answer": "Speed, accuracy, and scale."
+        },
+        {
+          "title": "Day 4: AI Trading Bots - Robots in the Stock Market",
+          "content": "<h1>AI Trading Bots - Robots in the Stock Market</h1><h3>Topic Overview</h3><ul><li>AI trading bots analyze market data and trade stocks faster than humans (in 0.01 seconds).</li><li>They handle 60-75% of stock market trades globally, but success isn’t guaranteed for all users.</li><li>Bots can provide impressive returns but also have risks like sudden market crashes.</li></ul><h3>Explanation</h3><p>Three stages of trading bots:</p><ol><li>Signal Generation — identify buy/sell opportunities based on patterns.</li><li>Risk Management — decide how much money to use and set safety limits.</li><li>Trade Execution — place trades automatically and adjust to changes.</li></ol><p>Examples include cryptocurrency bots making profits by catching market dips.</p><h3>Key Takeaways</h3><ul><li>Speed and big data give AI trading bots an edge.</li><li>Most users don’t make consistent profits; skill and caution are required.</li><li>Bots reshape the market but new risks also arise.</li></ul>",
+          "order_index": 4,
+          "practice_question": "What’s a safe approach for beginners using trading bots?",
+          "practice_type": "text",
+          "correct_answer": "Start small, cautious investing."
+        },
+        {
+          "title": "Day 5: Project Preparation - Choosing Your AI Tool",
+          "content": "<h1>Project Preparation - Choosing Your AI Tool</h1><h3>Topic Overview</h3><ul><li>Today you’ll choose an AI tool to analyze spending patterns either your own or simulated.</li><li>Many free or affordable AI-powered apps like Mint, PocketGuard, and Expense AI are great for beginners.</li><li>Your project will turn AI data into real insights and recommendations.</li></ul><h3>Explanation</h3><ul><li>Options include receipt scanning apps, bank-connected tools, or spreadsheet simulations.</li><li>Collect at least 30 transactions with date, amount, merchant info for analysis.</li><li>Look for spending categories, patterns, outliers, and AI budgeting suggestions.</li></ul><h3>Key Takeaways</h3><ul><li>Real financial AI tools are accessible to teenagers.</li><li>Analyzing actual data, even small amounts, uncovers useful insights.</li><li>Always consider privacy and get permission for financial data use.</li></ul>",
+          "order_index": 5,
+          "practice_question": "Why might free apps still raise privacy concerns?",
+          "practice_type": "text",
+          "correct_answer": "They may sell data or show ads."
+        },
+        {
+          "title": "Day 6: Project Execution - AI in Action",
+          "content": "<h1>Project Execution - AI in Action</h1><h3>Topic Overview</h3><ul><li>Now, use your selected AI tool to upload and analyze your transaction data.</li><li>Explore spending categories, time trends, recurring expenses, and unusual transactions.</li><li>Document your insights and prepare to share your findings.</li></ul><h3>Explanation</h3><ul><li>Review AI categorizations and correct any mistakes to learn AI limits.</li><li>Use AI's predictive and comparison features for future budgeting.</li><li>Note surprising spending habits to understand your financial behavior better.</li></ul><h3>Key Takeaways</h3><ul><li>AI reveals hidden and surprising spending patterns.</li><li>Good data quality means better insights.</li><li>AI suggests but doesn’t decide — you make financial choices.</li></ul>",
+          "order_index": 6,
+          "practice_question": "How much would you save in 4 years by cutting $20/month wasteful spending?",
+          "practice_type": "text",
+          "correct_answer": "$960"
+        },
+        {
+          "title": "Day 7: Project Presentation and Future Applications",
+          "content": "<h1>Project Presentation and Future Applications</h1><h3>Topic Overview</h3><ul><li>Present your project results: top discoveries, AI tool used, and what you learned.</li><li>Understand how AI can shape your financial future and career possibilities.</li></ul><h3>Explanation</h3><ul><li>Structure your presentation with an opening hook, methodology, key findings, AI recommendations, and future plans.</li><li>Example insights: weekend spending spikes, recurring subscriptions, payment method effects.</li><li>Discuss how AI combined with human judgment is the winning approach.</li></ul><h3>Key Takeaways</h3><ul><li>AI amplifies human reasoning but doesn’t replace it.</li><li>Data-driven choices lead to smarter money management.</li><li>Financial and AI skills are important for future success.</li></ul>",
+          "order_index": 7,
+          "practice_question": "Should you always follow AI recommendations without question?",
+          "practice_type": "text",
+          "correct_answer": "No"
+        }
+      ]
     }
   ]
 }
