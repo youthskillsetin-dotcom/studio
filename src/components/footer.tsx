@@ -23,7 +23,7 @@ const footerNavs = [
 const socialLinks = [
     { href: '#', icon: Twitter, name: 'Twitter' },
     { href: '#', icon: Linkedin, name: 'LinkedIn' },
-    { href: '#', icon: Instagram, name: 'Instagram' },
+    { href: 'https://www.instagram.com/youthskillset', icon: Instagram, name: 'Instagram' },
     { href: '#', icon: Youtube, name: 'YouTube' },
 ];
 
