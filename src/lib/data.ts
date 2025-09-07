@@ -9,7 +9,7 @@ import { createClient as createAdminClient } from '@supabase/supabase-js';
 // NOTE: All data fetching now happens from functions in this file, using sample-content.json as the source.
 // This centralizes data access and simulates a real database layer.
 
-export async function getLessons(supabase: SupabaseClient): Promise<Lesson[]> {
+export async function getLessons(): Promise<Lesson[]> {
   noStore();
   return sampleContent.lessons.map((lesson, index) => ({
     ...lesson,
