@@ -5,9 +5,9 @@ import { notFound, useParams } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ChevronLeft, FileText, CheckCircle, ArrowRight, ArrowLeft, Banknote, ClipboardList, Lightbulb, ShieldAlert, Download, Mail, Phone, Linkedin, User, Briefcase, GraduationCap, Sparkles } from 'lucide-react';
+import { ChevronLeft, FileText, CheckCircle, ArrowRight, ArrowLeft, Banknote, ClipboardList, Lightbulb, ShieldAlert, Download, Mail, Phone, Linkedin } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { Progress } from '@/components/ui/progress';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -636,3 +636,5 @@ export default function LabDetailPage() {
     </div>
   );
 }
+
+    

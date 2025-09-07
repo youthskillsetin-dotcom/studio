@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { FlaskConical, ArrowRight, FileText, Banknote, ClipboardList, Lightbulb, ShieldAlert } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 interface Lab {
     id: string;
@@ -88,7 +89,7 @@ export default function PracticeLabPage() {
                     <CardTitle className="font-headline text-xl">{lab.title}</CardTitle>
                     <div className="flex gap-2 mt-2">
                         {lab.tags.map(tag => (
-                            <span key={tag} className="text-xs font-medium bg-muted text-muted-foreground px-2 py-0.5 rounded-full">{tag}</span>
+                            <Badge key={tag} variant="secondary" className="text-xs font-medium">{tag}</Badge>
                         ))}
                     </div>
                 </div>
@@ -109,3 +110,5 @@ export default function PracticeLabPage() {
     </div>
   );
 }
+
+    
