@@ -4,12 +4,29 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { CheckCircle, Zap, BrainCircuit, BookOpen, BarChart, ShieldCheck, Cpu, Briefcase, IndianRupee } from 'lucide-react';
+import { CheckCircle, Zap, BrainCircuit, BookOpen, BarChart, ShieldCheck, Cpu, Briefcase, IndianRupee, HandCoins, Scale, User, FileText, Lock, Landmark, Search } from 'lucide-react';
 import { Logo } from '@/components/icons';
 import Image from 'next/image';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { motion } from 'framer-motion';
+import sampleContent from '../../sample-content.json';
 
+
+const getIconForModule = (title: string) => {
+    const lowerTitle = title.toLowerCase();
+    if (lowerTitle.includes('finance')) return HandCoins;
+    if (lowerTitle.includes('banking') || lowerTitle.includes('investments')) return Landmark;
+    if (lowerTitle.includes('ai') || lowerTitle.includes('intelligence')) return Cpu;
+    if (lowerTitle.includes('taxation')) return FileText;
+    if (lowerTitle.includes('entrepreneurship')) return Briefcase;
+    if (lowerTitle.includes('branding') || lowerTitle.includes('careers')) return User;
+    if (lowerTitle.includes('excel') || lowerTitle.includes('data')) return BarChart;
+    if (lowerTitle.includes('cybersecurity')) return ShieldCheck;
+    if (lowerTitle.includes('ethics')) return Scale;
+    if (lowerTitle.includes('consumer') || lowerTitle.includes('rights')) return Search;
+    if (lowerTitle.includes('law')) return Scale;
+    return BookOpen;
+};
 
 export default function LandingPage() {
 
@@ -18,12 +35,12 @@ export default function LandingPage() {
     show: { opacity: 1, y: 0, transition: { type: 'spring' } },
   };
   
-  const modules = [
-    { icon: IndianRupee, title: 'Personal Finance 101', description: 'Master budgeting, saving, and the basics of financial independence.' },
-    { icon: BarChart, title: 'Banking & Investments', description: 'Learn about safe investments, mutual funds, and the stock market.' },
-    { icon: Cpu, title: 'Artificial Intelligence', description: 'Understand how AI is used in finance, from fraud detection to trading bots.' },
-    { icon: Briefcase, title: 'Entrepreneurship', description: 'Develop your big idea, create a business plan, and learn about pricing.' },
-  ];
+  const modules = sampleContent.lessons.map(lesson => ({
+    icon: getIconForModule(lesson.title),
+    title: lesson.title,
+    description: lesson.description
+  }));
+
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
@@ -93,17 +110,17 @@ export default function LandingPage() {
                         Explore the wide range of topics we cover to build a solid foundation for your success.
                     </p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     {modules.map((item, index) => (
-                        <Card key={index} className="text-center shadow-sm hover:shadow-lg transition-shadow">
+                        <Card key={index} className="text-center shadow-sm hover:shadow-lg transition-shadow flex flex-col">
                             <CardHeader className="flex flex-col items-center">
                                 <div className="p-4 bg-primary/10 rounded-full mb-4">
                                     <item.icon className="w-8 h-8 text-primary" />
                                 </div>
-                                <CardTitle className="font-headline">{item.title}</CardTitle>
+                                <CardTitle className="font-headline text-base">{item.title}</CardTitle>
                             </CardHeader>
-                            <CardContent>
-                                <p className="text-muted-foreground">{item.description}</p>
+                            <CardContent className="flex-grow">
+                                <p className="text-muted-foreground text-sm">{item.description}</p>
                             </CardContent>
                         </Card>
                     ))}
@@ -280,3 +297,5 @@ export default function LandingPage() {
     </div>
   );
 }
+
+    
