@@ -60,9 +60,6 @@ export default function SignupPage() {
     setIsLoading(true);
     setError(null);
     
-    // In this development environment, we will sign up the user and then
-    // redirect them to the verify page to simulate OTP flow.
-
     const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
       email: values.email,
       password: values.password,
@@ -70,7 +67,9 @@ export default function SignupPage() {
         data: {
             full_name: values.fullName,
             phone: values.phone,
-        }
+        },
+        // This option is crucial for ensuring an OTP is sent.
+        emailRedirectTo: `${window.location.origin}/auth/callback`,
       },
     });
 
