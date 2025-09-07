@@ -7,10 +7,13 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Send } from 'lucide-react';
+import { ChevronLeft, Send } from 'lucide-react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function SupportPage() {
     const { toast } = useToast();
+    const router = useRouter();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -19,10 +22,17 @@ export default function SupportPage() {
             description: "Thanks for reaching out. We'll get back to you as soon as possible.",
         });
         (event.target as HTMLFormElement).reset();
+        router.push('/dashboard');
     };
 
   return (
     <div className="max-w-3xl mx-auto">
+       <Button asChild variant="link" className="p-0 text-muted-foreground hover:text-primary mb-4">
+          <Link href="/dashboard">
+            <ChevronLeft className="w-4 h-4 mr-1" />
+            Back to Dashboard
+          </Link>
+      </Button>
       <h1 className="text-3xl font-bold font-headline mb-6">Contact & Support</h1>
        <Card className="rounded-2xl">
         <form onSubmit={handleSubmit}>

@@ -7,6 +7,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
 import { getUserSubscription, getLessonByIdWithSubtopics } from '@/lib/data';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { ChevronLeft } from 'lucide-react';
 
 export default async function LessonDetailPage({ params }: { params: { lessonId: string } }) {
   const cookieStore = cookies();
@@ -39,6 +42,13 @@ export default async function LessonDetailPage({ params }: { params: { lessonId:
 
   return (
     <div className="space-y-6">
+      <Button asChild variant="link" className="p-0 text-muted-foreground hover:text-primary">
+          <Link href="/lessons">
+            <ChevronLeft className="w-4 h-4 mr-1" />
+            Back to Lessons
+          </Link>
+      </Button>
+
       <div>
         <h1 className="text-3xl font-bold font-headline">{lesson.title}</h1>
         <p className="text-muted-foreground mt-1">{lesson.description}</p>
