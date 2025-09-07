@@ -161,7 +161,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                       >
                         <School className="h-7 w-7 text-primary" />
                          <span className="text-xl font-headline">YouthSkillSet</span>
-                      </A>
+                      </Link>
                       {mainNav}
                     </nav>
                   </SheetContent>
