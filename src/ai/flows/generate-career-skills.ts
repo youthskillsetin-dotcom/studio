@@ -10,7 +10,6 @@
  */
 
 import {ai} from '@/ai/genkit';
-import {googleAI} from '@genkit-ai/googleai';
 import {z} from 'genkit';
 
 const GenerateCareerSkillsInputSchema = z.object({
@@ -34,7 +33,7 @@ const prompt = ai.definePrompt({
   name: 'generateCareerSkillsPrompt',
   input: {schema: GenerateCareerSkillsInputSchema},
   output: {schema: GenerateCareerSkillsOutputSchema},
-  model: googleAI.model('gemma-7b-it-free'),
+  model: 'google/gemma-7b-it',
   prompt: `You are an expert career counselor AI.
   
   Based on the user's desired career path, generate a list of 5-7 essential skills required for that role.

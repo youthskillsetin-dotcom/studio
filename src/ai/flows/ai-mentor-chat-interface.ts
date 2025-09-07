@@ -9,7 +9,6 @@
  */
 
 import {ai} from '@/ai/genkit';
-import {googleAI} from '@genkit-ai/googleai';
 import {z} from 'genkit';
 
 const AIMentorChatInputSchema = z.object({
@@ -34,7 +33,7 @@ const prompt = ai.definePrompt({
   name: 'aiMentorChatPrompt',
   input: {schema: AIMentorChatInputSchema},
   output: {schema: AIMentorChatOutputSchema},
-  model: googleAI.model('gemma-7b-it-free'),
+  model: 'google/gemma-7b-it',
   prompt: `You are a personalized AI mentor providing learning guidance to the user.
 
   Your name is MentorAI.
