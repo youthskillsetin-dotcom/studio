@@ -43,8 +43,7 @@ export default async function CommunityPage() {
   }
 
   const posts = await getPosts(supabase);
-  const authorEmail = userProfile?.email ?? 'U';
-
+  
   return (
     <div>
       <div className="flex items-center justify-between mb-6">

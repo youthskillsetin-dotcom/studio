@@ -29,7 +29,7 @@ export async function createPost(values: z.infer<typeof CreatePostSchema>) {
 
   if (error) {
     console.error('Error inserting post:', error);
-    return { error: 'Database error: Could not create post.' };
+    return { error: `Database error: ${error.message}` };
   }
 
   revalidatePath('/community');

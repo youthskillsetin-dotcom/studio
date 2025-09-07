@@ -42,7 +42,7 @@ export default async function PostPage({ params }: { params: { id: string } }) {
               </Avatar>
               <div className="flex flex-col">
                 <span className="font-semibold">{post.author_email}</span>
-                <span>{formatDistanceToNow(new Date(post.created_at), { addSuffix: true })}</span>
+                <span className="text-xs">{formatDistanceToNow(new Date(post.created_at), { addSuffix: true })}</span>
               </div>
             </div>
           </div>
