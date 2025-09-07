@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
@@ -18,6 +19,11 @@ export const metadata: Metadata = {
   title: 'YouthSkillSet',
   description: 'Master in-demand skills with AI-powered mentorship.',
   manifest: '/manifest.json',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    userScalable: false,
+  },
 };
 
 export default function RootLayout({
