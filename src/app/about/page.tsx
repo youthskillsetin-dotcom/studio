@@ -2,6 +2,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Logo } from '@/components/icons';
 import { Target, Lightbulb, Heart } from 'lucide-react';
+import Image from 'next/image';
 
 export default function AboutPage() {
   return (
@@ -22,14 +23,14 @@ export default function AboutPage() {
             <div>
                 <h2 className="text-3xl font-bold font-headline mb-4">Our Story</h2>
                 <p className="text-muted-foreground text-lg mb-4">
-                    YouthSkillSet was born from a simple observation: while schools are great at teaching academics, there's a huge gap when it comes to the practical life and career skills young people actually need. We saw bright, talented teens graduating without a real understanding of personal finance, how to build a career, or how to navigate the digital world safely.
+                    YouthSkillSet was born from a simple observation: schools teach academics, but often miss the practical life and career skills essential for the real world. We saw bright teens graduate unprepared for personal finance, career building, or safe digital navigation.
                 </p>
                 <p className="text-muted-foreground text-lg">
-                    We decided to build the resource we wish we'd had—an engaging, AI-powered platform that makes learning these essential skills accessible, fun, and directly applicable to the challenges and opportunities of today's world.
+                    So, we created the resource we wish we had—an engaging, AI-powered platform that makes learning these vital skills accessible, fun, and directly applicable to the challenges and opportunities of today.
                 </p>
             </div>
             <div className="rounded-lg bg-muted/40 p-8">
-                <img src="https://picsum.photos/600/400" alt="Team working" className="rounded-lg shadow-lg" data-ai-hint="team collaboration" />
+                <Image src="https://picsum.photos/600/400" alt="Students collaborating" className="rounded-lg shadow-lg" data-ai-hint="students learning" width={600} height={400} />
             </div>
         </div>
 
