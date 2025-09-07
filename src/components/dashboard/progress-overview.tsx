@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { ChartContainer } from '@/components/ui/chart';
 
 export function ProgressOverview() {
-  const progress = 35; // Dummy data
+  const progress = 28; // Dummy data: 2 out of 7 subtopics completed
   const chartData = [{ name: 'Progress', value: progress, fill: 'var(--color-primary)' }];
   const chartConfig = {
     value: {
@@ -59,7 +59,7 @@ export function ProgressOverview() {
           Up 5% this week
         </div>
         <div className="leading-none text-muted-foreground">
-          Completed 2/7 lessons.
+          Completed 2/7 subtopics in 'Personal Finance 101'.
         </div>
       </CardFooter>
     </Card>

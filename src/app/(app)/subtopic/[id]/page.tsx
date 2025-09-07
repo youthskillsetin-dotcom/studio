@@ -81,11 +81,11 @@ export default async function SubtopicPage({ params }: { params: { id: string } 
              <Card className="bg-accent/10 border-accent/20">
                 <CardHeader className="flex-row items-center gap-2 space-y-0">
                     <Lightbulb className="w-6 h-6 text-accent-foreground" />
-                    <CardTitle className="font-headline">Hints</CardTitle>
+                    <CardTitle className="font-headline">Hint</CardTitle>
                 </CardHeader>
                 <CardContent>
                     <p className="text-sm text-muted-foreground">
-                       Remember that variable names are case-sensitive. Use the `type()` function to check a variable's data type.
+                       Stuck on a question? Try re-reading the "Key Concepts" section in the lesson content above. The answer is often hidden there!
                     </p>
                 </CardContent>
              </Card>
