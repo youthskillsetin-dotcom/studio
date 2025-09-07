@@ -16,10 +16,10 @@ export function TodaysLessonCard() {
       <CardContent className="space-y-4">
         <div>
             <p className="text-sm text-muted-foreground">Today's Lesson</p>
-            <h3 className="text-xl font-semibold">Introduction to React Hooks</h3>
+            <h3 className="text-xl font-semibold">The Money Mindset Revolution</h3>
         </div>
         <Button className="w-full md:w-auto" asChild>
-          <Link href="/lessons/1">
+          <Link href="/subtopic/1-1">
             <PlayCircle className="w-5 h-5 mr-2" />
             Start Lesson
           </Link>

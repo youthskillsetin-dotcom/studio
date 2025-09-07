@@ -15,12 +15,12 @@ interface LessonCardProps {
 export function LessonCard({ lesson, hasPremium }: LessonCardProps) {
   const isLocked = !lesson.is_free && !hasPremium;
 
-  const cardContent = (
+  const CardInnerContent = () => (
     <Card
       className={cn(
         "flex flex-col h-full rounded-2xl shadow-sm transition-all",
         isLocked
-          ? "bg-muted/50"
+          ? "bg-muted/50 cursor-not-allowed"
           : "hover:shadow-md hover:border-primary/50 cursor-pointer"
       )}
     >
@@ -44,18 +44,21 @@ export function LessonCard({ lesson, hasPremium }: LessonCardProps) {
 
   if (isLocked) {
     return (
-      <div className="relative h-full cursor-not-allowed group">
+      <div className="relative h-full group">
         <div className="absolute inset-0 bg-black/30 z-10 rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-            <Lock className="w-8 h-8 text-white" />
+          <div className="text-center text-white">
+            <Lock className="w-8 h-8 mx-auto mb-2" />
+            <p className="font-semibold">Upgrade to Premium</p>
+          </div>
         </div>
-        {cardContent}
+        <CardInnerContent />
       </div>
     );
   }
 
   return (
     <Link href={`/lessons/${lesson.id}`} className="block h-full">
-      {cardContent}
+      <CardInnerContent />
     </Link>
   );
 }
