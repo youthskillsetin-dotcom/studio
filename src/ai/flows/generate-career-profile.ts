@@ -8,6 +8,7 @@
  */
 
 import {ai} from '@/ai/genkit';
+import {googleAI} from '@genkit-ai/googleai';
 import {z} from 'genkit';
 
 const GenerateCareerProfileInputSchema = z.object({
@@ -50,6 +51,7 @@ const prompt = ai.definePrompt({
   name: 'generateCareerProfilePrompt',
   input: {schema: GenerateCareerProfileInputSchema},
   output: {schema: GenerateCareerProfileOutputSchema},
+  model: googleAI.model('gemma-7b-it-free'),
   prompt: `You are an expert career counselor AI, acting as a friendly and inspiring guide for a student in India. Your goal is to generate a comprehensive, accurate, and engaging career profile based on the user's input.
 
   The user has provided the following input: {{{userInput}}}
@@ -65,7 +67,7 @@ const prompt = ai.definePrompt({
       *   **skills**: For each of the 5-7 skills, provide a detailed 2-3 sentence description explaining *why* the skill is essential and how it's applied in this specific career.
       *   **learningRoadmap**: Create a clear, 4-step roadmap that guides a beginner. Start with foundational knowledge and progress to advanced specializations. Be specific.
       *   **jobMarketInsights**:
-          *   **salaryRange**: Provide a realistic salary range in **Indian Rupees (INR)**. The 'min' and 'max' values should be numbers representing Lakhs Per Annum (LPA). For example, if a salary is 5,00,000 INR, the value for the field should be the number 5. Do not include the currency symbol or "LPA" text in the number fields.
+          *   **salaryRange**: Provide a realistic salary range in **Indian Rupees (INR)**. The 'min' and 'max' values must be numbers only representing Lakhs Per Annum (LPA). For example, if a salary is 5,00,000 INR, the value for the field should be the number 5. Do not include currency symbols or "LPA" text in the number fields.
           *   **demand**: State the current job demand clearly (e.g., "High", "Growing").
           *   **futureOutlook**: Write a concise but encouraging sentence about future prospects.
       *   **suggestedRoles**: List a few realistic entry-level or related job titles.

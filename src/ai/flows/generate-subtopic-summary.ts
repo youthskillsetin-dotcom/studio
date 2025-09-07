@@ -10,6 +10,7 @@
  */
 
 import {ai} from '@/ai/genkit';
+import {googleAI} from '@genkit-ai/googleai';
 import {z} from 'genkit';
 
 const GenerateSubtopicSummaryInputSchema = z.object({
@@ -31,6 +32,7 @@ const prompt = ai.definePrompt({
   name: 'generateSubtopicSummaryPrompt',
   input: {schema: GenerateSubtopicSummaryInputSchema},
   output: {schema: GenerateSubtopicSummaryOutputSchema},
+  model: googleAI.model('gemma-7b-it-free'),
   prompt: `You are an expert educator. Your task is to create a detailed summary of the provided subtopic.
 
 The response should consist of two parts:
