@@ -5,6 +5,7 @@ import { type NextRequest, NextResponse } from 'next/server'
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url)
   const code = searchParams.get('code')
+  // if "next" is in param, use it as the redirect URL
   const next = searchParams.get('next') ?? '/dashboard'
 
   if (code) {
@@ -17,22 +18,23 @@ export async function GET(request: NextRequest) {
             return request.cookies.get(name)?.value
           },
           set(name: string, value: string, options: CookieOptions) {
-            const newResponse = NextResponse.redirect(new URL(next, origin));
-            newResponse.cookies.set({ name, value, ...options });
+            // If the cookie is updated, update the cookies for the request and response
+            request.cookies.set({ name, value, ...options })
+            const response = NextResponse.redirect(new URL(next, origin));
+            response.cookies.set({ name, value, ...options });
+            return response;
           },
           remove(name: string, options: CookieOptions) {
-            const newResponse = NextResponse.redirect(new URL(next, origin));
-            newResponse.cookies.set({ name, value: '', ...options});
+            // If the cookie is removed, update the cookies for the request and response
+            request.cookies.set({ name, value: '', ...options})
+            const response = NextResponse.redirect(new URL(next, origin));
+            response.cookies.set({ name, value: '', ...options});
+            return response;
           },
         },
       }
     )
-    const { error, data } = await supabase.auth.exchangeCodeForSession(code)
-    
-    // This part is for third-party providers or magic links, not OTP.
-    // The user signs up with email/password, then is redirected to /verify page.
-    // So this callback is mainly for logins after the initial signup.
-
+    const { error } = await supabase.auth.exchangeCodeForSession(code)
     if (!error) {
       return NextResponse.redirect(new URL(next, origin));
     }

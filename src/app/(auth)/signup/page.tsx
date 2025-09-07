@@ -60,7 +60,6 @@ export default function SignupPage() {
     setIsLoading(true);
     setError(null);
     
-    // With email confirmation disabled, this will sign the user up and log them in.
     const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
       email: values.email,
       password: values.password,
@@ -68,19 +67,20 @@ export default function SignupPage() {
         data: {
             full_name: values.fullName,
             phone: values.phone,
-        }
+        },
+        // This will send a confirmation email
+        emailRedirectTo: `${location.origin}/auth/callback`,
       },
     });
 
     if (signUpError) {
       setError(signUpError.message);
-      setIsLoading(false);
     } else if (signUpData.user) {
-        // Since verification is off, user is logged in. Redirect to dashboard.
-        const redirectUrl = plan ? `/subscribe?plan=${plan}` : `/dashboard`;
+        // Redirect to a page that tells the user to check their email.
+        const redirectUrl = plan ? `/verify?plan=${plan}` : `/verify`;
         router.push(redirectUrl);
-        router.refresh();
     }
+    setIsLoading(false);
   }
 
   async function handleGoogleLogin() {
