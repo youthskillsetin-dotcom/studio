@@ -66,7 +66,7 @@ export default function LandingPage() {
       </header>
 
       <main className="flex-1">
-        <section className="relative text-center py-20 md:py-32 flex flex-col items-center justify-center">
+        <section className="relative text-left py-20 md:py-32 flex flex-col items-start justify-center">
            <motion.div
               initial="hidden"
               animate="show"
@@ -90,13 +90,13 @@ export default function LandingPage() {
               <span className="text-primary">Build Your Future.</span>
             </motion.h1>
             <motion.p
-              className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground"
+              className="mt-6 max-w-2xl text-lg text-muted-foreground"
               variants={FADE_IN_ANIMATION_VARIANTS}
             >
               YouthSkillset is an AI-powered platform that equips teens with the essential life and career skills needed to succeed in the real world. From financial literacy to personal branding, start your journey today.
             </motion.p>
             <motion.div
-                className="mt-8 flex justify-center gap-4"
+                className="mt-8 flex justify-start gap-4"
                 variants={FADE_IN_ANIMATION_VARIANTS}
             >
               <Button size="lg" asChild>
