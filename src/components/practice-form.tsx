@@ -1,3 +1,4 @@
+
 'use client';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -9,7 +10,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Textarea } from '@/components/ui/textarea';
 import type { Subtopic } from '@/lib/types';
 import { generateAIFeedback } from '@/ai/flows/generate-ai-feedback-on-subtopic';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Send } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 const formSchema = z.object({
@@ -59,9 +60,8 @@ export function PracticeForm({ subtopic }: { subtopic: Subtopic }) {
 
   return (
     <div className="space-y-6">
-      <p className="font-semibold">{subtopic.practice_question}</p>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <FormField
             control={form.control}
             name="answer"
@@ -72,36 +72,44 @@ export function PracticeForm({ subtopic }: { subtopic: Subtopic }) {
                     <RadioGroup
                       onValueChange={field.onChange}
                       defaultValue={field.value}
-                      className="flex flex-col space-y-1"
+                      className="flex flex-col space-y-2"
                     >
                       {subtopic.practice_options.map((option, index) => (
                         <FormItem key={index} className="flex items-center space-x-3 space-y-0">
-                          <FormControl>
-                            <RadioGroupItem value={option} />
-                          </FormControl>
-                          <FormLabel className="font-normal">{option}</FormLabel>
+                          <label className="flex items-center w-full p-3 rounded-lg border border-border hover:bg-muted/50 cursor-pointer has-[:checked]:bg-primary/10 has-[:checked]:border-primary transition-colors">
+                            <FormControl>
+                                <RadioGroupItem value={option} />
+                            </FormControl>
+                            <span className="ml-3 font-normal">{option}</span>
+                          </label>
                         </FormItem>
                       ))}
                     </RadioGroup>
                   </FormControl>
                 ) : (
                   <FormControl>
-                    <Textarea placeholder="Type your answer here..." {...field} />
+                    <Textarea placeholder="Type your answer here..." {...field} rows={6}/>
                   </FormControl>
                 )}
                 <FormMessage />
               </FormItem>
             )}
           />
-          <Button type="submit" disabled={isLoading} className="w-full">
-            {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            Submit Answer
-          </Button>
+           <div className="flex justify-end">
+            <Button type="submit" disabled={isLoading}>
+                {isLoading ? (
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                ) : (
+                    <Send className="mr-2" />
+                )}
+                Submit Answer
+            </Button>
+          </div>
         </form>
       </Form>
 
       {feedback && (
-        <Alert variant={getAlertVariant()}>
+        <Alert variant={getAlertVariant()} className="mt-8">
           <AlertTitle className="font-headline">{isCorrect ? "Great Job!" : "Needs Improvement"}</AlertTitle>
           <AlertDescription>
             <div className="prose prose-sm dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: feedback }} />
