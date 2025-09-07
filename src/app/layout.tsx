@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { Analytics } from "@vercel/analytics/react";
 import { Inter, Space_Grotesk } from 'next/font/google';
 import { cn } from '@/lib/utils';
+import { Footer } from '@/components/footer';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -39,6 +40,7 @@ export default function RootLayout({
         {children}
         <Toaster />
         <Analytics />
+        <Footer />
       </body>
     </html>
   );
