@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -18,7 +19,7 @@ const GenerateSubtopicSummaryInputSchema = z.object({
 export type GenerateSubtopicSummaryInput = z.infer<typeof GenerateSubtopicSummaryInputSchema>;
 
 const GenerateSubtopicSummaryOutputSchema = z.object({
-  summary: z.string().describe('A 2-3 sentence summary of the subtopic, followed by a markdown list of 3-4 key takeaways.'),
+  summary: z.string().describe('A 2-3 sentence summary of the subtopic, followed by a bulleted list of 3-4 key takeaways. Use standard markdown for formatting.'),
 });
 export type GenerateSubtopicSummaryOutput = z.infer<typeof GenerateSubtopicSummaryOutputSchema>;
 
@@ -34,9 +35,9 @@ const prompt = ai.definePrompt({
 
 The response should consist of two parts:
 1. A concise, 2-3 sentence paragraph that captures the essence of the lesson.
-2. A bulleted list (using markdown) of the 3-4 most important key takeaways from the content.
+2. A bulleted list (using standard markdown like '*' or '-') of the 3-4 most important key takeaways from the content.
 
-Focus on the key concepts and actionable advice presented in the content.
+Focus on the key concepts and actionable advice presented in the content. Ensure the entire output is a single string formatted with markdown.
 
 Subtopic Title: {{{title}}}
 
