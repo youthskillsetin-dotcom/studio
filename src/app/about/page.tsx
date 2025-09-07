@@ -98,6 +98,7 @@ export default function AboutPage() {
                         </Avatar>
                         <h3 className="mt-6 text-lg font-semibold text-foreground">Amit kumar Metha</h3>
                         <p className="text-primary">CEO & Founder</p>
+                        <p className="text-sm text-muted-foreground mt-4">With a deep-seated belief that education is the most powerful tool for social change, Amit founded YouthSkillset to address the critical gap between traditional schooling and real-world readiness. He witnessed firsthand how many bright young students struggled after graduation due to a lack of practical skills in personal finance, digital literacy, and career navigation. Drawing on his extensive background in mentoring youth and his passion for technology, Amit conceptualized a platform that was both accessible and engaging. He is dedicated to creating a learning environment where every young person in India, regardless of their background, can gain the confidence and competence needed to build a successful and fulfilling future in the modern economy.</p>
                     </CardContent>
                 </Card>
                 <Card className="text-center rounded-2xl border-0 shadow-none">
