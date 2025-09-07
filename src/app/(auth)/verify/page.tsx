@@ -24,11 +24,12 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import { Loader2 } from 'lucide-react';
+import { Loader2, RefreshCw } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { motion } from 'framer-motion';
+import { useToast } from '@/hooks/use-toast';
 
 const formSchema = z.object({
     token: z.string().min(6, { message: "Your OTP should be 6 characters."}),
@@ -41,7 +42,9 @@ function VerifyPageContent() {
     const next = searchParams.get('next') ?? '/dashboard';
     const supabase = createClient();
     const [isLoading, setIsLoading] = useState(false);
+    const [isResending, setIsResending] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const { toast } = useToast();
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -74,6 +77,35 @@ function VerifyPageContent() {
 
         setIsLoading(false);
     }
+
+    async function handleResendOtp() {
+      setIsResending(true);
+      setError(null);
+      if (!email) {
+        setError("Email not found in URL. Cannot resend OTP.");
+        setIsResending(false);
+        return;
+      }
+      
+      // In a real app with email services configured, this sends a new OTP.
+      // In this local environment, it won't send an email but we simulate the flow.
+      const { error } = await supabase.auth.resend({
+        type: 'signup',
+        email: email,
+      });
+
+      if (error) {
+        setError(error.message);
+      } else {
+        toast({
+          title: "OTP Resent",
+          description: "A new OTP has been sent to your email address.",
+        });
+      }
+
+      setTimeout(() => setIsResending(false), 30000); // 30-second cooldown
+    }
+
     return (
     <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -111,10 +143,14 @@ function VerifyPageContent() {
                             )}
                         />
                     </CardContent>
-                    <CardFooter>
+                    <CardFooter className="flex flex-col gap-4">
                         <Button className="w-full" type="submit" disabled={isLoading}>
                             {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                             Verify & Sign In
+                        </Button>
+                        <Button className="w-full" variant="secondary" type="button" onClick={handleResendOtp} disabled={isResending}>
+                           {isResending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <RefreshCw className="mr-2 h-4 w-4" />}
+                           {isResending ? 'Sending...' : 'Resend OTP'}
                         </Button>
                     </CardFooter>
                 </form>
