@@ -44,7 +44,7 @@ const itemVariants = {
   },
 };
 
-const formatSalary = (amount: number) => {
+const formatSalary = (amount: number | string) => {
     const numericAmount = Number(amount);
     if (isNaN(numericAmount)) {
       return `₹-- LPA`;

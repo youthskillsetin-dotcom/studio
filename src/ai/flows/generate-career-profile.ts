@@ -82,7 +82,7 @@ const generateCareerProfileFlow = ai.defineFlow(
     inputSchema: GenerateCareerProfileInputSchema,
     outputSchema: GenerateCareerProfileOutputSchema,
   },
-  async input => {
+  async (input) => {
     const {output} = await prompt(input);
     return output!;
   }
