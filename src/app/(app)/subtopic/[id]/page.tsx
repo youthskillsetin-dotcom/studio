@@ -1,5 +1,5 @@
 
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { PracticeForm } from '@/components/practice-form';
 import Link from 'next/link';
@@ -8,6 +8,9 @@ import sampleContent from '../../../../../sample-content.json';
 import type { Subtopic, Lesson, PracticeQuestion } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { generateSubtopicSummary } from '@/ai/flows/generate-subtopic-summary';
+import { createClient } from '@/lib/supabase/server';
+import { cookies } from 'next/headers';
+import { getUserSubscription } from '@/lib/data';
 
 
 // Since we are not using a DB, we'll create a simple function to get data from the JSON
@@ -55,12 +58,21 @@ function getSubtopicTitleById(id: string): string | null {
 
 
 export default async function SubtopicPage({ params }: { params: { id: string } }) {
+  const cookieStore = cookies();
+  const supabase = createClient(cookieStore);
 
   const data = getSubtopicById(params.id);
   if (!data) {
     notFound();
   }
   const { lesson, nextSubtopicId, ...subtopic } = data;
+
+  // Enforce subscription check
+  const userSubscription = await getUserSubscription(supabase);
+  const hasPremium = userSubscription?.is_active ?? false;
+  if (!lesson.is_free && !hasPremium) {
+    redirect(`/lessons/${lesson.id}`);
+  }
 
   const summaryResult = await generateSubtopicSummary({
     title: subtopic.title,
@@ -115,7 +127,7 @@ export default async function SubtopicPage({ params }: { params: { id: string } 
                     <CardTitle className="font-headline">AI Summary</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <p className="text-sm text-muted-foreground whitespace-pre-line">{summaryResult.summary}</p>
+                    <div className="prose prose-sm dark:prose-invert max-w-none text-muted-foreground" dangerouslySetInnerHTML={{ __html: summaryResult.summary.replace(/\n/g, '<br />') }} />
                 </CardContent>
              </Card>
 

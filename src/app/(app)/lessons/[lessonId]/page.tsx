@@ -5,6 +5,9 @@ import { SubtopicRow } from '@/components/subtopic-row';
 import { CountdownTimer } from '@/components/countdown-timer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import sampleContent from '../../../../../sample-content.json';
+import { createClient } from '@/lib/supabase/server';
+import { cookies } from 'next/headers';
+import { getUserSubscription } from '@/lib/data';
 
 // Since we are not using a DB, we'll create a simple function to get data from the JSON
 function getLessonById(id: string): (Lesson & { subtopics: Subtopic[] }) | null {
@@ -28,12 +31,17 @@ function getLessonById(id: string): (Lesson & { subtopics: Subtopic[] }) | null 
 }
 
 export default async function LessonDetailPage({ params }: { params: { lessonId: string } }) {
+  const cookieStore = cookies();
+  const supabase = createClient(cookieStore);
+  
   const lesson = getLessonById(params.lessonId);
   if (!lesson) {
     notFound();
   }
 
   const subtopics = lesson.subtopics;
+  const userSubscription = await getUserSubscription(supabase);
+  const hasPremium = userSubscription?.is_active ?? false;
 
   const getNextUnlockTime = () => {
     const now = new Date();
@@ -74,9 +82,9 @@ export default async function LessonDetailPage({ params }: { params: { lessonId:
         <CardContent className="space-y-2">
           {subtopics && subtopics.length > 0 ? (
             subtopics.map((subtopic: Subtopic) => {
-              // Since there is no user, we can hardcode the status.
-              // 'unlocked' for free lessons, or based on some other logic.
-              const status = lesson.is_free ? 'unlocked' : 'locked';
+              const isLocked = !lesson.is_free && !hasPremium;
+              // Here we can assume a completed status based on another data source in a real app
+              const status = isLocked ? 'locked' : 'unlocked';
               return (
                 <SubtopicRow key={subtopic.id} subtopic={subtopic} status={status} />
               );

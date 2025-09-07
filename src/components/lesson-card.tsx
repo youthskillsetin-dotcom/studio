@@ -44,7 +44,7 @@ export function LessonCard({ lesson, hasPremium }: LessonCardProps) {
 
   if (isLocked) {
     return (
-      <div className="relative h-full group">
+       <Link href="/#pricing" className="block h-full group relative">
         <div className="absolute inset-0 bg-black/30 z-10 rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
           <div className="text-center text-white">
             <Lock className="w-8 h-8 mx-auto mb-2" />
@@ -52,7 +52,7 @@ export function LessonCard({ lesson, hasPremium }: LessonCardProps) {
           </div>
         </div>
         <CardInnerContent />
-      </div>
+      </Link>
     );
   }
 
