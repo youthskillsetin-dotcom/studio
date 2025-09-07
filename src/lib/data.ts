@@ -65,7 +65,7 @@ export async function getUserProgress(supabase: SupabaseClient): Promise<UserSub
         .eq('user_id', user.id);
 
     if (error) {
-        console.error('Error fetching user progress:', error);
+        console.error('Error fetching user progress:', error.message);
         return [];
     }
     return data;
@@ -83,8 +83,8 @@ export async function getUserSubscription(supabase: SupabaseClient): Promise<Use
         .order('created_at', { ascending: false })
         .maybeSingle();
     
-    if (error && error.code !== 'PGRST116') {
-        console.error('Error fetching subscription', error);
+    if (error && error.code !== 'PGRST116') { // PGRST116 means no rows found
+        console.error('Error fetching subscription:', error.message);
         return null;
     }
 
@@ -102,8 +102,8 @@ export async function getUserProfile(supabase: SupabaseClient): Promise<UserProf
         .eq('id', user.id)
         .maybeSingle();
     
-    if (error) {
-        console.error('Error fetching user profile:', error);
+    if (error && error.code !== 'PGRST116') { // PGRST116 means no rows found
+        console.error('Error fetching user profile:', error.message);
         return null;
     }
     return data;
@@ -118,20 +118,19 @@ export async function getPosts(supabase: SupabaseClient): Promise<Post[]> {
       created_at,
       title,
       content,
-      user_id,
-      profiles ( email )
+      author_email:profiles ( email )
     `)
     .order('created_at', { ascending: false });
 
-  if (error) {
-    console.error('Error fetching posts:', error);
+  if (error && error.code !== 'PGRST116') {
+    console.error('Error fetching posts:', error.message);
     return [];
   }
 
-  const posts = data.map(p => ({
+  const posts = (data || []).map(p => ({
       ...p,
       // @ts-ignore: supabase-js typing for joins can be tricky
-      author_email: p.profiles?.email ?? 'Anonymous',
+      author_email: p.author_email?.email ?? 'Anonymous',
       comments: []
   }));
 
@@ -148,33 +147,33 @@ export async function getPostById(supabase: SupabaseClient, id: string): Promise
       created_at,
       title,
       content,
-      user_id,
-      profiles ( email ),
+      author_email:profiles ( email ),
       comments (
         id,
         created_at,
         content,
-        user_id,
-        profiles ( email )
+        author_email:profiles ( email )
       )
     `)
     .eq('id', id)
     .order('created_at', { foreignTable: 'comments', ascending: true })
-    .single();
+    .maybeSingle();
 
-  if (error) {
-    console.error('Error fetching post by ID:', error);
+  if (error && error.code !== 'PGRST116') {
+    console.error('Error fetching post by ID:', error.message);
     return null;
   }
+  
+  if (!data) return null;
 
   const post = {
     ...data,
     // @ts-ignore
-    author_email: data.profiles?.email ?? 'Anonymous',
-    comments: data.comments.map(c => ({
+    author_email: data.author_email?.email ?? 'Anonymous',
+    comments: (data.comments || []).map(c => ({
         ...c,
         // @ts-ignore
-        author_email: c.profiles?.email ?? 'Anonymous'
+        author_email: c.author_email?.email ?? 'Anonymous'
     }))
   };
   
