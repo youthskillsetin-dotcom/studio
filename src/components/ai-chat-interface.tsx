@@ -12,9 +12,10 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
 import { aiMentorChat } from '@/ai/flows/ai-mentor-chat-interface';
-import { Send, Bot, User, Loader2, Sparkles, PlusCircle } from 'lucide-react';
+import { Send, Bot, User, Loader2, Sparkles, PlusCircle, Copy, Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip';
 
 
 const chatSchema = z.object({
@@ -40,6 +41,7 @@ export default function AIChatInterface() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showSlashCommands, setShowSlashCommands] = useState(false);
+  const [copiedMessageIndex, setCopiedMessageIndex] = useState<number | null>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
   const form = useForm<z.infer<typeof chatSchema>>({
@@ -89,6 +91,13 @@ export default function AIChatInterface() {
   const handleNewChat = () => {
     setMessages([initialMessage]);
     localStorage.removeItem(CHAT_HISTORY_KEY);
+  };
+  
+  const handleCopy = (content: string, index: number) => {
+    navigator.clipboard.writeText(content).then(() => {
+        setCopiedMessageIndex(index);
+        setTimeout(() => setCopiedMessageIndex(null), 2000); // Reset after 2 seconds
+    });
   };
 
 
@@ -158,7 +167,7 @@ export default function AIChatInterface() {
               <motion.div
                 key={index}
                 className={cn(
-                  'flex items-start gap-4',
+                  'flex items-start gap-4 group',
                   message.role === 'user' ? 'justify-end' : ''
                 )}
                 initial={{ opacity: 0, y: 10 }}
@@ -178,8 +187,27 @@ export default function AIChatInterface() {
                       : 'bg-muted'
                   )}
                 >
-                  {message.content}
+                  <div dangerouslySetInnerHTML={{ __html: message.content.replace(/\n/g, '<br />') }} className="prose prose-sm dark:prose-invert max-w-none" />
                 </div>
+                 {message.role === 'assistant' && (
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity"
+                          onClick={() => handleCopy(message.content, index)}
+                        >
+                           {copiedMessageIndex === index ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>{copiedMessageIndex === index ? 'Copied!' : 'Copy text'}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                 )}
                  {message.role === 'user' && (
                   <Avatar className="h-8 w-8">
                     <AvatarFallback><User className="h-5 w-5"/></AvatarFallback>
@@ -291,3 +319,5 @@ export default function AIChatInterface() {
     </Card>
   );
 }
+
+    

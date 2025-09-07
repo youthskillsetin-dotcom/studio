@@ -12,7 +12,7 @@
 import {ai} from '@/ai/genkit';
 import { googleAI } from '@genkit-ai/googleai';
 import {z} from 'genkit';
-import sampleContent from '../../../sample-content.json';
+import sampleContent from '../../sample-content.json';
 
 const AIMentorChatInputSchema = z.object({
   message: z.string().describe('The message from the user to the AI mentor.'),
@@ -90,3 +90,5 @@ const aiMentorChatFlow = ai.defineFlow(
     return output!;
   }
 );
+
+    
