@@ -18,7 +18,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 
 const chatSchema = z.object({
-  message: z.string().min(1, 'Message cannot be empty'),
+  message: z.string(), // Allow empty to handle the slash command
 });
 
 type Message = {
@@ -27,24 +27,32 @@ type Message = {
 };
 
 const conversationStarters = [
-  'Explain the 50-30-20 rule simply.',
-  'What skills do I need to be a UX Designer?',
-  'Help me practice for my lesson on AI Bias.',
-  'Create a short quiz on personal finance.',
+  { title: 'Explain a Concept', prompt: 'Explain the 50-30-20 rule simply.' },
+  { title: 'Ask About Careers', prompt: 'What skills do I need to be a UX Designer?' },
+  { title: 'Get Practice Help', prompt: 'Help me practice for my lesson on AI Bias.' },
+  { title: 'Request a Quiz', prompt: 'Create a short quiz on personal finance.' },
 ];
 
-const initialMessage: Message = { role: 'assistant', content: "Hello! I'm MentorAI. How can I help you level up your skills today?" };
+const initialMessage: Message = { role: 'assistant', content: "Hello! I'm MentorAI. How can I help you level up your skills today? Type `/` to see what I can do!" };
 const CHAT_HISTORY_KEY = 'ai-mentor-chat-history';
 
 export default function AIChatInterface() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [showSlashCommands, setShowSlashCommands] = useState(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
   const form = useForm<z.infer<typeof chatSchema>>({
     resolver: zodResolver(chatSchema),
     defaultValues: { message: '' },
   });
+
+  const messageValue = form.watch('message');
+
+  useEffect(() => {
+    setShowSlashCommands(messageValue === '/');
+  }, [messageValue]);
+
 
    useEffect(() => {
     // Load chat history from localStorage on initial render
@@ -90,7 +98,8 @@ export default function AIChatInterface() {
     const userMessage: Message = { role: 'user', content: messageText };
     setMessages((prev) => [...prev, userMessage]);
     setIsLoading(true);
-    form.reset();
+    form.reset({ message: '' });
+    setShowSlashCommands(false);
 
     try {
       const chatHistory = messages.map(m => ({ role: m.role, content: m.content }));
@@ -111,6 +120,7 @@ export default function AIChatInterface() {
   }
 
   async function onSubmit(values: z.infer<typeof chatSchema>) {
+    if (values.message === '/') return; // Don't send if it's just the slash
     await sendMessage(values.message);
   }
 
@@ -119,9 +129,13 @@ export default function AIChatInterface() {
     sendMessage(starter);
   };
 
+  const handleSlashCommandClick = (prompt: string) => {
+    sendMessage(prompt);
+  };
+
 
   return (
-    <Card className="flex flex-col flex-grow">
+    <Card className="flex flex-col flex-grow relative">
        <CardHeader className="flex-row items-center justify-between border-b">
          <div className="flex items-center gap-2">
             <Avatar className="h-8 w-8">
@@ -192,11 +206,11 @@ export default function AIChatInterface() {
                       <Button
                         variant="outline"
                         className="w-full h-full text-left justify-start py-3"
-                        onClick={() => handleStarterClick(starter)}
+                        onClick={() => handleStarterClick(starter.prompt)}
                         disabled={isLoading}
                       >
                          <Sparkles className="w-4 h-4 mr-2 text-primary shrink-0" />
-                        {starter}
+                        {starter.prompt}
                       </Button>
                     </motion.div>
                   ))}
@@ -222,6 +236,38 @@ export default function AIChatInterface() {
           </div>
         </ScrollArea>
       </CardContent>
+       <AnimatePresence>
+        {showSlashCommands && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.2 }}
+            className="absolute bottom-20 left-4 right-4 z-10"
+          >
+            <Card className="shadow-lg">
+              <CardHeader className="pb-2">
+                <p className="text-sm font-semibold">Conversation Starters</p>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-col gap-2">
+                  {conversationStarters.map((command) => (
+                    <Button
+                      key={command.title}
+                      variant="ghost"
+                      className="justify-start"
+                      onClick={() => handleSlashCommandClick(command.prompt)}
+                    >
+                      <Sparkles className="mr-2 h-4 w-4" />
+                      {command.prompt}
+                    </Button>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <CardFooter className="border-t p-4">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="flex w-full items-center space-x-2">
@@ -231,7 +277,7 @@ export default function AIChatInterface() {
               render={({ field }) => (
                 <FormItem className="flex-1">
                   <FormControl>
-                    <Input placeholder="Type your message..." {...field} autoComplete="off" disabled={isLoading} />
+                    <Input placeholder="Type your message, or '/' for commands" {...field} autoComplete="off" disabled={isLoading} />
                   </FormControl>
                 </FormItem>
               )}
