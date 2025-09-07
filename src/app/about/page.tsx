@@ -19,8 +19,8 @@ export default function AboutPage() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
-            <div>
+        <div className="mb-24">
+            <div className="max-w-3xl mx-auto text-center">
                 <h2 className="text-3xl font-bold font-headline mb-4">Our Story</h2>
                 <p className="text-muted-foreground text-lg mb-4">
                     YouthSkillSet was born from a simple observation: schools teach academics, but often miss the practical life and career skills essential for the real world. We saw bright teens graduate unprepared for personal finance, career building, or safe digital navigation.
@@ -28,9 +28,6 @@ export default function AboutPage() {
                 <p className="text-muted-foreground text-lg">
                     So, we created the resource we wish we had—an engaging, AI-powered platform that makes learning these vital skills accessible, fun, and directly applicable to the challenges and opportunities of today.
                 </p>
-            </div>
-            <div className="rounded-lg bg-muted/40 p-8">
-                <Image src="https://picsum.photos/600/400" alt="Students collaborating" className="rounded-lg shadow-lg" data-ai-hint="students learning" width={600} height={400} />
             </div>
         </div>
 
