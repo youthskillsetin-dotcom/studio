@@ -4,7 +4,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { CheckCircle, Zap, BrainCircuit } from 'lucide-react';
+import { CheckCircle, Zap, BrainCircuit, BookOpen, BarChart, ShieldCheck, Cpu, Briefcase, IndianRupee } from 'lucide-react';
 import { Logo } from '@/components/icons';
 import Image from 'next/image';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -17,6 +17,13 @@ export default function LandingPage() {
     hidden: { opacity: 0, y: 10 },
     show: { opacity: 1, y: 0, transition: { type: 'spring' } },
   };
+  
+  const modules = [
+    { icon: IndianRupee, title: 'Personal Finance 101', description: 'Master budgeting, saving, and the basics of financial independence.' },
+    { icon: BarChart, title: 'Banking & Investments', description: 'Learn about safe investments, mutual funds, and the stock market.' },
+    { icon: Cpu, title: 'Artificial Intelligence', description: 'Understand how AI is used in finance, from fraud detection to trading bots.' },
+    { icon: Briefcase, title: 'Entrepreneurship', description: 'Develop your big idea, create a business plan, and learn about pricing.' },
+  ];
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
@@ -77,31 +84,36 @@ export default function LandingPage() {
         </section>
 
         <section className="bg-muted/40 py-20">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-              <div className="flex flex-col items-center">
-                <div className="bg-primary/10 p-4 rounded-full">
-                  <Zap className="h-8 w-8 text-primary" />
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-12">
+                    <h2 className="text-3xl md:text-4xl font-extrabold font-headline">
+                        Module Breakdown
+                    </h2>
+                    <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+                        Explore the wide range of topics we cover to build a solid foundation for your success.
+                    </p>
                 </div>
-                <h3 className="mt-4 text-xl font-headline font-semibold">Structured Learning Paths</h3>
-                <p className="mt-2 text-muted-foreground">Follow curated lessons designed by industry experts to build skills from the ground up.</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <div className="bg-primary/10 p-4 rounded-full">
-                  <BrainCircuit className="h-8 w-8 text-primary" />
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {modules.map((item, index) => (
+                        <Card key={index} className="text-center shadow-sm hover:shadow-lg transition-shadow">
+                            <CardHeader className="flex flex-col items-center">
+                                <div className="p-4 bg-primary/10 rounded-full mb-4">
+                                    <item.icon className="w-8 h-8 text-primary" />
+                                </div>
+                                <CardTitle className="font-headline">{item.title}</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <p className="text-muted-foreground">{item.description}</p>
+                            </CardContent>
+                        </Card>
+                    ))}
                 </div>
-                <h3 className="mt-4 text-xl font-headline font-semibold">AI-Powered Feedback</h3>
-                <p className="mt-2 text-muted-foreground">Get instant, personalized feedback on your practice attempts to accelerate your growth.</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <div className="bg-primary/10 p-4 rounded-full">
-                  <CheckCircle className="h-8 w-8 text-primary" />
+                 <div className="text-center mt-12">
+                    <Button asChild>
+                        <Link href="/lessons">View All Lessons</Link>
+                    </Button>
                 </div>
-                <h3 className="mt-4 text-xl font-headline font-semibold">Real-World Practice</h3>
-                <p className="mt-2 text-muted-foreground">Apply what you learn with hands-on exercises that mirror real-world challenges.</p>
-              </div>
             </div>
-          </div>
         </section>
 
         <section id="pricing" className="bg-background py-20">
