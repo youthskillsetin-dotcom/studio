@@ -105,17 +105,21 @@ export default function AIChatInterface() {
     if (!messageText.trim()) return;
 
     const userMessage: Message = { role: 'user', content: messageText };
-    setMessages((prev) => [...prev, userMessage]);
+    const currentMessages: Message[] = [...messages, userMessage];
+    setMessages(currentMessages);
     setIsLoading(true);
     form.reset({ message: '' });
     setShowSlashCommands(false);
 
     try {
-      const chatHistory = messages.map(m => ({ role: m.role, content: m.content }));
+      const chatHistoryForApi = currentMessages.slice(0, -1).map(m => ({
+          role: m.role === 'user' ? 'user' : 'model',
+          content: [{text: m.content}]
+      })) as any[];
       
       const response = await aiMentorChat({
         message: messageText,
-        chatHistory: chatHistory,
+        chatHistory: chatHistoryForApi,
       });
 
       const assistantMessage: Message = { role: 'assistant', content: response.response };

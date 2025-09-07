@@ -13,12 +13,15 @@ import {ai} from '@/ai/genkit';
 import { googleAI } from '@genkit-ai/googleai';
 import {z} from 'genkit';
 import sampleContent from '../../../sample-content.json';
+import { Message } from 'genkit/content';
 
 const AIMentorChatInputSchema = z.object({
   message: z.string().describe('The message from the user to the AI mentor.'),
   chatHistory: z.array(z.object({
-    role: z.enum(['user', 'assistant']).describe('The role of the message sender.'),
-    content: z.string().describe('The content of the message.'),
+    role: z.enum(['user', 'model']).describe('The role of the message sender.'),
+    content: z.array(z.object({
+        text: z.string()
+    })).describe('The content of the message.'),
   })).optional().describe('The chat history between the user and the AI mentor.'),
 });
 export type AIMentorChatInput = z.infer<typeof AIMentorChatInputSchema>;
@@ -39,8 +42,8 @@ const prompt = ai.definePrompt({
   name: 'aiMentorChatPrompt',
   input: {schema: AIMentorChatInputSchema},
   output: {schema: AIMentorChatOutputSchema},
-  model: googleAI.model('gemini-1.5-flash'),
-  history: (input) => (input.chatHistory || []).map(msg => ({ role: msg.role, content: [{text: msg.content}]})),
+  model: 'googleai/gemini-1.5-flash',
+  history: (input) => input.chatHistory as Message[] | undefined,
   prompt: `You are MentorAI, a specialized AI assistant for the YouthSkillSet platform. Your persona is encouraging, knowledgeable, and slightly informal, like a friendly and approachable tutor for teenagers and young adults.
 
   **Your Core Mission:**
@@ -83,7 +86,7 @@ const aiMentorChatFlow = ai.defineFlow(
     outputSchema: AIMentorChatOutputSchema,
   },
   async input => {
-    const {output} = await prompt({message: input.message, chatHistory: input.chatHistory});
+    const {output} = await prompt(input);
     return output!;
   }
 );
