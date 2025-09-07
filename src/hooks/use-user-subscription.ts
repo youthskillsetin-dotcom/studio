@@ -20,8 +20,9 @@ export function useUserSubscription() {
             .eq('user_id', user.id)
             .single();
         
-        if (error && error.code !== 'PGRST116') {
-            console.error("Error fetching user subscription", error);
+        if (error && error.code !== 'PGRST116' && error.code !== '42P01') {
+            // Intentionally not logging this error to the console to avoid clutter
+            // in dev environments where the table might not exist yet.
         }
         
         setUserSubscription(data);

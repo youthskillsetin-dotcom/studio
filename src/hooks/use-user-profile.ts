@@ -22,8 +22,9 @@ export function useUserProfile() {
             .eq('id', user.id)
             .single();
 
-        if (error && error.code !== 'PGRST116') {
-            console.error("Error fetching user profile", error);
+        if (error && error.code !== 'PGRST116' && error.code !== '42P01') {
+             // Intentionally not logging this error to the console to avoid clutter
+             // in dev environments where the table might not exist yet.
         }
         
         const role = data?.role ?? user?.user_metadata?.role ?? 'user';
