@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { WelcomeHeader } from '@/components/dashboard/welcome-header';
 import { ProgressOverview } from '@/components/dashboard/progress-overview';
 import { TodaysLessonCard } from '@/components/dashboard/todays-lesson-card';
-import { PracticeZone } from '@/components/dashboard/practice-zone';
 import { SubscriptionCard } from '@/components/dashboard/subscription-card';
 import { BadgesGrid } from '@/components/dashboard/badges-grid';
 import { AIMentorCard } from '@/components/dashboard/ai-mentor-card';
@@ -56,7 +55,6 @@ export default function DashboardPage() {
         >
           <ProgressOverview />
           <TodaysLessonCard />
-          <PracticeZone />
         </motion.div>
         
         <motion.div 
