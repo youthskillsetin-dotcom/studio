@@ -5,7 +5,7 @@ import { notFound, useParams } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ChevronLeft, FileText, CheckCircle, ArrowRight, ArrowLeft, Banknote, ClipboardList, Lightbulb, ShieldAlert } from 'lucide-react';
+import { ChevronLeft, FileText, CheckCircle, ArrowRight, ArrowLeft, Banknote, ClipboardList, Lightbulb, ShieldAlert, Download } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { useState } from 'react';
 import { Progress } from '@/components/ui/progress';
@@ -299,11 +299,62 @@ const PhishingSimulation = () => {
 // Resume Builder Components
 const ResumeBuilderSimulation = () => {
     const [step, setStep] = useState(0);
+    const [resumeData, setResumeData] = useState({
+        fullName: '',
+        email: '',
+        phone: '',
+        linkedin: '',
+        experience: '',
+        education: '',
+        skills: ''
+    });
     const totalSteps = 4;
     const progress = ((step + 1) / (totalSteps + 1)) * 100;
     
     const nextStep = () => setStep(s => Math.min(s + 1, totalSteps));
     const prevStep = () => setStep(s => Math.max(s - 1, 0));
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setResumeData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleDownload = () => {
+        const resumeText = `
+RESUME
+====================
+
+**${resumeData.fullName}**
+${resumeData.email} | ${resumeData.phone} | ${resumeData.linkedin}
+
+---
+
+**Experience**
+--------------------
+${resumeData.experience}
+
+---
+
+**Education**
+--------------------
+${resumeData.education}
+
+---
+
+**Skills**
+--------------------
+${resumeData.skills}
+        `;
+        const blob = new Blob([resumeText.trim()], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'resume.txt';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    };
 
     return (
         <div className="lg:col-span-2 space-y-6">
@@ -316,23 +367,21 @@ const ResumeBuilderSimulation = () => {
                 </CardHeader>
                 <CardContent className="min-h-[250px]">
                     {step === 0 && <div className="grid grid-cols-2 gap-4">
-                        <div className="space-y-1"><Label>Full Name</Label><Input placeholder="e.g., Priya Kumar" /></div>
-                        <div className="space-y-1"><Label>Email</Label><Input placeholder="priya.kumar@email.com" type="email"/></div>
-                        <div className="space-y-1"><Label>Phone</Label><Input placeholder="9876543210" type="tel"/></div>
-                        <div className="space-y-1"><Label>LinkedIn Profile</Label><Input placeholder="linkedin.com/in/priya-k" /></div>
+                        <div className="space-y-1"><Label>Full Name</Label><Input name="fullName" value={resumeData.fullName} onChange={handleInputChange} placeholder="e.g., Priya Kumar" /></div>
+                        <div className="space-y-1"><Label>Email</Label><Input name="email" value={resumeData.email} onChange={handleInputChange} placeholder="priya.kumar@email.com" type="email"/></div>
+                        <div className="space-y-1"><Label>Phone</Label><Input name="phone" value={resumeData.phone} onChange={handleInputChange} placeholder="9876543210" type="tel"/></div>
+                        <div className="space-y-1"><Label>LinkedIn Profile</Label><Input name="linkedin" value={resumeData.linkedin} onChange={handleInputChange} placeholder="linkedin.com/in/priya-k" /></div>
                     </div>}
                     {step === 1 && <div className="space-y-4">
                         <p className="text-muted-foreground text-sm">Use action verbs to describe your accomplishments. Example: "Organized a school event for 100+ students."</p>
-                        <div className="space-y-1"><Label>Work/Volunteer Experience</Label><Textarea placeholder="Describe your roles and achievements..." rows={6}/></div>
+                        <div className="space-y-1"><Label>Work/Volunteer Experience</Label><Textarea name="experience" value={resumeData.experience} onChange={handleInputChange} placeholder="Describe your roles and achievements..." rows={6}/></div>
                     </div>}
                      {step === 2 && <div className="space-y-4">
-                        <div className="space-y-1"><Label>School/College Name</Label><Input placeholder="e.g., Delhi Public School" /></div>
-                        <div className="space-y-1"><Label>Degree/Course</Label><Input placeholder="e.g., High School Diploma" /></div>
-                         <div className="space-y-1"><Label>Graduation Year</Label><Input placeholder="e.g., 2024" /></div>
+                        <div className="space-y-1"><Label>Education</Label><Textarea name="education" value={resumeData.education} onChange={handleInputChange} placeholder="e.g., Delhi Public School, High School Diploma, 2024" rows={4}/></div>
                     </div>}
                      {step === 3 && <div className="space-y-4">
                          <p className="text-muted-foreground text-sm">List both technical (hard) and interpersonal (soft) skills.</p>
-                         <div className="space-y-1"><Label>Skills</Label><Textarea placeholder="e.g., Python, Public Speaking, Teamwork, Microsoft Excel" rows={4}/></div>
+                         <div className="space-y-1"><Label>Skills</Label><Textarea name="skills" value={resumeData.skills} onChange={handleInputChange} placeholder="e.g., Python, Public Speaking, Teamwork, Microsoft Excel" rows={4}/></div>
                     </div>}
                     {step === 4 && <div className="space-y-4 text-center">
                            <CheckCircle className="w-16 h-16 text-green-500 mx-auto" />
@@ -340,7 +389,13 @@ const ResumeBuilderSimulation = () => {
                            <p className="text-muted-foreground max-w-md mx-auto">
                             Excellent work! You've created a solid first draft of your resume. Remember to proofread and tailor it for every job you apply to.
                            </p>
-                           <Button asChild><Link href="/practice-lab">Back to All Labs</Link></Button>
+                           <div className="flex gap-4 justify-center">
+                             <Button onClick={handleDownload} variant="secondary">
+                                <Download className="w-4 h-4 mr-2" />
+                                Download Resume
+                             </Button>
+                             <Button asChild><Link href="/practice-lab">Back to All Labs</Link></Button>
+                           </div>
                     </div>}
                 </CardContent>
                 <CardFooter className="flex justify-between">
@@ -357,6 +412,7 @@ const ResumeBuilderSimulation = () => {
         </div>
     )
 }
+
 
 // Business Idea Canvas Components
 const BusinessCanvasSimulation = () => {
