@@ -81,14 +81,10 @@ export async function getUserSubscription(supabase: SupabaseClient): Promise<Use
         .select('*')
         .eq('user_id', user.id)
         .order('created_at', { ascending: false })
-        .limit(1)
-        .single();
+        .maybeSingle();
     
     if (error) {
-        // It's okay if no row is found, just means no subscription
-        if (error.code !== 'PGRST116') {
-             console.error('Error fetching subscription', error);
-        }
+        console.error('Error fetching subscription:', error);
         return null;
     }
 
