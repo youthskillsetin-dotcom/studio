@@ -2,7 +2,7 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { FlaskConical, ArrowRight, FileText, Banknote, ClipboardUser, Lightbulb, ShieldAlert } from 'lucide-react';
+import { FlaskConical, ArrowRight, FileText, Banknote, ClipboardList, Lightbulb, ShieldAlert } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 interface Lab {
@@ -35,7 +35,7 @@ const availableLabs: Lab[] = [
         id: 'resume-builder-lab',
         title: 'Resume Builder Lab',
         description: 'Create your first professional resume using our guided builder. Learn what to include to impress recruiters.',
-        icon: ClipboardUser,
+        icon: ClipboardList,
         tags: ['Careers', 'Branding', 'Essential'],
         href: '#',
     },
