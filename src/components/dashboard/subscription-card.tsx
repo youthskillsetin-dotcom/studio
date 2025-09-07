@@ -36,7 +36,7 @@ export function SubscriptionCard({ isPremium }: SubscriptionCardProps) {
                 <li className="flex items-center gap-2"><Star className="w-4 h-4 text-accent" /> Exclusive content</li>
             </ul>
             <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
-                <Link href="/#pricing">Upgrade to Premium</Link>
+                <Link href="/subscribe?plan=premium">Upgrade to Premium</Link>
             </Button>
           </div>
         )}
