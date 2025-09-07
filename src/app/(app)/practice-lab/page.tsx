@@ -12,6 +12,7 @@ interface Lab {
     icon: LucideIcon;
     tags: string[];
     href: string;
+    is_interactive: boolean;
 }
 
 const availableLabs: Lab[] = [
@@ -20,40 +21,45 @@ const availableLabs: Lab[] = [
         title: 'ITR Filing Simulation',
         description: 'Learn how to file your Income Tax Return step-by-step in this interactive lab. No real financial data needed!',
         icon: FileText,
-        tags: ['Finance', 'Taxes', 'Beginner'],
+        tags: ['Finance', 'Taxes', 'Interactive'],
         href: '/practice-lab/itr-filing-101',
+        is_interactive: true,
     },
     {
         id: 'budgeting-challenge',
         title: 'The 50-30-20 Budgeting Challenge',
         description: 'Take on a scenario-based challenge to create and manage a budget for a month. Make smart choices to reach your financial goals.',
         icon: Banknote,
-        tags: ['Finance', 'Budgeting', 'Practical'],
-        href: '#', // TODO: Link to the actual lab page
+        tags: ['Finance', 'Budgeting', 'Coming Soon'],
+        href: '#',
+        is_interactive: false,
     },
     {
         id: 'resume-builder-lab',
         title: 'Resume Builder Lab',
         description: 'Create your first professional resume using our guided builder. Learn what to include to impress recruiters.',
         icon: ClipboardList,
-        tags: ['Careers', 'Branding', 'Essential'],
+        tags: ['Careers', 'Branding', 'Coming Soon'],
         href: '#',
+        is_interactive: false,
     },
     {
         id: 'business-idea-canvas',
         title: 'Business Idea Canvas',
         description: 'Have a startup idea? Map it out using the Business Model Canvas to identify key strengths and weaknesses in your plan.',
         icon: Lightbulb,
-        tags: ['Entrepreneurship', 'Planning'],
+        tags: ['Entrepreneurship', 'Planning', 'Coming Soon'],
         href: '#',
+        is_interactive: false,
     },
      {
         id: 'phishing-challenge',
         title: 'Phishing Challenge',
         description: "Can you spot a fake email? Test your skills in this simulation by identifying phishing attempts and learning the tell-tale signs.",
         icon: ShieldAlert,
-        tags: ['Cybersecurity', 'Safety', 'Critical'],
+        tags: ['Cybersecurity', 'Safety', 'Coming Soon'],
         href: '#',
+        is_interactive: false,
     },
 ];
 
@@ -91,7 +97,7 @@ export default function PracticeLabPage() {
               <p className="text-muted-foreground text-sm">{lab.description}</p>
             </CardContent>
             <CardFooter>
-               <Button asChild className="w-full" disabled={lab.href === '#'}>
+               <Button asChild className="w-full" disabled={!lab.is_interactive}>
                     <Link href={lab.href}>
                         Start Lab <ArrowRight className="w-4 h-4 ml-2" />
                     </Link>
