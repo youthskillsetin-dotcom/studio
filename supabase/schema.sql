@@ -1,102 +1,97 @@
--- Create the posts table to store community discussion posts
-CREATE TABLE posts (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    user_id UUID REFERENCES auth.users(id) NOT NULL,
-    title TEXT NOT NULL,
-    content TEXT NOT NULL,
-    created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+
+-- Drop existing policies if they exist, to prevent errors on re-running the script.
+-- This makes the script idempotent.
+DROP POLICY IF EXISTS "Users can view their own posts." ON public.posts;
+DROP POLICY IF EXISTS "Users can create posts." ON public.posts;
+DROP POLICY IF EXISTS "Authenticated users can view all posts." ON public.posts;
+
+DROP POLICY IF EXISTS "Users can view their own comments." ON public.comments;
+DROP POLICY IF EXISTS "Users can create comments." ON public.comments;
+DROP POLICY IF EXISTS "Authenticated users can view all comments." ON public.comments;
+
+-- USERS Table
+-- This table is managed by Supabase Auth. We are just enabling RLS.
+ALTER TABLE IF EXISTS public.users ENABLE ROW LEVEL SECURITY;
+
+-- SUBSCRIPTIONS Table
+CREATE TABLE IF NOT EXISTS public.subscriptions (
+    id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+    user_id uuid NOT NULL REFERENCES public.users(id) ON DELETE CASCADE,
+    plan_name text,
+    is_active boolean DEFAULT false,
+    expires_at timestamptz,
+    created_at timestamptz DEFAULT now(),
+    updated_at timestamptz
 );
+ALTER TABLE IF EXISTS public.subscriptions ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Users can view their own subscription." ON public.subscriptions FOR SELECT USING (auth.uid() = user_id);
 
--- Create the comments table to store replies to posts
-CREATE TABLE comments (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    user_id UUID REFERENCES auth.users(id) NOT NULL,
-    post_id UUID REFERENCES posts(id) ON DELETE CASCADE NOT NULL,
-    content TEXT NOT NULL,
-    created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+-- POSTS Table
+CREATE TABLE IF NOT EXISTS public.posts (
+    id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+    user_id uuid NOT NULL REFERENCES public.users(id) ON DELETE CASCADE,
+    title text NOT NULL,
+    content text,
+    created_at timestamptz DEFAULT now()
 );
+ALTER TABLE IF EXISTS public.posts ENABLE ROW LEVEL SECURITY;
 
--- Create the subscriptions table to track user subscription status
-CREATE TABLE subscriptions (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    user_id UUID REFERENCES auth.users(id) NOT NULL UNIQUE,
-    plan_name TEXT,
-    is_active BOOLEAN NOT NULL DEFAULT false,
-    expires_at TIMESTAMPTZ,
-    created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
-    updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+-- **NEW POLICY**: Any authenticated user can see any post.
+CREATE POLICY "Authenticated users can view all posts." ON public.posts FOR SELECT TO authenticated USING (true);
+-- Any authenticated user can create a post.
+CREATE POLICY "Users can create posts." ON public.posts FOR INSERT TO authenticated WITH CHECK (auth.uid() = user_id);
+-- Users can only update their own posts.
+CREATE POLICY "Users can update their own posts." ON public.posts FOR UPDATE USING (auth.uid() = user_id) WITH CHECK (auth.uid() = user_id);
+-- Users can only delete their own posts.
+CREATE POLICY "Users can delete their own posts." ON public.posts FOR DELETE USING (auth.uid() = user_id);
+
+
+-- COMMENTS Table
+CREATE TABLE IF NOT EXISTS public.comments (
+    id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+    user_id uuid NOT NULL REFERENCES public.users(id) ON DELETE CASCADE,
+    post_id uuid NOT NULL REFERENCES public.posts(id) ON DELETE CASCADE,
+    content text,
+    created_at timestamptz DEFAULT now()
 );
+ALTER TABLE IF EXISTS public.comments ENABLE ROW LEVEL SECURITY;
 
+-- **NEW POLICY**: Any authenticated user can see any comment.
+CREATE POLICY "Authenticated users can view all comments." ON public.comments FOR SELECT TO authenticated USING (true);
+-- Any authenticated user can create a comment.
+CREATE POLICY "Users can create comments." ON public.comments FOR INSERT TO authenticated WITH CHECK (auth.uid() = user_id);
+-- Users can only update their own comments.
+CREATE POLICY "Users can update their own comments." ON public.comments FOR UPDATE USING (auth.uid() = user_id) WITH CHECK (auth.uid() = user_id);
+-- Users can only delete their own comments.
+CREATE POLICY "Users can delete their own comments." ON public.comments FOR DELETE USING (auth.uid() = user_id);
 
--- Enable Row Level Security (RLS) for all tables
-ALTER TABLE posts ENABLE ROW LEVEL SECURITY;
-ALTER TABLE comments ENABLE ROW LEVEL SECURITY;
-ALTER TABLE subscriptions ENABLE ROW LEVEL SECURITY;
+-- USER_SUBTOPIC_PROGRESS Table
+CREATE TABLE IF NOT EXISTS public.user_subtopic_progress (
+    id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+    user_id uuid NOT NULL REFERENCES public.users(id) ON DELETE CASCADE,
+    subtopic_id text NOT NULL,
+    status text,
+    score integer,
+    completed_at timestamptz,
+    created_at timestamptz DEFAULT now(),
+    UNIQUE(user_id, subtopic_id)
+);
+ALTER TABLE IF EXISTS public.user_subtopic_progress ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Users can view their own progress." ON public.user_subtopic_progress FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Users can manage their own progress." ON public.user_subtopic_progress FOR ALL USING (auth.uid() = user_id) WITH CHECK (auth.uid() = user_id);
 
--- Policies for the 'posts' table
--- Allow logged-in users to read all posts
-CREATE POLICY "Allow read access to all authenticated users" ON posts
-FOR SELECT
-TO authenticated
-USING (true);
+-- This ensures that when a new user signs up via Supabase Auth,
+-- a corresponding entry is created in the public.users table.
+CREATE OR REPLACE FUNCTION public.handle_new_user()
+RETURNS TRIGGER AS $$
+BEGIN
+  INSERT INTO public.users (id, email)
+  VALUES (new.id, new.email);
+  RETURN new;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
 
--- Allow users to insert their own posts
-CREATE POLICY "Allow users to insert their own posts" ON posts
-FOR INSERT
-TO authenticated
-WITH CHECK (auth.uid() = user_id);
-
--- Allow users to update their own posts
-CREATE POLICY "Allow users to update their own posts" ON posts
-FOR UPDATE
-TO authenticated
-USING (auth.uid() = user_id);
-
--- Allow users to delete their own posts
-CREATE POLICY "Allow users to delete their own posts" ON posts
-FOR DELETE
-TO authenticated
-USING (auth.uid() = user_id);
-
-
--- Policies for the 'comments' table
--- Allow logged-in users to read all comments
-CREATE POLICY "Allow read access to all authenticated users" ON comments
-FOR SELECT
-TO authenticated
-USING (true);
-
--- Allow users to insert their own comments
-CREATE POLICY "Allow users to insert their own comments" ON comments
-FOR INSERT
-TO authenticated
-WITH CHECK (auth.uid() = user_id);
-
--- Allow users to update their own comments
-CREATE POLICY "Allow users to update their own comments" ON comments
-FOR UPDATE
-TO authenticated
-USING (auth.uid() = user_id);
-
--- Allow users to delete their own comments
-CREATE POLICY "Allow users to delete their own comments" ON comments
-FOR DELETE
-TO authenticated
-USING (auth.uid() = user_id);
-
-
--- Policies for the 'subscriptions' table
--- Allow users to view their own subscription
-CREATE POLICY "Allow users to view their own subscription" ON subscriptions
-FOR SELECT
-TO authenticated
-USING (auth.uid() = user_id);
-
--- Note: Inserting/Updating subscriptions should be handled by a secure backend process
--- (like a webhook listening to a payment provider) using the service_role key,
--- so we don't typically grant insert/update permissions to users directly via RLS.
--- If direct creation is needed, a policy would look like this:
--- CREATE POLICY "Allow users to create their own subscription" ON subscriptions
--- FOR INSERT
--- TO authenticated
--- WITH CHECK (auth.uid() = user_id);
+-- This trigger calls the function whenever a new user is added to the auth.users table.
+CREATE OR REPLACE TRIGGER on_auth_user_created
+  AFTER INSERT ON auth.users
+  FOR EACH ROW EXECUTE PROCEDURE public.handle_new_user();
