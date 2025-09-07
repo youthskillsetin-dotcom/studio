@@ -22,8 +22,9 @@ const chatSchema = z.object({
   message: z.string(), // Allow empty to handle the slash command
 });
 
+// This now uses a simple content string, matching the corrected backend flow.
 type Message = {
-  role: 'user' | 'assistant';
+  role: 'user' | 'model';
   content: string;
 };
 
@@ -34,7 +35,7 @@ const conversationStarters = [
   { title: 'Request a Quiz', prompt: 'Create a short quiz on personal finance.' },
 ];
 
-const initialMessage: Message = { role: 'assistant', content: "Hello! I'm MentorAI. How can I help you level up your skills today? Type `/` to see what I can do!" };
+const initialMessage: Message = { role: 'model', content: "Hello! I'm MentorAI. How can I help you level up your skills today? Type `/` to see what I can do!" };
 const CHAT_HISTORY_KEY = 'ai-mentor-chat-history';
 
 export default function AIChatInterface() {
@@ -112,20 +113,18 @@ export default function AIChatInterface() {
     setShowSlashCommands(false);
 
     try {
-      const chatHistoryForApi = currentMessages.slice(0, -1).map(m => ({
-          role: m.role === 'user' ? 'user' : 'model',
-          content: [{text: m.content}]
-      })) as any[];
+      // This is the critical change: the chat history is now passed in the correct, simplified format.
+      const chatHistoryForApi = currentMessages.slice(0, -1);
       
       const response = await aiMentorChat({
         message: messageText,
         chatHistory: chatHistoryForApi,
       });
 
-      const assistantMessage: Message = { role: 'assistant', content: response.response };
+      const assistantMessage: Message = { role: 'model', content: response.response };
       setMessages((prev) => [...prev, assistantMessage]);
     } catch (error) {
-      const errorMessage: Message = { role: 'assistant', content: 'Sorry, I encountered an error. Please try again.' };
+      const errorMessage: Message = { role: 'model', content: 'Sorry, I encountered an error. Please try again.' };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);
@@ -178,7 +177,7 @@ export default function AIChatInterface() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
               >
-                {message.role === 'assistant' && (
+                {message.role === 'model' && (
                   <Avatar className="h-8 w-8">
                     <AvatarFallback className="bg-primary text-primary-foreground"><Bot className="h-5 w-5"/></AvatarFallback>
                   </Avatar>
@@ -193,7 +192,7 @@ export default function AIChatInterface() {
                 >
                   <div dangerouslySetInnerHTML={{ __html: message.content.replace(/\n/g, '<br />') }} className="prose prose-sm dark:prose-invert max-w-none" />
                 </div>
-                 {message.role === 'assistant' && (
+                 {message.role === 'model' && (
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger asChild>

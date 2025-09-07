@@ -12,16 +12,18 @@
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 import sampleContent from '../../../sample-content.json';
-import { Message } from 'genkit/content';
+import {type Message} from 'genkit/content';
+
+// This defines the structure of each message in the chat history.
+// It was previously more complex, causing errors.
+const ChatMessageSchema = z.object({
+    role: z.enum(['user', 'model']),
+    content: z.string(),
+});
 
 const AIMentorChatInputSchema = z.object({
   message: z.string().describe('The message from the user to the AI mentor.'),
-  chatHistory: z.array(z.object({
-    role: z.enum(['user', 'model']).describe('The role of the message sender.'),
-    content: z.array(z.object({
-        text: z.string()
-    })).describe('The content of the message.'),
-  })).optional().describe('The chat history between the user and the AI mentor.'),
+  chatHistory: z.array(ChatMessageSchema).optional().describe('The chat history between the user and the AI mentor.'),
 });
 export type AIMentorChatInput = z.infer<typeof AIMentorChatInputSchema>;
 
@@ -42,6 +44,7 @@ const prompt = ai.definePrompt({
   input: {schema: AIMentorChatInputSchema},
   output: {schema: AIMentorChatOutputSchema},
   model: 'googleai/gemini-1.5-flash',
+  // This correctly maps the simplified chat history to the model's expected format.
   history: (input) => input.chatHistory as Message[] | undefined,
   prompt: `You are MentorAI, a specialized AI assistant for the YouthSkillSet platform. Your persona is encouraging, knowledgeable, and slightly informal, like a friendly and approachable tutor for teenagers and young adults.
 
