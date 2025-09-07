@@ -31,6 +31,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { createClient } from "@/lib/supabase/client";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 
 const navItems = [
@@ -46,15 +47,21 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const isMobile = useIsMobile();
   const supabase = createClient();
-  const [userAvatar, setUserAvatar] = React.useState('https://picsum.photos/100/100');
+  const [userAvatar, setUserAvatar] = React.useState('');
+  const [userInitials, setUserInitials] = React.useState('');
   const [userEmail, setUserEmail] = React.useState('Loading...');
 
   React.useEffect(() => {
     const fetchUser = async () => {
         const {data: { user }} = await supabase.auth.getUser();
         if (user) {
-            setUserAvatar(user.user_metadata.avatar_url || `https://api.dicebear.com/8.x/initials/svg?seed=${user.email}`);
-            setUserEmail(user.email || 'No email');
+            const email = user.email || 'No Email';
+            const fullName = user.user_metadata.full_name;
+            const initials = fullName ? fullName.split(' ').map((n: string) => n[0]).join('') : email.charAt(0).toUpperCase();
+
+            setUserAvatar(user.user_metadata.avatar_url || '');
+            setUserInitials(initials);
+            setUserEmail(email);
         }
     };
     fetchUser();
@@ -154,7 +161,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                       >
                         <School className="h-7 w-7 text-primary" />
                          <span className="text-xl font-headline">YouthSkillSet</span>
-                      </Link>
+                      </A>
                       {mainNav}
                     </nav>
                   </SheetContent>
@@ -172,14 +179,17 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-10 w-10 rounded-full">
                     <Avatar>
-                         <Image
-                          src={userAvatar}
-                          alt="User avatar"
-                          width={40}
-                          height={40}
-                          className="rounded-full"
-                          data-ai-hint="user avatar"
-                        />
+                        {userAvatar ? (
+                             <Image
+                              src={userAvatar}
+                              alt="User avatar"
+                              width={40}
+                              height={40}
+                              className="rounded-full"
+                            />
+                        ) : (
+                            <AvatarFallback>{userInitials}</AvatarFallback>
+                        )}
                     </Avatar>
                 </Button>
               </DropdownMenuTrigger>

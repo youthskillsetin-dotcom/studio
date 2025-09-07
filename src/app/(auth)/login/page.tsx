@@ -55,19 +55,23 @@ export default function LoginPage() {
     setIsLoading(true);
     setError(null);
 
-    const { error } = await supabase.auth.signInWithPassword({
-        email: values.email,
-        password: values.password,
-    });
+    try {
+        const { error } = await supabase.auth.signInWithPassword({
+            email: values.email,
+            password: values.password,
+        });
 
-    if (error) {
-        setError(error.message);
-    } else {
-        router.push('/dashboard');
-        router.refresh();
+        if (error) {
+            setError(error.message);
+        } else {
+            router.push('/dashboard');
+            router.refresh();
+        }
+    } catch (err) {
+        setError("An unexpected error occurred. Please check your network and try again.");
+    } finally {
+        setIsLoading(false);
     }
-    
-    setIsLoading(false);
   }
 
   return (
