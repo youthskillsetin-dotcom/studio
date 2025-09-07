@@ -8,12 +8,12 @@ import { Skeleton } from './ui/skeleton';
 
 export async function AISummaryCard({ title, content, existingSummary }: { title: string, content: string, existingSummary?: string }) {
     
-    let summaryContent = existingSummary;
+    // The component now relies solely on the pre-existing summary.
+    // The live generation call has been removed to prevent API rate limit errors.
+    const summaryContent = existingSummary;
 
     if (!summaryContent) {
-        // Fallback to generating if it doesn't exist
-        const summaryResult = await generateSubtopicSummary({ title, content });
-        summaryContent = summaryResult.summary;
+        return null; // Don't render the card if there's no summary
     }
   
     return (
