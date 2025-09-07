@@ -1,16 +1,17 @@
 
 'use client';
 
-import { notFound } from 'next/navigation';
+import { notFound, useParams } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ChevronLeft, FileText, CheckCircle, Bot, ArrowRight, ArrowLeft } from 'lucide-react';
+import { ChevronLeft, FileText, CheckCircle, ArrowRight, ArrowLeft, Banknote, ClipboardList, Lightbulb, ShieldAlert } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { useState } from 'react';
 import { Progress } from '@/components/ui/progress';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import type { LucideIcon } from 'lucide-react';
 
 const labsData: { [key: string]: any } = {
     'itr-filing-101': {
@@ -22,11 +23,52 @@ const labsData: { [key: string]: any } = {
             'Practice calculating your tax liability based on sample data.',
             'Gain confidence to navigate the real income tax portal.',
         ],
+        icon: FileText
     },
-    'budgeting-challenge': { /* Other lab data */ },
-    'resume-builder-lab': { /* Other lab data */ },
-    'business-idea-canvas': { /* Other lab data */ },
-    'phishing-challenge': { /* Other lab data */ },
+    'budgeting-challenge': { 
+        title: 'The 50-30-20 Budgeting Challenge',
+        description: 'Take on a scenario-based challenge to create and manage a budget for a month. Make smart choices to reach your financial goals.',
+        learningObjectives: [
+            'Apply the 50-30-20 rule to a realistic scenario.',
+            'Make trade-offs between needs, wants, and savings.',
+            'Track spending and adjust your budget accordingly.',
+            'Experience the impact of financial discipline.',
+        ],
+        icon: Banknote,
+    },
+    'resume-builder-lab': { 
+        title: 'Resume Builder Lab',
+        description: 'Create your first professional resume using our guided builder. Learn what to include to impress recruiters.',
+        learningObjectives: [
+            'Understand the key sections of a professional resume.',
+            'Learn how to write impactful bullet points using action verbs.',
+            'Choose a clean, professional template.',
+            'Tailor your resume for a specific job application.',
+        ],
+        icon: ClipboardList,
+    },
+    'business-idea-canvas': { 
+        title: 'Business Idea Canvas',
+        description: 'Have a startup idea? Map it out using the Business Model Canvas to identify key strengths and weaknesses in your plan.',
+        learningObjectives: [
+            'Identify the 9 building blocks of a business model.',
+            'Map out your value proposition, customers, and revenue streams.',
+            'Analyze potential costs and key partnerships.',
+            'Develop a one-page strategic plan for your idea.',
+        ],
+        icon: Lightbulb,
+    },
+    'phishing-challenge': { 
+        title: 'Phishing Challenge',
+        description: "Can you spot a fake email? Test your skills in this simulation by identifying phishing attempts and learning the tell-tale signs.",
+        learningObjectives: [
+            'Identify common red flags in phishing emails.',
+            'Understand the risks of clicking malicious links.',
+            'Learn how to verify the legitimacy of a sender.',
+            'Practice safe email habits to protect your data.',
+        ],
+        icon: ShieldAlert,
+    },
 }
 
 const LabHeader = ({ lab }: { lab: any }) => (
@@ -148,14 +190,40 @@ const ItrSimulation = () => {
     )
 }
 
-export default function LabDetailPage({ params }: { params: { labId: string } }) {
-  const lab = labsData[params.labId];
+const LabPlaceholder = ({ lab }: { lab: any }) => (
+    <div className="lg:col-span-2">
+        <Card className="rounded-xl text-center min-h-[400px] flex flex-col justify-center items-center">
+            <CardHeader>
+                <lab.icon className="w-16 h-16 text-primary mx-auto mb-4" />
+                <CardTitle className="font-headline text-2xl">This Lab is Coming Soon!</CardTitle>
+                <CardDescription className="max-w-md mx-auto">
+                    We're hard at work building this interactive simulation for the "{lab.title}" lab. Check back soon to apply your skills!
+                </CardDescription>
+            </CardHeader>
+            <CardContent>
+                <Button asChild>
+                    <Link href="/practice-lab">
+                        <ArrowLeft className="w-4 h-4 mr-2" />
+                        Explore Other Labs
+                    </Link>
+                </Button>
+            </CardContent>
+        </Card>
+    </div>
+);
+
+
+export default function LabDetailPage() {
+  const params = useParams();
+  const labId = Array.isArray(params.labId) ? params.labId[0] : params.labId;
+
+  const lab = labsData[labId];
+
   if (!lab) {
     notFound();
   }
-
-  // A simple check to decide which lab component to render.
-  const isItrLab = params.labId === 'itr-filing-101';
+  
+  const isItrLab = labId === 'itr-filing-101';
   
   return (
     <div className="max-w-6xl mx-auto">
@@ -171,7 +239,7 @@ export default function LabDetailPage({ params }: { params: { labId: string } })
       <LabHeader lab={lab} />
 
        <div className="grid lg:grid-cols-3 gap-8 items-start">
-            {isItrLab ? <ItrSimulation /> : <p>This lab is under construction.</p>}
+            {isItrLab ? <ItrSimulation /> : <LabPlaceholder lab={lab} />}
             <div className="lg:col-span-1">
                 <Card className="sticky top-24 rounded-2xl">
                     <CardHeader>
