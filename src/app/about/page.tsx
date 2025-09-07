@@ -94,7 +94,7 @@ export default function AboutPage() {
                 </Card>
                 <Card className="text-center rounded-2xl border-0 shadow-none">
                     <CardContent className="p-6">
-                        <h3 className="mt-6 text-lg font-semibold text-foreground">Rohan Joshi</h3>
+                        <h3 className="mt-6 text-lg font-semibold text-foreground">Adarsh</h3>
                         <p className="text-primary">Lead AI Engineer</p>
                     </CardContent>
                 </Card>
