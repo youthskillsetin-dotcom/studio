@@ -71,6 +71,10 @@ export default function LoginPage() {
                 setError(error.message);
             }
         } else {
+            toast({
+              title: 'Login Successful!',
+              description: "Welcome back! You're being redirected to your dashboard.",
+            });
             router.push('/dashboard');
             router.refresh();
         }
