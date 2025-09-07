@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import Link from 'next/link';
@@ -53,7 +54,7 @@ export default function LandingPage() {
           <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#features">Features</a>
           <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#pricing">Pricing</a>
           <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#faq">FAQ</a>
-          <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/about">About</a>
+           <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/about">About</a>
         </nav>
         <div className="flex items-center gap-2">
             <Button asChild variant="ghost">
@@ -152,19 +153,17 @@ export default function LandingPage() {
                         Explore the wide range of topics we cover to build a solid foundation for your success.
                     </p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {modules.map((item, index) => (
-                        <Card key={index} className="text-center shadow-sm hover:shadow-lg transition-shadow flex flex-col">
-                            <CardHeader className="flex flex-col items-center">
-                                <div className="p-4 bg-primary/10 rounded-full mb-4">
-                                    <item.icon className="w-8 h-8 text-primary" />
-                                </div>
-                                <CardTitle className="font-headline text-base">{item.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent className="flex-grow">
-                                <p className="text-muted-foreground text-sm">{item.description}</p>
-                            </CardContent>
-                        </Card>
+                        <div key={index} className="flex items-start gap-4 rounded-xl bg-muted/40 p-6 transition-all hover:bg-card hover:shadow-xl hover:-translate-y-1 border">
+                           <div className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                                <item.icon className="w-7 h-7" />
+                           </div>
+                           <div>
+                                <h3 className="font-headline text-lg font-semibold">{item.title}</h3>
+                                <p className="mt-1 text-sm text-muted-foreground">{item.description}</p>
+                           </div>
+                        </div>
                     ))}
                 </div>
                  <div className="text-center mt-12">
