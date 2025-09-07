@@ -70,14 +70,20 @@ export async function middleware(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const isAuthRoute = request.nextUrl.pathname.startsWith('/login') || request.nextUrl.pathname.startsWith('/signup') || request.nextUrl.pathname.startsWith('/verify');
+  const { pathname } = request.nextUrl;
 
-  if (!user && !isAuthRoute && !request.nextUrl.pathname.startsWith('/auth/callback') && !request.nextUrl.pathname.startsWith('/admin')) {
+  const isAuthRoute = pathname.startsWith('/login') || pathname.startsWith('/signup') || pathname.startsWith('/verify');
+  
+  // If the user is not logged in and trying to access a protected app route
+  if (!user && !isAuthRoute && pathname !== '/') {
      const url = request.nextUrl.clone();
      url.pathname = '/login';
+     // You can optionally add the intended destination as a query parameter
+     // url.searchParams.set('redirectedFrom', pathname);
     return NextResponse.redirect(url);
   }
   
+  // If the user is logged in and trying to access an auth route (like login/signup)
   if (user && isAuthRoute) {
     const url = request.nextUrl.clone();
     url.pathname = '/dashboard';
@@ -85,7 +91,7 @@ export async function middleware(request: NextRequest) {
   }
 
   // Admin route protection
-  if (request.nextUrl.pathname.startsWith('/admin')) {
+  if (pathname.startsWith('/admin')) {
     if (!user) {
          const url = request.nextUrl.clone();
         url.pathname = '/login';
@@ -107,12 +113,12 @@ export const config = {
   matcher: [
     /*
      * Match all request paths except for the ones starting with:
+     * - api (API routes)
      * - _next/static (static files)
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
-     * - / (the landing page)
-     * Feel free to modify this pattern to include more paths.
+     * - / (the root landing page, which is now handled explicitly in the middleware)
      */
-    '/((?!_next/static|_next/image|favicon.ico|auth/callback|/$).*)',
+    '/((?!api|_next/static|_next/image|favicon.ico).*)',
   ],
 }
