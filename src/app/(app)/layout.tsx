@@ -81,7 +81,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
            {desktopNav}
         </nav>
         
-        <div className="flex w-full items-center justify-end gap-4 md:ml-auto md:gap-2 lg:gap-4">
+        <div className="flex items-center justify-end gap-4 md:ml-auto md:gap-2 lg:gap-4">
             <div className="md:hidden">
                 <MobileNav navItems={navItems} adminNavItems={adminNavItems} userProfile={userProfile} />
             </div>
