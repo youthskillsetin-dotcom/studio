@@ -82,7 +82,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
                 <Card className="text-center rounded-2xl border-0 shadow-none">
                     <CardContent className="p-6">
-                        <h3 className="mt-6 text-lg font-semibold text-foreground">Aarav Sharma</h3>
+                        <h3 className="mt-6 text-lg font-semibold text-foreground">Amit kumar Metha</h3>
                         <p className="text-primary">Founder & CEO</p>
                     </CardContent>
                 </Card>
