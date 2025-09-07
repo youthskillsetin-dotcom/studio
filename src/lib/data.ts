@@ -1,7 +1,7 @@
 
 
 import type { SupabaseClient } from '@supabase/supabase-js';
-import type { Lesson, Subtopic, UserSubtopicProgress, Post, UserSubscription, UserProfile } from './types';
+import type { Lesson, Subtopic, UserSubtopicProgress, Post, CommentWithAuthor, PostWithAuthor, UserSubscription, UserProfile } from './types';
 import { unstable_noStore as noStore } from 'next/cache';
 import sampleContent from '../../sample-content.json';
 
@@ -84,8 +84,7 @@ export async function getUserSubscription(supabase: SupabaseClient): Promise<Use
         .maybeSingle();
     
     if (error) { 
-        // Gracefully handle the error if the table doesn't exist to prevent crashing
-        if (error.code === '42P01') { // 42P01: undefined_table
+        if (error.code === '42P01') {
              console.warn('Subscriptions table not found. This may be expected if the setup script has not been run. Returning null for subscription.');
              return null;
         }
@@ -108,7 +107,7 @@ export async function getUserProfile(supabase: SupabaseClient): Promise<UserProf
         .single();
     
     if (error) {
-        if (error.code === '42P01') { // undefined_table
+        if (error.code === '42P01') { 
              console.warn('Profiles table not found. This may be expected if the setup script has not been run. Returning null for profile.');
              return null;
         }
@@ -116,7 +115,7 @@ export async function getUserProfile(supabase: SupabaseClient): Promise<UserProf
         return null;
     }
 
-    return data as UserProfile;
+    return data;
 }
 
 export async function getPosts(supabase: SupabaseClient): Promise<Post[]> {
@@ -141,14 +140,13 @@ export async function getPosts(supabase: SupabaseClient): Promise<Post[]> {
     return [];
   }
 
-  const posts = (data || []).map(p => ({
+  const posts: Post[] = (data || []).map((p: PostWithAuthor) => ({
       ...p,
-      // @ts-ignore
       author_email: p.profile?.email ?? 'Anonymous',
       comments: []
   }));
 
-  return posts as Post[];
+  return posts;
 }
 
 
@@ -185,19 +183,16 @@ export async function getPostById(supabase: SupabaseClient, id: string): Promise
     
   if (commentsError) {
     console.error('Error fetching comments:', commentsError);
-    // We can still return the post, just with empty comments
   }
 
-  const post = {
-    ...postData,
-    // @ts-ignore
+  const post: Post = {
+    ...(postData as PostWithAuthor),
     author_email: postData.profile?.email ?? 'Anonymous',
-    comments: (commentsData || []).map(c => ({
+    comments: (commentsData || []).map((c: CommentWithAuthor) => ({
         ...c,
-        // @ts-ignore
         author_email: c.profile?.email ?? 'Anonymous'
     }))
   };
   
-  return post as Post;
+  return post;
 }

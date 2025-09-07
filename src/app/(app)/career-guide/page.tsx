@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { generateCareerProfile, type GenerateCareerProfileOutput } from '@/ai/flows/generate-career-profile';
-import { Compass, Briefcase, Wand2, BookOpen, BarChart, IndianRupee, Rocket, Lightbulb, Brain, Star, Map, Building, BriefcaseBusiness } from 'lucide-react';
+import { Compass, Briefcase, Wand2, BookOpen, BarChart, IndianRupee, Rocket, Lightbulb, Brain, Star, Map, Building, BriefcaseBusiness, AlertTriangle } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -219,7 +219,8 @@ export default function CareerGuidePage() {
 
       {error && !isLoading && (
         <Alert variant="destructive" className="mt-12">
-          <AlertTitle>Error</AlertTitle>
+            <AlertTriangle className="h-4 w-4" />
+          <AlertTitle>Error Generating Profile</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}

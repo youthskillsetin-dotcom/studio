@@ -31,9 +31,9 @@ const GenerateCareerProfileOutputSchema = z.object({
   }).describe("A 4-step learning roadmap from beginner to advanced."),
   jobMarketInsights: z.object({
     salaryRange: z.object({
-        min: z.number().describe("The estimated starting salary for this role in INR Lakhs Per Annum (LPA)."),
-        max: z.number().describe("The estimated senior-level salary for this role in INR Lakhs Per Annum (LPA)."),
-    }).describe("An estimated salary range in Indian Rupees (INR) per year, expressed in Lakhs Per Annum (LPA)."),
+        min: z.number().describe("The estimated starting salary for this role in INR Lakhs Per Annum (LPA). This must be a number only."),
+        max: z.number().describe("The estimated senior-level salary for this role in INR Lakhs Per Annum (LPA). This must be a number only."),
+    }).describe("An estimated salary range in Indian Rupees (INR) per year, expressed in Lakhs Per Annum (LPA). The min and max values should be numbers, not strings."),
     demand: z.string().describe("The current demand level for this role (e.g., 'High', 'Medium', 'Growing')."),
     futureOutlook: z.string().describe("A 1-2 sentence projection on the future growth of this career."),
   }).describe("Insights into the job market for this career."),
@@ -65,7 +65,7 @@ const prompt = ai.definePrompt({
       *   **skills**: For each of the 5-7 skills, provide a detailed 2-3 sentence description explaining *why* the skill is essential and how it's applied in this specific career.
       *   **learningRoadmap**: Create a clear, 4-step roadmap that guides a beginner. Start with foundational knowledge and progress to advanced specializations. Be specific.
       *   **jobMarketInsights**:
-          *   **salaryRange**: Provide a realistic salary range in **Indian Rupees (INR)**, converted to **Lakhs Per Annum (LPA)**. For example, if a salary is 5,00,000 INR, the value should be 5.
+          *   **salaryRange**: Provide a realistic salary range in **Indian Rupees (INR)**. The 'min' and 'max' values should be numbers representing Lakhs Per Annum (LPA). For example, if a salary is 5,00,000 INR, the value for the field should be the number 5. Do not include the currency symbol or "LPA" text in the number fields.
           *   **demand**: State the current job demand clearly (e.g., "High", "Growing").
           *   **futureOutlook**: Write a concise but encouraging sentence about future prospects.
       *   **suggestedRoles**: List a few realistic entry-level or related job titles.

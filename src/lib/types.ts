@@ -59,6 +59,7 @@ export interface Comment {
     created_at: string;
     content: string;
     user_id: string;
+    post_id: string;
     author_email: string;
 }
 
@@ -81,3 +82,12 @@ export interface UserProfile {
     role: UserRole;
     created_at: string;
 }
+
+// Types for Supabase joins
+export type PostWithAuthor = Omit<Post, 'author_email' | 'comments'> & {
+  profile: { email: string } | null;
+};
+
+export type CommentWithAuthor = Omit<Comment, 'author_email'> & {
+  profile: { email: string } | null;
+};

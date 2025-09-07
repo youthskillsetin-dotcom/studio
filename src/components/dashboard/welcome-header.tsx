@@ -20,6 +20,11 @@ interface WelcomeHeaderProps {
   variants?: Variants;
 }
 
+function capitalize(str: string) {
+    if (!str) return '';
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 export function WelcomeHeader({ variants }: WelcomeHeaderProps) {
     const [quote, setQuote] = useState('');
     const [name, setName] = useState('Learner');
@@ -31,8 +36,7 @@ export function WelcomeHeader({ variants }: WelcomeHeaderProps) {
             const {data: { user }} = await supabase.auth.getUser();
             if (user) {
                 const userName = user.user_metadata.full_name || user.email?.split('@')[0] || 'Learner';
-                const capitalizedName = userName.charAt(0).toUpperCase() + userName.slice(1);
-                setName(capitalizedName);
+                setName(capitalize(userName));
             }
         };
         fetchUser();
