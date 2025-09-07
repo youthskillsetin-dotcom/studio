@@ -12,6 +12,7 @@ import { Progress } from '@/components/ui/progress';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import type { LucideIcon } from 'lucide-react';
+import { Textarea } from '@/components/ui/textarea';
 
 const labsData: { [key: string]: any } = {
     'itr-filing-101': {
@@ -75,7 +76,7 @@ const LabHeader = ({ lab }: { lab: any }) => (
     <div className="bg-card p-6 md:p-8 rounded-2xl shadow-sm mb-8">
         <div className="flex items-start gap-4">
             <div className="p-3 bg-primary/10 rounded-lg mt-1">
-                <FileText className="w-6 h-6 text-primary"/>
+                <lab.icon className="w-6 h-6 text-primary"/>
             </div>
             <div>
                 <h1 className="text-3xl font-bold font-headline">{lab.title}</h1>
@@ -85,6 +86,7 @@ const LabHeader = ({ lab }: { lab: any }) => (
     </div>
 );
 
+// ITR Simulation Components
 const Form16Display = () => (
     <Card className="bg-muted/40 p-4 rounded-lg">
         <CardHeader className="p-2">
@@ -101,7 +103,6 @@ const Form16Display = () => (
         </CardContent>
     </Card>
 );
-
 
 const ItrSimulation = () => {
     const [step, setStep] = useState(0);
@@ -190,14 +191,275 @@ const ItrSimulation = () => {
     )
 }
 
+// Phishing Simulation Components
+const phishingEmails = [
+    {
+      id: 1,
+      subject: 'Urgent: Your Account is Suspended!',
+      from: 'Bank of Security <support-team@banksafe.info>',
+      body: 'Dear customer, we have detected suspicious activity on your account. To protect your funds, we have temporarily suspended it. Please click here to verify your identity immediately.',
+      isPhishing: true,
+      reason: 'The sender email address looks suspicious, and the sense of urgency is a common phishing tactic.'
+    },
+    {
+      id: 2,
+      subject: 'Your Weekly Newsletter',
+      from: 'YouthSkillSet <newsletter@youthskillset.com>',
+      body: 'Hi Learner, here is your weekly dose of tips and tricks for mastering new skills. Check out our latest article on building a great resume!',
+      isPhishing: false,
+      reason: 'The sender email is legitimate, and the content is relevant and not asking for sensitive information.'
+    },
+    {
+      id: 3,
+      subject: 'Congratulations! You Won a New Laptop!',
+      from: 'Lucky Winner Dept <winner@giveaway-central.net>',
+      body: 'You have been selected as a lucky winner in our monthly draw! To claim your brand new laptop, please provide your shipping address and a small processing fee of ₹500.',
+      isPhishing: true,
+      reason: 'Offers that are too good to be true are a major red flag, as is any request for a fee to claim a prize.'
+    }
+];
+const PhishingSimulation = () => {
+    const [currentEmailIndex, setCurrentEmailIndex] = useState(0);
+    const [score, setScore] = useState(0);
+    const [feedback, setFeedback] = useState('');
+    const [answered, setAnswered] = useState(false);
+    
+    const currentEmail = phishingEmails[currentEmailIndex];
+    const isFinished = currentEmailIndex >= phishingEmails.length;
+    
+    const handleAnswer = (isPhishingGuess: boolean) => {
+        if (isPhishingGuess === currentEmail.isPhishing) {
+            setScore(s => s + 1);
+            setFeedback(`Correct! ${currentEmail.reason}`);
+        } else {
+            setFeedback(`Incorrect. ${currentEmail.reason}`);
+        }
+        setAnswered(true);
+    };
+
+    const handleNext = () => {
+        setCurrentEmailIndex(i => i + 1);
+        setAnswered(false);
+        setFeedback('');
+    };
+
+    const handleReset = () => {
+        setCurrentEmailIndex(0);
+        setScore(0);
+        setAnswered(false);
+        setFeedback('');
+    };
+
+    return (
+        <div className="lg:col-span-2">
+            <Card className="rounded-xl">
+                 <CardHeader>
+                     <CardTitle className="font-headline text-lg">Phishing Email Analysis</CardTitle>
+                     {!isFinished && <p className="text-sm text-muted-foreground">Email {currentEmailIndex + 1} of {phishingEmails.length}. Current Score: {score}</p>}
+                 </CardHeader>
+                <CardContent className="min-h-[300px]">
+                    {isFinished ? (
+                         <div className="flex flex-col items-center justify-center h-full text-center">
+                            <CheckCircle className="w-16 h-16 text-green-500 mb-4" />
+                            <h3 className="text-xl font-bold">Challenge Complete!</h3>
+                            <p className="text-muted-foreground mt-2">You scored {score} out of {phishingEmails.length}.</p>
+                             <Button onClick={handleReset} className="mt-4">Try Again</Button>
+                        </div>
+                    ) : (
+                        <div className="border rounded-lg p-4 font-mono text-sm">
+                            <p><span className="text-muted-foreground">From:</span> {currentEmail.from}</p>
+                            <p><span className="text-muted-foreground">Subject:</span> {currentEmail.subject}</p>
+                            <div className="border-t my-2"></div>
+                            <p>{currentEmail.body}</p>
+                        </div>
+                    )}
+                </CardContent>
+                {!isFinished && (
+                    <CardFooter className="flex flex-col gap-4">
+                        {!answered ? (
+                            <div className="flex gap-4">
+                                <Button onClick={() => handleAnswer(true)} variant="destructive">It's Phishing</Button>
+                                <Button onClick={() => handleAnswer(false)} variant="secondary">It's Safe</Button>
+                            </div>
+                        ) : (
+                            <>
+                                <Alert variant={feedback.startsWith('Correct') ? 'default' : 'destructive'} className="w-full text-center">
+                                    <AlertDescription>{feedback}</AlertDescription>
+                                </Alert>
+                                <Button onClick={handleNext} className="w-full">Next Email <ArrowRight className="w-4 h-4 ml-2"/></Button>
+                            </>
+                        )}
+                    </CardFooter>
+                )}
+            </Card>
+        </div>
+    )
+}
+
+// Resume Builder Components
+const ResumeBuilderSimulation = () => {
+    const [step, setStep] = useState(0);
+    const totalSteps = 4;
+    const progress = ((step + 1) / (totalSteps + 1)) * 100;
+    
+    const nextStep = () => setStep(s => Math.min(s + 1, totalSteps));
+    const prevStep = () => setStep(s => Math.max(s - 1, 0));
+
+    return (
+        <div className="lg:col-span-2 space-y-6">
+            <Card className="rounded-xl">
+                 <CardHeader>
+                    <CardTitle className="font-headline text-lg">
+                       Step {step + 1}: {['Contact Info', 'Experience', 'Education', 'Skills', 'Completed!'][step]}
+                    </CardTitle>
+                    <Progress value={progress} className="w-full mt-2" />
+                </CardHeader>
+                <CardContent className="min-h-[250px]">
+                    {step === 0 && <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-1"><Label>Full Name</Label><Input placeholder="e.g., Priya Kumar" /></div>
+                        <div className="space-y-1"><Label>Email</Label><Input placeholder="priya.kumar@email.com" type="email"/></div>
+                        <div className="space-y-1"><Label>Phone</Label><Input placeholder="9876543210" type="tel"/></div>
+                        <div className="space-y-1"><Label>LinkedIn Profile</Label><Input placeholder="linkedin.com/in/priya-k" /></div>
+                    </div>}
+                    {step === 1 && <div className="space-y-4">
+                        <p className="text-muted-foreground text-sm">Use action verbs to describe your accomplishments. Example: "Organized a school event for 100+ students."</p>
+                        <div className="space-y-1"><Label>Work/Volunteer Experience</Label><Textarea placeholder="Describe your roles and achievements..." rows={6}/></div>
+                    </div>}
+                     {step === 2 && <div className="space-y-4">
+                        <div className="space-y-1"><Label>School/College Name</Label><Input placeholder="e.g., Delhi Public School" /></div>
+                        <div className="space-y-1"><Label>Degree/Course</Label><Input placeholder="e.g., High School Diploma" /></div>
+                         <div className="space-y-1"><Label>Graduation Year</Label><Input placeholder="e.g., 2024" /></div>
+                    </div>}
+                     {step === 3 && <div className="space-y-4">
+                         <p className="text-muted-foreground text-sm">List both technical (hard) and interpersonal (soft) skills.</p>
+                         <div className="space-y-1"><Label>Skills</Label><Textarea placeholder="e.g., Python, Public Speaking, Teamwork, Microsoft Excel" rows={4}/></div>
+                    </div>}
+                    {step === 4 && <div className="space-y-4 text-center">
+                           <CheckCircle className="w-16 h-16 text-green-500 mx-auto" />
+                           <h3 className="font-semibold text-xl">Resume Draft Complete!</h3>
+                           <p className="text-muted-foreground max-w-md mx-auto">
+                            Excellent work! You've created a solid first draft of your resume. Remember to proofread and tailor it for every job you apply to.
+                           </p>
+                           <Button asChild><Link href="/practice-lab">Back to All Labs</Link></Button>
+                    </div>}
+                </CardContent>
+                <CardFooter className="flex justify-between">
+                    <Button variant="outline" onClick={prevStep} disabled={step === 0}>
+                        <ArrowLeft className="w-4 h-4 mr-2"/> Previous
+                    </Button>
+                    {step < totalSteps && (
+                        <Button onClick={nextStep}>
+                            {step === totalSteps - 1 ? 'Finish' : 'Next Step'} <ArrowRight className="w-4 h-4 ml-2"/>
+                        </Button>
+                    )}
+                </CardFooter>
+            </Card>
+        </div>
+    )
+}
+
+// Business Idea Canvas Components
+const BusinessCanvasSimulation = () => {
+    return (
+         <div className="lg:col-span-2">
+            <Card className="rounded-xl">
+                 <CardHeader>
+                     <CardTitle className="font-headline text-lg">Business Model Canvas</CardTitle>
+                     <p className="text-sm text-muted-foreground">Map out your business idea on this one-page canvas.</p>
+                 </CardHeader>
+                <CardContent className="space-y-6">
+                    <div className="grid md:grid-cols-2 gap-6">
+                        <div className="space-y-1"><Label>Value Proposition</Label><Textarea placeholder="What unique value do you provide?" /></div>
+                        <div className="space-y-1"><Label>Customer Segments</Label><Textarea placeholder="Who are your target customers?" /></div>
+                        <div className="space-y-1"><Label>Customer Relationships</Label><Textarea placeholder="How do you interact with customers?" /></div>
+                        <div className="space-y-1"><Label>Channels</Label><Textarea placeholder="How do you reach your customers?" /></div>
+                        <div className="space-y-1"><Label>Key Activities</Label><Textarea placeholder="What are the most important things you do?" /></div>
+                        <div className="space-y-1"><Label>Key Resources</Label><Textarea placeholder="What assets do you need?" /></div>
+                        <div className="space-y-1"><Label>Key Partnerships</Label><Textarea placeholder="Who are your key partners/suppliers?" /></div>
+                        <div className="space-y-1"><Label>Revenue Streams</Label><Textarea placeholder="How do you make money?" /></div>
+                        <div className="md:col-span-2 space-y-1"><Label>Cost Structure</Label><Textarea placeholder="What are your major costs?" /></div>
+                    </div>
+                </CardContent>
+                <CardFooter>
+                    <Button>Save Canvas</Button>
+                </CardFooter>
+            </Card>
+        </div>
+    )
+}
+
+// Budgeting Challenge Components
+const BudgetingSimulation = () => {
+    const [step, setStep] = useState(0);
+    const totalSteps = 3;
+    const progress = ((step + 1) / (totalSteps + 1)) * 100;
+    
+    const nextStep = () => setStep(s => Math.min(s + 1, totalSteps));
+    const prevStep = () => setStep(s => Math.max(s - 1, 0));
+
+    return (
+        <div className="lg:col-span-2 space-y-6">
+            <Card className="rounded-xl">
+                 <CardHeader>
+                    <CardTitle className="font-headline text-lg">
+                       Step {step + 1}: {['Set Your Budget', 'Track Your Spending', 'Review Results', 'Completed!'][step]}
+                    </CardTitle>
+                    <Progress value={progress} className="w-full mt-2" />
+                </CardHeader>
+                <CardContent className="min-h-[250px]">
+                    <div className="mb-4 p-4 bg-muted/50 rounded-lg">
+                        <p className="font-semibold">Your Scenario:</p>
+                        <p className="text-sm text-muted-foreground">You have a monthly income of ₹20,000. Your goal is to apply the 50-30-20 rule.</p>
+                    </div>
+
+                    {step === 0 && <div className="space-y-4">
+                        <p className="text-muted-foreground">Allocate your ₹20,000 income. Needs (50% = ₹10,000), Wants (30% = ₹6,000), Savings (20% = ₹4,000).</p>
+                        <div className="space-y-1"><Label>Needs (e.g., Rent, Bills)</Label><Input type="number" placeholder="10000" /></div>
+                        <div className="space-y-1"><Label>Wants (e.g., Entertainment, Shopping)</Label><Input type="number" placeholder="6000" /></div>
+                        <div className="space-y-1"><Label>Savings/Debt</Label><Input type="number" placeholder="4000" /></div>
+                    </div>}
+                    {step === 1 && <div className="space-y-4">
+                        <p className="text-muted-foreground">Log your expenses for the simulated month.</p>
+                        <div className="space-y-1"><Label>Total Spent on Needs</Label><Input type="number" placeholder="e.g. 9500"/></div>
+                        <div className="space-y-1"><Label>Total Spent on Wants</Label><Input type="number" placeholder="e.g. 7000"/></div>
+                        <div className="space-y-1"><Label>Total Saved</Label><Input type="number" placeholder="e.g. 3500"/></div>
+                    </div>}
+                    {step === 2 && <div className="space-y-4 text-center">
+                        <h3 className="font-semibold text-lg">Did You Meet Your Goal?</h3>
+                        <p className="text-muted-foreground">Based on your entries, the next step will analyze your performance and give you feedback on your budgeting skills.</p>
+                    </div>}
+                    {step === 3 && <div className="space-y-4 text-center">
+                           <CheckCircle className="w-16 h-16 text-green-500 mx-auto" />
+                           <h3 className="font-semibold text-xl">Challenge Complete!</h3>
+                           <p className="text-muted-foreground max-w-md mx-auto">
+                            You've completed the budgeting challenge. Reviewing your spending habits is the first step to financial mastery!
+                           </p>
+                           <Button asChild><Link href="/practice-lab">Back to All Labs</Link></Button>
+                    </div>}
+                </CardContent>
+                <CardFooter className="flex justify-between">
+                    <Button variant="outline" onClick={prevStep} disabled={step === 0}>
+                        <ArrowLeft className="w-4 h-4 mr-2"/> Previous
+                    </Button>
+                    {step < totalSteps && (
+                        <Button onClick={nextStep}>
+                            {step === totalSteps - 1 ? 'Finish & Review' : 'Next Step'} <ArrowRight className="w-4 h-4 ml-2"/>
+                        </Button>
+                    )}
+                </CardFooter>
+            </Card>
+        </div>
+    )
+}
+
 const LabPlaceholder = ({ lab }: { lab: any }) => (
     <div className="lg:col-span-2">
         <Card className="rounded-xl text-center min-h-[400px] flex flex-col justify-center items-center">
             <CardHeader>
                 <lab.icon className="w-16 h-16 text-primary mx-auto mb-4" />
-                <CardTitle className="font-headline text-2xl">This Lab is Coming Soon!</CardTitle>
+                <CardTitle className="font-headline text-2xl">This Lab is Under Construction</CardTitle>
                 <CardDescription className="max-w-md mx-auto">
-                    We're hard at work building this interactive simulation for the "{lab.title}" lab. Check back soon to apply your skills!
+                    We're hard at work building this interactive simulation for the "{lab.title}" lab. This is a placeholder for the real experience.
                 </CardDescription>
             </CardHeader>
             <CardContent>
@@ -212,18 +474,31 @@ const LabPlaceholder = ({ lab }: { lab: any }) => (
     </div>
 );
 
+const LabSimulation = ({ labId }: { labId: string }) => {
+    switch (labId) {
+        case 'itr-filing-101':
+            return <ItrSimulation />;
+        case 'phishing-challenge':
+            return <PhishingSimulation />;
+        case 'resume-builder-lab':
+            return <ResumeBuilderSimulation />;
+        case 'business-idea-canvas':
+            return <BusinessCanvasSimulation />;
+        case 'budgeting-challenge':
+            return <BudgetingSimulation />;
+        default:
+            return <LabPlaceholder lab={labsData[labId]} />;
+    }
+}
 
 export default function LabDetailPage() {
   const params = useParams();
   const labId = Array.isArray(params.labId) ? params.labId[0] : params.labId;
 
-  const lab = labsData[labId];
-
-  if (!lab) {
+  if (!labId || !labsData[labId]) {
     notFound();
   }
-  
-  const isItrLab = labId === 'itr-filing-101';
+  const lab = labsData[labId];
   
   return (
     <div className="max-w-6xl mx-auto">
@@ -239,7 +514,7 @@ export default function LabDetailPage() {
       <LabHeader lab={lab} />
 
        <div className="grid lg:grid-cols-3 gap-8 items-start">
-            {isItrLab ? <ItrSimulation /> : <LabPlaceholder lab={lab} />}
+            <LabSimulation labId={labId} />
             <div className="lg:col-span-1">
                 <Card className="sticky top-24 rounded-2xl">
                     <CardHeader>
