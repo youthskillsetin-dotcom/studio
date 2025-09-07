@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { generateCareerProfile, type GenerateCareerProfileOutput } from '@/ai/flows/generate-career-profile';
-import { Compass, Briefcase, Wand2, BookOpen, BarChart, IndianRupee, Rocket, Lightbulb, Brain, Star } from 'lucide-react';
+import { Compass, Briefcase, Wand2, BookOpen, BarChart, IndianRupee, Rocket, Lightbulb, Brain, Star, Map, Building, BriefcaseBusiness } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -59,37 +59,12 @@ const CareerProfileSkeleton = () => (
         <Skeleton className="h-9 w-3/4 mx-auto mb-3" />
         <Skeleton className="h-6 w-1/2 mx-auto" />
       </div>
-      <div className="grid md:grid-cols-2 gap-8">
-        <Card className="h-full rounded-xl">
-          <CardHeader className="flex-row items-center gap-4">
-            <Skeleton className="w-12 h-12 rounded-lg" />
-            <Skeleton className="h-6 w-32" />
-          </CardHeader>
-          <CardContent className="space-y-3">
-            <Skeleton className="h-4 w-full" />
-            <Skeleton className="h-4 w-5/6" />
-            <Skeleton className="h-4 w-full" />
-            <Skeleton className="h-4 w-4/6" />
-          </CardContent>
-        </Card>
-        <Card className="h-full rounded-xl">
-          <CardHeader className="flex-row items-center gap-4">
-            <Skeleton className="w-12 h-12 rounded-lg" />
-            <Skeleton className="h-6 w-32" />
-          </CardHeader>
-          <CardContent className="flex items-baseline justify-center gap-4 text-center">
-            <div className="flex-1 space-y-2">
-              <Skeleton className="h-4 w-16 mx-auto" />
-              <Skeleton className="h-8 w-24 mx-auto" />
-            </div>
-            <Skeleton className="h-8 w-2" />
-            <div className="flex-1 space-y-2">
-              <Skeleton className="h-4 w-16 mx-auto" />
-              <Skeleton className="h-8 w-24 mx-auto" />
-            </div>
-          </CardContent>
-        </Card>
+       <div className="grid md:grid-cols-2 gap-8">
+        <Card className="rounded-xl"><CardHeader><Skeleton className="h-24 w-full" /></CardHeader></Card>
+        <Card className="rounded-xl"><CardHeader><Skeleton className="h-24 w-full" /></CardHeader></Card>
       </div>
+       <Card className="rounded-xl"><CardHeader><Skeleton className="h-32 w-full" /></CardHeader></Card>
+       <Card className="rounded-xl"><CardHeader><Skeleton className="h-32 w-full" /></CardHeader></Card>
     </motion.div>
   );
 
@@ -161,6 +136,24 @@ const SearchCard = ({
     )
 }
 
+const RoadmapStep = ({ number, title, description }: { number: number, title: string, description: string }) => (
+    <div className="flex">
+        <div className="flex flex-col items-center mr-4">
+            <div>
+                <div className="flex items-center justify-center w-10 h-10 border-2 border-primary rounded-full">
+                    <span className="text-lg font-bold text-primary">{number}</span>
+                </div>
+            </div>
+            <div className="w-px h-full bg-primary/30"></div>
+        </div>
+        <div className="pb-8">
+            <p className="mb-2 text-lg font-semibold text-primary">{title}</p>
+            <p className="text-muted-foreground">{description}</p>
+        </div>
+    </div>
+);
+
+
 export default function CareerGuidePage() {
   const [profile, setProfile] = useState<GenerateCareerProfileOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -188,7 +181,7 @@ export default function CareerGuidePage() {
         <Compass className="w-16 h-16 mx-auto text-primary mb-4" />
         <h1 className="text-4xl font-extrabold font-headline tracking-tight">AI Career Guide</h1>
         <p className="text-muted-foreground mt-2 text-lg">
-          Give anything.
+          Explore any career path. Just type a job title, skill, or interest to begin.
         </p>
       </div>
 
@@ -241,7 +234,7 @@ export default function CareerGuidePage() {
             <h2 className="text-3xl font-bold font-headline mb-2">
                 Your Career Profile: <span className="text-primary">{profile.careerTitle}</span>
             </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">{profile.description}</p>
+            <p className="text-muted-foreground text-lg max-w-3xl mx-auto">{profile.description}</p>
           </motion.div>
           
           <div className="grid md:grid-cols-2 gap-8">
@@ -258,22 +251,24 @@ export default function CareerGuidePage() {
                     </CardContent>
                 </Card>
             </motion.div>
-            <motion.div variants={itemVariants} className="space-y-4">
+            <motion.div variants={itemVariants}>
                  <Card className="h-full rounded-xl">
                     <CardHeader className="flex-row items-center gap-4">
-                        <div className="p-3 bg-primary/10 rounded-lg"><IndianRupee className="w-6 h-6 text-primary"/></div>
-                        <CardTitle className="text-lg font-headline">Salary Outlook (Per Year)</CardTitle>
+                        <div className="p-3 bg-primary/10 rounded-lg"><Rocket className="w-6 h-6 text-primary"/></div>
+                        <CardTitle className="text-lg font-headline">Job Market Insights</CardTitle>
                     </CardHeader>
-                    <CardContent className="flex items-baseline justify-center gap-4 text-center">
-                        <div className="flex-1">
-                            <p className="text-sm text-muted-foreground">Starting</p>
-                            <p className="text-2xl font-bold">{formatSalary(profile.salaryRange.min)}</p>
+                    <CardContent className="space-y-4">
+                        <div className="flex justify-between items-center">
+                            <span className="font-semibold text-muted-foreground">Salary Range</span>
+                            <span className="font-bold text-primary">{formatSalary(profile.jobMarketInsights.salaryRange.min)} - {formatSalary(profile.jobMarketInsights.salaryRange.max)}</span>
                         </div>
-                        <div className="text-2xl text-muted-foreground">-</div>
-                        <div className="flex-1">
-                            <p className="text-sm text-muted-foreground">Senior Level</p>
-                            <p className="text-2xl font-bold">{formatSalary(profile.salaryRange.max)}</p>
+                         <div className="flex justify-between items-center">
+                            <span className="font-semibold text-muted-foreground">Demand</span>
+                            <span className="font-bold text-primary">{profile.jobMarketInsights.demand}</span>
                         </div>
+                         <p className="text-sm text-muted-foreground pt-2 border-t border-dashed">
+                           {profile.jobMarketInsights.futureOutlook}
+                        </p>
                     </CardContent>
                 </Card>
             </motion.div>
@@ -295,33 +290,60 @@ export default function CareerGuidePage() {
                 ))}
             </div>
           </motion.div>
+
+          <motion.div variants={itemVariants}>
+            <Card className="h-full rounded-xl">
+                <CardHeader className="flex-row items-center gap-4">
+                    <div className="p-3 bg-primary/10 rounded-lg"><Map className="w-6 h-6 text-primary"/></div>
+                    <CardTitle className="text-lg font-headline">Your Learning Roadmap</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <div className="relative">
+                        <RoadmapStep number={1} title="Foundations" description={profile.learningRoadmap.step1} />
+                        <RoadmapStep number={2} title="Tools & Technology" description={profile.learningRoadmap.step2} />
+                        <RoadmapStep number={3} title="Practical Application" description={profile.learningRoadmap.step3} />
+                        <RoadmapStep number={4} title="Advanced Skills" description={profile.learningRoadmap.step4} />
+                    </div>
+                </CardContent>
+            </Card>
+          </motion.div>
           
           <div className="grid md:grid-cols-2 gap-8">
             <motion.div variants={itemVariants}>
                  <Card className="h-full rounded-xl">
                     <CardHeader className="flex-row items-center gap-4">
-                        <div className="p-3 bg-primary/10 rounded-lg"><Rocket className="w-6 h-6 text-primary"/></div>
-                        <CardTitle className="text-lg font-headline">Career Outlook</CardTitle>
+                        <div className="p-3 bg-primary/10 rounded-lg"><BriefcaseBusiness className="w-6 h-6 text-primary"/></div>
+                        <CardTitle className="text-lg font-headline">Possible Job Roles</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <p className="text-sm text-muted-foreground">{profile.careerOutlook}</p>
+                        <ul className="space-y-2 text-sm text-muted-foreground">
+                            {profile.suggestedRoles.map((item, index) => <li key={index} className="flex items-start gap-2"><span className="text-primary mt-1">&bull;</span>{item}</li>)}
+                        </ul>
                     </CardContent>
                 </Card>
             </motion.div>
              <motion.div variants={itemVariants}>
                  <Card className="h-full rounded-xl">
                     <CardHeader className="flex-row items-center gap-4">
-                        <div className="p-3 bg-primary/10 rounded-lg"><BookOpen className="w-6 h-6 text-primary"/></div>
-                        <CardTitle className="text-lg font-headline">Recommended Next Steps</CardTitle>
+                        <div className="p-3 bg-primary/10 rounded-lg"><Building className="w-6 h-6 text-primary"/></div>
+                        <CardTitle className="text-lg font-headline">Companies Hiring</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <ul className="space-y-2 text-sm text-muted-foreground">
-                            {profile.learningResources.map((item, index) => <li key={index} className="flex items-start gap-2"><span className="text-primary mt-1">&bull;</span>{item}</li>)}
+                            {profile.hiringCompanies.map((item, index) => <li key={index} className="flex items-start gap-2"><span className="text-primary mt-1">&bull;</span>{item}</li>)}
                         </ul>
                     </CardContent>
                 </Card>
             </motion.div>
           </div>
+
+          <motion.div variants={itemVariants} className="text-center pt-4">
+            <h3 className="font-headline text-xl mb-4">Ready to Start?</h3>
+            <div className="flex gap-4 justify-center">
+                <Button asChild><Link href="/lessons">Browse Lessons</Link></Button>
+                <Button asChild variant="outline"><Link href="/ai-mentor">Ask the AI Mentor</Link></Button>
+            </div>
+          </motion.div>
           
         </motion.div>
       )}
