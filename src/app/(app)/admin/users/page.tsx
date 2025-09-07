@@ -62,7 +62,7 @@ export default async function AdminUsersPage() {
                   <TableCell className="font-medium">{user.email}</TableCell>
                    <TableCell>{user.fullName || 'Not provided'}</TableCell>
                   <TableCell>
-                    <Badge variant={user.role === 'admin' ? 'destructive' : 'secondary'} className={cn(user.role === 'premium' && 'bg-accent/20 text-accent-foreground')}>
+                    <Badge variant={user.role === 'admin' ? 'destructive' : 'secondary'} className={cn(user.role === 'premium' && 'bg-primary text-primary-foreground')}>
                         {user.role}
                     </Badge>
                   </TableCell>

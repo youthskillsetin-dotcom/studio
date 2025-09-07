@@ -136,8 +136,12 @@ export async function getUserSubscription(supabase: SupabaseClient): Promise<Use
         .eq('user_id', user.id)
         .single();
         
-    if (error && error.code !== 'PGRST116') { // PGRST116 = no rows found
-        console.error("Error fetching user subscription", error);
+    // Gracefully handle cases where the table doesn't exist (e.g., in development)
+    if (error && error.code !== 'PGRST116' && error.code !== '42P01') { 
+        // 42P01: relation does not exist
+        // PGRST116: no rows found
+        // We log other errors but not these ones.
+        console.error("Error fetching user subscription:", error);
         return null;
     }
 
@@ -158,8 +162,8 @@ export async function getUserProfile(supabase: SupabaseClient): Promise<UserProf
         .eq('id', user.id)
         .single();
 
-    if (error && error.code !== 'PGRST116') {
-        console.error("Error fetching user profile", error);
+    if (error && error.code !== 'PGRST116' && error.code !== '42P01') {
+        console.error("Error fetching user profile:", error);
     }
     
     const role = data?.role ?? user?.user_metadata?.role ?? 'user';
@@ -202,7 +206,7 @@ export async function getAllUsers(supabase: SupabaseClient): Promise<UserProfile
     .select('id, role, full_name')
     .in('id', userIds);
 
-  if (profilesError) {
+  if (profilesError && profilesError.code !== '42P01') {
     console.error('Error fetching profiles:', profilesError.message);
     // Return users with default roles if profiles can't be fetched
     return users.map(user => ({
@@ -214,7 +218,7 @@ export async function getAllUsers(supabase: SupabaseClient): Promise<UserProfile
     }));
   }
 
-  const profilesMap = new Map(profiles.map(p => [p.id, { role: p.role, full_name: p.full_name }]));
+  const profilesMap = new Map(profiles?.map(p => [p.id, { role: p.role, full_name: p.full_name }]) || []);
 
   return users.map(user => ({
     id: user.id,
