@@ -29,7 +29,7 @@ const plans = {
   },
 };
 
-function SubscribePageContent({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
+async function SubscribePageContent({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
   const planKey = searchParams.plan === 'yearly' ? 'yearly' : 'premium';
   const selectedPlan = plans[planKey];
   
