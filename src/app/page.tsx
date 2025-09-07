@@ -4,7 +4,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
-import { CheckCircle, Zap, BrainCircuit, BookOpen, BarChart, ShieldCheck, Cpu, Briefcase, IndianRupee, HandCoins, Scale, User, FileText, Lock, Landmark, Search, Target, Bot } from 'lucide-react';
+import { CheckCircle, Zap, BrainCircuit, BookOpen, BarChart, ShieldCheck, Cpu, Briefcase, IndianRupee, HandCoins, Scale, User, FileText, Lock, Landmark, Search, Target, Bot, Plus } from 'lucide-react';
 import { Logo } from '@/components/icons';
 import Image from 'next/image';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -164,6 +164,14 @@ export default function LandingPage() {
                            </div>
                         </div>
                     ))}
+                    <div className="flex items-center justify-center gap-4 rounded-xl bg-muted/20 p-6 border-2 border-dashed border-muted-foreground/30 filter blur-[0.5px] hover:blur-none transition-all">
+                       <div className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-muted-foreground/10 text-muted-foreground">
+                            <Plus className="w-7 h-7" />
+                       </div>
+                       <div>
+                            <h3 className="font-headline text-lg font-semibold text-muted-foreground">...and many more modules coming soon!</h3>
+                       </div>
+                    </div>
                 </div>
             </div>
         </section>
