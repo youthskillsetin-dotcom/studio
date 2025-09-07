@@ -118,6 +118,7 @@ export default function AboutPage() {
                         </Avatar>
                         <h3 className="mt-6 text-lg font-semibold text-foreground">Adarsh</h3>
                         <p className="text-primary">Head of Content and Co-founder</p>
+                        <p className="text-sm text-muted-foreground mt-4">Adarsh is the heart of our educational mission, serving as the Head of Content. He possesses a unique talent for deconstructing complex, often intimidating subjects like finance, AI ethics, and cybersecurity, and rebuilding them into lessons that are structured, engaging, and perfectly tailored for the teenage mind. He believes that learning should be a process of discovery, not just memorization. Adarsh works tirelessly with subject matter experts to ensure our curriculum is not only accurate and up-to-date but also practical and relevant to the challenges young Indians face today. His work ensures that every module on YouthSkillSet provides actionable knowledge that students can apply to their lives immediately.</p>
                     </CardContent>
                 </Card>
                 <Card className="text-center rounded-2xl border-0 shadow-none">
