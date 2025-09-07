@@ -88,7 +88,7 @@ const aiMentorChatFlow = ai.defineFlow(
     outputSchema: AIMentorChatOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
-    return output!;
+    const result = await prompt(input);
+    return result.output!;
   }
 );
