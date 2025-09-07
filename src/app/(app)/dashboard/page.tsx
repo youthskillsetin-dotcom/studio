@@ -11,7 +11,7 @@ import { BadgesGrid } from '@/components/dashboard/badges-grid';
 import { AIMentorCard } from '@/components/dashboard/ai-mentor-card';
 import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
-import { getUserSubscription } from '@/lib/data';
+import { getUserSubscription, getUserProfile } from '@/lib/data';
 
 
 const containerVariants = {
@@ -41,6 +41,7 @@ export default async function DashboardPage() {
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
   const userSubscription = await getUserSubscription(supabase);
+  const userProfile = await getUserProfile(supabase);
   const isPremium = userSubscription?.is_active ?? false;
 
   return (
@@ -50,7 +51,7 @@ export default async function DashboardPage() {
       initial="hidden"
       animate="visible"
     >
-      <WelcomeHeader variants={itemVariants} />
+      <WelcomeHeader variants={itemVariants} name={userProfile?.fullName} />
 
       <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
         <motion.div
@@ -74,5 +75,3 @@ export default async function DashboardPage() {
     </motion.div>
   );
 }
-
-    

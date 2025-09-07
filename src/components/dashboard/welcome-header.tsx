@@ -3,7 +3,6 @@
 
 import { motion, type Variants } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { createClient } from '@/lib/supabase/client';
 
 const quotes = [
     "The best way to predict the future is to create it.",
@@ -18,34 +17,25 @@ const getDailyQuote = () => {
 
 interface WelcomeHeaderProps {
   variants?: Variants;
+  name?: string | null;
 }
 
-function capitalize(str: string) {
-    if (!str) return '';
+function capitalize(str?: string | null) {
+    if (!str) return 'Learner';
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-export function WelcomeHeader({ variants }: WelcomeHeaderProps) {
+export function WelcomeHeader({ variants, name }: WelcomeHeaderProps) {
     const [quote, setQuote] = useState('');
-    const [name, setName] = useState('Learner');
-    const supabase = createClient();
-
+    
     useEffect(() => {
         setQuote(getDailyQuote());
-        const fetchUser = async () => {
-            const {data: { user }} = await supabase.auth.getUser();
-            if (user) {
-                const userName = user.user_metadata.full_name || user.email?.split('@')[0] || 'Learner';
-                setName(capitalize(userName));
-            }
-        };
-        fetchUser();
-    }, [supabase.auth]);
+    }, []);
 
     return (
         <motion.div className="space-y-1.5" variants={variants}>
           <h1 className="text-2xl md:text-3xl font-bold tracking-tight font-headline">
-            Welcome Back, {name}!
+            Welcome Back, {capitalize(name)}!
           </h1>
           <p className="text-muted-foreground text-base">
             {quote}
@@ -53,5 +43,3 @@ export function WelcomeHeader({ variants }: WelcomeHeaderProps) {
         </motion.div>
     )
 }
-
-    

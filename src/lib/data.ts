@@ -130,7 +130,6 @@ export async function getUserSubscription(supabase: SupabaseClient): Promise<Use
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return null;
 
-    // This table might not exist, so we'll return a mock subscription to avoid errors.
     const { data, error } = await supabase
         .from('subscriptions')
         .select('*')
@@ -144,21 +143,6 @@ export async function getUserSubscription(supabase: SupabaseClient): Promise<Use
 
     if(data) return data;
     
-    // Fallback mock for premium user in dev
-    if (user.email !== 'work@youthskillset.in') {
-        const expires_at = new Date();
-        expires_at.setFullYear(expires_at.getFullYear() + 1);
-        return {
-            user_id: user.id,
-            is_active: true,
-            plan_name: 'Premium',
-            expires_at: expires_at.toISOString(),
-            id: 'mock_sub_id',
-            updated_at: new Date().toISOString(),
-            created_at: new Date().toISOString(),
-        };
-    }
-    
     return null;
 }
 
@@ -168,10 +152,9 @@ export async function getUserProfile(supabase: SupabaseClient): Promise<UserProf
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return null;
 
-    // This table might not exist, so we'll return a mock profile to avoid errors.
     const { data, error } = await supabase
         .from('profiles')
-        .select('role')
+        .select('role, full_name')
         .eq('id', user.id)
         .single();
 
@@ -179,15 +162,15 @@ export async function getUserProfile(supabase: SupabaseClient): Promise<UserProf
         console.error("Error fetching user profile", error);
     }
     
-    const isAdmin = user.email === 'work@youthskillset.in';
-    const role = isAdmin ? 'admin' : data?.role ?? 'premium';
+    const role = data?.role ?? 'user';
+    const fullName = data?.full_name ?? user?.user_metadata?.full_name ?? user.email?.split('@')[0];
 
     return {
         id: user.id,
         email: user.email || 'user@example.com',
         role: role,
-        created_at: user.created_at || new Date().toISOString(),
-        fullName: user.user_metadata.full_name,
+        created_at: user.created_at, // This is a string, which is serializable
+        fullName: fullName,
     };
 }
 
@@ -212,12 +195,10 @@ export async function getAllUsers(supabase: SupabaseClient): Promise<UserProfile
     return [];
   }
 
-  // In a real app, you'd join with a 'profiles' table.
-  // We'll mock the role for this prototype.
   return users.map(user => ({
     id: user.id,
     email: user.email ?? 'No email',
-    role: user.email === 'work@youthskillset.in' ? 'admin' : 'premium',
+    role: user.user_metadata.role ?? 'user',
     created_at: user.created_at ?? new Date().toISOString(),
     fullName: user.user_metadata.full_name,
   }));
