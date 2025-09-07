@@ -27,7 +27,16 @@ export async function GET(request: NextRequest) {
         },
       }
     )
-    const { error } = await supabase.auth.exchangeCodeForSession(code)
+    const { error, data } = await supabase.auth.exchangeCodeForSession(code)
+    
+    // The user is signing up, so they need to verify their email
+    if(data?.user && data.user.identities && data.user.identities.length === 1) {
+        const email = data.user.email;
+        if (email) {
+            return NextResponse.redirect(new URL(`/verify?email=${encodeURIComponent(email)}`, origin));
+        }
+    }
+
     if (!error) {
       return NextResponse.redirect(new URL(next, origin));
     }

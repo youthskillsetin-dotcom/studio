@@ -30,10 +30,7 @@ export function WelcomeHeader({ variants }: WelcomeHeaderProps) {
         const fetchUser = async () => {
             const {data: { user }} = await supabase.auth.getUser();
             if (user) {
-                // You can use a specific field, e.g., from user_metadata
-                // For now, let's parse it from the email
-                const userEmail = user.email || 'Learner';
-                const userName = userEmail.split('@')[0];
+                const userName = user.user_metadata.full_name || user.email?.split('@')[0] || 'Learner';
                 const capitalizedName = userName.charAt(0).toUpperCase() + userName.slice(1);
                 setName(capitalizedName);
             }

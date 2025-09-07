@@ -30,6 +30,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { motion } from 'framer-motion';
 
 const formSchema = z.object({
+  fullName: z.string().min(2, { message: 'Please enter your full name.' }),
   email: z.string().email({ message: 'Please enter a valid email address.' }),
   phone: z.string().min(10, { message: 'Please enter a valid phone number.' }),
   password: z
@@ -39,7 +40,6 @@ const formSchema = z.object({
 
 export default function SignupPage() {
   const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -48,6 +48,7 @@ export default function SignupPage() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      fullName: '',
       email: '',
       phone: '',
       password: '',
@@ -57,15 +58,13 @@ export default function SignupPage() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
     setError(null);
-
-    const redirectURL = searchParams.get('redirect');
-
-    const { error } = await supabase.auth.signUp({
+    
+    const { data, error } = await supabase.auth.signUp({
       email: values.email,
       password: values.password,
       options: {
-        emailRedirectTo: redirectURL ? `${window.location.origin}${redirectURL}` : `${window.location.origin}/auth/callback`,
         data: {
+            full_name: values.fullName,
             phone: values.phone,
         }
       },
@@ -73,8 +72,9 @@ export default function SignupPage() {
 
     if (error) {
       setError(error.message);
-    } else {
-      setSuccess(true);
+    } else if (data.user) {
+      // Redirect to OTP verification page
+      router.push(`/verify?email=${encodeURIComponent(values.email)}`);
     }
     setIsLoading(false);
   }
@@ -102,12 +102,22 @@ export default function SignupPage() {
                     <AlertDescription>{error}</AlertDescription>
                 </Alert>
                 )}
-                {success && (
-                <Alert variant="default" className="bg-green-50 border-green-200">
-                    <AlertTitle className="text-green-800">Check your email!</AlertTitle>
-                    <AlertDescription className="text-green-700">We've sent a confirmation link to your email address. Please click the link to activate your account.</AlertDescription>
-                </Alert>
+                <FormField
+                control={form.control}
+                name="fullName"
+                render={({ field }) => (
+                    <FormItem>
+                    <FormLabel>Full Name</FormLabel>
+                    <FormControl>
+                        <Input
+                        placeholder="e.g., John Doe"
+                        {...field}
+                        />
+                    </FormControl>
+                    <FormMessage />
+                    </FormItem>
                 )}
+                />
                 <FormField
                 control={form.control}
                 name="email"
@@ -118,7 +128,6 @@ export default function SignupPage() {
                         <Input
                         placeholder="m@example.com"
                         {...field}
-                        disabled={success}
                         />
                     </FormControl>
                     <FormMessage />
@@ -135,7 +144,6 @@ export default function SignupPage() {
                         <Input
                           placeholder="e.g., 9876543210"
                           {...field}
-                          disabled={success}
                           type="tel"
                         />
                       </FormControl>
@@ -150,7 +158,7 @@ export default function SignupPage() {
                     <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
-                        <Input type="password" {...field} disabled={success}/>
+                        <Input type="password" {...field} />
                     </FormControl>
                     <FormMessage />
                     </FormItem>
@@ -158,7 +166,7 @@ export default function SignupPage() {
                 />
             </CardContent>
             <CardFooter className="flex flex-col gap-4">
-                <Button className="w-full" type="submit" disabled={isLoading || success}>
+                <Button className="w-full" type="submit" disabled={isLoading}>
                 {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                 Create Account
                 </Button>
