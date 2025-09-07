@@ -4,6 +4,7 @@ import type { SupabaseClient } from '@supabase/supabase-js';
 import type { Lesson, Subtopic, UserSubtopicProgress, Post, CommentWithAuthor, PostWithAuthor, UserSubscription, UserProfile } from './types';
 import { unstable_noStore as noStore } from 'next/cache';
 import sampleContent from '../../sample-content.json';
+import { createClient as createAdminClient } from '@supabase/supabase-js';
 
 // NOTE: Lesson and Subtopic data is now primarily sourced from sample-content.json
 
@@ -116,10 +117,20 @@ export async function getUserProfile(supabase: SupabaseClient): Promise<UserProf
 export async function getAllUsers(supabase: SupabaseClient): Promise<UserProfile[]> {
   noStore();
   
-  // Note: This requires admin privileges on your Supabase instance to list all users.
-  // You might need to adjust RLS policies or use a service role key for this in a real backend.
-  // For now, we assume it works for demonstration.
-  const { data: { users }, error } = await supabase.auth.admin.listUsers();
+  // This function requires elevated privileges and should only be run on the server.
+  // We use the service_role key to create an admin client for this one operation.
+  // Ensure SUPABASE_SERVICE_ROLE_KEY is set in your .env.local file.
+  if (!process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    console.error('Supabase service role key is not set. Cannot fetch all users.');
+    return [];
+  }
+  
+  const supabaseAdmin = createAdminClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  );
+  
+  const { data: { users }, error } = await supabaseAdmin.auth.admin.listUsers();
 
   if (error || !users) {
     console.error('Error fetching users:', error?.message);
