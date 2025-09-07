@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Lock, Circle, CircleCheck, Play } from 'lucide-react';
+import { Lock, Play, CircleCheck } from 'lucide-react';
 import type { Subtopic } from '@/lib/types';
 import { cn } from '@/lib/utils';
 
