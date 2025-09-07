@@ -3,15 +3,18 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { Analytics } from "@vercel/analytics/react";
-import { Inter, Space_Grotesk } from 'next/font/google'
+import { Inter, Space_Grotesk } from 'next/font/google';
+import { cn } from '@/lib/utils';
 
 const inter = Inter({
   subsets: ['latin'],
+  display: 'swap',
   variable: '--font-inter',
 })
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
+  display: 'swap',
   variable: '--font-space-grotesk',
 })
 
@@ -32,7 +35,7 @@ export default function RootLayout({
        <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
       </head>
-      <body className={`${inter.variable} ${spaceGrotesk.variable} font-body antialiased`}>
+      <body className={cn('font-body antialiased', inter.variable, spaceGrotesk.variable)}>
         {children}
         <Toaster />
         <Analytics />
