@@ -60,6 +60,7 @@ export default function SignupPage() {
     setIsLoading(true);
     setError(null);
     
+    // With email confirmation disabled, this will sign the user up and log them in.
     const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
       email: values.email,
       password: values.password,
@@ -67,21 +68,19 @@ export default function SignupPage() {
         data: {
             full_name: values.fullName,
             phone: values.phone,
-        },
-        // This option is crucial for ensuring an OTP is sent.
-        emailRedirectTo: `${window.location.origin}/auth/callback`,
+        }
       },
     });
 
     if (signUpError) {
       setError(signUpError.message);
+      setIsLoading(false);
     } else if (signUpData.user) {
-        // Redirect to the OTP verification page
-        const redirectUrl = plan ? `/verify?email=${encodeURIComponent(values.email)}&next=/subscribe?plan=${plan}` : `/verify?email=${encodeURIComponent(values.email)}`;
+        // Since verification is off, user is logged in. Redirect to dashboard.
+        const redirectUrl = plan ? `/subscribe?plan=${plan}` : `/dashboard`;
         router.push(redirectUrl);
+        router.refresh();
     }
-
-    setIsLoading(false);
   }
 
   return (
