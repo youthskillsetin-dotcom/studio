@@ -1,6 +1,5 @@
 
-'use server';
-
+'use client';
 import { motion } from 'framer-motion';
 import { WelcomeHeader } from '@/components/dashboard/welcome-header';
 import { ProgressOverview } from '@/components/dashboard/progress-overview';
@@ -9,9 +8,8 @@ import { PracticeZone } from '@/components/dashboard/practice-zone';
 import { SubscriptionCard } from '@/components/dashboard/subscription-card';
 import { BadgesGrid } from '@/components/dashboard/badges-grid';
 import { AIMentorCard } from '@/components/dashboard/ai-mentor-card';
-import { createClient } from '@/lib/supabase/server';
-import { cookies } from 'next/headers';
-import { getUserSubscription, getUserProfile } from '@/lib/data';
+import { useUserSubscription } from '@/hooks/use-user-subscription';
+import { useUserProfile } from '@/hooks/use-user-profile';
 
 
 const containerVariants = {
@@ -37,11 +35,9 @@ const itemVariants = {
 };
 
 
-export default async function DashboardPage() {
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
-  const userSubscription = await getUserSubscription(supabase);
-  const userProfile = await getUserProfile(supabase);
+export default function DashboardPage() {
+  const { userSubscription } = useUserSubscription();
+  const { userProfile } = useUserProfile();
   const isPremium = userSubscription?.is_active ?? false;
 
   return (

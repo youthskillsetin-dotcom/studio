@@ -1,7 +1,7 @@
 
+'use client';
 
 import Link from "next/link";
-import { cookies } from "next/headers";
 import {
   Bell,
   BookOpen,
@@ -16,10 +16,9 @@ import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { createClient } from "@/lib/supabase/server";
-import { getUserProfile } from "@/lib/data";
 import { MobileNav } from "./_components/mobile-nav";
 import { UserNav } from "./_components/user-nav";
+import { useUserProfile } from "@/hooks/use-user-profile";
 
 
 const navItems = [
@@ -34,10 +33,8 @@ const adminNavItems = [
     { href: "/admin/users", icon: UserCog, label: "User Management" },
 ];
 
-export default async function AppLayout({ children }: { children: React.ReactNode }) {
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
-  const userProfile = await getUserProfile(supabase);
+export default function AppLayout({ children }: { children: React.ReactNode }) {
+  const { userProfile, isLoading } = useUserProfile();
   
   const desktopNav = (
      <>
@@ -50,6 +47,20 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           {item.label}
         </Link>
       ))}
+      {userProfile?.role === 'admin' && (
+        <div className="hidden md:flex gap-5">
+             <div className="h-5 w-px bg-border mx-2 self-center" />
+             {adminNavItems.map((item) => (
+                <Link
+                    key={item.href}
+                    href={item.href}
+                    className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                >
+                    {item.label}
+                </Link>
+             ))}
+        </div>
+      )}
     </>
   )
 
