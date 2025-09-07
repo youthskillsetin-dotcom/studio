@@ -119,7 +119,7 @@ export default function LandingPage() {
               <Card className="flex flex-col">
                 <CardHeader>
                   <CardTitle className="font-headline text-2xl">Free</CardTitle>
-                  <p className="text-4xl font-bold">$0<span className="text-lg font-normal text-muted-foreground">/month</span></p>
+                  <p className="text-4xl font-bold">₹0<span className="text-lg font-normal text-muted-foreground">/month</span></p>
                   <p className="text-muted-foreground pt-2">For individuals starting their learning journey.</p>
                 </CardHeader>
                 <CardContent className="flex-grow space-y-4">
@@ -193,7 +193,7 @@ export default function LandingPage() {
                     <span className="text-2xl text-muted-foreground line-through">₹2499</span>
                     <p className="text-4xl font-bold">₹1499<span className="text-lg font-normal text-muted-foreground">/year</span></p>
                   </div>
-                  <p className="text-muted-foreground pt-2">For dedicated learners who want to go pro.</p>
+                  <p className="text-muted-foreground pt-2">For committed learners who want to save big.</p>
                 </CardHeader>
                 <CardContent className="flex-grow space-y-4">
                    <ul className="space-y-2">

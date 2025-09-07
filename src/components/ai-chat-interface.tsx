@@ -305,7 +305,7 @@ export default function AIChatInterface() {
               render={({ field }) => (
                 <FormItem className="flex-1">
                   <FormControl>
-                    <Input placeholder="Type your message, or '/' for commands" {...field} autoComplete="off" disabled={isLoading} />
+                    <Input placeholder="Ask MentorAI... (or type '/' for ideas)" {...field} autoComplete="off" disabled={isLoading} />
                   </FormControl>
                 </FormItem>
               )}
@@ -319,5 +319,3 @@ export default function AIChatInterface() {
     </Card>
   );
 }
-
-    
