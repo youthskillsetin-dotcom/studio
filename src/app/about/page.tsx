@@ -12,7 +12,7 @@ export default function AboutPage() {
         <div className="text-center mb-16">
           <Logo className="h-20 w-20 mx-auto text-primary" />
           <h1 className="mt-4 text-4xl font-extrabold font-headline tracking-tight sm:text-5xl lg:text-6xl">
-            About YouthSkillSet
+            Our Mission: Empowering India's Next Generation
           </h1>
           <p className="mt-6 max-w-3xl mx-auto text-xl text-muted-foreground">
             Empowering the next generation with the skills, confidence, and knowledge to thrive in the real world.
