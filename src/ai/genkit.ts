@@ -1,3 +1,5 @@
+'use server';
+
 import {genkit} from 'genkit';
 import {googleAI} from '@genkit-ai/googleai';
 
@@ -8,5 +10,5 @@ export const ai = genkit({
       baseUrl: 'https://openrouter.ai/api/v1',
     }),
   ],
-  model: 'google/gemma-7b',
+  model: 'openai/gpt-4o-mini',
 });
