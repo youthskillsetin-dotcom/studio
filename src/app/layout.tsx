@@ -17,6 +17,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: 'YouthSkillSet',
   description: 'Master in-demand skills with AI-powered mentorship.',
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({

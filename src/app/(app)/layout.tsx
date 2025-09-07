@@ -138,7 +138,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
   const mobileNav = (
     <nav className="fixed bottom-0 left-0 right-0 z-50 border-t bg-background/95 backdrop-blur-sm md:hidden">
-      <div className="grid h-16 grid-cols-5 items-center">
+      <div className="grid h-16 grid-cols-5 items-stretch">
         {navItems.map((item) => (
           <Link
             key={`mobile-${item.href}`}
