@@ -6,6 +6,7 @@ import {
   Bell,
   BookOpen,
   Briefcase,
+  FileText,
   FlaskConical,
   LayoutGrid,
   School,
@@ -35,6 +36,7 @@ const navItems = [
 
 const adminNavItems = [
     { href: "/admin/users", icon: UserCog, label: "User Management" },
+    { href: "/admin/content", icon: FileText, label: "Content Management" },
 ];
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
