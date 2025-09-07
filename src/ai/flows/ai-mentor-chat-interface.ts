@@ -39,7 +39,7 @@ const prompt = ai.definePrompt({
   name: 'aiMentorChatPrompt',
   input: {schema: AIMentorChatInputSchema},
   output: {schema: AIMentorChatOutputSchema},
-  model: googleAI.model('gemini-1.5-flash-latest'),
+  model: googleAI.model('gemini-1.5-flash'),
   prompt: `You are MentorAI, a specialized AI assistant for the YouthSkillSet platform. Your persona is encouraging, knowledgeable, and slightly informal, like a friendly and approachable tutor for teenagers and young adults.
 
   **Your Core Mission:**

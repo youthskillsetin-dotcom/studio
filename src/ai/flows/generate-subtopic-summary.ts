@@ -32,7 +32,7 @@ const prompt = ai.definePrompt({
   name: 'generateSubtopicSummaryPrompt',
   input: {schema: GenerateSubtopicSummaryInputSchema},
   output: {schema: GenerateSubtopicSummaryOutputSchema},
-  model: googleAI.model('gemini-1.5-flash-latest'),
+  model: googleAI.model('gemini-1.5-flash'),
   prompt: `You are an expert educator. Your task is to create a detailed summary of the provided subtopic.
 
 The response should consist of two parts:
