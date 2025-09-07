@@ -2,7 +2,7 @@
 'use client';
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   Bell,
   BookOpen,
@@ -13,6 +13,7 @@ import {
   Sparkles,
   User,
   Users,
+  LogOut,
 } from "lucide-react";
 import * as React from 'react';
 import Image from "next/image";
@@ -21,6 +22,16 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { createClient } from "@/lib/supabase/client";
+
 
 const navItems = [
   { href: "/dashboard", icon: LayoutGrid, label: "Dashboard" },
@@ -28,12 +39,32 @@ const navItems = [
   { href: "/community", icon: Users, label: "Community" },
   { href: "/ai-mentor", icon: Sparkles, label: "AI Mentor" },
   { href: "/career-guide", icon: Briefcase, label: "Career Guide" },
-  { href: "/settings", icon: User, label: "Profile" },
 ];
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const router = useRouter();
   const isMobile = useIsMobile();
+  const supabase = createClient();
+  const [userAvatar, setUserAvatar] = React.useState('https://picsum.photos/100/100');
+  const [userEmail, setUserEmail] = React.useState('Loading...');
+
+  React.useEffect(() => {
+    const fetchUser = async () => {
+        const {data: { user }} = await supabase.auth.getUser();
+        if (user) {
+            setUserAvatar(user.user_metadata.avatar_url || `https://api.dicebear.com/8.x/initials/svg?seed=${user.email}`);
+            setUserEmail(user.email || 'No email');
+        }
+    };
+    fetchUser();
+  }, [supabase.auth]);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    router.push('/');
+    router.refresh();
+  };
 
   const mainNav = (
     <>
@@ -43,7 +74,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           href={item.href}
           className={cn(
             "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary",
-            pathname.startsWith(item.href) && "text-primary font-semibold"
+            pathname.startsWith(item.href) && "text-primary bg-primary/10 font-semibold"
           )}
         >
           <item.icon className="h-5 w-5" />
@@ -72,7 +103,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
   const mobileNav = (
     <nav className="fixed bottom-0 left-0 right-0 z-50 border-t bg-background/95 backdrop-blur-sm md:hidden">
-      <div className="grid h-16 grid-cols-6 items-center">
+      <div className="grid h-16 grid-cols-5 items-center">
         {navItems.map((item) => (
           <Link
             key={`mobile-${item.href}`}
@@ -95,7 +126,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 z-40">
          <Link href="/dashboard" className="flex items-center gap-2 font-semibold mr-6">
             <School className="h-7 w-7 text-primary" />
-            <span className="text-xl font-headline">YouthSkillSet</span>
+            <span className="text-xl font-headline hidden sm:inline-block">YouthSkillSet</span>
           </Link>
           
         <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
@@ -103,43 +134,77 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         </nav>
         
         <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="shrink-0 md:hidden"
-                >
-                  <Menu className="h-5 w-5" />
-                  <span className="sr-only">Toggle navigation menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="left" className="flex flex-col">
-                <nav className="grid gap-2 text-lg font-medium">
-                  <Link
-                    href="/dashboard"
-                    className="mb-4 flex items-center gap-2 text-lg font-semibold"
-                  >
-                    <School className="h-7 w-7 text-primary" />
-                     <span className="text-xl font-headline">YouthSkillSet</span>
-                  </Link>
-                  {mainNav}
-                </nav>
-              </SheetContent>
-            </Sheet>
+            <div className="md:hidden">
+                <Sheet>
+                  <SheetTrigger asChild>
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="shrink-0"
+                    >
+                      <Menu className="h-5 w-5" />
+                      <span className="sr-only">Toggle navigation menu</span>
+                    </Button>
+                  </SheetTrigger>
+                  <SheetContent side="left" className="flex flex-col">
+                    <nav className="grid gap-2 text-lg font-medium">
+                      <Link
+                        href="/dashboard"
+                        className="mb-4 flex items-center gap-2 text-lg font-semibold"
+                      >
+                        <School className="h-7 w-7 text-primary" />
+                         <span className="text-xl font-headline">YouthSkillSet</span>
+                      </Link>
+                      {mainNav}
+                    </nav>
+                  </SheetContent>
+                </Sheet>
+            </div>
+
             <div className="w-full flex-1 md:w-auto md:flex-none" />
+            
             <Button variant="ghost" size="icon" className="h-9 w-9">
               <Bell className="h-5 w-5" />
               <span className="sr-only">Toggle notifications</span>
             </Button>
-            <Image
-              src="https://picsum.photos/100/100"
-              alt="User avatar"
-              width={36}
-              height={36}
-              className="rounded-full"
-              data-ai-hint="user avatar"
-            />
+            
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="relative h-10 w-10 rounded-full">
+                    <Avatar>
+                         <Image
+                          src={userAvatar}
+                          alt="User avatar"
+                          width={40}
+                          height={40}
+                          className="rounded-full"
+                          data-ai-hint="user avatar"
+                        />
+                    </Avatar>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56" align="end">
+                <DropdownMenuLabel>
+                    <div className="flex flex-col space-y-1">
+                        <p className="text-sm font-medium leading-none">My Account</p>
+                        <p className="text-xs leading-none text-muted-foreground">{userEmail}</p>
+                    </div>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link href="/settings">
+                    <User className="mr-2 h-4 w-4" />
+                    <span>Profile & Settings</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={handleLogout}>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Log out</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
           </div>
         </header>
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8 pb-20 md:pb-8">

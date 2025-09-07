@@ -3,11 +3,17 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { createClient } from '@/lib/supabase/server';
+import { cookies } from 'next/headers';
+import { getUserSubscription } from '@/lib/data';
 
 export default async function SettingsPage() {
+  const cookieStore = cookies();
+  const supabase = createClient(cookieStore);
 
-  // Placeholder for subscription status
-  const isPremium = false;
+  const { data: { user } } = await supabase.auth.getUser();
+  const userSubscription = await getUserSubscription(supabase);
+  const isPremium = userSubscription?.is_active ?? false;
 
   return (
     <div>
@@ -16,12 +22,18 @@ export default async function SettingsPage() {
         <Card>
           <CardHeader>
             <CardTitle>Account Information</CardTitle>
-            <CardDescription>This application is in public mode. No account is needed.</CardDescription>
+            <CardDescription>Your account details.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-              <p className="text-sm font-medium">Status</p>
-              <p className="text-sm text-muted-foreground">Public Access</p>
+              <p className="text-sm font-medium">Email</p>
+              <p className="text-sm text-muted-foreground">{user?.email}</p>
+            </div>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-sm font-medium">Joined</p>
+              <p className="text-sm text-muted-foreground">
+                {user?.created_at ? new Date(user.created_at).toLocaleDateString() : 'N/A'}
+              </p>
             </div>
           </CardContent>
         </Card>

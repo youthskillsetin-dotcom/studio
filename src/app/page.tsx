@@ -17,8 +17,11 @@ export default function LandingPage() {
           <span className="text-xl font-bold font-headline">YouthSkillSet</span>
         </Link>
         <nav className="flex items-center gap-4">
+           <Button asChild variant="ghost">
+            <Link href="/login">Log In</Link>
+          </Button>
           <Button asChild>
-            <Link href="/dashboard">Get Started</Link>
+            <Link href="/signup">Get Started</Link>
           </Button>
         </nav>
       </header>
@@ -36,7 +39,7 @@ export default function LandingPage() {
             </p>
             <div className="mt-8 flex justify-center gap-4">
               <Button size="lg" asChild>
-                <Link href="/dashboard">Start Learning for Free</Link>
+                <Link href="/signup">Start Learning for Free</Link>
               </Button>
             </div>
           </div>
@@ -106,7 +109,7 @@ export default function LandingPage() {
                 </CardContent>
                 <CardFooter>
                   <Button className="w-full" variant="outline" asChild>
-                     <Link href="/dashboard">Start for Free</Link>
+                     <Link href="/signup">Start for Free</Link>
                   </Button>
                 </CardFooter>
               </Card>
@@ -146,7 +149,7 @@ export default function LandingPage() {
                 </CardContent>
                 <CardFooter>
                   <Button className="w-full" asChild>
-                    <Link href="/dev/pay">Go Premium</Link>
+                    <Link href="/signup?redirect=/dev/pay">Go Premium</Link>
                   </Button>
                 </CardFooter>
               </Card>
@@ -159,7 +162,7 @@ export default function LandingPage() {
                     <span className="text-2xl text-muted-foreground line-through">₹2499</span>
                     <p className="text-4xl font-bold">₹1499<span className="text-lg font-normal text-muted-foreground">/year</span></p>
                   </div>
-                  <p className="text-muted-foreground pt-2">Save big with our annual plan.</p>
+                  <p className="text-muted-foreground pt-2">For dedicated learners who want to go pro.</p>
                 </CardHeader>
                 <CardContent className="flex-grow space-y-4">
                    <ul className="space-y-2">
@@ -179,7 +182,7 @@ export default function LandingPage() {
                 </CardContent>
                 <CardFooter>
                    <Button className="w-full" variant="outline" asChild>
-                    <Link href="/dev/pay">Go Yearly</Link>
+                    <Link href="/signup?redirect=/dev/pay">Go Yearly</Link>
                   </Button>
                 </CardFooter>
               </Card>

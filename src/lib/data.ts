@@ -1,16 +1,13 @@
 
 import type { SupabaseClient } from '@supabase/supabase-js';
-import type { Lesson, Subtopic, UserSubtopicProgress, Post } from './types';
+import type { Lesson, Subtopic, UserSubtopicProgress, Post, UserSubscription } from './types';
 import { unstable_noStore as noStore } from 'next/cache';
 import sampleContent from '../../sample-content.json';
 
 // NOTE: Lesson and Subtopic data is now primarily sourced from sample-content.json
-// These functions are kept for other data types but are no longer used for lessons.
 
 export async function getLessons(supabase: SupabaseClient): Promise<Lesson[]> {
   noStore();
-  // This function now reads from the JSON file for simplicity.
-  // We cast it to satisfy the type, adding a placeholder ID.
   return sampleContent.lessons.map((lesson, index) => ({
     ...lesson,
     id: String(index + 1), 
@@ -24,7 +21,6 @@ export async function getLessonById(supabase: SupabaseClient, id: string): Promi
     if (!lesson) return null;
     return { ...lesson, id: String(lessonIndex + 1) } as Lesson;
 }
-
 
 export async function getSubtopicsByLessonId(supabase: SupabaseClient, lessonId: string): Promise<Subtopic[]> {
     noStore();
@@ -41,8 +37,6 @@ export async function getSubtopicsByLessonId(supabase: SupabaseClient, lessonId:
 
 export async function getSubtopicById(supabase: SupabaseClient, id: string): Promise<Subtopic | null> {
     noStore();
-    
-    // ID format is assumed to be "lessonIndex-subtopicIndex"
     const ids = id.split('-').map(n => parseInt(n, 10));
     if (ids.length !== 2 || isNaN(ids[0]) || isNaN(ids[1])) return null;
 
@@ -61,21 +55,45 @@ export async function getSubtopicById(supabase: SupabaseClient, id: string): Pro
 
 export async function getUserProgress(supabase: SupabaseClient): Promise<UserSubtopicProgress[]> {
     noStore();
-    // No user, so return empty progress
-    return [];
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return [];
+
+    const { data, error } = await supabase
+        .from('user_subtopic_progress')
+        .select('*')
+        .eq('user_id', user.id);
+
+    if (error) {
+        console.error('Error fetching user progress:', error);
+        return [];
+    }
+    return data;
 }
 
-export async function getProgressForSubtopic(supabase: SupabaseClient, subtopicId: string): Promise<UserSubtopicProgress | null> {
+export async function getUserSubscription(supabase: SupabaseClient): Promise<UserSubscription | null> {
     noStore();
-    // No user, so return null
-    return null;
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return null;
+
+    const { data, error } = await supabase
+        .from('subscriptions')
+        .select('*')
+        .eq('user_id', user.id)
+        .single();
+    
+    if (error) {
+        // It's okay if no row is found, just means no subscription
+        if (error.code !== 'PGRST116') {
+             console.error('Error fetching subscription', error);
+        }
+        return null;
+    }
+
+    return data;
 }
 
 export async function getPosts(supabase: SupabaseClient): Promise<Post[]> {
   noStore();
-  
-  // We need to join with the auth.users table to get author emails.
-  // This requires a more complex query.
   const { data, error } = await supabase
     .from('posts')
     .select(`
@@ -84,7 +102,7 @@ export async function getPosts(supabase: SupabaseClient): Promise<Post[]> {
       title,
       content,
       user_id,
-      author_email:users(email)
+      author:users(email)
     `)
     .order('created_at', { ascending: false });
 
@@ -93,11 +111,10 @@ export async function getPosts(supabase: SupabaseClient): Promise<Post[]> {
     return [];
   }
 
-  // The join returns author_email as an object { email: "..." }. Let's flatten it.
   const posts = data.map(p => ({
       ...p,
       // @ts-ignore: supabase-js typing for joins can be tricky
-      author_email: p.author_email?.email ?? 'Anonymous',
+      author_email: p.author?.email ?? 'Anonymous',
   }));
 
   // @ts-ignore
@@ -115,13 +132,13 @@ export async function getPostById(supabase: SupabaseClient, id: string): Promise
       title,
       content,
       user_id,
-      author_email:users(email),
+      author:users(email),
       comments (
         id,
         created_at,
         content,
         user_id,
-        author_email:users(email)
+        author:users(email)
       )
     `)
     .eq('id', id)
@@ -133,15 +150,14 @@ export async function getPostById(supabase: SupabaseClient, id: string): Promise
     return null;
   }
 
-  // Flatten author emails for post and comments
   const post = {
     ...data,
     // @ts-ignore
-    author_email: data.author_email?.email ?? 'Anonymous',
+    author_email: data.author?.email ?? 'Anonymous',
     comments: data.comments.map(c => ({
         ...c,
         // @ts-ignore
-        author_email: c.author_email?.email ?? 'Anonymous'
+        author_email: c.author?.email ?? 'Anonymous'
     }))
   };
   

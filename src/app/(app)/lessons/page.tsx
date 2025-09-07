@@ -2,14 +2,22 @@
 import type { Lesson } from '@/lib/types';
 import { LessonCard } from '@/components/lesson-card';
 import sampleContent from '../../../../sample-content.json';
+import { createClient } from '@/lib/supabase/server';
+import { cookies } from 'next/headers';
+import { getUserSubscription } from '@/lib/data';
+
 
 export default async function LessonsPage() {
+  const cookieStore = cookies();
+  const supabase = createClient(cookieStore);
+  
   const lessons: Lesson[] = sampleContent.lessons.map((lesson, index) => ({
     ...lesson,
     id: String(index + 1),
   })) as Lesson[];
   
-  const hasPremium = false; // Placeholder for user subscription status
+  const userSubscription = await getUserSubscription(supabase);
+  const hasPremium = userSubscription?.is_active ?? false;
 
   return (
     <div className="max-w-7xl mx-auto">

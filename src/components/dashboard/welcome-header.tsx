@@ -3,6 +3,7 @@
 
 import { motion, type Variants } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { createClient } from '@/lib/supabase/client';
 
 const quotes = [
     "The best way to predict the future is to create it.",
@@ -10,7 +11,6 @@ const quotes = [
     "Success is not final, failure is not fatal: it is the courage to continue that counts."
 ];
 
-// Simple hashing function to pick a quote based on the day
 const getDailyQuote = () => {
     const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0).valueOf()) / 86400000);
     return quotes[dayOfYear % quotes.length];
@@ -22,17 +22,29 @@ interface WelcomeHeaderProps {
 
 export function WelcomeHeader({ variants }: WelcomeHeaderProps) {
     const [quote, setQuote] = useState('');
+    const [name, setName] = useState('Learner');
+    const supabase = createClient();
 
     useEffect(() => {
-        // This useEffect ensures the quote is only generated on the client,
-        // preventing a hydration mismatch between server and client renders.
         setQuote(getDailyQuote());
-    }, []);
+        const fetchUser = async () => {
+            const {data: { user }} = await supabase.auth.getUser();
+            if (user) {
+                // You can use a specific field, e.g., from user_metadata
+                // For now, let's parse it from the email
+                const userEmail = user.email || 'Learner';
+                const userName = userEmail.split('@')[0];
+                const capitalizedName = userName.charAt(0).toUpperCase() + userName.slice(1);
+                setName(capitalizedName);
+            }
+        };
+        fetchUser();
+    }, [supabase.auth]);
 
     return (
         <motion.div className="space-y-1.5" variants={variants}>
           <h1 className="text-2xl md:text-3xl font-bold tracking-tight font-headline">
-            Welcome Back, Alex!
+            Welcome Back, {name}!
           </h1>
           <p className="text-muted-foreground text-base">
             {quote}

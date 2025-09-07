@@ -46,7 +46,10 @@ export interface PracticeAttempt {
 export interface UserSubscription {
   user_id: string;
   is_active: boolean;
-  expires_at: Date | null;
+  expires_at: string | null;
+  updated_at: string;
+  created_at: string;
+  id: string;
 }
 
 export interface Comment {

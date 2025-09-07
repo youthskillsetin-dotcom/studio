@@ -32,7 +32,12 @@ const itemVariants = {
   },
 };
 
+// This page remains a client component for animations, but data fetching for subscription
+// would ideally be passed down from a server component layout in a full production app.
+// For now, we'll keep the placeholder.
 export default function DashboardPage() {
+    const isPremium = false; // Placeholder
+
   return (
     <motion.div
       className="grid flex-1 items-start gap-4 md:gap-8"
@@ -57,7 +62,7 @@ export default function DashboardPage() {
           variants={itemVariants}
         >
           <AIMentorCard />
-          <SubscriptionCard isPremium={false} />
+          <SubscriptionCard isPremium={isPremium} />
           <BadgesGrid />
         </motion.div>
       </div>

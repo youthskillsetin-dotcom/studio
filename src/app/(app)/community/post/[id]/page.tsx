@@ -5,12 +5,11 @@ import Link from 'next/link';
 import { formatDistanceToNow } from 'date-fns';
 import { createClient } from '@/lib/supabase/server';
 import { getPostById } from '@/lib/data';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft } from 'lucide-react';
-import { Textarea } from '@/components/ui/textarea';
+import { ChevronLeft, MessageCircle } from 'lucide-react';
+import AddCommentForm from './add-comment-form';
 
 export default async function PostPage({ params }: { params: { id: string } }) {
   const cookieStore = cookies();
@@ -58,25 +57,34 @@ export default async function PostPage({ params }: { params: { id: string } }) {
       <div className="mt-8">
         <h2 className="text-2xl font-bold font-headline mb-4">Discussion</h2>
         
-        {/* New Comment Form */}
-        <Card className="mb-6">
-            <CardHeader>
-                <CardTitle className="text-lg">Leave a Comment</CardTitle>
-            </CardHeader>
-            <CardContent>
-                <Textarea placeholder="Share your thoughts..."/>
-            </CardContent>
-            <CardFooter>
-                <Button>Submit Comment</Button>
-            </CardFooter>
-        </Card>
+        <AddCommentForm postId={post.id} />
 
-        {/* Existing Comments */}
-        <div className="space-y-6">
-            {/* Comments will be mapped here */}
-            <div className="text-center py-8 text-muted-foreground">
+        <div className="space-y-6 mt-6">
+          {post.comments && post.comments.length > 0 ? (
+            post.comments.map(comment => (
+              <Card key={comment.id} className="p-4">
+                <div className="flex items-start gap-4">
+                    <Avatar className="h-9 w-9">
+                        <AvatarFallback>{comment.author_email ? comment.author_email[0].toUpperCase() : 'U'}</AvatarFallback>
+                    </Avatar>
+                    <div className="flex-1">
+                        <div className="flex items-center justify-between">
+                            <p className="font-semibold">{comment.author_email}</p>
+                            <p className="text-xs text-muted-foreground">
+                                {formatDistanceToNow(new Date(comment.created_at), { addSuffix: true })}
+                            </p>
+                        </div>
+                        <p className="text-muted-foreground mt-1">{comment.content}</p>
+                    </div>
+                </div>
+              </Card>
+            ))
+          ) : (
+             <div className="text-center py-8 text-muted-foreground border rounded-lg">
+                <MessageCircle className="w-12 h-12 mx-auto mb-2"/>
                 <p>No comments yet. Be the first to reply!</p>
             </div>
+          )}
         </div>
       </div>
     </div>
