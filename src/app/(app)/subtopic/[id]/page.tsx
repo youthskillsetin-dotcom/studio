@@ -5,8 +5,9 @@ import { PracticeForm } from '@/components/practice-form';
 import Link from 'next/link';
 import { ChevronLeft, Lightbulb, Bot, ArrowRight, Video } from 'lucide-react';
 import sampleContent from '../../../../../sample-content.json';
-import type { Subtopic, Lesson } from '@/lib/types';
+import type { Subtopic, Lesson, PracticeQuestion } from '@/lib/types';
 import { Button } from '@/components/ui/button';
+import { generateSubtopicSummary } from '@/ai/flows/generate-subtopic-summary';
 
 
 // Since we are not using a DB, we'll create a simple function to get data from the JSON
@@ -44,6 +45,11 @@ export default async function SubtopicPage({ params }: { params: { id: string } 
     notFound();
   }
   const { lesson, ...subtopic } = data;
+
+  const summaryResult = await generateSubtopicSummary({
+    title: subtopic.title,
+    content: subtopic.content
+  });
 
   return (
     <div className="space-y-6">
@@ -92,7 +98,7 @@ export default async function SubtopicPage({ params }: { params: { id: string } 
                 </CardHeader>
                 <CardContent>
                     <p className="text-sm text-muted-foreground">
-                        This lesson introduces variables as named containers for storing data and covers Python's fundamental data types.
+                        {summaryResult.summary}
                     </p>
                 </CardContent>
              </Card>
