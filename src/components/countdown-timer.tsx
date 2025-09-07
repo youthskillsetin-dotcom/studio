@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -13,8 +14,11 @@ export function CountdownTimer({ targetDate }: CountdownTimerProps) {
     minutes: 0,
     seconds: 0,
   });
+  const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
+    setHasMounted(true);
+    
     const calculateTimeLeft = () => {
       const difference = +targetDate - +new Date();
       let newTimeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
@@ -45,6 +49,17 @@ export function CountdownTimer({ targetDate }: CountdownTimerProps) {
       <span className="text-sm text-muted-foreground">{label}</span>
     </div>
   );
+
+  if (!hasMounted) {
+    return (
+        <div className="flex gap-4">
+            <div className="flex flex-col items-center justify-center bg-muted/80 p-4 rounded-lg w-24 h-[92px]"></div>
+            <div className="flex flex-col items-center justify-center bg-muted/80 p-4 rounded-lg w-24 h-[92px]"></div>
+            <div className="flex flex-col items-center justify-center bg-muted/80 p-4 rounded-lg w-24 h-[92px]"></div>
+            <div className="flex flex-col items-center justify-center bg-muted/80 p-4 rounded-lg w-24 h-[92px]"></div>
+        </div>
+    );
+  }
 
   return (
     <div className="flex gap-4">
