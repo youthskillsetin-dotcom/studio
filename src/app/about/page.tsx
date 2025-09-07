@@ -107,7 +107,7 @@ export default function AboutPage() {
                 <Card className="text-center rounded-2xl border-0 shadow-none">
                     <CardContent className="p-6">
                         <h3 className="mt-6 text-lg font-semibold text-foreground">Nidhi</h3>
-                        <p className="text-primary">Community Manager</p>
+                        <p className="text-primary">Head of Research and Co-founder</p>
                     </CardContent>
                 </Card>
             </div>
