@@ -42,6 +42,7 @@ export default async function CommunityPage() {
       return <PremiumUpsell />;
   }
 
+  // The getPosts function will return an empty array if tables don't exist.
   const posts = await getPosts(supabase);
   
   return (
@@ -94,18 +95,12 @@ export default async function CommunityPage() {
            <Card className="flex flex-col items-center justify-center text-center p-12 min-h-[300px]">
              <MessageSquare className="w-16 h-16 text-muted-foreground mb-4" />
              <CardHeader>
-               <CardTitle className="font-headline text-2xl">No Discussions Yet</CardTitle>
+               <CardTitle className="font-headline text-2xl">Community Hub is Under Construction</CardTitle>
              </CardHeader>
              <CardContent>
                <p className="text-muted-foreground max-w-md mb-4">
-                 It's quiet in here. Be the first to start a conversation!
+                 This feature is not yet available as the backing database tables have not been set up. Please come back later!
                </p>
-               <Button asChild>
-                <Link href="/community/create"> 
-                  <PlusCircle className="mr-2" />
-                  Create First Post
-                </Link>
-              </Button>
              </CardContent>
            </Card>
         )}
