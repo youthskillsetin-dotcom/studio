@@ -338,19 +338,9 @@ export default function CareerGuidePage() {
                 </Card>
             </motion.div>
           </div>
-
-          <motion.div variants={itemVariants} className="text-center pt-4">
-            <h3 className="font-headline text-xl mb-4">Ready to Start?</h3>
-            <div className="flex gap-4 justify-center">
-                <Button asChild><Link href="/lessons">Browse Lessons</Link></Button>
-                <Button asChild variant="outline"><Link href="/ai-mentor">Ask the AI Mentor</Link></Button>
-            </div>
-          </motion.div>
-          
         </motion.div>
       )}
     </div>
   );
 }
 
-    
