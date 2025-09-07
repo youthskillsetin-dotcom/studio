@@ -23,7 +23,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { useState } from 'react';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Chrome } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
@@ -81,6 +81,18 @@ export default function SignupPage() {
         router.push(redirectUrl);
         router.refresh();
     }
+  }
+
+  async function handleGoogleLogin() {
+    setIsLoading(true);
+    setError(null);
+    await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: `${location.origin}/auth/callback`,
+      },
+    });
+    setIsLoading(false);
   }
 
   return (
@@ -173,6 +185,20 @@ export default function SignupPage() {
                 <Button className="w-full" type="submit" disabled={isLoading}>
                 {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                 Create Account
+                </Button>
+                <div className="relative w-full">
+                    <div className="absolute inset-0 flex items-center">
+                        <span className="w-full border-t" />
+                    </div>
+                    <div className="relative flex justify-center text-xs uppercase">
+                        <span className="bg-background px-2 text-muted-foreground">
+                        Or continue with
+                        </span>
+                    </div>
+                </div>
+                <Button variant="outline" className="w-full" onClick={handleGoogleLogin} disabled={isLoading}>
+                    <Chrome className="mr-2 h-4 w-4" />
+                    Google
                 </Button>
                 <div className="mt-4 text-center text-sm">
                 Already have an account?{' '}
