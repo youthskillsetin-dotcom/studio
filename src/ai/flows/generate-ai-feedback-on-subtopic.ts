@@ -34,7 +34,7 @@ const prompt = ai.definePrompt({
   name: 'generateAIFeedbackPrompt',
   input: {schema: GenerateAIFeedbackInputSchema},
   output: {schema: GenerateAIFeedbackOutputSchema},
-  model: 'googleai/gemini-1.5-flash',
+  model: googleAI.model('gemini-1.5-flash'),
   prompt: `You are an AI mentor providing feedback on a student's practice quiz.
 
   The student has just completed a lesson with the following content:
