@@ -57,7 +57,7 @@ const prompt = ai.definePrompt({
 
   **Your Task:**
 
-  1.  **Interpret the Input:** First, carefully analyze the user's input. It could be a specific career title (e.g., "Software Engineer"), a skill (e.g., "Python programming"), or an interest (e.g., "making video games"). Identify the most relevant and suitable professional career path based on this input. If the input is ambiguous or unclear, default to a general but popular career like "Software Developer" and mention that you've chosen a common path based on their input.
+  1.  **Interpret the Input:** First, carefully analyze the user's input. It could be a specific career title (e.g., "Software Engineer"), a skill (e.g., "Python programming"), or an interest (e.g., "making video games"). Identify the most relevant and suitable professional career path based on this input. If the input is ambiguous, very niche, or unclear (like "manager"), default to a general but popular career like "Software Developer" and mention in the description that you've chosen a common path based on their input. This ensures you always provide a useful response.
 
   2.  **Generate a Detailed Profile:** Once you have identified the career, generate a complete profile using the specified output schema. Make every section rich, detailed, and encouraging.
       *   **careerTitle**: Use the standard, professional name for the role.
