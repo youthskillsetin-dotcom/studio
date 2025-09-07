@@ -29,13 +29,9 @@ export async function GET(request: NextRequest) {
     )
     const { error, data } = await supabase.auth.exchangeCodeForSession(code)
     
-    // The user is signing up, so they need to verify their email
-    if(data?.user && data.user.identities && data.user.identities.length === 1) {
-        const email = data.user.email;
-        if (email) {
-            return NextResponse.redirect(new URL(`/verify?email=${encodeURIComponent(email)}`, origin));
-        }
-    }
+    // This part is for third-party providers or magic links, not OTP.
+    // The user signs up with email/password, then is redirected to /verify page.
+    // So this callback is mainly for logins after the initial signup.
 
     if (!error) {
       return NextResponse.redirect(new URL(next, origin));

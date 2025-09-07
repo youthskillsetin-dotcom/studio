@@ -62,7 +62,7 @@ function VerifyPageContent() {
         const { error } = await supabase.auth.verifyOtp({
             email,
             token: values.token,
-            type: 'signup'
+            type: 'email'
         });
         
         if (error) {

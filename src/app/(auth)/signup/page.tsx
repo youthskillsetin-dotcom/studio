@@ -64,6 +64,7 @@ export default function SignupPage() {
       email: values.email,
       password: values.password,
       options: {
+        channel: 'email',
         data: {
             full_name: values.fullName,
             phone: values.phone,
