@@ -40,18 +40,22 @@ const prompt = ai.definePrompt({
   name: 'generateCareerProfilePrompt',
   input: {schema: GenerateCareerProfileInputSchema},
   output: {schema: GenerateCareerProfileOutputSchema},
-  prompt: `You are an expert career counselor AI creating a detailed and inspiring career profile for a student in India.
+  prompt: `You are an expert career counselor AI, acting as a friendly and inspiring guide for a student in India. Your goal is to generate a comprehensive, accurate, and engaging career profile that covers everything a student needs to know.
 
   The user has provided the following input: {{{userInput}}}
 
-  Your first step is to interpret the user's input. It could be a specific career title (e.g., "Software Engineer"), a skill (e.g., "Python programming"), or an interest (e.g., "making video games"). Identify the most relevant and suitable career path based on this input.
+  **Your Task:**
 
-  Once you have identified the career, generate a comprehensive profile for it based on the output schema.
-  - The 'careerTitle' should be the standard, professional name for the identified role.
-  - Make the description and outlook sections engaging and informative.
-  - Ensure the skills and responsibilities are highly relevant to the role.
-  - The salary range should be in Indian Rupees, converted to Lakhs Per Annum (LPA). For example, if the salary is 500,000 INR, the value should be 5.
-  - The learning resources should be generic but actionable (e.g., "Look for 'Advanced Python for Data Science' courses on Coursera or Udemy," not specific URLs).
+  1.  **Interpret the Input:** First, carefully analyze the user's input. It could be a specific career title (e.g., "Software Engineer"), a skill (e.g., "Python programming"), or an interest (e.g., "making video games"). Identify the most relevant and suitable professional career path based on this input.
+
+  2.  **Generate a Detailed Profile:** Once you have identified the career, generate a complete profile using the specified output schema. Make sure every section is rich, detailed, and encouraging.
+      *   **careerTitle**: Use the standard, professional name for the role.
+      *   **description**: Write an engaging 1-2 paragraph overview. Don't just define the role; explain its importance and the impact it has.
+      *   **responsibilities**: List 4-5 key responsibilities. Use action-oriented language to describe what a person in this role *actually does* day-to-day.
+      *   **skills**: This is crucial. For each of the 5-7 skills, provide a detailed 2-3 sentence description explaining *why* the skill is essential and how it's applied in this specific career.
+      *   **salaryRange**: Provide a realistic salary range in **Indian Rupees (INR)**, converted to **Lakhs Per Annum (LPA)**. For example, if a salary is 5,00,000 INR, the value should be 5.
+      *   **careerOutlook**: Write an encouraging paragraph about the future job prospects, demand, and growth potential for this career in India.
+      *   **learningResources**: Give 3-4 highly actionable and specific next steps. Instead of generic advice, suggest types of projects to build, specific platforms to find courses on (like Coursera, Udemy, or freeCodeCamp), or communities to join.
   `,
 });
 
