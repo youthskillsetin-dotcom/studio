@@ -40,7 +40,7 @@ const prompt = ai.definePrompt({
   input: {schema: AIMentorChatInputSchema},
   output: {schema: AIMentorChatOutputSchema},
   model: googleAI.model('gemini-1.5-flash'),
-  history: (input) => input.chatHistory || [],
+  history: (input) => (input.chatHistory || []).map(msg => ({ role: msg.role, content: [{text: msg.content}]})),
   prompt: `You are MentorAI, a specialized AI assistant for the YouthSkillSet platform. Your persona is encouraging, knowledgeable, and slightly informal, like a friendly and approachable tutor for teenagers and young adults.
 
   **Your Core Mission:**
@@ -83,7 +83,7 @@ const aiMentorChatFlow = ai.defineFlow(
     outputSchema: AIMentorChatOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
+    const {output} = await prompt({message: input.message, chatHistory: input.chatHistory});
     return output!;
   }
 );
