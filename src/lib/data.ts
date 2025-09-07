@@ -1,7 +1,7 @@
 
 
 import type { SupabaseClient } from '@supabase/supabase-js';
-import type { Lesson, Subtopic, UserSubtopicProgress, Post, CommentWithAuthor, PostWithAuthor, UserSubscription, UserProfile } from './types';
+import type { Lesson, Subtopic, UserSubtopicProgress, Post, CommentWithAuthor, PostWithAuthor, UserSubscription, UserProfile, UserProfileWithSubscription } from './types';
 import { unstable_noStore as noStore } from 'next/cache';
 import sampleContent from '../../sample-content.json';
 import { createClient as createAdminClient } from '@supabase/supabase-js';
@@ -124,62 +124,77 @@ export async function getUserProgress(supabase: SupabaseClient): Promise<UserSub
     return [];
 }
 
-/**
- * MOCK IMPLEMENTATION:
- * This function simulates a premium user subscription to avoid database errors
- * when the 'subscriptions' table is not present.
- */
+
 export async function getUserSubscription(supabase: SupabaseClient): Promise<UserSubscription | null> {
     noStore();
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return null;
 
-    // Return a mock premium subscription for any logged-in user.
-    const expires_at = new Date();
-    expires_at.setFullYear(expires_at.getFullYear() + 1);
+    // This table might not exist, so we'll return a mock subscription to avoid errors.
+    const { data, error } = await supabase
+        .from('subscriptions')
+        .select('*')
+        .eq('user_id', user.id)
+        .single();
+        
+    if (error && error.code !== 'PGRST116') { // PGRST116 = no rows found
+        console.error("Error fetching user subscription", error);
+        return null;
+    }
 
-    return {
-        user_id: user.id,
-        is_active: true,
-        plan_name: 'Premium',
-        expires_at: expires_at.toISOString(),
-        id: 'mock_sub_id',
-        updated_at: new Date().toISOString(),
-        created_at: new Date().toISOString(),
-    };
+    if(data) return data;
+    
+    // Fallback mock for premium user in dev
+    if (user.email !== 'work@youthskillset.in') {
+        const expires_at = new Date();
+        expires_at.setFullYear(expires_at.getFullYear() + 1);
+        return {
+            user_id: user.id,
+            is_active: true,
+            plan_name: 'Premium',
+            expires_at: expires_at.toISOString(),
+            id: 'mock_sub_id',
+            updated_at: new Date().toISOString(),
+            created_at: new Date().toISOString(),
+        };
+    }
+    
+    return null;
 }
 
-/**
- * MOCK IMPLEMENTATION:
- * This function simulates a user profile with a premium role to avoid database errors
- * when the 'profiles' table is not present.
- */
+
 export async function getUserProfile(supabase: SupabaseClient): Promise<UserProfile | null> {
     noStore();
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return null;
 
-    // This check is required to determine if the user is an admin.
-    // In a real application, you'd fetch this from your 'profiles' table.
-    // For this app, we check a specific email address to simulate an admin user.
+    // This table might not exist, so we'll return a mock profile to avoid errors.
+    const { data, error } = await supabase
+        .from('profiles')
+        .select('role')
+        .eq('id', user.id)
+        .single();
+
+    if (error && error.code !== 'PGRST116') {
+        console.error("Error fetching user profile", error);
+    }
+    
     const isAdmin = user.email === 'work@youthskillset.in';
+    const role = isAdmin ? 'admin' : data?.role ?? 'premium';
 
     return {
         id: user.id,
         email: user.email || 'user@example.com',
-        role: isAdmin ? 'admin' : 'premium', // All other users are premium for now
+        role: role,
         created_at: user.created_at || new Date().toISOString(),
+        fullName: user.user_metadata.full_name,
     };
 }
 
-// In a real app, this would fetch from a 'profiles' table with roles.
-// For now, we fetch from auth.users and assign a mock role.
+
 export async function getAllUsers(supabase: SupabaseClient): Promise<UserProfile[]> {
   noStore();
   
-  // This function requires elevated privileges and should only be run on the server.
-  // We use the service_role key to create an admin client for this one operation.
-  // Ensure SUPABASE_SERVICE_ROLE_KEY is set in your .env.local file.
   if (!process.env.SUPABASE_SERVICE_ROLE_KEY) {
     console.error('Supabase service role key is not set. Cannot fetch all users.');
     return [];
@@ -197,21 +212,18 @@ export async function getAllUsers(supabase: SupabaseClient): Promise<UserProfile
     return [];
   }
 
+  // In a real app, you'd join with a 'profiles' table.
+  // We'll mock the role for this prototype.
   return users.map(user => ({
     id: user.id,
     email: user.email ?? 'No email',
-    // Mock role: designate one user as admin, others as premium for demo purposes
     role: user.email === 'work@youthskillset.in' ? 'admin' : 'premium',
     created_at: user.created_at ?? new Date().toISOString(),
+    fullName: user.user_metadata.full_name,
   }));
 }
 
 
-/**
- * MOCK IMPLEMENTATION:
- * This function simulates fetching community posts and comments to avoid database errors
- * when the 'posts', 'comments', and 'profiles' tables are not present.
- */
 export async function getPosts(supabase: SupabaseClient): Promise<Post[]> {
   noStore();
   // Return an empty array to prevent crashes if the tables don't exist.

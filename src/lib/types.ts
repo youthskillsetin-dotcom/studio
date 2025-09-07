@@ -81,7 +81,14 @@ export interface UserProfile {
     email: string;
     role: UserRole;
     created_at: string;
+    fullName?: string;
 }
+
+
+export type UserProfileWithSubscription = UserProfile & {
+    subscription: UserSubscription | null;
+};
+
 
 // Types for Supabase joins
 export type PostWithAuthor = Omit<Post, 'author_email' | 'comments'> & {

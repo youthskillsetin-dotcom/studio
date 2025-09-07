@@ -2,6 +2,7 @@
 
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
+import { getUserProfile } from './lib/data';
 
 export async function middleware(request: NextRequest) {
   let response = NextResponse.next({
@@ -72,7 +73,7 @@ export async function middleware(request: NextRequest) {
 
   const { pathname } = request.nextUrl;
 
-  const isAuthRoute = pathname.startsWith('/login') || pathname.startsWith('/signup') || pathname.startsWith('/verify');
+  const isAuthRoute = pathname.startsWith('/login') || pathname.startsWith('/signup') || pathname.startsWith('/verify') || pathname.startsWith('/forgot-password') || pathname.startsWith('/update-password');
   
   // If the user is not logged in and trying to access a protected app route
   if (!user && !isAuthRoute && pathname !== '/') {
@@ -97,9 +98,8 @@ export async function middleware(request: NextRequest) {
         url.pathname = '/login';
         return NextResponse.redirect(url);
     }
-    // In a real app, you would check a 'profiles' table for the user's role.
-    // For this demo, we simulate by checking a specific email.
-    if (user.email !== 'work@youthskillset.in') {
+    const userProfile = await getUserProfile(supabase);
+    if (userProfile?.role !== 'admin') {
          const url = request.nextUrl.clone();
         url.pathname = '/dashboard'; // Redirect non-admins away
         return NextResponse.redirect(url);
