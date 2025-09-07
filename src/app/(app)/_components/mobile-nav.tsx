@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { Menu, School, UserCog } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -34,6 +34,10 @@ export function MobileNav({ navItems, adminNavItems, userProfile }: MobileNavPro
         </Button>
       </SheetTrigger>
       <SheetContent side="left">
+        <SheetHeader className="sr-only">
+          <SheetTitle>Mobile Navigation</SheetTitle>
+          <SheetDescription>A list of primary navigation links for the application.</SheetDescription>
+        </SheetHeader>
         <nav className="grid gap-6 text-lg font-medium">
           <Link
             href="/dashboard"
