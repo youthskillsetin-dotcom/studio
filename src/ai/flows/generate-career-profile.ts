@@ -57,16 +57,16 @@ const prompt = ai.definePrompt({
 
   **Your Task:**
 
-  1.  **Interpret the Input:** First, carefully analyze the user's input. It could be a specific career title (e.g., "Software Engineer"), a skill (e.g., "Python programming"), or an interest (e.g., "making video games"). Identify the most relevant and suitable professional career path based on this input.
+  1.  **Interpret the Input:** First, carefully analyze the user's input. It could be a specific career title (e.g., "Software Engineer"), a skill (e.g., "Python programming"), or an interest (e.g., "making video games"). Identify the most relevant and suitable professional career path based on this input. If the input is ambiguous or unclear, default to a general but popular career like "Software Developer" and mention that you've chosen a common path based on their input.
 
   2.  **Generate a Detailed Profile:** Once you have identified the career, generate a complete profile using the specified output schema. Make every section rich, detailed, and encouraging.
       *   **careerTitle**: Use the standard, professional name for the role.
       *   **description**: Write an engaging 1-2 paragraph overview. Don't just define the role; explain its importance and the impact it has.
       *   **responsibilities**: List 4-5 key responsibilities. Use action-oriented language to describe what a person in this role *actually does* day-to-day.
-      *   **skills**: For each of the 5-7 skills, provide a detailed 2-3 sentence description explaining *why* the skill is essential and how it's applied in this specific career.
+      *   **skills**: For each of the 5-7 skills, provide a detailed 2-3 sentence description of *why* the skill is essential and how it's applied in this specific career.
       *   **learningRoadmap**: Create a clear, 4-step roadmap that guides a beginner. Start with foundational knowledge and progress to advanced specializations. Be specific.
       *   **jobMarketInsights**:
-          *   **salaryRange**: Provide a realistic salary range in **Indian Rupees (INR)**. The 'min' and 'max' values must be numbers only representing Lakhs Per Annum (LPA). For example, if a salary is 5,00,000 INR, the value for the field should be the number 5. Do not include currency symbols or "LPA" text in the number fields.
+          *   **salaryRange**: Provide a realistic salary range in **Indian Rupees (INR)**. The 'min' and 'max' values must be numbers only representing Lakhs Per Annum (LPA). For example, if a salary is 5,00,000 INR, the value for the field should be the number 5. Do not include currency symbols or "LPA" text in the number fields. This is critical.
           *   **demand**: State the current job demand clearly (e.g., "High", "Growing").
           *   **futureOutlook**: Write a concise but encouraging sentence about future prospects.
       *   **suggestedRoles**: List a few realistic entry-level or related job titles.
