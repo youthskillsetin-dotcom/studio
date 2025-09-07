@@ -8,19 +8,15 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuPortal,
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import type { UserProfile } from '@/lib/types';
-import { LogOut, User, Settings, LifeBuoy, Monitor, Moon, Sun } from 'lucide-react';
+import { LogOut, User, Settings, LifeBuoy } from 'lucide-react';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
-import { useTheme } from 'next-themes';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 function getInitials(name?: string | null) {
     if (!name) return 'U';
@@ -34,7 +30,6 @@ function getInitials(name?: string | null) {
 export function UserNav({ userProfile }: { userProfile: UserProfile | null }) {
     const supabase = createClient();
     const router = useRouter();
-    const { setTheme } = useTheme();
 
     const handleLogout = async () => {
         await supabase.auth.signOut();
@@ -73,29 +68,6 @@ export function UserNav({ userProfile }: { userProfile: UserProfile | null }) {
                     <span>Support</span>
                 </Link>
              </DropdownMenuItem>
-            <DropdownMenuSub>
-                <DropdownMenuSubTrigger>
-                    <Sun className="mr-2 h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                    <Moon className="absolute mr-2 h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                    <span>Theme</span>
-                </DropdownMenuSubTrigger>
-                <DropdownMenuPortal>
-                    <DropdownMenuSubContent>
-                        <DropdownMenuItem onClick={() => setTheme('light')}>
-                            <Sun className="mr-2 h-4 w-4" />
-                            <span>Light</span>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem onClick={() => setTheme('dark')}>
-                            <Moon className="mr-2 h-4 w-4" />
-                            <span>Dark</span>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem onClick={() => setTheme('system')}>
-                            <Monitor className="mr-2 h-4 w-4" />
-                            <span>System</span>
-                        </DropdownMenuItem>
-                    </DropdownMenuSubContent>
-                </DropdownMenuPortal>
-            </DropdownMenuSub>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={handleLogout}>
               <LogOut className="mr-2 h-4 w-4" />

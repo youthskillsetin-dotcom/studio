@@ -21,6 +21,7 @@ import { MobileNav } from "./_components/mobile-nav";
 import { UserNav } from "./_components/user-nav";
 import { useUserProfile } from "@/hooks/use-user-profile";
 import { BottomNav } from "./_components/bottom-nav";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 
 const navItems = [
@@ -87,11 +88,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             </div>
 
             <div className="hidden md:flex items-center gap-2">
-                <Button variant="ghost" size="icon" className="h-9 w-9">
-                <Bell className="h-5 w-5" />
-                <span className="sr-only">Toggle notifications</span>
-                </Button>
-                
+                <ThemeToggle />
                 <UserNav userProfile={userProfile} />
             </div>
           </div>
