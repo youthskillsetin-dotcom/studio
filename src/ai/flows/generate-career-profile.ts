@@ -1,6 +1,6 @@
 'use server';
 /**
- * @fileOverview A flow to generate a full career profile.
+ * @fileOverview A flow to generate a full career profile based on a user's input which could be a career title, skill, or interest.
  *
  * - generateCareerProfile - A function that handles the generation of the career profile.
  * - GenerateCareerProfileInput - The input type for the function.
@@ -11,7 +11,7 @@ import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const GenerateCareerProfileInputSchema = z.object({
-  career: z.string().describe('The desired career path.'),
+  userInput: z.string().describe('The user\'s input, which can be a career title, a skill, or an interest.'),
 });
 export type GenerateCareerProfileInput = z.infer<typeof GenerateCareerProfileInputSchema>;
 
@@ -42,14 +42,16 @@ const prompt = ai.definePrompt({
   output: {schema: GenerateCareerProfileOutputSchema},
   prompt: `You are an expert career counselor AI creating a detailed and inspiring career profile for a student in India.
 
-  The user has specified the following career path: {{{career}}}
+  The user has provided the following input: {{{userInput}}}
 
-  Please generate a comprehensive profile based on the output schema.
+  Your first step is to interpret the user's input. It could be a specific career title (e.g., "Software Engineer"), a skill (e.g., "Python programming"), or an interest (e.g., "making video games"). Identify the most relevant and suitable career path based on this input.
+
+  Once you have identified the career, generate a comprehensive profile for it based on the output schema.
+  - The 'careerTitle' should be the standard, professional name for the identified role.
   - Make the description and outlook sections engaging and informative.
   - Ensure the skills and responsibilities are highly relevant to the role.
   - The salary range should be in Indian Rupees, converted to Lakhs Per Annum (LPA). For example, if the salary is 500,000 INR, the value should be 5.
   - The learning resources should be generic but actionable (e.g., "Look for 'Advanced Python for Data Science' courses on Coursera or Udemy," not specific URLs).
-  - Ensure the career title is the standard, professional name for the role.
   `,
 });
 

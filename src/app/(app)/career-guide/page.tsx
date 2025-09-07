@@ -16,7 +16,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Skeleton } from '@/components/ui/skeleton';
 
 const formSchema = z.object({
-  career: z.string().min(2, { message: 'Please enter a career path.' }),
+  userInput: z.string().min(2, { message: 'Please enter a career, skill, or interest.' }),
 });
 
 const containerVariants = {
@@ -102,7 +102,7 @@ export default function CareerGuidePage() {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: { career: '' },
+    defaultValues: { userInput: '' },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
@@ -111,7 +111,7 @@ export default function CareerGuidePage() {
     setProfile(null);
     
     try {
-      const result = await generateCareerProfile({ career: values.career });
+      const result = await generateCareerProfile({ userInput: values.userInput });
       setProfile(result);
     } catch (err) {
       setError('Sorry, the career crystal ball is a bit cloudy right now. Please try again.');
@@ -122,8 +122,8 @@ export default function CareerGuidePage() {
   }
 
   const handleExampleClick = (career: string) => {
-    form.setValue('career', career);
-    onSubmit({ career });
+    form.setValue('userInput', career);
+    onSubmit({ userInput: career });
   }
 
   return (
@@ -132,7 +132,7 @@ export default function CareerGuidePage() {
         <Compass className="w-16 h-16 mx-auto text-primary mb-4" />
         <h1 className="text-4xl font-extrabold font-headline tracking-tight">AI Career Guide</h1>
         <p className="text-muted-foreground mt-2 text-lg">
-          Chart your course. Enter any career path below and our AI will generate a complete professional profile.
+          Chart your course. Enter any career, skill, or interest below and our AI will generate a complete professional profile.
         </p>
       </div>
 
@@ -142,21 +142,21 @@ export default function CareerGuidePage() {
             <CardContent className="pt-6">
               <FormField
                 control={form.control}
-                name="career"
+                name="userInput"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Career Path</FormLabel>
+                    <FormLabel>Career, Skill, or Interest</FormLabel>
                     <FormControl>
                       <Input 
                         className="text-base py-6"
-                        placeholder="e.g., Software Engineer, UX Designer" {...field} />
+                        placeholder="e.g., 'Data Analyst', 'Python', or 'video games'" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
               <div className="text-sm text-muted-foreground mt-4">
-                  Or try one of these suggestions:
+                  Or try one of these career suggestions:
               </div>
               <div className="flex flex-wrap gap-2 mt-2">
                 {exampleCareers.map(career => (
