@@ -51,27 +51,22 @@ const prompt = ai.definePrompt({
   name: 'generateCareerProfilePrompt',
   input: {schema: GenerateCareerProfileInputSchema},
   output: {schema: GenerateCareerProfileOutputSchema},
-  prompt: `You are an expert career counselor AI, acting as a friendly and inspiring guide for a student in India. Your goal is to generate a comprehensive, accurate, and engaging career profile based on the user's input.
+  prompt: `Generate a comprehensive and accurate career profile for a student in India based on the user's input: {{{userInput}}}.
 
-  The user has provided the following input: {{{userInput}}}
-
-  **Your Task:**
-
-  1.  **Interpret the Input:** First, carefully analyze the user's input. It could be a specific career title (e.g., "Software Engineer"), a skill (e.g., "Python programming"), or an interest (e.g., "making video games"). Identify the most relevant and suitable professional career path based on this input. If the input is ambiguous, very niche, or unclear (like "manager"), default to a general but popular career like "Software Developer" and mention in the description that you've chosen a common path based on their input. This ensures you always provide a useful response.
-
-  2.  **Generate a Detailed Profile:** Once you have identified the career, generate a complete profile using the specified output schema. Make every section rich, detailed, and encouraging.
-      *   **careerTitle**: Use the standard, professional name for the role.
-      *   **description**: Write an engaging 1-2 paragraph overview. Don't just define the role; explain its importance and the impact it has.
-      *   **responsibilities**: List 4-5 key responsibilities. Use action-oriented language to describe what a person in this role *actually does* day-to-day.
-      *   **skills**: For each of the 5-7 skills, provide a detailed 2-3 sentence description of *why* the skill is essential and how it's applied in this specific career.
-      *   **learningRoadmap**: Create a clear, 4-step roadmap that guides a beginner. Start with foundational knowledge and progress to advanced specializations. Be specific.
+  **Instructions:**
+  1.  **Interpret Input**: Analyze the user's input (a career title, skill, or interest). If the input is ambiguous (e.g., "manager"), default to a popular, related career like "Software Developer" and state this choice in the description.
+  2.  **Generate Profile**:
+      *   **careerTitle**: Use the standard professional name for the role.
+      *   **description**: Write an engaging 1-2 paragraph overview, explaining the role's importance and impact.
+      *   **responsibilities**: List 4-5 key daily responsibilities using action-oriented language.
+      *   **skills**: List 5-7 essential skills. For each, provide a detailed 2-3 sentence description of why it's crucial for this career.
+      *   **learningRoadmap**: Create a clear, 4-step beginner-to-advanced roadmap.
       *   **jobMarketInsights**:
-          *   **salaryRange**: Provide a realistic salary range in **Indian Rupees (INR)**. The 'min' and 'max' values must be numbers only representing Lakhs Per Annum (LPA). For example, if a salary is 5,00,000 INR, the value for the field should be the number 5. Do not include currency symbols or "LPA" text in the number fields. This is critical.
-          *   **demand**: State the current job demand clearly (e.g., "High", "Growing").
-          *   **futureOutlook**: Write a concise but encouraging sentence about future prospects.
-      *   **suggestedRoles**: List a few realistic entry-level or related job titles.
-      *   **hiringCompanies**: Name a few well-known companies or types of industries (e.g., "Tech Startups", "Financial Services") that hire for this role in India.
-  `,
+          *   **salaryRange**: Provide a realistic salary range in Indian Rupees (INR) as Lakhs Per Annum (LPA). 'min' and 'max' must be numbers only (e.g., for ₹5,00,000, use 5).
+          *   **demand**: State current job demand (e.g., "High", "Growing").
+          *   **futureOutlook**: Write a concise sentence on future prospects.
+      *   **suggestedRoles**: List 3-4 realistic, related job titles.
+      *   **hiringCompanies**: Name 3-4 well-known companies or industries in India that hire for this role.`,
 });
 
 const generateCareerProfileFlow = ai.defineFlow(
@@ -83,7 +78,7 @@ const generateCareerProfileFlow = ai.defineFlow(
   async (input) => {
     const result = await prompt.generate({
       input,
-      model: 'googleai/gemini-1.5-flash',
+      model: 'googleai/gemini-1.5-pro-latest',
     });
     return result.output!;
   }
