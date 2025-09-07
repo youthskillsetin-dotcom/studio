@@ -33,7 +33,7 @@ function PremiumUpsell() {
 
 export default async function CommunityPage() {
   const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
+  const supabase = createClient();
   
   const userProfile = await getUserProfile(supabase);
   const canAccessCommunity = userProfile?.role === 'premium' || userProfile?.role === 'admin';
