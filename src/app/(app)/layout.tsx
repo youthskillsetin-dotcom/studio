@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import Link from "next/link";
@@ -14,6 +15,7 @@ import {
   User,
   Users,
   LogOut,
+  UserCog,
 } from "lucide-react";
 import * as React from 'react';
 import Image from "next/image";
@@ -32,6 +34,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { createClient } from "@/lib/supabase/client";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { UserProfile } from "@/lib/types";
 
 
 const navItems = [
@@ -42,26 +45,31 @@ const navItems = [
   { href: "/career-guide", icon: Briefcase, label: "Career Guide" },
 ];
 
+const adminNavItems = [
+    { href: "/admin/users", icon: UserCog, label: "User Management" },
+];
+
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
   const isMobile = useIsMobile();
   const supabase = createClient();
-  const [userAvatar, setUserAvatar] = React.useState('');
-  const [userInitials, setUserInitials] = React.useState('');
-  const [userEmail, setUserEmail] = React.useState('Loading...');
+  const [userProfile, setUserProfile] = React.useState<UserProfile | null>(null);
 
   React.useEffect(() => {
     const fetchUser = async () => {
         const {data: { user }} = await supabase.auth.getUser();
         if (user) {
-            const email = user.email || 'No Email';
-            const fullName = user.user_metadata.full_name;
-            const initials = fullName ? fullName.split(' ').map((n: string) => n[0]).join('') : email.charAt(0).toUpperCase();
-
-            setUserAvatar(user.user_metadata.avatar_url || '');
-            setUserInitials(initials);
-            setUserEmail(email);
+            // In a real app, this would fetch the profile from a table.
+            // We use our mock data function for consistency.
+            const isAdmin = user.email === 'admin@example.com';
+            const profile: UserProfile = {
+                id: user.id,
+                email: user.email || 'No email',
+                role: isAdmin ? 'admin' : 'premium',
+                created_at: user.created_at || new Date().toISOString(),
+            }
+            setUserProfile(profile);
         }
     };
     fetchUser();
@@ -72,6 +80,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     router.push('/');
     router.refresh();
   };
+  
+  const userInitials = userProfile?.email ? userProfile.email.charAt(0).toUpperCase() : '?';
 
   const mainNav = (
     <>
@@ -88,6 +98,24 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           <span>{item.label}</span>
         </Link>
       ))}
+      {userProfile?.role === 'admin' && (
+          <>
+            <div className="my-2 border-t -mx-3"></div>
+            {adminNavItems.map((item) => (
+            <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary",
+                pathname.startsWith(item.href) && "text-primary bg-primary/10 font-semibold"
+                )}
+            >
+                <item.icon className="h-5 w-5" />
+                <span>{item.label}</span>
+            </Link>
+            ))}
+          </>
+      )}
     </>
   );
   
@@ -179,28 +207,29 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-10 w-10 rounded-full">
                     <Avatar>
-                        {userAvatar ? (
-                             <Image
-                              src={userAvatar}
-                              alt="User avatar"
-                              width={40}
-                              height={40}
-                              className="rounded-full"
-                            />
-                        ) : (
-                            <AvatarFallback>{userInitials}</AvatarFallback>
-                        )}
+                        <AvatarFallback>{userInitials}</AvatarFallback>
                     </Avatar>
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-56" align="end">
                 <DropdownMenuLabel>
                     <div className="flex flex-col space-y-1">
-                        <p className="text-sm font-medium leading-none">My Account</p>
-                        <p className="text-xs leading-none text-muted-foreground">{userEmail}</p>
+                        <p className="text-sm font-medium leading-none">{userProfile?.role === 'admin' ? 'Admin Account' : 'My Account'}</p>
+                        <p className="text-xs leading-none text-muted-foreground">{userProfile?.email || 'Loading...'}</p>
                     </div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
+                {userProfile?.role === 'admin' && (
+                    <>
+                    <DropdownMenuItem asChild>
+                        <Link href="/admin/users">
+                            <UserCog className="mr-2 h-4 w-4" />
+                            <span>User Management</span>
+                        </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    </>
+                )}
                 <DropdownMenuItem asChild>
                   <Link href="/settings">
                     <User className="mr-2 h-4 w-4" />

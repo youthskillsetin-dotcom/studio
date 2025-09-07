@@ -98,13 +98,41 @@ export async function getUserProfile(supabase: SupabaseClient): Promise<UserProf
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return null;
 
-    // Return a mock premium profile for any logged-in user.
+    // This check is required to determine if the user is an admin.
+    // In a real application, you'd fetch this from your 'profiles' table.
+    // For this app, we check a specific email address to simulate an admin user.
+    const isAdmin = user.email === 'admin@example.com';
+
     return {
         id: user.id,
         email: user.email || 'user@example.com',
-        role: 'premium',
+        role: isAdmin ? 'admin' : 'premium', // All other users are premium for now
         created_at: user.created_at || new Date().toISOString(),
     };
+}
+
+// In a real app, this would fetch from a 'profiles' table with roles.
+// For now, we fetch from auth.users and assign a mock role.
+export async function getAllUsers(supabase: SupabaseClient): Promise<UserProfile[]> {
+  noStore();
+  
+  // Note: This requires admin privileges on your Supabase instance to list all users.
+  // You might need to adjust RLS policies or use a service role key for this in a real backend.
+  // For now, we assume it works for demonstration.
+  const { data: { users }, error } = await supabase.auth.admin.listUsers();
+
+  if (error || !users) {
+    console.error('Error fetching users:', error?.message);
+    return [];
+  }
+
+  return users.map(user => ({
+    id: user.id,
+    email: user.email ?? 'No email',
+    // Mock role: designate one user as admin, others as premium for demo purposes
+    role: user.email === 'admin@example.com' ? 'admin' : 'premium',
+    created_at: user.created_at ?? new Date().toISOString(),
+  }));
 }
 
 

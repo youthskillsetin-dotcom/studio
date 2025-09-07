@@ -1,4 +1,5 @@
 
+
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
@@ -61,7 +62,7 @@ export async function middleware(request: NextRequest) {
 
   const isAuthRoute = request.nextUrl.pathname.startsWith('/login') || request.nextUrl.pathname.startsWith('/signup') || request.nextUrl.pathname.startsWith('/verify');
 
-  if (!user && !isAuthRoute && !request.nextUrl.pathname.startsWith('/auth/callback')) {
+  if (!user && !isAuthRoute && !request.nextUrl.pathname.startsWith('/auth/callback') && !request.nextUrl.pathname.startsWith('/admin')) {
      const url = request.nextUrl.clone();
      url.pathname = '/login';
     return NextResponse.redirect(url);
@@ -71,6 +72,22 @@ export async function middleware(request: NextRequest) {
     const url = request.nextUrl.clone();
     url.pathname = '/dashboard';
     return NextResponse.redirect(url)
+  }
+
+  // Admin route protection
+  if (request.nextUrl.pathname.startsWith('/admin')) {
+    if (!user) {
+         const url = request.nextUrl.clone();
+        url.pathname = '/login';
+        return NextResponse.redirect(url);
+    }
+    // In a real app, you would check a 'profiles' table for the user's role.
+    // For this demo, we simulate by checking a specific email.
+    if (user.email !== 'admin@example.com') {
+         const url = request.nextUrl.clone();
+        url.pathname = '/dashboard'; // Redirect non-admins away
+        return NextResponse.redirect(url);
+    }
   }
 
   return response
