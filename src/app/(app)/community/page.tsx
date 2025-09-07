@@ -43,7 +43,7 @@ export default async function CommunityPage() {
   }
 
   // The getPosts function will return an empty array if tables don't exist.
-  const posts = await getPosts(supabase);
+  const posts = await getPosts();
   
   return (
     <div>

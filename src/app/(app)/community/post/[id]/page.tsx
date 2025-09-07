@@ -15,7 +15,7 @@ export default async function PostPage({ params }: { params: { id: string } }) {
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
 
-  const post = await getPostById(supabase, params.id);
+  const post = await getPostById(params.id);
 
   if (!post) {
     notFound();

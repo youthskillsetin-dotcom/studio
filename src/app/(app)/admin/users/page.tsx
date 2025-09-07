@@ -28,7 +28,7 @@ export default async function AdminUsersPage() {
     notFound();
   }
 
-  const users = await getAllUsers(supabase);
+  const users = await getAllUsers();
 
   return (
     <div className="max-w-7xl mx-auto">

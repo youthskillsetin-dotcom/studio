@@ -15,7 +15,7 @@ export default async function LessonDetailPage({ params }: { params: { lessonId:
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
   
-  const lesson = await getLessonByIdWithSubtopics(supabase, params.lessonId);
+  const lesson = await getLessonByIdWithSubtopics(params.lessonId);
   if (!lesson) {
     notFound();
   }

@@ -17,7 +17,7 @@ export async function getLessons(): Promise<Lesson[]> {
   })) as Lesson[];
 }
 
-export async function getLessonById(supabase: SupabaseClient, id: string): Promise<Lesson | null> {
+export async function getLessonById(id: string): Promise<Lesson | null> {
     noStore();
     const lessonIndex = parseInt(id, 10) - 1;
     const lesson = sampleContent.lessons[lessonIndex];
@@ -25,7 +25,7 @@ export async function getLessonById(supabase: SupabaseClient, id: string): Promi
     return { ...lesson, id: String(lessonIndex + 1) } as Lesson;
 }
 
-export async function getLessonByIdWithSubtopics(supabase: SupabaseClient, id: string): Promise<(Lesson & { subtopics: Subtopic[] }) | null> {
+export async function getLessonByIdWithSubtopics(id: string): Promise<(Lesson & { subtopics: Subtopic[] }) | null> {
   noStore();
   const lessonIndex = parseInt(id, 10) - 1;
   const lessonData = sampleContent.lessons[lessonIndex];
@@ -46,7 +46,7 @@ export async function getLessonByIdWithSubtopics(supabase: SupabaseClient, id: s
 }
 
 
-export async function getSubtopicsByLessonId(supabase: SupabaseClient, lessonId: string): Promise<Subtopic[]> {
+export async function getSubtopicsByLessonId(lessonId: string): Promise<Subtopic[]> {
     noStore();
     const lessonIndex = parseInt(lessonId, 10) - 1;
     const lesson = sampleContent.lessons[lessonIndex];
@@ -59,7 +59,7 @@ export async function getSubtopicsByLessonId(supabase: SupabaseClient, lessonId:
     })) as Subtopic[];
 }
 
-export async function getSubtopicById(supabase: SupabaseClient, id: string): Promise<Subtopic | null> {
+export async function getSubtopicById(id: string): Promise<Subtopic | null> {
     noStore();
     const ids = id.split('-').map(n => parseInt(n, 10));
     if (ids.length !== 2 || isNaN(ids[0]) || isNaN(ids[1])) return null;
@@ -77,7 +77,7 @@ export async function getSubtopicById(supabase: SupabaseClient, id: string): Pro
     } as Subtopic;
 }
 
-export async function getSubtopicByIdWithRelations(supabase: SupabaseClient, id: string): Promise<(Subtopic & { lesson: Lesson; nextSubtopicId?: string }) | null> {
+export async function getSubtopicByIdWithRelations(id: string): Promise<(Subtopic & { lesson: Lesson; nextSubtopicId?: string }) | null> {
     noStore();
     const ids = id.split('-').map(n => parseInt(n, 10));
     if (ids.length !== 2 || isNaN(ids[0]) || isNaN(ids[1])) return null;
@@ -108,9 +108,9 @@ export async function getSubtopicByIdWithRelations(supabase: SupabaseClient, id:
     } as (Subtopic & { lesson: Lesson; nextSubtopicId?: string });
 }
 
-export async function getSubtopicTitleById(supabase: SupabaseClient, id: string): Promise<string | null> {
+export async function getSubtopicTitleById(id: string): Promise<string | null> {
     noStore();
-    const subtopic = await getSubtopicById(supabase, id);
+    const subtopic = await getSubtopicById(id);
     return subtopic?.title ?? null;
 }
 
@@ -179,7 +179,7 @@ export async function getUserProfile(supabase: SupabaseClient): Promise<UserProf
 }
 
 
-export async function getAllUsers(supabase: SupabaseClient): Promise<UserProfile[]> {
+export async function getAllUsers(): Promise<UserProfile[]> {
   noStore();
   
   if (!process.env.SUPABASE_SERVICE_ROLE_KEY) {
@@ -230,14 +230,14 @@ export async function getAllUsers(supabase: SupabaseClient): Promise<UserProfile
 }
 
 
-export async function getPosts(supabase: SupabaseClient): Promise<Post[]> {
+export async function getPosts(): Promise<Post[]> {
   noStore();
   // Return an empty array to prevent crashes if the tables don't exist.
   return [];
 }
 
 
-export async function getPostById(supabase: SupabaseClient, id: string): Promise<Post | null> {
+export async function getPostById(id: string): Promise<Post | null> {
   noStore();
   // Return null to prevent crashes if the tables don't exist.
   return null;

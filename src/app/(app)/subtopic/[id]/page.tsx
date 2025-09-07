@@ -16,7 +16,7 @@ export default async function SubtopicPage({ params }: { params: { id: string } 
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
 
-  const data = await getSubtopicByIdWithRelations(supabase, params.id);
+  const data = await getSubtopicByIdWithRelations(params.id);
   if (!data) {
     notFound();
   }
@@ -29,7 +29,7 @@ export default async function SubtopicPage({ params }: { params: { id: string } 
     redirect(`/lessons/${lesson.id}`);
   }
 
-  const nextSubtopicTitle = nextSubtopicId ? await getSubtopicTitleById(supabase, nextSubtopicId) : null;
+  const nextSubtopicTitle = nextSubtopicId ? await getSubtopicTitleById(nextSubtopicId) : null;
 
   return (
     <div className="space-y-6">
