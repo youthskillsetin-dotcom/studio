@@ -4,37 +4,15 @@ import type { Subtopic, Lesson } from '@/lib/types';
 import { SubtopicRow } from '@/components/subtopic-row';
 import { CountdownTimer } from '@/components/countdown-timer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import sampleContent from '../../../../../sample-content.json';
 import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
-import { getUserSubscription } from '@/lib/data';
-
-// Since we are not using a DB, we'll create a simple function to get data from the JSON
-function getLessonById(id: string): (Lesson & { subtopics: Subtopic[] }) | null {
-  const lessonIndex = parseInt(id, 10) - 1;
-  const lessonData = sampleContent.lessons[lessonIndex];
-  
-  if (!lessonData) {
-    return null;
-  }
-  
-  // The JSON doesn't have IDs, so we'll add them dynamically.
-  return {
-    ...lessonData,
-    id: String(lessonIndex + 1),
-    subtopics: lessonData.subtopics.map((sub, subIndex) => ({
-      ...sub,
-      id: `${lessonIndex + 1}-${subIndex + 1}`,
-      lesson_id: String(lessonIndex + 1),
-    }))
-  };
-}
+import { getUserSubscription, getLessonByIdWithSubtopics } from '@/lib/data';
 
 export default async function LessonDetailPage({ params }: { params: { lessonId: string } }) {
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
   
-  const lesson = getLessonById(params.lessonId);
+  const lesson = await getLessonByIdWithSubtopics(supabase, params.lessonId);
   if (!lesson) {
     notFound();
   }

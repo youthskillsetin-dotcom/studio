@@ -4,65 +4,19 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/componen
 import { PracticeForm } from '@/components/practice-form';
 import Link from 'next/link';
 import { ChevronLeft, Lightbulb, Bot, ArrowRight, Video } from 'lucide-react';
-import sampleContent from '../../../../../sample-content.json';
 import type { Subtopic, Lesson, PracticeQuestion } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
-import { getUserSubscription } from '@/lib/data';
+import { getUserSubscription, getSubtopicByIdWithRelations, getSubtopicTitleById } from '@/lib/data';
 import { Suspense } from 'react';
 import { AISummaryCard, AISummaryCardSkeleton } from '@/components/ai-summary-card';
-
-
-// Since we are not using a DB, we'll create a simple function to get data from the JSON
-function getSubtopicById(id: string): (Subtopic & { lesson: Lesson; nextSubtopicId?: string }) | null {
-  // ID format is assumed to be "lessonIndex-subtopicIndex"
-  const ids = id.split('-').map(n => parseInt(n, 10));
-  if (ids.length !== 2 || isNaN(ids[0]) || isNaN(ids[1])) return null;
-
-  const lessonIndex = ids[0] - 1;
-  const subtopicIndex = ids[1] - 1;
-
-  const lessonData = sampleContent.lessons[lessonIndex];
-  if (!lessonData) return null;
-  
-  const subtopicData = lessonData.subtopics[subtopicIndex];
-  if (!subtopicData) return null;
-  
-  let nextSubtopicId: string | undefined = undefined;
-  if (subtopicIndex + 1 < lessonData.subtopics.length) {
-    nextSubtopicId = `${lessonIndex + 1}-${subtopicIndex + 2}`;
-  }
-
-  return { 
-    ...subtopicData, 
-    id,
-    lesson_id: String(lessonIndex + 1),
-    lesson: {
-        ...lessonData,
-        id: String(lessonIndex + 1)
-    },
-    nextSubtopicId,
-  } as (Subtopic & { lesson: Lesson; nextSubtopicId?: string });
-}
-
-function getSubtopicTitleById(id: string): string | null {
-    const ids = id.split('-').map(n => parseInt(n, 10));
-    if (ids.length !== 2 || isNaN(ids[0]) || isNaN(ids[1])) return null;
-
-    const lesson = sampleContent.lessons[ids[0] - 1];
-    if (!lesson) return null;
-    
-    const subtopic = lesson.subtopics[ids[1] - 1];
-    return subtopic?.title ?? null;
-}
-
 
 export default async function SubtopicPage({ params }: { params: { id: string } }) {
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
 
-  const data = getSubtopicById(params.id);
+  const data = await getSubtopicByIdWithRelations(supabase, params.id);
   if (!data) {
     notFound();
   }
@@ -75,7 +29,7 @@ export default async function SubtopicPage({ params }: { params: { id: string } 
     redirect(`/lessons/${lesson.id}`);
   }
 
-  const nextSubtopicTitle = nextSubtopicId ? getSubtopicTitleById(nextSubtopicId) : null;
+  const nextSubtopicTitle = nextSubtopicId ? await getSubtopicTitleById(supabase, nextSubtopicId) : null;
 
   return (
     <div className="space-y-6">

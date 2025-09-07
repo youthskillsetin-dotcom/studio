@@ -6,7 +6,8 @@ import { unstable_noStore as noStore } from 'next/cache';
 import sampleContent from '../../sample-content.json';
 import { createClient as createAdminClient } from '@supabase/supabase-js';
 
-// NOTE: Lesson and Subtopic data is now primarily sourced from sample-content.json
+// NOTE: All data fetching now happens from functions in this file, using sample-content.json as the source.
+// This centralizes data access and simulates a real database layer.
 
 export async function getLessons(supabase: SupabaseClient): Promise<Lesson[]> {
   noStore();
@@ -23,6 +24,27 @@ export async function getLessonById(supabase: SupabaseClient, id: string): Promi
     if (!lesson) return null;
     return { ...lesson, id: String(lessonIndex + 1) } as Lesson;
 }
+
+export async function getLessonByIdWithSubtopics(supabase: SupabaseClient, id: string): Promise<(Lesson & { subtopics: Subtopic[] }) | null> {
+  noStore();
+  const lessonIndex = parseInt(id, 10) - 1;
+  const lessonData = sampleContent.lessons[lessonIndex];
+  
+  if (!lessonData) {
+    return null;
+  }
+  
+  return {
+    ...lessonData,
+    id: String(lessonIndex + 1),
+    subtopics: lessonData.subtopics.map((sub, subIndex) => ({
+      ...sub,
+      id: `${lessonIndex + 1}-${subIndex + 1}`,
+      lesson_id: String(lessonIndex + 1),
+    }))
+  } as (Lesson & { subtopics: Subtopic[] });
+}
+
 
 export async function getSubtopicsByLessonId(supabase: SupabaseClient, lessonId: string): Promise<Subtopic[]> {
     noStore();
@@ -54,6 +76,44 @@ export async function getSubtopicById(supabase: SupabaseClient, id: string): Pro
       lesson_id: String(ids[0])
     } as Subtopic;
 }
+
+export async function getSubtopicByIdWithRelations(supabase: SupabaseClient, id: string): Promise<(Subtopic & { lesson: Lesson; nextSubtopicId?: string }) | null> {
+    noStore();
+    const ids = id.split('-').map(n => parseInt(n, 10));
+    if (ids.length !== 2 || isNaN(ids[0]) || isNaN(ids[1])) return null;
+  
+    const lessonIndex = ids[0] - 1;
+    const subtopicIndex = ids[1] - 1;
+  
+    const lessonData = sampleContent.lessons[lessonIndex];
+    if (!lessonData) return null;
+    
+    const subtopicData = lessonData.subtopics[subtopicIndex];
+    if (!subtopicData) return null;
+    
+    let nextSubtopicId: string | undefined = undefined;
+    if (subtopicIndex + 1 < lessonData.subtopics.length) {
+      nextSubtopicId = `${lessonIndex + 1}-${subtopicIndex + 2}`;
+    }
+  
+    return { 
+      ...subtopicData, 
+      id,
+      lesson_id: String(lessonIndex + 1),
+      lesson: {
+          ...lessonData,
+          id: String(lessonIndex + 1)
+      },
+      nextSubtopicId,
+    } as (Subtopic & { lesson: Lesson; nextSubtopicId?: string });
+}
+
+export async function getSubtopicTitleById(supabase: SupabaseClient, id: string): Promise<string | null> {
+    noStore();
+    const subtopic = await getSubtopicById(supabase, id);
+    return subtopic?.title ?? null;
+}
+
 
 export async function getUserProgress(supabase: SupabaseClient): Promise<UserSubtopicProgress[]> {
     noStore();
