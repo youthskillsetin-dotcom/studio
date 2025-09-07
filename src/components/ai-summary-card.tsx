@@ -1,12 +1,20 @@
 
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Bot } from 'lucide-react';
 import { generateSubtopicSummary } from '@/ai/flows/generate-subtopic-summary';
 import { Skeleton } from './ui/skeleton';
 
 
-export async function AISummaryCard({ title, content }: { title: string, content: string }) {
-    const summaryResult = await generateSubtopicSummary({ title, content });
+export async function AISummaryCard({ title, content, existingSummary }: { title: string, content: string, existingSummary?: string }) {
+    
+    let summaryContent = existingSummary;
+
+    if (!summaryContent) {
+        // Fallback to generating if it doesn't exist
+        const summaryResult = await generateSubtopicSummary({ title, content });
+        summaryContent = summaryResult.summary;
+    }
   
     return (
         <Card>
@@ -17,7 +25,7 @@ export async function AISummaryCard({ title, content }: { title: string, content
             <CardContent>
                 <div 
                     className="prose prose-sm dark:prose-invert max-w-none text-muted-foreground" 
-                    dangerouslySetInnerHTML={{ __html: summaryResult.summary.replace(/\n/g, '<br />') }} 
+                    dangerouslySetInnerHTML={{ __html: summaryContent.replace(/\n/g, '<br />') }} 
                 />
             </CardContent>
         </Card>

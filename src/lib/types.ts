@@ -24,6 +24,7 @@ export interface Subtopic {
   order_index: number;
   practice_questions: PracticeQuestion[];
   video_url?: string;
+  ai_summary?: string;
 }
 
 export interface UserSubtopicProgress {

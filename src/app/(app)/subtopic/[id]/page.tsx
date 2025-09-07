@@ -75,6 +75,7 @@ export default async function SubtopicPage({ params }: { params: { id: string } 
                 <AISummaryCard 
                     title={subtopic.title}
                     content={subtopic.content}
+                    existingSummary={subtopic.ai_summary}
                 />
              </Suspense>
 
