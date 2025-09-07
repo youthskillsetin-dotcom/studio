@@ -88,7 +88,7 @@ export default function AboutPage() {
                 </Card>
                 <Card className="text-center rounded-2xl border-0 shadow-none">
                     <CardContent className="p-6">
-                        <h3 className="mt-6 text-lg font-semibold text-foreground">Diya Mehta</h3>
+                        <h3 className="mt-6 text-lg font-semibold text-foreground">Yashneet</h3>
                         <p className="text-primary">Head of Curriculum</p>
                     </CardContent>
                 </Card>
