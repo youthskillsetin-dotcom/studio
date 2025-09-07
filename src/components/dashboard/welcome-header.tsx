@@ -53,3 +53,5 @@ export function WelcomeHeader({ variants }: WelcomeHeaderProps) {
         </motion.div>
     )
 }
+
+    
