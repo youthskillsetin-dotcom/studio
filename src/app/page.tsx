@@ -1,4 +1,6 @@
 
+'use client';
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
@@ -6,9 +8,16 @@ import { CheckCircle, Zap, BrainCircuit } from 'lucide-react';
 import { Logo } from '@/components/icons';
 import Image from 'next/image';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { motion } from 'framer-motion';
 
 
 export default function LandingPage() {
+
+  const FADE_IN_ANIMATION_VARIANTS = {
+    hidden: { opacity: 0, y: 10 },
+    show: { opacity: 1, y: 0, transition: { type: 'spring' } },
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <header className="container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -28,21 +37,43 @@ export default function LandingPage() {
 
       <main className="flex-1">
         <section className="relative text-center py-20 md:py-32 flex flex-col items-center justify-center">
-           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <h1 className="text-4xl md:text-6xl font-extrabold font-headline tracking-tight text-foreground">
+           <motion.div
+              initial="hidden"
+              animate="show"
+              viewport={{ once: true }}
+              variants={{
+                hidden: {},
+                show: {
+                  transition: {
+                    staggerChildren: 0.15,
+                  },
+                },
+              }}
+             className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+            >
+            <motion.h1
+              className="text-4xl md:text-6xl font-extrabold font-headline tracking-tight text-foreground"
+              variants={FADE_IN_ANIMATION_VARIANTS}
+             >
               Master In-Demand Skills.
               <br />
               <span className="text-primary">Unlock Your Future.</span>
-            </h1>
-            <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
+            </motion.h1>
+            <motion.p
+              className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground"
+              variants={FADE_IN_ANIMATION_VARIANTS}
+            >
               YouthSkillSet is your personal AI mentor for mastering essential career skills. Learn at your own pace, get instant feedback, and build a portfolio that stands out.
-            </p>
-            <div className="mt-8 flex justify-center gap-4">
+            </motion.p>
+            <motion.div
+                className="mt-8 flex justify-center gap-4"
+                variants={FADE_IN_ANIMATION_VARIANTS}
+            >
               <Button size="lg" asChild>
                 <Link href="/signup">Start Learning for Free</Link>
               </Button>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </section>
 
         <section className="bg-muted/40 py-20">
