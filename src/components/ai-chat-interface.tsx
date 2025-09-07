@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
@@ -11,8 +12,10 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
 import { aiMentorChat } from '@/ai/flows/ai-mentor-chat-interface';
-import { Send, Bot, User, Loader2 } from 'lucide-react';
+import { Send, Bot, User, Loader2, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { motion, AnimatePresence } from 'framer-motion';
+
 
 const chatSchema = z.object({
   message: z.string().min(1, 'Message cannot be empty'),
@@ -22,6 +25,14 @@ type Message = {
   role: 'user' | 'assistant';
   content: string;
 };
+
+const conversationStarters = [
+  'Explain the 50-30-20 rule simply.',
+  'What skills do I need to be a UX Designer?',
+  'Help me practice for my lesson on AI Bias.',
+  'Create a short quiz on personal finance.',
+];
+
 
 export default function AIChatInterface() {
   const [messages, setMessages] = useState<Message[]>([
@@ -44,8 +55,10 @@ export default function AIChatInterface() {
     }
   }, [messages]);
 
-  async function onSubmit(values: z.infer<typeof chatSchema>) {
-    const userMessage: Message = { role: 'user', content: values.message };
+  async function sendMessage(messageText: string) {
+    if (!messageText.trim()) return;
+
+    const userMessage: Message = { role: 'user', content: messageText };
     setMessages((prev) => [...prev, userMessage]);
     setIsLoading(true);
     form.reset();
@@ -54,7 +67,7 @@ export default function AIChatInterface() {
       const chatHistory = messages.map(m => ({ role: m.role, content: m.content }));
       
       const response = await aiMentorChat({
-        message: values.message,
+        message: messageText,
         chatHistory: chatHistory,
       });
 
@@ -68,18 +81,31 @@ export default function AIChatInterface() {
     }
   }
 
+  async function onSubmit(values: z.infer<typeof chatSchema>) {
+    await sendMessage(values.message);
+  }
+
+  const handleStarterClick = (starter: string) => {
+    form.setValue('message', starter);
+    sendMessage(starter);
+  };
+
+
   return (
     <Card className="flex flex-col flex-grow">
       <CardContent className="flex-grow p-0">
         <ScrollArea className="h-[calc(100vh-20rem)]" ref={scrollAreaRef}>
           <div className="p-6 space-y-4">
             {messages.map((message, index) => (
-              <div
+              <motion.div
                 key={index}
                 className={cn(
                   'flex items-start gap-4',
                   message.role === 'user' ? 'justify-end' : ''
                 )}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
               >
                 {message.role === 'assistant' && (
                   <Avatar className="h-8 w-8">
@@ -88,7 +114,7 @@ export default function AIChatInterface() {
                 )}
                 <div
                   className={cn(
-                    'max-w-md rounded-lg px-4 py-3 text-sm',
+                    'max-w-md rounded-lg px-4 py-3 text-sm shadow-md',
                     message.role === 'user'
                       ? 'bg-primary text-primary-foreground'
                       : 'bg-muted'
@@ -101,17 +127,53 @@ export default function AIChatInterface() {
                     <AvatarFallback><User className="h-5 w-5"/></AvatarFallback>
                   </Avatar>
                 )}
-              </div>
+              </motion.div>
             ))}
+
+            {messages.length === 1 && !isLoading && (
+              <motion.div 
+                className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+               >
+                 <AnimatePresence>
+                  {conversationStarters.map((starter, i) => (
+                    <motion.div 
+                        key={i}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: i * 0.1 }}
+                    >
+                      <Button
+                        variant="outline"
+                        className="w-full h-full text-left justify-start py-3"
+                        onClick={() => handleStarterClick(starter)}
+                        disabled={isLoading}
+                      >
+                         <Sparkles className="w-4 h-4 mr-2 text-primary shrink-0" />
+                        {starter}
+                      </Button>
+                    </motion.div>
+                  ))}
+                  </AnimatePresence>
+              </motion.div>
+            )}
+
              {isLoading && (
-              <div className="flex items-start gap-4">
+              <motion.div 
+                className="flex items-start gap-4"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
                 <Avatar className="h-8 w-8">
                   <AvatarFallback className="bg-primary text-primary-foreground"><Bot className="h-5 w-5"/></AvatarFallback>
                 </Avatar>
                 <div className="bg-muted rounded-lg px-4 py-3">
                   <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />
                 </div>
-              </div>
+              </motion.div>
             )}
           </div>
         </ScrollArea>
@@ -125,7 +187,7 @@ export default function AIChatInterface() {
               render={({ field }) => (
                 <FormItem className="flex-1">
                   <FormControl>
-                    <Input placeholder="Type your message..." {...field} autoComplete="off" />
+                    <Input placeholder="Type your message..." {...field} autoComplete="off" disabled={isLoading} />
                   </FormControl>
                 </FormItem>
               )}
