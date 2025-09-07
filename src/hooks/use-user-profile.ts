@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import type { UserProfile } from '@/lib/types';
-import { useUser } from '@supabase/auth-helpers-react';
 
 
 export function useUserProfile() {
@@ -27,8 +26,8 @@ export function useUserProfile() {
             console.error("Error fetching user profile", error);
         }
         
-        const role = data?.role ?? 'user';
-        const fullName = data?.full_name ?? user?.user_metadata?.full_name ?? user.email?.split('@')[0];
+        const role = data?.role ?? user?.user_metadata?.role ?? 'user';
+        const fullName = data?.full_name ?? user?.user_metadata?.full_name ?? user?.email?.split('@')[0];
 
         setUserProfile({
             id: user.id,
@@ -56,7 +55,7 @@ export function useUserProfile() {
     return () => {
       authListener.subscription.unsubscribe();
     };
-  }, [supabase]);
+  }, []);
 
 
   return { userProfile, isLoading };

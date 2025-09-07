@@ -44,7 +44,7 @@ export function useUserSubscription() {
     return () => {
       authListener.subscription.unsubscribe();
     };
-  }, [supabase]);
+  }, []);
 
   return { userSubscription, isLoading };
 }
