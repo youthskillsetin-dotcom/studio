@@ -12,7 +12,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
 import { aiMentorChat } from '@/ai/flows/ai-mentor-chat-interface';
-import { Send, Bot, User, Loader2, Sparkles } from 'lucide-react';
+import { Send, Bot, User, Loader2, Sparkles, PlusCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -33,11 +33,11 @@ const conversationStarters = [
   'Create a short quiz on personal finance.',
 ];
 
+const initialMessage: Message = { role: 'assistant', content: "Hello! I'm MentorAI. How can I help you level up your skills today?" };
+const CHAT_HISTORY_KEY = 'ai-mentor-chat-history';
 
 export default function AIChatInterface() {
-  const [messages, setMessages] = useState<Message[]>([
-    { role: 'assistant', content: "Hello! I'm MentorAI. How can I help you level up your skills today?" },
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
@@ -46,6 +46,21 @@ export default function AIChatInterface() {
     defaultValues: { message: '' },
   });
 
+   useEffect(() => {
+    // Load chat history from localStorage on initial render
+    try {
+      const savedHistory = localStorage.getItem(CHAT_HISTORY_KEY);
+      if (savedHistory) {
+        setMessages(JSON.parse(savedHistory));
+      } else {
+        setMessages([initialMessage]);
+      }
+    } catch (error) {
+      console.error("Failed to parse chat history from localStorage", error);
+      setMessages([initialMessage]);
+    }
+  }, []);
+
   useEffect(() => {
     if (scrollAreaRef.current) {
       scrollAreaRef.current.scrollTo({
@@ -53,7 +68,21 @@ export default function AIChatInterface() {
         behavior: 'smooth',
       });
     }
+    // Save chat history to localStorage whenever it changes
+     if (messages.length > 0) {
+      try {
+        localStorage.setItem(CHAT_HISTORY_KEY, JSON.stringify(messages));
+      } catch (error) {
+        console.error("Failed to save chat history to localStorage", error);
+      }
+    }
   }, [messages]);
+
+  const handleNewChat = () => {
+    setMessages([initialMessage]);
+    localStorage.removeItem(CHAT_HISTORY_KEY);
+  };
+
 
   async function sendMessage(messageText: string) {
     if (!messageText.trim()) return;
@@ -93,8 +122,23 @@ export default function AIChatInterface() {
 
   return (
     <Card className="flex flex-col flex-grow">
+       <CardHeader className="flex-row items-center justify-between border-b">
+         <div className="flex items-center gap-2">
+            <Avatar className="h-8 w-8">
+                <AvatarFallback className="bg-primary text-primary-foreground"><Bot className="h-5 w-5"/></AvatarFallback>
+            </Avatar>
+            <div>
+                <h2 className="font-semibold">MentorAI</h2>
+                <p className="text-xs text-muted-foreground">Your Personal Learning Assistant</p>
+            </div>
+         </div>
+        <Button variant="outline" size="sm" onClick={handleNewChat}>
+          <PlusCircle className="mr-2 h-4 w-4" />
+          New Chat
+        </Button>
+      </CardHeader>
       <CardContent className="flex-grow p-0">
-        <ScrollArea className="h-[calc(100vh-20rem)]" ref={scrollAreaRef}>
+        <ScrollArea className="h-[calc(100vh-22rem)]" ref={scrollAreaRef}>
           <div className="p-6 space-y-4">
             {messages.map((message, index) => (
               <motion.div
@@ -130,7 +174,7 @@ export default function AIChatInterface() {
               </motion.div>
             ))}
 
-            {messages.length === 1 && !isLoading && (
+            {messages.length <= 1 && !isLoading && (
               <motion.div 
                 className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4"
                 initial={{ opacity: 0, y: 10 }}
