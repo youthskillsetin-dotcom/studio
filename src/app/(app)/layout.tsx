@@ -67,28 +67,30 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen w-full flex-col">
       <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 z-40">
-         <Link href="/dashboard" className="flex items-center gap-2 font-semibold mr-6">
-            <School className="h-7 w-7 text-primary" />
-            <span className="text-xl font-headline hidden sm:inline-block">YouthSkillSet</span>
-          </Link>
+         <div className="flex items-center md:w-1/4">
+            <Link href="/dashboard" className="flex items-center gap-2 font-semibold">
+                <School className="h-7 w-7 text-primary" />
+                <span className="text-xl font-headline hidden sm:inline-block">YouthSkillSet</span>
+            </Link>
+         </div>
           
-        <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
+        <nav className="hidden flex-grow justify-center flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
            {desktopNav}
         </nav>
         
-        <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
+        <div className="flex w-full items-center justify-end gap-4 md:w-1/4 md:ml-auto md:gap-2 lg:gap-4">
             <div className="md:hidden">
                 <MobileNav navItems={navItems} adminNavItems={adminNavItems} userProfile={userProfile} />
             </div>
 
-            <div className="w-full flex-1 md:w-auto md:flex-none" />
-            
-            <Button variant="ghost" size="icon" className="h-9 w-9">
-              <Bell className="h-5 w-5" />
-              <span className="sr-only">Toggle notifications</span>
-            </Button>
-            
-            <UserNav userProfile={userProfile} />
+            <div className="hidden md:flex items-center gap-2">
+                <Button variant="ghost" size="icon" className="h-9 w-9">
+                <Bell className="h-5 w-5" />
+                <span className="sr-only">Toggle notifications</span>
+                </Button>
+                
+                <UserNav userProfile={userProfile} />
+            </div>
           </div>
         </header>
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8 pb-20 md:pb-8">
