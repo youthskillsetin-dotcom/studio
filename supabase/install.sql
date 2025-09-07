@@ -1,6 +1,5 @@
-
 -- Enable the pgcrypto extension if it's not already enabled.
-CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA extensions;
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 -- Create a custom type for user roles if it doesn't exist.
 DO $$
@@ -10,121 +9,105 @@ BEGIN
     END IF;
 END$$;
 
--- Create the profiles table if it doesn't exist.
+
+-- 1. PROFILES TABLE
+-- This table stores public user data.
 CREATE TABLE IF NOT EXISTS public.profiles (
     id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
-    email TEXT UNIQUE,
-    role user_role DEFAULT 'user' NOT NULL,
+    email TEXT,
+    role user_role DEFAULT 'user'::user_role,
     created_at TIMESTAMPTZ DEFAULT NOW()
 );
-COMMENT ON TABLE public.profiles IS 'Stores public-facing user data.';
+COMMENT ON TABLE public.profiles IS 'Stores public profile information for each user.';
 
--- Create the subscriptions table if it doesn't exist.
+-- 2. SUBSCRIPTIONS TABLE
+-- This table manages user subscription status.
 CREATE TABLE IF NOT EXISTS public.subscriptions (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    user_id UUID UNIQUE NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
-    is_active BOOLEAN DEFAULT FALSE NOT NULL,
+    user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+    is_active BOOLEAN DEFAULT false,
     plan_name TEXT,
     expires_at TIMESTAMPTZ,
     created_at TIMESTAMPTZ DEFAULT NOW(),
-    updated_at TIMESTAMPTZ DEFAULT NOW()
+    updated_at TIMESTAMPTZ DEFAULT NOW(),
+    UNIQUE(user_id)
 );
-COMMENT ON TABLE public.subscriptions IS 'Manages user subscription status.';
+COMMENT ON TABLE public.subscriptions IS 'Manages user subscription plans and status.';
 
--- Create the posts table for the community hub if it doesn't exist.
+-- 3. POSTS TABLE
+-- For the community hub feature.
 CREATE TABLE IF NOT EXISTS public.posts (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    user_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
+    user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
     title TEXT NOT NULL,
     content TEXT,
     created_at TIMESTAMPTZ DEFAULT NOW()
 );
-COMMENT ON TABLE public.posts IS 'Stores user-created posts in the community hub.';
+COMMENT ON TABLE public.posts IS 'Stores posts created by users in the community hub.';
 
--- Create the comments table for posts if it doesn't exist.
+-- 4. COMMENTS TABLE
+-- For the community hub feature.
 CREATE TABLE IF NOT EXISTS public.comments (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
     post_id UUID NOT NULL REFERENCES public.posts(id) ON DELETE CASCADE,
-    user_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
     content TEXT,
     created_at TIMESTAMPTZ DEFAULT NOW()
 );
-COMMENT ON TABLE public.comments IS 'Stores comments on posts.';
+COMMENT ON TABLE public.comments IS 'Stores comments on posts in the community hub.';
 
--- Create or replace the function to automatically create a profile for a new user.
-CREATE OR REPLACE FUNCTION public.create_user_profile()
+
+-- FUNCTION to create a public profile when a new user signs up in Supabase Auth.
+CREATE OR REPLACE FUNCTION public.handle_new_user()
 RETURNS TRIGGER AS $$
 BEGIN
     INSERT INTO public.profiles (id, email, role)
-    VALUES (NEW.id, NEW.email, 'user');
-    RETURN NEW;
+    VALUES (new.id, new.email, 'user');
+    RETURN new;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
-COMMENT ON FUNCTION public.create_user_profile() IS 'Creates a profile for a new user upon registration.';
 
--- Drop the trigger if it exists, then create it.
+-- TRIGGER to call the function after a new user is created.
+-- Drop trigger if it exists to ensure it can be re-run
 DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
 CREATE TRIGGER on_auth_user_created
     AFTER INSERT ON auth.users
-    FOR EACH ROW EXECUTE FUNCTION public.create_user_profile();
-
--- Create or replace function to get the current user's role.
-CREATE OR REPLACE FUNCTION public.get_user_role()
-RETURNS TEXT AS $$
-DECLARE
-    user_role_result TEXT;
-BEGIN
-    SELECT role::TEXT INTO user_role_result FROM public.profiles WHERE id = auth.uid();
-    RETURN user_role_result;
-END;
-$$ LANGUAGE plpgsql;
-COMMENT ON FUNCTION public.get_user_role() IS 'Retrieves the role of the currently authenticated user.';
+    FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
 
 
--- POLICIES --
+-- ROW LEVEL SECURITY (RLS) POLICIES
 
--- Profiles Table Policies
+-- PROFILES RLS
 ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
-DROP POLICY IF EXISTS "Users can view their own profile" ON public.profiles;
-CREATE POLICY "Users can view their own profile" ON public.profiles
-    FOR SELECT USING (auth.uid() = id);
-DROP POLICY IF EXISTS "Users can update their own profile" ON publicprofiles;
-CREATE POLICY "Users can update their own profile" ON public.profiles
-    FOR UPDATE USING (auth.uid() = id);
+DROP POLICY IF EXISTS "Users can view all profiles" ON public.profiles;
+CREATE POLICY "Users can view all profiles" ON public.profiles FOR SELECT USING (true);
+DROP POLICY IF EXISTS "Users can update their own profile" ON public.profiles;
+CREATE POLICY "Users can update their own profile" ON public.profiles FOR UPDATE USING (auth.uid() = id);
 
--- Subscriptions Table Policies
+-- SUBSCRIPTIONS RLS
 ALTER TABLE public.subscriptions ENABLE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "Users can view their own subscription" ON public.subscriptions;
-CREATE POLICY "Users can view their own subscription" ON public.subscriptions
-    FOR SELECT USING (auth.uid() = user_id);
--- Note: Subscriptions are managed by the server/webhook, so no insert/update policies for users.
+CREATE POLICY "Users can view their own subscription" ON public.subscriptions FOR SELECT USING (auth.uid() = user_id);
+-- Note: Subscriptions are typically managed by backend/webhooks, so insert/update policies are restrictive.
 
--- Posts Table Policies
+-- POSTS RLS
 ALTER TABLE public.posts ENABLE ROW LEVEL SECURITY;
-DROP POLICY IF EXISTS "Authenticated users can view all posts" ON public.posts;
-CREATE POLICY "Authenticated users can view all posts" ON public.posts
-    FOR SELECT USING (auth.role() = 'authenticated');
-DROP POLICY IF EXISTS "Users can create posts if they are premium" ON public.posts;
-CREATE POLICY "Users can create posts if they are premium" ON public.posts
-    FOR INSERT WITH CHECK ((SELECT get_user_role()) IN ('premium', 'admin'));
-DROP POLICY IF EXISTS "Users can only update their own posts" ON public.posts;
-CREATE POLICY "Users can only update their own posts" ON public.posts
-    FOR UPDATE USING (auth.uid() = user_id);
-DROP POLICY IF EXISTS "Users can only delete their own posts" ON public.posts;
-CREATE POLICY "Users can only delete their own posts" ON public.posts
-    FOR DELETE USING (auth.uid() = user_id);
+DROP POLICY IF EXISTS "Users can view all posts" ON public.posts;
+CREATE POLICY "Users can view all posts" ON public.posts FOR SELECT USING (true);
+DROP POLICY IF EXISTS "Users can create posts" ON public.posts;
+CREATE POLICY "Users can create posts" ON public.posts FOR INSERT WITH CHECK (auth.uid() = user_id);
+DROP POLICY IF EXISTS "Users can update their own posts" ON public.posts;
+CREATE POLICY "Users can update their own posts" ON public.posts FOR UPDATE USING (auth.uid() = user_id);
+DROP POLICY IF EXISTS "Users can delete their own posts" ON public.posts;
+CREATE POLICY "Users can delete their own posts" ON public.posts FOR DELETE USING (auth.uid() = user_id);
 
--- Comments Table Policies
+-- COMMENTS RLS
 ALTER TABLE public.comments ENABLE ROW LEVEL SECURITY;
-DROP POLICY IF EXISTS "Authenticated users can view all comments" ON public.comments;
-CREATE POLICY "Authenticated users can view all comments" ON public.comments
-    FOR SELECT USING (auth.role() = 'authenticated');
-DROP POLICY IF EXISTS "Users can create comments if they are premium" ON public.comments;
-CREATE POLICY "Users can create comments if they are premium" ON public.comments
-    FOR INSERT WITH CHECK ((SELECT get_user_role()) IN ('premium', 'admin'));
-DROP POLICY IF EXISTS "Users can only update their own comments" ON public.comments;
-CREATE POLICY "Users can only update their own comments" ON public.comments
-    FOR UPDATE USING (auth.uid() = user_id);
-DROP POLICY IF EXISTS "Users can only delete their own comments" ON public.comments;
-CREATE POLICY "Users can only delete their own comments" ON public.comments
-    FOR DELETE USING (auth.uid() = user_id);
+DROP POLICY IF EXISTS "Users can view all comments" ON public.comments;
+CREATE POLICY "Users can view all comments" ON public.comments FOR SELECT USING (true);
+DROP POLICY IF EXISTS "Users can create comments" ON public.comments;
+CREATE POLICY "Users can create comments" ON public.comments FOR INSERT WITH CHECK (auth.uid() = user_id);
+DROP POLICY IF EXISTS "Users can update their own comments" ON public.comments;
+CREATE POLICY "Users can update their own comments" ON public.comments FOR UPDATE USING (auth.uid() = user_id);
+DROP POLICY IF EXISTS "Users can delete their own comments" ON public.comments;
+CREATE POLICY "Users can delete their own comments" ON public.comments FOR DELETE USING (auth.uid() = user_id);
