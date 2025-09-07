@@ -72,7 +72,7 @@ export default async function CommunityPage() {
                         <Avatar className="h-6 w-6">
                            <AvatarFallback>{post.author_email ? post.author_email[0].toUpperCase() : 'U'}</AvatarFallback>
                         </Avatar>
-                        <span>{post.author_email}</span>
+                        <span>{post.author_email || 'Anonymous'}</span>
                    </div>
                    <span>{formatDistanceToNow(new Date(post.created_at), { addSuffix: true })}</span>
                 </div>

@@ -41,7 +41,7 @@ export default async function PostPage({ params }: { params: { id: string } }) {
                 <AvatarFallback>{post.author_email ? post.author_email[0].toUpperCase() : 'U'}</AvatarFallback>
               </Avatar>
               <div className="flex flex-col">
-                <span className="font-semibold">{post.author_email}</span>
+                <span className="font-semibold">{post.author_email || 'Anonymous'}</span>
                 <span className="text-xs">{formatDistanceToNow(new Date(post.created_at), { addSuffix: true })}</span>
               </div>
             </div>
@@ -69,7 +69,7 @@ export default async function PostPage({ params }: { params: { id: string } }) {
                     </Avatar>
                     <div className="flex-1">
                         <div className="flex items-center justify-between">
-                            <p className="font-semibold">{comment.author_email}</p>
+                            <p className="font-semibold">{comment.author_email || 'Anonymous'}</p>
                             <p className="text-xs text-muted-foreground">
                                 {formatDistanceToNow(new Date(comment.created_at), { addSuffix: true })}
                             </p>

@@ -60,7 +60,7 @@ export interface Comment {
     content: string;
     user_id: string;
     post_id: string;
-    author_email: string;
+    author_email?: string;
 }
 
 export interface Post {
@@ -69,7 +69,7 @@ export interface Post {
   title: string;
   content: string;
   user_id: string;
-  author_email: string;
+  author_email?: string;
   comments: Comment[];
 }
 
@@ -80,7 +80,8 @@ export interface UserProfile {
     id: string;
     email: string;
     role: UserRole;
-    fullName?: string;
+    fullName?: string | null;
+    created_at?: string;
 }
 
 

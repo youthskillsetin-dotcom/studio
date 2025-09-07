@@ -17,10 +17,10 @@ import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 
-function getInitials(name?: string) {
+function getInitials(name?: string | null) {
     if (!name) return 'U';
     const names = name.split(' ');
-    if (names.length > 1) {
+    if (names.length > 1 && names[1]) {
         return names[0][0] + names[names.length - 1][0];
     }
     return name[0];

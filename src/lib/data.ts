@@ -162,14 +162,14 @@ export async function getUserProfile(supabase: SupabaseClient): Promise<UserProf
         console.error("Error fetching user profile", error);
     }
     
-    const role = data?.role ?? 'user';
-    const fullName = data?.full_name ?? user?.user_metadata?.full_name ?? user.email?.split('@')[0];
+    const role = data?.role ?? user?.user_metadata?.role ?? 'user';
+    const fullName = data?.full_name ?? user?.user_metadata?.full_name ?? user?.email?.split('@')[0];
 
     return {
         id: user.id,
         email: user.email || 'user@example.com',
         role: role,
-        created_at: user.created_at, // This is a string, which is serializable
+        created_at: user.created_at, 
         fullName: fullName,
     };
 }
@@ -195,12 +195,33 @@ export async function getAllUsers(supabase: SupabaseClient): Promise<UserProfile
     return [];
   }
 
+  // Fetch profiles for all users to get their roles
+  const userIds = users.map(user => user.id);
+  const { data: profiles, error: profilesError } = await supabaseAdmin
+    .from('profiles')
+    .select('id, role, full_name')
+    .in('id', userIds);
+
+  if (profilesError) {
+    console.error('Error fetching profiles:', profilesError.message);
+    // Return users with default roles if profiles can't be fetched
+    return users.map(user => ({
+      id: user.id,
+      email: user.email ?? 'No email',
+      role: user.user_metadata?.role ?? 'user',
+      created_at: user.created_at ?? new Date().toISOString(),
+      fullName: user.user_metadata?.full_name,
+    }));
+  }
+
+  const profilesMap = new Map(profiles.map(p => [p.id, { role: p.role, full_name: p.full_name }]));
+
   return users.map(user => ({
     id: user.id,
     email: user.email ?? 'No email',
-    role: user.user_metadata.role ?? 'user',
+    role: profilesMap.get(user.id)?.role ?? user.user_metadata?.role ?? 'user',
     created_at: user.created_at ?? new Date().toISOString(),
-    fullName: user.user_metadata.full_name,
+    fullName: profilesMap.get(user.id)?.full_name ?? user.user_metadata?.full_name,
   }));
 }
 

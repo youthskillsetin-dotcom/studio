@@ -51,6 +51,7 @@ export default async function AdminUsersPage() {
             <TableHeader>
               <TableRow>
                 <TableHead>Email</TableHead>
+                <TableHead>Full Name</TableHead>
                 <TableHead>Role</TableHead>
                 <TableHead>Joined On</TableHead>
               </TableRow>
@@ -59,12 +60,13 @@ export default async function AdminUsersPage() {
               {users.map((user) => (
                 <TableRow key={user.id}>
                   <TableCell className="font-medium">{user.email}</TableCell>
+                   <TableCell>{user.fullName || 'Not provided'}</TableCell>
                   <TableCell>
                     <Badge variant={user.role === 'admin' ? 'destructive' : 'secondary'} className={cn(user.role === 'premium' && 'bg-accent/20 text-accent-foreground')}>
                         {user.role}
                     </Badge>
                   </TableCell>
-                  <TableCell>{format(new Date(user.created_at), 'PPP')}</TableCell>
+                  <TableCell>{user.created_at ? format(new Date(user.created_at), 'PPP') : 'N/A'}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
