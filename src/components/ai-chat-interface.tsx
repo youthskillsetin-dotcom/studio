@@ -187,7 +187,7 @@ export default function AIChatInterface() {
                       : 'bg-muted'
                   )}
                 >
-                  <div dangerouslySetInnerHTML={{ __html: message.content.replace(/\n/g, '<br />') }} className="prose prose-sm dark:prose-invert max-w-none" />
+                  <div dangerouslySetInnerHTML={{ __html: message.content.replace(/\\n/g, '<br />') }} className="prose prose-sm dark:prose-invert max-w-none" />
                 </div>
                  {message.role === 'assistant' && (
                   <TooltipProvider>
@@ -310,7 +310,7 @@ export default function AIChatInterface() {
                 </FormItem>
               )}
             />
-            <Button type="submit" size="icon" disabled={isLoading}>
+            <Button type="submit" size="icon" disabled={isLoading || !messageValue.trim()}>
               <Send className="h-4 w-4" />
             </Button>
           </form>

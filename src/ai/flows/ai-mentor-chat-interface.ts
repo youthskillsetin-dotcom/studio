@@ -32,11 +32,7 @@ export async function aiMentorChat(input: AIMentorChatInput): Promise<AIMentorCh
   return aiMentorChatFlow(input);
 }
 
-const allModulesContent = JSON.stringify(sampleContent.lessons.map(lesson => ({
-    title: lesson.title,
-    description: lesson.description,
-    subtopics: lesson.subtopics.map(sub => sub.title)
-})));
+const allModulesContent = JSON.stringify(sampleContent.lessons);
 
 
 const prompt = ai.definePrompt({
@@ -50,7 +46,7 @@ const prompt = ai.definePrompt({
   Help users learn, understand the course material, explore career paths, and stay motivated.
 
   **Platform Context (Crucial Information):**
-  The YouthSkillSet platform offers the following learning modules. You must act as if you have complete knowledge of all of them. Here is a summary of the entire curriculum:
+  The YouthSkillSet platform offers a rich curriculum. You must act as if you have complete knowledge of all of them. Here is the full content of all modules and subtopics available on the platform:
   ---
   ${allModulesContent}
   ---
