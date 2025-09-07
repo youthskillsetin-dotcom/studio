@@ -1,6 +1,4 @@
 
-'use client';
-
 import { motion } from 'framer-motion';
 import { WelcomeHeader } from '@/components/dashboard/welcome-header';
 import { ProgressOverview } from '@/components/dashboard/progress-overview';
@@ -9,6 +7,9 @@ import { PracticeZone } from '@/components/dashboard/practice-zone';
 import { SubscriptionCard } from '@/components/dashboard/subscription-card';
 import { BadgesGrid } from '@/components/dashboard/badges-grid';
 import { AIMentorCard } from '@/components/dashboard/ai-mentor-card';
+import { createClient } from '@/lib/supabase/server';
+import { cookies } from 'next/headers';
+import { getUserSubscription } from '@/lib/data';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -32,11 +33,11 @@ const itemVariants = {
   },
 };
 
-// This page remains a client component for animations, but data fetching for subscription
-// would ideally be passed down from a server component layout in a full production app.
-// For now, we'll keep the placeholder.
-export default function DashboardPage() {
-    const isPremium = false; // Placeholder
+export default async function DashboardPage() {
+    const cookieStore = cookies();
+    const supabase = createClient(cookieStore);
+    const userSubscription = await getUserSubscription(supabase);
+    const isPremium = userSubscription?.is_active ?? false;
 
   return (
     <motion.div

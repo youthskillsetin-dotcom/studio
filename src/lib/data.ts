@@ -98,7 +98,7 @@ export async function getUserProfile(supabase: SupabaseClient): Promise<UserProf
 
     const { data, error } = await supabase
         .from('profiles')
-        .select('role')
+        .select('*')
         .eq('id', user.id)
         .single();
     
@@ -119,7 +119,7 @@ export async function getPosts(supabase: SupabaseClient): Promise<Post[]> {
       created_at,
       title,
       content,
-      profile:user_id ( email )
+      author_email:profiles ( email )
     `)
     .order('created_at', { ascending: false });
 
@@ -131,7 +131,7 @@ export async function getPosts(supabase: SupabaseClient): Promise<Post[]> {
   // @ts-ignore
   const posts = (data || []).map(p => ({
       ...p,
-      author_email: p.profile?.email ?? 'Anonymous',
+      author_email: p.author_email?.email ?? 'Anonymous',
       comments: []
   }));
 
@@ -149,7 +149,7 @@ export async function getPostById(supabase: SupabaseClient, id: string): Promise
       created_at,
       title,
       content,
-      profile:user_id ( email )
+      author_email:profiles ( email )
     `)
     .eq('id', id)
     .single();
@@ -165,7 +165,7 @@ export async function getPostById(supabase: SupabaseClient, id: string): Promise
         id,
         created_at,
         content,
-        profile:user_id ( email )
+        author_email:profiles ( email )
     `)
     .eq('post_id', id)
     .order('created_at', { ascending: true });
@@ -178,11 +178,11 @@ export async function getPostById(supabase: SupabaseClient, id: string): Promise
   const post = {
     ...postData,
     // @ts-ignore
-    author_email: postData.profile?.email ?? 'Anonymous',
+    author_email: postData.author_email?.email ?? 'Anonymous',
     comments: (commentsData || []).map(c => ({
         ...c,
         // @ts-ignore
-        author_email: c.profile?.email ?? 'Anonymous'
+        author_email: c.author_email?.email ?? 'Anonymous'
     }))
   };
   

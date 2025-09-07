@@ -26,12 +26,9 @@ export function SubscriptionCard({ isPremium }: SubscriptionCardProps) {
       </CardHeader>
       <CardContent>
         {isPremium ? (
-          <div className="space-y-1">
-            <p className="text-sm">Your plan expires on: <span className="font-semibold">Dec 31, 2024</span></p>
-             <Button variant="secondary" className="w-full mt-4" asChild>
-                <Link href="/settings">Manage Subscription</Link>
-            </Button>
-          </div>
+           <Button variant="secondary" className="w-full mt-4" asChild>
+              <Link href="/settings">Manage Subscription</Link>
+          </Button>
         ) : (
           <div className="space-y-4">
             <ul className="space-y-2 text-sm">
