@@ -93,7 +93,7 @@ export default function LandingPage() {
               className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground"
               variants={FADE_IN_ANIMATION_VARIANTS}
             >
-              YouthSkillSet is your personal AI mentor for mastering essential career skills. Learn at your own pace, get instant feedback, and build a portfolio that stands out.
+              YouthSkillset is an AI-powered platform that equips teens with the essential life and career skills needed to succeed in the real world. From financial literacy to personal branding, start your journey today.
             </motion.p>
             <motion.div
                 className="mt-8 flex justify-center gap-4"
