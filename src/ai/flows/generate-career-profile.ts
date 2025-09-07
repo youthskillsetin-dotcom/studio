@@ -50,7 +50,7 @@ const prompt = ai.definePrompt({
   name: 'generateCareerProfilePrompt',
   input: {schema: GenerateCareerProfileInputSchema},
   output: {schema: GenerateCareerProfileOutputSchema},
-  model: 'google/gemma-7b-it',
+  model: 'gemma-7b-it',
   prompt: `You are an expert career counselor AI, acting as a friendly and inspiring guide for a student in India. Your goal is to generate a comprehensive, accurate, and engaging career profile based on the user's input.
 
   The user has provided the following input: {{{userInput}}}
