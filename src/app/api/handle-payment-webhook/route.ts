@@ -32,7 +32,6 @@ export async function POST(req: Request) {
             });
 
         if (insertError) {
-             console.error('Error creating subscription:', insertError);
             // Attempt to update if it already exists (e.g., re-subscribing)
             if (insertError.code === '23505') { // unique constraint violation
                  const { error: updateError } = await supabase

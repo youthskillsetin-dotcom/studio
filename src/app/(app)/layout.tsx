@@ -20,6 +20,7 @@ import { cn } from "@/lib/utils";
 import { MobileNav } from "./_components/mobile-nav";
 import { UserNav } from "./_components/user-nav";
 import { useUserProfile } from "@/hooks/use-user-profile";
+import { BottomNav } from "./_components/bottom-nav";
 
 
 const navItems = [
@@ -69,18 +70,18 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen w-full flex-col">
       <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 z-40">
-         <div className="flex items-center md:w-1/4">
+         <div className="flex items-center gap-4">
             <Link href="/dashboard" className="flex items-center gap-2 font-semibold">
                 <School className="h-7 w-7 text-primary" />
                 <span className="text-xl font-headline hidden sm:inline-block">YouthSkillSet</span>
             </Link>
          </div>
           
-        <nav className="hidden flex-grow justify-center flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
+        <nav className="hidden flex-1 justify-center flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
            {desktopNav}
         </nav>
         
-        <div className="flex w-full items-center justify-end gap-4 md:w-1/4 md:ml-auto md:gap-2 lg:gap-4">
+        <div className="flex w-full items-center justify-end gap-4 md:ml-auto md:gap-2 lg:gap-4">
             <div className="md:hidden">
                 <MobileNav navItems={navItems} adminNavItems={adminNavItems} userProfile={userProfile} />
             </div>
@@ -98,6 +99,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8 pb-20 md:pb-8">
           {children}
       </main>
+       <div className="md:hidden">
+        <BottomNav />
+      </div>
     </div>
   );
 }
