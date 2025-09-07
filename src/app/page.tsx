@@ -3,8 +3,8 @@
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { CheckCircle, Zap, BrainCircuit, BookOpen, BarChart, ShieldCheck, Cpu, Briefcase, IndianRupee, HandCoins, Scale, User, FileText, Lock, Landmark, Search } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
+import { CheckCircle, Zap, BrainCircuit, BookOpen, BarChart, ShieldCheck, Cpu, Briefcase, IndianRupee, HandCoins, Scale, User, FileText, Lock, Landmark, Search, Target, Bot } from 'lucide-react';
 import { Logo } from '@/components/icons';
 import Image from 'next/image';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -49,14 +49,19 @@ export default function LandingPage() {
           <Logo className="h-8 w-8 text-primary" />
           <span className="text-xl font-bold font-headline">YouthSkillSet</span>
         </Link>
-        <nav className="flex items-center gap-4">
-           <Button asChild variant="ghost">
-            <Link href="/login">Log In</Link>
-          </Button>
-          <Button asChild>
-            <Link href="/signup">Get Started</Link>
-          </Button>
+        <nav className="hidden items-center gap-6 md:flex">
+          <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#features">Features</a>
+          <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#pricing">Pricing</a>
+          <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#faq">FAQ</a>
         </nav>
+        <div className="flex items-center gap-2">
+            <Button asChild variant="ghost">
+              <Link href="/login">Log In</Link>
+            </Button>
+            <Button asChild>
+              <Link href="/signup">Get Started</Link>
+            </Button>
+        </div>
       </header>
 
       <main className="flex-1">
@@ -99,8 +104,34 @@ export default function LandingPage() {
             </motion.div>
           </motion.div>
         </section>
+        
+        <section id="features" class="py-20 md:py-32 bg-muted/40">
+          <div class="container px-4 md:px-6">
+            <div class="max-w-xl mx-auto text-center mb-12">
+              <h2 class="font-headline text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter">Why Choose YouthSkillSet?</h2>
+              <p class="mt-4 text-lg sm:text-xl text-muted-foreground">We combine cutting-edge AI with practical, real-world lessons to make learning effective and engaging.</p>
+            </div>
+            <div class="grid gap-8 md:grid-cols-3">
+              <div class="rounded-lg border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+                <div class="flex justify-center mb-4"><BookOpen class="w-12 h-12 text-primary" /></div>
+                <h3 class="text-xl font-bold font-headline mb-2">Interactive Lessons</h3>
+                <p class="text-muted-foreground">Engaging, bite-sized lessons designed for teens, covering critical topics like finance, careers, and AI.</p>
+              </div>
+              <div class="rounded-lg border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+                <div class="flex justify-center mb-4"><Bot class="w-12 h-12 text-primary" /></div>
+                <h3 class="text-xl font-bold font-headline mb-2">AI Mentor</h3>
+                <p class="text-muted-foreground">Get personalized guidance and answers to your questions 24/7 from our friendly AI mentor.</p>
+              </div>
+              <div class="rounded-lg border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+                <div class="flex justify-center mb-4"><Target class="w-12 h-12 text-primary" /></div>
+                <h3 class="text-xl font-bold font-headline mb-2">Real-World Skills</h3>
+                <p class="text-muted-foreground">Move beyond theory with practical labs and projects that help you build a portfolio of skills for the future.</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <section className="bg-muted/40 py-20">
+        <section className="bg-background py-20">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl md:text-4xl font-extrabold font-headline">
@@ -133,7 +164,7 @@ export default function LandingPage() {
             </div>
         </section>
 
-        <section id="pricing" className="bg-background py-20">
+        <section id="pricing" className="bg-muted/40 py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-extrabold font-headline">
@@ -250,7 +281,7 @@ export default function LandingPage() {
           </div>
         </section>
         
-        <section className="bg-muted/40 py-20">
+        <section id="faq" className="bg-background py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-extrabold font-headline">
@@ -297,5 +328,3 @@ export default function LandingPage() {
     </div>
   );
 }
-
-    
