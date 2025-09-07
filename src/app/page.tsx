@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import Link from 'next/link';
@@ -165,11 +164,6 @@ export default function LandingPage() {
                            </div>
                         </div>
                     ))}
-                </div>
-                 <div className="text-center mt-12">
-                    <Button asChild>
-                        <Link href="/lessons">View All Lessons</Link>
-                    </Button>
                 </div>
             </div>
         </section>
