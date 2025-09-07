@@ -7,6 +7,8 @@ export const ai = genkit({
       apiKey: process.env.GEMINI_API_KEY,
     }),
   ],
-  logLevel: 'debug',
-  enableTracingAndMetrics: true,
+  // The following options are not supported in Genkit v1.x and have been removed
+  // to prevent server errors. Tracing is enabled by default.
+  // logLevel: 'debug',
+  // enableTracingAndMetrics: true,
 });
