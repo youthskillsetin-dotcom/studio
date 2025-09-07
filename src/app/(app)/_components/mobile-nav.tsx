@@ -8,7 +8,6 @@ import { Button } from '@/components/ui/button';
 import { Menu, School, UserCog } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { UserProfile } from '@/lib/types';
-import { useIsMobile } from '@/hooks/use-mobile';
 import * as React from 'react';
 
 interface NavItem {
@@ -75,34 +74,3 @@ export function MobileNav({ navItems, adminNavItems, userProfile }: MobileNavPro
     </Sheet>
   );
 }
-
-const BottomBar = ({ navItems }: { navItems: NavItem[] }) => {
-  const pathname = usePathname();
-  const isMobile = useIsMobile();
-
-  if (!isMobile) {
-    return null;
-  }
-
-  return (
-    <div className="fixed bottom-0 left-0 z-50 w-full h-16 bg-background border-t md:hidden">
-      <div className="grid h-full max-w-lg grid-cols-6 mx-auto font-medium">
-        {navItems.map(item => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className={cn(
-              'inline-flex flex-col items-center justify-center px-5 hover:bg-muted group',
-              pathname.startsWith(item.href) ? 'text-primary' : 'text-muted-foreground'
-            )}
-          >
-            <item.icon className="w-6 h-6 mb-1" />
-            <span className="text-xs font-medium">{item.label}</span>
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-MobileNav.BottomBar = BottomBar;

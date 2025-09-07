@@ -52,7 +52,7 @@ export function PracticeForm({ subtopic }: { subtopic: Subtopic }) {
     <div className="space-y-6">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
         {subtopic.practice_questions.map((q, index) => (
-          <Card key={q.id} className="p-6 rounded-xl">
+          <Card key={q.id} className="p-6 rounded-xl shadow-sm">
              <p className="font-semibold text-foreground mb-4">Question {index + 1}: {q.question}</p>
              <Controller
                 name={q.id}

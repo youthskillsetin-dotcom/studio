@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { FlaskConical, ArrowRight, FileText, Banknote, ClipboardList, Lightbulb, ShieldAlert } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
 
 interface Lab {
     id: string;
@@ -80,14 +81,14 @@ export default function PracticeLabPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {availableLabs.map((lab) => (
-          <Card key={lab.id} className="flex flex-col rounded-2xl shadow-sm hover:shadow-lg transition-all hover:-translate-y-1">
+          <Card key={lab.id} className={cn("flex flex-col rounded-2xl shadow-sm transition-all", !lab.is_interactive ? "bg-muted/40" : "hover:shadow-lg hover:-translate-y-1")}>
             <CardHeader className="flex-row items-start gap-4">
                 <div className="p-3 bg-primary/10 rounded-lg">
                     <lab.icon className="w-6 h-6 text-primary"/>
                 </div>
                 <div>
                     <CardTitle className="font-headline text-xl">{lab.title}</CardTitle>
-                    <div className="flex gap-2 mt-2">
+                    <div className="flex flex-wrap gap-2 mt-2">
                         {lab.tags.map(tag => (
                             <Badge key={tag} variant="secondary" className="text-xs font-medium">{tag}</Badge>
                         ))}
@@ -100,7 +101,8 @@ export default function PracticeLabPage() {
             <CardFooter>
                <Button asChild className="w-full" disabled={!lab.is_interactive}>
                     <Link href={lab.href}>
-                        Start Lab <ArrowRight className="w-4 h-4 ml-2" />
+                        {lab.is_interactive ? "Start Lab" : "Coming Soon"}
+                        {lab.is_interactive && <ArrowRight className="w-4 h-4 ml-2" />}
                     </Link>
                 </Button>
             </CardFooter>
@@ -110,5 +112,3 @@ export default function PracticeLabPage() {
     </div>
   );
 }
-
-    

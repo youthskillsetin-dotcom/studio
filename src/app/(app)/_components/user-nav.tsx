@@ -23,7 +23,7 @@ function getInitials(name?: string | null) {
     if (names.length > 1 && names[1]) {
         return names[0][0] + names[names.length - 1][0];
     }
-    return name[0];
+    return name[0].toUpperCase();
 }
 
 export function UserNav({ userProfile }: { userProfile: UserProfile | null }) {
@@ -48,7 +48,7 @@ export function UserNav({ userProfile }: { userProfile: UserProfile | null }) {
           <DropdownMenuContent align="end" className="w-56">
             <DropdownMenuLabel className="font-normal">
               <div className="flex flex-col space-y-1">
-                <p className="text-sm font-medium leading-none">{userProfile?.fullName || 'User'}</p>
+                <p className="text-sm font-semibold leading-none">{userProfile?.fullName || 'User'}</p>
                 <p className="text-xs leading-none text-muted-foreground">
                   {userProfile?.email}
                 </p>
@@ -57,19 +57,19 @@ export function UserNav({ userProfile }: { userProfile: UserProfile | null }) {
             <DropdownMenuSeparator />
              <DropdownMenuItem asChild>
                 <Link href="/settings">
-                    <Settings className="mr-2" />
+                    <Settings className="mr-2 h-4 w-4" />
                     <span>Settings</span>
                 </Link>
              </DropdownMenuItem>
              <DropdownMenuItem asChild>
                 <Link href="/support">
-                    <LifeBuoy className="mr-2" />
+                    <LifeBuoy className="mr-2 h-4 w-4" />
                     <span>Support</span>
                 </Link>
              </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={handleLogout}>
-              <LogOut className="mr-2" />
+              <LogOut className="mr-2 h-4 w-4" />
               <span>Log out</span>
             </DropdownMenuItem>
           </DropdownMenuContent>

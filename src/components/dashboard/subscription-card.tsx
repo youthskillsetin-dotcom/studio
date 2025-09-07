@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -26,8 +25,8 @@ export function SubscriptionCard({ isPremium }: SubscriptionCardProps) {
       </CardHeader>
       <CardContent>
         {isPremium ? (
-           <Button variant="secondary" className="w-full mt-4" asChild>
-              <Link href="/settings">Manage Subscription</Link>
+          <Button variant="secondary" className="w-full bg-white text-primary hover:bg-white/90" asChild>
+            <Link href="/settings">Manage Subscription</Link>
           </Button>
         ) : (
           <div className="space-y-4">
