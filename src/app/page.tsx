@@ -84,9 +84,9 @@ export default function LandingPage() {
               className="text-4xl md:text-6xl font-extrabold font-headline tracking-tight text-foreground"
               variants={FADE_IN_ANIMATION_VARIANTS}
              >
-              Master In-Demand Skills.
+              Unlock Your Potential.
               <br />
-              <span className="text-primary">Unlock Your Future.</span>
+              <span className="text-primary">Build Your Future.</span>
             </motion.h1>
             <motion.p
               className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground"
