@@ -44,6 +44,7 @@ function SubscribePageContent() {
 
   const planKey = searchParams.get('plan') === 'yearly' ? 'yearly' : 'premium';
   const selectedPlan = plans[planKey];
+  const otherPlanKey = planKey === 'premium' ? 'yearly' : 'premium';
   
   const handleCheckout = async () => {
     setIsLoading(true);
@@ -117,7 +118,7 @@ function SubscribePageContent() {
             )}
           </Button>
           <Button variant="link" asChild disabled={isLoading}>
-            <Link href="/#pricing">Change Plan</Link>
+            <Link href={`/subscribe?plan=${otherPlanKey}`}>Change Plan</Link>
           </Button>
         </CardFooter>
       </Card>
