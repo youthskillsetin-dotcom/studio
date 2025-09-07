@@ -108,6 +108,7 @@ export default function AboutPage() {
                         </Avatar>
                         <h3 className="mt-6 text-lg font-semibold text-foreground">Yashneet</h3>
                         <p className="text-primary">Head of Product and Co-founder</p>
+                        <p className="text-sm text-muted-foreground mt-4">As the Head of Product, Yash is the chief architect of the YouthSkillset experience. He translates the company's vision into a tangible, user-friendly platform that students love to use. Yash is obsessed with understanding the needs and challenges of young learners. He spends his time talking to users, analyzing data, and collaborating with the design and content teams to build features that are not just innovative but truly impactful. From designing the AI Mentor interactions to structuring the flow of our learning modules, Yash ensures that every click and every lesson is part of a seamless journey towards empowerment. He is committed to building a product that is not just a tool, but a trusted companion in every student's path to success.</p>
                     </CardContent>
                 </Card>
                 <Card className="text-center rounded-2xl border-0 shadow-none">
