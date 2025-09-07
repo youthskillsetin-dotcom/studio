@@ -1,8 +1,18 @@
 
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Logo } from '@/components/icons';
 import { Target, Lightbulb, Heart } from 'lucide-react';
 import Image from 'next/image';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+
+const getInitials = (name: string) => {
+    const names = name.split(' ');
+    if (names.length > 1 && names[1]) {
+        return names[0][0] + names[names.length - 1][0];
+    }
+    return name[0] ? name[0].toUpperCase() : '';
+}
 
 export default function AboutPage() {
   return (
@@ -83,30 +93,45 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
                 <Card className="text-center rounded-2xl border-0 shadow-none">
                     <CardContent className="p-6">
+                        <Avatar className="w-24 h-24 mx-auto mb-4 text-2xl">
+                          <AvatarFallback>{getInitials("Amit kumar Metha")}</AvatarFallback>
+                        </Avatar>
                         <h3 className="mt-6 text-lg font-semibold text-foreground">Amit kumar Metha</h3>
                         <p className="text-primary">CEO & Founder</p>
                     </CardContent>
                 </Card>
                 <Card className="text-center rounded-2xl border-0 shadow-none">
                     <CardContent className="p-6">
+                        <Avatar className="w-24 h-24 mx-auto mb-4 text-2xl">
+                          <AvatarFallback>{getInitials("Yashneet")}</AvatarFallback>
+                        </Avatar>
                         <h3 className="mt-6 text-lg font-semibold text-foreground">Yashneet</h3>
                         <p className="text-primary">Head of Product and Co-founder</p>
                     </CardContent>
                 </Card>
                 <Card className="text-center rounded-2xl border-0 shadow-none">
                     <CardContent className="p-6">
+                         <Avatar className="w-24 h-24 mx-auto mb-4 text-2xl">
+                          <AvatarFallback>{getInitials("Adarsh")}</AvatarFallback>
+                        </Avatar>
                         <h3 className="mt-6 text-lg font-semibold text-foreground">Adarsh</h3>
                         <p className="text-primary">Head of Content and Co-founder</p>
                     </CardContent>
                 </Card>
                 <Card className="text-center rounded-2xl border-0 shadow-none">
                     <CardContent className="p-6">
+                         <Avatar className="w-24 h-24 mx-auto mb-4 text-2xl">
+                          <AvatarFallback>{getInitials("Nancy")}</AvatarFallback>
+                        </Avatar>
                         <h3 className="mt-6 text-lg font-semibold text-foreground">Nancy</h3>
                         <p className="text-primary">Head of Design and Co-founder</p>
                     </CardContent>
                 </Card>
                 <Card className="text-center rounded-2xl border-0 shadow-none">
                     <CardContent className="p-6">
+                         <Avatar className="w-24 h-24 mx-auto mb-4 text-2xl">
+                          <AvatarFallback>{getInitials("Nidhi")}</AvatarFallback>
+                        </Avatar>
                         <h3 className="mt-6 text-lg font-semibold text-foreground">Nidhi</h3>
                         <p className="text-primary">Head of Research and Co-founder</p>
                     </CardContent>
