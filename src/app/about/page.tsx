@@ -138,6 +138,7 @@ export default function AboutPage() {
                         </Avatar>
                         <h3 className="mt-6 text-lg font-semibold text-foreground">Nidhi</h3>
                         <p className="text-primary">Head of Research and Co-founder</p>
+                        <p className="text-sm text-muted-foreground mt-4">As the Head of Research, Nidhi is our connection to the ever-evolving landscape of education and career development. Her role is to ensure that our curriculum is not just current, but forward-looking. Nidhi dives deep into educational trends, analyzes the future job market, and studies the learning psychology of young adults. She identifies the specific skills that will be most in-demand tomorrow, guaranteeing that our modules are practical and provide a real competitive advantage. By translating complex research into actionable insights for our content team, Nidhi ensures that YouthSkillset remains a relevant and powerful tool, equipping students with the knowledge they need not just for their first job, but for a lifetime of success in a changing world.</p>
                     </CardContent>
                 </Card>
             </div>
