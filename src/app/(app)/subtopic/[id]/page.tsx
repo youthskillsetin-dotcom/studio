@@ -7,10 +7,11 @@ import { ChevronLeft, Lightbulb, Bot, ArrowRight, Video } from 'lucide-react';
 import sampleContent from '../../../../../sample-content.json';
 import type { Subtopic, Lesson, PracticeQuestion } from '@/lib/types';
 import { Button } from '@/components/ui/button';
-import { generateSubtopicSummary } from '@/ai/flows/generate-subtopic-summary';
 import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
 import { getUserSubscription } from '@/lib/data';
+import { Suspense } from 'react';
+import { AISummaryCard, AISummaryCardSkeleton } from '@/components/ai-summary-card';
 
 
 // Since we are not using a DB, we'll create a simple function to get data from the JSON
@@ -74,11 +75,6 @@ export default async function SubtopicPage({ params }: { params: { id: string } 
     redirect(`/lessons/${lesson.id}`);
   }
 
-  const summaryResult = await generateSubtopicSummary({
-    title: subtopic.title,
-    content: subtopic.content
-  });
-
   const nextSubtopicTitle = nextSubtopicId ? getSubtopicTitleById(nextSubtopicId) : null;
 
   return (
@@ -121,15 +117,12 @@ export default async function SubtopicPage({ params }: { params: { id: string } 
 
         {/* Sidebar */}
         <div className="lg:col-span-1 space-y-8 sticky top-24 self-start">
-             <Card>
-                <CardHeader className="flex-row items-center gap-2 space-y-0">
-                    <Bot className="w-6 h-6 text-primary" />
-                    <CardTitle className="font-headline">AI Summary</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <div className="prose prose-sm dark:prose-invert max-w-none text-muted-foreground" dangerouslySetInnerHTML={{ __html: summaryResult.summary.replace(/\n/g, '<br />') }} />
-                </CardContent>
-             </Card>
+             <Suspense fallback={<AISummaryCardSkeleton />}>
+                <AISummaryCard 
+                    title={subtopic.title}
+                    content={subtopic.content}
+                />
+             </Suspense>
 
              <Card className="bg-accent/10 border-accent/20">
                 <CardHeader className="flex-row items-center gap-2 space-y-0">
