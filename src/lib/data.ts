@@ -98,15 +98,16 @@ export async function getUserProfile(supabase: SupabaseClient): Promise<UserProf
 
     const { data, error } = await supabase
         .from('profiles')
-        .select('*')
+        .select('role')
         .eq('id', user.id)
-        .maybeSingle();
+        .single();
     
-    if (error && error.code !== 'PGRST116') { // PGRST116 means no rows found
+    if (error) {
         console.error('Error fetching user profile:', error.message);
         return null;
     }
-    return data;
+
+    return data as UserProfile;
 }
 
 export async function getPosts(supabase: SupabaseClient): Promise<Post[]> {
@@ -118,62 +119,70 @@ export async function getPosts(supabase: SupabaseClient): Promise<Post[]> {
       created_at,
       title,
       content,
-      author_email:profiles ( email )
+      profile:user_id ( email )
     `)
     .order('created_at', { ascending: false });
 
-  if (error && error.code !== 'PGRST116') {
-    console.error('Error fetching posts:', error.message);
+  if (error) {
+    console.error('Error fetching posts:', error);
     return [];
   }
 
+  // @ts-ignore
   const posts = (data || []).map(p => ({
       ...p,
-      // @ts-ignore: supabase-js typing for joins can be tricky
-      author_email: p.author_email?.email ?? 'Anonymous',
+      author_email: p.profile?.email ?? 'Anonymous',
       comments: []
   }));
 
   return posts as Post[];
 }
 
+
 export async function getPostById(supabase: SupabaseClient, id: string): Promise<Post | null> {
   noStore();
 
-  const { data, error } = await supabase
+  const { data: postData, error: postError } = await supabase
     .from('posts')
     .select(`
       id,
       created_at,
       title,
       content,
-      author_email:profiles ( email ),
-      comments (
-        id,
-        created_at,
-        content,
-        author_email:profiles ( email )
-      )
+      profile:user_id ( email )
     `)
     .eq('id', id)
-    .order('created_at', { foreignTable: 'comments', ascending: true })
-    .maybeSingle();
+    .single();
 
-  if (error && error.code !== 'PGRST116') {
-    console.error('Error fetching post by ID:', error.message);
+  if (postError) {
+    console.error('Error fetching post by ID:', postError);
     return null;
   }
   
-  if (!data) return null;
+  const { data: commentsData, error: commentsError } = await supabase
+    .from('comments')
+    .select(`
+        id,
+        created_at,
+        content,
+        profile:user_id ( email )
+    `)
+    .eq('post_id', id)
+    .order('created_at', { ascending: true });
+    
+  if (commentsError) {
+    console.error('Error fetching comments:', commentsError);
+    // We can still return the post, just with empty comments
+  }
 
   const post = {
-    ...data,
+    ...postData,
     // @ts-ignore
-    author_email: data.author_email?.email ?? 'Anonymous',
-    comments: (data.comments || []).map(c => ({
+    author_email: postData.profile?.email ?? 'Anonymous',
+    comments: (commentsData || []).map(c => ({
         ...c,
         // @ts-ignore
-        author_email: c.author_email?.email ?? 'Anonymous'
+        author_email: c.profile?.email ?? 'Anonymous'
     }))
   };
   

@@ -61,7 +61,7 @@ export async function middleware(request: NextRequest) {
 
   const isAuthRoute = request.nextUrl.pathname.startsWith('/login') || request.nextUrl.pathname.startsWith('/signup') || request.nextUrl.pathname.startsWith('/verify');
 
-  if (!user && !isAuthRoute && !request.nextUrl.pathname.startsWith('/auth')) {
+  if (!user && !isAuthRoute && !request.nextUrl.pathname.startsWith('/auth/callback')) {
      const url = request.nextUrl.clone();
      url.pathname = '/login';
     return NextResponse.redirect(url);
