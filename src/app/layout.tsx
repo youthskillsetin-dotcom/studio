@@ -1,5 +1,5 @@
 
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { Analytics } from "@vercel/analytics/react";
@@ -23,7 +23,10 @@ export const metadata: Metadata = {
   title: 'YouthSkillSet',
   description: 'Master in-demand skills with AI-powered mentorship.',
   manifest: '/manifest.json',
-  themeColor: '#6D28D9'
+};
+
+export const viewport: Viewport = {
+  themeColor: '#6D28D9',
 };
 
 export default function RootLayout({
