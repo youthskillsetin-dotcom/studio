@@ -83,7 +83,12 @@ export async function getUserSubscription(supabase: SupabaseClient): Promise<Use
         .order('created_at', { ascending: false })
         .maybeSingle();
     
-    if (error && error.code !== 'PGRST116') { // PGRST116 means no rows found
+    if (error) { 
+        // Gracefully handle the error if the table doesn't exist to prevent crashing
+        if (error.code === '42P01' || error.code === 'PGRST116') { // 42P01: undefined_table
+             console.warn('Subscriptions table not found or no subscription exists, proceeding without subscription data.');
+             return null;
+        }
         console.error('Error fetching subscription:', error.message);
         return null;
     }
