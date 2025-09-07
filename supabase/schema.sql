@@ -1,114 +1,118 @@
 
--- USER_SUBTOPIC_PROGRESS Table
--- Stores the progress of each user on each subtopic.
-create table public.user_subtopic_progress (
-  user_id uuid not null references auth.users (id) on delete cascade,
-  subtopic_id text not null,
-  completed_at timestamptz,
-  score integer,
-  status text check (status in ('locked', 'unlocked', 'completed')),
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now(),
-  primary key (user_id, subtopic_id)
-);
-alter table public.user_subtopic_progress enable row level security;
+-- This script is designed to be idempotent, meaning you can run it multiple
+-- times without causing errors or duplicating data.
 
--- SUBSCRIPTIONS Table
--- Stores user subscription information.
-create table public.subscriptions (
-  id uuid not null primary key default gen_random_uuid(),
-  user_id uuid not null references auth.users (id) on delete cascade,
-  is_active boolean not null default false,
-  plan_name text check (plan_name in ('Premium', 'Yearly')),
+-- 0. Enable the http extension if not already enabled.
+-- This is required for using webhooks, for example with Stripe.
+CREATE EXTENSION IF NOT EXISTS http;
+
+-- 1. Create a `profiles` table
+-- This table is designed to store public-facing user data.
+-- It is connected to the `auth.users` table via a foreign key.
+CREATE TABLE IF NOT EXISTS public.profiles (
+  id uuid PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+  full_name text,
+  email text,
+  avatar_url text
+);
+
+-- Set up Row Level Security (RLS) for the profiles table.
+-- This ensures that users can only update their own profile and view others'.
+ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "Public profiles are viewable by everyone." ON public.profiles;
+CREATE POLICY "Public profiles are viewable by everyone." ON public.profiles FOR SELECT USING (true);
+DROP POLICY IF EXISTS "Users can insert their own profile." ON public.profiles;
+CREATE POLICY "Users can insert their own profile." ON public.profiles FOR INSERT WITH CHECK (auth.uid() = id);
+DROP POLICY IF EXISTS "Users can update their own profile." ON public.profiles;
+CREATE POLICY "Users can update their own profile." ON public.profiles FOR UPDATE USING (auth.uid() = id);
+
+-- 2. Create a trigger to automatically create a profile entry on new user signup.
+-- This function is called by the trigger whenever a new user is created in `auth.users`.
+CREATE OR REPLACE FUNCTION public.handle_new_user()
+RETURNS trigger
+LANGUAGE plpgsql
+SECURITY DEFINER SET search_path = public
+AS $$
+BEGIN
+  INSERT INTO public.profiles (id, full_name, email, avatar_url)
+  VALUES (new.id, new.raw_user_meta_data->>'full_name', new.email, new.raw_user_meta_data->>'avatar_url');
+  RETURN new;
+END;
+$$;
+
+-- Drop the trigger if it exists, then create it.
+DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
+CREATE TRIGGER on_auth_user_created
+  AFTER INSERT ON auth.users
+  FOR EACH ROW EXECUTE PROCEDURE public.handle_new_user();
+
+
+-- 3. SUBSCRIPTIONS Table
+-- Stores user subscription data, linked to the `profiles` table.
+CREATE TABLE IF NOT EXISTS public.subscriptions (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id uuid NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
+  is_active boolean DEFAULT false,
+  plan_name text,
   expires_at timestamptz,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
+  created_at timestamptz DEFAULT now(),
+  updated_at timestamptz DEFAULT now()
 );
-alter table public.subscriptions enable row level security;
+-- Add RLS policies for subscriptions table
+ALTER TABLE public.subscriptions ENABLE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "Users can view their own subscription." ON public.subscriptions;
+CREATE POLICY "Users can view their own subscription." ON public.subscriptions FOR SELECT USING (auth.uid() = user_id);
 
-
--- POSTS Table
--- Stores posts for the community hub.
-create table public.posts (
-  id uuid not null primary key default gen_random_uuid(),
-  user_id uuid not null references auth.users (id) on delete cascade,
-  title text not null,
-  content text not null,
-  created_at timestamptz not null default now()
+-- 4. POSTS Table for Community Hub
+CREATE TABLE IF NOT EXISTS public.posts (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id uuid NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
+  title text NOT NULL,
+  content text,
+  created_at timestamptz DEFAULT now()
 );
-alter table public.posts enable row level security;
+-- Add RLS policies for posts table
+ALTER TABLE public.posts ENABLE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "Authenticated users can view all posts." ON public.posts;
+CREATE POLICY "Authenticated users can view all posts." ON public.posts FOR SELECT USING (auth.role() = 'authenticated');
+DROP POLICY IF EXISTS "Users can insert their own posts." ON public.posts;
+CREATE POLICY "Users can insert their own posts." ON public.posts FOR INSERT WITH CHECK (auth.uid() = user_id);
+DROP POLICY IF EXISTS "Users can update their own posts." ON public.posts;
+CREATE POLICY "Users can update their own posts." ON public.posts FOR UPDATE USING (auth.uid() = user_id);
+DROP POLICY IF EXISTS "Users can delete their own posts." ON public.posts;
+CREATE POLICY "Users can delete their own posts." ON public.posts FOR DELETE USING (auth.uid() = user_id);
 
--- COMMENTS Table
--- Stores comments for posts in the community hub.
-create table public.comments (
-  id uuid not null primary key default gen_random_uuid(),
-  user_id uuid not null references auth.users (id) on delete cascade,
-  post_id uuid not null references public.posts (id) on delete cascade,
-  content text not null,
-  created_at timestamptz not null default now()
+-- 5. COMMENTS Table for Community Hub
+CREATE TABLE IF NOT EXISTS public.comments (
+    id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id uuid NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
+    post_id uuid NOT NULL REFERENCES public.posts(id) ON DELETE CASCADE,
+    content text,
+    created_at timestamptz DEFAULT now()
 );
-alter table public.comments enable row level security;
+-- Add RLS policies for comments table
+ALTER TABLE public.comments ENABLE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "Authenticated users can view all comments." ON public.comments;
+CREATE POLICY "Authenticated users can view all comments." ON public.comments FOR SELECT USING (auth.role() = 'authenticated');
+DROP POLICY IF EXISTS "Users can insert their own comments." ON public.comments;
+CREATE POLICY "Users can insert their own comments." ON public.comments FOR INSERT WITH CHECK (auth.uid() = user_id);
+DROP POLICY IF EXISTS "Users can update their own comments." ON public.comments;
+CREATE POLICY "Users can update their own comments." ON public.comments FOR UPDATE USING (auth.uid() = user_id);
+DROP POLICY IF EXISTS "Users can delete their own comments." ON public.comments;
+CREATE POLICY "Users can delete their own comments." ON public.comments FOR DELETE USING (auth.uid() = user_id);
 
-
--- POLICIES
--- Set up Row Level Security policies for the tables.
-
--- Enable RLS for all tables
--- -- 1. Authenticated users can insert their own progress
-create policy "Authenticated users can insert their own progress"
-on public.user_subtopic_progress
-for insert to authenticated
-with check (auth.uid() = user_id);
-
--- -- 2. Users can view their own progress
-create policy "Users can view their own progress"
-on public.user_subtopic_progress
-for select to authenticated
-using (auth.uid() = user_id);
-
--- -- 3. Users can update their own progress
-create policy "Users can update their own progress"
-on public.user_subtopic_progress
-for update to authenticated
-using (auth.uid() = user_id);
-
-
--- Policies for SUBSCRIPTIONS table
--- -- 1. Allow authenticated users to see all subscriptions
-create policy "Allow authenticated users to see all subscriptions"
-on public.subscriptions
-for select to authenticated
-using (true);
-
--- -- 2. Allow users to insert their own subscription
-create policy "Allow users to insert their own subscription"
-on public.subscriptions
-for insert to authenticated
-with check (auth.uid() = user_id);
-
-
--- Policies for POSTS table
--- -- 1. Authenticated users can create posts.
-create policy "Authenticated users can create posts"
-on public.posts
-for insert to authenticated
-with check (auth.uid() = user_id);
-
--- -- 2. Authenticated users can view all posts.
-create policy "Authenticated users can view all posts"
-on public.posts
-for select to authenticated
-using (true);
-
--- Policies for COMMENTS table
--- -- 1. Authenticated users can add comments.
-create policy "Authenticated users can add comments"
-on public.comments
-for insert to authenticated
-with check (auth.uid() = user_id);
-
--- -- 2. Authenticated users can view all comments.
-create policy "Authenticated users can view all comments"
-on public.comments
-for select to authenticated
-using (true);
+-- 6. USER_SUBTOPIC_PROGRESS Table
+-- Tracks which subtopics a user has completed.
+CREATE TABLE IF NOT EXISTS public.user_subtopic_progress (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id uuid NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
+  subtopic_id text NOT NULL, -- e.g., "1-1", "2-3"
+  status text NOT NULL, -- 'unlocked', 'completed'
+  score integer,
+  completed_at timestamptz,
+  UNIQUE(user_id, subtopic_id)
+);
+-- Add RLS policies for progress table
+ALTER TABLE public.user_subtopic_progress ENABLE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "Users can manage their own progress." ON public.user_subtopic_progress;
+CREATE POLICY "Users can manage their own progress." ON public.user_subtopic_progress FOR ALL USING (auth.uid() = user_id);

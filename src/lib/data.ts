@@ -84,7 +84,10 @@ export async function getUserSubscription(supabase: SupabaseClient): Promise<Use
         .maybeSingle();
     
     if (error) {
-        console.error('Error fetching subscription:', error);
+        // PGRST116: No rows found, which is expected for users without a subscription.
+        if (error.code !== 'PGRST116') {
+            console.error('Error fetching subscription:', error);
+        }
         return null;
     }
 
@@ -101,7 +104,7 @@ export async function getPosts(supabase: SupabaseClient): Promise<Post[]> {
       title,
       content,
       user_id,
-      author:users(email)
+      profiles(email)
     `)
     .order('created_at', { ascending: false });
 
@@ -113,7 +116,7 @@ export async function getPosts(supabase: SupabaseClient): Promise<Post[]> {
   const posts = data.map(p => ({
       ...p,
       // @ts-ignore: supabase-js typing for joins can be tricky
-      author_email: p.author?.email ?? 'Anonymous',
+      author_email: p.profiles?.email ?? 'Anonymous',
   }));
 
   // @ts-ignore
@@ -131,13 +134,13 @@ export async function getPostById(supabase: SupabaseClient, id: string): Promise
       title,
       content,
       user_id,
-      author:users(email),
+      profiles(email),
       comments (
         id,
         created_at,
         content,
         user_id,
-        author:users(email)
+        profiles(email)
       )
     `)
     .eq('id', id)
@@ -152,11 +155,11 @@ export async function getPostById(supabase: SupabaseClient, id: string): Promise
   const post = {
     ...data,
     // @ts-ignore
-    author_email: data.author?.email ?? 'Anonymous',
+    author_email: data.profiles?.email ?? 'Anonymous',
     comments: data.comments.map(c => ({
         ...c,
         // @ts-ignore
-        author_email: c.author?.email ?? 'Anonymous'
+        author_email: c.profiles?.email ?? 'Anonymous'
     }))
   };
   
