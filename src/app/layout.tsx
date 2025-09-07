@@ -37,10 +37,14 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
       </head>
       <body className={cn('font-body antialiased', inter.variable, spaceGrotesk.variable)}>
-        {children}
+        <div className="flex flex-col min-h-screen">
+          <div className="flex-grow">
+            {children}
+          </div>
+          <Footer />
+        </div>
         <Toaster />
         <Analytics />
-        <Footer />
       </body>
     </html>
   );

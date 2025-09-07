@@ -169,7 +169,7 @@ export default function LandingPage() {
                             <Plus className="w-7 h-7" />
                        </div>
                        <div>
-                            <h3 className="font-headline text-lg font-semibold text-muted-foreground">...and many more modules coming soon!</h3>
+                            <h3 className="font-headline text-lg font-semibold text-muted-foreground">...and many more!</h3>
                        </div>
                     </div>
                 </div>
@@ -333,10 +333,6 @@ export default function LandingPage() {
         </section>
 
       </main>
-
-      <footer className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} YouthSkillSet. All rights reserved.</p>
-      </footer>
     </div>
   );
 }

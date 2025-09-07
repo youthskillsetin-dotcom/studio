@@ -11,13 +11,19 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Logo } from './icons';
 
-const footerNavs = [
+const quickLinks = [
     { href: '/dashboard', name: 'Dashboard' },
     { href: '/lessons', name: 'Lessons' },
-    { href: '/career-guide', name: 'Career Guide' },
     { href: '/ai-mentor', name: 'AI Mentor' },
+    { href: '/career-guide', name: 'Career Guide' },
+]
+
+const supportLinks = [
     { href: '/about', name: 'About' },
-    { href: '/support', name: 'Contact' }
+    { href: '/support', name: 'Contact' },
+    { href: '/#faq', name: 'FAQs' },
+    { href: '/privacy', name: 'Privacy Policy' },
+    { href: '/terms', name: 'Terms of Service' },
 ]
 
 const socialLinks = [
@@ -33,11 +39,11 @@ export function Footer() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="bg-background text-muted-foreground border-t"
+        className="bg-muted/40 text-muted-foreground border-t"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid gap-10 md:grid-cols-3 text-center md:text-left">
-           <div className="flex flex-col items-center md:items-start">
+        <div className="grid gap-10 grid-cols-1 text-center md:grid-cols-4 md:text-left">
+           <div className="flex flex-col items-center md:items-start col-span-1 md:col-span-1">
                <Link href="/" className="flex items-center gap-2 mb-2">
                 <Logo className="h-8 w-8 text-primary" />
                 <span className="text-xl font-bold font-headline text-foreground">YouthSkillSet</span>
@@ -48,6 +54,32 @@ export function Footer() {
            </div>
            
           <div className="md:mx-auto">
+             <h3 className="font-semibold font-headline text-foreground tracking-wider uppercase">Quick Links</h3>
+             <ul className="mt-4 space-y-2">
+                {quickLinks.map((item, idx) => (
+                    <li key={idx}>
+                        <Link href={item.href} className="text-sm hover:text-primary transition-colors duration-300">
+                            {item.name}
+                        </Link>
+                    </li>
+                ))}
+             </ul>
+           </div>
+
+           <div className="md:mx-auto">
+             <h3 className="font-semibold font-headline text-foreground tracking-wider uppercase">Support</h3>
+             <ul className="mt-4 space-y-2">
+                {supportLinks.map((item, idx) => (
+                    <li key={idx}>
+                        <Link href={item.href} className="text-sm hover:text-primary transition-colors duration-300">
+                            {item.name}
+                        </Link>
+                    </li>
+                ))}
+             </ul>
+           </div>
+          
+           <div className="md:mx-auto">
             <h3 className="font-semibold font-headline text-foreground tracking-wider uppercase">Follow Us</h3>
              <div className="flex justify-center md:justify-start mt-4 space-x-4">
                 {socialLinks.map((item, idx) => (
@@ -58,23 +90,11 @@ export function Footer() {
                 ))}
             </div>
           </div>
-          
-           <div className="md:ml-auto">
-             <h3 className="font-semibold font-headline text-foreground tracking-wider uppercase">Navigation</h3>
-             <ul className="mt-4 space-y-2">
-                {footerNavs.map((item, idx) => (
-                    <li key={idx}>
-                        <Link href={item.href} className="text-sm hover:text-primary transition-colors duration-300">
-                            {item.name}
-                        </Link>
-                    </li>
-                ))}
-             </ul>
-           </div>
         </div>
         
-        <div className="mt-10 pt-8 border-t text-sm text-center">
-            <p>© {new Date().getFullYear()} YouthSkillSet. All Rights Reserved.</p>
+        <div className="mt-10 pt-8 border-t text-sm flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p className="text-center sm:text-left">© {new Date().getFullYear()} YouthSkillSet. All Rights Reserved.</p>
+            <p className="text-center sm:text-right">Made with ❤️ in India</p>
         </div>
       </div>
     </motion.footer>
