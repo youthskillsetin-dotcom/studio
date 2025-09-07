@@ -105,27 +105,27 @@ export default function LandingPage() {
           </motion.div>
         </section>
         
-        <section id="features" class="py-20 md:py-32 bg-muted/40">
-          <div class="container px-4 md:px-6">
-            <div class="max-w-xl mx-auto text-center mb-12">
-              <h2 class="font-headline text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter">Why Choose YouthSkillSet?</h2>
-              <p class="mt-4 text-lg sm:text-xl text-muted-foreground">We combine cutting-edge AI with practical, real-world lessons to make learning effective and engaging.</p>
+        <section id="features" className="py-20 md:py-32 bg-muted/40">
+          <div className="container px-4 md:px-6">
+            <div className="max-w-xl mx-auto text-center mb-12">
+              <h2 className="font-headline text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter">Why Choose YouthSkillSet?</h2>
+              <p className="mt-4 text-lg sm:text-xl text-muted-foreground">We combine cutting-edge AI with practical, real-world lessons to make learning effective and engaging.</p>
             </div>
-            <div class="grid gap-8 md:grid-cols-3">
-              <div class="rounded-lg border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
-                <div class="flex justify-center mb-4"><BookOpen class="w-12 h-12 text-primary" /></div>
-                <h3 class="text-xl font-bold font-headline mb-2">Interactive Lessons</h3>
-                <p class="text-muted-foreground">Engaging, bite-sized lessons designed for teens, covering critical topics like finance, careers, and AI.</p>
+            <div className="grid gap-8 md:grid-cols-3">
+              <div className="rounded-lg border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+                <div className="flex justify-center mb-4"><BookOpen className="w-12 h-12 text-primary" /></div>
+                <h3 className="text-xl font-bold font-headline mb-2">Interactive Lessons</h3>
+                <p className="text-muted-foreground">Engaging, bite-sized lessons designed for teens, covering critical topics like finance, careers, and AI.</p>
               </div>
-              <div class="rounded-lg border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
-                <div class="flex justify-center mb-4"><Bot class="w-12 h-12 text-primary" /></div>
-                <h3 class="text-xl font-bold font-headline mb-2">AI Mentor</h3>
-                <p class="text-muted-foreground">Get personalized guidance and answers to your questions 24/7 from our friendly AI mentor.</p>
+              <div className="rounded-lg border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+                <div className="flex justify-center mb-4"><Bot className="w-12 h-12 text-primary" /></div>
+                <h3 className="text-xl font-bold font-headline mb-2">AI Mentor</h3>
+                <p className="text-muted-foreground">Get personalized guidance and answers to your questions 24/7 from our friendly AI mentor.</p>
               </div>
-              <div class="rounded-lg border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
-                <div class="flex justify-center mb-4"><Target class="w-12 h-12 text-primary" /></div>
-                <h3 class="text-xl font-bold font-headline mb-2">Real-World Skills</h3>
-                <p class="text-muted-foreground">Move beyond theory with practical labs and projects that help you build a portfolio of skills for the future.</p>
+              <div className="rounded-lg border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+                <div className="flex justify-center mb-4"><Target className="w-12 h-12 text-primary" /></div>
+                <h3 className="text-xl font-bold font-headline mb-2">Real-World Skills</h3>
+                <p className="text-muted-foreground">Move beyond theory with practical labs and projects that help you build a portfolio of skills for the future.</p>
               </div>
             </div>
           </div>
