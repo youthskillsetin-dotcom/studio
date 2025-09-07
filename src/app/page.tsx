@@ -303,25 +303,25 @@ export default function LandingPage() {
             </div>
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="item-1">
-                <AccordionTrigger>What is YouthSkillSet?</AccordionTrigger>
+                <AccordionTrigger className="text-left">What is YouthSkillSet?</AccordionTrigger>
                 <AccordionContent>
                   YouthSkillSet is an AI-powered learning platform designed to help you master in-demand career skills. We provide structured learning paths, hands-on practice exercises, and personalized feedback from our AI Mentor to accelerate your learning journey.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2">
-                <AccordionTrigger>Is there a free plan?</AccordionTrigger>
+                <AccordionTrigger className="text-left">Is there a free plan?</AccordionTrigger>
                 <AccordionContent>
                   Yes! Our Free plan gives you access to introductory lessons, basic AI Mentor chat, and practice exercises. It's a great way to start your journey. For full access to all courses, unlimited AI mentoring, and in-depth feedback, you can upgrade to our Premium plan.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3">
-                <AccordionTrigger>What kind of skills can I learn?</AccordionTrigger>
+                <AccordionTrigger className="text-left">What kind of skills can I learn?</AccordionTrigger>
                 <AccordionContent>
                   We focus on practical, in-demand skills in areas like web development, UI/UX design, data analysis, and digital marketing. Our curriculum is constantly updated to match the latest industry trends and technologies.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-4">
-                <AccordionTrigger>How does the AI Mentor work?</AccordionTrigger>
+                <AccordionTrigger className="text-left">How does the AI Mentor work?</AccordionTrigger>
                 <AccordionContent>
                   Our AI Mentor is a conversational AI, available 24/7 to answer your questions, provide hints when you're stuck, and offer detailed feedback on your practice attempts. Think of it as a personal tutor that's always there to guide you.
                 </AccordionContent>
