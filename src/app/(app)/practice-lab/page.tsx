@@ -2,7 +2,7 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { FlaskConical, ArrowRight, FileText, Banknote } from 'lucide-react';
+import { FlaskConical, ArrowRight, FileText, Banknote, ClipboardUser, Lightbulb, ShieldAlert } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 interface Lab {
@@ -30,6 +30,30 @@ const availableLabs: Lab[] = [
         icon: Banknote,
         tags: ['Finance', 'Budgeting', 'Practical'],
         href: '#', // TODO: Link to the actual lab page
+    },
+    {
+        id: 'resume-builder-lab',
+        title: 'Resume Builder Lab',
+        description: 'Create your first professional resume using our guided builder. Learn what to include to impress recruiters.',
+        icon: ClipboardUser,
+        tags: ['Careers', 'Branding', 'Essential'],
+        href: '#',
+    },
+    {
+        id: 'business-idea-canvas',
+        title: 'Business Idea Canvas',
+        description: 'Have a startup idea? Map it out using the Business Model Canvas to identify key strengths and weaknesses in your plan.',
+        icon: Lightbulb,
+        tags: ['Entrepreneurship', 'Planning'],
+        href: '#',
+    },
+     {
+        id: 'phishing-challenge',
+        title: 'Phishing Challenge',
+        description: "Can you spot a fake email? Test your skills in this simulation by identifying phishing attempts and learning the tell-tale signs.",
+        icon: ShieldAlert,
+        tags: ['Cybersecurity', 'Safety', 'Critical'],
+        href: '#',
     },
 ];
 
