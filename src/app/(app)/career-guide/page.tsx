@@ -45,7 +45,11 @@ const itemVariants = {
 };
 
 const formatSalary = (amount: number) => {
-    return `₹${amount.toFixed(1)} LPA`;
+    const numericAmount = Number(amount);
+    if (isNaN(numericAmount)) {
+      return `₹-- LPA`;
+    }
+    return `₹${numericAmount.toFixed(1)} LPA`;
 }
 
 const CareerProfileSkeleton = () => (
@@ -343,4 +347,3 @@ export default function CareerGuidePage() {
     </div>
   );
 }
-
