@@ -164,6 +164,174 @@ const SearchCard = ({
 export default function CareerGuidePage() {
   const [profile, setProfile] = useState<GenerateCareerProfileOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  <change>
+  <file>/src/app/(app)/career-guide/page.tsx</file>
+  <content><![CDATA[
+'use client';
+
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { generateCareerProfile, type GenerateCareerProfileOutput } from '@/ai/flows/generate-career-profile';
+import { Compass, Briefcase, Wand2, BookOpen, BarChart, IndianRupee, Rocket, Lightbulb, Brain, Star } from 'lucide-react';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Skeleton } from '@/components/ui/skeleton';
+
+const formSchema = z.object({
+  userInput: z.string().min(2, { message: 'Please enter a value.' }),
+});
+
+type FormValues = z.infer<typeof formSchema>;
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      stiffness: 100,
+    },
+  },
+};
+
+const formatSalary = (amount: number) => {
+    return `₹${amount.toFixed(1)} LPA`;
+}
+
+const CareerProfileSkeleton = () => (
+    <motion.div
+      className="space-y-10"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="text-center">
+        <Skeleton className="h-9 w-3/4 mx-auto mb-3" />
+        <Skeleton className="h-6 w-1/2 mx-auto" />
+      </div>
+      <div className="grid md:grid-cols-2 gap-8">
+        <Card className="h-full rounded-xl">
+          <CardHeader className="flex-row items-center gap-4">
+            <Skeleton className="w-12 h-12 rounded-lg" />
+            <Skeleton className="h-6 w-32" />
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-5/6" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-4/6" />
+          </CardContent>
+        </Card>
+        <Card className="h-full rounded-xl">
+          <CardHeader className="flex-row items-center gap-4">
+            <Skeleton className="w-12 h-12 rounded-lg" />
+            <Skeleton className="h-6 w-32" />
+          </CardHeader>
+          <CardContent className="flex items-baseline justify-center gap-4 text-center">
+            <div className="flex-1 space-y-2">
+              <Skeleton className="h-4 w-16 mx-auto" />
+              <Skeleton className="h-8 w-24 mx-auto" />
+            </div>
+            <Skeleton className="h-8 w-2" />
+            <div className="flex-1 space-y-2">
+              <Skeleton className="h-4 w-16 mx-auto" />
+              <Skeleton className="h-8 w-24 mx-auto" />
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </motion.div>
+  );
+
+const SearchCard = ({ 
+    title, 
+    description, 
+    placeholder, 
+    icon: Icon,
+    onSubmit,
+    isLoading
+}: {
+    title: string,
+    description: string,
+    placeholder: string,
+    icon: React.ElementType,
+    onSubmit: (values: FormValues) => void,
+    isLoading: boolean
+}) => {
+    const form = useForm<FormValues>({
+        resolver: zodResolver(formSchema),
+        defaultValues: { userInput: '' },
+    });
+    
+    return (
+         <Card className="shadow-lg rounded-2xl flex-1">
+            <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)}>
+                <CardHeader className="flex-row items-center gap-4">
+                    <div className="p-3 bg-primary/10 rounded-lg"><Icon className="w-6 h-6 text-primary"/></div>
+                    <div>
+                        <CardTitle className="font-headline">{title}</CardTitle>
+                        <CardDescription>{description}</CardDescription>
+                    </div>
+                </CardHeader>
+                <CardContent>
+                <FormField
+                    control={form.control}
+                    name="userInput"
+                    render={({ field }) => (
+                    <FormItem>
+                        <FormControl>
+                        <Input 
+                            className="text-base py-6"
+                            placeholder={placeholder} {...field} />
+                        </FormControl>
+                        <FormMessage />
+                    </FormItem>
+                    )}
+                />
+                </CardContent>
+                <CardFooter>
+                <Button type="submit" disabled={isLoading} className="w-full">
+                    {isLoading ? (
+                    <>
+                        <Wand2 className="mr-2 h-5 w-5 animate-spin" />
+                        Generating...
+                    </>
+                    ) : (
+                    <>
+                        <Wand2 className="mr-2 h-5 w-5" />
+                        Generate Profile
+                    </>
+                    )}
+                </Button>
+                </CardFooter>
+            </form>
+            </Form>
+        </Card>
+    )
+}
+
+export default function CareerGuidePage() {
+  const [profile, setProfile] = useState<GenerateCareerProfileOutput | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
@@ -188,7 +356,7 @@ export default function CareerGuidePage() {
         <Compass className="w-16 h-16 mx-auto text-primary mb-4" />
         <h1 className="text-4xl font-extrabold font-headline tracking-tight">AI Career Guide</h1>
         <p className="text-muted-foreground mt-2 text-lg">
-          Chart your course. Discover detailed career profiles by searching for a job title, a skill you possess, or an interest you're passionate about.
+          Give anything.
         </p>
       </div>
 
