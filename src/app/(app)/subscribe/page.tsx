@@ -6,8 +6,9 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '@/components/ui/button';
 import { CheckCircle, CreditCard, Loader2 } from 'lucide-react';
 import Link from 'next/link';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
+import { cn } from '@/lib/utils';
 
 const plans = {
   premium: {
@@ -29,22 +30,22 @@ const plans = {
     period: '/year',
     features: [
         'All Premium features',
-        '12 months of access',
+        'Save over 35% annually',
         'Priority support'
     ],
   },
 };
 
+type PlanKey = 'premium' | 'yearly';
+
 function SubscribePageContent() {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [selectedPlanKey, setSelectedPlanKey] = useState<PlanKey>('premium');
 
-  const planKey = searchParams.get('plan') === 'yearly' ? 'yearly' : 'premium';
-  const selectedPlan = plans[planKey];
-  const otherPlanKey = planKey === 'premium' ? 'yearly' : 'premium';
+  const selectedPlan = plans[selectedPlanKey];
   
   const handleCheckout = async () => {
     setIsLoading(true);
@@ -85,10 +86,28 @@ function SubscribePageContent() {
       <h1 className="text-3xl font-bold font-headline mb-6 text-center">Checkout</h1>
       <Card className="rounded-2xl">
         <CardHeader>
-          <CardTitle className="font-headline text-2xl">Confirm Your Plan</CardTitle>
-          <CardDescription>You are about to subscribe to the {selectedPlan.name} plan.</CardDescription>
+          <CardTitle className="font-headline text-2xl">Choose Your Plan</CardTitle>
+          <CardDescription>Select the plan that works best for you.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
+            <div className="grid grid-cols-2 gap-2 rounded-lg bg-muted p-1">
+                 <Button
+                    onClick={() => setSelectedPlanKey('premium')}
+                    className={cn(selectedPlanKey === 'premium' ? 'bg-background text-foreground shadow' : 'bg-transparent text-muted-foreground', 'h-auto py-2')}
+                    variant="ghost"
+                  >
+                    Monthly
+                  </Button>
+                  <Button
+                    onClick={() => setSelectedPlanKey('yearly')}
+                     className={cn(selectedPlanKey === 'yearly' ? 'bg-background text-foreground shadow' : 'bg-transparent text-muted-foreground', 'h-auto py-2')}
+                    variant="ghost"
+                  >
+                    Yearly
+                  </Button>
+            </div>
+
+
           <div className="p-6 rounded-lg border bg-muted/40">
             <div className="flex justify-between items-baseline">
                 <h3 className="text-xl font-bold text-primary">{selectedPlan.name}</h3>
@@ -116,9 +135,6 @@ function SubscribePageContent() {
             ) : (
                 <><CreditCard className="mr-2" /> Proceed to Checkout</>
             )}
-          </Button>
-          <Button variant="link" asChild disabled={isLoading}>
-            <Link href={`/subscribe?plan=${otherPlanKey}`}>Change Plan</Link>
           </Button>
         </CardFooter>
       </Card>
