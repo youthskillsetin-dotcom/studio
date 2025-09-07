@@ -1,4 +1,5 @@
 
+
 export interface Lesson {
   id: string; // Will be dynamically generated (e.g., "1", "2")
   title: string;
@@ -50,6 +51,7 @@ export interface UserSubscription {
   updated_at: string;
   created_at: string;
   id: string;
+  plan_name: 'Premium' | 'Yearly' | null;
 }
 
 export interface Comment {

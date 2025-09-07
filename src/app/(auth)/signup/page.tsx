@@ -43,6 +43,7 @@ export default function SignupPage() {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
+  const plan = searchParams.get('plan');
   const supabase = createClient();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -73,8 +74,9 @@ export default function SignupPage() {
     if (error) {
       setError(error.message);
     } else if (data.user) {
-      // Redirect to OTP verification page
-      router.push(`/verify?email=${encodeURIComponent(values.email)}`);
+      // Redirect to OTP verification page, carrying along the plan if it exists
+      const redirectUrl = plan ? `/subscribe?plan=${plan}` : '/dashboard';
+      router.push(`/verify?email=${encodeURIComponent(values.email)}&next=${encodeURIComponent(redirectUrl)}`);
     }
     setIsLoading(false);
   }

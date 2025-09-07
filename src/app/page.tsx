@@ -180,7 +180,7 @@ export default function LandingPage() {
                 </CardContent>
                 <CardFooter>
                   <Button className="w-full" asChild>
-                    <Link href="/signup?redirect=/dev/pay">Go Premium</Link>
+                    <Link href="/signup?plan=premium">Go Premium</Link>
                   </Button>
                 </CardFooter>
               </Card>
@@ -213,7 +213,7 @@ export default function LandingPage() {
                 </CardContent>
                 <CardFooter>
                    <Button className="w-full" variant="outline" asChild>
-                    <Link href="/signup?redirect=/dev/pay">Go Yearly</Link>
+                    <Link href="/signup?plan=yearly">Go Yearly</Link>
                   </Button>
                 </CardFooter>
               </Card>

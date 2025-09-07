@@ -1,4 +1,5 @@
 
+
 import type { SupabaseClient } from '@supabase/supabase-js';
 import type { Lesson, Subtopic, UserSubtopicProgress, Post, UserSubscription } from './types';
 import { unstable_noStore as noStore } from 'next/cache';
@@ -79,6 +80,8 @@ export async function getUserSubscription(supabase: SupabaseClient): Promise<Use
         .from('subscriptions')
         .select('*')
         .eq('user_id', user.id)
+        .order('created_at', { ascending: false })
+        .limit(1)
         .single();
     
     if (error) {

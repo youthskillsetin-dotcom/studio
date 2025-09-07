@@ -38,6 +38,7 @@ function VerifyPageContent() {
     const searchParams = useSearchParams();
     const router = useRouter();
     const email = searchParams.get('email');
+    const next = searchParams.get('next') ?? '/dashboard';
     const supabase = createClient();
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -67,7 +68,7 @@ function VerifyPageContent() {
         if (error) {
             setError(error.message);
         } else {
-            router.push('/dashboard');
+            router.push(next);
             router.refresh();
         }
 

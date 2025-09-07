@@ -1,97 +1,61 @@
---
--- Create `subscriptions` table
---
-CREATE TABLE
-  subscriptions (
-    id uuid PRIMARY KEY DEFAULT uuid_generate_v4 (),
-    user_id uuid NOT NULL REFERENCES auth.users (id) ON DELETE CASCADE,
-    is_active boolean NOT NULL DEFAULT FALSE,
-    expires_at timestamp with time zone,
-    created_at timestamp with time zone NOT NULL DEFAULT now(),
-    updated_at timestamp with time zone NOT NULL DEFAULT now()
-  );
+-- Create Posts table
+create table
+  public.posts (
+    id uuid not null default gen_random_uuid (),
+    created_at timestamp with time zone not null default now(),
+    title text not null,
+    content text null,
+    user_id uuid null default auth.uid (),
+    constraint posts_pkey primary key (id),
+    constraint posts_user_id_fkey foreign key (user_id) references auth.users (id) on update cascade on delete cascade
+  ) tablespace pg_default;
 
---
--- Create RLS policies for `subscriptions`
---
-ALTER TABLE subscriptions ENABLE ROW LEVEL SECURITY;
+-- Create Comments table
+create table
+  public.comments (
+    id uuid not null default gen_random_uuid (),
+    created_at timestamp with time zone not null default now(),
+    content text null,
+    user_id uuid null default auth.uid (),
+    post_id uuid null,
+    constraint comments_pkey primary key (id),
+    constraint comments_post_id_fkey foreign key (post_id) references posts (id) on update cascade on delete cascade,
+    constraint comments_user_id_fkey foreign key (user_id) references auth.users (id) on update cascade on delete cascade
+  ) tablespace pg_default;
 
-CREATE POLICY "Users can view their own subscription." ON subscriptions FOR
-SELECT
-  USING (auth.uid () = user_id);
+-- Create Subscriptions table
+create table
+  public.subscriptions (
+    id uuid not null default gen_random_uuid (),
+    created_at timestamp with time zone not null default now(),
+    user_id uuid not null,
+    is_active boolean not null default false,
+    expires_at timestamp with time zone null,
+    updated_at timestamp with time zone not null default now(),
+    plan_name text null,
+    constraint subscriptions_pkey primary key (id),
+    constraint subscriptions_user_id_fkey foreign key (user_id) references auth.users (id) on update cascade on delete restrict
+  ) tablespace pg_default;
+  
+-- RLS for Posts
+alter table public.posts enable row level security;
+create policy "Allow all users to view posts" on public.posts for select using (true);
+create policy "Allow users to insert their own posts" on public.posts for insert with check (auth.uid () = user_id);
+create policy "Allow users to update their own posts" on public.posts for update using (auth.uid () = user_id);
+create policy "Allow users to delete their own posts" on public.posts for delete using (auth.uid () = user_id);
 
---
--- Create `posts` table
---
-CREATE TABLE
-  posts (
-    id uuid PRIMARY KEY DEFAULT uuid_generate_v4 (),
-    user_id uuid NOT NULL REFERENCES auth.users (id) ON DELETE CASCADE,
-    title text NOT NULL,
-    content text NOT NULL,
-    created_at timestamp with time zone NOT NULL DEFAULT now()
-  );
+-- RLS for Comments
+alter table public.comments enable row level security;
+create policy "Allow all users to view comments" on public.comments for select using (true);
+create policy "Allow users to insert their own comments" on public.comments for insert with check (auth.uid () = user_id);
+create policy "Allow users to update their own comments" on public.comments for update using (auth.uid () = user_id);
+create policy "Allow users to delete their own comments" on public.comments for delete using (auth.uid () = user_id);
 
---
--- Create RLS policies for `posts`
---
-ALTER TABLE posts ENABLE ROW LEVEL SECURITY;
-
-CREATE POLICY "Authenticated users can view all posts." ON posts FOR
-SELECT
-  USING (auth.role () = 'authenticated');
-
-CREATE POLICY "Users can insert their own posts." ON posts FOR INSERT
-WITH
-  CHECK (auth.uid () = user_id);
-
-CREATE POLICY "Users can update their own posts." ON posts FOR
-UPDATE USING (auth.uid () = user_id);
-
-CREATE POLICY "Users can delete their own posts." ON posts FOR DELETE USING (auth.uid () = user_id);
-
---
--- Create `comments` table
---
-CREATE TABLE
-  comments (
-    id uuid PRIMARY KEY DEFAULT uuid_generate_v4 (),
-    user_id uuid NOT NULL REFERENCES auth.users (id) ON DELETE CASCADE,
-    post_id uuid NOT NULL REFERENCES posts (id) ON DELETE CASCADE,
-    content text NOT NULL,
-    created_at timestamp with time zone NOT NULL DEFAULT now()
-  );
-
---
--- Create RLS policies for `comments`
---
-ALTER TABLE comments ENABLE ROW LEVEL SECURITY;
-
-CREATE POLICY "Authenticated users can view all comments." ON comments FOR
-SELECT
-  USING (auth.role () = 'authenticated');
-
-CREATE POLICY "Users can insert their own comments." ON comments FOR INSERT
-WITH
-  CHECK (auth.uid () = user_id);
-
-CREATE POLICY "Users can update their own comments." ON comments FOR
-UPDATE USING (auth.uid () = user_id);
-
-CREATE POLICY "Users can delete their own comments." ON comments FOR DELETE USING (auth.uid () = user_id);
-
---
--- Create a public bucket for post images if needed (optional)
---
--- INSERT INTO
---   storage.buckets (id, name, public)
--- VALUES
---   ('post_images', 'post_images', TRUE);
---
--- CREATE POLICY "Anyone can upload an avatar." ON storage.objects FOR INSERT
--- WITH
---   CHECK (bucket_id = 'post_images');
---
--- CREATE POLICY "Anyone can update an avatar." ON storage.objects FOR
--- UPDATE
---   USING (bucket_id = 'post_images');
+-- RLS for Subscriptions
+alter table public.subscriptions enable row level security;
+create policy "Allow users to view their own subscriptions" on public.subscriptions for select using (auth.uid () = user_id);
+-- Note: You would typically not allow users to directly insert/update subscriptions. 
+-- This would be handled by a trusted server-side process (e.g., a webhook from your payment provider).
+-- For this app, we will allow it for simulation purposes.
+create policy "Allow users to insert their own subscription" on public.subscriptions for insert with check (auth.uid () = user_id);
+create policy "Allow users to update their own subscription" on public.subscriptions for update using (auth.uid () = user_id);
