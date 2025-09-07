@@ -15,7 +15,6 @@ import sampleContent from '../../../sample-content.json';
 import {type Message} from 'genkit/content';
 
 // This defines the structure of each message in the chat history.
-// It was previously more complex, causing errors.
 const ChatMessageSchema = z.object({
     role: z.enum(['user', 'model']),
     content: z.string(),
@@ -43,8 +42,6 @@ const prompt = ai.definePrompt({
   name: 'aiMentorChatPrompt',
   input: {schema: AIMentorChatInputSchema},
   output: {schema: AIMentorChatOutputSchema},
-  model: 'googleai/gemini-1.5-flash',
-  // This correctly maps the simplified chat history to the model's expected format.
   history: (input) => input.chatHistory as Message[] | undefined,
   prompt: `You are MentorAI, a specialized AI assistant for the YouthSkillSet platform. Your persona is encouraging, knowledgeable, and slightly informal, like a friendly and approachable tutor for teenagers and young adults.
 
@@ -88,7 +85,10 @@ const aiMentorChatFlow = ai.defineFlow(
     outputSchema: AIMentorChatOutputSchema,
   },
   async input => {
-    const result = await prompt(input);
+    const result = await prompt.generate({
+      input,
+      model: 'googleai/gemini-1.5-flash',
+    });
     return result.output!;
   }
 );

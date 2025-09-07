@@ -31,7 +31,6 @@ const prompt = ai.definePrompt({
   name: 'generateSubtopicSummaryPrompt',
   input: {schema: GenerateSubtopicSummaryInputSchema},
   output: {schema: GenerateSubtopicSummaryOutputSchema},
-  model: 'googleai/gemini-1.5-flash',
   prompt: `You are an expert educator. Your task is to create a detailed summary of the provided subtopic.
 
 The response should consist of two parts:
@@ -54,7 +53,10 @@ const generateSubtopicSummaryFlow = ai.defineFlow(
     outputSchema: GenerateSubtopicSummaryOutputSchema,
   },
   async input => {
-    const result = await prompt(input);
+    const result = await prompt.generate({
+        input,
+        model: 'googleai/gemini-1.5-flash',
+    });
     return result.output!;
   }
 );

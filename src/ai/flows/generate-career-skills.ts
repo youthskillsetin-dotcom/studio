@@ -33,7 +33,6 @@ const prompt = ai.definePrompt({
   name: 'generateCareerSkillsPrompt',
   input: {schema: GenerateCareerSkillsInputSchema},
   output: {schema: GenerateCareerSkillsOutputSchema},
-  model: 'googleai/gemini-1.5-flash',
   prompt: `You are an expert career counselor AI.
   
   Based on the user's desired career path, generate a list of 5-7 essential skills required for that role.
@@ -50,7 +49,10 @@ const generateCareerSkillsFlow = ai.defineFlow(
     outputSchema: GenerateCareerSkillsOutputSchema,
   },
   async input => {
-    const result = await prompt(input);
+    const result = await prompt.generate({
+        input,
+        model: 'googleai/gemini-1.5-flash',
+    });
     return result.output!;
   }
 );

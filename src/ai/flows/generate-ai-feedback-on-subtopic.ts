@@ -33,7 +33,6 @@ const prompt = ai.definePrompt({
   name: 'generateAIFeedbackPrompt',
   input: {schema: GenerateAIFeedbackInputSchema},
   output: {schema: GenerateAIFeedbackOutputSchema},
-  model: 'googleai/gemini-1.5-flash',
   prompt: `You are an AI mentor providing feedback on a student's practice quiz.
 
   The student has just completed a lesson with the following content:
@@ -72,7 +71,10 @@ const generateAIFeedbackFlow = ai.defineFlow(
     outputSchema: GenerateAIFeedbackOutputSchema,
   },
   async input => {
-    const result = await prompt(input);
+    const result = await prompt.generate({
+        input,
+        model: 'googleai/gemini-1.5-flash',
+    });
     return result.output!;
   }
 );
