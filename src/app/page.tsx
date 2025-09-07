@@ -10,6 +10,7 @@ import Image from 'next/image';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { motion } from 'framer-motion';
 import sampleContent from '../../sample-content.json';
+import { Footer } from '@/components/footer';
 
 
 const getIconForModule = (title: string) => {
@@ -325,6 +326,7 @@ export default function LandingPage() {
         </section>
 
       </main>
+      <Footer />
     </div>
   );
 }

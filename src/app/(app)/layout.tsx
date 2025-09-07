@@ -19,6 +19,7 @@ import { cn } from "@/lib/utils";
 import { MobileNav } from "./_components/mobile-nav";
 import { UserNav } from "./_components/user-nav";
 import { useUserProfile } from "@/hooks/use-user-profile";
+import { Footer } from "@/components/footer";
 
 
 const navItems = [
@@ -95,6 +96,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           {children}
       </main>
        <MobileNav.BottomBar navItems={navItems} />
+       <Footer />
     </div>
   );
 }
