@@ -101,6 +101,20 @@ export default function AboutPage() {
                         <p className="text-primary">Lead AI Engineer</p>
                     </CardContent>
                 </Card>
+                <Card className="text-center rounded-2xl border-0 shadow-none">
+                    <CardContent className="p-6">
+                        <Image className="mx-auto h-32 w-32 rounded-full" src="https://picsum.photos/203/203" width={128} height={128} alt="Team member photo" data-ai-hint="person" />
+                        <h3 className="mt-6 text-lg font-semibold text-foreground">Isha Nair</h3>
+                        <p className="text-primary">Marketing Lead</p>
+                    </CardContent>
+                </Card>
+                <Card className="text-center rounded-2xl border-0 shadow-none">
+                    <CardContent className="p-6">
+                        <Image className="mx-auto h-32 w-32 rounded-full" src="https://picsum.photos/204/204" width={128} height={128} alt="Team member photo" data-ai-hint="person" />
+                        <h3 className="mt-6 text-lg font-semibold text-foreground">Vikram Singh</h3>
+                        <p className="text-primary">Community Manager</p>
+                    </CardContent>
+                </Card>
             </div>
         </div>
 
