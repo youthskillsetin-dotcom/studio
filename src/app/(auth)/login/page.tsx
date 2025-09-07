@@ -40,6 +40,7 @@ const formSchema = z.object({
 export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [showVerifyAlert, setShowVerifyAlert] = useState(false);
   const router = useRouter();
   const supabase = createClient();
   const { toast } = useToast();
@@ -55,6 +56,7 @@ export default function LoginPage() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
     setError(null);
+    setShowVerifyAlert(false);
 
     try {
         const { error } = await supabase.auth.signInWithPassword({
@@ -64,8 +66,7 @@ export default function LoginPage() {
 
         if (error) {
             if (error.message.includes('Email not confirmed')) {
-                // Redirect to the OTP verification page
-                router.push(`/verify?email=${encodeURIComponent(values.email)}`);
+                setShowVerifyAlert(true);
             } else {
                 setError(error.message);
             }
@@ -102,6 +103,21 @@ export default function LoginPage() {
                         <AlertTitle>Login Failed</AlertTitle>
                         <AlertDescription>{error}</AlertDescription>
                     </Alert>
+                    )}
+                    {showVerifyAlert && (
+                      <Alert>
+                        <AlertTitle>Email Not Verified</AlertTitle>
+                        <AlertDescription>
+                          You must verify your email before logging in.
+                           <Button 
+                            variant="link" 
+                            className="p-0 h-auto ml-1"
+                            onClick={() => router.push(`/verify?email=${encodeURIComponent(form.getValues('email'))}`)}
+                          >
+                            Go to verification page.
+                          </Button>
+                        </AlertDescription>
+                      </Alert>
                     )}
                     <FormField
                     control={form.control}

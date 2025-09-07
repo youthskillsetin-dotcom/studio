@@ -60,10 +60,8 @@ export default function SignupPage() {
     setIsLoading(true);
     setError(null);
     
-    // In a real app, the flow would be: signUp -> send OTP -> verify OTP.
-    // For this development environment, we will sign up the user and then
-    // immediately sign them in, bypassing the OTP email step which requires
-    // a live Supabase project with email services configured.
+    // In this development environment, we will sign up the user and then
+    // redirect them to the verify page to simulate OTP flow.
 
     const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
       email: values.email,
@@ -78,25 +76,10 @@ export default function SignupPage() {
 
     if (signUpError) {
       setError(signUpError.message);
-      setIsLoading(false);
-      return;
-    }
-    
-    if (signUpData.user) {
-        // Automatically sign in the user since we are bypassing OTP verification
-        const { error: signInError } = await supabase.auth.signInWithPassword({
-            email: values.email,
-            password: values.password,
-        });
-
-        if (signInError) {
-            setError(signInError.message);
-        } else {
-             // Redirect to the originally intended page (e.g., subscription or dashboard)
-            const redirectUrl = plan ? `/subscribe?plan=${plan}` : '/dashboard';
-            router.push(redirectUrl);
-            router.refresh();
-        }
+    } else if (signUpData.user) {
+        // Redirect to the OTP verification page
+        const redirectUrl = plan ? `/verify?email=${encodeURIComponent(values.email)}&next=/subscribe?plan=${plan}` : `/verify?email=${encodeURIComponent(values.email)}`;
+        router.push(redirectUrl);
     }
 
     setIsLoading(false);
