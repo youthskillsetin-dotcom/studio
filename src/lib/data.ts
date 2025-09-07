@@ -84,7 +84,7 @@ export async function getUserSubscription(supabase: SupabaseClient): Promise<Use
         .maybeSingle();
     
     if (error && error.code !== 'PGRST116') {
-        console.error('Error fetching subscription:', error);
+        console.error('Error fetching subscription', error);
         return null;
     }
 
@@ -100,7 +100,7 @@ export async function getUserProfile(supabase: SupabaseClient): Promise<UserProf
         .from('profiles')
         .select('*')
         .eq('id', user.id)
-        .single();
+        .maybeSingle();
     
     if (error) {
         console.error('Error fetching user profile:', error);
@@ -124,7 +124,7 @@ export async function getPosts(supabase: SupabaseClient): Promise<Post[]> {
     .order('created_at', { ascending: false });
 
   if (error) {
-    console.error('Error fetching posts:', error.message);
+    console.error('Error fetching posts:', error);
     return [];
   }
 
