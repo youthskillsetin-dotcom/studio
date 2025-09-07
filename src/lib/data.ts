@@ -1,7 +1,7 @@
 
 
 import type { SupabaseClient } from '@supabase/supabase-js';
-import type { Lesson, Subtopic, UserSubtopicProgress, Post, UserSubscription } from './types';
+import type { Lesson, Subtopic, UserSubtopicProgress, Post, UserSubscription, UserProfile } from './types';
 import { unstable_noStore as noStore } from 'next/cache';
 import sampleContent from '../../sample-content.json';
 
@@ -83,14 +83,29 @@ export async function getUserSubscription(supabase: SupabaseClient): Promise<Use
         .order('created_at', { ascending: false })
         .maybeSingle();
     
-    if (error) {
-        // PGRST116: No rows found, which is expected for users without a subscription.
-        if (error.code !== 'PGRST116') {
-            console.error('Error fetching subscription:', error);
-        }
+    if (error && error.code !== 'PGRST116') {
+        console.error('Error fetching subscription:', error);
         return null;
     }
 
+    return data;
+}
+
+export async function getUserProfile(supabase: SupabaseClient): Promise<UserProfile | null> {
+    noStore();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return null;
+
+    const { data, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', user.id)
+        .single();
+    
+    if (error) {
+        console.error('Error fetching user profile:', error);
+        return null;
+    }
     return data;
 }
 
@@ -104,12 +119,12 @@ export async function getPosts(supabase: SupabaseClient): Promise<Post[]> {
       title,
       content,
       user_id,
-      profiles(email)
+      profiles ( email )
     `)
     .order('created_at', { ascending: false });
 
   if (error) {
-    console.error('Error fetching posts:', error);
+    console.error('Error fetching posts:', error.message);
     return [];
   }
 
@@ -117,10 +132,10 @@ export async function getPosts(supabase: SupabaseClient): Promise<Post[]> {
       ...p,
       // @ts-ignore: supabase-js typing for joins can be tricky
       author_email: p.profiles?.email ?? 'Anonymous',
+      comments: []
   }));
 
-  // @ts-ignore
-  return posts;
+  return posts as Post[];
 }
 
 export async function getPostById(supabase: SupabaseClient, id: string): Promise<Post | null> {
@@ -134,13 +149,13 @@ export async function getPostById(supabase: SupabaseClient, id: string): Promise
       title,
       content,
       user_id,
-      profiles(email),
+      profiles ( email ),
       comments (
         id,
         created_at,
         content,
         user_id,
-        profiles(email)
+        profiles ( email )
       )
     `)
     .eq('id', id)
@@ -163,6 +178,5 @@ export async function getPostById(supabase: SupabaseClient, id: string): Promise
     }))
   };
   
-  // @ts-ignore
-  return post;
+  return post as Post;
 }

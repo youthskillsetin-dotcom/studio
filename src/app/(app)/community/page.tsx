@@ -3,15 +3,45 @@ import Link from 'next/link';
 import { cookies } from 'next/headers';
 import { formatDistanceToNow } from 'date-fns';
 import { createClient } from '@/lib/supabase/server';
-import { getPosts } from '@/lib/data';
+import { getPosts, getUserProfile } from '@/lib/data';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { MessageSquare, PlusCircle } from 'lucide-react';
+import { MessageSquare, PlusCircle, ShieldCheck } from 'lucide-react';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
+
+function PremiumUpsell() {
+    return (
+        <Card className="flex flex-col items-center justify-center text-center p-12 min-h-[400px] bg-muted/20">
+            <ShieldCheck className="w-16 h-16 text-primary mb-4" />
+            <CardHeader>
+                <CardTitle className="font-headline text-2xl">Premium Access Required</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <p className="text-muted-foreground max-w-md mb-4">
+                    The Community Hub is a premium feature. Upgrade your plan to ask questions, share projects, and connect with other learners.
+                </p>
+                <Button asChild>
+                    <Link href="/#pricing">
+                        View Upgrade Options
+                    </Link>
+                </Button>
+            </CardContent>
+        </Card>
+    )
+}
 
 export default async function CommunityPage() {
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
+  
+  const userProfile = await getUserProfile(supabase);
+  const canAccessCommunity = userProfile?.role === 'premium' || userProfile?.role === 'admin';
+
+  if (!canAccessCommunity) {
+      return <PremiumUpsell />;
+  }
+
   const posts = await getPosts(supabase);
 
   return (

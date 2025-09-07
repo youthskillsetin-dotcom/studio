@@ -71,3 +71,13 @@ export interface Post {
   author_email: string;
   comments: Comment[];
 }
+
+
+export type UserRole = 'user' | 'premium' | 'admin';
+
+export interface UserProfile {
+    id: string;
+    email: string;
+    role: UserRole;
+    created_at: string;
+}
