@@ -57,6 +57,20 @@ export default async function SubtopicPage({ params }: { params: { id: string } 
         <div className="lg:col-span-2 space-y-8">
             <div className="bg-card p-6 md:p-8 rounded-xl shadow-sm">
                 <h1 className="text-3xl font-bold tracking-tight text-foreground font-headline">{subtopic.title}</h1>
+                
+                {subtopic.video_url && (
+                    <div className="mt-6 aspect-video rounded-lg overflow-hidden">
+                        <iframe 
+                            className="w-full h-full"
+                            src={subtopic.video_url.replace("watch?v=", "embed/")} 
+                            title="YouTube video player" 
+                            frameBorder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowFullScreen
+                        ></iframe>
+                    </div>
+                )}
+
                 <div className="prose dark:prose-invert max-w-none mt-8 text-muted-foreground">
                     <div dangerouslySetInnerHTML={{ __html: subtopic.content }} />
                 </div>

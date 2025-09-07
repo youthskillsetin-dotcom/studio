@@ -17,6 +17,7 @@ export interface Subtopic {
   practice_type: 'mcq' | 'text';
   practice_options?: string[];
   correct_answer: string;
+  video_url?: string;
 }
 
 export interface UserSubtopicProgress {
