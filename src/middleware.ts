@@ -99,7 +99,7 @@ export async function middleware(request: NextRequest) {
     }
     // In a real app, you would check a 'profiles' table for the user's role.
     // For this demo, we simulate by checking a specific email.
-    if (user.email !== 'admin@example.com') {
+    if (user.email !== 'work@youthskillset.in') {
          const url = request.nextUrl.clone();
         url.pathname = '/dashboard'; // Redirect non-admins away
         return NextResponse.redirect(url);

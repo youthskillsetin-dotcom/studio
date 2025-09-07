@@ -162,7 +162,7 @@ export async function getUserProfile(supabase: SupabaseClient): Promise<UserProf
     // This check is required to determine if the user is an admin.
     // In a real application, you'd fetch this from your 'profiles' table.
     // For this app, we check a specific email address to simulate an admin user.
-    const isAdmin = user.email === 'admin@example.com';
+    const isAdmin = user.email === 'work@youthskillset.in';
 
     return {
         id: user.id,
@@ -201,7 +201,7 @@ export async function getAllUsers(supabase: SupabaseClient): Promise<UserProfile
     id: user.id,
     email: user.email ?? 'No email',
     // Mock role: designate one user as admin, others as premium for demo purposes
-    role: user.email === 'admin@example.com' ? 'admin' : 'premium',
+    role: user.email === 'work@youthskillset.in' ? 'admin' : 'premium',
     created_at: user.created_at ?? new Date().toISOString(),
   }));
 }

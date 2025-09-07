@@ -62,7 +62,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         if (user) {
             // In a real app, this would fetch the profile from a table.
             // We use our mock data function for consistency.
-            const isAdmin = user.email === 'admin@example.com';
+            const isAdmin = user.email === 'work@youthskillset.in';
             const profile: UserProfile = {
                 id: user.id,
                 email: user.email || 'No email',
