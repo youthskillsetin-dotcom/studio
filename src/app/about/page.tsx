@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Logo } from '@/components/icons';
 import { Target, Lightbulb, Heart } from 'lucide-react';
@@ -31,7 +30,7 @@ export default function AboutPage() {
             </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center mb-24">
           <Card className="rounded-xl p-6 border-0 shadow-none bg-transparent">
             <CardHeader className="items-center">
               <div className="p-4 bg-primary/10 rounded-full mb-4">
@@ -73,6 +72,36 @@ export default function AboutPage() {
               </p>
             </CardContent>
           </Card>
+        </div>
+
+        <div className="mb-16">
+            <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold font-headline">Meet the Team</h2>
+                <p className="mt-2 text-lg text-muted-foreground">The passionate individuals behind YouthSkillset.</p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                <Card className="text-center rounded-2xl border-0 shadow-none">
+                    <CardContent className="p-6">
+                        <Image className="mx-auto h-32 w-32 rounded-full" src="https://picsum.photos/200/200" width={128} height={128} alt="Team member photo" data-ai-hint="person" />
+                        <h3 className="mt-6 text-lg font-semibold text-foreground">Aarav Sharma</h3>
+                        <p className="text-primary">Founder & CEO</p>
+                    </CardContent>
+                </Card>
+                <Card className="text-center rounded-2xl border-0 shadow-none">
+                    <CardContent className="p-6">
+                        <Image className="mx-auto h-32 w-32 rounded-full" src="https://picsum.photos/201/201" width={128} height={128} alt="Team member photo" data-ai-hint="person" />
+                        <h3 className="mt-6 text-lg font-semibold text-foreground">Diya Mehta</h3>
+                        <p className="text-primary">Head of Curriculum</p>
+                    </CardContent>
+                </Card>
+                <Card className="text-center rounded-2xl border-0 shadow-none">
+                    <CardContent className="p-6">
+                        <Image className="mx-auto h-32 w-32 rounded-full" src="https://picsum.photos/202/202" width={128} height={128} alt="Team member photo" data-ai-hint="person" />
+                        <h3 className="mt-6 text-lg font-semibold text-foreground">Rohan Joshi</h3>
+                        <p className="text-primary">Lead AI Engineer</p>
+                    </CardContent>
+                </Card>
+            </div>
         </div>
 
       </div>
