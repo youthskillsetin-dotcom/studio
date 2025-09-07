@@ -15,7 +15,7 @@ export default function AboutPage() {
             Our Mission: Empowering India's Next Generation
           </h1>
           <p className="mt-6 max-w-3xl mx-auto text-xl text-muted-foreground">
-            Empowering the next generation with the skills, confidence, and knowledge to thrive in the real world.
+            We believe that the most important skills for the future aren't always taught in traditional classrooms. YouthSkillset was born from a simple idea: to give every young person a fair chance to succeed by equipping them with practical, real-world knowledge in finance, technology, and career development. We're here to bridge the gap between academic learning and real-world opportunity.
           </p>
         </div>
 
