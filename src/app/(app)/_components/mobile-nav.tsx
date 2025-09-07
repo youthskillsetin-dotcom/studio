@@ -86,7 +86,7 @@ const BottomBar = ({ navItems }: { navItems: NavItem[] }) => {
 
   return (
     <div className="fixed bottom-0 left-0 z-50 w-full h-16 bg-background border-t md:hidden">
-      <div className="grid h-full max-w-lg grid-cols-5 mx-auto font-medium">
+      <div className="grid h-full max-w-lg grid-cols-6 mx-auto font-medium">
         {navItems.map(item => (
           <Link
             key={item.href}

@@ -6,6 +6,7 @@ import {
   Bell,
   BookOpen,
   Briefcase,
+  FlaskConical,
   LayoutGrid,
   School,
   Sparkles,
@@ -24,6 +25,7 @@ import { useUserProfile } from "@/hooks/use-user-profile";
 const navItems = [
   { href: "/dashboard", icon: LayoutGrid, label: "Dashboard" },
   { href: "/lessons", icon: BookOpen, label: "Lessons" },
+  { href: "/practice-lab", icon: FlaskConical, label: "Practice Lab"},
   { href: "/community", icon: Users, label: "Community" },
   { href: "/ai-mentor", icon: Sparkles, label: "AI Mentor" },
   { href: "/career-guide", icon: Briefcase, label: "Career Guide" },
@@ -96,7 +98,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8 pb-20 md:pb-8">
           {children}
       </main>
-       <MobileNav.BottomBar navItems={navItems} />
     </div>
   );
 }
