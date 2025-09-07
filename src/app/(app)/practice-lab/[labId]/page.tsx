@@ -5,14 +5,15 @@ import { notFound, useParams } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ChevronLeft, FileText, CheckCircle, ArrowRight, ArrowLeft, Banknote, ClipboardList, Lightbulb, ShieldAlert, Download } from 'lucide-react';
+import { ChevronLeft, FileText, CheckCircle, ArrowRight, ArrowLeft, Banknote, ClipboardList, Lightbulb, ShieldAlert, Download, Mail, Phone, Linkedin, User, Briefcase, GraduationCap, Sparkles } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Progress } from '@/components/ui/progress';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import type { LucideIcon } from 'lucide-react';
 import { Textarea } from '@/components/ui/textarea';
+import jsPDF from 'jspdf';
 
 const labsData: { [key: string]: any } = {
     'itr-filing-101': {
@@ -297,6 +298,33 @@ const PhishingSimulation = () => {
 }
 
 // Resume Builder Components
+const ResumePreview = ({ data }: { data: any }) => (
+    <div className="p-8 bg-white text-black font-sans text-sm rounded-lg shadow-lg border">
+        <div className="text-center border-b pb-4 mb-4">
+            <h2 className="text-2xl font-bold font-serif">{data.fullName || 'Priya Kumar'}</h2>
+            <div className="flex justify-center items-center gap-4 text-xs mt-2">
+                {data.email && <span className="flex items-center gap-1"><Mail className="w-3 h-3"/>{data.email}</span>}
+                {data.phone && <span className="flex items-center gap-1"><Phone className="w-3 h-3"/>{data.phone}</span>}
+                {data.linkedin && <span className="flex items-center gap-1"><Linkedin className="w-3 h-3"/>{data.linkedin}</span>}
+            </div>
+        </div>
+        <div className="space-y-6">
+            <div>
+                <h3 className="text-sm font-bold font-serif uppercase tracking-widest border-b mb-2 pb-1 text-primary">Experience</h3>
+                <p className="whitespace-pre-wrap">{data.experience || '- Organized school science fair for 150+ students, coordinating 20 teams.\n- Managed social media for the school\'s annual fest, increasing engagement by 30%.'}</p>
+            </div>
+             <div>
+                <h3 className="text-sm font-bold font-serif uppercase tracking-widest border-b mb-2 pb-1 text-primary">Education</h3>
+                <p className="whitespace-pre-wrap">{data.education || 'Delhi Public School, R.K. Puram\n- High School Diploma, Graduated May 2024'}</p>
+            </div>
+             <div>
+                <h3 className="text-sm font-bold font-serif uppercase tracking-widest border-b mb-2 pb-1 text-primary">Skills</h3>
+                <p className="whitespace-pre-wrap">{data.skills || '- Public Speaking\n- Team Leadership\n- Microsoft Excel\n- Python (Beginner)'}</p>
+            </div>
+        </div>
+    </div>
+);
+
 const ResumeBuilderSimulation = () => {
     const [step, setStep] = useState(0);
     const [resumeData, setResumeData] = useState({
@@ -320,40 +348,61 @@ const ResumeBuilderSimulation = () => {
     };
 
     const handleDownload = () => {
-        const resumeText = `
-RESUME
-====================
+        const doc = new jsPDF();
+        const margin = 15;
+        const pageHeight = doc.internal.pageSize.getHeight();
+        let y = margin;
 
-**${resumeData.fullName}**
-${resumeData.email} | ${resumeData.phone} | ${resumeData.linkedin}
+        // --- Header ---
+        doc.setFont('times', 'bold');
+        doc.setFontSize(24);
+        doc.text(resumeData.fullName || 'Priya Kumar', doc.internal.pageSize.getWidth() / 2, y, { align: 'center' });
+        y += 8;
 
----
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(10);
+        const contactInfo = [
+            resumeData.email,
+            resumeData.phone,
+            resumeData.linkedin
+        ].filter(Boolean).join(' | ');
+        doc.text(contactInfo, doc.internal.pageSize.getWidth() / 2, y, { align: 'center' });
+        y += 5;
 
-**Experience**
---------------------
-${resumeData.experience}
+        doc.setDrawColor(200, 200, 200);
+        doc.line(margin, y, doc.internal.pageSize.getWidth() - margin, y);
+        y += 10;
 
----
+        // --- Helper to add sections ---
+        const addSection = (title: string, content: string) => {
+            if (y + 20 > pageHeight - margin) { // check for page break
+                doc.addPage();
+                y = margin;
+            }
+            doc.setFont('times', 'bold');
+            doc.setFontSize(12);
+            doc.setTextColor(109, 40, 217); // primary color
+            doc.text(title.toUpperCase(), margin, y);
+            y += 2;
+            doc.setDrawColor(220, 220, 220);
+            doc.line(margin, y, doc.internal.pageSize.getWidth() - margin, y);
+            y += 8;
+            
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(11);
+            doc.setTextColor(51, 65, 85); // text-slate-600
+            
+            const splitContent = doc.splitTextToSize(content, doc.internal.pageSize.getWidth() - margin * 2);
+            doc.text(splitContent, margin, y);
+            y += (doc.getTextDimensions(splitContent).h) + 10;
+        }
 
-**Education**
---------------------
-${resumeData.education}
-
----
-
-**Skills**
---------------------
-${resumeData.skills}
-        `;
-        const blob = new Blob([resumeText.trim()], { type: 'text/plain;charset=utf-8' });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = 'resume.txt';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
+        // --- Sections ---
+        addSection('Experience', resumeData.experience || '- Organized school science fair for 150+ students, coordinating 20 teams.\n- Managed social media for the school\'s annual fest, increasing engagement by 30%.');
+        addSection('Education', resumeData.education || 'Delhi Public School, R.K. Puram\n- High School Diploma, Graduated May 2024');
+        addSection('Skills', resumeData.skills || '- Public Speaking\n- Team Leadership\n- Microsoft Excel\n- Python (Beginner)');
+        
+        doc.save('resume.pdf');
     };
 
     return (
@@ -361,11 +410,11 @@ ${resumeData.skills}
             <Card className="rounded-xl">
                  <CardHeader>
                     <CardTitle className="font-headline text-lg">
-                       Step {step + 1}: {['Contact Info', 'Experience', 'Education', 'Skills', 'Completed!'][step]}
+                       Step {step + 1}: {['Contact Info', 'Experience', 'Education', 'Skills', 'Preview & Download'][step]}
                     </CardTitle>
                     <Progress value={progress} className="w-full mt-2" />
                 </CardHeader>
-                <CardContent className="min-h-[250px]">
+                <CardContent className="min-h-[350px]">
                     {step === 0 && <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-1"><Label>Full Name</Label><Input name="fullName" value={resumeData.fullName} onChange={handleInputChange} placeholder="e.g., Priya Kumar" /></div>
                         <div className="space-y-1"><Label>Email</Label><Input name="email" value={resumeData.email} onChange={handleInputChange} placeholder="priya.kumar@email.com" type="email"/></div>
@@ -383,28 +432,23 @@ ${resumeData.skills}
                          <p className="text-muted-foreground text-sm">List both technical (hard) and interpersonal (soft) skills.</p>
                          <div className="space-y-1"><Label>Skills</Label><Textarea name="skills" value={resumeData.skills} onChange={handleInputChange} placeholder="e.g., Python, Public Speaking, Teamwork, Microsoft Excel" rows={4}/></div>
                     </div>}
-                    {step === 4 && <div className="space-y-4 text-center">
-                           <CheckCircle className="w-16 h-16 text-green-500 mx-auto" />
-                           <h3 className="font-semibold text-xl">Resume Draft Complete!</h3>
-                           <p className="text-muted-foreground max-w-md mx-auto">
-                            Excellent work! You've created a solid first draft of your resume. Remember to proofread and tailor it for every job you apply to.
-                           </p>
-                           <div className="flex gap-4 justify-center">
-                             <Button onClick={handleDownload} variant="secondary">
-                                <Download className="w-4 h-4 mr-2" />
-                                Download Resume
-                             </Button>
-                             <Button asChild><Link href="/practice-lab">Back to All Labs</Link></Button>
-                           </div>
+                    {step === 4 && <div className="space-y-4">
+                            <p className="text-muted-foreground text-center mb-4">Here's a preview of your resume. You can go back to edit any section or download it as a PDF.</p>
+                           <ResumePreview data={resumeData} />
                     </div>}
                 </CardContent>
                 <CardFooter className="flex justify-between">
                     <Button variant="outline" onClick={prevStep} disabled={step === 0}>
                         <ArrowLeft className="w-4 h-4 mr-2"/> Previous
                     </Button>
-                    {step < totalSteps && (
+                    {step < totalSteps ? (
                         <Button onClick={nextStep}>
-                            {step === totalSteps - 1 ? 'Finish' : 'Next Step'} <ArrowRight className="w-4 h-4 ml-2"/>
+                            Next Step <ArrowRight className="w-4 h-4 ml-2"/>
+                        </Button>
+                    ) : (
+                         <Button onClick={handleDownload}>
+                            <Download className="w-4 h-4 mr-2" />
+                            Download PDF
                         </Button>
                     )}
                 </CardFooter>
