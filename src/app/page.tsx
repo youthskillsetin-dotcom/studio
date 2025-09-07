@@ -66,44 +66,54 @@ export default function LandingPage() {
       </header>
 
       <main className="flex-1">
-        <section className="relative text-left py-20 md:py-32 flex flex-col items-start justify-center">
-           <motion.div
-              initial="hidden"
-              animate="show"
-              viewport={{ once: true }}
-              variants={{
-                hidden: {},
-                show: {
-                  transition: {
-                    staggerChildren: 0.15,
-                  },
-                },
-              }}
-             className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
-            >
-            <motion.h1
-              className="text-4xl md:text-6xl font-extrabold font-headline tracking-tight text-foreground"
-              variants={FADE_IN_ANIMATION_VARIANTS}
-             >
-              Unlock Your Potential.
-              <br />
-              <span className="text-primary">Build Your Future.</span>
-            </motion.h1>
-            <motion.p
-              className="mt-6 max-w-2xl text-lg text-muted-foreground"
-              variants={FADE_IN_ANIMATION_VARIANTS}
-            >
-              YouthSkillset is an AI-powered platform that equips teens with the essential life and career skills needed to succeed in the real world. From financial literacy to personal branding, start your journey today.
-            </motion.p>
-            <motion.div
-                className="mt-8 flex justify-start gap-4"
-                variants={FADE_IN_ANIMATION_VARIANTS}
-            >
-              <Button size="lg" asChild>
-                <Link href="/signup">Start Learning for Free</Link>
-              </Button>
-            </motion.div>
-          </motion.div>
+         <section className="relative text-left py-20 md:py-32 flex flex-col items-start justify-center overflow-hidden">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
+                <motion.div
+                    initial="hidden"
+                    animate="show"
+                    viewport={{ once: true }}
+                    variants={{
+                        hidden: {},
+                        show: {
+                        transition: {
+                            staggerChildren: 0.15,
+                        },
+                        },
+                    }}
+                    className="relative z-10"
+                    >
+                    <motion.h1
+                        className="text-4xl md:text-6xl font-extrabold font-headline tracking-tight text-foreground"
+                        variants={FADE_IN_ANIMATION_VARIANTS}
+                    >
+                        Unlock Your Potential.
+                        <br />
+                        <span className="text-primary">Build Your Future.</span>
+                    </motion.h1>
+                    <motion.p
+                        className="mt-6 max-w-2xl text-lg text-muted-foreground"
+                        variants={FADE_IN_ANIMATION_VARIANTS}
+                    >
+                        YouthSkillset is an AI-powered platform that equips teens with the essential life and career skills needed to succeed in the real world. From financial literacy to personal branding, start your journey today.
+                    </motion.p>
+                    <motion.div
+                        className="mt-8 flex justify-start gap-4"
+                        variants={FADE_IN_ANIMATION_VARIANTS}
+                    >
+                        <Button size="lg" asChild>
+                        <Link href="/signup">Start Learning for Free</Link>
+                        </Button>
+                    </motion.div>
+                </motion.div>
+
+                <div className="relative w-full max-w-lg h-80 lg:h-96 mx-auto" aria-hidden="true">
+                    <div className="absolute inset-0 w-full h-full">
+                        <div className="absolute top-0 -left-4 w-72 h-72 bg-primary/20 rounded-full filter blur-3xl opacity-70 animate-blob"></div>
+                        <div className="absolute top-0 -right-4 w-72 h-72 bg-accent/20 rounded-full filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+                        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-secondary/20 rounded-full filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+                    </div>
+                </div>
+            </div>
         </section>
         
         <section id="features" className="py-20 md:py-32 bg-muted/40">
@@ -311,7 +321,7 @@ export default function LandingPage() {
                   We focus on practical, in-demand skills in areas like web development, UI/UX design, data analysis, and digital marketing. Our curriculum is constantly updated to match the latest industry trends and technologies.
                 </AccordionContent>
               </AccordionItem>
-               <AccordionItem value="item-4">
+              <AccordionItem value="item-4">
                 <AccordionTrigger>How does the AI Mentor work?</AccordionTrigger>
                 <AccordionContent>
                   Our AI Mentor is a conversational AI, available 24/7 to answer your questions, provide hints when you're stuck, and offer detailed feedback on your practice attempts. Think of it as a personal tutor that's always there to guide you.
