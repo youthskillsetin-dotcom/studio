@@ -1,148 +1,182 @@
--- This script can be used to set up the database schema for the YouthSkillSet app.
 --
--- 1. PROFILES Table
---    - Stores public user data.
---    - Mirrors the auth.users table.
---    - Includes a 'role' for role-based access control.
---
--- 2. SUBSCRIPTIONS Table
---    - Manages user subscription status.
---
--- 3. POSTS and COMMENTS Tables
---    - Power the community forum feature.
---
--- 4. TRIGGERS and FUNCTIONS
---    - handle_new_user: Automatically creates a profile when a new user signs up.
---      It also assigns the 'admin' role to 'work@youthskillset.in'.
---    - get_user_role: A helper function to check a user's role.
---
--- 5. ROW-LEVEL SECURITY (RLS) POLICIES
---    - Securely controls who can access or modify data.
---    - Ensures only premium/admin users can use the community hub.
-
 -- PROFILES Table
--- Stores public user data, linked to auth.users.
-create table if not exists profiles (
-  id uuid references auth.users on delete cascade not null primary key,
-  email text unique,
-  role text default 'user',
-  created_at timestamp with time zone default timezone('utc'::text, now()) not null
-);
--- Enable Row Level Security
-alter table profiles enable row level security;
--- Policy: Allow users to view any profile.
-create policy "Public profiles are viewable by everyone." on profiles
-  for select using (true);
--- Policy: Allow users to insert their own profile.
-create policy "Users can insert their own profile." on profiles
-  for insert with check (auth.uid() = id);
--- Policy: Allow users to update their own profile.
-create policy "Users can update their own profile." on profiles
-  for update using (auth.uid() = id);
+-- This table stores public profile information for each user.
+--
+CREATE TABLE
+  public.profiles (
+    id UUID NOT NULL,
+    updated_at TIMESTAMP WITH TIME ZONE NULL,
+    email CHARACTER VARYING NULL,
+    role TEXT NOT NULL DEFAULT 'user',
+    CONSTRAINT profiles_pkey PRIMARY KEY (id),
+    CONSTRAINT profiles_email_key UNIQUE (email),
+    CONSTRAINT profiles_id_fkey FOREIGN KEY (id) REFERENCES auth.users (id) ON DELETE CASCADE
+  );
+
+--
+-- Set up Row Level Security (RLS)
+--
+ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
+
+-- Drop and create policies to make the script idempotent
+DROP POLICY IF EXISTS "Public profiles are viewable by everyone." ON public.profiles;
+CREATE POLICY "Public profiles are viewable by everyone." ON public.profiles FOR SELECT USING (true);
+
+DROP POLICY IF EXISTS "Users can insert their own profile." ON public.profiles;
+CREATE POLICY "Users can insert their own profile." ON public.profiles FOR INSERT WITH CHECK (auth.uid () = id);
+
+DROP POLICY IF EXISTS "Users can update own profile." ON public.profiles;
+CREATE POLICY "Users can update own profile." ON public.profiles FOR UPDATE USING (auth.uid () = id);
 
 
+--
+-- Function to create a profile for a new user.
+--
+CREATE OR REPLACE FUNCTION public.handle_new_user()
+RETURNS TRIGGER AS $$
+BEGIN
+  INSERT INTO public.profiles (id, email, role)
+  VALUES (
+    new.id,
+    new.email,
+    CASE
+      WHEN new.email = 'work@youthskillset.in' THEN 'admin'::text
+      ELSE 'user'::text
+    END
+  );
+  RETURN new;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+--
+-- Trigger to call the function when a new user signs up.
+--
+DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
+CREATE TRIGGER on_auth_user_created
+AFTER INSERT ON auth.users
+FOR EACH ROW
+EXECUTE PROCEDURE public.handle_new_user();
+
+
+--
 -- SUBSCRIPTIONS Table
--- Manages user subscription status.
-create table if not exists subscriptions (
-    id uuid primary key default gen_random_uuid(),
-    user_id uuid references auth.users on delete cascade not null,
-    is_active boolean default false,
-    plan_name text,
-    expires_at timestamp with time zone,
-    created_at timestamp with time zone default timezone('utc'::text, now()) not null,
-    updated_at timestamp with time zone default timezone('utc'::text, now()) not null
-);
--- Enable Row Level Security
-alter table subscriptions enable row level security;
--- Policy: Allow users to view their own subscription.
-create policy "Users can view their own subscription." on subscriptions
-    for select using (auth.uid() = user_id);
-
-
--- POSTS Table (for Community Hub)
-create table if not exists posts (
-    id uuid primary key default gen_random_uuid(),
-    user_id uuid references public.profiles on delete cascade not null,
-    title text not null,
-    content text,
-    created_at timestamp with time zone default timezone('utc'::text, now()) not null
-);
--- Enable Row Level Security
-alter table posts enable row level security;
-
-
--- COMMENTS Table (for Community Hub)
-create table if not exists comments (
-    id uuid primary key default gen_random_uuid(),
-    user_id uuid references public.profiles on delete cascade not null,
-    post_id uuid references posts on delete cascade not null,
-    content text,
-    created_at timestamp with time zone default timezone('utc'::text, now()) not null
-);
--- Enable Row Level Security
-alter table comments enable row level security;
-
-
--- FUNCTION to get user role
-create or replace function get_user_role(user_id uuid)
-returns text as $$
-declare
-  user_role text;
-begin
-  select role into user_role from public.profiles where id = user_id;
-  return user_role;
-end;
-$$ language plpgsql security definer;
-
-
--- RLS Policies for Community Hub
--- Policy: Allow premium/admin users to view posts.
-create policy "Premium or admin users can view posts." on posts
-  for select using (
-    (get_user_role(auth.uid()) = 'premium') or (get_user_role(auth.uid()) = 'admin')
+-- This table stores user subscription information.
+--
+CREATE TABLE
+  public.subscriptions (
+    id UUID NOT NULL DEFAULT gen_random_uuid (),
+    user_id UUID NOT NULL,
+    is_active BOOLEAN NOT NULL DEFAULT false,
+    plan_name TEXT NULL,
+    expires_at TIMESTAMP WITH TIME ZONE NULL,
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
+    updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
+    CONSTRAINT subscriptions_pkey PRIMARY KEY (id),
+    CONSTRAINT subscriptions_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users (id) ON DELETE CASCADE
   );
--- Policy: Allow premium/admin users to create posts.
-create policy "Premium or admin users can create posts." on posts
-  for insert with check (
-    (auth.uid() = user_id) and ((get_user_role(auth.uid()) = 'premium') or (get_user_role(auth.uid()) = 'admin'))
-  );
-
--- Policy: Allow premium/admin users to view comments.
-create policy "Premium or admin users can view comments." on comments
-  for select using (
-    (get_user_role(auth.uid()) = 'premium') or (get_user_role(auth.uid()) = 'admin')
-  );
--- Policy: Allow premium/admin users to create comments.
-create policy "Premium or admin users can create comments." on comments
-  for insert with check (
-    (auth.uid() = user_id) and ((get_user_role(auth.uid()) = 'premium') or (get_user_role(auth.uid()) = 'admin'))
-  );
-
-
--- TRIGGER to create a user profile on new user signup
-create or replace function public.handle_new_user()
-returns trigger as $$
-begin
-  -- Insert a new profile for the new user
-  insert into public.profiles (id, email, role)
-  values (new.id, new.email, 'user');
   
-  -- If the new user's email is the admin email, update their role
-  if new.email = 'work@youthskillset.in' then
-    update public.profiles
-    set role = 'admin'
-    where id = new.id;
-  end if;
+--
+-- Set up Row Level Security (RLS) for Subscriptions
+--
+ALTER TABLE public.subscriptions ENABLE ROW LEVEL SECURITY;
 
-  return new;
-end;
-$$ language plpgsql security definer;
+DROP POLICY IF EXISTS "Allow authenticated read access" ON public.subscriptions;
+CREATE POLICY "Allow authenticated read access" ON public.subscriptions FOR SELECT TO authenticated USING (auth.uid () = user_id);
 
--- Drop existing trigger if it exists, to avoid errors on re-run
-drop trigger if exists on_auth_user_created on auth.users;
+--
+-- POSTS Table
+-- This table stores posts for the community hub.
+--
+CREATE TABLE
+  public.posts (
+    id UUID NOT NULL DEFAULT gen_random_uuid (),
+    user_id UUID NOT NULL,
+    title TEXT NOT NULL,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
+    CONSTRAINT posts_pkey PRIMARY KEY (id),
+    CONSTRAINT posts_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users (id) ON DELETE CASCADE
+  );
+  
+--
+-- Set up Row Level Security (RLS) for Posts
+--
+ALTER TABLE public.posts ENABLE ROW LEVEL SECURITY;
 
--- Create the trigger
-create trigger on_auth_user_created
-  after insert on auth.users
-  for each row execute procedure public.handle_new_user();
+-- Helper function to get user role
+CREATE OR REPLACE FUNCTION get_user_role(user_id uuid)
+RETURNS TEXT AS $$
+DECLARE
+  user_role TEXT;
+BEGIN
+  SELECT role INTO user_role FROM public.profiles WHERE id = user_id;
+  RETURN user_role;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
 
+
+DROP POLICY IF EXISTS "Allow premium/admin read access" ON public.posts;
+CREATE POLICY "Allow premium/admin read access" ON public.posts
+FOR SELECT TO authenticated
+USING (
+  (get_user_role(auth.uid()) = 'premium') OR (get_user_role(auth.uid()) = 'admin')
+);
+
+DROP POLICY IF EXISTS "Allow premium/admin insert access" ON public.posts;
+CREATE POLICY "Allow premium/admin insert access" ON public.posts
+FOR INSERT TO authenticated
+WITH CHECK (
+  (user_id = auth.uid()) AND
+  ((get_user_role(auth.uid()) = 'premium') OR (get_user_role(auth.uid()) = 'admin'))
+);
+
+DROP POLICY IF EXISTS "Allow owner to delete" ON public.posts;
+CREATE POLICY "Allow owner to delete" ON public.posts
+FOR DELETE TO authenticated
+USING (
+    (user_id = auth.uid())
+);
+
+
+--
+-- COMMENTS Table
+-- This table stores comments on posts.
+--
+CREATE TABLE
+  public.comments (
+    id UUID NOT NULL DEFAULT gen_random_uuid (),
+    user_id UUID NOT NULL,
+    post_id UUID NOT NULL,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
+    CONSTRAINT comments_pkey PRIMARY KEY (id),
+    CONSTRAINT comments_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users (id) ON DELETE CASCADE,
+    CONSTRAINT comments_post_id_fkey FOREIGN KEY (post_id) REFERENCES public.posts (id) ON DELETE CASCADE
+  );
+  
+--
+-- Set up Row Level Security (RLS) for Comments
+--
+ALTER TABLE public.comments ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "Allow premium/admin read access" ON public.comments;
+CREATE POLICY "Allow premium/admin read access" ON public.comments
+FOR SELECT TO authenticated
+USING (
+  (get_user_role(auth.uid()) = 'premium') OR (get_user_role(auth.uid()) = 'admin')
+);
+
+DROP POLICY IF EXISTS "Allow premium/admin insert access" ON public.comments;
+CREATE POLICY "Allow premium/admin insert access" ON public.comments
+FOR INSERT TO authenticated
+WITH CHECK (
+  (user_id = auth.uid()) AND
+  ((get_user_role(auth.uid()) = 'premium') OR (get_user_role(auth.uid()) = 'admin'))
+);
+
+DROP POLICY IF EXISTS "Allow owner to delete" ON public.comments;
+CREATE POLICY "Allow owner to delete" ON public.comments
+FOR DELETE TO authenticated
+USING (
+    (user_id = auth.uid())
+);
