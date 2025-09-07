@@ -1,53 +1,43 @@
 
 'use client';
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
+import { useForm, Controller } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Textarea } from '@/components/ui/textarea';
-import type { Subtopic } from '@/lib/types';
+import type { Subtopic, PracticeQuestion } from '@/lib/types';
 import { generateAIFeedback } from '@/ai/flows/generate-ai-feedback-on-subtopic';
-import { Loader2, Send } from 'lucide-react';
+import { Loader2, Sparkles } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Label } from './ui/label';
+import { cn } from '@/lib/utils';
 
-const formSchema = z.object({
-  answer: z.string().min(1, { message: 'Please provide an answer.' }),
-});
 
 export function PracticeForm({ subtopic }: { subtopic: Subtopic }) {
   const [feedback, setFeedback] = useState<string | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: { answer: '' },
-  });
+  const { control, handleSubmit, formState: { errors } } = useForm();
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(data: any) {
     setIsLoading(true);
     setFeedback(null);
     setIsCorrect(null);
 
-    // Simulate scoring
-    const correct = subtopic.practice_type === 'mcq'
-      ? values.answer === subtopic.correct_answer
-      : true; // For text, we'll rely on AI
-    setIsCorrect(correct);
-
     try {
       const aiResult = await generateAIFeedback({
         subtopicContent: subtopic.content,
-        userAnswer: values.answer,
-        correctAnswer: subtopic.correct_answer,
+        userAnswers: JSON.stringify(data),
+        questions: JSON.stringify(subtopic.practice_questions),
       });
       setFeedback(aiResult.feedback);
+      setIsCorrect(aiResult.isCorrect);
     } catch (error) {
       console.error('AI feedback generation failed:', error);
       setFeedback('Sorry, I was unable to generate feedback at this time.');
+      setIsCorrect(false);
     } finally {
       setIsLoading(false);
     }
@@ -60,53 +50,46 @@ export function PracticeForm({ subtopic }: { subtopic: Subtopic }) {
 
   return (
     <div className="space-y-6">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <FormField
-            control={form.control}
-            name="answer"
-            render={({ field }) => (
-              <FormItem>
-                {subtopic.practice_type === 'mcq' && subtopic.practice_options ? (
-                  <FormControl>
-                    <RadioGroup
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                      className="flex flex-col space-y-2"
-                    >
-                      {subtopic.practice_options.map((option, index) => (
-                        <FormItem key={index} className="flex items-center space-x-3 space-y-0">
-                          <label className="flex items-center w-full p-3 rounded-lg border border-border hover:bg-muted/50 cursor-pointer has-[:checked]:bg-primary/10 has-[:checked]:border-primary transition-colors">
-                            <FormControl>
-                                <RadioGroupItem value={option} />
-                            </FormControl>
-                            <span className="ml-3 font-normal">{option}</span>
-                          </label>
-                        </FormItem>
-                      ))}
-                    </RadioGroup>
-                  </FormControl>
-                ) : (
-                  <FormControl>
-                    <Textarea placeholder="Type your answer here..." {...field} rows={6}/>
-                  </FormControl>
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+        {subtopic.practice_questions.map((q, index) => (
+          <Card key={q.id} className="p-6 rounded-xl">
+             <p className="font-semibold text-foreground mb-4">Question {index + 1}: {q.question}</p>
+             <Controller
+                name={q.id}
+                control={control}
+                rules={{ required: 'This question is required.' }}
+                render={({ field }) => (
+                   <>
+                    {q.type === 'mcq' && q.options ? (
+                        <RadioGroup onValueChange={field.onChange} value={field.value} className="space-y-2">
+                        {q.options.map((option, i) => (
+                            <Label key={i} className="flex items-center w-full p-4 rounded-lg border border-border hover:bg-muted/50 cursor-pointer has-[:checked]:bg-primary/10 has-[:checked]:border-primary transition-colors">
+                                <RadioGroupItem value={option} id={`${q.id}-${i}`} />
+                                <span className="ml-3 font-normal">{option}</span>
+                            </Label>
+                        ))}
+                        </RadioGroup>
+                    ) : (
+                        <Textarea placeholder="Type your answer here..." {...field} rows={4} />
+                    )}
+                   </>
                 )}
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-           <div className="flex justify-end">
-            <Button type="submit" disabled={isLoading}>
+             />
+             {errors[q.id] && <p className="text-sm font-medium text-destructive mt-2">{errors[q.id]?.message as string}</p>}
+          </Card>
+        ))}
+
+        <div className="flex justify-end">
+            <Button type="submit" disabled={isLoading} size="lg">
                 {isLoading ? (
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 ) : (
-                    <Send className="mr-2" />
+                    <Sparkles className="mr-2" />
                 )}
-                Submit Answer
+                Submit & Get AI Feedback
             </Button>
-          </div>
-        </form>
-      </Form>
+        </div>
+      </form>
 
       {feedback && (
         <Alert variant={getAlertVariant()} className="mt-8">

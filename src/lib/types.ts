@@ -7,16 +7,21 @@ export interface Lesson {
   order_index: number;
 }
 
+export interface PracticeQuestion {
+  id: string;
+  type: 'mcq' | 'text';
+  question: string;
+  options?: string[];
+  answer: string;
+}
+
 export interface Subtopic {
-  id: string; // Will be dynamically generated (e.g., "1-1", "1-2")
+  id:string; // Will be dynamically generated (e.g., "1-1", "1-2")
   lesson_id: string;
   title: string;
   content: string;
   order_index: number;
-  practice_question: string;
-  practice_type: 'mcq' | 'text';
-  practice_options?: string[];
-  correct_answer: string;
+  practice_questions: PracticeQuestion[];
   video_url?: string;
 }
 

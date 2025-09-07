@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { PracticeForm } from '@/components/practice-form';
 import Link from 'next/link';
-import { ChevronLeft, Lightbulb, Bot, ArrowRight } from 'lucide-react';
+import { ChevronLeft, Lightbulb, Bot, ArrowRight, Video } from 'lucide-react';
 import sampleContent from '../../../../../sample-content.json';
 import type { Subtopic, Lesson } from '@/lib/types';
 import { Button } from '@/components/ui/button';
@@ -59,7 +59,7 @@ export default async function SubtopicPage({ params }: { params: { id: string } 
                 <h1 className="text-3xl font-bold tracking-tight text-foreground font-headline">{subtopic.title}</h1>
                 
                 {subtopic.video_url && (
-                    <div className="mt-6 aspect-video rounded-lg overflow-hidden">
+                    <div className="mt-6 aspect-video rounded-lg overflow-hidden border">
                         <iframe 
                             className="w-full h-full"
                             src={subtopic.video_url.replace("watch?v=", "embed/")} 
@@ -77,9 +77,8 @@ export default async function SubtopicPage({ params }: { params: { id: string } 
             </div>
 
             {/* Practice Section */}
-            <div className="bg-card p-6 md:p-8 rounded-xl shadow-sm">
+             <div id="practice-zone">
                  <h2 className="text-2xl font-bold tracking-tight text-foreground font-headline mb-6">Practice Zone</h2>
-                 <p className="font-semibold text-foreground mb-4">{subtopic.practice_question}</p>
                  <PracticeForm subtopic={subtopic} />
             </div>
         </div>

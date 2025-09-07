@@ -12,57 +12,164 @@
           "video_url": "https://www.youtube.com/watch?v=cQT33O0_q-w",
           "content": "<h2>What's the Big Idea?</h2><p>Your relationship with money starts in your head. Today, we'll explore how your thoughts and feelings about money—your 'money mindset'—shape your financial future. We'll learn to spot sneaky spending habits and build a strong foundation for success.</p><h3>Core Concepts:</h3><ul><li><strong>Instant vs. Delayed Gratification:</strong> Learn why waiting for a bigger reward is a financial superpower. We'll look at the famous 'marshmallow test' and see how it applies to buying that new video game versus saving for a car.</li><li><strong>Emotional Spending:</strong> Feeling bored, stressed, or pressured by friends? These feelings can lead to 'retail therapy.' We'll identify your personal spending triggers and create a plan to manage them.</li><li><strong>Uncovering Your Money Scripts:</strong> You have hidden beliefs about money from your childhood. We'll uncover these 'money scripts' (like 'money is the root of all evil' or 'you have to work hard for money') and reframe them for a healthier financial life.</li></ul><h3>Why This Matters:</h3><p>Small, consistent habits create massive results over time. Saving a little bit from your first part-time job can grow into a significant amount by the time you graduate, thanks to the power of compounding!</p>",
           "order_index": 1,
-          "practice_question": "Identify one impulsive purchase you made in the past month. What triggered it?",
-          "practice_type": "text",
-          "correct_answer": "Answers will vary but should identify a purchase and a trigger like stress, social pressure, or boredom."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "mcq",
+              "question": "What is the main idea behind 'delayed gratification'?",
+              "options": [
+                "Spending money as soon as you get it.",
+                "Waiting to buy something for a bigger future reward.",
+                "Avoiding all fun purchases.",
+                "Only buying things that are on sale."
+              ],
+              "answer": "Waiting to buy something for a bigger future reward."
+            },
+            {
+              "id": "q2",
+              "type": "mcq",
+              "question": "Which of the following is an example of an 'emotional spending' trigger?",
+              "options": [
+                "Buying groceries from a planned list.",
+                "Saving a portion of your paycheck.",
+                "Buying a new video game after a stressful day at school.",
+                "Paying your phone bill on time."
+              ],
+              "answer": "Buying a new video game after a stressful day at school."
+            },
+            {
+              "id": "q3",
+              "type": "mcq",
+              "question": "A 'money script' is best described as:",
+              "options": [
+                "A budget you write down.",
+                "A secret code for your bank account.",
+                "A movie about money.",
+                "A hidden belief about money you learned in childhood."
+              ],
+              "answer": "A hidden belief about money you learned in childhood."
+            },
+            {
+                "id": "q4",
+                "type": "mcq",
+                "question": "The power of compounding means that:",
+                "options": [
+                  "The more money you have, the more you spend.",
+                  "Small, regular savings can grow into a large amount over time.",
+                  "You need a lot of money to start saving.",
+                  "Complex math is required for budgeting."
+                ],
+                "answer": "Small, regular savings can grow into a large amount over time."
+            },
+            {
+                "id": "q5",
+                "type": "mcq",
+                "question": "What is the primary benefit of developing a positive money mindset?",
+                "options": [
+                  "It guarantees you will become a millionaire.",
+                  "It helps you make conscious decisions that support your financial goals.",
+                  "It allows you to spend money without worrying.",
+                  "It eliminates the need for a budget."
+                ],
+                "answer": "It helps you make conscious decisions that support your financial goals."
+            },
+            {
+              "id": "q6",
+              "type": "text",
+              "question": "Identify one impulsive purchase you've made in the past month. What do you think triggered it?",
+              "answer": "Answers should identify a specific purchase and a plausible trigger, such as stress, boredom, social pressure, or advertising."
+            },
+            {
+              "id": "q7",
+              "type": "text",
+              "question": "Explain in your own words why a small, regular saving habit is more powerful than saving a large amount of money once a year.",
+              "answer": "A good answer will mention the power of compounding and the benefit of building a consistent habit, which reduces the reliance on willpower and makes saving automatic."
+            }
+          ]
         },
         {
           "title": "Day 2: Mastering the 50-30-20 Rule",
+          "video_url": "https://www.youtube.com/watch?v=cQT33O0_q-w",
           "content": "<h2>Your Simple Blueprint for Budgeting</h2><p>The 50-30-20 rule is a straightforward way to manage your money without complicated spreadsheets. It’s all about balance and making sure you’re covering your needs, enjoying your life, and saving for the future.</p><h3>Breaking It Down:</h3><ul><li><strong>50% for Needs:</strong> These are your absolute must-haves. For a teen, this could be your phone bill, transportation to school or work, or essential food costs. If you live at home, this category might be small, which is a huge advantage!</li><li><strong>30% for Wants:</strong> This is the fun stuff! Think movies, new clothes, video games, or eating out with friends. This category is flexible and is the first place to cut back if you need to save more.</li><li><strong>20% for Savings & Debt Repayment:</strong> This is where you pay your future self. This chunk of money goes directly towards your emergency fund, saving for big goals (like a car or college), or paying off any money you owe.</li></ul><h3>Adapting for Teen Life:</h3><p>Don't have a regular paycheck? We'll show you how to apply these percentages to irregular income from babysitting or summer jobs. Living with parents? We'll discuss how to adjust the percentages when your 'Needs' are low, so you can turbo-charge your savings.</p>",
           "order_index": 2,
-          "practice_question": "Create a 50-30-20 budget for a teen earning $600 monthly who has parental support for major needs.",
-          "practice_type": "text",
-          "correct_answer": "A correct budget would allocate $300 for wants (50% of income, as needs are low), $180 for wants (30%), and $120 for savings (20%). The key is justifying the flexible allocation."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Create a 50-30-20 budget for a teen earning $600 monthly who has parental support for major needs.",
+              "answer": "A correct budget would allocate $300 for wants (50% of income, as needs are low), $180 for wants (30%), and $120 for savings (20%). The key is justifying the flexible allocation."
+            }
+          ]
         },
         {
           "title": "Day 3: Emergency Funds - Your Financial Safety Net",
+          "video_url": "https://www.youtube.com/watch?v=cQT33O0_q-w",
           "content": "<h2>Why You Need a Financial Shield</h2><p>An emergency fund is your personal safety net. It's a stash of money set aside for true, unexpected emergencies. This fund gives you confidence, prevents you from going into debt, and can even create opportunities.</p><h3>What's a Real Emergency?</h3><ul><li><strong>True Emergencies:</strong> Your phone screen shatters, you get a flat tire, you have an unexpected medical cost.</li><li><strong>Not Emergencies:</strong> Concert tickets for your favorite band, a sale on a new pair of sneakers, a weekend trip with friends.</li></ul><h3>Building Your Fund in Phases:</h3><ol><li><strong>The Starter Fund ($100-$500):</strong> Your first goal. This covers small surprises.</li><li><strong>The Basic Fund (1 Month of Expenses):</strong> Once you have a job, aim to save enough to cover one month of your essential costs.</li><li><strong>The Full Fund (3-6 Months of Expenses):</strong> This is the ultimate goal, especially for when you're financially independent.</li></ol><h3>Where to Keep It:</h3><p>Your emergency fund should be in a separate, high-yield savings account. It needs to be easily accessible but not so easy that you're tempted to dip into it for non-emergencies.</p>",
           "order_index": 3,
-          "practice_question": "Create an emergency fund savings plan for a teen earning $800 monthly.",
-          "practice_type": "text",
-          "correct_answer": "A good plan would involve setting a small starter goal (e.g., $200), automating a monthly transfer (e.g., $50-$100), and specifying what the fund is for."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Create an emergency fund savings plan for a teen earning $800 monthly.",
+              "answer": "A good plan would involve setting a small starter goal (e.g., $200), automating a monthly transfer (e.g., $50-$100), and specifying what the fund is for."
+            }
+          ]
         },
         {
           "title": "Day 4: Needs vs Wants in the Digital Age",
+          "video_url": "https://www.youtube.com/watch?v=cQT33O0_q-w",
           "content": "<h2>Navigating Modern Spending Traps</h2><p>In today's world, the line between what you need and what you want is blurrier than ever. Marketers are experts at making you feel like you 'need' the latest gadget or subscription. Today, we'll learn to see through the noise.</p><h3>Recognizing the Traps:</h3><ul><li><strong>Subscription Creep:</strong> That 'free trial' you signed up for? It's now costing you $10 a month. We'll audit your subscriptions and cut the fat.</li><li><strong>Social Media Pressure:</strong> Seeing influencers and friends with the latest stuff can create serious FOMO (Fear Of Missing Out). We'll discuss strategies to resist this pressure.</li><li><strong>The Convenience Fee:</strong> Food delivery and one-click purchasing are easy, but they often come with hidden costs. We'll calculate the true cost of convenience.</li></ul><h3>Your Decision-Making Toolkit:</h3><ul><li><strong>The 24-Hour Rule:</strong> See something you want? Wait 24 hours before buying it. The urge often fades.</li><li><strong>The Opportunity Cost Test:</strong> Ask yourself, 'What else could I do with this money?' Is that new shirt worth giving up a movie ticket?</li><li><strong>The One-Year Test:</strong> Will this purchase matter in one year? This helps put impulse buys into perspective.</li></ul>",
           "order_index": 4,
-          "practice_question": "Audit your current subscriptions (or ones you want). Suggest one cost-saving action.",
-          "practice_type": "text",
-          "correct_answer": "Answers will vary but could include canceling an unused service, switching to a cheaper plan, or sharing a family plan."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Audit your current subscriptions (or ones you want). Suggest one cost-saving action.",
+              "answer": "Answers will vary but could include canceling an unused service, switching to a cheaper plan, or sharing a family plan."
+            }
+          ]
         },
         {
           "title": "Day 5: Goal Setting and Priority Systems",
+          "video_url": "https://www.youtube.com/watch?v=cQT33O0_q-w",
           "content": "<h2>Turning Dreams into Reality</h2><p>Saving money without a clear goal is like driving without a destination. Today, we'll learn how to set powerful, motivating financial goals that you'll actually achieve.</p><h3>The SMART-ER Goal Framework:</h3><p>Your goals should be:</p><ul><li><strong>S</strong>pecific: What exactly do you want?</li><li><strong>M</strong>easurable: How much does it cost?</li><li><strong>A</strong>chievable: Is it realistic with your income?</li><li><strong>R</strong>elevant: Why is this important to you?</li><li><strong>T</strong>ime-bound: When do you want to achieve it by?</li><li><strong>E</strong>xciting: Does this goal actually motivate you?</li><li><strong>R</strong>eviewed: Are you checking your progress regularly?</li></ul><h3>Prioritizing Your Goals:</h3><p>You probably have multiple goals at once. We'll use a priority matrix to decide what to focus on first, organizing goals into three tiers: foundational (like your emergency fund), lifestyle (like a new phone), and future-building (like college savings).</p><h3>Systems Beat Willpower:</h3><p>We'll set up systems like automatic transfers to your savings account and visual progress trackers to keep you motivated and on track without relying on sheer willpower.</p>",
           "order_index": 5,
-          "practice_question": "Convert a vague goal like 'save more money' into a SMART-ER goal.",
-          "practice_type": "text",
-          "correct_answer": "A SMART-ER goal would be: 'I will save $500 (Specific, Measurable) for a new laptop (Exciting, Relevant) by saving $100 per month for 5 months (Achievable, Time-bound), and I will check my progress monthly (Reviewed).'"
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Convert a vague goal like 'save more money' into a SMART-ER goal.",
+              "answer": "A SMART-ER goal would be: 'I will save $500 (Specific, Measurable) for a new laptop (Exciting, Relevant) by saving $100 per month for 5 months (Achievable, Time-bound), and I will check my progress monthly (Reviewed).'"
+            }
+          ]
         },
         {
           "title": "Day 6: Creating Your Personal Budget Sheet",
+          "video_url": "https://www.youtube.com/watch?v=cQT33O0_q-w",
           "content": "<h2>Building Your Financial Command Center</h2><p>Today, we get hands-on and build a personalized budget sheet that works for your unique life. This isn't about restriction; it's about empowerment. Your budget is a tool that tells your money where to go, instead of wondering where it went.</p><h3>Key Components of Your Budget Sheet:</h3><ul><li><strong>Income Tracker:</strong> A section to list all your sources of income, both regular (like an allowance or part-time job) and irregular (like birthday money or babysitting gigs).</li><li><strong>Expense Categories:</strong> We'll detail your fixed expenses (like a phone bill) and variable expenses (like food or entertainment) within your 50% Needs and 30% Wants categories.</li><li><strong>Savings Goals:</strong> A dedicated section to track progress towards your different savings goals, like your emergency fund, a new laptop, or a car.</li></ul><h3>Staying on Track:</h3><p>A budget is not a 'set it and forget it' tool. We'll establish a rhythm for checking in:</p><ul><li><strong>Weekly Check-in (5 minutes):</strong> Quickly categorize your recent spending.</li><li><strong>Monthly Review (30 minutes):</strong> See how you did, celebrate your wins, and adjust for the month ahead.</li></ul><p>We'll also discuss how to handle common issues, like what to do when you overspend in a category or how to budget for seasonal expenses like holidays.</p>",
           "order_index": 6,
-          "practice_question": "Create a simple monthly budget for a student with a $520 income, a $150 car payment, and a college savings goal.",
-          "practice_type": "text",
-          "correct_answer": "A sample budget: Income: $520. Needs (50%=$260): Car payment $150, Gas $60, Phone $50. Wants (30%=$156): Fun/food $156. Savings (20%=$104): College fund $104. This shows understanding of allocating fixed costs first."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Create a simple monthly budget for a student with a $520 income, a $150 car payment, and a college savings goal.",
+              "answer": "A sample budget: Income: $520. Needs (50%=$260): Car payment $150, Gas $60, Phone $50. Wants (30%=$156): Fun/food $156. Savings (20%=$104): College fund $104. This shows understanding of allocating fixed costs first."
+            }
+          ]
         },
         {
           "title": "Day 7: Your Budget Sheet Project & Future Planning",
+          "video_url": "https://www.youtube.com/watch?v=cQT33O0_q-w",
           "content": "<h2>Bringing It All Together</h2><p>Today, you'll finalize your personal budget sheet, integrating all the lessons from this week. This project will serve as your financial roadmap for the months and years to come.</p><h3>Your Final Budget Project:</h3><p>Your completed budget should be a comprehensive, one-page overview of your financial life. It should clearly show:</p><ul><li>Your total income.</li><li>Your 50-30-20 allocations.</li><li>A detailed list of your expenses.</li><li>Clear tracking for each of your savings goals.</li></ul><h3>Building a Sustainable System:</h3><p>We'll focus on making your financial system sustainable for the long run:</p><ul><li><strong>Automate Your Savings:</strong> Set up automatic transfers to your savings accounts the day you get paid. This is the single most effective way to ensure you save consistently.</li><li><strong>Build in Flexibility:</strong> Your budget should have a 'miscellaneous' or 'buffer' category for unexpected small costs.</li><li><strong>Plan for the Future:</strong> Think about how your budget will evolve. What will you do when you get a raise? How will your budget change when you go to college or move out?</li></ul><p>Remember, imperfect action is better than perfect inaction. The goal is not to be a perfect budgeter overnight, but to build a skill and a habit that will serve you for the rest of your life.</p>",
           "order_index": 7,
-          "practice_question": "Create a full budget for a teen with a $450 income, a $150 car payment, a college savings goal, and an emergency fund goal.",
-          "practice_type": "text",
-          "correct_answer": "A good answer would allocate income across all categories, likely splitting the 20% savings ($90) between the emergency fund (e.g., $40) and the college fund (e.g., $50), demonstrating prioritization."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Create a full budget for a teen with a $450 income, a $150 car payment, a college savings goal, and an emergency fund goal.",
+              "answer": "A good answer would allocate income across all categories, likely splitting the 20% savings ($90) between the emergency fund (e.g., $40) and the college fund (e.g., $50), demonstrating prioritization."
+            }
+          ]
         }
       ]
     },
@@ -76,57 +183,92 @@
           "title": "Day 1: Banking Basics & Safe Investment Foundations",
           "content": "<h1>Banking Basics & Safe Investment Foundations</h1><h2>The Banking Product Hierarchy</h2><h3>Savings Account (3-4% interest)</h3><ul><li>Money available anytime</li><li>No commitment required</li><li>Lowest interest</li><li>Ideal for emergency funds</li></ul><h3>Fixed Deposit - FD (6-7% interest)</h3><ul><li>Lump sum deposit for fixed period</li><li>Premature withdrawal penalty</li><li>Higher interest than savings accounts</li><li>Terms from 7 days to 10 years</li></ul><h3>Recurring Deposit - RD (6-8% interest)</h3><ul><li>Monthly fixed deposits</li><li>Builds saving discipline</li><li>Same interest rates as FD</li><li>Perfect for goal-based saving</li></ul><h2>Understanding Interest Calculations</h2><p>Simple interest: Principal × Rate × Time</p><p>Compound interest: Principal × (1 + Rate)^Time</p><p>Example: ₹10,000 for 3 years at 7%</p><ul><li>Simple: ₹10,000 + ₹2,100 = ₹12,100</li><li>Compound: ₹10,000 × (1.07)^3 ≈ ₹12,250</li></ul>",
           "order_index": 1,
-          "practice_question": "Priya’s ₹15,000 FD + ₹2,000/month RD for 18 months goal ₹50,000 laptop — does the plan work?",
-          "practice_type": "text",
-          "correct_answer": "FD grows to ~₹16,575, RD to ~₹37,260, total ₹53,835, exceeding goal."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Priya’s ₹15,000 FD + ₹2,000/month RD for 18 months goal ₹50,000 laptop — does the plan work?",
+              "answer": "FD grows to ~₹16,575, RD to ~₹37,260, total ₹53,835, exceeding goal."
+            }
+          ]
         },
         {
           "title": "Day 2: Fixed Deposits - Your Safe Investment Foundation",
           "content": "<h1>Fixed Deposits - Your Safe Investment Foundation</h1><p>Types of FDs: Regular, Tax-saving, Senior Citizen with respective features.</p><p>Choosing between tenures involves considering interest rates, liquidity needs, and penalties.</p><p>FD Strategy: Laddering multiple FDs of different tenures to match liquidity and rate optimization.</p><p>Hybrid emergency fund: some savings account + some short-term FDs.</p><p>Advanced concepts: cumulative vs non-cumulative FDs, premature withdrawal penalties.</p>",
           "order_index": 2,
-          "practice_question": "Design FD ladder for ₹60,000 into 1, 2, 3-year deposits.",
-          "practice_type": "text",
-          "correct_answer": "₹20,000 each spread across FDs with 1, 2, and 3-year tenures, with respective interest rates."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Design FD ladder for ₹60,000 into 1, 2, 3-year deposits.",
+              "answer": "₹20,000 each spread across FDs with 1, 2, and 3-year tenures, with respective interest rates."
+            }
+          ]
         },
         {
           "title": "Day 3: Recurring Deposits - Wealth Through Discipline",
           "content": "<h1>Recurring Deposits - Wealth Through Discipline</h1><p>This subtopic covers monthly auto-debit deposits, compound interest calculation for RDs, and practical examples.</p><p>We compare how RD start time & amount impact total returns and discuss goal-based RDs for short, medium, and long-term saving.</p><p>Advanced topics include multiple RDs for different goals and step-up RDs to increase deposits periodically. We also cover behavioral economic advantages over manual savings and common mistakes like overcommitting and their penalties.</p>",
           "order_index": 3,
-          "practice_question": "Kavya earning ₹12,000 monthly — create a dual RD plan for a bike and an emergency fund.",
-          "practice_type": "text",
-          "correct_answer": "A possible plan is splitting the savings portion into two RDs, one for the short-term bike goal and another for the long-term emergency fund, adjusting amounts based on priority."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Kavya earning ₹12,000 monthly — create a dual RD plan for a bike and an emergency fund.",
+              "answer": "A possible plan is splitting the savings portion into two RDs, one for the short-term bike goal and another for the long-term emergency fund, adjusting amounts based on priority."
+            }
+          ]
         },
         {
           "title": "Day 4: Introduction to Mutual Funds & SIP Magic",
           "content": "<h1>Introduction to Mutual Funds & SIP Magic</h1><p>Mutual funds are explained via a group investment analogy. We cover types like Equity (large/mid/small cap), Debt, and Hybrid funds.</p><p>Systematic Investment Plans (SIP) are introduced as a way to make small, fixed monthly investments. The concept of rupee cost averaging is explained with examples, showcasing the power of compounding. We compare SIPs vs lump sum investments and discuss choosing funds based on risk appetite and age. Common mistakes like chasing past performance are also covered.</p>",
           "order_index": 4,
-          "practice_question": "Meera's ₹3,000 monthly SIP to make ₹10,00,000 in 10 years — calculate feasibility and required returns.",
-          "practice_type": "text",
-          "correct_answer": "This would require a high rate of return, likely over 15-20% annually, which is optimistic but illustrates the power of compounding. It highlights the need for realistic expectations."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Meera's ₹3,000 monthly SIP to make ₹10,00,000 in 10 years — calculate feasibility and required returns.",
+              "answer": "This would require a high rate of return, likely over 15-20% annually, which is optimistic but illustrates the power of compounding. It highlights the need for realistic expectations."
+            }
+          ]
         },
         {
           "title": "Day 5: Stock Market Fundamentals - Equity, Risk & Reward",
           "content": "<h1>Stock Market Fundamentals - Equity, Risk & Reward</h1><p>This subtopic covers stock basics: owning company shares, and sources of returns (capital appreciation, dividends, compounding). We look at market indices like Nifty 50 and Sensex.</p><p>We discuss risk types (market risk, company risk, volatility) and risk management techniques like diversification, having a long investment horizon, and position sizing. A brief introduction to fundamental vs technical analysis is provided for beginners, along with key financial ratios and red flags.</p>",
           "order_index": 5,
-          "practice_question": "Why is a market crash an opportunity for a young SIP investor but a danger for retirees?",
-          "practice_type": "text",
-          "correct_answer": "A young investor has a long time horizon to recover and can buy more units at a lower cost (rupee cost averaging), while a retiree may need to sell assets for income at a loss."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Why is a market crash an opportunity for a young SIP investor but a danger for retirees?",
+              "answer": "A young investor has a long time horizon to recover and can buy more units at a lower cost (rupee cost averaging), while a retiree may need to sell assets for income at a loss."
+            }
+          ]
         },
         {
           "title": "Day 6: Investment Strategy & Portfolio Building",
           "content": "<h1>Investment Strategy & Portfolio Building</h1><p>We explain asset allocation by age and goal horizon, and how to construct portfolios for emergency, short, medium, and long-term goals. The importance of diversification across geography, sector, and company size is covered.</p><p>We also discuss portfolio rebalancing methods and their benefits, and go over common portfolio mistakes to avoid.</p>",
           "order_index": 6,
-          "practice_question": "Design a portfolio for a teen with ₹50,000 lump sum + ₹8,000 monthly savings with multiple goals (e.g., college, travel).",
-          "practice_type": "text",
-          "correct_answer": "A sample portfolio could allocate the lump sum to a mix of equity and debt funds, and the monthly SIP could be split between different funds based on the timeline of the goals."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Design a portfolio for a teen with ₹50,000 lump sum + ₹8,000 monthly savings with multiple goals (e.g., college, travel).",
+              "answer": "A sample portfolio could allocate the lump sum to a mix of equity and debt funds, and the monthly SIP could be split between different funds based on the timeline of the goals."
+            }
+          ]
         },
         {
           "title": "Day 7: Virtual Trading Game & Real-World Application",
           "content": "<h1>Virtual Trading Game & Real-World Application</h1><p>This subtopic recommends virtual trading platforms like Moneybhai or Investopedia Simulator. We go over setting up an account, defining a strategy, and constructing a virtual portfolio.</p><p>Common mistakes in virtual trading (e.g., treating it like a game, overtrading) are discussed. Finally, we cover the transition to real investing: how to open accounts, start small, and the importance of continuous learning.</p>",
           "order_index": 7,
-          "practice_question": "Design a 30-day virtual trading plan with weekly tasks and learning goals.",
-          "practice_type": "text",
-          "correct_answer": "A plan could include: Week 1 - Research 5 companies. Week 2 - Make initial investments. Week 3 - Track performance and news. Week 4 - Rebalance one position and analyze results."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Design a 30-day virtual trading plan with weekly tasks and learning goals.",
+              "answer": "A plan could include: Week 1 - Research 5 companies. Week 2 - Make initial investments. Week 3 - Track performance and news. Week 4 - Rebalance one position and analyze results."
+            }
+          ]
         }
       ]
     },
@@ -140,57 +282,92 @@
           "title": "Day 1: The AI Revolution in Finance",
           "content": "<h1>The AI Revolution in Finance</h1><h2>What is AI Really Doing with Our Money?</h2><h3>Topic Overview</h3><ul><li>AI acts like a digital guardian for your money, protecting bank accounts and detecting fraud 24/7. Over 90% of banks use AI to fight fraud, analyzing billions of transactions every day.</li><li>AI powers apps on your phone that catch suspicious charges and help your family manage money.</li><li>Criminals also use AI, but financial companies use stronger AI, creating a high-tech battle to keep your money safe.</li></ul><h3>Explanation</h3><ul><li>AI gives computers a brain-like power to learn and make decisions.</li><li>It recognizes unusual spending patterns (e.g., a morning latte vs. a $500 pizza at 3 AM far away).</li><li>This all happens instantly, faster than any human could check.</li></ul><h3>Key Takeaways</h3><ul><li>AI is everywhere in finance, quietly working to protect and help manage money.</li><li>Banks use AI to outsmart criminals using AI themselves.</li><li>AI analyzes millions of transactions every second, providing unmatched security.</li><li>You are part of this new financial world where AI is normal!</li></ul>",
           "order_index": 1,
-          "practice_question": "What percentage of U.S. banks use AI for fraud detection?",
-          "practice_type": "text",
-          "correct_answer": "About 90%"
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "What percentage of U.S. banks use AI for fraud detection?",
+              "answer": "About 90%"
+            }
+          ]
         },
         {
           "title": "Day 2: Machine Learning vs. Deep Learning",
           "content": "<h1>Machine Learning vs. Deep Learning</h1><h2>The Brains Behind the AI Operation</h2><h3>Topic Overview</h3><ul><li>Machine learning is like teaching someone to drive with lots of examples — it learns simple patterns like stopping at red lights.</li><li>Deep learning is like mastering Formula 1 racing — it uses multi-layered 'brain-like' neural networks to learn very complex patterns.</li><li>Financial companies use both: machine learning for simple fraud, deep learning for complex schemes.</li></ul><h3>Explanation</h3><ul><li>Machine learning finds patterns and makes clear predictions (email filters, basic fraud detection).</li><li>Deep learning uses multiple layers to analyze huge amounts of varied info for more sophisticated detection (voice assistants, advanced fraud rings).</li></ul><h3>Key Takeaways</h3><ul><li>Machine learning and deep learning are different AI tools for different problems.</li><li>Machine learning handles clear patterns, deep learning deals with complex data.</li><li>Both are essential in financial fraud detection and AI applications.</li></ul>",
           "order_index": 2,
-          "practice_question": "Complete the analogy: Machine learning is to riding a bike as deep learning is to...?",
-          "practice_type": "text",
-          "correct_answer": "Flying a fighter jet"
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Complete the analogy: Machine learning is to riding a bike as deep learning is to...?",
+              "answer": "Flying a fighter jet"
+            }
+          ]
         },
         {
           "title": "Day 3: AI Fraud Detection - Your Money’s Bodyguard",
           "content": "<h1>AI Fraud Detection - Your Money’s Bodyguard</h1><h3>Topic Overview</h3><ul><li>AI fraud systems analyze over 10 billion transactions daily in milliseconds.</li><li>91% of US banks use AI to detect fraud with 96% accuracy, reducing false alerts.</li><li>AI learns your unique spending habits (your “financial fingerprint”) and spots fraud fast.</li></ul><h3>Explanation</h3><ul><li>Behavioral analysis monitors usual purchase times, amounts, and merchant types.</li><li>AI detects fraud rings by analyzing links between suspicious transactions.</li><li>Real cases like blocking fake international money wiring demonstrate AI in action.</li></ul><h3>Key Takeaways</h3><ul><li>AI fraud detection is lightning fast and highly accurate.</li><li>AI learns your personal spending style to detect anomalies.</li><li>AI systems constantly improve to keep ahead of criminals.</li></ul>",
           "order_index": 3,
-          "practice_question": "Why is AI better than humans at spotting fraud?",
-          "practice_type": "text",
-          "correct_answer": "Speed, accuracy, and scale."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Why is AI better than humans at spotting fraud?",
+              "answer": "Speed, accuracy, and scale."
+            }
+          ]
         },
         {
           "title": "Day 4: AI Trading Bots - Robots in the Stock Market",
           "content": "<h1>AI Trading Bots - Robots in the Stock Market</h1><h3>Topic Overview</h3><ul><li>AI trading bots analyze market data and trade stocks faster than humans (in 0.01 seconds).</li><li>They handle 60-75% of stock market trades globally, but success isn’t guaranteed for all users.</li><li>Bots can provide impressive returns but also have risks like sudden market crashes.</li></ul><h3>Explanation</h3><p>Three stages of trading bots:</p><ol><li>Signal Generation — identify buy/sell opportunities based on patterns.</li><li>Risk Management — decide how much money to use and set safety limits.</li><li>Trade Execution — place trades automatically and adjust to changes.</li></ol><p>Examples include cryptocurrency bots making profits by catching market dips.</p><h3>Key Takeaways</h3><ul><li>Speed and big data give AI trading bots an edge.</li><li>Most users don’t make consistent profits; skill and caution are required.</li><li>Bots reshape the market but new risks also arise.</li></ul>",
           "order_index": 4,
-          "practice_question": "What’s a safe approach for beginners using trading bots?",
-          "practice_type": "text",
-          "correct_answer": "Start small, cautious investing."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "What’s a safe approach for beginners using trading bots?",
+              "answer": "Start small, cautious investing."
+            }
+          ]
         },
         {
           "title": "Day 5: Project Preparation - Choosing Your AI Tool",
           "content": "<h1>Project Preparation - Choosing Your AI Tool</h1><h3>Topic Overview</h3><ul><li>Today you’ll choose an AI tool to analyze spending patterns either your own or simulated.</li><li>Many free or affordable AI-powered apps like Mint, PocketGuard, and Expense AI are great for beginners.</li><li>Your project will turn AI data into real insights and recommendations.</li></ul><h3>Explanation</h3><ul><li>Options include receipt scanning apps, bank-connected tools, or spreadsheet simulations.</li><li>Collect at least 30 transactions with date, amount, merchant info for analysis.</li><li>Look for spending categories, patterns, outliers, and AI budgeting suggestions.</li></ul><h3>Key Takeaways</h3><ul><li>Real financial AI tools are accessible to teenagers.</li><li>Analyzing actual data, even small amounts, uncovers useful insights.</li><li>Always consider privacy and get permission for financial data use.</li></ul>",
           "order_index": 5,
-          "practice_question": "Why might free apps still raise privacy concerns?",
-          "practice_type": "text",
-          "correct_answer": "They may sell data or show ads."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Why might free apps still raise privacy concerns?",
+              "answer": "They may sell data or show ads."
+            }
+          ]
         },
         {
           "title": "Day 6: Project Execution - AI in Action",
           "content": "<h1>Project Execution - AI in Action</h1><h3>Topic Overview</h3><ul><li>Now, use your selected AI tool to upload and analyze your transaction data.</li><li>Explore spending categories, time trends, recurring expenses, and unusual transactions.</li><li>Document your insights and prepare to share your findings.</li></ul><h3>Explanation</h3><ul><li>Review AI categorizations and correct any mistakes to learn AI limits.</li><li>Use AI's predictive and comparison features for future budgeting.</li><li>Note surprising spending habits to understand your financial behavior better.</li></ul><h3>Key Takeaways</h3><ul><li>AI reveals hidden and surprising spending patterns.</li><li>Good data quality means better insights.</li><li>AI suggests but doesn’t decide — you make financial choices.</li></ul>",
           "order_index": 6,
-          "practice_question": "How much would you save in 4 years by cutting $20/month wasteful spending?",
-          "practice_type": "text",
-          "correct_answer": "$960"
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "How much would you save in 4 years by cutting $20/month wasteful spending?",
+              "answer": "$960"
+            }
+          ]
         },
         {
           "title": "Day 7: Project Presentation and Future Applications",
           "content": "<h1>Project Presentation and Future Applications</h1><h3>Topic Overview</h3><ul><li>Present your project results: top discoveries, AI tool used, and what you learned.</li><li>Understand how AI can shape your financial future and career possibilities.</li></ul><h3>Explanation</h3><ul><li>Structure your presentation with an opening hook, methodology, key findings, AI recommendations, and future plans.</li><li>Example insights: weekend spending spikes, recurring subscriptions, payment method effects.</li><li>Discuss how AI combined with human judgment is the winning approach.</li></ul><h3>Key Takeaways</h3><ul><li>AI amplifies human reasoning but doesn’t replace it.</li><li>Data-driven choices lead to smarter money management.</li><li>Financial and AI skills are important for future success.</li></ul>",
           "order_index": 7,
-          "practice_question": "Should you always follow AI recommendations without question?",
-          "practice_type": "text",
-          "correct_answer": "No"
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Should you always follow AI recommendations without question?",
+              "answer": "No"
+            }
+          ]
         }
       ]
     },
@@ -204,57 +381,92 @@
           "title": "Day 1: Introduction to Taxation & PAN",
           "content": "<h1>Introduction to Taxation & PAN</h1><h2>Explanation</h2><p>Taxes finance roads, schools, and public services—like a club fee for the country.</p><p>PAN: A unique 10-character number for tracking financial activities.</p><p>PAN is needed for jobs, bank accounts, and big purchases.</p><h2>Key Takeaways</h2><ul><li>Taxes help build the nation.</li><li>PAN is your financial identity.</li><li>Everyone pays taxes in daily life.</li></ul>",
           "order_index": 1,
-          "practice_question": "What is PAN’s full form?",
-          "practice_type": "text",
-          "correct_answer": "Permanent Account Number."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "What is PAN’s full form?",
+              "answer": "Permanent Account Number."
+            }
+          ]
         },
         {
           "title": "Day 2: Income Tax Slabs & Calculation",
           "content": "<h1>Income Tax Slabs & Calculation</h1><h2>Explanation</h2><p>Income tax: Paid on money earned (salaries, business, gifts).</p><p>Slabs: The more you earn, the higher the tax rate.</p><p>Example: Up to ₹4 lakh = no tax; ₹4–8 lakh = 5%; above ₹24 lakh = 30%.</p><h2>Key Takeaways</h2><ul><li>Tax rates depend on income level.</li><li>Deductions can lower your taxable income.</li><li>Calculating tax helps plan spending.</li></ul>",
           "order_index": 2,
-          "practice_question": "What income level pays zero tax?",
-          "practice_type": "text",
-          "correct_answer": "Up to ₹4 lakh (as per the example)."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "What income level pays zero tax?",
+              "answer": "Up to ₹4 lakh (as per the example)."
+            }
+          ]
         },
         {
           "title": "Day 3: All About ITR (Income Tax Return)",
           "content": "<h1>All About ITR (Income Tax Return)</h1><h2>Explanation</h2><p>ITR is like an annual report card for your income.</p><p>Filing ITR helps claim refunds and build financial history.</p><p>Forms vary (ITR-1 for salary, ITR-3 for business).</p><h2>Key Takeaways</h2><ul><li>Filing ITR is a legal duty.</li><li>Correct form choice is important.</li><li>Early ITR experience helps with future jobs and loans.</li></ul>",
           "order_index": 3,
-          "practice_question": "What is Form 16?",
-          "practice_type": "text",
-          "correct_answer": "It's a certificate from an employer that TDS has been deducted and deposited with the authorities."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "What is Form 16?",
+              "answer": "It's a certificate from an employer that TDS has been deducted and deposited with the authorities."
+            }
+          ]
         },
         {
           "title": "Day 4: GST Basics",
           "content": "<h1>GST Basics</h1><h2>Explanation</h2><p>GST is a single, unified tax on goods/services, replacing older taxes.</p><p>Paid every time something is bought or sold.</p><p>Example: Buying a phone, GST is added to the bill.</p><h2>Key Takeaways</h2><ul><li>GST makes prices transparent.</li><li>Businesses register and collect GST for the government.</li><li>Different GST types handle state/national sales.</li></ul>",
           "order_index": 4,
-          "practice_question": "What does GST stand for?",
-          "practice_type": "text",
-          "correct_answer": "Goods and Services Tax."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "What does GST stand for?",
+              "answer": "Goods and Services Tax."
+            }
+          ]
         },
         {
           "title": "Day 5: GST in Daily Life",
           "content": "<h1>GST in Daily Life</h1><h2>Explanation</h2><p>Essentials (milk/books) have low/no GST; luxuries (cars) have higher GST.</p><p>Businesses pay GST, but get credits for GST paid on purchases.</p><p>Check your next shopping bill for GST details.</p><h2>Key Takeaways</h2><ul><li>GST affects the cost of daily goods.</li><li>Businesses file GST returns, like homework for shopkeepers!</li><li>Input credit prevents “tax on tax.”</li></ul>",
           "order_index": 5,
-          "practice_question": "What’s an Input Tax Credit?",
-          "practice_type": "text",
-          "correct_answer": "It allows businesses to subtract the tax they paid on inputs from the tax they collect on outputs."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "What’s an Input Tax Credit?",
+              "answer": "It allows businesses to subtract the tax they paid on inputs from the tax they collect on outputs."
+            }
+          ]
         },
         {
           "title": "Day 6: Project—Prepare a Dummy ITR",
           "content": "<h1>Project—Prepare a Dummy ITR</h1><h2>Explanation</h2><p>Collect salary/slip, savings bank interest, investment proofs.</p><p>Calculate gross income, deductions, taxable income.</p><p>Simulate filling an ITR form.</p><h2>Key Takeaways</h2><ul><li>Filing ITR is systematic and easy with organized records.</li><li>Deductions help lower tax.</li><li>Practice prepares for real-life taxation.</li></ul>",
           "order_index": 6,
-          "practice_question": "What documents do you need for ITR?",
-          "practice_type": "text",
-          "correct_answer": "Salary slip, savings bank interest statements, investment proofs."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "What documents do you need for ITR?",
+              "answer": "Salary slip, savings bank interest statements, investment proofs."
+            }
+          ]
         },
         {
           "title": "Day 7: GST Practical—Bill Audit",
           "content": "<h1>GST Practical—Bill Audit</h1><h2>Explanation</h2><p>Go through bills (internet, groceries, movie tickets).</p><p>For each, note GST rate, amount paid.</p><p>Simulate a month’s GST record for a small shop.</p><h2>Key Takeaways</h2><ul><li>Checking bills shows GST in daily life.</li><li>Understanding GST helps spot mistakes.</li><li>Practice running a GST record teaches business basics.</li></ul>",
           "order_index": 7,
-          "practice_question": "Why is GST important for the government?",
-          "practice_type": "text",
-          "correct_answer": "It's a major source of revenue that helps fund public services and infrastructure."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Why is GST important for the government?",
+              "answer": "It's a major source of revenue that helps fund public services and infrastructure."
+            }
+          ]
         }
       ]
     },
@@ -268,57 +480,92 @@
           "title": "Day 1: What Is Entrepreneurship?",
           "content": "<h1>What Is Entrepreneurship?</h1><h3>Topic Overview</h3><ul><li>The difference between a business owner and an entrepreneur</li><li>Why creativity and risk-taking matter</li><li>Stories of young entrepreneurs</li></ul><h3>Explanation</h3><p>Entrepreneurs search for new ideas to solve real problems.</p><p>Example: A student creates an app to help classmates buy lunch quickly.</p><p>Unlike regular business owners, entrepreneurs create something new.</p><h3>Key Takeaways</h3><ul><li>Entrepreneurs are creative problem solvers.</li><li>Innovation means making something better or new.</li><li>Teenagers can be successful entrepreneurs.</li></ul>",
           "order_index": 1,
-          "practice_question": "Write down two problems from your daily life that annoy you.",
-          "practice_type": "text",
-          "correct_answer": "Answers will vary but should identify two distinct problems from daily experience."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Write down two problems from your daily life that annoy you.",
+              "answer": "Answers will vary but should identify two distinct problems from daily experience."
+            }
+          ]
         },
         {
           "title": "Day 2: Idea Validation",
           "content": "<h1>Idea Validation</h1><h3>Topic Overview</h3><ul><li>What “validation” means in startups</li><li>Why most businesses fail: building something nobody wants</li><li>Validation through interviews, surveys, and “fake doors”</li></ul><h3>Explanation</h3><p>Validation checks if real people want the idea BEFORE making it.</p><p>Teen example: Ask classmates if they’d use a new lunch app—don't build it until they say “yes!”</p><p>Use simple surveys and open questions to test interest.</p><h3>Key Takeaways</h3><ul><li>Validate before you build.</li><li>Talk with future customers.</li><li>Only pursue ideas that solve a real, shared problem.</li></ul>",
           "order_index": 2,
-          "practice_question": "Interview three people about one of your ideas.",
-          "practice_type": "text",
-          "correct_answer": "Answers will vary but should reflect feedback from three individuals on a specific idea."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Interview three people about one of your ideas.",
+              "answer": "Answers will vary but should reflect feedback from three individuals on a specific idea."
+            }
+          ]
         },
         {
           "title": "Day 3: Business Model Canvas",
           "content": "<h1>Business Model Canvas</h1><h3>Topic Overview</h3><ul><li>The business model canvas: mapping your idea on one page</li><li>Key blocks: Customers, Value, Revenue, Costs, Channels</li><li>Example using a popular youth business</li></ul><h3>Explanation</h3><p>A canvas is like a “game plan” for a startup.</p><p>Fill sections such as “Who are my customers?” and “How will I make money?”</p><p>Example: A tutoring service’s canvas lists students as customers, teachers as partners, flyers/social as marketing.</p><h3>Key Takeaways</h3><ul><li>Every business needs a plan.</li><li>The canvas helps spot what is missing or unclear.</li><li>Real examples make planning easier.</li></ul>",
           "order_index": 3,
-          "practice_question": "Use a worksheet to complete your own canvas for one idea.",
-          "practice_type": "text",
-          "correct_answer": "Answers will vary but should demonstrate a basic attempt to fill out the business model canvas sections."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Use a worksheet to complete your own canvas for one idea.",
+              "answer": "Answers will vary but should demonstrate a basic attempt to fill out the business model canvas sections."
+            }
+          ]
         },
         {
           "title": "Day 4: Costing – What Does It Take To Start?",
           "content": "<h1>Costing – What Does It Take To Start?</h1><h3>Topic Overview</h3><ul><li>Startup costs: One-time vs. monthly</li><li>Cost categories: Materials, marketing, tech, legal</li><li>Sample calculations for small teen businesses</li></ul><h3>Explanation</h3><p>List everything you need to buy (laptop, website, marketing flyers, supplies).</p><p>Real examples: A jewelry business spends ₹500 on supplies, ₹100 on packaging.</p><p>Tracking costs avoids surprise debt.</p><h3>Key Takeaways</h3><ul><li>Every business has costs, even if you work from home.</li><li>Know start-up costs vs. everyday running expenses.</li><li>Cost planning helps you avoid overspending.</li></ul>",
           "order_index": 4,
-          "practice_question": "List all items needed for your business idea.",
-          "practice_type": "text",
-          "correct_answer": "Answers will vary but should be a list of potential costs for a specific business idea."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "List all items needed for your business idea.",
+              "answer": "Answers will vary but should be a list of potential costs for a specific business idea."
+            }
+          ]
         },
         {
           "title": "Day 5: Pricing Strategies",
           "content": "<h1>Pricing Strategies</h1><h3>Topic Overview</h3><ul><li>How much should you charge?</li><li>Different pricing methods: cost-plus, competitive, value-based</li><li>Common mistakes and tips for smart pricing</li></ul><h3>Explanation</h3><p>Cost-plus: Add a profit to your real costs—simple but risky.</p><p>Competitive: Research what others charge; set your price close or slightly lower.</p><p>Value-based: If you offer a unique solution, set a price based on what people think it’s worth, not just your cost.</p><h3>Key Takeaways</h3><ul><li>Don’t just guess—research and test pricing.</li><li>Pricing too low can hurt profits; too high loses customers.</li><li>Try different prices and ask classmates what they would pay.</li></ul>",
           "order_index": 5,
-          "practice_question": "Calculate costs for making one product or delivering one service.",
-          "practice_type": "text",
-          "correct_answer": "Answers will vary but should show a calculation of per-unit cost."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Calculate costs for making one product or delivering one service.",
+              "answer": "Answers will vary but should show a calculation of per-unit cost."
+            }
+          ]
         },
         {
           "title": "Day 6: Profit Margins",
           "content": "<h1>Profit Margins</h1><h3>Topic Overview</h3><ul><li>What is profit margin?</li><li>Margins in practice—what’s “good”?</li><li>How to increase margins: cutting costs, raising prices, adding value</li></ul><h3>Explanation</h3><p>Profit margin = (Price – Cost) ÷ Price × 100%</p><p>Example: Product costs ₹500, sells for ₹700 → margin = ₹200 ÷ ₹700 × 100 = ~29%</p><p>Lower costs or higher prices = better margins. But always balance with customer expectations!</p><h3>Key Takeaways</h3><ul><li>Good margins for startups are typically 20–40%.</li><li>Monitor costs regularly; don’t race competitors to the lowest price.</li><li>Invest in quality and unique value.</li></ul>",
           "order_index": 6,
-          "practice_question": "Calculate the profit margin on your business idea.",
-          "practice_type": "text",
-          "correct_answer": "Answers will vary but should apply the profit margin formula to their specific business idea's costs and prices."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Calculate the profit margin on your business idea.",
+              "answer": "Answers will vary but should apply the profit margin formula to their specific business idea's costs and prices."
+            }
+          ]
         },
         {
           "title": "Day 7: Bringing It Together",
           "content": "<h1>Bringing It Together</h1><h3>Topic Overview</h3><ul><li>Crafting your simple pitch: problem, solution, market, pricing, margin</li><li>Presenting your business plan</li><li>Getting feedback and next steps</li></ul><h3>Explanation</h3><p>Your pitch should include what problem you’re solving, who needs it, how you’ll market, your prices, and your growth goals.</p><p>Practice with family, friends, or class—use feedback to improve!</p><h3>Key Takeaways</h3><ul><li>Clear, confident pitches attract interest and support.</li><li>Real feedback helps refine ideas.</li><li>Every business evolves—don’t be afraid to adjust.</li></ul>",
           "order_index": 7,
-          "practice_question": "Write out your pitch (max two minutes).",
-          "practice_type": "text",
-          "correct_answer": "Answers will vary but should be a short, structured pitch for their business idea."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Write out your pitch (max two minutes).",
+              "answer": "Answers will vary but should be a short, structured pitch for their business idea."
+            }
+          ]
         }
       ]
     },
@@ -332,57 +579,92 @@
           "title": "Day 1: The Mirror Moment - Understanding Who You Are",
           "content": "<h1>The Mirror Moment - Understanding Who You Are</h1><h2>Topic Overview</h2><ul><li><strong>Self-Discovery as Your Foundation:</strong> Like a house needs a foundation, your career journey needs self-awareness — knowing your personality, values, and strengths.</li><li><strong>The Power of Personal Reflection:</strong> Self-reflection is looking beyond physical appearance to understand your inner self.</li><li><strong>Building Your Personal Identity Map:</strong> Your identity is a recipe mixing interests, values, personality traits, and dreams.</li></ul><h2>Explanation</h2><p>Self-awareness is your internal GPS guiding life choices. (Example: Maya loves problem-solving and helping others; she considers counseling or engineering.)</p><p>Values are your life's operating system (what you hold important).</p><p>Strengths are your superpowers — natural talents and learned skills (e.g., empathy, organization).</p><p>Personality shows how you approach life (outgoing or reflective).</p><h2>Key Takeaways</h2><ul><li>Self-awareness is the starting point for career success.</li><li>Your uniqueness is your advantage.</li><li>Personal growth is ongoing.</li><li>Authenticity attracts the right opportunities.</li></ul>",
           "order_index": 1,
-          "practice_question": "What 3 activities make you lose track of time?",
-          "practice_type": "text",
-          "correct_answer": "This is a reflective question; answers will vary based on personal experience."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "What 3 activities make you lose track of time?",
+              "answer": "This is a reflective question; answers will vary based on personal experience."
+            }
+          ]
         },
         {
           "title": "Day 2: Treasure Hunt - Discovering Your Hidden Talents",
           "content": "<h1>Treasure Hunt - Discovering Your Hidden Talents</h1><h2>Topic Overview</h2><ul><li>Everyone has multiple intelligences, including logic, language, spatial, musical, kinesthetic, interpersonal, intrapersonal, and naturalistic.</li><li>Strengths make you productive and engaged—discover yours!</li><li>Talents become powerful career capital when used strategically.</li></ul><h2>Explanation</h2><ul><li><strong>Logical-mathematical:</strong> Numbers and logic (e.g., love Sudoku).</li><li><strong>Linguistic:</strong> Words and writing (e.g., storytelling).</li><li><strong>Spatial:</strong> Visualizing and design (e.g., room design).</li><li><strong>Musical:</strong> Rhythm and pitch (e.g., guitar playing).</li><li><strong>Bodily-kinesthetic:</strong> Physical coordination (e.g., athletics).</li><li><strong>Interpersonal:</strong> Understanding others (e.g., conflict resolution).</li><li><strong>Intrapersonal:</strong> Self-awareness (e.g., journaling).</li><li><strong>Naturalistic:</strong> Nature connection (e.g., identifying plants).</li></ul><h2>Key Takeaways</h2><ul><li>Everyone has multiple intelligence types.</li><li>Talents show ideal careers.</li><li>Focus on strengths to grow.</li><li>Your talent mix is unique.</li></ul>",
           "order_index": 2,
-          "practice_question": "Assess which intelligence types you identify with most; rate yourself 1-5 for each.",
-          "practice_type": "text",
-          "correct_answer": "This is a self-assessment; answers will be personal ratings."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Assess which intelligence types you identify with most; rate yourself 1-5 for each.",
+              "answer": "This is a self-assessment; answers will be personal ratings."
+            }
+          ]
         },
         {
           "title": "Day 3: Dream Job GPS - Exploring Career Possibilities",
           "content": "<h1>Dream Job GPS - Exploring Career Possibilities</h1><h2>Topic Overview</h2><ul><li>Most future jobs don’t exist yet; career flexibility is essential.</li><li>Link interests and values to industries and roles.</li><li>Understand typical day, salary, education, and work-life balance for careers.</li></ul><h2>Explanation</h2><p>Example careers across sectors: AI engineer, UX/UI designer, environmental scientist, genetic counselor, social entrepreneur.</p><p>Use a 3-layer career investigation: job title, daily life, and path planning.</p><p>Conduct informational interviews to learn firsthand.</p><h2>Key Takeaways</h2><ul><li>Career paths aren’t always linear.</li><li>Combine multiple interests.</li><li>Transferable skills are valuable.</li><li>Research saves regret.</li></ul>",
           "order_index": 3,
-          "practice_question": "Reflect on passion vs. pay, envision your ideal workday, and identify world issues you care about.",
-          "practice_type": "text",
-          "correct_answer": "This is a reflective question; answers will vary."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Reflect on passion vs. pay, envision your ideal workday, and identify world issues you care about.",
+              "answer": "This is a reflective question; answers will vary."
+            }
+          ]
         },
         {
           "title": "Day 4: Skills Inventory - What's in Your Toolkit?",
           "content": "<h1>Skills Inventory - What's in Your Toolkit?</h1><h2>Topic Overview</h2><ul><li>Skills are learned abilities; talents are natural abilities.</li><li>Employers value technical, soft, and hybrid skills.</li><li>Skill stacking (combining skills) increases value.</li></ul><h2>Explanation</h2><p><strong>Technical:</strong> coding, digital literacy, data analysis.</p><p><strong>Soft:</strong> communication, leadership, critical thinking.</p><p><strong>Hybrid:</strong> creative problem-solving, cultural intelligence.</p><p>Learning methods include 70-20-10 model and micro-learning. Use projects to practice skills.</p><h2>Key Takeaways</h2><ul><li>Skills can be learned at any age.</li><li>Combining skills increases career value.</li><li>Soft skills matter more as tech advances.</li><li>Lifelong learning is essential.</li></ul>",
           "order_index": 4,
-          "practice_question": "List skills you have learned recently and identify key skills you need for a career you're interested in.",
-          "practice_type": "text",
-          "correct_answer": "This is a personal inventory; answers will vary."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "List skills you have learned recently and identify key skills you need for a career you're interested in.",
+              "answer": "This is a personal inventory; answers will vary."
+            }
+          ]
         },
         {
           "title": "Day 5: Brand Building - Crafting Your Personal Story",
           "content": "<h1>Brand Building - Crafting Your Personal Story</h1><h2>Topic Overview</h2><ul><li>Personal brand is your authentic professional reputation.</li><li>Your online presence reflects your brand.</li><li>Storytelling helps make your personal brand memorable.</li></ul><h2>Explanation</h2><p>Build your brand foundation with values, unique value proposition, and professional personality.</p><p>Manage your digital brand on LinkedIn, Instagram, or personal websites.</p><p>Craft your story using the Hero's Journey: The Call, The Challenge, The Growth, The Vision.</p><h2>Key Takeaways</h2><ul><li>Authenticity over perfection.</li><li>Brand consistency matters.</li><li>Brand evolves over time.</li><li>Professional can be fun and personal.</li></ul>",
           "order_index": 5,
-          "practice_question": "Compare how friends, teachers, and employers might describe you.",
-          "practice_type": "text",
-          "correct_answer": "This is a reflective exercise; answers will be personal."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Compare how friends, teachers, and employers might describe you.",
+              "answer": "This is a reflective exercise; answers will be personal."
+            }
+          ]
         },
         {
           "title": "Day 6: CV Workshop - Your Professional Introduction",
           "content": "<h1>CV Workshop - Your Professional Introduction</h1><h2>Topic Overview</h2><ul><li>Your CV is your professional trailer.</li><li>Hobbies strategically included demonstrate skills.</li><li>Customize CV for college, scholarships, or internships.</li></ul><h2>Explanation</h2><p>Include: Header, Professional Summary, Education, Experience.</p><p>Use action verbs, quantify achievements.</p><p>Hobbies showing teamwork, creativity, leadership, or cultural awareness strengthen your CV.</p><h2>Key Takeaways</h2><ul><li>Tell a coherent story through your CV.</li><li>Quantify impact with numbers.</li><li>Focus on meaningful hobbies.</li><li>Maintain clean, professional formatting.</li></ul>",
           "order_index": 6,
-          "practice_question": "Identify leadership examples from your own experience (in or out of school).",
-          "practice_type": "text",
-          "correct_answer": "This is based on personal experience; answers will vary."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Identify leadership examples from your own experience (in or out of school).",
+              "answer": "This is based on personal experience; answers will vary."
+            }
+          ]
         },
         {
           "title": "Day 7: Action Planning - From Dreams to Reality",
           "content": "<h1>Action Planning - From Dreams to Reality</h1><h2>Topic Overview</h2><ul><li>Break big goals into manageable steps.</li><li>Writing goals increases success rate.</li><li>Build your personal advisory board of mentors.</li></ul><h2>Explanation</h2><p>Use SMART-R goals (Specific, Measurable, Achievable, Relevant, Time-bound, and Reviewable).</p><p>Create 90-day, 1-year, and 5-year plans.</p><p>Mentorship, networking, and regular progress review are key.</p><h2>Key Takeaways</h2><ul><li>Small consistent steps matter most.</li><li>Stay flexible yet structured.</li><li>Network builds opportunity.</li><li>Reflect and adjust regularly.</li></ul>",
           "order_index": 7,
-          "practice_question": "Set a specific, measurable, and achievable action you can take this week toward a career goal.",
-          "practice_type": "text",
-          "correct_answer": "This is a personal goal-setting exercise; answers will vary."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Set a specific, measurable, and achievable action you can take this week toward a career goal.",
+              "answer": "This is a personal goal-setting exercise; answers will vary."
+            }
+          ]
         }
       ]
     },
@@ -396,57 +678,92 @@
           "title": "Day 1: Understanding Data - The Building Blocks of Information",
           "content": "<h1>Understanding Data - The Building Blocks of Information</h1><h2>Topic Overview</h2><ul><li>What is data and why is it everywhere around us?</li><li>Why keeping records is like having a superpower for making smart decisions</li><li>How data helps us understand patterns, solve problems, and plan for the future</li></ul><h2>Explanation</h2><h3>What is Data? Think of it as Digital Clues!</h3><p>Imagine you're a detective trying to solve a mystery. Every clue you collect - fingerprints, witness statements, photographs - these are all pieces of data! In the digital world, data is simply information that we collect and store.</p><h3>Why Keep Records? It's Like Having a Time Machine!</h3><p>Keeping records helps us: Track progress, make better decisions, spot patterns, and plan for the future.</p><h2>Key Takeaways</h2><ul><li>Data is information we collect to understand the world better</li><li>Keeping records helps us track progress and make smarter decisions</li><li>Good data organization leads to insights and better solutions</li><li>Everyone can be a data detective by asking good questions and collecting information</li></ul>",
           "order_index": 1,
-          "practice_question": "If you were to track your happiness for a week, what data would you collect?",
-          "practice_type": "text",
-          "correct_answer": "Answers could include things like mood ratings, activities done, sleep hours, etc."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "If you were to track your happiness for a week, what data would you collect?",
+              "answer": "Answers could include things like mood ratings, activities done, sleep hours, etc."
+            }
+          ]
         },
         {
           "title": "Day 2: Introduction to Spreadsheets - Your Digital Organization Tool",
           "content": "<h1>Introduction to Spreadsheets - Your Digital Organization Tool</h1><h2>Topic Overview</h2><ul><li>Understanding spreadsheets as digital tables that organize information</li><li>Learning the basic structure: rows, columns, and cells</li><li>Exploring Excel and Google Sheets interfaces and tools</li></ul><h2>Explanation</h2><h3>What Are Spreadsheets? Your Digital Filing Cabinet!</h3><p>Spreadsheets are digital binders organizing information in rows, columns, and cells. Excel is powerful offline software, while Google Sheets is a free, online tool for easy collaboration.</p><h2>Key Takeaways</h2><ul><li>Spreadsheets organize data in rows and columns</li><li>Each cell has a unique address like A1, B2</li><li>Excel and Google Sheets have similar functions</li><li>Organized data is easier to find and analyze</li></ul>",
           "order_index": 2,
-          "practice_question": "What columns would you use to organize your music library?",
-          "practice_type": "text",
-          "correct_answer": "Likely columns would be 'Song Title', 'Artist', 'Album', and 'Genre'."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "What columns would you use to organize your music library?",
+              "answer": "Likely columns would be 'Song Title', 'Artist', 'Album', and 'Genre'."
+            }
+          ]
         },
         {
           "title": "Day 3: Creating Your First Data Table - The Pocket Money Tracker",
           "content": "<h1>Creating Your First Data Table - The Pocket Money Tracker</h1><h2>Topic Overview</h2><ul><li>Designing a pocket money tracking system</li><li>Creating headers, entering data, formatting cells</li><li>Understanding income vs expenses</li></ul><h2>Explanation</h2><h3>Why Track Pocket Money? Become a Financial Detective!</h3><p>A pocket money tracker shows where your money comes and goes, helping you spot habits and save. Key columns include Date, Description, Income, Expense, Category, and Balance.</p><h2>Key Takeaways</h2><ul><li>Tracking helps find spending patterns</li><li>Categories aid analysis</li><li>Consistent entry makes data useful</li><li>Formatting helps readability</li></ul>",
           "order_index": 3,
-          "practice_question": "If you spent $20 on candy this month, what would you ask yourself?",
-          "practice_type": "text",
-          "correct_answer": "A good question would be 'Is this spending preventing me from reaching a bigger goal?'"
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "If you spent $20 on candy this month, what would you ask yourself?",
+              "answer": "A good question would be 'Is this spending preventing me from reaching a bigger goal?'"
+            }
+          ]
         },
         {
           "title": "Day 4: Hands-On Excel/Google Sheets Activity - Building Your Tracker",
           "content": "<h1>Hands-On Excel/Google Sheets Activity - Building Your Tracker</h1><h2>Topic Overview</h2><ul><li>Opening Excel or Google Sheets</li><li>Entering pocket money data with formatting</li><li>Learning colors, borders, number formats</li></ul><h2>Explanation</h2><p>Set up your tracker with headers: Date, Description, Income, Expense, Category, Balance, Notes. Use formatting tools like bold, colors, and borders to make it readable. Format columns for dates and currency.</p><h2>Key Takeaways</h2><ul><li>Formatting aids reading and analyzing</li><li>Accurate data entry is vital</li><li>Spreadsheets automate calculations and formatting</li><li>Regular updates keep track true</li></ul>",
           "order_index": 4,
-          "practice_question": "Enter one week of imaginary pocket money data.",
-          "practice_type": "text",
-          "correct_answer": "The answer should be a sample table with a few rows of data."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Enter one week of imaginary pocket money data.",
+              "answer": "The answer should be a sample table with a few rows of data."
+            }
+          ]
         },
         {
           "title": "Day 5: Introduction to Coding - The Language of Computers",
           "content": "<h1>Introduction to Coding - The Language of Computers</h1><h2>Topic Overview</h2><ul><li>What coding is: giving instructions to a computer</li><li>Logic building through step-by-step thinking</li><li>Introduction to Scratch with visual blocks</li></ul><h2>Explanation</h2><h3>Coding Means Teaching a Literal Friend</h3><p>You must give specific, step-by-step instructions that a computer can follow. Learning to code is a superpower that lets you create apps, websites, and games. Visual languages like Scratch use drag-and-drop blocks to make learning easier.</p><h2>Key Takeaways</h2><ul><li>Coding is clear, stepwise instructions for computers</li><li>Logical thinking and breaking problems down is key</li><li>Visual languages like Scratch ease learning</li><li>Coding skills are valuable and widely used</li></ul>",
           "order_index": 5,
-          "practice_question": "Write detailed steps for brushing teeth as if for a robot.",
-          "practice_type": "text",
-          "correct_answer": "The steps should be very specific, e.g., '1. Pick up toothbrush. 2. Unscrew toothpaste cap. 3. Squeeze toothpaste onto bristles...'"
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Write detailed steps for brushing teeth as if for a robot.",
+              "answer": "The steps should be very specific, e.g., '1. Pick up toothbrush. 2. Unscrew toothpaste cap. 3. Squeeze toothpaste onto bristles...'"
+            }
+          ]
         },
         {
           "title": "Day 6: Scratch Programming Basics - Your First Interactive Project",
           "content": "<h1>Scratch Programming Basics - Your First Interactive Project</h1><h2>Topic Overview</h2><ul><li>Creating a Scratch project with sprites and backdrops</li><li>Learning sequences, loops, events</li><li>Gaining confidence through practice</li></ul><h2>Explanation</h2><p>Scratch uses a stage (backdrop) and sprites (characters). You build scripts with code blocks to make sprites move, talk, and interact. Key concepts include sequences (order of commands), loops (repeating actions), and events (triggers for code).</p><h2>Key Takeaways</h2><ul><li>Scratch uses puzzle-like code blocks</li><li>Programs respond to events and run sequences</li><li>Testing often catches errors early</li><li>Small projects build skill over time</li></ul>",
           "order_index": 6,
-          "practice_question": "How would you program a Scratch cat to move in a square?",
-          "practice_type": "text",
-          "correct_answer": "Use a loop that repeats four times. Inside the loop, have a 'move 100 steps' block followed by a 'turn 90 degrees' block."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "How would you program a Scratch cat to move in a square?",
+              "answer": "Use a loop that repeats four times. Inside the loop, have a 'move 100 steps' block followed by a 'turn 90 degrees' block."
+            }
+          ]
         },
         {
           "title": "Day 7: Building Your Rock-Paper-Scissors Game - Putting It All Together",
           "content": "<h1>Building Your Rock-Paper-Scissors Game - Putting It All Together</h1><h2>Topic Overview</h2><ul><li>Designing and programming a complete interactive game</li><li>Understanding random choice and if/then logic</li><li>Combining all concepts learned</li></ul><h2>Explanation</h2><p>Plan the game flow: welcome, player input, computer's random choice, decide winner, and replay. In Scratch, use variables for choices and scores, program key presses for the player, use a random number for the computer, and apply if/then logic to determine the winner.</p><h2>Key Takeaways</h2><ul><li>Complex programs come from simple building blocks</li><li>Planning helps avoid mistakes</li><li>Test features separately</li><li>Games teach important coding concepts</li></ul>",
           "order_index": 7,
-          "practice_question": "Is the computer’s choice truly random? Why is that important?",
-          "practice_type": "text",
-          "correct_answer": "It's pseudo-random. It's important for the game to be fair and unpredictable."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Is the computer’s choice truly random? Why is that important?",
+              "answer": "It's pseudo-random. It's important for the game to be fair and unpredictable."
+            }
+          ]
         }
       ]
     },
@@ -460,57 +777,92 @@
           "title": "Day 1: Introduction to Cybersecurity & Digital Safety Foundation",
           "content": "<h1>Introduction to Cybersecurity & Digital Safety Foundation</h1><h2>Topic Overview</h2><ul><li>Understanding the digital landscape: The internet is everywhere—social media, games, schoolwork, entertainment. We need rules for safety here as much as in the physical world.</li><li>Why cybersecurity matters: Your digital life is like a house; cybersecurity is the locks and alarms. It protects your personal info and reputation.</li><li>Building your digital defense shield: Start assembling habits and skills to stay safe online.</li></ul><h2>Explanation</h2><p>Cybersecurity is your digital superhero shield; it protects your passwords, info, and reputation.</p><p>Common threats: cyberbullying, identity theft, phishing (fake emails/msgs), malware (harmful software).</p><p>Example: Sarah almost shared her password in a phishing email but recognized the scam and reported it instead.</p><h2>Key Takeaways</h2><ul><li>Cybersecurity protects your digital life like safety rules protect you physically.</li><li>Threats include cyberbullying, identity theft, phishing, malware.</li><li>Awareness is the first step to safety.</li><li>Everyone plays a part in making the digital world safe.</li></ul>",
           "order_index": 1,
-          "practice_question": "What should you do if you get a text about winning a gift card that asks for info?",
-          "practice_type": "text",
-          "correct_answer": "Delete the text and block the number. It's likely a phishing scam."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "What should you do if you get a text about winning a gift card that asks for info?",
+              "answer": "Delete the text and block the number. It's likely a phishing scam."
+            }
+          ]
         },
         {
           "title": "Day 2: Strong Passwords - The Foundation of Digital Security",
           "content": "<h1>Strong Passwords - The Foundation of Digital Security</h1><h2>Topic Overview</h2><ul><li>Passwords are digital keys; weak passwords are like flimsy locks.</li><li>Learn what makes passwords hard/easy to crack.</li><li>Create strong passwords that are almost impossible to break.</li></ul><h2>Explanation</h2><p>Weak passwords get hacked quickly.</p><p>Strong passwords are long (12+ characters), complex, unpredictable, and unique.</p><p>Passphrase method: Use 4+ unrelated words with symbols/numbers, e.g., “Coffee#Sunrise$Bicycle&Music”.</p><h2>Key Takeaways</h2><ul><li>Length is most important for password strength.</li><li>Don’t reuse passwords across accounts.</li><li>Passphrases can be strong and easier to remember.</li><li>Strong passwords protect your accounts cheaply and effectively.</li></ul>",
           "order_index": 2,
-          "practice_question": "Rank passwords from weakest to strongest.",
-          "practice_type": "text",
-          "correct_answer": "Ranking depends on the provided passwords, but generally shorter, simpler passwords are weaker."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Rank passwords from weakest to strongest.",
+              "answer": "Ranking depends on the provided passwords, but generally shorter, simpler passwords are weaker."
+            }
+          ]
         },
         {
           "title": "Day 3: Advanced Password Security & Management Tools",
           "content": "<h1>Advanced Password Security & Management Tools</h1><h2>Topic Overview</h2><ul><li>Manage many passwords easily with password managers.</li><li>Use Two-Factor Authentication (2FA) for better protection.</li><li>Plan for losing access or forgetting passwords safely.</li></ul><h2>Explanation</h2><p>Password managers store all passwords securely; you only remember one master password.</p><p>2FA requires two proofs: password + phone/app/fingerprint.</p><p>Types of 2FA: SMS codes, authenticator apps, hardware keys, biometrics.</p><h2>Key Takeaways</h2><ul><li>Password managers solve remembering and reusing problems.</li><li>2FA blocks hackers even if passwords leak.</li><li>Set up these tools early to save time and stress.</li><li>2FA + password manager = very strong security.</li></ul>",
           "order_index": 3,
-          "practice_question": "List problems solved by password managers.",
-          "practice_type": "text",
-          "correct_answer": "Remembering many unique passwords, creating strong random passwords, and avoiding password reuse."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "List problems solved by password managers.",
+              "answer": "Remembering many unique passwords, creating strong random passwords, and avoiding password reuse."
+            }
+          ]
         },
         {
           "title": "Day 4: Understanding and Recognizing Cyberbullying",
           "content": "<h1>Understanding and Recognizing Cyberbullying</h1><h2>Topic Overview</h2><ul><li>Cyberbullying is different: 24/7, viral, anonymous, permanent.</li><li>It causes serious harm socially and emotionally.</li><li>Bystanders have power to stop bullying by speaking up and reporting.</li></ul><h2>Explanation</h2><p>Types include harassment, denigration, impersonation, outing, exclusion, stalking.</p><p>Signs you or someone you know might be targeted.</p><p>Case study: Taylor’s photo altered and shared; classmates stopped the bullying by reporting.</p><h2>Key Takeaways</h2><ul><li>Cyberbullying is serious with lasting effects.</li><li>It spreads quickly and can be anonymous.</li><li>Everyone can help stop it by speaking out.</li><li>Early recognition and action are vital.</li></ul>",
           "order_index": 4,
-          "practice_question": "Identify cyberbullying type in a scenario.",
-          "practice_type": "text",
-          "correct_answer": "Depends on the scenario provided, could be harassment, impersonation, etc."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Identify cyberbullying type in a scenario.",
+              "answer": "Depends on the scenario provided, could be harassment, impersonation, etc."
+            }
+          ]
         },
         {
           "title": "Day 5: Reporting Cyberbullying and Getting Help",
           "content": "<h1>Reporting Cyberbullying and Getting Help</h1><h2>Topic Overview</h2><ul><li>Learn how to document, report, and get help for cyberbullying.</li><li>Map your support network—who to talk to.</li><li>Understand legal consequences and when to involve police.</li></ul><h2>Explanation</h2><p>Documentation: screenshots, save evidence, write details.</p><p>Reporting hierarchy: platform tools, school, family, legal, support services.</p><p>When to escalate to law enforcement.</p><p>Support services and crisis contacts.</p><h2>Key Takeaways</h2><ul><li>Effective reporting requires good evidence and following up.</li><li>Use multiple channels for better results.</li><li>Support networks make a difference.</li><li>Know your legal rights and responsibilities.</li></ul>",
           "order_index": 5,
-          "practice_question": "Document a threatening message scenario.",
-          "practice_type": "text",
-          "correct_answer": "Should include taking a screenshot, noting the date/time, and the sender's username."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Document a threatening message scenario.",
+              "answer": "Should include taking a screenshot, noting the date/time, and the sender's username."
+            }
+          ]
         },
         {
           "title": "Day 6: Creating Your Digital Safety Pledge Poster",
           "content": "<h1>Creating Your Digital Safety Pledge Poster</h1><h2>Topic Overview</h2><ul><li>Turn learning into personal pledges to guide your digital behavior.</li><li>Use design principles to make your message clear and memorable.</li><li>Become a peer educator and digital safety leader.</li></ul><h2>Explanation</h2><p>Pledge elements: personal commitments, community promises, specific actions, visual impact.</p><p>Core pledges: passwords, respectful communication, privacy, reporting, critical thinking.</p><p>Design tips: hierarchy, contrast, simplicity, positive framing, personal voice.</p><h2>Key Takeaways</h2><ul><li>Personal pledges have power over rules.</li><li>Visuals make ideas easier to remember.</li><li>Student-created resources resonate more.</li><li>Leading digital safety reinforces good habits.</li></ul>",
           "order_index": 6,
-          "practice_question": "Write 3 pledge statements for password security and respectful communication.",
-          "practice_type": "text",
-          "correct_answer": "Answers will be personal pledge statements."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Write 3 pledge statements for password security and respectful communication.",
+              "answer": "Answers will be personal pledge statements."
+            }
+          ]
         },
         {
           "title": "Day 7: Comprehensive Review, Assessment & Future Action Planning",
           "content": "<h1>Comprehensive Review, Assessment & Future Action Planning</h1><h2>Topic Overview</h2><ul><li>Connect all lessons for a strong cybersecurity foundation.</li><li>Apply knowledge through real-world scenarios and peer teaching.</li><li>Build habits and plans for ongoing digital safety.</li></ul><h2>Explanation</h2><p>Review: threats, password security, cyberbullying, reporting, teaching.</p><p>Critical thinking questions to analyze threats and responses.</p><p>Cybersecurity mindset: skepticism, risk assessment, proactive planning, community responsibility.</p><p>Future-proof skills and career links.</p><h2>Key Takeaways</h2><ul><li>You have a comprehensive digital safety toolkit.</li><li>Your skills protect not just you but your community.</li><li>Cybersecurity is an ongoing practice.</li><li>Principles apply beyond tech to respect and critical thinking.</li></ul>",
           "order_index": 7,
-          "practice_question": "Analyze phishing and harassment scenarios, suggest responses.",
-          "practice_type": "text",
-          "correct_answer": "Phishing: don't click, delete, report. Harassment: block, report, tell a trusted adult."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Analyze phishing and harassment scenarios, suggest responses.",
+              "answer": "Phishing: don't click, delete, report. Harassment: block, report, tell a trusted adult."
+            }
+          ]
         }
       ]
     },
@@ -524,57 +876,92 @@
           "title": "Day 1: Introduction to AI Ethics and Responsible Use",
           "content": "<h1>Introduction to AI Ethics and Responsible Use</h1><h3>Topic Overview</h3><ul><li>What is AI Ethics? Understanding the moral principles that guide how we should develop and use artificial intelligence systems</li><li>The Foundation of Responsible AI: Learning why we need rules and guidelines for AI, just like we have rules for driving cars or using the internet safely</li><li>Your Role as an AI User: Recognizing that every time you use AI tools, you're making ethical choices that can impact yourself and others</li></ul><h3>Explanation</h3><p>AI ethics are like the rules of a sport: they ensure fairness, safety, and good conduct in how AI is created and used.</p><p>AI systems affect real people's lives (jobs, loans, etc.), so ethical guidelines prevent harm and unfairness.</p><p>Example: An AI hiring system favors male candidates unintentionally because it learned from biased past data. This shows the need for ethics.</p><p>The three pillars of ethical AI: fairness, transparency, and accountability.</p><p>Your responsibility as a user: use AI tools ethically, just like you wouldn't cheat or plagiarize.</p><h3>Key Takeaways</h3><ul><li>AI ethics ensure AI is used fairly, responsibly, and transparently.</li><li>AI can spread biases if not carefully guided.</li><li>Users play an important role in responsible AI use.</li><li>Understanding AI helps prevent misuse and unfairness.</li></ul>",
           "order_index": 1,
-          "practice_question": "Your friend uses AI to write their whole essay and submits it. Is this fair? Explain.",
-          "practice_type": "text",
-          "correct_answer": "This is likely unfair and considered plagiarism as it misrepresents the student's own work and understanding."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Your friend uses AI to write their whole essay and submits it. Is this fair? Explain.",
+              "answer": "This is likely unfair and considered plagiarism as it misrepresents the student's own work and understanding."
+            }
+          ]
         },
         {
           "title": "Day 2: Understanding AI Biases and Fairness",
           "content": "<h1>Understanding AI Biases and Fairness</h1><h3>Topic Overview</h3><ul><li>What is AI Bias? AI systems can learn unfair preferences from data.</li><li>Types of bias: historical, representation, measurement, evaluation.</li><li>AI often amplifies human biases rather than being neutral.</li></ul><h3>Explanation</h3><p>Bias is like learning from outdated, unfair data — imagine only reading old job ads that favor men.</p><p>Example: Google's AI incorrectly tagged people with darker skin due to lack of diverse training data.</p><p>Different biases explained with examples (hiring, voice recognition, crime prediction).</p><p>AI can amplify small human biases into big problems.</p><p>Recognizing bias helps prevent harm in important decisions (jobs, loans, justice).</p><h3>Key Takeaways</h3><ul><li>AI bias comes from biased data, not malicious intent.</li><li>Bias has real effects on fairness and opportunity.</li><li>Identifying and fixing bias needs diverse teams and ongoing checks.</li><li>Awareness helps challenge unfair systems.</li></ul>",
           "order_index": 2,
-          "practice_question": "Identify the bias type if AI favors male college applicants over females equally qualified.",
-          "practice_type": "text",
-          "correct_answer": "This is an example of historical bias, where the AI learned from past data that may have favored male applicants."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Identify the bias type if AI favors male college applicants over females equally qualified.",
+              "answer": "This is an example of historical bias, where the AI learned from past data that may have favored male applicants."
+            }
+          ]
         },
         {
           "title": "Day 3: AI and Privacy/Data Protection",
           "content": "<h1>AI and Privacy/Data Protection</h1><h3>Topic Overview</h3><ul><li>Your data is collected extensively by AI systems.</li><li>Learn what data is collected and why privacy matters.</li><li>Controlling personal data is vital for autonomy and safety.</li></ul><h3>Explanation</h3><p>Digital apps and devices collect everything from your posts to typing patterns.</p><p>Example: A smart speaker listening constantly and sharing data without full awareness.</p><p>Risks: identity theft, manipulation, discrimination, long-term misuse.</p><p>Protect privacy by reading policies, adjusting settings, and using privacy tools.</p><h3>Key Takeaways</h3><ul><li>AI collects much more data than you realize.</li><li>Privacy is about maintaining control, not hiding bad actions.</li><li>You have rights about how your data is used.</li><li>Protecting privacy keeps you safer and freer.</li></ul>",
           "order_index": 3,
-          "practice_question": "Research five apps you use: what data do they collect? Any surprises?",
-          "practice_type": "text",
-          "correct_answer": "Answers will vary but should list apps and the types of data they collect, reflecting on any unexpected findings."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Research five apps you use: what data do they collect? Any surprises?",
+              "answer": "Answers will vary but should list apps and the types of data they collect, reflecting on any unexpected findings."
+            }
+          ]
         },
         {
           "title": "Day 4: AI Safety and Security Risks",
           "content": "<h1>AI Safety and Security Risks</h1><h3>Topic Overview</h3><ul><li>AI can malfunction or be misused by attackers.</li><li>Learn common AI safety risks and how to protect yourself.</li><li>Build awareness for AI-related digital threats.</li></ul><h3>Explanation</h3><p>AI errors (medical mistakes, wrong decisions by self-driving cars).</p><p>Malicious use (deepfakes, scam messages, cyberbullying).</p><p>Systemic risks like misinformation spread, job loss, concentrated power.</p><p>Deepfakes are fake videos/images that look real and can cause harm.</p><p>Stay safe by verifying info, protecting personal data, and reporting abuse.</p><h3>Key Takeaways</h3><ul><li>AI can cause harm accidentally or by being exploited by bad actors.</li><li>Deepfakes threaten trust and reputation.</li><li>Staying informed and cautious can reduce risks.</li></ul>",
           "order_index": 4,
-          "practice_question": "What risks should a school consider before using AI facial recognition?",
-          "practice_type": "text",
-          "correct_answer": "Risks include privacy violations, potential for bias against certain groups, data security breaches, and creating a surveillance environment."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "What risks should a school consider before using AI facial recognition?",
+              "answer": "Risks include privacy violations, potential for bias against certain groups, data security breaches, and creating a surveillance environment."
+            }
+          ]
         },
         {
           "title": "Day 5: Recognizing AI Misuse - Deepfakes and Misinformation",
           "content": "<h1>Recognizing AI Misuse - Deepfakes and Misinformation</h1><h3>Topic Overview</h3><ul><li>AI generated fake content spreads misinformation.</li><li>Learn to spot deepfakes and false content.</li><li>Critical thinking is vital in the AI information age.</li></ul><h3>Explanation</h3><p>Fake videos/images/audios created by AI.</p><p>Misinformation spreads fast and affects trust in news and politics.</p><p>Examples: fake Pentagon explosion image causing panic; voice cloning scams.</p><p>Red flags: unnatural face movements, robotic voice, strange URLs, emotional manipulation.</p><p>Always fact-check before sharing.</p><h3>Key Takeaways</h3><ul><li>AI fake content is increasingly realistic and harmful.</li><li>Verification skills are essential.</li><li>Sharing unverified content can cause damage.</li></ul>",
           "order_index": 5,
-          "practice_question": "How to fact-check a viral video of a famous YouTuber quitting?",
-          "practice_type": "text",
-          "correct_answer": "Check the YouTuber's official social media channels, look for reports from reputable news sources, and use reverse image search on video thumbnails."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "How to fact-check a viral video of a famous YouTuber quitting?",
+              "answer": "Check the YouTuber's official social media channels, look for reports from reputable news sources, and use reverse image search on video thumbnails."
+            }
+          ]
         },
         {
           "title": "Day 6: The “Can AI Replace Humans?” Debate",
           "content": "<h1>The “Can AI Replace Humans?” Debate</h1><h3>Topic Overview</h3><ul><li>Explore the debate on whether AI will replace humans.</li><li>Understand uniquely human skills vs AI strengths.</li><li>The future may be collaboration, not replacement.</li></ul><h3>Explanation</h3><p>AI is good at data analysis, speed, and routine tasks.</p><p>Humans excel at emotions, creativity, ethics, intuition.</p><p>Examples: AI wins at chess but not nursing care.</p><p>Many jobs are automated, but human qualities remain vital.</p><p>Humans and AI can work together for better outcomes.</p><h3>Key Takeaways</h3><ul><li>AI won't replace all humans but will change job nature.</li><li>Human skills like empathy and creativity remain crucial.</li><li>Preparing means learning to work effectively with AI.</li></ul>",
           "order_index": 6,
-          "practice_question": "Prepare arguments for or against “AI will do any job better than humans by 2040.”",
-          "practice_type": "text",
-          "correct_answer": "Arguments should consider AI's strengths in computation and data processing versus human strengths in creativity, empathy, and complex problem-solving."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Prepare arguments for or against “AI will do any job better than humans by 2040.”",
+              "answer": "Arguments should consider AI's strengths in computation and data processing versus human strengths in creativity, empathy, and complex problem-solving."
+            }
+          ]
         },
         {
           "title": "Day 7: Being a Responsible Digital Citizen with AI",
           "content": "<h1>Being a Responsible Digital Citizen with AI</h1><h3>Topic Overview</h3><ul><li>What does good digital citizenship mean with AI?</li><li>Your AI usage affects society at large.</li><li>Ways to promote responsible AI use and ethics daily.</li></ul><h3>Explanation</h3><p>Responsible AI use means honesty, fairness, privacy, critical thinking, and empathy.</p><p>Small individual actions add up to big societal impact.</p><p>Example: Deciding whether to share a funny AI-generated video of your principal.</p><p>Be an AI advocate: educate, model good behavior, participate in policy.</p><h3>Key Takeaways</h3><ul><li>Responsible AI use benefits everyone.</li><li>Transparency and verification are key.</li><li>Citizenship is ongoing practice, adapting to new challenges.</li></ul>",
           "order_index": 7,
-          "practice_question": "Create your own “AI Ethics Code” with rules for AI use.",
-          "practice_type": "text",
-          "correct_answer": "The code should include personal rules regarding plagiarism, respecting privacy, avoiding the spread of misinformation, and using AI to help rather than harm."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Create your own “AI Ethics Code” with rules for AI use.",
+              "answer": "The code should include personal rules regarding plagiarism, respecting privacy, avoiding the spread of misinformation, and using AI to help rather than harm."
+            }
+          ]
         }
       ]
     },
@@ -588,57 +975,92 @@
           "title": "Day 1: Introduction to Consumers and Consumer Rights",
           "content": "<h1>Introduction to Consumers and Consumer Rights</h1><h3>Who is a Consumer?</h3><p><strong>Definition:</strong> A consumer is any person who buys goods or hires services for personal use, consumption, or benefit.</p><p><strong>Key characteristic:</strong> The purchase must be for personal use, not for business or resale.</p><h3>Why Do We Need Consumer Rights?</h3><p>Common problems consumers face:</p><ul><li>Overcharging</li><li>Defective products</li><li>False advertising</li><li>Expired products</li><li>Poor quality goods</li><li>Unfair return policies</li></ul><p>Example: Rohan was charged ₹25 for chips with MRP ₹20 — this is wrong!</p><h3>Key Takeaways</h3><ul><li>Anyone buying for personal use is a consumer.</li><li>Consumer rights protect buyers from unfair practices.</li><li>These rights are backed by law and enforceable.</li><li>Consumers must be aware and make informed choices.</li></ul>",
           "order_index": 1,
-          "practice_question": "Is Meera a consumer if she buys a dress for her birthday?",
-          "practice_type": "text",
-          "correct_answer": "Yes, because she is buying the dress for personal use."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Is Meera a consumer if she buys a dress for her birthday?",
+              "answer": "Yes, because she is buying the dress for personal use."
+            }
+          ]
         },
         {
           "title": "Day 2: Understanding MRP (Maximum Retail Price)",
           "content": "<h1>Understanding MRP (Maximum Retail Price)</h1><h3>What is MRP?</h3><p>Maximum Retail Price, set by the manufacturer, is the highest price legally chargeable across India. It acts as a price ceiling. Shops can charge equal or less than MRP but never more.</p><h3>How to Find MRP</h3><p>It is usually printed on packaging, labels, and tags on products like food packets, medicines, electronics, and clothes.</p><h3>MRP vs Selling Price</h3><p>Example: A chocolate's MRP is ₹25. A shop can charge ₹25 or less, but charging ₹30 is illegal.</p><h3>Common Violations</h3><ul><li>Claiming a \"market rate\" higher than MRP.</li><li>Adding illegal surcharges for transport or during festivals.</li><li>Concealing or altering MRP labels.</li></ul><h3>What to Do When Overcharged</h3><ol><li>Politely show the MRP and ask for the correct price.</li><li>Ask for a manager if the request is refused.</li><li>Shop elsewhere if necessary.</li><li>Report to the Consumer Helpline (1915).</li></ol><h3>Key Takeaways</h3><ul><li>MRP is the maximum legal price.</li><li>Shopkeepers must not overcharge beyond MRP.</li><li>Discounts below MRP are allowed.</li><li>Know your rights and report violations.</li></ul>",
           "order_index": 2,
-          "practice_question": "A shopkeeper charges ₹35 for a cookie packet with an MRP of ₹40. Is this legal?",
-          "practice_type": "text",
-          "correct_answer": "Yes, it is legal because the price charged is less than the MRP."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "A shopkeeper charges ₹35 for a cookie packet with an MRP of ₹40. Is this legal?",
+              "answer": "Yes, it is legal because the price charged is less than the MRP."
+            }
+          ]
         },
         {
           "title": "Day 3: Right to Safety",
           "content": "<h1>Right to Safety</h1><p>The Right to Safety means that the goods you buy should not cause harm to your health or life.</p><h3>Types of Safety Risks:</h3><ul><li><strong>Physical:</strong> electric shocks, sharp edges</li><li><strong>Health:</strong> expired food, toxic medicines</li><li><strong>Chemical:</strong> harmful paints, pesticides in food</li></ul><p>Look for common safety marks like <strong>ISI</strong> for electricals, <strong>Agmark</strong> for food products, <strong>BIS</strong> for various goods, and <strong>Hallmark</strong> for precious metals.</p><h3>How to check for safety:</h3><ul><li>Always check expiry dates.</li><li>Look for official certification marks.</li><li>Inspect the packaging for damage or tampering.</li></ul><h3>What to do if a product is unsafe:</h3><ol><li>Stop using the product immediately.</li><li>Try to return it to the seller.</li><li>Keep evidence like the receipt and photos of the product.</li><li>Report it to the consumer helpline (1915) to protect others.</li></ol><h3>Key Takeaways</h3><ul><li>Never compromise on safety for a lower price.</li><li>Look for certification marks on products.</li><li>Reporting unsafe products is a social responsibility.</li><li>Safety is your most basic right as a consumer.</li></ul>",
           "order_index": 3,
-          "practice_question": "Which safety mark should you look for on an electric iron?",
-          "practice_type": "text",
-          "correct_answer": "The ISI mark."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Which safety mark should you look for on an electric iron?",
+              "answer": "The ISI mark."
+            }
+          ]
         },
         {
           "title": "Day 4: Right to Choose",
           "content": "<h1>Right to Choose</h1><p>The Right to Choose means you have the freedom to select from a variety of products, services, brands, qualities, and prices without being forced or pressured by the seller.</p><h3>Why Choice is Good:</h3><p>Choice and competition lead to better prices, higher quality products, more innovation, and improved customer service.</p><h3>Types of Choice:</h3><ul><li><strong>Product Choice:</strong> Different brands of phones, soaps, etc.</li><li><strong>Service Choice:</strong> Various mobile phone plans or internet providers.</li><li><strong>Shopping Choice:</strong> Deciding where and how to buy (online, local store).</li></ul><h3>Threats to Your Choice:</h3><ul><li><strong>Forced Bundling:</strong> Being forced to buy a phone case when you only want the phone.</li><li><strong>Limited Options:</strong> A shop only stocking one brand to push its sale.</li><li><strong>Misleading Information:</strong> False advertising that influences your decision.</li></ul><h3>Key Takeaways</h3><ul><li>Your right to choose empowers you as a consumer.</li><li>Resist forced purchases and bundled products you don't need.</li><li>Competition in the market benefits consumers.</li><li>Research and compare to make the best choices.</li></ul>",
           "order_index": 4,
-          "practice_question": "A shopkeeper says you must buy a specific phone case with a new phone. Does this violate your rights?",
-          "practice_type": "text",
-          "correct_answer": "Yes, this is forced bundling and violates your Right to Choose."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "A shopkeeper says you must buy a specific phone case with a new phone. Does this violate your rights?",
+              "answer": "Yes, this is forced bundling and violates your Right to Choose."
+            }
+          ]
         },
         {
           "title": "Day 5: Right to Refund and Compensation",
           "content": "<h1>Right to Refund and Compensation</h1><p>If a product is defective or a service is poor, you have the right to seek a remedy, which can be a refund, replacement, repair, or even monetary compensation for any loss or injury.</p><h3>When can you claim a remedy?</h3><ul><li>The product is defective or doesn't work as promised.</li><li>The service paid for was not provided properly.</li><li>The product is unsafe and caused harm.</li><li>The quantity is less than what you paid for.</li></ul><h3>How to Claim:</h3><ol><li><strong>Keep Proof:</strong> Always keep receipts, warranty cards, and any communication with the seller. Take photos or videos of the defect.</li><li><strong>Contact the Seller:</strong> First, approach the seller politely with your proof and ask for a resolution.</li><li><strong>Escalate:</strong> If the seller doesn't help, you can file a complaint with a consumer forum or call the national consumer helpline (1915).</li></ol><h3>Key Takeaways</h3><ul><li>You are entitled to a remedy for faulty goods or services.</li><li>Proper documentation (receipts, etc.) is crucial for your case.</li><li>Consumer courts are established to help resolve these disputes.</li><li>Be persistent and polite when seeking a resolution.</li></ul>",
           "order_index": 5,
-          "practice_question": "You bought a new pen that doesn't write. What is the first step you should take?",
-          "practice_type": "text",
-          "correct_answer": "The first step is to go back to the shopkeeper with the pen and the receipt to ask for a replacement or refund."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "You bought a new pen that doesn't write. What is the first step you should take?",
+              "answer": "The first step is to go back to the shopkeeper with the pen and the receipt to ask for a replacement or refund."
+            }
+          ]
         },
         {
           "title": "Day 6: Role-Play Activity",
           "content": "<h1>Role-Play Activity: Shopkeeper & Customer</h1><p>Today is about putting your knowledge into action! By role-playing common scenarios, you can gain the confidence to assert your consumer rights effectively and politely in real life. This also helps in understanding the seller's perspective.</p><h3>Activity Instructions:</h3><p>Pair up with a classmate. One person will be the 'Customer' and the other will be the 'Shopkeeper'.</p><p>Choose one of the following scenarios to act out:</p><ul><li><strong>Scenario 1:</strong> The shopkeeper is charging ₹5 more than the MRP on a cold drink.</li><li><strong>Scenario 2:</strong> The customer wants to return a t-shirt that has a hole they discovered after purchase.</li><li><strong>Scenario 3:</strong> The shopkeeper is forcing the customer to buy a notebook with a pen they don't want.</li><li><strong>Scenario 4:</strong> The customer finds an expired packet of biscuits on the shelf.</li></ul><p>The customer should calmly state the problem and their right. The shopkeeper can either agree or refuse, allowing the customer to practice how to respond.</p><h3>Key Takeaways</h3><ul><li>Practice helps build confidence.</li><li>Polite but firm communication is most effective.</li><li>Knowing your rights helps you stay calm and logical.</li></ul>",
           "order_index": 6,
-          "practice_question": "In a role-play, if a shopkeeper refuses to give a refund for a defective product, what should the 'customer' say or do next?",
-          "practice_type": "text",
-          "correct_answer": "The customer should calmly state that they will escalate the issue by filing a complaint with the consumer forum and mention that they have the receipt as proof."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "In a role-play, if a shopkeeper refuses to give a refund for a defective product, what should the 'customer' say or do next?",
+              "answer": "The customer should calmly state that they will escalate the issue by filing a complaint with the consumer forum and mention that they have the receipt as proof."
+            }
+          ]
         },
         {
           "title": "Day 7: Revision and Assessment",
           "content": "<h1>Revision and Assessment</h1><p>Let's review everything we've learned about consumer rights this week. Being an aware consumer is a lifelong skill that protects you and promotes a fair marketplace for everyone.</p><h3>Quick Review of Your Rights:</h3><ul><li><strong>Right to Safety:</strong> Protection from hazardous goods.</li><li><strong>Right to be Informed:</strong> Access to information about quality, quantity, purity, price.</li><li><strong>Right to Choose:</strong> Freedom to select from a variety of goods and services.</li><li><strong>Right to be Heard:</strong> Your complaints must be listened to.</li><li><strong>Right to Seek Redressal:</strong> Right to get compensation for unfair trade practices.</li><li><strong>Right to Consumer Education:</strong> The right to acquire knowledge and skills to be an informed consumer.</li></ul><p>Remember the national consumer helpline number: <strong>1915</strong>.</p><h3>Key Takeaways</h3><ul><li>Your consumer rights are your power in the marketplace.</li><li>Always check MRP, expiry dates, and safety marks.</li><li>Keep receipts and documents as proof of purchase.</li><li>Don't hesitate to raise your voice against unfair practices.</li></ul>",
           "order_index": 7,
-          "practice_question": "What is the national consumer helpline number in India?",
-          "practice_type": "text",
-          "correct_answer": "The national consumer helpline number is 1915."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "What is the national consumer helpline number in India?",
+              "answer": "The national consumer helpline number is 1915."
+            }
+          ]
         }
       ]
     },
@@ -652,57 +1074,92 @@
           "title": "Day 1: Introduction to Law and the Legal System",
           "content": "<h1>Introduction to Law and the Legal System</h1><h2>What is Law?</h2><p><strong>Definition:</strong> Law is a system of rules created and enforced by society to regulate behavior and maintain order.</p><p><strong>Purpose:</strong> To protect people, property, and ensure fairness in society.</p><p><strong>Example:</strong> Traffic laws exist so everyone can travel safely - imagine if there were no traffic lights or speed limits!</p><h3>Types of Laws That Affect You</h3><ul><li><strong>Criminal Law:</strong> Deals with crimes like theft, assault, or cyberbullying.</li><li><strong>Civil Law:</strong> Handles disputes between people (like contract disagreements).</li><li><strong>Constitutional Law:</strong> Protects your fundamental rights like freedom of speech.</li></ul><p><strong>Example:</strong> If someone steals your bike, that's criminal law. If you buy something online and it doesn't arrive, that's civil law.</p><h3>The Court System - Like School Hierarchy</h3><p>Lower Courts: Handle smaller cases (like your class teacher handling minor issues).</p><p>Higher Courts: Deal with serious matters (like the principal handling major disciplinary cases).</p><p>Supreme Court: Final authority on constitutional matters (like the school board making final policy decisions).</p><h3>Rights vs Responsibilities</h3><p><strong>Rights:</strong> What you're entitled to (like the right to education, safety, privacy).</p><p><strong>Responsibilities:</strong> What you owe to others and society (like following laws, respecting others' rights).</p><p><strong>Balance:</strong> Your rights end where another person's rights begin.</p><h2>Key Takeaways</h2><ul><li>Law exists to protect everyone and maintain fairness - without laws, it would be chaos.</li><li>You have both rights and responsibilities as a citizen - these grow as you get older.</li><li>The legal system has different levels and types of laws designed for different purposes.</li><li>Knowledge of law empowers you to make informed decisions.</li></ul>",
           "order_index": 1,
-          "practice_question": "What is the main purpose of having laws in society?",
-          "practice_type": "text",
-          "correct_answer": "To protect people and their property, maintain order, ensure fairness, and help resolve disputes peacefully."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "What is the main purpose of having laws in society?",
+              "answer": "To protect people and their property, maintain order, ensure fairness, and help resolve disputes peacefully."
+            }
+          ]
         },
         {
           "title": "Day 2: Understanding Rights - What You're Entitled To",
           "content": "<h1>Understanding Rights - What You're Entitled To</h1><h2>Constitutional Rights</h2><p><strong>Right to Life and Personal Liberty:</strong> No one can harm or detain you without legal reason.</p><p><strong>Right to Education:</strong> Guaranteed free education up to a certain age.</p><p><strong>Right to Equality:</strong> No discrimination based on religion, race, gender, etc.</p><p><strong>Right to Freedom of Expression:</strong> You can share opinions responsibly.</p><h2>Rights at School</h2><ul><li>Right to Safety: Protection from bullying, harassment.</li><li>Right to Fair Treatment and Privacy.</li><li>Right to Express Views with respect for others.</li></ul><h2>Digital Rights</h2><ul><li>Right to data privacy and protection online.</li><li>Protection from cyberbullying and fake profiles.</li></ul><h2>Rights in Family</h2><ul><li>Protection from abuse.</li><li>Right to basic needs like food, shelter, education.</li><li>Right to cultural identity and to express opinions.</li></ul><h2>Rights with Authorities</h2><ul><li>Right to know why you’re questioned.</li><li>Right to remain silent without a guardian.</li><li>Right to legal representation and fair treatment.</li></ul><h2>Key Takeaways</h2><ul><li>Rights are protections, not privileges.</li><li>Special protections exist for minors.</li><li>Rights come balanced with responsibilities.</li><li>Knowing your rights helps protect you.</li></ul>",
           "order_index": 2,
-          "practice_question": "What should you do if your right to education is violated?",
-          "practice_type": "text",
-          "correct_answer": "You can report it to school authorities, educational boards, or child rights organizations."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "What should you do if your right to education is violated?",
+              "answer": "You can report it to school authorities, educational boards, or child rights organizations."
+            }
+          ]
         },
         {
           "title": "Day 3: Understanding Responsibilities - What You Owe Society",
           "content": "<h1>Understanding Responsibilities - What You Owe Society</h1><p>The social contract means following rules to benefit everyone.</p><p>Legal duties include obeying laws, attending school, respecting others.</p><h2>School responsibilities</h2><p>Follow rules, show respect, do not bully, and care for school property.</p><h2>Digital responsibilities</h2><p>No cyberbullying, respect privacy, and be honest online.</p><h2>Family/community duties</h2><p>Help at home, respect shared spaces, and volunteer.</p><p>Take responsibility for your actions and learn from mistakes.</p><h2>Key Takeaways</h2><ul><li>Responsibilities keep society stable.</li><li>Teenagers must uphold their duties seriously.</li><li>Actions affect others in society.</li><li>Responsibility builds trust and character.</li></ul>",
           "order_index": 3,
-          "practice_question": "What to do if you break something at a friend’s house?",
-          "practice_type": "text",
-          "correct_answer": "Take responsibility, apologize, and offer to pay for or replace the item."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "What to do if you break something at a friend’s house?",
+              "answer": "Take responsibility, apologize, and offer to pay for or replace the item."
+            }
+          ]
         },
         {
           "title": "Day 4: Cyber Laws - Digital Rights and Responsibilities",
           "content": "<h1>Cyber Laws - Digital Rights and Responsibilities</h1><p>Cyber laws govern safe, fair digital behavior.</p><p>Cyberbullying can cause serious harm and legal penalties.</p><p>Identity theft includes fake profiles and information misuse.</p><p>Privacy laws ensure personal data protection online.</p><p>Copyright laws cover music, movies, writing—illegal copying is punished.</p><p>Online fraud includes scams like phishing and fake stores.</p><h2>Key Takeaways</h2><ul><li>Online actions have real consequences.</li><li>Cyberbullying and identity theft harm people seriously.</li><li>Privacy requires both rights and responsibilities.</li><li>Use “real world” thinking for online choices.</li></ul>",
           "order_index": 4,
-          "practice_question": "Is sharing embarrassing photos without consent legal?",
-          "practice_type": "text",
-          "correct_answer": "No, it can be considered a form of harassment or cyberbullying and may have legal consequences."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "Is sharing embarrassing photos without consent legal?",
+              "answer": "No, it can be considered a form of harassment or cyberbullying and may have legal consequences."
+            }
+          ]
         },
         {
           "title": "Day 5: Social Media and Gaming Laws",
           "content": "<h1>Social Media and Gaming Laws</h1><p>Minimum age for most social media is typically 13; violating terms can get you banned.</p><p>Content moderation balances free speech and safety.</p><p>Platforms collect data; users have some privacy controls.</p><p>Loot boxes in games can resemble gambling; some countries regulate or ban them.</p><p>Gaming addiction laws may limit minors’ playtime in some countries.</p><p>Messaging apps like WhatsApp have rules about privacy and misinformation.</p><h2>Key Takeaways</h2><ul><li>Using platforms involves legal contracts (Terms of Service).</li><li>Age restrictions are in place to protect teens.</li><li>Responsibility spans all digital platforms.</li><li>Platforms balance free speech with safety.</li></ul>",
           "order_index": 5,
-          "practice_question": "What legal steps should you consider if starting a business on social media?",
-          "practice_type": "text",
-          "correct_answer": "You need to follow the platform's commercial use policies, be honest in advertising, and handle customer data securely."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "What legal steps should you consider if starting a business on social media?",
+              "answer": "You need to follow the platform's commercial use policies, be honest in advertising, and handle customer data securely."
+            }
+          ]
         },
         {
           "title": "Day 6: Case Studies and Real-World Applications",
           "content": "<h1>Case Studies and Real-World Applications</h1><p>Real teen digital cases show consequences.</p><p>Juvenile justice focuses on rehabilitation.</p><h3>Case Examples:</h3><ul><li><strong>Cyberbullying:</strong> Can lead to legal charges and counseling.</li><li><strong>Gaming Loot Boxes:</strong> Lawsuits have led to required parental controls.</li><li><strong>Viral Videos:</strong> Invasion of privacy can result in penalties.</li><li><strong>Academic Fraud:</strong> Harms reputations and can have legal standing.</li><li><strong>Online Impersonation:</strong> Can lead to identity theft and stalking charges.</li></ul><p>Juvenile courts focus on rehabilitation, family involvement, and often have sealed records.</p><h2>Key Takeaways</h2><ul><li>Digital crimes are held seriously by courts.</li><li>Intent doesn’t excuse impact.</li><li>Early education is preferred over punishment.</li><li>The juvenile system balances fairness with opportunities for growth.</li></ul>",
           "order_index": 6,
-          "practice_question": "How can you support a friend who is a victim of cyberbullying?",
-          "practice_type": "text",
-          "correct_answer": "Listen to them, save evidence, help them report it to trusted adults and the platform, and offer emotional support."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "How can you support a friend who is a victim of cyberbullying?",
+              "answer": "Listen to them, save evidence, help them report it to trusted adults and the platform, and offer emotional support."
+            }
+          ]
         },
         {
           "title": "Day 7: Mock Court Activity and Review",
           "content": "<h1>Mock Court Activity and Review</h1><p>Role-play a realistic court trial to understand the legal process.</p><h3>The Case:</h3><p>A student records and posts a private video of another student in the gym after an argument.</p><h3>Charges:</h3><p>Privacy invasion, harassment, and distribution of inappropriate content.</p><h3>Roles:</h3><p>Judge, prosecution, defense, witnesses, jury.</p><h3>Trial Steps:</h3><p>Opening statements, testimony, evidence, closing arguments, jury deliberation.</p><p>The activity involves discussing evidence, intent, impact, and consequences, followed by reflections on fairness and digital citizenship.</p><h2>Key Takeaways</h2><ul><li>Legal trials are complex and serious.</li><li>Multiple perspectives matter in justice.</li><li>Prevention is better than punishment.</li><li>Knowing the legal process empowers good citizenship.</li></ul>",
           "order_index": 7,
-          "practice_question": "In the mock trial, what evidence could prove an intent to harm?",
-          "practice_type": "text",
-          "correct_answer": "Evidence could include threatening messages sent before the incident, captions on the video, or testimony about the argument."
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "text",
+              "question": "In the mock trial, what evidence could prove an intent to harm?",
+              "answer": "Evidence could include threatening messages sent before the incident, captions on the video, or testimony about the argument."
+            }
+          ]
         }
       ]
     }
