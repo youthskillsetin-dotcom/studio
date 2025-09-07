@@ -1,12 +1,18 @@
 
-import { Suspense } from 'react';
+
+'use client';
+
+import { Suspense, useState } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, CreditCard, Loader2 } from 'lucide-react';
 import Link from 'next/link';
+import { useSearchParams, useRouter } from 'next/navigation';
+import { useToast } from '@/hooks/use-toast';
 
 const plans = {
   premium: {
+    key: 'premium',
     name: 'Premium',
     price: '₹199',
     period: '/month',
@@ -18,6 +24,7 @@ const plans = {
     ],
   },
   yearly: {
+    key: 'yearly',
     name: 'Yearly',
     price: '₹1499',
     period: '/year',
@@ -29,14 +36,48 @@ const plans = {
   },
 };
 
-async function SubscribePageContent({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
-  const planKey = searchParams.plan === 'yearly' ? 'yearly' : 'premium';
+function SubscribePageContent() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const planKey = searchParams.get('plan') === 'yearly' ? 'yearly' : 'premium';
   const selectedPlan = plans[planKey];
   
-  // In a real app, this would initiate a checkout session with a payment provider like Stripe
   const handleCheckout = async () => {
-    console.log(`Initiating checkout for ${selectedPlan.name}`);
-    // e.g. await createStripeCheckoutSession(planKey);
+    setIsLoading(true);
+    try {
+      const response = await fetch('/api/handle-payment-webhook', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ plan: selectedPlan.key }),
+      });
+      const result = await response.json();
+      if (!response.ok) {
+        throw new Error(result.error || 'An unknown error occurred');
+      }
+      toast({
+        title: "Payment Successful!",
+        description: `Your ${selectedPlan.name} subscription is now active.`,
+      });
+      setIsSuccess(true);
+      setTimeout(() => {
+        router.push('/dashboard');
+        router.refresh();
+      }, 2000);
+
+    } catch (error: any) {
+       toast({
+          variant: 'destructive',
+          title: "Payment Failed",
+          description: error.message,
+      });
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -67,10 +108,16 @@ async function SubscribePageContent({ searchParams }: { searchParams: { [key: st
           </div>
         </CardContent>
         <CardFooter className="flex-col gap-4">
-          <Button className="w-full" onClick={handleCheckout}>
-            <CreditCard className="mr-2" /> Proceed to Checkout
+          <Button className="w-full" onClick={handleCheckout} disabled={isLoading || isSuccess}>
+            {isLoading ? (
+                <><Loader2 className="mr-2 animate-spin" /> Processing...</>
+            ) : isSuccess ? (
+                <><CheckCircle className="mr-2" /> Success!</>
+            ) : (
+                <><CreditCard className="mr-2" /> Proceed to Checkout</>
+            )}
           </Button>
-          <Button variant="link" asChild>
+          <Button variant="link" asChild disabled={isLoading}>
             <Link href="/#pricing">Change Plan</Link>
           </Button>
         </CardFooter>
@@ -80,10 +127,10 @@ async function SubscribePageContent({ searchParams }: { searchParams: { [key: st
 }
 
 
-export default function SubscribePage({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
+export default function SubscribePage() {
     return (
         <Suspense fallback={<div className="flex justify-center items-center h-full"><Loader2 className="w-8 h-8 animate-spin" /></div>}>
-            <SubscribePageContent searchParams={searchParams} />
+            <SubscribePageContent />
         </Suspense>
     )
 }

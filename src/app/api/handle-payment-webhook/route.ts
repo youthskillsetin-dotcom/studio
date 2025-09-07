@@ -19,37 +19,32 @@ export async function POST(req: Request) {
     }
 
     try {
+        const body = await req.json();
+        const plan = body.plan === 'yearly' ? 'yearly' : 'premium';
+
         const expires_at = new Date();
-        expires_at.setMonth(expires_at.getMonth() + 1);
+        if (plan === 'yearly') {
+            expires_at.setFullYear(expires_at.getFullYear() + 1);
+        } else {
+            expires_at.setMonth(expires_at.getMonth() + 1);
+        }
 
-        const { error: insertError } = await supabase
+        const planName = plan === 'yearly' ? 'Yearly' : 'Premium';
+
+        const subscriptionData = {
+            user_id: user.id,
+            is_active: true,
+            plan_name: planName,
+            expires_at: expires_at.toISOString(),
+        };
+
+        const { error: upsertError } = await supabase
             .from('subscriptions')
-            .insert({
-                user_id: user.id,
-                is_active: true,
-                plan_name: 'Premium',
-                expires_at: expires_at.toISOString(),
-            });
-
-        if (insertError) {
-            // Attempt to update if it already exists (e.g., re-subscribing)
-            if (insertError.code === '23505') { // unique constraint violation
-                 const { error: updateError } = await supabase
-                    .from('subscriptions')
-                    .update({
-                        is_active: true,
-                        plan_name: 'Premium',
-                        expires_at: expires_at.toISOString(),
-                     })
-                    .eq('user_id', user.id);
-                 
-                 if (updateError) {
-                    console.error('Error updating subscription:', updateError);
-                    throw updateError;
-                 }
-            } else {
-                 throw insertError;
-            }
+            .upsert(subscriptionData, { onConflict: 'user_id' });
+        
+        if (upsertError) {
+             console.error('Error upserting subscription:', upsertError);
+             throw upsertError;
         }
         
          // Also update the user's role in the profiles table
