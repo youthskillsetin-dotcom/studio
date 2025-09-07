@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   title: 'YouthSkillSet',
   description: 'Master in-demand skills with AI-powered mentorship.',
   manifest: '/manifest.json',
+  viewport: 'width=device-width, initial-scale=1, user-scalable=no',
 };
 
 export default function RootLayout({
@@ -28,9 +29,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-      </head>
       <body className={`${inter.variable} ${spaceGrotesk.variable} font-body antialiased`}>
         {children}
         <Toaster />
