@@ -97,9 +97,7 @@ export default async function SubtopicPage({ params }: { params: { id: string } 
                     <CardTitle className="font-headline">AI Summary</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <p className="text-sm text-muted-foreground">
-                        {summaryResult.summary}
-                    </p>
+                    <div className="text-sm text-muted-foreground prose prose-sm dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: summaryResult.summary.replace(/\n/g, '<br />') }} />
                 </CardContent>
              </Card>
 

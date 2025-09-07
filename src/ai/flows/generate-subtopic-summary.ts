@@ -18,7 +18,7 @@ const GenerateSubtopicSummaryInputSchema = z.object({
 export type GenerateSubtopicSummaryInput = z.infer<typeof GenerateSubtopicSummaryInputSchema>;
 
 const GenerateSubtopicSummaryOutputSchema = z.object({
-  summary: z.string().describe('A 2-3 sentence summary of the subtopic.'),
+  summary: z.string().describe('A 2-3 sentence summary of the subtopic, followed by a markdown list of 3-4 key takeaways.'),
 });
 export type GenerateSubtopicSummaryOutput = z.infer<typeof GenerateSubtopicSummaryOutputSchema>;
 
@@ -30,9 +30,13 @@ const prompt = ai.definePrompt({
   name: 'generateSubtopicSummaryPrompt',
   input: {schema: GenerateSubtopicSummaryInputSchema},
   output: {schema: GenerateSubtopicSummaryOutputSchema},
-  prompt: `You are an expert educator. Your task is to create a concise, 2-3 sentence summary of the provided subtopic.
+  prompt: `You are an expert educator. Your task is to create a detailed summary of the provided subtopic.
 
-Focus on the key takeaways and most important concepts presented in the content. The summary should be clear, easy to understand, and capture the essence of the lesson.
+The response should consist of two parts:
+1. A concise, 2-3 sentence paragraph that captures the essence of the lesson.
+2. A bulleted list (using markdown) of the 3-4 most important key takeaways from the content.
+
+Focus on the key concepts and actionable advice presented in the content.
 
 Subtopic Title: {{{title}}}
 
