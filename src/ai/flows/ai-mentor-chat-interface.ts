@@ -33,7 +33,7 @@ const prompt = ai.definePrompt({
   name: 'aiMentorChatPrompt',
   input: {schema: AIMentorChatInputSchema},
   output: {schema: AIMentorChatOutputSchema},
-  model: 'gemma-7b-it',
+  model: 'gemini-1.5-flash-latest',
   prompt: `You are a personalized AI mentor providing learning guidance to the user.
 
   Your name is MentorAI.

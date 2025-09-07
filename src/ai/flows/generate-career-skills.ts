@@ -33,7 +33,7 @@ const prompt = ai.definePrompt({
   name: 'generateCareerSkillsPrompt',
   input: {schema: GenerateCareerSkillsInputSchema},
   output: {schema: GenerateCareerSkillsOutputSchema},
-  model: 'gemma-7b-it',
+  model: 'gemini-1.5-flash-latest',
   prompt: `You are an expert career counselor AI.
   
   Based on the user's desired career path, generate a list of 5-7 essential skills required for that role.
