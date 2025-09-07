@@ -39,7 +39,7 @@ export default async function AdminUsersPage() {
             <p className="text-muted-foreground">View and manage all registered users.</p>
         </div>
       </div>
-      <Card>
+      <Card className="rounded-2xl">
         <CardHeader>
           <CardTitle>All Users</CardTitle>
           <CardDescription>

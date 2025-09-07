@@ -92,7 +92,8 @@ export function PracticeForm({ subtopic }: { subtopic: Subtopic }) {
       </form>
 
       {feedback && (
-        <Alert variant={getAlertVariant()} className="mt-8">
+        <Alert variant={getAlertVariant()} className="mt-8 rounded-xl">
+          <Sparkles className="h-4 w-4" />
           <AlertTitle className="font-headline">{isCorrect ? "Great Job!" : "Needs Improvement"}</AlertTitle>
           <AlertDescription>
             <div className="prose prose-sm dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: feedback }} />

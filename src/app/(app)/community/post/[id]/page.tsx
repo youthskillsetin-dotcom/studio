@@ -32,7 +32,7 @@ export default async function PostPage({ params }: { params: { id: string } }) {
         </Button>
       </div>
 
-      <Card>
+      <Card className="rounded-2xl">
         <CardHeader>
           <CardTitle className="text-2xl lg:text-3xl font-headline">{post.title}</CardTitle>
           <div className="text-sm text-muted-foreground flex items-center gap-4 pt-2">
@@ -62,7 +62,7 @@ export default async function PostPage({ params }: { params: { id: string } }) {
         <div className="space-y-6 mt-6">
           {post.comments && post.comments.length > 0 ? (
             post.comments.map(comment => (
-              <Card key={comment.id} className="p-4">
+              <Card key={comment.id} className="p-4 rounded-2xl">
                 <div className="flex items-start gap-4">
                     <Avatar className="h-9 w-9">
                         <AvatarFallback>{comment.author_email ? comment.author_email[0].toUpperCase() : 'U'}</AvatarFallback>
@@ -80,7 +80,7 @@ export default async function PostPage({ params }: { params: { id: string } }) {
               </Card>
             ))
           ) : (
-             <div className="text-center py-8 text-muted-foreground border rounded-lg">
+             <div className="text-center py-8 text-muted-foreground border-2 border-dashed rounded-2xl">
                 <MessageCircle className="w-12 h-12 mx-auto mb-2"/>
                 <p>No comments yet. Be the first to reply!</p>
             </div>

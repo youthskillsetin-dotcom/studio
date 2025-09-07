@@ -47,11 +47,11 @@ export default function AddCommentForm({ postId }: { postId: string }) {
   }
 
   return (
-    <Card className="mb-6">
+    <Card className="mb-6 rounded-2xl">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <CardHeader>
-            <CardTitle className="text-lg">Leave a Comment</CardTitle>
+            <CardTitle className="text-lg font-headline">Leave a Comment</CardTitle>
           </CardHeader>
           <CardContent>
             <FormField

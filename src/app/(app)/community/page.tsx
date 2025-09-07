@@ -12,7 +12,7 @@ import { Badge } from '@/components/ui/badge';
 
 function PremiumUpsell() {
     return (
-        <Card className="flex flex-col items-center justify-center text-center p-12 min-h-[400px] bg-muted/20">
+        <Card className="flex flex-col items-center justify-center text-center p-12 min-h-[400px] bg-muted/20 rounded-2xl">
             <ShieldCheck className="w-16 h-16 text-primary mb-4" />
             <CardHeader>
                 <CardTitle className="font-headline text-2xl">Premium Access Required</CardTitle>
@@ -63,7 +63,7 @@ export default async function CommunityPage() {
       <div className="space-y-6">
         {posts && posts.length > 0 ? (
           posts.map(post => (
-            <Card key={post.id} className="hover:border-primary transition-colors">
+            <Card key={post.id} className="hover:border-primary transition-colors rounded-2xl">
                  <Link href={`/community/post/${post.id}`} className="block">
               <CardHeader>
                 <CardTitle className="text-xl font-headline">{post.title}</CardTitle>
@@ -92,7 +92,7 @@ export default async function CommunityPage() {
             </Card>
           ))
         ) : (
-           <Card className="flex flex-col items-center justify-center text-center p-12 min-h-[300px]">
+           <Card className="flex flex-col items-center justify-center text-center p-12 min-h-[300px] rounded-2xl">
              <MessageSquare className="w-16 h-16 text-muted-foreground mb-4" />
              <CardHeader>
                <CardTitle className="font-headline text-2xl">Community Hub is Under Construction</CardTitle>

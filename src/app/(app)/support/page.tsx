@@ -24,7 +24,7 @@ export default function SupportPage() {
   return (
     <div className="max-w-3xl mx-auto">
       <h1 className="text-3xl font-bold font-headline mb-6">Contact & Support</h1>
-       <Card>
+       <Card className="rounded-2xl">
         <form onSubmit={handleSubmit}>
             <CardHeader>
             <CardTitle>Submit an Inquiry</CardTitle>

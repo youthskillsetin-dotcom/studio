@@ -24,7 +24,7 @@ export function SubtopicRow({ subtopic, status }: SubtopicRowProps) {
 
   return (
      <Card className={cn(
-        "p-0 transition-colors",
+        "p-0 transition-colors rounded-xl",
         isLocked ? 'bg-muted/50' : 'hover:bg-muted/50'
     )}>
         <CardLink href={isLocked ? '#' : `/subtopic/${subtopic.id}`} className="flex items-center justify-between p-4">
@@ -37,9 +37,9 @@ export function SubtopicRow({ subtopic, status }: SubtopicRowProps) {
                 <p className="text-sm text-muted-foreground">Practice | 5 min</p>
                 </div>
             </div>
-            <Button asChild variant={status === 'unlocked' ? 'default' : 'secondary'} size="sm" disabled={isLocked} className={isLocked ? 'hidden' : ''}>
+            <Button asChild variant={status === 'unlocked' ? 'default' : 'secondary'} size="sm" disabled={isLocked} className={cn(isLocked ? 'hidden' : '', status === 'completed' && 'hidden sm:flex')}>
                 <span className='flex items-center'>
-                    {status === 'completed' ? 'Review' : 'Start'} <Play className="ml-2 h-4 w-4" />
+                    {status === 'completed' ? 'Review' : 'Start'}
                 </span>
             </Button>
         </CardLink>

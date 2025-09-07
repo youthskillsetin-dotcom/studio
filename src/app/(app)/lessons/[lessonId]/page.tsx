@@ -44,7 +44,7 @@ export default async function LessonDetailPage({ params }: { params: { lessonId:
         <p className="text-muted-foreground mt-1">{lesson.description}</p>
       </div>
 
-      <Card>
+      <Card className="rounded-2xl">
         <CardHeader>
           <CardTitle className="font-headline">Next Weekly Lesson Unlocks In</CardTitle>
         </CardHeader>
@@ -53,7 +53,7 @@ export default async function LessonDetailPage({ params }: { params: { lessonId:
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="rounded-2xl">
         <CardHeader>
           <CardTitle className="font-headline">Subtopics</CardTitle>
         </CardHeader>

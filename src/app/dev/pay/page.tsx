@@ -37,7 +37,7 @@ export default function DevPayPage() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-muted/40">
-       <Card className="w-full max-w-md">
+       <Card className="w-full max-w-md rounded-2xl">
         <CardHeader>
           <CardTitle className="font-headline text-2xl">Developer: Payment Simulation</CardTitle>
           <CardDescription>Simulate a payment to unlock premium content for the current user.</CardDescription>

@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 270 50% 98%; /* Light Purple Background */
+    --background: 270 50% 98%;
     --foreground: 224 71.4% 4.1%;
 
     --card: 0 0% 100%;
@@ -22,7 +22,7 @@
     --muted: 220 13% 91%;
     --muted-foreground: 220 8.9% 46.1%;
  
-    --accent: 43 96% 56%; /* #E0B02B - Muted Gold */
+    --accent: 43 96% 56%; /* #EAB308 */
     --accent-foreground: 224 71.4% 4.1%;
  
     --destructive: 0 84.2% 60.2%;
@@ -73,12 +73,4 @@
   body {
     @apply bg-background text-foreground;
   }
-}
-
-html {
-    --background: 270 50% 98%;
-}
-
-html.dark {
-    --background: 222 47% 11%;
 }

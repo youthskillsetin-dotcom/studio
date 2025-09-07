@@ -23,7 +23,7 @@ export default function CreatePostPage() {
         </Button>
       </div>
 
-      <Card className="max-w-3xl mx-auto">
+      <Card className="max-w-3xl mx-auto rounded-2xl">
         <CardHeader>
           <CardTitle className="font-headline text-2xl">Community Hub is Under Construction</CardTitle>
           <CardDescription>This feature is not yet available as the backing database tables have not been set up. Please come back later!</CardDescription>

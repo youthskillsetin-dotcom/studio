@@ -42,7 +42,7 @@ function SubscribePageContent({ searchParams }: { searchParams: { [key: string]:
   return (
     <div className="max-w-md mx-auto">
       <h1 className="text-3xl font-bold font-headline mb-6 text-center">Checkout</h1>
-      <Card>
+      <Card className="rounded-2xl">
         <CardHeader>
           <CardTitle className="font-headline text-2xl">Confirm Your Plan</CardTitle>
           <CardDescription>You are about to subscribe to the {selectedPlan.name} plan.</CardDescription>
