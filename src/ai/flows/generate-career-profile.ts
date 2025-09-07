@@ -24,9 +24,9 @@ const GenerateCareerProfileOutputSchema = z.object({
     description: z.string().describe('A detailed, 2-3 sentence description of why this skill is important.'),
   })).describe('A list of 5-7 essential skills for this career.'),
   salaryRange: z.object({
-    min: z.number().describe("The estimated starting salary for this role in INR per year."),
-    max: z.number().describe("The estimated senior-level salary for this role in INR per year."),
-  }).describe("An estimated salary range in Indian Rupees (INR) per year."),
+    min: z.number().describe("The estimated starting salary for this role in INR Lakhs Per Annum (LPA)."),
+    max: z.number().describe("The estimated senior-level salary for this role in INR Lakhs Per Annum (LPA)."),
+  }).describe("An estimated salary range in Indian Rupees (INR) per year, expressed in Lakhs Per Annum (LPA)."),
   careerOutlook: z.string().describe("A brief paragraph on the future growth and prospects for this career."),
   learningResources: z.array(z.string()).describe("A list of 3-4 actionable next steps or learning resources, like types of online courses, books, or projects to start with."),
 });
@@ -47,7 +47,7 @@ const prompt = ai.definePrompt({
   Please generate a comprehensive profile based on the output schema.
   - Make the description and outlook sections engaging and informative.
   - Ensure the skills and responsibilities are highly relevant to the role.
-  - The salary range should be in Indian Rupees (lakhs per annum) and realistic for the Indian market.
+  - The salary range should be in Indian Rupees, converted to Lakhs Per Annum (LPA). For example, if the salary is 500,000 INR, the value should be 5.
   - The learning resources should be generic but actionable (e.g., "Look for 'Advanced Python for Data Science' courses on Coursera or Udemy," not specific URLs).
   - Ensure the career title is the standard, professional name for the role.
   `,

@@ -10,9 +10,10 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { generateCareerProfile, type GenerateCareerProfileOutput } from '@/ai/flows/generate-career-profile';
-import { Lightbulb, Loader2, Compass, Briefcase, Wand2, BookOpen, BarChart, IndianRupee, Rocket } from 'lucide-react';
+import { Compass, Briefcase, Wand2, BookOpen, BarChart, IndianRupee, Rocket, Lightbulb } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const formSchema = z.object({
   career: z.string().min(2, { message: 'Please enter a career path.' }),
@@ -41,17 +42,63 @@ const itemVariants = {
 };
 
 const formatSalary = (amount: number) => {
-    if (amount >= 100000) {
-        return `₹${(amount / 100000).toFixed(1)} LPA`;
-    }
-    return `₹${amount.toLocaleString('en-IN')}`;
+    return `₹${amount.toFixed(1)} LPA`;
 }
+
+const exampleCareers = [
+    'Software Engineer', 'UX Designer', 'Data Analyst', 'Product Manager'
+]
+
+const CareerProfileSkeleton = () => (
+    <motion.div
+      className="space-y-10"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="text-center">
+        <Skeleton className="h-9 w-3/4 mx-auto mb-3" />
+        <Skeleton className="h-6 w-1/2 mx-auto" />
+      </div>
+      <div className="grid md:grid-cols-2 gap-8">
+        <Card className="h-full rounded-xl">
+          <CardHeader className="flex-row items-center gap-4">
+            <Skeleton className="w-12 h-12 rounded-lg" />
+            <Skeleton className="h-6 w-32" />
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-5/6" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-4/6" />
+          </CardContent>
+        </Card>
+        <Card className="h-full rounded-xl">
+          <CardHeader className="flex-row items-center gap-4">
+            <Skeleton className="w-12 h-12 rounded-lg" />
+            <Skeleton className="h-6 w-32" />
+          </CardHeader>
+          <CardContent className="flex items-baseline justify-center gap-4 text-center">
+            <div className="flex-1 space-y-2">
+              <Skeleton className="h-4 w-16 mx-auto" />
+              <Skeleton className="h-8 w-24 mx-auto" />
+            </div>
+            <Skeleton className="h-8 w-2" />
+            <div className="flex-1 space-y-2">
+              <Skeleton className="h-4 w-16 mx-auto" />
+              <Skeleton className="h-8 w-24 mx-auto" />
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </motion.div>
+  );
 
 export default function CareerGuidePage() {
   const [profile, setProfile] = useState<GenerateCareerProfileOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [submittedCareer, setSubmittedCareer] = useState('');
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -62,8 +109,7 @@ export default function CareerGuidePage() {
     setIsLoading(true);
     setError(null);
     setProfile(null);
-    setSubmittedCareer(values.career);
-
+    
     try {
       const result = await generateCareerProfile({ career: values.career });
       setProfile(result);
@@ -73,6 +119,11 @@ export default function CareerGuidePage() {
     } finally {
       setIsLoading(false);
     }
+  }
+
+  const handleExampleClick = (career: string) => {
+    form.setValue('career', career);
+    onSubmit({ career });
   }
 
   return (
@@ -86,12 +137,9 @@ export default function CareerGuidePage() {
       </div>
 
       <Card className="max-w-xl mx-auto shadow-lg rounded-2xl mb-12">
-        <CardHeader>
-          <CardTitle className="font-headline text-xl">Discover Your Future</CardTitle>
-        </CardHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
-            <CardContent>
+            <CardContent className="pt-6">
               <FormField
                 control={form.control}
                 name="career"
@@ -107,15 +155,30 @@ export default function CareerGuidePage() {
                   </FormItem>
                 )}
               />
+              <div className="text-sm text-muted-foreground mt-4">
+                  Or try one of these suggestions:
+              </div>
+              <div className="flex flex-wrap gap-2 mt-2">
+                {exampleCareers.map(career => (
+                    <Button key={career} variant="outline" size="sm" type="button" onClick={() => handleExampleClick(career)}>
+                        {career}
+                    </Button>
+                ))}
+              </div>
             </CardContent>
             <CardFooter>
               <Button type="submit" disabled={isLoading} size="lg" className="w-full">
                 {isLoading ? (
-                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                  <>
+                    <Wand2 className="mr-2 h-5 w-5 animate-spin" />
+                    Generating...
+                  </>
                 ) : (
-                  <Wand2 className="mr-2 h-5 w-5" />
+                  <>
+                    <Wand2 className="mr-2 h-5 w-5" />
+                    Generate Career Profile
+                  </>
                 )}
-                Generate Career Profile
               </Button>
             </CardFooter>
           </form>
@@ -123,28 +186,17 @@ export default function CareerGuidePage() {
       </Card>
       
       <AnimatePresence>
-        {isLoading && (
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                className="text-center"
-            >
-                <Loader2 className="w-12 h-12 mx-auto animate-spin text-primary mb-4" />
-                <p className="text-muted-foreground font-semibold text-lg">Generating a detailed profile for a '{submittedCareer}'...</p>
-                <p className="text-muted-foreground text-sm">This can take a moment.</p>
-            </motion.div>
-        )}
+        {isLoading && <CareerProfileSkeleton />}
       </AnimatePresence>
 
-      {error && (
+      {error && !isLoading && (
         <Alert variant="destructive" className="mt-12">
           <AlertTitle>Error</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
 
-      {profile && (
+      {profile && !isLoading && (
         <motion.div 
             className="space-y-10"
             initial="hidden"
@@ -199,7 +251,7 @@ export default function CareerGuidePage() {
                 {profile.skills.map((item, index) => (
                 <Card key={index} className="h-full hover:shadow-lg hover:-translate-y-1 transition-all duration-300 rounded-xl">
                     <CardHeader className="flex-row items-center gap-4">
-                        <div className="p-3 bg-primary/10 rounded-lg"><Briefcase className="w-6 h-6 text-primary" /></div>
+                        <div className="p-3 bg-primary/10 rounded-lg"><Lightbulb className="w-6 h-6 text-primary" /></div>
                         <CardTitle className="text-lg">{item.skill}</CardTitle>
                     </CardHeader>
                     <CardContent>
