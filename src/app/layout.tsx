@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: 'YouthSkillSet',
   description: 'Master in-demand skills with AI-powered mentorship.',
   manifest: '/manifest.json',
-  viewport: 'width=device-width, initial-scale=1, user-scalable=no',
+  viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
 };
 
 export default function RootLayout({
