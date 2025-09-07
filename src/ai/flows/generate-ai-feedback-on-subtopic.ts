@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -9,6 +10,7 @@
  */
 
 import {ai} from '@/ai/genkit';
+import { googleAI } from '@genkit-ai/googleai';
 import {z} from 'genkit';
 
 const GenerateAIFeedbackInputSchema = z.object({
@@ -32,7 +34,7 @@ const prompt = ai.definePrompt({
   name: 'generateAIFeedbackPrompt',
   input: {schema: GenerateAIFeedbackInputSchema},
   output: {schema: GenerateAIFeedbackOutputSchema},
-  model: 'gemini-1.5-flash-latest',
+  model: googleAI.model('gemini-1.5-flash-latest'),
   prompt: `You are an AI mentor providing feedback on a student's practice quiz.
 
   The student has just completed a lesson with the following content:
