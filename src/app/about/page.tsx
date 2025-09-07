@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Logo } from '@/components/icons';
 import { Target, Lightbulb, Heart } from 'lucide-react';
@@ -83,7 +84,7 @@ export default function AboutPage() {
                 <Card className="text-center rounded-2xl border-0 shadow-none">
                     <CardContent className="p-6">
                         <h3 className="mt-6 text-lg font-semibold text-foreground">Amit kumar Metha</h3>
-                        <p className="text-primary">Founder & CEO</p>
+                        <p className="text-primary">CEO & Founder</p>
                     </CardContent>
                 </Card>
                 <Card className="text-center rounded-2xl border-0 shadow-none">
