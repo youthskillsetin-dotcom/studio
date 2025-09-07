@@ -9,7 +9,6 @@
  */
 
 import {ai} from '@/ai/genkit';
-import { googleAI } from '@genkit-ai/googleai';
 import {z} from 'genkit';
 
 const GenerateCareerProfileInputSchema = z.object({
@@ -52,7 +51,7 @@ const prompt = ai.definePrompt({
   name: 'generateCareerProfilePrompt',
   input: {schema: GenerateCareerProfileInputSchema},
   output: {schema: GenerateCareerProfileOutputSchema},
-  model: googleAI.model('gemini-1.5-flash'),
+  model: 'googleai/gemini-1.5-flash',
   prompt: `You are an expert career counselor AI, acting as a friendly and inspiring guide for a student in India. Your goal is to generate a comprehensive, accurate, and engaging career profile based on the user's input.
 
   The user has provided the following input: {{{userInput}}}
