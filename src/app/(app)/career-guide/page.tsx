@@ -10,14 +10,16 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { generateCareerProfile, type GenerateCareerProfileOutput } from '@/ai/flows/generate-career-profile';
-import { Compass, Briefcase, Wand2, BookOpen, BarChart, IndianRupee, Rocket, Lightbulb } from 'lucide-react';
+import { Compass, Briefcase, Wand2, BookOpen, BarChart, IndianRupee, Rocket, Lightbulb, Brain, Star } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Skeleton } from '@/components/ui/skeleton';
 
 const formSchema = z.object({
-  userInput: z.string().min(2, { message: 'Please enter a career, skill, or interest.' }),
+  userInput: z.string().min(2, { message: 'Please enter a value.' }),
 });
+
+type FormValues = z.infer<typeof formSchema>;
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -44,10 +46,6 @@ const itemVariants = {
 const formatSalary = (amount: number) => {
     return `₹${amount.toFixed(1)} LPA`;
 }
-
-const exampleCareers = [
-    'Software Engineer', 'UX Designer', 'Data Analyst', 'Product Manager'
-]
 
 const CareerProfileSkeleton = () => (
     <motion.div
@@ -95,15 +93,78 @@ const CareerProfileSkeleton = () => (
     </motion.div>
   );
 
+const SearchCard = ({ 
+    title, 
+    description, 
+    placeholder, 
+    icon: Icon,
+    onSubmit,
+    isLoading
+}: {
+    title: string,
+    description: string,
+    placeholder: string,
+    icon: React.ElementType,
+    onSubmit: (values: FormValues) => void,
+    isLoading: boolean
+}) => {
+    const form = useForm<FormValues>({
+        resolver: zodResolver(formSchema),
+        defaultValues: { userInput: '' },
+    });
+    
+    return (
+         <Card className="shadow-lg rounded-2xl flex-1">
+            <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)}>
+                <CardHeader className="flex-row items-center gap-4">
+                    <div className="p-3 bg-primary/10 rounded-lg"><Icon className="w-6 h-6 text-primary"/></div>
+                    <div>
+                        <CardTitle className="font-headline">{title}</CardTitle>
+                        <CardDescription>{description}</CardDescription>
+                    </div>
+                </CardHeader>
+                <CardContent>
+                <FormField
+                    control={form.control}
+                    name="userInput"
+                    render={({ field }) => (
+                    <FormItem>
+                        <FormControl>
+                        <Input 
+                            className="text-base py-6"
+                            placeholder={placeholder} {...field} />
+                        </FormControl>
+                        <FormMessage />
+                    </FormItem>
+                    )}
+                />
+                </CardContent>
+                <CardFooter>
+                <Button type="submit" disabled={isLoading} className="w-full">
+                    {isLoading ? (
+                    <>
+                        <Wand2 className="mr-2 h-5 w-5 animate-spin" />
+                        Generating...
+                    </>
+                    ) : (
+                    <>
+                        <Wand2 className="mr-2 h-5 w-5" />
+                        Generate Profile
+                    </>
+                    )}
+                </Button>
+                </CardFooter>
+            </form>
+            </Form>
+        </Card>
+    )
+}
+
 export default function CareerGuidePage() {
   const [profile, setProfile] = useState<GenerateCareerProfileOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: { userInput: '' },
-  });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
@@ -121,69 +182,42 @@ export default function CareerGuidePage() {
     }
   }
 
-  const handleExampleClick = (career: string) => {
-    form.setValue('userInput', career);
-    onSubmit({ userInput: career });
-  }
-
   return (
     <div className="max-w-4xl mx-auto">
       <div className="text-center mb-10">
         <Compass className="w-16 h-16 mx-auto text-primary mb-4" />
         <h1 className="text-4xl font-extrabold font-headline tracking-tight">AI Career Guide</h1>
         <p className="text-muted-foreground mt-2 text-lg">
-          Chart your course. Enter any career, skill, or interest below and our AI will generate a complete professional profile.
+          Chart your course. Discover detailed career profiles by searching for a job title, a skill you possess, or an interest you're passionate about.
         </p>
       </div>
 
-      <Card className="max-w-xl mx-auto shadow-lg rounded-2xl mb-12">
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <CardContent className="pt-6">
-              <FormField
-                control={form.control}
-                name="userInput"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Career, Skill, or Interest</FormLabel>
-                    <FormControl>
-                      <Input 
-                        className="text-base py-6"
-                        placeholder="e.g., 'Data Analyst', 'Python', or 'video games'" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <div className="text-sm text-muted-foreground mt-4">
-                  Or try one of these career suggestions:
-              </div>
-              <div className="flex flex-wrap gap-2 mt-2">
-                {exampleCareers.map(career => (
-                    <Button key={career} variant="outline" size="sm" type="button" onClick={() => handleExampleClick(career)}>
-                        {career}
-                    </Button>
-                ))}
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Button type="submit" disabled={isLoading} size="lg" className="w-full">
-                {isLoading ? (
-                  <>
-                    <Wand2 className="mr-2 h-5 w-5 animate-spin" />
-                    Generating...
-                  </>
-                ) : (
-                  <>
-                    <Wand2 className="mr-2 h-5 w-5" />
-                    Generate Career Profile
-                  </>
-                )}
-              </Button>
-            </CardFooter>
-          </form>
-        </Form>
-      </Card>
+      <div className="grid md:grid-cols-3 gap-6 mb-12">
+        <SearchCard 
+            title="By Career"
+            description="Know a job title?"
+            placeholder="e.g., 'Software Engineer'"
+            icon={Briefcase}
+            onSubmit={onSubmit}
+            isLoading={isLoading}
+        />
+         <SearchCard 
+            title="By Skill"
+            description="Have a skill?"
+            placeholder="e.g., 'Python'"
+            icon={Brain}
+            onSubmit={onSubmit}
+            isLoading={isLoading}
+        />
+         <SearchCard 
+            title="By Interest"
+            description="Have a passion?"
+            placeholder="e.g., 'Video Games'"
+            icon={Star}
+            onSubmit={onSubmit}
+            isLoading={isLoading}
+        />
+      </div>
       
       <AnimatePresence>
         {isLoading && <CareerProfileSkeleton />}
