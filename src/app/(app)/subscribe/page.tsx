@@ -4,11 +4,14 @@
 import { Suspense, useState } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { CheckCircle, CreditCard, Loader2 } from 'lucide-react';
+import { CheckCircle, CreditCard, Loader2, Star } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
+import { Badge } from '@/components/ui/badge';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+
 
 const plans = {
   premium: {
@@ -103,7 +106,7 @@ function SubscribePageContent() {
                      className={cn(selectedPlanKey === 'yearly' ? 'bg-background text-foreground shadow' : 'bg-transparent text-muted-foreground', 'h-auto py-2')}
                     variant="ghost"
                   >
-                    Yearly
+                    Yearly (Save 35%)
                   </Button>
             </div>
 
@@ -111,7 +114,10 @@ function SubscribePageContent() {
           <div className="p-6 rounded-lg border bg-muted/40">
             <div className="flex justify-between items-baseline">
                 <h3 className="text-xl font-bold text-primary">{selectedPlan.name}</h3>
-                <p className="text-3xl font-bold">{selectedPlan.price}<span className="text-base font-normal text-muted-foreground">{selectedPlan.period}</span></p>
+                <div className="flex items-center gap-2">
+                    <Badge variant="destructive">Limited Time</Badge>
+                    <p className="text-3xl font-bold">{selectedPlan.price}<span className="text-base font-normal text-muted-foreground">{selectedPlan.period}</span></p>
+                </div>
             </div>
           </div>
           <div>
@@ -138,6 +144,35 @@ function SubscribePageContent() {
           </Button>
         </CardFooter>
       </Card>
+      
+      {/* Social Proof Section */}
+        <div className="mt-8">
+            <h3 className="text-lg font-semibold text-center mb-4">Join other successful learners</h3>
+            <div className="space-y-4">
+                <Card className="p-4 rounded-xl bg-muted/40 border-0">
+                    <div className="flex items-start gap-4">
+                        <Avatar className="h-10 w-10">
+                            <AvatarFallback>AS</AvatarFallback>
+                        </Avatar>
+                        <div>
+                            <p className="font-semibold">Anika S.</p>
+                            <p className="text-sm text-muted-foreground">"The AI Career guide was a game-changer for me! I finally have a clear roadmap for my future."</p>
+                        </div>
+                    </div>
+                </Card>
+                 <Card className="p-4 rounded-xl bg-muted/40 border-0">
+                    <div className="flex items-start gap-4">
+                        <Avatar className="h-10 w-10">
+                            <AvatarFallback>RP</AvatarFallback>
+                        </Avatar>
+                        <div>
+                            <p className="font-semibold">Rohan P.</p>
+                            <p className="text-sm text-muted-foreground">"Best investment I've made in myself. The lessons on finance are so practical and easy to understand."</p>
+                        </div>
+                    </div>
+                </Card>
+            </div>
+      </div>
     </div>
   );
 }
