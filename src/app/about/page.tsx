@@ -98,7 +98,7 @@ export default function AboutPage() {
                         </Avatar>
                         <h3 className="mt-6 text-lg font-semibold text-foreground">Amit kumar Metha</h3>
                         <p className="text-primary">CEO & Founder</p>
-                        <p className="text-sm text-muted-foreground mt-4">With a deep-seated belief that education is the most powerful tool for social change, Amit founded YouthSkillset to address the critical gap between traditional schooling and real-world readiness. He witnessed firsthand how many bright young students struggled after graduation due to a lack of practical skills in personal finance, digital literacy, and career navigation. Drawing on his extensive background in mentoring youth and his passion for technology, Amit conceptualized a platform that was both accessible and engaging. He is dedicated to creating a learning environment where every young person in India, regardless of their background, can gain the confidence and competence needed to build a successful and fulfilling future in the modern economy.</p>
+                        <p className="text-sm text-muted-foreground mt-4">Driven by a passion for education and technology, Amit founded YouthSkillset to bridge the gap between academic learning and real-world readiness. He is dedicated to empowering India's youth with the practical skills needed to build a successful and fulfilling future.</p>
                     </CardContent>
                 </Card>
                 <Card className="text-center rounded-2xl border-0 shadow-none">
@@ -108,7 +108,7 @@ export default function AboutPage() {
                         </Avatar>
                         <h3 className="mt-6 text-lg font-semibold text-foreground">Yashneet</h3>
                         <p className="text-primary">Head of Product and Co-founder</p>
-                        <p className="text-sm text-muted-foreground mt-4">As the Head of Product, Yash is the chief architect of the YouthSkillset experience. He translates the company's vision into a tangible, user-friendly platform that students love to use. Yash is obsessed with understanding the needs and challenges of young learners. He spends his time talking to users, analyzing data, and collaborating with the design and content teams to build features that are not just innovative but truly impactful. From designing the AI Mentor interactions to structuring the flow of our learning modules, Yash ensures that every click and every lesson is part of a seamless journey towards empowerment. He is committed to building a product that is not just a tool, but a trusted companion in every student's path to success.</p>
+                        <p className="text-sm text-muted-foreground mt-4">As the Head of Product, Yashneet is the architect of the YouthSkillset experience. He translates our vision into a tangible, user-friendly platform, ensuring every feature is impactful and part of a seamless journey towards empowerment for young learners.</p>
                     </CardContent>
                 </Card>
                 <Card className="text-center rounded-2xl border-0 shadow-none">
@@ -118,7 +118,7 @@ export default function AboutPage() {
                         </Avatar>
                         <h3 className="mt-6 text-lg font-semibold text-foreground">Adarsh</h3>
                         <p className="text-primary">Head of Content and Co-founder</p>
-                        <p className="text-sm text-muted-foreground mt-4">Adarsh is the heart of our educational mission, serving as the Head of Content. He possesses a unique talent for deconstructing complex, often intimidating subjects like finance, AI ethics, and cybersecurity, and rebuilding them into lessons that are structured, engaging, and perfectly tailored for the teenage mind. He believes that learning should be a process of discovery, not just memorization. Adarsh works tirelessly with subject matter experts to ensure our curriculum is not only accurate and up-to-date but also practical and relevant to the challenges young Indians face today. His work ensures that every module on YouthSkillset provides actionable knowledge that students can apply to their lives immediately.</p>
+                        <p className="text-sm text-muted-foreground mt-4">Adarsh leads our educational mission by breaking down complex subjects into engaging, practical lessons. He ensures our curriculum is accurate, up-to-date, and provides actionable knowledge that students can apply to their lives immediately.</p>
                     </CardContent>
                 </Card>
                 <Card className="text-center rounded-2xl border-0 shadow-none">
@@ -128,7 +128,7 @@ export default function AboutPage() {
                         </Avatar>
                         <h3 className="mt-6 text-lg font-semibold text-foreground">Nancy</h3>
                         <p className="text-primary">Head of Design and Co-founder</p>
-                        <p className="text-sm text-muted-foreground mt-4">Nancy is the creative force who shapes the look and feel of YouthSkillset as our Head of Design. She believes that a great user experience is fundamental to effective learning. Her design philosophy is centered on creating a platform that is intuitive, beautiful, and accessible to all. Nancy leads the design process from initial concept sketches to final pixel-perfect interfaces, ensuring that every button, color, and animation serves a purpose and enhances the learning journey. She is passionate about user-centric design, constantly seeking feedback to make the platform more engaging and less intimidating. For Nancy, great design isn't just about aesthetics; it's about removing barriers and making the path to knowledge a joyful and empowering experience for every student.</p>
+                        <p className="text-sm text-muted-foreground mt-4">Nancy is the creative force shaping the look and feel of YouthSkillset. She focuses on user-centric design to make learning intuitive, beautiful, and accessible, ensuring the path to knowledge is a joyful and empowering experience for every student.</p>
                     </CardContent>
                 </Card>
                 <Card className="text-center rounded-2xl border-0 shadow-none">
@@ -138,7 +138,7 @@ export default function AboutPage() {
                         </Avatar>
                         <h3 className="mt-6 text-lg font-semibold text-foreground">Nidhi</h3>
                         <p className="text-primary">Head of Research and Co-founder</p>
-                        <p className="text-sm text-muted-foreground mt-4">As the Head of Research, Nidhi is our connection to the ever-evolving landscape of education and career development. Her role is to ensure that our curriculum is not just current, but forward-looking. Nidhi dives deep into educational trends, analyzes the future job market, and studies the learning psychology of young adults. She identifies the specific skills that will be most in-demand tomorrow, guaranteeing that our modules are practical and provide a real competitive advantage. By translating complex research into actionable insights for our content team, Nidhi ensures that YouthSkillset remains a relevant and powerful tool, equipping students with the knowledge they need not just for their first job, but for a lifetime of success in a changing world.</p>
+                        <p className="text-sm text-muted-foreground mt-4">Nidhi ensures our curriculum is not just current, but forward-looking. By researching educational trends and the future job market, she guarantees our modules provide a real competitive advantage, equipping students for a lifetime of success.</p>
                     </CardContent>
                 </Card>
                 <Card className="text-center rounded-2xl border-0 shadow-none">
@@ -148,7 +148,7 @@ export default function AboutPage() {
                         </Avatar>
                         <h3 className="mt-6 text-lg font-semibold text-foreground">Love Thakur</h3>
                         <p className="text-primary">Head of Human Resources and Co-Founder</p>
-                        <p className="text-sm text-muted-foreground mt-4">Love is the champion of our most valuable asset: our people. As Head of Human Resources, he cultivates a vibrant and supportive company culture where creativity and collaboration can flourish. He believes that a happy team is an innovative team, and he works to ensure that every member of the YouthSkillset family feels valued, heard, and empowered to do their best work. Love manages everything from talent acquisition to professional development, ensuring that we attract and retain the passionate individuals who make our mission possible. His focus on building a strong, ethical, and empathetic organizational foundation is key to our long-term success and our ability to serve our users effectively.</p>
+                        <p className="text-sm text-muted-foreground mt-4">Love is the champion of our most valuable asset: our people. As Head of Human Resources, he cultivates a vibrant and supportive company culture, ensuring our passionate team feels valued, heard, and empowered to do their best work.</p>
                     </CardContent>
                 </Card>
             </div>
