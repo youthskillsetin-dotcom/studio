@@ -31,7 +31,7 @@ const plans = {
   yearly: {
     key: 'yearly',
     name: 'Yearly',
-    price: 1499,
+    price: 1999,
     period: '/year',
     features: [
         'All Premium features',
