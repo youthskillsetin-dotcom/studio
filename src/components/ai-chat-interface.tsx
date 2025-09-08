@@ -186,7 +186,7 @@ export default function AIChatInterface() {
                   className={cn(
                     'max-w-md rounded-lg px-4 py-3 text-sm shadow-md',
                     message.role === 'user'
-                      ? 'bg-primary text-primary-foreground'
+                      ? 'bg-accent text-accent-foreground'
                       : 'bg-muted'
                   )}
                 >
