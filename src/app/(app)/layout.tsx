@@ -31,6 +31,7 @@ const navItems = [
   { href: "/practice-lab", icon: FlaskConical, label: "Practice Lab"},
   { href: "/ai-mentor", icon: Sparkles, label: "AI Mentor" },
   { href: "/career-guide", icon: Briefcase, label: "Career Guide" },
+  { href: "/community", icon: Users, label: "Community" },
 ];
 
 const adminNavItems = [
