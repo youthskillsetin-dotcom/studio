@@ -184,7 +184,7 @@ export async function getAllUsers(): Promise<UserProfile[]> {
   noStore();
   
   if (!process.env.SUPABASE_SERVICE_ROLE_KEY) {
-    console.error('Supabase service role key is not set. Cannot fetch all users.');
+    console.warn('Supabase service role key is not set. Cannot fetch all users.');
     return [];
   }
   

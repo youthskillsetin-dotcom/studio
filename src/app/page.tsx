@@ -3,10 +3,9 @@
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
-import { CheckCircle, Zap, BrainCircuit, BookOpen, BarChart, ShieldCheck, Cpu, Briefcase, IndianRupee, HandCoins, Scale, User, FileText, Lock, Landmark, Search, Target, Bot, Plus, Menu } from 'lucide-react';
+import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { BookOpen, BarChart, ShieldCheck, Cpu, Briefcase, HandCoins, Scale, User, FileText, Landmark, Search, Target, Bot, Menu } from 'lucide-react';
 import { Logo } from '@/components/icons';
-import Image from 'next/image';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { motion } from 'framer-motion';
 import sampleContent from '../../sample-content.json';
@@ -152,21 +151,21 @@ export default function LandingPage() {
               <p className="mt-4 text-lg sm:text-xl text-muted-foreground">We combine cutting-edge AI with practical, real-world lessons to make learning effective and engaging.</p>
             </div>
             <div className="grid gap-8 md:grid-cols-3">
-              <div className="rounded-lg border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+              <Card className="rounded-lg border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
                 <div className="flex justify-center mb-4"><BookOpen className="w-12 h-12 text-primary" /></div>
                 <h3 className="text-xl font-bold font-headline mb-2">Interactive Lessons</h3>
                 <p className="text-muted-foreground">Engaging, bite-sized lessons designed for teens, covering critical topics like finance, careers, and AI.</p>
-              </div>
-              <div className="rounded-lg border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+              </Card>
+              <Card className="rounded-lg border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
                 <div className="flex justify-center mb-4"><Bot className="w-12 h-12 text-primary" /></div>
                 <h3 className="text-xl font-bold font-headline mb-2">AI Mentor</h3>
                 <p className="text-muted-foreground">Get personalized guidance and answers to your questions 24/7 from our friendly AI mentor.</p>
-              </div>
-              <div className="rounded-lg border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+              </Card>
+              <Card className="rounded-lg border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
                 <div className="flex justify-center mb-4"><Target className="w-12 h-12 text-primary" /></div>
                 <h3 className="text-xl font-bold font-headline mb-2">Real-World Skills</h3>
                 <p className="text-muted-foreground">Move beyond theory with practical labs and projects that help you build a portfolio of skills for the future.</p>
-              </div>
+              </Card>
             </div>
           </div>
         </section>

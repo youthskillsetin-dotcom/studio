@@ -8,6 +8,8 @@ import { DayPicker, DropdownProps } from "react-day-picker"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./select"
+import { format, setMonth } from 'date-fns';
+
 
 export type CalendarProps = React.ComponentProps<typeof DayPicker>
 
@@ -57,19 +59,14 @@ function Calendar({
         ...classNames,
       }}
       components={{
-        IconLeft: ({ className, ...props }) => (
-          <ChevronLeft className={cn("h-4 w-4", className)} {...props} />
-        ),
-        IconRight: ({ className, ...props }) => (
-          <ChevronRight className={cn("h-4 w-4", className)} {...props} />
-        ),
+        IconLeft: ({ ...props }) => <ChevronLeft className="h-4 w-4" />,
+        IconRight: ({ ...props }) => <ChevronRight className="h-4 w-4" />,
         Dropdown: (props: DropdownProps) => {
           const { fromYear, fromMonth, fromDate, toYear, toMonth, toDate } =
             props;
           const {
             goToMonth,
             month,
-            //...
           } = props;
           if (props.name === "months") {
             const selectItems = Array.from({ length: 12 }, (_, i) => ({
@@ -138,9 +135,4 @@ function Calendar({
 }
 Calendar.displayName = "Calendar"
 
-// Helper functions for the Dropdown component
-import { format, setMonth } from 'date-fns';
-
 export { Calendar }
-
-    
