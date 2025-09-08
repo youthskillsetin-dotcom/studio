@@ -12,18 +12,29 @@ export async function validateCoupon(code: string): Promise<{ success: boolean; 
       return { success: false, message: 'Please enter a coupon code.' };
   }
 
-  // This query uses 'ilike' for a case-insensitive search.
-  // This is the standard and most reliable way to check for the coupon code.
-  const { data: coupon, error } = await supabase
+  // New Strategy: Fetch all active coupons and check in code for reliability.
+  const { data: activeCoupons, error } = await supabase
     .from('coupons')
-    .select('discount_percent, is_active, expires_at')
-    .ilike('code', code) // Use ilike for case-insensitive matching
-    .single();
+    .select('code, discount_percent, is_active, expires_at')
+    .eq('is_active', true);
 
-  if (error || !coupon) {
+  if (error) {
+    console.error('Error fetching coupons:', error);
+    return { success: false, message: 'Could not validate coupon at this time.' };
+  }
+
+  if (!activeCoupons) {
     return { success: false, message: 'Invalid coupon code.' };
   }
 
+  // Perform a case-insensitive search on the fetched coupons
+  const coupon = activeCoupons.find(c => c.code.toLowerCase() === code.toLowerCase());
+
+  if (!coupon) {
+    return { success: false, message: 'Invalid coupon code.' };
+  }
+
+  // Re-check is_active and expiry date as a fallback.
   if (!coupon.is_active) {
     return { success: false, message: 'This coupon is no longer active.' };
   }
