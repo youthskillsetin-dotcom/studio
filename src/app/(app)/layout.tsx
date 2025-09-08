@@ -29,7 +29,6 @@ const navItems = [
   { href: "/dashboard", icon: LayoutGrid, label: "Dashboard" },
   { href: "/lessons", icon: BookOpen, label: "Lessons" },
   { href: "/practice-lab", icon: FlaskConical, label: "Practice Lab"},
-  { href: "/community", icon: Users, label: "Community" },
   { href: "/ai-mentor", icon: Sparkles, label: "AI Mentor" },
   { href: "/career-guide", icon: Briefcase, label: "Career Guide" },
 ];
