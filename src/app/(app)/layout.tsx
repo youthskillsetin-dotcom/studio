@@ -30,8 +30,8 @@ const navItems = [
   { href: "/dashboard", icon: LayoutGrid, label: "Dashboard", premium: false },
   { href: "/lessons", icon: BookOpen, label: "Lessons", premium: false },
   { href: "/practice-lab", icon: FlaskConical, label: "Practice Lab", premium: true},
-  { href: "/ai-mentor", icon: Sparkles, label: "AI Mentor", premium: false },
   { href: "/career-guide", icon: Briefcase, label: "Career Guide", premium: true },
+  { href: "/ai-mentor", icon: Sparkles, label: "AI Mentor", premium: false },
 ];
 
 const adminNavItems = [
