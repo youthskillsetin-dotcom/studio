@@ -11,10 +11,11 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { generateCareerProfile, type GenerateCareerProfileOutput } from '@/ai/flows/generate-career-profile';
-import { Compass, Briefcase, Wand2, BookOpen, BarChart, IndianRupee, Rocket, Lightbulb, Brain, Star, Map, Building, BriefcaseBusiness, AlertTriangle } from 'lucide-react';
+import { Compass, Briefcase, Wand2, BookOpen, BarChart, IndianRupee, Rocket, Lightbulb, Brain, Star, Map, Building, BriefcaseBusiness, AlertTriangle, Download } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Skeleton } from '@/components/ui/skeleton';
+import jsPDF from 'jspdf';
 
 const formSchema = z.object({
   userInput: z.string().min(2, { message: 'Please enter a value.' }),
@@ -164,6 +165,121 @@ export default function CareerGuidePage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const handleDownload = () => {
+    if (!profile) return;
+    const doc = new jsPDF();
+    const pageHeight = doc.internal.pageSize.getHeight();
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const margin = 15;
+    let y = margin;
+
+    const checkPageBreak = (spaceNeeded: number) => {
+        if (y + spaceNeeded > pageHeight - margin) {
+            doc.addPage();
+            y = margin;
+        }
+    }
+
+    // Title
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(22);
+    doc.setTextColor(109, 40, 217); // primary color
+    doc.text(profile.careerTitle, pageWidth / 2, y, { align: 'center' });
+    y += 10;
+
+    // Description
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(11);
+    doc.setTextColor(100, 116, 139); // muted-foreground
+    const descLines = doc.splitTextToSize(profile.description, pageWidth - margin * 2);
+    checkPageBreak(descLines.length * 5);
+    doc.text(descLines, margin, y);
+    y += descLines.length * 5 + 10;
+
+    const addSection = (title: string, content: string[] | object) => {
+        checkPageBreak(15);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(14);
+        doc.setTextColor(109, 40, 217);
+        doc.text(title, margin, y);
+        y += 7;
+        
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(11);
+        doc.setTextColor(51, 65, 85);
+        
+        if (Array.isArray(content)) {
+            content.forEach(item => {
+                const itemLines = doc.splitTextToSize(`• ${item}`, pageWidth - margin * 2 - 5);
+                checkPageBreak(itemLines.length * 5);
+                doc.text(itemLines, margin + 5, y);
+                y += itemLines.length * 5 + 2;
+            });
+        } else if (typeof content === 'object') {
+            Object.entries(content).forEach(([key, value]) => {
+                const formattedKey = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+                let text = `${formattedKey}: ${value}`;
+                if (key === 'salaryRange') {
+                   text = `Salary Range: ${formatSalary(profile.jobMarketInsights.salaryRange.min)} - ${formatSalary(profile.jobMarketInsights.salaryRange.max)}`
+                }
+                 if(key === 'step1' || key === 'step2' || key === 'step3' || key === 'step4') {
+                   text = value; // for roadmap
+                }
+
+                const itemLines = doc.splitTextToSize(text, pageWidth - margin * 2);
+                checkPageBreak(itemLines.length * 5);
+                doc.text(itemLines, margin, y);
+                y += itemLines.length * 5 + 2;
+            })
+        }
+        y += 5;
+    }
+
+    addSection('Typical Responsibilities', profile.responsibilities);
+    addSection('Job Market Insights', profile.jobMarketInsights);
+    
+    // Skills
+    checkPageBreak(15);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(14);
+    doc.setTextColor(109, 40, 217);
+    doc.text("Essential Skills", margin, y);
+    y += 7;
+    profile.skills.forEach(skill => {
+        checkPageBreak(15);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(11);
+        doc.setTextColor(51, 65, 85);
+        doc.text(`• ${skill.skill}`, margin + 5, y);
+        y += 5;
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(100, 116, 139);
+        const skillDescLines = doc.splitTextToSize(skill.description, pageWidth - margin * 2 - 10);
+        checkPageBreak(skillDescLines.length * 5);
+        doc.text(skillDescLines, margin + 10, y);
+        y += skillDescLines.length * 5 + 4;
+    });
+     y += 5;
+
+    // Roadmap
+    checkPageBreak(15);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(14);
+    doc.setTextColor(109, 40, 217);
+    doc.text("Learning Roadmap", margin, y);
+    y += 7;
+    addSection('Step 1: Foundations', [profile.learningRoadmap.step1]);
+    addSection('Step 2: Tools & Technology', [profile.learningRoadmap.step2]);
+    addSection('Step 3: Practical Application', [profile.learningRoadmap.step3]);
+    addSection('Step 4: Advanced Skills', [profile.learningRoadmap.step4]);
+
+    addSection('Possible Job Roles', profile.suggestedRoles);
+    addSection('Companies Hiring', profile.hiringCompanies);
+
+
+    doc.save(`${profile.careerTitle.replace(/\s+/g, '_')}_Profile.pdf`);
+  };
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
     setError(null);
@@ -237,10 +353,16 @@ export default function CareerGuidePage() {
             variants={containerVariants}
         >
           <motion.div variants={itemVariants} className="text-center">
-            <h2 className="text-3xl font-bold font-headline mb-2">
-                Your Career Profile: <span className="text-primary">{profile.careerTitle}</span>
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-3xl mx-auto">{profile.description}</p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                 <h2 className="text-3xl font-bold font-headline">
+                    Your Career Profile: <span className="text-primary">{profile.careerTitle}</span>
+                </h2>
+                <Button onClick={handleDownload} variant="outline" size="sm">
+                    <Download className="w-4 h-4 mr-2" />
+                    Download PDF
+                </Button>
+            </div>
+            <p className="text-muted-foreground text-lg max-w-3xl mx-auto mt-2">{profile.description}</p>
           </motion.div>
           
           <div className="grid md:grid-cols-2 gap-8">
