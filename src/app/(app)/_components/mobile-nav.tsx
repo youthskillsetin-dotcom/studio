@@ -9,6 +9,7 @@ import { Menu, School, UserCog } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { UserProfile } from '@/lib/types';
 import * as React from 'react';
+import { Logo } from '@/components/icons';
 
 interface NavItem {
   href: string;
@@ -44,7 +45,7 @@ export function MobileNav({ navItems, adminNavItems, userProfile }: MobileNavPro
             className="flex items-center gap-2 text-lg font-semibold"
             onClick={() => setOpen(false)}
           >
-            <School className="h-6 w-6 text-primary" />
+            <Logo className="h-6 w-6 text-primary" />
             <span className="font-headline">YouthSkillSet</span>
           </Link>
           {navItems.map(item => (

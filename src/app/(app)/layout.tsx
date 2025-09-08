@@ -9,7 +9,6 @@ import {
   FileText,
   FlaskConical,
   LayoutGrid,
-  School,
   Sparkles,
   UserCog,
   Users,
@@ -23,6 +22,7 @@ import { UserNav } from "./_components/user-nav";
 import { useUserProfile } from "@/hooks/use-user-profile";
 import { BottomNav } from "./_components/bottom-nav";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Logo } from "@/components/icons";
 
 
 const navItems = [
@@ -74,7 +74,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 z-40">
          <div className="flex items-center gap-4">
             <Link href="/dashboard" className="flex items-center gap-2 font-semibold">
-                <School className="h-7 w-7 text-primary" />
+                <Logo className="h-7 w-7 text-primary" />
                 <span className="text-xl font-headline hidden sm:inline-block">YouthSkillSet</span>
             </Link>
          </div>
