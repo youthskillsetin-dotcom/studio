@@ -19,7 +19,7 @@ const plans = {
   premium: {
     key: 'premium',
     name: 'Premium',
-    price: 199,
+    price: 249,
     period: '/month',
     features: [
       'Access to all lessons',
