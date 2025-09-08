@@ -43,12 +43,11 @@ export function BottomNav() {
         {navItems.map((item) => {
           const isActive = pathname.startsWith(item.href);
           const isLocked = item.premium && !hasPremium;
-          const href = isLocked ? '/subscribe' : item.href;
 
           return (
             <Link
               key={item.href}
-              href={href}
+              href={item.href}
               className={cn(
                 'inline-flex flex-col items-center justify-center px-5 hover:bg-muted/50 group',
                 isActive ? 'text-primary' : 'text-muted-foreground'

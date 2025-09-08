@@ -48,11 +48,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
      <>
       {navItems.map((item) => {
         const isLocked = item.premium && !hasPremium;
-        const href = isLocked ? '/subscribe' : item.href;
         return (
             <Link
             key={item.href}
-            href={href}
+            href={item.href}
             className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary flex items-center gap-1"
             >
             {item.label}
