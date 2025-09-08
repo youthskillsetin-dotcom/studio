@@ -704,3 +704,5 @@ export default function LabDetailPage() {
     </div>
   );
 }
+
+    
