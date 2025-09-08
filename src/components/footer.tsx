@@ -1,4 +1,3 @@
-
 'use client';
 
 import {
@@ -10,13 +9,6 @@ import {
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Logo } from './icons';
-
-const quickLinks = [
-    { href: '/dashboard', name: 'Dashboard' },
-    { href: '/lessons', name: 'Lessons' },
-    { href: '/ai-mentor', name: 'AI Mentor' },
-    { href: '/career-guide', name: 'Career Guide' },
-]
 
 const supportLinks = [
     { href: '/about', name: 'About' },
@@ -44,7 +36,7 @@ export function Footer() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid gap-10 grid-cols-1 text-center md:grid-cols-4 md:text-left">
-           <div className="flex flex-col items-center md:items-start col-span-1 md:col-span-1">
+           <div className="flex flex-col items-center md:items-start col-span-1 md:col-span-2">
                <Link href="/" className="flex items-center gap-2 mb-2">
                 <Logo className="h-8 w-8 text-primary" />
                 <span className="text-xl font-bold font-headline text-foreground">YouthSkillSet</span>
@@ -54,19 +46,6 @@ export function Footer() {
                 </p>
            </div>
            
-          <div className="md:mx-auto">
-             <h3 className="font-semibold font-headline text-foreground tracking-wider uppercase">Quick Links</h3>
-             <ul className="mt-4 space-y-2">
-                {quickLinks.map((item, idx) => (
-                    <li key={idx}>
-                        <Link href={item.href} className="text-sm hover:text-primary transition-colors duration-300">
-                            {item.name}
-                        </Link>
-                    </li>
-                ))}
-             </ul>
-           </div>
-
            <div className="md:mx-auto">
              <h3 className="font-semibold font-headline text-foreground tracking-wider uppercase">Support</h3>
              <ul className="mt-4 space-y-2">
@@ -84,7 +63,7 @@ export function Footer() {
             <h3 className="font-semibold font-headline text-foreground tracking-wider uppercase">Follow Us</h3>
              <div className="flex justify-center md:justify-start mt-4 space-x-4">
                 {socialLinks.map((item, idx) => (
-                     <Link key={idx} href={item.href} className="text-muted-foreground hover:text-primary transition-colors duration-300">
+                     <Link key={idx} href={item.href} className="text-sm hover:text-primary transition-colors duration-300">
                         <item.icon className="w-6 h-6" />
                         <span className="sr-only">{item.name}</span>
                     </Link>
