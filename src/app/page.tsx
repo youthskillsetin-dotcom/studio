@@ -280,7 +280,10 @@ export default function LandingPage() {
 
               {/* Yearly Plan */}
               <Card className="flex flex-col rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                <CardHeader>
+                <CardHeader className="relative">
+                  <div className="absolute top-0 right-6 -mt-3">
+                    <div className="bg-secondary text-secondary-foreground text-xs font-semibold px-3 py-1 rounded-full">Best Value</div>
+                  </div>
                   <CardTitle className="font-headline text-2xl">Yearly</CardTitle>
                   <div className="flex items-baseline gap-2">
                     <span className="text-2xl text-muted-foreground line-through">₹3600</span>
