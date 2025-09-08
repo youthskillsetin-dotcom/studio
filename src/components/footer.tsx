@@ -24,6 +24,7 @@ const supportLinks = [
     { href: '/#faq', name: 'FAQs' },
     { href: '/privacy', name: 'Privacy Policy' },
     { href: '/terms', name: 'Terms of Service' },
+    { href: '/refund-policy', name: 'Refund Policy' },
 ]
 
 const socialLinks = [
