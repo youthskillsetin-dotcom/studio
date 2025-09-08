@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -14,8 +13,8 @@ const contactInfo = [
     {
         icon: Mail,
         title: 'Email Support',
-        value: 'work@youthskillset.in',
-        href: 'mailto:work@youthskillset.in',
+        value: 'youthskillset.org@gmail.com',
+        href: 'mailto:youthskillset.org@gmail.com',
         cta: 'Send Email'
     },
     {

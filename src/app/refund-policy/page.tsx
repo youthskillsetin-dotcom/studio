@@ -27,7 +27,7 @@ export default function RefundPolicyPage() {
 
             <h2>3. How to Request a Refund</h2>
              <ul>
-                <li>Send an email to <a href="mailto:work@youthskillset.in">work@youthskillset.in</a> with your order ID, registered email, and reason for refund.</li>
+                <li>Send an email to <a href="mailto:youthskillset.org@gmail.com">youthskillset.org@gmail.com</a> with your order ID, registered email, and reason for refund.</li>
                 <li>Our support team will review your case within 5–7 business days.</li>
             </ul>
 
@@ -47,7 +47,7 @@ export default function RefundPolicyPage() {
             <p>
               For any refund queries, reach us at:
               <br />
-              <strong>Email:</strong> <a href="mailto:work@youthskillset.in">work@youthskillset.in</a>
+              <strong>Email:</strong> <a href="mailto:youthskillset.org@gmail.com">youthskillset.org@gmail.com</a>
               <br />
               <strong>Website:</strong> <a href="https://www.youthskillset.in" target="_blank" rel="noopener noreferrer">www.youthskillset.in</a>
             </p>
