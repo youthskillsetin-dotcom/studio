@@ -4,20 +4,22 @@
 import { Suspense, useState } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { CheckCircle, CreditCard, Loader2, Star } from 'lucide-react';
+import { CheckCircle, CreditCard, Loader2, Star, Ticket } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
 
 const plans = {
   premium: {
     key: 'premium',
     name: 'Premium',
-    price: '₹199',
+    price: 199,
     period: '/month',
     features: [
       'Access to all lessons',
@@ -29,7 +31,7 @@ const plans = {
   yearly: {
     key: 'yearly',
     name: 'Yearly',
-    price: '₹1499',
+    price: 1499,
     period: '/year',
     features: [
         'All Premium features',
@@ -41,14 +43,34 @@ const plans = {
 
 type PlanKey = 'premium' | 'yearly';
 
+const validCoupons: Record<string, number> = {
+    "SKILLUP25": 0.25,
+    "NEWYEAR50": 0.50,
+};
+
 function SubscribePageContent() {
   const router = useRouter();
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [selectedPlanKey, setSelectedPlanKey] = useState<PlanKey>('premium');
+  const [couponCode, setCouponCode] = useState('');
+  const [appliedDiscount, setAppliedDiscount] = useState(0);
+  const [couponMessage, setCouponMessage] = useState<string | null>(null);
 
   const selectedPlan = plans[selectedPlanKey];
+  const finalPrice = selectedPlan.price * (1 - appliedDiscount);
+
+  const handleApplyCoupon = () => {
+    const code = couponCode.toUpperCase();
+    if (validCoupons[code]) {
+      setAppliedDiscount(validCoupons[code]);
+      setCouponMessage(`Success! ${validCoupons[code] * 100}% discount applied.`);
+    } else {
+      setAppliedDiscount(0);
+      setCouponMessage("Invalid coupon code. Please try again.");
+    }
+  };
   
   const handleCheckout = async () => {
     setIsLoading(true);
@@ -112,11 +134,16 @@ function SubscribePageContent() {
 
 
           <div className="p-6 rounded-lg border bg-muted/40">
-            <div className="flex justify-between items-baseline">
-                <h3 className="text-xl font-bold text-primary">{selectedPlan.name}</h3>
-                <div className="flex items-center gap-2">
-                    <Badge variant="destructive">Limited Time</Badge>
-                    <p className="text-3xl font-bold">{selectedPlan.price}<span className="text-base font-normal text-muted-foreground">{selectedPlan.period}</span></p>
+            <div className="flex justify-between items-start">
+                <div>
+                    <h3 className="text-xl font-bold text-primary">{selectedPlan.name}</h3>
+                    <Badge variant="destructive" className="mt-1">Limited Time</Badge>
+                </div>
+                <div>
+                    {appliedDiscount > 0 && (
+                         <p className="text-lg text-muted-foreground line-through text-right">₹{selectedPlan.price}</p>
+                    )}
+                    <p className="text-3xl font-bold">₹{finalPrice.toFixed(0)}<span className="text-base font-normal text-muted-foreground">{selectedPlan.period}</span></p>
                 </div>
             </div>
           </div>
@@ -133,6 +160,25 @@ function SubscribePageContent() {
           </div>
         </CardContent>
         <CardFooter className="flex-col gap-4">
+             <div className="w-full space-y-2">
+                <Label htmlFor="coupon" className="flex items-center gap-2 font-semibold">
+                    <Ticket className="w-4 h-4" />
+                    Coupon Code
+                </Label>
+                <div className="flex items-center gap-2">
+                    <Input id="coupon" placeholder="Enter code" value={couponCode} onChange={(e) => setCouponCode(e.target.value)} />
+                    <Button variant="outline" onClick={handleApplyCoupon}>Apply</Button>
+                </div>
+                {couponMessage && (
+                    <p className={cn(
+                        "text-xs font-medium",
+                        appliedDiscount > 0 ? "text-green-600" : "text-destructive"
+                    )}>
+                        {couponMessage}
+                    </p>
+                )}
+            </div>
+
           <Button className="w-full" onClick={handleCheckout} disabled={isLoading || isSuccess}>
             {isLoading ? (
                 <><Loader2 className="mr-2 animate-spin" /> Processing...</>
