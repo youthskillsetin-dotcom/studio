@@ -7,7 +7,7 @@ export default function RefundPolicyPage() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
         <Card className="p-6 md:p-10 rounded-2xl">
           <CardHeader className="px-0">
-            <CardTitle className="text-3xl md:text-4xl font-headline">Refund Policy – YouthSkillset</CardTitle>
+            <CardTitle className="text-3xl md:text-4xl font-headline">Refund Policy – YouthSkillSet</CardTitle>
             <p className="text-muted-foreground pt-2">At YouthSkillset, we value your trust and want you to have the best learning experience with us.</p>
           </CardHeader>
           <CardContent className="prose dark:prose-invert max-w-none px-0">
@@ -39,7 +39,7 @@ export default function RefundPolicyPage() {
             <h2>5. No Refunds Provided If</h2>
              <ul>
                 <li>You completed or consumed a significant portion of the premium content.</li>
-                <li>Refund request was made after the allowed window.</li>
+                <li>The refund request was made after the allowed window.</li>
                 <li>Account misuse or violation of our Terms of Service is detected.</li>
             </ul>
 
