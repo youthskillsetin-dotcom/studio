@@ -64,16 +64,14 @@ export default function SignupPage() {
       options: {
         data: {
           full_name: values.fullName,
-        },
-        emailRedirectTo: `${location.origin}/auth/callback?next=/dashboard`,
+        }
       },
     });
 
     if (error) {
       setError(error.message);
     } else if (data.user) {
-        // Redirect to the new verification page
-        router.push(`/verify?email=${values.email}`);
+        router.push(`/verify-otp?email=${values.email}`);
     }
     setIsLoading(false);
   }
