@@ -1,31 +1,14 @@
+
 'use client';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { useToast } from '@/hooks/use-toast';
-import { ChevronLeft, Send } from 'lucide-react';
+import { Mail, Phone, MessageSquare } from 'lucide-react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { Footer } from '@/components/footer';
 import { Logo } from '@/components/icons';
 
 export default function SupportPage() {
-    const { toast } = useToast();
-    const router = useRouter();
-
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        toast({
-            title: "Inquiry Sent!",
-            description: "Thanks for reaching out. We'll get back to you as soon as possible.",
-        });
-        (event.target as HTMLFormElement).reset();
-        router.push('/');
-    };
-
   return (
     <div className="flex flex-col min-h-screen bg-muted/40">
         <header className="container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -43,43 +26,52 @@ export default function SupportPage() {
             </div>
         </header>
         <main className="flex-grow flex items-center justify-center py-12">
-            <div className="max-w-3xl mx-auto w-full px-4">
-                <h1 className="text-3xl font-bold font-headline mb-6 text-center">Contact & Support</h1>
-                <Card className="rounded-2xl">
-                    <form onSubmit={handleSubmit}>
-                        <CardHeader>
-                        <CardTitle>Submit an Inquiry</CardTitle>
-                        <CardDescription>
-                            Have a question or need help? Fill out the form below and our team will get back to you.
-                        </CardDescription>
-                        </CardHeader>
-                        <CardContent className="space-y-4">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="space-y-2">
-                            <Label htmlFor="name">Name</Label>
-                            <Input id="name" placeholder="Enter your name" required />
+            <div className="max-w-2xl mx-auto w-full px-4">
+                <div className="text-center mb-8">
+                    <h1 className="text-3xl font-bold font-headline">Contact & Support</h1>
+                    <p className="text-muted-foreground mt-2">We're here to help. Reach out to us through any of the channels below.</p>
+                </div>
+                <Card className="rounded-2xl p-2">
+                    <CardContent className="p-6 space-y-6">
+                        <div className="flex flex-col sm:flex-row items-center justify-between p-4 rounded-lg border bg-background hover:bg-muted/50 transition-colors">
+                            <div className="flex items-center gap-4">
+                                <Mail className="w-6 h-6 text-primary" />
+                                <div>
+                                    <h3 className="font-semibold">Email Support</h3>
+                                    <p className="text-sm text-muted-foreground">work@youthskillset.in</p>
+                                </div>
                             </div>
-                            <div className="space-y-2">
-                            <Label htmlFor="email">Email</Label>
-                            <Input id="email" type="email" placeholder="Enter your email" required />
-                            </div>
-                        </div>
-                        <div className="space-y-2">
-                            <Label htmlFor="subject">Subject</Label>
-                            <Input id="subject" placeholder="What is your inquiry about?" required />
-                        </div>
-                        <div className="space-y-2">
-                            <Label htmlFor="message">Message</Label>
-                            <Textarea id="message" placeholder="Please describe your issue or question." required rows={6}/>
-                        </div>
-                        </CardContent>
-                        <CardFooter>
-                            <Button type="submit">
-                                <Send className="mr-2 h-4 w-4" />
-                                Submit Inquiry
+                            <Button asChild variant="outline" className="mt-4 sm:mt-0 w-full sm:w-auto">
+                                <a href="mailto:work@youthskillset.in">Send Email</a>
                             </Button>
-                        </CardFooter>
-                    </form>
+                        </div>
+
+                         <div className="flex flex-col sm:flex-row items-center justify-between p-4 rounded-lg border bg-background hover:bg-muted/50 transition-colors">
+                            <div className="flex items-center gap-4">
+                                <Phone className="w-6 h-6 text-primary" />
+                                <div>
+                                    <h3 className="font-semibold">Phone Support</h3>
+                                    <p className="text-sm text-muted-foreground">+91 99884 74904</p>
+                                </div>
+                            </div>
+                             <Button asChild variant="outline" className="mt-4 sm:mt-0 w-full sm:w-auto">
+                                <a href="tel:+919988474904">Call Us</a>
+                            </Button>
+                        </div>
+                        
+                         <div className="flex flex-col sm:flex-row items-center justify-between p-4 rounded-lg border bg-background hover:bg-muted/50 transition-colors">
+                            <div className="flex items-center gap-4">
+                                <MessageSquare className="w-6 h-6 text-primary" />
+                                <div>
+                                    <h3 className="font-semibold">WhatsApp Chat</h3>
+                                    <p className="text-sm text-muted-foreground">+91 82980 93316</p>
+                                </div>
+                            </div>
+                            <Button asChild variant="outline" className="mt-4 sm:mt-0 w-full sm:w-auto">
+                                <a href="https://wa.me/918298093316" target="_blank" rel="noopener noreferrer">Start Chat</a>
+                            </Button>
+                        </div>
+                    </CardContent>
                 </Card>
             </div>
         </main>
