@@ -125,12 +125,12 @@ const ItrSimulation = () => {
                 <CardContent className="min-h-[250px]">
                     {step === 0 && (
                         <div className="space-y-4">
-                            <p className="text-muted-foreground">This section is for your basic details. In a real portal, this is often pre-filled from your PAN data. Please review the sample details.</p>
+                            <p className="text-muted-foreground">This section is for your basic details. In a real portal, this is often pre-filled from your PAN data. Please enter your details.</p>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div className="space-y-1"><Label>Name</Label><Input disabled value="Anjali Sharma" /></div>
-                                <div className="space-y-1"><Label>PAN</Label><Input disabled value="ABCDE1234F" /></div>
-                                <div className="space-y-1"><Label>Date of Birth</Label><Input disabled value="15-08-1998" /></div>
-                                <div className="space-y-1"><Label>Aadhaar No.</Label><Input disabled value="XXXX XXXX 1234" /></div>
+                                <div className="space-y-1"><Label>Name</Label><Input placeholder="e.g. Anjali Sharma" /></div>
+                                <div className="space-y-1"><Label>PAN</Label><Input placeholder="e.g. ABCDE1234F" /></div>
+                                <div className="space-y-1"><Label>Date of Birth</Label><Input placeholder="e.g. 15-08-1998" type="date" /></div>
+                                <div className="space-y-1"><Label>Aadhaar No.</Label><Input placeholder="e.g. XXXX XXXX 1234" /></div>
                             </div>
                         </div>
                     )}
@@ -638,3 +638,5 @@ export default function LabDetailPage() {
     </div>
   );
 }
+
+    
