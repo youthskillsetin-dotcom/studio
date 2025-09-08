@@ -4,7 +4,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
-import { CheckCircle, Zap, BrainCircuit, BookOpen, BarChart, ShieldCheck, Cpu, Briefcase, IndianRupee, HandCoins, Scale, User, FileText, Lock, Landmark, Search, Target, Bot, Plus } from 'lucide-react';
+import { CheckCircle, Zap, BrainCircuit, BookOpen, BarChart, ShieldCheck, Cpu, Briefcase, IndianRupee, HandCoins, Scale, User, FileText, Lock, Landmark, Search, Target, Bot, Plus, Menu } from 'lucide-react';
 import { Logo } from '@/components/icons';
 import Image from 'next/image';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -12,6 +12,7 @@ import { motion } from 'framer-motion';
 import sampleContent from '../../sample-content.json';
 import { Footer } from '@/components/footer';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 
 const getIconForModule = (title: string) => {
@@ -57,7 +58,7 @@ export default function LandingPage() {
           <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#faq">FAQ</a>
            <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/about">About</a>
         </nav>
-        <div className="flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-2">
             <ThemeToggle />
             <Button asChild variant="ghost">
               <Link href="/login">Log In</Link>
@@ -65,6 +66,31 @@ export default function LandingPage() {
             <Button asChild>
               <Link href="/signup">Get Started</Link>
             </Button>
+        </div>
+        <div className="md:hidden flex items-center gap-2">
+           <ThemeToggle />
+           <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline" size="icon">
+                <Menu className="h-6 w-6" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right">
+              <div className="grid gap-4 py-6">
+                <a className="font-medium hover:text-primary" href="#features">Features</a>
+                <a className="font-medium hover:text-primary" href="#pricing">Pricing</a>
+                <a className="font-medium hover:text-primary" href="#faq">FAQ</a>
+                <a className="font-medium hover:text-primary" href="/about">About</a>
+                <div className="h-px w-full bg-border my-2" />
+                <Button asChild variant="outline">
+                    <Link href="/login">Log In</Link>
+                </Button>
+                <Button asChild>
+                    <Link href="/signup">Get Started</Link>
+                </Button>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </header>
 
@@ -332,5 +358,3 @@ export default function LandingPage() {
     </div>
   );
 }
-
-    
