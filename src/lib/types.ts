@@ -83,6 +83,7 @@ export interface UserProfile {
     role: UserRole;
     fullName?: string | null;
     created_at?: string;
+    avatar_url?: string | null;
 }
 
 

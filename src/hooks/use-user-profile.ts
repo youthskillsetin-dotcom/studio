@@ -20,7 +20,7 @@ export function useUserProfile() {
         // This is the most reliable source of truth, especially after manual changes.
         const { data: profileData, error } = await supabase
             .from('profiles')
-            .select('role, full_name')
+            .select('role, full_name, avatar_url')
             .eq('id', user.id)
             .single();
 
@@ -38,6 +38,7 @@ export function useUserProfile() {
             role: role,
             fullName: fullName,
             created_at: user.created_at,
+            avatar_url: profileData?.avatar_url,
         });
 
       } else {

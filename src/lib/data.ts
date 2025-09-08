@@ -158,7 +158,7 @@ export async function getUserProfile(supabase: SupabaseClient): Promise<UserProf
 
     const { data, error } = await supabase
         .from('profiles')
-        .select('role, full_name')
+        .select('role, full_name, avatar_url')
         .eq('id', user.id)
         .single();
 
@@ -175,6 +175,7 @@ export async function getUserProfile(supabase: SupabaseClient): Promise<UserProf
         role: role,
         created_at: user.created_at, 
         fullName: fullName,
+        avatar_url: data?.avatar_url,
     };
 }
 
