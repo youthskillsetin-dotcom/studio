@@ -154,7 +154,6 @@ export default function PricingPage() {
                 <CardHeader>
                   <div className="flex justify-between items-center">
                     <CardTitle className="font-headline text-2xl">Yearly</CardTitle>
-                    <Badge variant="destructive">Limited Time</Badge>
                   </div>
                   <div className="flex items-baseline gap-2">
                     <span className="text-2xl text-muted-foreground line-through">₹3600</span>
