@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Logo } from '@/components/icons';
 import { Target, Lightbulb, Heart } from 'lucide-react';
 import Image from 'next/image';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const getInitials = (name: string) => {
     const names = name.split(' ');
@@ -13,6 +13,15 @@ const getInitials = (name: string) => {
     }
     return name[0] ? name[0].toUpperCase() : '';
 }
+
+const teamMembers = [
+    { name: "Amit kumar Metha", role: "CEO & Founder", description: "Driven by a passion for education and technology, Amit founded YouthSkillset to bridge the gap between academic learning and real-world readiness. He is dedicated to empowering India's youth with the practical skills needed to build a successful and fulfilling future.", avatar: "https://picsum.photos/200/200?random=1", hint: "man portrait" },
+    { name: "Yashneet", role: "Head of Product and Co-founder", description: "As the Head of Product, Yashneet is the architect of the YouthSkillset experience. He translates our vision into a tangible, user-friendly platform, ensuring every feature is impactful and part of a seamless journey towards empowerment for young learners.", avatar: "https://picsum.photos/200/200?random=2", hint: "man portrait" },
+    { name: "Adarsh", role: "Head of Content and Co-founder", description: "Adarsh leads our educational mission by breaking down complex subjects into engaging, practical lessons. He ensures our curriculum is accurate, up-to-date, and provides actionable knowledge that students can apply to their lives immediately.", avatar: "https://picsum.photos/200/200?random=3", hint: "man portrait" },
+    { name: "Nancy", role: "Head of Design and Co-founder", description: "Nancy is the creative force shaping the look and feel of YouthSkillset. She focuses on user-centric design to make learning intuitive, beautiful, and accessible, ensuring the path to knowledge is a joyful and empowering experience for every student.", avatar: "https://picsum.photos/200/200?random=4", hint: "woman portrait" },
+    { name: "Nidhi", role: "Head of Research and Co-founder", description: "Nidhi ensures our curriculum is not just current, but forward-looking. By researching educational trends and the future job market, she guarantees our modules provide a real competitive advantage, equipping students for a lifetime of success.", avatar: "https://picsum.photos/200/200?random=5", hint: "woman portrait" },
+    { name: "Love Thakur", role: "Head of Human Resources and Co-Founder", description: "Love is the champion of our most valuable asset: our people. As Head of Human Resources, he cultivates a vibrant and supportive company culture, ensuring our passionate team feels valued, heard, and empowered to do their best work.", avatar: "https://picsum.photos/200/200?random=6", hint: "man portrait" },
+]
 
 export default function AboutPage() {
   return (
@@ -91,66 +100,19 @@ export default function AboutPage() {
                 <p className="mt-2 text-lg text-muted-foreground">The passionate individuals behind YouthSkillset.</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-                <Card className="text-center rounded-2xl border-0 shadow-none">
-                    <CardContent className="p-6">
-                        <Avatar className="w-24 h-24 mx-auto mb-4 text-2xl">
-                          <AvatarFallback>{getInitials("Amit kumar Metha")}</AvatarFallback>
-                        </Avatar>
-                        <h3 className="mt-6 text-lg font-semibold text-foreground">Amit kumar Metha</h3>
-                        <p className="text-primary">CEO & Founder</p>
-                        <p className="text-sm text-muted-foreground mt-4">Driven by a passion for education and technology, Amit founded YouthSkillset to bridge the gap between academic learning and real-world readiness. He is dedicated to empowering India's youth with the practical skills needed to build a successful and fulfilling future.</p>
-                    </CardContent>
-                </Card>
-                <Card className="text-center rounded-2xl border-0 shadow-none">
-                    <CardContent className="p-6">
-                        <Avatar className="w-24 h-24 mx-auto mb-4 text-2xl">
-                          <AvatarFallback>{getInitials("Yashneet")}</AvatarFallback>
-                        </Avatar>
-                        <h3 className="mt-6 text-lg font-semibold text-foreground">Yashneet</h3>
-                        <p className="text-primary">Head of Product and Co-founder</p>
-                        <p className="text-sm text-muted-foreground mt-4">As the Head of Product, Yashneet is the architect of the YouthSkillset experience. He translates our vision into a tangible, user-friendly platform, ensuring every feature is impactful and part of a seamless journey towards empowerment for young learners.</p>
-                    </CardContent>
-                </Card>
-                <Card className="text-center rounded-2xl border-0 shadow-none">
-                    <CardContent className="p-6">
-                         <Avatar className="w-24 h-24 mx-auto mb-4 text-2xl">
-                          <AvatarFallback>{getInitials("Adarsh")}</AvatarFallback>
-                        </Avatar>
-                        <h3 className="mt-6 text-lg font-semibold text-foreground">Adarsh</h3>
-                        <p className="text-primary">Head of Content and Co-founder</p>
-                        <p className="text-sm text-muted-foreground mt-4">Adarsh leads our educational mission by breaking down complex subjects into engaging, practical lessons. He ensures our curriculum is accurate, up-to-date, and provides actionable knowledge that students can apply to their lives immediately.</p>
-                    </CardContent>
-                </Card>
-                <Card className="text-center rounded-2xl border-0 shadow-none">
-                    <CardContent className="p-6">
-                         <Avatar className="w-24 h-24 mx-auto mb-4 text-2xl">
-                          <AvatarFallback>{getInitials("Nancy")}</AvatarFallback>
-                        </Avatar>
-                        <h3 className="mt-6 text-lg font-semibold text-foreground">Nancy</h3>
-                        <p className="text-primary">Head of Design and Co-founder</p>
-                        <p className="text-sm text-muted-foreground mt-4">Nancy is the creative force shaping the look and feel of YouthSkillset. She focuses on user-centric design to make learning intuitive, beautiful, and accessible, ensuring the path to knowledge is a joyful and empowering experience for every student.</p>
-                    </CardContent>
-                </Card>
-                <Card className="text-center rounded-2xl border-0 shadow-none">
-                    <CardContent className="p-6">
-                         <Avatar className="w-24 h-24 mx-auto mb-4 text-2xl">
-                          <AvatarFallback>{getInitials("Nidhi")}</AvatarFallback>
-                        </Avatar>
-                        <h3 className="mt-6 text-lg font-semibold text-foreground">Nidhi</h3>
-                        <p className="text-primary">Head of Research and Co-founder</p>
-                        <p className="text-sm text-muted-foreground mt-4">Nidhi ensures our curriculum is not just current, but forward-looking. By researching educational trends and the future job market, she guarantees our modules provide a real competitive advantage, equipping students for a lifetime of success.</p>
-                    </CardContent>
-                </Card>
-                <Card className="text-center rounded-2xl border-0 shadow-none">
-                    <CardContent className="p-6">
-                         <Avatar className="w-24 h-24 mx-auto mb-4 text-2xl">
-                          <AvatarFallback>{getInitials("Love Thakur")}</AvatarFallback>
-                        </Avatar>
-                        <h3 className="mt-6 text-lg font-semibold text-foreground">Love Thakur</h3>
-                        <p className="text-primary">Head of Human Resources and Co-Founder</p>
-                        <p className="text-sm text-muted-foreground mt-4">Love is the champion of our most valuable asset: our people. As Head of Human Resources, he cultivates a vibrant and supportive company culture, ensuring our passionate team feels valued, heard, and empowered to do their best work.</p>
-                    </CardContent>
-                </Card>
+                 {teamMembers.map((member) => (
+                    <Card key={member.name} className="text-center rounded-2xl border-0 shadow-none">
+                        <CardContent className="p-6">
+                            <Avatar className="w-24 h-24 mx-auto mb-4 text-2xl">
+                                <AvatarImage src={member.avatar} alt={member.name} data-ai-hint={member.hint} />
+                                <AvatarFallback>{getInitials(member.name)}</AvatarFallback>
+                            </Avatar>
+                            <h3 className="mt-6 text-lg font-semibold text-foreground">{member.name}</h3>
+                            <p className="text-primary">{member.role}</p>
+                            <p className="text-sm text-muted-foreground mt-4">{member.description}</p>
+                        </CardContent>
+                    </Card>
+                ))}
             </div>
         </div>
 

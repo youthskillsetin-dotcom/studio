@@ -10,7 +10,7 @@ import { Footer } from '@/components/footer';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 
 export default function PricingPage() {
@@ -191,6 +191,7 @@ export default function PricingPage() {
                     <Card className="p-6 rounded-xl bg-background border">
                         <div className="flex items-start gap-4">
                             <Avatar className="h-12 w-12">
+                                <AvatarImage src="https://picsum.photos/100/100?random=7" alt="Anika S." data-ai-hint="woman portrait" />
                                 <AvatarFallback>AS</AvatarFallback>
                             </Avatar>
                             <div>
@@ -202,6 +203,7 @@ export default function PricingPage() {
                     <Card className="p-6 rounded-xl bg-background border">
                         <div className="flex items-start gap-4">
                             <Avatar className="h-12 w-12">
+                                <AvatarImage src="https://picsum.photos/100/100?random=8" alt="Rohan P." data-ai-hint="man portrait" />
                                 <AvatarFallback>RP</AvatarFallback>
                             </Avatar>
                             <div>

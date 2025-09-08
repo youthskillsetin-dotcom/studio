@@ -175,7 +175,7 @@ export default function LandingPage() {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl md:text-4xl font-extrabold font-headline">
-                        Module Breakdown
+                        Our Curriculum
                     </h2>
                     <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
                         Explore the wide range of topics we cover to build a solid foundation for your success.
@@ -197,7 +197,7 @@ export default function LandingPage() {
             </div>
         </section>
         
-        <section id="faq" className="bg-background py-20">
+        <section id="faq" className="bg-muted/40 py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-extrabold font-headline">
@@ -223,7 +223,7 @@ export default function LandingPage() {
               <AccordionItem value="item-3">
                 <AccordionTrigger className="text-left">What kind of skills can I learn?</AccordionTrigger>
                 <AccordionContent>
-                  We focus on practical, in-demand skills in areas like web development, UI/UX design, data analysis, and digital marketing. Our curriculum is constantly updated to match the latest industry trends and technologies.
+                  We focus on practical, in-demand skills in areas like financial literacy, career development, digital safety, and entrepreneurship. Our curriculum is constantly updated to match the latest industry trends and real-world needs.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-4">
@@ -234,6 +234,26 @@ export default function LandingPage() {
               </AccordionItem>
             </Accordion>
           </div>
+        </section>
+
+        <section className="py-20 md:py-32">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="bg-primary/90 rounded-2xl p-10 md:p-16 text-center text-primary-foreground relative overflow-hidden">
+                    <div className="absolute -top-10 -left-10 w-32 h-32 bg-primary-foreground/10 rounded-full" />
+                    <div className="absolute -bottom-16 -right-5 w-40 h-40 bg-primary-foreground/10 rounded-full" />
+                    <div className="relative z-10">
+                        <h2 className="text-3xl md:text-4xl font-extrabold font-headline">Ready to Start Your Journey?</h2>
+                        <p className="mt-4 max-w-xl mx-auto text-lg text-primary-foreground/80">
+                            Join thousands of young learners who are building a brighter future. Your first lesson is just a click away.
+                        </p>
+                        <div className="mt-8">
+                             <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90" asChild>
+                                <Link href="/signup">Sign Up for Free</Link>
+                            </Button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
       </main>
