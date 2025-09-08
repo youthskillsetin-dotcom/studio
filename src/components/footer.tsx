@@ -5,7 +5,6 @@ import {
   Instagram,
   Linkedin,
   Twitter,
-  Youtube,
 } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -24,7 +23,6 @@ const socialLinks = [
     { href: '#', icon: Twitter, name: 'Twitter' },
     { href: '#', icon: Linkedin, name: 'LinkedIn' },
     { href: 'https://www.instagram.com/youthskillset/', icon: Instagram, name: 'Instagram' },
-    { href: '#', icon: Youtube, name: 'YouTube' },
 ];
 
 export function Footer() {
