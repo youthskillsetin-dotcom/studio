@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 export function TodaysLessonCard() {
   return (
-    <Card className="rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+    <Card className="rounded-2xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
       <CardHeader>
         <CardTitle className="font-headline">Continue Learning</CardTitle>
         <CardDescription>Your next challenge is waiting for you.</CardDescription>

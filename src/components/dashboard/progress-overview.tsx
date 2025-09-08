@@ -28,7 +28,7 @@ export function ProgressOverview() {
   };
 
   return (
-    <Card className="rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col">
+    <Card className="rounded-2xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col">
       <CardHeader className="items-center pb-0">
         <CardTitle className="font-headline text-lg">Learning Progress</CardTitle>
         <CardDescription className="text-xs">You're on the right track!</CardDescription>

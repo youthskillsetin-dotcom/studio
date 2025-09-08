@@ -15,7 +15,7 @@ const badges = [
 
 export function BadgesGrid() {
   return (
-    <Card className="rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+    <Card className="rounded-2xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
       <CardHeader>
         <CardTitle className="font-headline">Achievements</CardTitle>
         <CardDescription>Badges you've earned on your journey.</CardDescription>
@@ -28,8 +28,8 @@ export function BadgesGrid() {
                 <TooltipTrigger asChild>
                   <div
                     className={cn(
-                      'flex aspect-square items-center justify-center rounded-lg bg-muted',
-                      badge.unlocked ? 'opacity-100' : 'opacity-40 grayscale'
+                      'flex aspect-square items-center justify-center rounded-lg bg-muted transition-all duration-300',
+                      badge.unlocked ? 'opacity-100 hover:scale-110' : 'opacity-40 grayscale'
                     )}
                   >
                     <badge.icon className="w-8 h-8 text-primary" />

@@ -81,7 +81,7 @@ export default function PracticeLabPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {availableLabs.map((lab) => (
-          <Card key={lab.id} className={cn("flex flex-col rounded-2xl shadow-sm transition-all", !lab.is_interactive ? "bg-muted/40" : "hover:shadow-lg hover:-translate-y-1")}>
+          <Card key={lab.id} className={cn("flex flex-col rounded-2xl shadow-sm transition-all duration-300", !lab.is_interactive ? "bg-muted/40" : "hover:shadow-lg hover:-translate-y-1")}>
             <CardHeader className="flex-row items-start gap-4">
                 <div className="p-3 bg-primary/10 rounded-lg">
                     <lab.icon className="w-6 h-6 text-primary"/>

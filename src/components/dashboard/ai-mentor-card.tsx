@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 export function AIMentorCard() {
   return (
-    <Card className="rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+    <Card className="rounded-2xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 font-headline">
           <Sparkles className="w-6 h-6 text-primary" />

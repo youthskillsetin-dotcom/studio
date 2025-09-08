@@ -107,7 +107,7 @@ export default function LandingPage() {
                     </motion.div>
                 </motion.div>
 
-                <div className="relative w-full max-w-lg h-80 lg:h-96 mx-auto" aria-hidden="true">
+                <div className="relative w-full max-w-lg h-80 lg:h-96 mx-auto lg:mx-0" aria-hidden="true">
                     <div className="absolute inset-0 w-full h-full">
                         <div className="absolute top-0 -left-4 w-72 h-72 bg-primary/20 rounded-full filter blur-3xl opacity-70 animate-blob"></div>
                         <div className="absolute top-0 -right-4 w-72 h-72 bg-accent/20 rounded-full filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
@@ -181,7 +181,7 @@ export default function LandingPage() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               {/* Free Plan */}
-              <Card className="flex flex-col">
+              <Card className="flex flex-col rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
                 <CardHeader>
                   <CardTitle className="font-headline text-2xl">Free</CardTitle>
                   <p className="text-4xl font-bold">₹0<span className="text-lg font-normal text-muted-foreground">/month</span></p>
@@ -211,7 +211,7 @@ export default function LandingPage() {
               </Card>
 
               {/* Premium Plan */}
-              <Card className="flex flex-col border-primary shadow-lg">
+              <Card className="flex flex-col rounded-2xl border-primary shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
                 <CardHeader className="relative">
                    <div className="absolute top-0 right-6 -mt-3">
                       <div className="bg-primary text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full">Most Popular</div>
@@ -251,7 +251,7 @@ export default function LandingPage() {
               </Card>
 
               {/* Yearly Plan */}
-              <Card className="flex flex-col">
+              <Card className="flex flex-col rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
                 <CardHeader>
                   <CardTitle className="font-headline text-2xl">Yearly</CardTitle>
                   <div className="flex items-baseline gap-2">

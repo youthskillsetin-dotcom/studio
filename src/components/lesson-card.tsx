@@ -17,10 +17,10 @@ export function LessonCard({ lesson, hasPremium }: LessonCardProps) {
   const CardInnerContent = () => (
     <Card
       className={cn(
-        "flex flex-col h-full rounded-2xl shadow-sm transition-all",
+        "flex flex-col h-full rounded-2xl shadow-sm transition-all duration-300",
         isLocked
           ? "bg-muted/50 cursor-not-allowed"
-          : "hover:shadow-md hover:border-primary/50 cursor-pointer"
+          : "hover:shadow-lg hover:-translate-y-1 cursor-pointer"
       )}
     >
       <CardHeader>
