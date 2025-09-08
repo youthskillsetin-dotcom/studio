@@ -13,8 +13,6 @@ import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { validateCoupon } from '@/lib/actions';
-
 
 const plans = {
   premium: {
@@ -58,17 +56,31 @@ function SubscribePageContent() {
   const selectedPlan = plans[selectedPlanKey];
   const finalPrice = selectedPlan.price * (1 - appliedDiscount);
 
-  const handleApplyCoupon = async () => {
+  const handleApplyCoupon = () => {
     setIsApplyingCoupon(true);
     setCouponMessage(null);
-    const result = await validateCoupon(couponCode);
-    setCouponMessage(result.message);
-    if (result.success) {
-      setAppliedDiscount(result.discount || 0);
-    } else {
-      setAppliedDiscount(0);
-    }
-    setIsApplyingCoupon(false);
+    setAppliedDiscount(0);
+
+    const validCoupons: { [code: string]: { discount: number; message: string } } = {
+      'SKILL10': { discount: 0.10, message: 'Success! 10% discount applied.' },
+      'SKILL25': { discount: 0.25, message: 'Success! 25% discount applied.' },
+    };
+
+    // Simulate network delay for a better user experience
+    setTimeout(() => {
+      const upperCaseCode = couponCode.toUpperCase();
+      const appliedCoupon = validCoupons[upperCaseCode];
+
+      if (appliedCoupon) {
+        setAppliedDiscount(appliedCoupon.discount);
+        setCouponMessage(appliedCoupon.message);
+      } else if (couponCode) {
+        setCouponMessage('Invalid coupon code.');
+      } else {
+        setCouponMessage('Please enter a coupon code.');
+      }
+      setIsApplyingCoupon(false);
+    }, 500);
   };
   
   const handleCheckout = async () => {
