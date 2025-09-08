@@ -16,25 +16,28 @@ export function useUserProfile() {
       const { data: { user } } = await supabase.auth.getUser();
 
       if (user) {
-        const { data, error } = await supabase
+        // Fetch the role and full_name directly from the profiles table.
+        // This is the most reliable source of truth, especially after manual changes.
+        const { data: profileData, error } = await supabase
             .from('profiles')
             .select('role, full_name')
             .eq('id', user.id)
             .single();
 
         if (error && error.code !== 'PGRST116' && error.code !== '42P01') {
-             // Intentionally not logging this error to the console to avoid clutter
-             // in dev environments where the table might not exist yet.
+             // Intentionally not logging this error to the console to avoid clutter.
         }
         
-        const role = data?.role ?? user?.user_metadata?.role ?? 'user';
-        const fullName = data?.full_name ?? user?.user_metadata?.full_name ?? user?.email?.split('@')[0];
-
+        // Prioritize data from the 'profiles' table first, then fall back to metadata.
+        const role = profileData?.role ?? user.user_metadata?.role ?? 'user';
+        const fullName = profileData?.full_name ?? user.user_metadata?.full_name ?? user.email?.split('@')[0];
+        
         setUserProfile({
             id: user.id,
             email: user.email || 'user@example.com',
             role: role,
             fullName: fullName,
+            created_at: user.created_at,
         });
 
       } else {
@@ -47,9 +50,8 @@ export function useUserProfile() {
 
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event, session) => {
-        if (event === 'SIGNED_IN' || event === 'USER_UPDATED' || event === 'SIGNED_OUT') {
-           fetchUserProfile();
-        }
+        // Refetch the profile on any auth event to ensure data is fresh.
+        fetchUserProfile();
       }
     );
 
