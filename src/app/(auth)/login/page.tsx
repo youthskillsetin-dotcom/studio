@@ -32,7 +32,7 @@ import { useToast } from '@/hooks/use-toast';
 import { AuthApiError } from '@supabase/supabase-js';
 
 const formSchema = z.object({
-  emailOrPhone: z.string().min(1, { message: 'Please enter your email or phone number.' }),
+  email: z.string().email({ message: 'Please enter a valid email.' }),
   password: z
     .string()
     .min(6, { message: 'Password must be at least 6 characters.' }),
@@ -48,7 +48,7 @@ export default function LoginPage() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      emailOrPhone: '',
+      email: '',
       password: '',
     },
   });
@@ -57,29 +57,23 @@ export default function LoginPage() {
     setIsLoading(true);
     setError(null);
 
-    const isEmail = values.emailOrPhone.includes('@');
-    const credentials = isEmail
-      ? { email: values.emailOrPhone, password: values.password }
-      : { phone: `+91${values.emailOrPhone}`, password: values.password };
+    const { error } = await supabase.auth.signInWithPassword({
+        email: values.email,
+        password: values.password,
+    });
 
-    try {
-        const { error } = await supabase.auth.signInWithPassword(credentials);
-
-        if (error) {
-            if (error instanceof AuthApiError && error.message.includes('Email not confirmed')) {
-                 router.push(`/verify-otp?phone=${values.emailOrPhone.replace('+91', '')}&password=${encodeURIComponent(values.password)}`);
-            } else {
-                setError(error.message);
-            }
+    if (error) {
+        if (error instanceof AuthApiError && error.message.includes('Email not confirmed')) {
+             router.push(`/verify?email=${values.email}`);
         } else {
-            router.push('/dashboard');
-            router.refresh();
+            setError(error.message);
         }
-    } catch (err) {
-        setError("An unexpected error occurred. Please check your network and try again.");
-    } finally {
-        setIsLoading(false);
+    } else {
+        router.push('/dashboard');
+        router.refresh();
     }
+    
+    setIsLoading(false);
   }
 
   async function handleGoogleLogin() {
@@ -105,7 +99,7 @@ export default function LoginPage() {
             <CardHeader>
                 <CardTitle className="text-2xl font-headline">Login</CardTitle>
                 <CardDescription>
-                Enter your email or phone number below to login to your account.
+                Enter your email and password below to login to your account.
                 </CardDescription>
             </CardHeader>
             <Form {...form}>
@@ -119,13 +113,13 @@ export default function LoginPage() {
                     )}
                     <FormField
                     control={form.control}
-                    name="emailOrPhone"
+                    name="email"
                     render={({ field }) => (
                         <FormItem>
-                        <FormLabel>Email or Phone</FormLabel>
+                        <FormLabel>Email</FormLabel>
                         <FormControl>
                             <Input
-                            placeholder="m@example.com or 9876543210"
+                            placeholder="m@example.com"
                             {...field}
                             />
                         </FormControl>

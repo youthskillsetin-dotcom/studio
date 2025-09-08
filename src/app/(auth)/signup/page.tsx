@@ -32,7 +32,6 @@ import { motion } from 'framer-motion';
 const formSchema = z.object({
   fullName: z.string().min(2, { message: 'Please enter your full name.' }),
   email: z.string().email({ message: 'Please enter a valid email address.' }),
-  phone: z.string().min(10, { message: 'Please enter a valid 10-digit phone number.' }).max(10, { message: 'Please enter a valid 10-digit phone number.' }),
   password: z
     .string()
     .min(6, { message: 'Password must be at least 6 characters.' }),
@@ -51,7 +50,6 @@ export default function SignupPage() {
     defaultValues: {
       fullName: '',
       email: '',
-      phone: '',
       password: '',
     },
   });
@@ -60,24 +58,22 @@ export default function SignupPage() {
     setIsLoading(true);
     setError(null);
     
-    // Use phone number with country code for OTP signup
-    const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
-      phone: `+91${values.phone}`, // Assuming Indian phone numbers
+    const { data, error } = await supabase.auth.signUp({
+      email: values.email,
       password: values.password,
       options: {
         data: {
-            full_name: values.fullName,
-            email: values.email, // Store email in metadata
-            phone: values.phone,
+          full_name: values.fullName,
         },
+        emailRedirectTo: `${location.origin}/auth/callback?next=/dashboard`,
       },
     });
 
-    if (signUpError) {
-      setError(signUpError.message);
-    } else if (signUpData.user) {
-        // Redirect to OTP verification page
-        router.push(`/verify-otp?phone=${values.phone}&password=${encodeURIComponent(values.password)}`);
+    if (error) {
+      setError(error.message);
+    } else if (data.user) {
+        // Redirect to the new verification page
+        router.push(`/verify?email=${values.email}`);
     }
     setIsLoading(false);
   }
@@ -148,27 +144,6 @@ export default function SignupPage() {
                     <FormMessage />
                     </FormItem>
                 )}
-                />
-                <FormField
-                  control={form.control}
-                  name="phone"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Phone Number</FormLabel>
-                       <div className="flex items-center">
-                        <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-input bg-muted text-muted-foreground text-sm h-10">
-                          +91
-                        </span>
-                        <Input
-                          placeholder="e.g., 9876543210"
-                          {...field}
-                          type="tel"
-                           className="rounded-l-none"
-                        />
-                      </div>
-                      <FormMessage />
-                    </FormItem>
-                  )}
                 />
                 <FormField
                 control={form.control}
