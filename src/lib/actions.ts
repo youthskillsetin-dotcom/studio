@@ -12,8 +12,8 @@ export async function validateCoupon(code: string): Promise<{ success: boolean; 
       return { success: false, message: 'Please enter a coupon code.' };
   }
 
-  // This query uses 'ilike' for a case-insensitive search, which is the
-  // standard and most reliable way to check for the coupon code.
+  // This query uses 'ilike' for a case-insensitive search.
+  // This is the standard and most reliable way to check for the coupon code.
   const { data: coupon, error } = await supabase
     .from('coupons')
     .select('discount_percent, is_active, expires_at')
