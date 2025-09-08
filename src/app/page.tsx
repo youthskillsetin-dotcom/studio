@@ -54,7 +54,7 @@ export default function LandingPage() {
         </Link>
         <nav className="hidden items-center gap-6 md:flex">
           <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#features">Features</a>
-          <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#pricing">Pricing</a>
+          <Link className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/pricing">Pricing</Link>
           <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#faq">FAQ</a>
            <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/about">About</a>
         </nav>
@@ -78,7 +78,7 @@ export default function LandingPage() {
             <SheetContent side="right">
               <div className="grid gap-4 py-6">
                 <a className="font-medium hover:text-primary" href="#features">Features</a>
-                <a className="font-medium hover:text-primary" href="#pricing">Pricing</a>
+                <Link className="font-medium hover:text-primary" href="/pricing">Pricing</Link>
                 <a className="font-medium hover:text-primary" href="#faq">FAQ</a>
                 <a className="font-medium hover:text-primary" href="/about">About</a>
                 <div className="h-px w-full bg-border my-2" />
@@ -195,123 +195,6 @@ export default function LandingPage() {
                     ))}
                 </div>
             </div>
-        </section>
-
-        <section id="pricing" className="bg-muted/40 py-20">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-extrabold font-headline">
-                Find a plan that's right for you
-              </h2>
-              <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-                Start for free and upgrade when you're ready to unlock your full potential.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              {/* Free Plan */}
-              <Card className="flex flex-col rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                <CardHeader>
-                  <CardTitle className="font-headline text-2xl">Free</CardTitle>
-                  <p className="text-4xl font-bold">₹0<span className="text-lg font-normal text-muted-foreground">/month</span></p>
-                  <p className="text-muted-foreground pt-2">For individuals starting their learning journey.</p>
-                </CardHeader>
-                <CardContent className="flex-grow space-y-4">
-                  <ul className="space-y-2">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span>Access to free lessons</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span>Basic AI Mentor chat</span>
-                    </li>
-                     <li className="flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span>Practice exercises</span>
-                    </li>
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                  <Button className="w-full" variant="outline" asChild>
-                     <Link href="/signup">Start for Free</Link>
-                  </Button>
-                </CardFooter>
-              </Card>
-
-              {/* Premium Plan */}
-              <Card className="flex flex-col rounded-2xl border-primary shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
-                <CardHeader className="relative">
-                  <CardTitle className="font-headline text-2xl">Premium</CardTitle>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-2xl text-muted-foreground line-through">₹399</span>
-                    <p className="text-4xl font-bold">₹299<span className="text-lg font-normal text-muted-foreground">/month</span></p>
-                  </div>
-                   <p className="text-muted-foreground pt-2">For dedicated learners who want to go pro.</p>
-                </CardHeader>
-                <CardContent className="flex-grow space-y-4">
-                   <ul className="space-y-2">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span>Access to all lessons</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span>Unlimited AI Mentor chat</span>
-                    </li>
-                     <li className="flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span>In-depth AI feedback</span>
-                    </li>
-                     <li className="flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span>Career guidance</span>
-                    </li>
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                  <Button className="w-full" asChild>
-                    <Link href="/subscribe?plan=premium">Go Premium</Link>
-                  </Button>
-                </CardFooter>
-              </Card>
-
-              {/* Yearly Plan */}
-              <Card className="flex flex-col rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                <CardHeader className="relative">
-                  <div className="absolute top-0 right-6 -mt-3">
-                    <div className="bg-secondary text-secondary-foreground text-xs font-semibold px-3 py-1 rounded-full">Best Value</div>
-                  </div>
-                  <CardTitle className="font-headline text-2xl">Yearly</CardTitle>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-2xl text-muted-foreground line-through">₹3600</span>
-                    <p className="text-4xl font-bold">₹1999<span className="text-lg font-normal text-muted-foreground">/year</span></p>
-                  </div>
-                  <p className="text-muted-foreground pt-2">For committed learners who want to save big.</p>
-                </CardHeader>
-                <CardContent className="flex-grow space-y-4">
-                   <ul className="space-y-2">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span>All Premium features</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span>12 months of access</span>
-                    </li>
-                     <li className="flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span>Priority support</span>
-                    </li>
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                   <Button className="w-full" variant="outline" asChild>
-                    <Link href="/subscribe?plan=yearly">Go Yearly</Link>
-                  </Button>
-                </CardFooter>
-              </Card>
-            </div>
-          </div>
         </section>
         
         <section id="faq" className="bg-background py-20">
