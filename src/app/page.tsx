@@ -11,6 +11,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { motion } from 'framer-motion';
 import sampleContent from '../../sample-content.json';
 import { Footer } from '@/components/footer';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 
 const getIconForModule = (title: string) => {
@@ -57,6 +58,7 @@ export default function LandingPage() {
            <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/about">About</a>
         </nav>
         <div className="flex items-center gap-2">
+            <ThemeToggle />
             <Button asChild variant="ghost">
               <Link href="/login">Log In</Link>
             </Button>
