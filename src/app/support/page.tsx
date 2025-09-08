@@ -3,12 +3,52 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { Mail, Phone, MessageSquare } from 'lucide-react';
+import { Mail, Phone, MessageSquare, Copy, Check } from 'lucide-react';
 import Link from 'next/link';
 import { Footer } from '@/components/footer';
 import { Logo } from '@/components/icons';
+import { useToast } from '@/hooks/use-toast';
+import { useState } from 'react';
+
+const contactInfo = [
+    {
+        icon: Mail,
+        title: 'Email Support',
+        value: 'work@youthskillset.in',
+        href: 'mailto:work@youthskillset.in',
+        cta: 'Send Email'
+    },
+    {
+        icon: Phone,
+        title: 'Phone Support',
+        value: '+91 99884 74904',
+        href: 'tel:+919988474904',
+        cta: 'Call Us'
+    },
+    {
+        icon: MessageSquare,
+        title: 'WhatsApp Chat',
+        value: '+91 82980 93316',
+        href: 'https://wa.me/918298093316',
+        cta: 'Start Chat'
+    }
+];
 
 export default function SupportPage() {
+    const { toast } = useToast();
+    const [copiedItem, setCopiedItem] = useState<string | null>(null);
+
+    const handleCopy = (value: string, title: string) => {
+        navigator.clipboard.writeText(value).then(() => {
+            setCopiedItem(title);
+            toast({
+              title: "Copied to Clipboard!",
+              description: `${title}: ${value}`,
+            });
+            setTimeout(() => setCopiedItem(null), 2000);
+        });
+    }
+
   return (
     <div className="flex flex-col min-h-screen bg-muted/40">
         <header className="container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -32,45 +72,36 @@ export default function SupportPage() {
                     <p className="text-muted-foreground mt-2">We're here to help. Reach out to us through any of the channels below.</p>
                 </div>
                 <Card className="rounded-2xl p-2">
-                    <CardContent className="p-6 space-y-6">
-                        <div className="flex flex-col sm:flex-row items-center justify-between p-4 rounded-lg border bg-background hover:bg-muted/50 transition-colors">
-                            <div className="flex items-center gap-4">
-                                <Mail className="w-6 h-6 text-primary" />
-                                <div>
-                                    <h3 className="font-semibold">Email Support</h3>
-                                    <p className="text-sm text-muted-foreground">work@youthskillset.in</p>
+                    <CardContent className="p-6 space-y-4">
+                        {contactInfo.map((item) => (
+                             <div key={item.title} className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-lg border bg-background hover:bg-muted/50 transition-colors">
+                                <div className="flex items-center gap-4">
+                                    <item.icon className="w-6 h-6 text-primary" />
+                                    <div>
+                                        <h3 className="font-semibold">{item.title}</h3>
+                                        <div className="flex items-center gap-2">
+                                            <p className="text-sm text-muted-foreground">{item.value}</p>
+                                            <Button
+                                                variant="ghost"
+                                                size="icon"
+                                                className="h-6 w-6"
+                                                onClick={() => handleCopy(item.value, item.title)}
+                                            >
+                                                {copiedItem === item.title ? (
+                                                    <Check className="w-4 h-4 text-green-500" />
+                                                ) : (
+                                                    <Copy className="w-4 h-4" />
+                                                )}
+                                                <span className="sr-only">Copy {item.title}</span>
+                                            </Button>
+                                        </div>
+                                    </div>
                                 </div>
+                                <Button asChild variant="outline" className="w-full sm:w-auto shrink-0">
+                                    <a href={item.href} target="_blank" rel="noopener noreferrer">{item.cta}</a>
+                                </Button>
                             </div>
-                            <Button asChild variant="outline" className="mt-4 sm:mt-0 w-full sm:w-auto">
-                                <a href="mailto:work@youthskillset.in">Send Email</a>
-                            </Button>
-                        </div>
-
-                         <div className="flex flex-col sm:flex-row items-center justify-between p-4 rounded-lg border bg-background hover:bg-muted/50 transition-colors">
-                            <div className="flex items-center gap-4">
-                                <Phone className="w-6 h-6 text-primary" />
-                                <div>
-                                    <h3 className="font-semibold">Phone Support</h3>
-                                    <p className="text-sm text-muted-foreground">+91 99884 74904</p>
-                                </div>
-                            </div>
-                             <Button asChild variant="outline" className="mt-4 sm:mt-0 w-full sm:w-auto">
-                                <a href="tel:+919988474904">Call Us</a>
-                            </Button>
-                        </div>
-                        
-                         <div className="flex flex-col sm:flex-row items-center justify-between p-4 rounded-lg border bg-background hover:bg-muted/50 transition-colors">
-                            <div className="flex items-center gap-4">
-                                <MessageSquare className="w-6 h-6 text-primary" />
-                                <div>
-                                    <h3 className="font-semibold">WhatsApp Chat</h3>
-                                    <p className="text-sm text-muted-foreground">+91 82980 93316</p>
-                                </div>
-                            </div>
-                            <Button asChild variant="outline" className="mt-4 sm:mt-0 w-full sm:w-auto">
-                                <a href="https://wa.me/918298093316" target="_blank" rel="noopener noreferrer">Start Chat</a>
-                            </Button>
-                        </div>
+                        ))}
                     </CardContent>
                 </Card>
             </div>
