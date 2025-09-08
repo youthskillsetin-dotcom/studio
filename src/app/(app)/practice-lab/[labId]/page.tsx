@@ -1,11 +1,12 @@
 
+
 'use client';
 
 import { notFound, useParams } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ChevronLeft, FileText, CheckCircle, ArrowRight, ArrowLeft, Banknote, ClipboardList, Lightbulb, ShieldAlert, Download, Mail, Phone, Linkedin } from 'lucide-react';
+import { ChevronLeft, FileText, CheckCircle, ArrowRight, ArrowLeft, Banknote, ClipboardList, Lightbulb, ShieldAlert, Download, Mail, Phone, Linkedin, CalendarIcon } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { useState } from 'react';
 import { Progress } from '@/components/ui/progress';
@@ -14,6 +15,10 @@ import { Label } from '@/components/ui/label';
 import type { LucideIcon } from 'lucide-react';
 import { Textarea } from '@/components/ui/textarea';
 import jsPDF from 'jspdf';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { cn } from '@/lib/utils';
+import { format } from 'date-fns';
+import { Calendar } from '@/components/ui/calendar';
 
 const labsData: { [key: string]: any } = {
     'itr-filing-101': {
@@ -105,8 +110,39 @@ const Form16Display = () => (
     </Card>
 );
 
+const DatePicker = ({ value, onChange }: { value?: Date, onChange: (date?: Date) => void}) => {
+    return (
+        <Popover>
+            <PopoverTrigger asChild>
+                <Button
+                    variant={"outline"}
+                    className={cn(
+                        "w-full justify-start text-left font-normal",
+                        !value && "text-muted-foreground"
+                    )}
+                >
+                    <CalendarIcon className="mr-2 h-4 w-4" />
+                    {value ? format(value, "PPP") : <span>Pick a date</span>}
+                </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-0">
+                <Calendar
+                    mode="single"
+                    selected={value}
+                    onSelect={onChange}
+                    initialFocus
+                    captionLayout="dropdown-buttons"
+                    fromYear={1950}
+                    toYear={new Date().getFullYear()}
+                />
+            </PopoverContent>
+        </Popover>
+    )
+}
+
 const ItrSimulation = () => {
     const [step, setStep] = useState(0);
+    const [dob, setDob] = useState<Date>();
     const totalSteps = 4;
     const progress = ((step + 1) / (totalSteps + 1)) * 100;
     
@@ -129,7 +165,7 @@ const ItrSimulation = () => {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div className="space-y-1"><Label>Name</Label><Input placeholder="e.g. Anjali Sharma" /></div>
                                 <div className="space-y-1"><Label>PAN</Label><Input placeholder="e.g. ABCDE1234F" /></div>
-                                <div className="space-y-1"><Label>Date of Birth</Label><Input placeholder="e.g. 15-08-1998" type="date" /></div>
+                                <div className="space-y-1"><Label>Date of Birth</Label><DatePicker value={dob} onChange={setDob} /></div>
                                 <div className="space-y-1"><Label>Aadhaar No.</Label><Input placeholder="e.g. XXXX XXXX 1234" /></div>
                             </div>
                         </div>
@@ -638,5 +674,7 @@ export default function LabDetailPage() {
     </div>
   );
 }
+
+    
 
     
