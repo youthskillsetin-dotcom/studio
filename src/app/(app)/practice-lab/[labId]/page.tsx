@@ -630,6 +630,25 @@ const LabSimulation = ({ labId }: { labId: string }) => {
     }
 }
 
+const PremiumAccessGate = () => (
+    <Card className="text-center max-w-lg mx-auto rounded-2xl shadow-lg mt-10">
+        <CardHeader>
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 mb-4">
+                <Crown className="h-8 w-8 text-primary" />
+            </div>
+            <CardTitle className="font-headline text-2xl">Unlock the Practice Labs</CardTitle>
+            <CardDescription>
+                This feature is exclusively for premium members. Upgrade to access all interactive labs.
+            </CardDescription>
+        </CardHeader>
+        <CardFooter>
+            <Button asChild className="w-full">
+                <Link href="/subscribe?plan=premium">Upgrade to Premium</Link>
+            </Button>
+        </CardFooter>
+    </Card>
+);
+
 export default function LabDetailPage() {
   const params = useParams();
   const labId = Array.isArray(params.labId) ? params.labId[0] : params.labId;
@@ -686,7 +705,3 @@ export default function LabDetailPage() {
     </div>
   );
 }
-
-    
-
-    

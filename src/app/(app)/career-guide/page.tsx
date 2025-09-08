@@ -76,7 +76,7 @@ const CareerProfileSkeleton = () => (
   );
 
 const PremiumAccessGate = () => (
-    <Card className="text-center max-w-lg mx-auto rounded-2xl shadow-lg">
+    <Card className="text-center max-w-lg mx-auto rounded-2xl shadow-lg mt-10">
         <CardHeader>
             <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 mb-4">
                 <Crown className="h-8 w-8 text-primary" />
