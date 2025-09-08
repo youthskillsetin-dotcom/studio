@@ -72,7 +72,7 @@ export default function PrivacyPolicyPage() {
             <p>
               For any questions or concerns about this Privacy Policy, please contact us at:
               <br />
-              Email: youthskillset.org@gmail.com
+              Email: [Insert Email]
               <br />
               Address: [Insert physical address if applicable]
             </p>

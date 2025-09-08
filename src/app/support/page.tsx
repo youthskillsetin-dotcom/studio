@@ -13,8 +13,8 @@ const contactInfo = [
     {
         icon: Mail,
         title: 'Email Support',
-        value: 'youthskillset.org@gmail.com',
-        href: 'mailto:youthskillset.org@gmail.com',
+        value: 'work@youthskillset.in',
+        href: 'mailto:work@youthskillset.in',
         cta: 'Send Email'
     },
     {
