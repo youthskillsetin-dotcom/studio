@@ -141,6 +141,16 @@ export default function AboutPage() {
                         <p className="text-sm text-muted-foreground mt-4">As the Head of Research, Nidhi is our connection to the ever-evolving landscape of education and career development. Her role is to ensure that our curriculum is not just current, but forward-looking. Nidhi dives deep into educational trends, analyzes the future job market, and studies the learning psychology of young adults. She identifies the specific skills that will be most in-demand tomorrow, guaranteeing that our modules are practical and provide a real competitive advantage. By translating complex research into actionable insights for our content team, Nidhi ensures that YouthSkillset remains a relevant and powerful tool, equipping students with the knowledge they need not just for their first job, but for a lifetime of success in a changing world.</p>
                     </CardContent>
                 </Card>
+                <Card className="text-center rounded-2xl border-0 shadow-none">
+                    <CardContent className="p-6">
+                         <Avatar className="w-24 h-24 mx-auto mb-4 text-2xl">
+                          <AvatarFallback>{getInitials("Love Thakur")}</AvatarFallback>
+                        </Avatar>
+                        <h3 className="mt-6 text-lg font-semibold text-foreground">Love Thakur</h3>
+                        <p className="text-primary">Head of Human Resources and Co-Founder</p>
+                        <p className="text-sm text-muted-foreground mt-4">Love is the champion of our most valuable asset: our people. As Head of Human Resources, she cultivates a vibrant and supportive company culture where creativity and collaboration can flourish. She believes that a happy team is an innovative team, and she works to ensure that every member of the YouthSkillset family feels valued, heard, and empowered to do their best work. Love manages everything from talent acquisition to professional development, ensuring that we attract and retain the passionate individuals who make our mission possible. Her focus on building a strong, ethical, and empathetic organizational foundation is key to our long-term success and our ability to serve our users effectively.</p>
+                    </CardContent>
+                </Card>
             </div>
         </div>
 
