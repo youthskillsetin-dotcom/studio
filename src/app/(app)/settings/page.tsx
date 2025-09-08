@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
-import { getUserSubscription } from '@/lib/data';
+import { getUserProfile, getUserSubscription } from '@/lib/data';
 import { format } from 'date-fns';
 import { CheckCircle, XCircle } from 'lucide-react';
 
@@ -13,7 +13,7 @@ export default async function SettingsPage() {
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
 
-  const { data: { user } } = await supabase.auth.getUser();
+  const userProfile = await getUserProfile(supabase);
   const userSubscription = await getUserSubscription(supabase);
   const isPremium = userSubscription?.is_active ?? false;
 
@@ -28,13 +28,17 @@ export default async function SettingsPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-sm font-medium">Full Name</p>
+              <p className="text-sm text-muted-foreground">{userProfile?.fullName}</p>
+            </div>
+             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
               <p className="text-sm font-medium">Email</p>
-              <p className="text-sm text-muted-foreground">{user?.email}</p>
+              <p className="text-sm text-muted-foreground">{userProfile?.email}</p>
             </div>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
               <p className="text-sm font-medium">Joined</p>
               <p className="text-sm text-muted-foreground">
-                {user?.created_at ? new Date(user.created_at).toLocaleDateString() : 'N/A'}
+                {userProfile?.created_at ? new Date(userProfile.created_at).toLocaleDateString() : 'N/A'}
               </p>
             </div>
           </CardContent>
