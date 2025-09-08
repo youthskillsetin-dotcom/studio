@@ -20,7 +20,7 @@ const quickLinks = [
 
 const supportLinks = [
     { href: '/about', name: 'About' },
-    { href: '/support', name: 'Contact' },
+    { href: '/support', name: 'Contact Us' },
     { href: '/#faq', name: 'FAQs' },
     { href: '/privacy', name: 'Privacy Policy' },
     { href: '/terms', name: 'Terms of Service' },
