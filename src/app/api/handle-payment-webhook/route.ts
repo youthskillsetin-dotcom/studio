@@ -33,6 +33,7 @@ export async function POST(req: Request) {
 
         const subscriptionData = {
             user_id: user.id,
+            email: user.email, // Added user's email
             is_active: true,
             plan_name: planName,
             expires_at: expires_at.toISOString(),
