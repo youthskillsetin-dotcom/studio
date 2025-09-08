@@ -8,7 +8,7 @@ export default function TermsOfServicePage() {
         <Card className="p-6 md:p-10 rounded-2xl">
           <CardHeader className="px-0">
             <CardTitle className="text-3xl md:text-4xl font-headline">Terms of Service</CardTitle>
-            <p className="text-muted-foreground pt-2">Last Updated: {new Date().toLocaleDateString()}</p>
+            <p className="text-muted-foreground pt-2">Last Updated: 1st August 2024</p>
           </CardHeader>
           <CardContent className="prose dark:prose-invert max-w-none px-0">
             <h2>1. Agreement to Terms</h2>

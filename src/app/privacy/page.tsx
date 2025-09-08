@@ -8,7 +8,7 @@ export default function PrivacyPolicyPage() {
         <Card className="p-6 md:p-10 rounded-2xl">
           <CardHeader className="px-0">
             <CardTitle className="text-3xl md:text-4xl font-headline">YouthSkillset Privacy Policy</CardTitle>
-            <p className="text-muted-foreground pt-2">Effective Date: [Insert Date]</p>
+            <p className="text-muted-foreground pt-2">Effective Date: 1st August 2024</p>
           </CardHeader>
           <CardContent className="prose dark:prose-invert max-w-none px-0">
             <p>
@@ -72,9 +72,7 @@ export default function PrivacyPolicyPage() {
             <p>
               For any questions or concerns about this Privacy Policy, please contact us at:
               <br />
-              Email: [Insert Email]
-              <br />
-              Address: [Insert physical address if applicable]
+              Email: work@youthskillset.in
             </p>
           </CardContent>
         </Card>
