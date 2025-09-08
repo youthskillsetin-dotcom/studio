@@ -1,3 +1,4 @@
+
 'use client';
 
 import {
@@ -42,7 +43,7 @@ export function Footer() {
                 <span className="text-xl font-bold font-headline text-foreground">YouthSkillSet</span>
                </Link>
                 <p className="max-w-xs text-sm">
-                    An AI-powered platform to equip teens with essential life and career skills.
+                    YouthSkillSet is a comprehensive, AI-powered learning platform dedicated to equipping teenagers and young adults with the essential, practical skills needed for modern success. We bridge the gap between traditional education and real-world challenges by offering interactive lessons in finance, technology, career development, and more.
                 </p>
            </div>
            
