@@ -114,7 +114,7 @@ const ItrSimulation = () => {
     const prevStep = () => setStep(s => Math.max(s - 1, 0));
 
     return (
-        <div className="lg:col-span-2 space-y-6">
+        <div className="space-y-6">
             <Card className="rounded-xl">
                  <CardHeader>
                     <CardTitle className="font-headline text-lg">
@@ -126,7 +126,7 @@ const ItrSimulation = () => {
                     {step === 0 && (
                         <div className="space-y-4">
                             <p className="text-muted-foreground">This section is for your basic details. In a real portal, this is often pre-filled from your PAN data. Please review the sample details.</p>
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div className="space-y-1"><Label>Name</Label><Input disabled value="Anjali Sharma" /></div>
                                 <div className="space-y-1"><Label>PAN</Label><Input disabled value="ABCDE1234F" /></div>
                                 <div className="space-y-1"><Label>Date of Birth</Label><Input disabled value="15-08-1998" /></div>
@@ -252,7 +252,7 @@ const PhishingSimulation = () => {
     };
 
     return (
-        <div className="lg:col-span-2">
+        <div>
             <Card className="rounded-xl">
                  <CardHeader>
                      <CardTitle className="font-headline text-lg">Phishing Email Analysis</CardTitle>
@@ -406,7 +406,7 @@ const ResumeBuilderSimulation = () => {
     };
 
     return (
-        <div className="lg:col-span-2 space-y-6">
+        <div className="space-y-6">
             <Card className="rounded-xl">
                  <CardHeader>
                     <CardTitle className="font-headline text-lg">
@@ -415,7 +415,7 @@ const ResumeBuilderSimulation = () => {
                     <Progress value={progress} className="w-full mt-2" />
                 </CardHeader>
                 <CardContent className="min-h-[350px]">
-                    {step === 0 && <div className="grid grid-cols-2 gap-4">
+                    {step === 0 && <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-1"><Label>Full Name</Label><Input name="fullName" value={resumeData.fullName} onChange={handleInputChange} placeholder="e.g., Priya Kumar" /></div>
                         <div className="space-y-1"><Label>Email</Label><Input name="email" value={resumeData.email} onChange={handleInputChange} placeholder="priya.kumar@email.com" type="email"/></div>
                         <div className="space-y-1"><Label>Phone</Label><Input name="phone" value={resumeData.phone} onChange={handleInputChange} placeholder="9876543210" type="tel"/></div>
@@ -461,7 +461,7 @@ const ResumeBuilderSimulation = () => {
 // Business Idea Canvas Components
 const BusinessCanvasSimulation = () => {
     return (
-         <div className="lg:col-span-2">
+         <div>
             <Card className="rounded-xl">
                  <CardHeader>
                      <CardTitle className="font-headline text-lg">Business Model Canvas</CardTitle>
@@ -498,7 +498,7 @@ const BudgetingSimulation = () => {
     const prevStep = () => setStep(s => Math.max(s - 1, 0));
 
     return (
-        <div className="lg:col-span-2 space-y-6">
+        <div className="space-y-6">
             <Card className="rounded-xl">
                  <CardHeader>
                     <CardTitle className="font-headline text-lg">
@@ -553,7 +553,7 @@ const BudgetingSimulation = () => {
 }
 
 const LabPlaceholder = ({ lab }: { lab: any }) => (
-    <div className="lg:col-span-2">
+    <div>
         <Card className="rounded-xl text-center min-h-[400px] flex flex-col justify-center items-center">
             <CardHeader>
                 <lab.icon className="w-16 h-16 text-primary mx-auto mb-4" />
@@ -614,9 +614,11 @@ export default function LabDetailPage() {
       <LabHeader lab={lab} />
 
        <div className="grid lg:grid-cols-3 gap-8 items-start">
-            <LabSimulation labId={labId} />
+            <div className="lg:col-span-2">
+                 <LabSimulation labId={labId} />
+            </div>
             <div className="lg:col-span-1">
-                <Card className="sticky top-24 rounded-2xl">
+                <Card className="lg:sticky top-24 rounded-2xl">
                     <CardHeader>
                         <CardTitle className="font-headline">Learning Objectives</CardTitle>
                     </CardHeader>
@@ -636,5 +638,3 @@ export default function LabDetailPage() {
     </div>
   );
 }
-
-    

@@ -41,7 +41,7 @@ export default async function SubtopicPage({ params }: { params: { id: string } 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Main Content */}
         <div className="lg:col-span-2 space-y-8">
-            <div className="bg-card p-6 md:p-8 rounded-xl shadow-sm">
+            <div className="bg-card p-6 md:p-8 rounded-2xl shadow-sm">
                 <h1 className="text-3xl font-bold tracking-tight text-foreground font-headline">{subtopic.title}</h1>
                 
                 {subtopic.video_url && (
@@ -70,7 +70,7 @@ export default async function SubtopicPage({ params }: { params: { id: string } 
         </div>
 
         {/* Sidebar */}
-        <div className="lg:col-span-1 space-y-8 sticky top-24 self-start">
+        <div className="lg:col-span-1 space-y-8 lg:sticky top-24 self-start">
              <Suspense fallback={<AISummaryCardSkeleton />}>
                 <AISummaryCard 
                     title={subtopic.title}

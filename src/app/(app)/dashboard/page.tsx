@@ -41,16 +41,16 @@ export default function DashboardPage() {
 
   return (
     <motion.div
-      className="grid flex-1 items-start gap-4 md:gap-8"
+      className="flex-1 space-y-4"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
       <WelcomeHeader variants={itemVariants} name={userProfile?.fullName} />
 
-      <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+      <div className="grid gap-4 md:gap-8 lg:grid-cols-3">
         <motion.div
-          className="lg:col-span-2 grid auto-rows-min gap-4 md:gap-8"
+          className="grid auto-rows-min gap-4 md:gap-8 lg:col-span-2"
           variants={itemVariants}
         >
           <ProgressOverview />

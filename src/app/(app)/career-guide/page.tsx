@@ -149,7 +149,7 @@ const RoadmapStep = ({ number, title, description }: { number: number, title: st
                     <span className="text-lg font-bold text-primary">{number}</span>
                 </div>
             </div>
-            <div className="w-px h-full bg-primary/30"></div>
+            {number < 4 && <div className="w-px h-full bg-primary/30"></div>}
         </div>
         <div className="pb-8">
             <p className="mb-2 text-lg font-semibold text-primary">{title}</p>
@@ -190,7 +190,7 @@ export default function CareerGuidePage() {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6 mb-12">
+      <div className="flex flex-col md:flex-row gap-6 mb-12">
         <SearchCard 
             title="By Career"
             description="Know a job title?"
