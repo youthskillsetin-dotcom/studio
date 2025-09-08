@@ -151,11 +151,11 @@ export default function PricingPage() {
 
               {/* Yearly Plan */}
               <Card className="flex flex-col rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                <CardHeader className="relative">
-                  <div className="absolute top-0 right-6 -mt-3">
-                    <div className="bg-secondary text-secondary-foreground text-xs font-semibold px-3 py-1 rounded-full">Best Value</div>
+                <CardHeader>
+                  <div className="flex justify-between items-center">
+                    <CardTitle className="font-headline text-2xl">Yearly</CardTitle>
+                    <Badge variant="destructive">Limited Time</Badge>
                   </div>
-                  <CardTitle className="font-headline text-2xl">Yearly</CardTitle>
                   <div className="flex items-baseline gap-2">
                     <span className="text-2xl text-muted-foreground line-through">₹3600</span>
                     <p className="text-4xl font-bold">₹1999<span className="text-lg font-normal text-muted-foreground">/year</span></p>
@@ -170,7 +170,7 @@ export default function PricingPage() {
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span>Save over 35% annually</span>
+                      <span>Save over 40% annually</span>
                     </li>
                      <li className="flex items-center gap-2">
                       <CheckCircle className="w-5 h-5 text-green-500" />
