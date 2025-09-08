@@ -32,7 +32,7 @@ import { motion } from 'framer-motion';
 const formSchema = z.object({
   fullName: z.string().min(2, { message: 'Please enter your full name.' }),
   email: z.string().email({ message: 'Please enter a valid email address.' }),
-  phone: z.string().min(10, { message: 'Please enter a valid phone number.' }),
+  phone: z.string().min(10, { message: 'Please enter a valid 10-digit phone number.' }).max(10, { message: 'Please enter a valid 10-digit phone number.' }),
   password: z
     .string()
     .min(6, { message: 'Password must be at least 6 characters.' }),
@@ -60,25 +60,24 @@ export default function SignupPage() {
     setIsLoading(true);
     setError(null);
     
+    // Use phone number with country code for OTP signup
     const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
-      email: values.email,
+      phone: `+91${values.phone}`, // Assuming Indian phone numbers
       password: values.password,
       options: {
         data: {
             full_name: values.fullName,
+            email: values.email, // Store email in metadata
             phone: values.phone,
         },
-        // This will send a confirmation email
-        emailRedirectTo: `${location.origin}/auth/callback`,
       },
     });
 
     if (signUpError) {
       setError(signUpError.message);
     } else if (signUpData.user) {
-        // Redirect to a page that tells the user to check their email.
-        const redirectUrl = plan ? `/verify?plan=${plan}` : `/verify`;
-        router.push(redirectUrl);
+        // Redirect to OTP verification page
+        router.push(`/verify-otp?phone=${values.phone}&password=${encodeURIComponent(values.password)}`);
     }
     setIsLoading(false);
   }
@@ -156,13 +155,17 @@ export default function SignupPage() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Phone Number</FormLabel>
-                      <FormControl>
+                       <div className="flex items-center">
+                        <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-input bg-muted text-muted-foreground text-sm h-10">
+                          +91
+                        </span>
                         <Input
                           placeholder="e.g., 9876543210"
                           {...field}
                           type="tel"
+                           className="rounded-l-none"
                         />
-                      </FormControl>
+                      </div>
                       <FormMessage />
                     </FormItem>
                   )}
