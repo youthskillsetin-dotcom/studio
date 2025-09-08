@@ -15,7 +15,7 @@ export async function validateCoupon(code: string): Promise<{ success: boolean; 
   const { data: coupon, error } = await supabase
     .from('coupons')
     .select('discount_percent, is_active, expires_at')
-    .eq('code', code.toUpperCase())
+    .or(`code.eq.${code},code.eq.${code.toUpperCase()}`)
     .single();
 
   if (error || !coupon) {
