@@ -4,12 +4,12 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { BookOpen, Briefcase, FlaskConical, LayoutGrid, Sparkles, Users } from 'lucide-react';
+import { BookOpen, Briefcase, FlaskConical, LayoutGrid, Sparkles } from 'lucide-react';
 
 const navItems = [
   { href: "/dashboard", icon: LayoutGrid, label: "Dashboard" },
   { href: "/lessons", icon: BookOpen, label: "Lessons" },
-  { href: "/community", icon: Users, label: "Community"},
+  { href: "/practice-lab", icon: FlaskConical, label: "Labs"},
   { href: "/career-guide", icon: Briefcase, label: "Careers" },
   { href: "/ai-mentor", icon: Sparkles, label: "Mentor" },
 ];

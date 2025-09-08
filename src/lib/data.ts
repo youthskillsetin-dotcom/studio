@@ -230,66 +230,15 @@ export async function getAllUsers(): Promise<UserProfile[]> {
 }
 
 
+// The community features are under construction.
+// These functions will return empty data to prevent errors.
 export async function getPosts(): Promise<Post[]> {
   noStore();
-  const supabase = createAdminClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
-  );
-  
-  const { data, error } = await supabase
-    .from('posts')
-    .select('*, profile:profiles(email)')
-    .order('created_at', { ascending: false });
-
-  if (error && error.code !== '42P01') {
-    console.error('Error fetching posts:', error.message);
-    return [];
-  }
-
-  return (data || []).map(post => ({
-    ...post,
-    author_email: post.profile?.email,
-    comments: [], // Comments will be fetched on the post detail page
-  }));
+  return [];
 }
 
 
 export async function getPostById(id: string): Promise<Post | null> {
   noStore();
-  const supabase = createAdminClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
-  );
-
-  const { data: postData, error: postError } = await supabase
-    .from('posts')
-    .select('*, profile:profiles(email)')
-    .eq('id', id)
-    .single();
-
-  if (postError && postError.code !== '42P01') {
-    console.error(`Error fetching post ${id}:`, postError.message);
-    return null;
-  }
-  if (!postData) return null;
-
-  const { data: commentsData, error: commentsError } = await supabase
-    .from('comments')
-    .select('*, profile:profiles(email)')
-    .eq('post_id', id)
-    .order('created_at', { ascending: true });
-    
-  if (commentsError && commentsError.code !== '42P01') {
-     console.error(`Error fetching comments for post ${id}:`, commentsError.message);
-  }
-
-  return {
-    ...postData,
-    author_email: postData.profile?.email,
-    comments: (commentsData || []).map(comment => ({
-        ...comment,
-        author_email: comment.profile?.email,
-    })),
-  };
+  return null;
 }

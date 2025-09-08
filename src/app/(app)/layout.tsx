@@ -11,7 +11,6 @@ import {
   LayoutGrid,
   Sparkles,
   UserCog,
-  Users,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -31,7 +30,6 @@ const navItems = [
   { href: "/practice-lab", icon: FlaskConical, label: "Practice Lab"},
   { href: "/ai-mentor", icon: Sparkles, label: "AI Mentor" },
   { href: "/career-guide", icon: Briefcase, label: "Career Guide" },
-  { href: "/community", icon: Users, label: "Community" },
 ];
 
 const adminNavItems = [
