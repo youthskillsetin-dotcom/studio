@@ -4,34 +4,60 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { BookOpen, Briefcase, FlaskConical, LayoutGrid, Sparkles } from 'lucide-react';
-
-const navItems = [
-  { href: "/dashboard", icon: LayoutGrid, label: "Dashboard" },
-  { href: "/lessons", icon: BookOpen, label: "Lessons" },
-  { href: "/practice-lab", icon: FlaskConical, label: "Labs"},
-  { href: "/career-guide", icon: Briefcase, label: "Careers" },
-  { href: "/ai-mentor", icon: Sparkles, label: "Mentor" },
-];
+import { BookOpen, Briefcase, FlaskConical, LayoutGrid, Sparkles, Lock } from 'lucide-react';
+import { useUserSubscription } from '@/hooks/use-user-subscription';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export function BottomNav() {
   const pathname = usePathname();
+  const { userSubscription, isLoading } = useUserSubscription();
+  const hasPremium = userSubscription?.is_active ?? false;
+  
+  const navItems = [
+    { href: "/dashboard", icon: LayoutGrid, label: "Dashboard", premium: false },
+    { href: "/lessons", icon: BookOpen, label: "Lessons", premium: false },
+    { href: "/practice-lab", icon: FlaskConical, label: "Labs", premium: true },
+    { href: "/career-guide", icon: Briefcase, label: "Careers", premium: true },
+    { href: "/ai-mentor", icon: Sparkles, label: "Mentor", premium: false },
+  ];
+  
+  if (isLoading) {
+    return (
+      <div className="fixed bottom-0 left-0 z-50 w-full h-16 bg-background border-t">
+        <div className="grid h-full max-w-lg grid-cols-5 mx-auto">
+            {[...Array(5)].map((_, i) => (
+                <div key={i} className="flex flex-col items-center justify-center">
+                    <Skeleton className="h-6 w-6 rounded-md" />
+                    <Skeleton className="h-3 w-10 mt-1" />
+                </div>
+            ))}
+        </div>
+      </div>
+    )
+  }
+
 
   return (
     <div className="fixed bottom-0 left-0 z-50 w-full h-16 bg-background border-t">
       <div className="grid h-full max-w-lg grid-cols-5 mx-auto font-medium">
         {navItems.map((item) => {
           const isActive = pathname.startsWith(item.href);
+          const isLocked = item.premium && !hasPremium;
+          const href = isLocked ? '/subscribe' : item.href;
+
           return (
             <Link
               key={item.href}
-              href={item.href}
+              href={href}
               className={cn(
                 'inline-flex flex-col items-center justify-center px-5 hover:bg-muted/50 group',
                 isActive ? 'text-primary' : 'text-muted-foreground'
               )}
             >
-              <item.icon className="w-6 h-6 mb-1" />
+              <div className="relative">
+                <item.icon className="w-6 h-6 mb-1" />
+                {isLocked && <Lock className="w-3 h-3 absolute -top-1 -right-1 text-accent-foreground fill-accent" />}
+              </div>
               <span className="text-xs font-semibold">{item.label}</span>
             </Link>
           );

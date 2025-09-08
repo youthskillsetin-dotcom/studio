@@ -11,11 +11,12 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { generateCareerProfile, type GenerateCareerProfileOutput } from '@/ai/flows/generate-career-profile';
-import { Compass, Briefcase, Wand2, BookOpen, BarChart, IndianRupee, Rocket, Lightbulb, Brain, Star, Map, Building, BriefcaseBusiness, AlertTriangle, Download } from 'lucide-react';
+import { Compass, Briefcase, Wand2, BookOpen, BarChart, IndianRupee, Rocket, Lightbulb, Brain, Star, Map, Building, BriefcaseBusiness, AlertTriangle, Download, Lock, Crown } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Skeleton } from '@/components/ui/skeleton';
 import jsPDF from 'jspdf';
+import { useUserSubscription } from '@/hooks/use-user-subscription';
 
 const formSchema = z.object({
   userInput: z.string().min(2, { message: 'Please enter a value.' }),
@@ -73,6 +74,28 @@ const CareerProfileSkeleton = () => (
        <Card className="rounded-xl"><CardHeader><Skeleton className="h-32 w-full" /></CardHeader></Card>
     </motion.div>
   );
+
+const PremiumAccessGate = () => (
+    <Card className="text-center max-w-lg mx-auto rounded-2xl shadow-lg">
+        <CardHeader>
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 mb-4">
+                <Crown className="h-8 w-8 text-primary" />
+            </div>
+            <CardTitle className="font-headline text-2xl">Unlock the AI Career Guide</CardTitle>
+            <CardDescription>
+                This powerful tool is a premium feature. Upgrade your plan to get personalized career insights, learning roadmaps, salary data, and more.
+            </CardDescription>
+        </CardHeader>
+        <CardContent>
+             <p className="text-sm text-muted-foreground">Gain a competitive edge in your career journey by unlocking this and many other exclusive features.</p>
+        </CardContent>
+        <CardFooter>
+            <Button asChild className="w-full">
+                <Link href="/subscribe?plan=premium">Upgrade to Premium</Link>
+            </Button>
+        </CardFooter>
+    </Card>
+);
 
 const SearchCard = ({ 
     title, 
@@ -164,6 +187,9 @@ export default function CareerGuidePage() {
   const [profile, setProfile] = useState<GenerateCareerProfileOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const { userSubscription, isLoading: isSubscriptionLoading } = useUserSubscription();
+  const hasPremium = userSubscription?.is_active ?? false;
+
 
   const handleDownload = () => {
     if (!profile) return;
@@ -294,6 +320,18 @@ export default function CareerGuidePage() {
     } finally {
       setIsLoading(false);
     }
+  }
+
+  if (isSubscriptionLoading) {
+      return (
+          <div className="flex justify-center items-center h-full">
+            <Skeleton className="w-full max-w-4xl h-96" />
+          </div>
+      )
+  }
+
+  if (!hasPremium) {
+      return <PremiumAccessGate />;
   }
 
   return (

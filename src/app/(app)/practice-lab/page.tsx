@@ -1,11 +1,16 @@
 
+
+'use client';
+
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { FlaskConical, ArrowRight, FileText, Banknote, ClipboardList, Lightbulb, ShieldAlert } from 'lucide-react';
+import { FlaskConical, ArrowRight, FileText, Banknote, ClipboardList, Lightbulb, ShieldAlert, Crown, Lock } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
+import { useUserSubscription } from '@/hooks/use-user-subscription';
+import { Skeleton } from '@/components/ui/skeleton';
 
 interface Lab {
     id: string;
@@ -65,8 +70,47 @@ const availableLabs: Lab[] = [
     },
 ];
 
+const PremiumAccessGate = () => (
+    <Card className="text-center max-w-lg mx-auto rounded-2xl shadow-lg mt-10">
+        <CardHeader>
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 mb-4">
+                <Crown className="h-8 w-8 text-primary" />
+            </div>
+            <CardTitle className="font-headline text-2xl">Unlock the Practice Labs</CardTitle>
+            <CardDescription>
+                Go beyond theory and apply your knowledge in hands-on simulations. The Practice Labs are a premium feature.
+            </CardDescription>
+        </CardHeader>
+        <CardContent>
+             <p className="text-sm text-muted-foreground">Upgrade your plan to access all interactive labs and build a portfolio of real-world skills.</p>
+        </CardContent>
+        <CardFooter>
+            <Button asChild className="w-full">
+                <Link href="/subscribe?plan=premium">Upgrade to Premium</Link>
+            </Button>
+        </CardFooter>
+    </Card>
+);
+
 
 export default function PracticeLabPage() {
+    const { userSubscription, isLoading } = useUserSubscription();
+    const hasPremium = userSubscription?.is_active ?? false;
+    
+    if (isLoading) {
+        return (
+            <div className="max-w-7xl mx-auto">
+                <div className="mb-8">
+                    <Skeleton className="h-12 w-1/3" />
+                    <Skeleton className="h-6 w-2/3 mt-2" />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {[...Array(3)].map((_, i) => <Skeleton key={i} className="h-64 w-full rounded-2xl" />)}
+                </div>
+            </div>
+        )
+    }
+
   return (
     <div className="max-w-7xl mx-auto">
       <div className="mb-8">
@@ -78,8 +122,10 @@ export default function PracticeLabPage() {
             </div>
         </div>
       </div>
+      
+      {!hasPremium && <PremiumAccessGate />}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className={cn("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6", !hasPremium && "opacity-40 blur-sm pointer-events-none")}>
         {availableLabs.map((lab) => (
           <Card key={lab.id} className={cn("flex flex-col rounded-2xl shadow-sm transition-all duration-300", !lab.is_interactive ? "bg-muted/40" : "hover:shadow-lg hover:-translate-y-1")}>
             <CardHeader className="flex-row items-start gap-4">
@@ -99,10 +145,10 @@ export default function PracticeLabPage() {
               <p className="text-muted-foreground text-sm">{lab.description}</p>
             </CardContent>
             <CardFooter>
-               <Button asChild className="w-full" disabled={!lab.is_interactive}>
+               <Button asChild className="w-full" disabled={!lab.is_interactive || !hasPremium}>
                     <Link href={lab.href}>
-                        {lab.is_interactive ? "Start Lab" : "Coming Soon"}
-                        {lab.is_interactive && <ArrowRight className="w-4 h-4 ml-2" />}
+                        {!hasPremium ? <><Lock className="w-4 h-4 mr-2" /> Premium</> : lab.is_interactive ? "Start Lab" : "Coming Soon"}
+                        {lab.is_interactive && hasPremium && <ArrowRight className="w-4 h-4 ml-2" />}
                     </Link>
                 </Button>
             </CardFooter>

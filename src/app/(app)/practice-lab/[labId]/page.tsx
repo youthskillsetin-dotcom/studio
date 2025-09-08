@@ -2,11 +2,11 @@
 
 'use client';
 
-import { notFound, useParams } from 'next/navigation';
+import { notFound, useParams, redirect } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ChevronLeft, FileText, CheckCircle, ArrowRight, ArrowLeft, Banknote, ClipboardList, Lightbulb, ShieldAlert, Download, Mail, Phone, Linkedin, CalendarIcon } from 'lucide-react';
+import { ChevronLeft, FileText, CheckCircle, ArrowRight, ArrowLeft, Banknote, ClipboardList, Lightbulb, ShieldAlert, Download, Mail, Phone, Linkedin, CalendarIcon, Crown } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { useState } from 'react';
 import { Progress } from '@/components/ui/progress';
@@ -19,6 +19,9 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
 import { Calendar } from '@/components/ui/calendar';
+import { useUserSubscription } from '@/hooks/use-user-subscription';
+import { Skeleton } from '@/components/ui/skeleton';
+
 
 const labsData: { [key: string]: any } = {
     'itr-filing-101': {
@@ -630,12 +633,21 @@ const LabSimulation = ({ labId }: { labId: string }) => {
 export default function LabDetailPage() {
   const params = useParams();
   const labId = Array.isArray(params.labId) ? params.labId[0] : params.labId;
+  const { userSubscription, isLoading } = useUserSubscription();
 
   if (!labId || !labsData[labId]) {
     notFound();
   }
   const lab = labsData[labId];
+
+  if (isLoading) {
+    return <div className="flex justify-center items-center h-full"><Skeleton className="w-full max-w-6xl h-[600px]" /></div>
+  }
   
+  if (!userSubscription?.is_active) {
+    redirect('/practice-lab');
+  }
+
   return (
     <div className="max-w-6xl mx-auto">
         <div className="mb-4">

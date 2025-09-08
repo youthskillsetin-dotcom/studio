@@ -9,6 +9,7 @@ import {
   FileText,
   FlaskConical,
   LayoutGrid,
+  Lock,
   Sparkles,
   UserCog,
 } from "lucide-react";
@@ -22,14 +23,15 @@ import { useUserProfile } from "@/hooks/use-user-profile";
 import { BottomNav } from "./_components/bottom-nav";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Logo } from "@/components/icons";
+import { useUserSubscription } from "@/hooks/use-user-subscription";
 
 
 const navItems = [
-  { href: "/dashboard", icon: LayoutGrid, label: "Dashboard" },
-  { href: "/lessons", icon: BookOpen, label: "Lessons" },
-  { href: "/practice-lab", icon: FlaskConical, label: "Practice Lab"},
-  { href: "/ai-mentor", icon: Sparkles, label: "AI Mentor" },
-  { href: "/career-guide", icon: Briefcase, label: "Career Guide" },
+  { href: "/dashboard", icon: LayoutGrid, label: "Dashboard", premium: false },
+  { href: "/lessons", icon: BookOpen, label: "Lessons", premium: false },
+  { href: "/practice-lab", icon: FlaskConical, label: "Practice Lab", premium: true},
+  { href: "/ai-mentor", icon: Sparkles, label: "AI Mentor", premium: false },
+  { href: "/career-guide", icon: Briefcase, label: "Career Guide", premium: true },
 ];
 
 const adminNavItems = [
@@ -38,19 +40,26 @@ const adminNavItems = [
 ];
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
-  const { userProfile, isLoading } = useUserProfile();
+  const { userProfile, isLoading: isProfileLoading } = useUserProfile();
+  const { userSubscription, isLoading: isSubLoading } = useUserSubscription();
+  const hasPremium = userSubscription?.is_active ?? false;
   
   const desktopNav = (
      <>
-      {navItems.map((item) => (
-        <Link
-          key={item.href}
-          href={item.href}
-          className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-        >
-          {item.label}
-        </Link>
-      ))}
+      {navItems.map((item) => {
+        const isLocked = item.premium && !hasPremium;
+        const href = isLocked ? '/subscribe' : item.href;
+        return (
+            <Link
+            key={item.href}
+            href={href}
+            className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary flex items-center gap-1"
+            >
+            {item.label}
+            {isLocked && <Lock className="w-3 h-3 text-accent" />}
+            </Link>
+        )
+      })}
       {userProfile?.role === 'admin' && (
         <div className="hidden md:flex gap-5">
              <div className="h-5 w-px bg-border mx-2 self-center" />
