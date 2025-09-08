@@ -22,10 +22,10 @@ const plans = {
     price: 299,
     period: '/month',
     features: [
-      'Access to all lessons',
+      'Access to all lessons & labs',
       'Unlimited AI Mentor chat',
       'In-depth AI feedback',
-      'Career guidance',
+      'AI Career Guide',
     ],
   },
   yearly: {
@@ -35,7 +35,7 @@ const plans = {
     period: '/year',
     features: [
         'All Premium features',
-        'Save over 35% annually',
+        'Save over 40% annually',
         'Priority support'
     ],
   },
@@ -128,7 +128,7 @@ function SubscribePageContent() {
                      className={cn(selectedPlanKey === 'yearly' ? 'bg-background text-foreground shadow' : 'bg-transparent text-muted-foreground', 'h-auto py-2')}
                     variant="ghost"
                   >
-                    Yearly (Save 35%)
+                    Yearly (Save 40%)
                   </Button>
             </div>
 
@@ -231,5 +231,3 @@ export default function SubscribePage() {
         </Suspense>
     )
 }
-
-    
