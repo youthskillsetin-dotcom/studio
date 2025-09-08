@@ -13,6 +13,7 @@ import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { validateCoupon } from '@/lib/actions';
 
 
 const plans = {
@@ -43,11 +44,6 @@ const plans = {
 
 type PlanKey = 'premium' | 'yearly';
 
-const validCoupons: Record<string, number> = {
-    "SKILLUP25": 0.25,
-    "NEWYEAR50": 0.50,
-};
-
 function SubscribePageContent() {
   const router = useRouter();
   const { toast } = useToast();
@@ -57,19 +53,22 @@ function SubscribePageContent() {
   const [couponCode, setCouponCode] = useState('');
   const [appliedDiscount, setAppliedDiscount] = useState(0);
   const [couponMessage, setCouponMessage] = useState<string | null>(null);
+  const [isApplyingCoupon, setIsApplyingCoupon] = useState(false);
 
   const selectedPlan = plans[selectedPlanKey];
   const finalPrice = selectedPlan.price * (1 - appliedDiscount);
 
-  const handleApplyCoupon = () => {
-    const code = couponCode.toUpperCase();
-    if (validCoupons[code]) {
-      setAppliedDiscount(validCoupons[code]);
-      setCouponMessage(`Success! ${validCoupons[code] * 100}% discount applied.`);
+  const handleApplyCoupon = async () => {
+    setIsApplyingCoupon(true);
+    setCouponMessage(null);
+    const result = await validateCoupon(couponCode);
+    setCouponMessage(result.message);
+    if (result.success) {
+      setAppliedDiscount(result.discount || 0);
     } else {
       setAppliedDiscount(0);
-      setCouponMessage("Invalid coupon code. Please try again.");
     }
+    setIsApplyingCoupon(false);
   };
   
   const handleCheckout = async () => {
@@ -167,7 +166,10 @@ function SubscribePageContent() {
                 </Label>
                 <div className="flex items-center gap-2">
                     <Input id="coupon" placeholder="Enter code" value={couponCode} onChange={(e) => setCouponCode(e.target.value)} />
-                    <Button variant="outline" onClick={handleApplyCoupon}>Apply</Button>
+                    <Button variant="outline" onClick={handleApplyCoupon} disabled={isApplyingCoupon}>
+                        {isApplyingCoupon && <Loader2 className="w-4 h-4 animate-spin" />}
+                        {!isApplyingCoupon && 'Apply'}
+                    </Button>
                 </div>
                 {couponMessage && (
                     <p className={cn(
