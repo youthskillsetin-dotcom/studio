@@ -19,7 +19,7 @@ const plans = {
   premium: {
     key: 'premium',
     name: 'Premium',
-    price: 249,
+    price: 300,
     period: '/month',
     features: [
       'Access to all lessons',
@@ -231,3 +231,5 @@ export default function SubscribePage() {
         </Suspense>
     )
 }
+
+    
