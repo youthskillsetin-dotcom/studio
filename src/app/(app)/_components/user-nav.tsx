@@ -33,8 +33,8 @@ export function UserNav({ userProfile }: { userProfile: UserProfile | null }) {
 
     const handleLogout = async () => {
         await supabase.auth.signOut();
-        router.push('/');
         router.refresh();
+        router.push('/');
     };
     
     return (
@@ -42,6 +42,7 @@ export function UserNav({ userProfile }: { userProfile: UserProfile | null }) {
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon" className="rounded-full h-9 w-9">
               <Avatar className="h-9 w-9">
+                <AvatarImage src={userProfile?.avatar_url} />
                 <AvatarFallback>{getInitials(userProfile?.fullName)}</AvatarFallback>
               </Avatar>
             </Button>
