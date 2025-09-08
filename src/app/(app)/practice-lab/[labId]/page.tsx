@@ -667,11 +667,11 @@ export default function LabDetailPage() {
   return (
     <div className="max-w-6xl mx-auto">
         <div className="mb-4">
-            <Button variant="link" className="p-0 h-auto" asChild>
-            <Link href="/practice-lab">
-                <ChevronLeft className="w-4 h-4 mr-1" />
-                Back to All Labs
-            </Link>
+            <Button variant="link" className="p-0 h-auto text-muted-foreground hover:text-primary" asChild>
+                <Link href="/practice-lab">
+                    <ChevronLeft className="w-4 h-4 mr-1" />
+                    Back to All Labs
+                </Link>
             </Button>
         </div>
 
@@ -704,5 +704,3 @@ export default function LabDetailPage() {
     </div>
   );
 }
-
-    
