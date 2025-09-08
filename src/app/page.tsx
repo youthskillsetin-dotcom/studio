@@ -241,9 +241,6 @@ export default function LandingPage() {
               {/* Premium Plan */}
               <Card className="flex flex-col rounded-2xl border-primary shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
                 <CardHeader className="relative">
-                   <div className="absolute top-0 right-6 -mt-3">
-                      <div className="bg-primary text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full">Most Popular</div>
-                   </div>
                   <CardTitle className="font-headline text-2xl">Premium</CardTitle>
                   <div className="flex items-baseline gap-2">
                     <span className="text-2xl text-muted-foreground line-through">₹399</span>
