@@ -4,24 +4,24 @@
 
 @layer base {
   :root {
-    --background: 210 100% 98%;
+    --background: 37 39% 90%; /* Adjusted for a lighter beige page background */
     --foreground: 224 71% 4%;
-    --card: 210 100% 99%;
+    --card: 37 39% 95%; /* Lighter beige for cards */
     --card-foreground: 224 71% 4%;
-    --popover: 210 100% 99%;
+    --popover: 37 39% 95%;
     --popover-foreground: 224 71% 4%;
     --primary: 262 84% 51%;
     --primary-foreground: 0 0% 100%;
     --secondary: 168 76% 42%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 210 40% 96.1%;
+    --muted: 37 39% 92%; /* Slightly darker beige for muted elements */
     --muted-foreground: 220 9% 46%;
     --accent: 42 74% 52%;
     --accent-foreground: 224 71% 4%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 210 40% 92%;
-    --input: 210 40% 92%;
+    --border: 37 39% 85%;
+    --input: 37 39% 85%;
     --ring: 262 84% 51%;
     --radius: 0.5rem;
   }
