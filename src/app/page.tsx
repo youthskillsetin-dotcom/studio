@@ -221,7 +221,7 @@ export default function LandingPage() {
                   <CardTitle className="font-headline text-2xl">Premium</CardTitle>
                   <div className="flex items-baseline gap-2">
                     <span className="text-2xl text-muted-foreground line-through">₹399</span>
-                    <p className="text-4xl font-bold">₹300<span className="text-lg font-normal text-muted-foreground">/month</span></p>
+                    <p className="text-4xl font-bold">₹299<span className="text-lg font-normal text-muted-foreground">/month</span></p>
                   </div>
                    <p className="text-muted-foreground pt-2">For dedicated learners who want to go pro.</p>
                 </CardHeader>
