@@ -130,24 +130,26 @@ export async function getUserSubscription(supabase: SupabaseClient): Promise<Use
     const { data: { user } } = await supabase.auth.getUser();
     if (!user || !supabaseAdmin) return null;
 
-    const { data, error } = await supabaseAdmin
-        .from('subscriptions')
-        .select('*')
-        .eq('user_id', user.id)
-        .single();
-        
-    // Gracefully handle cases where the table doesn't exist (e.g., in development)
-    if (error && error.code !== 'PGRST116' && error.code !== '42P01') { 
-        // 42P01: relation does not exist
-        // PGRST116: no rows found
-        // We log other errors but not these ones.
-        console.error("Error fetching user subscription:", error);
-        return null;
-    }
+    try {
+        const { data, error } = await supabaseAdmin
+            .from('subscriptions')
+            .select('*')
+            .eq('user_id', user.id)
+            .single();
+            
+        if (error && error.code !== 'PGRST116' && error.code !== '42P01') { 
+            console.error("Error fetching user subscription:", error);
+            return null;
+        }
 
-    if(data) return data;
-    
-    return null;
+        return data || null;
+    } catch (e) {
+        if (e instanceof Error && e.message.includes("Cannot read properties of null")) {
+             console.warn("Supabase admin client not initialized. Cannot fetch user subscription.");
+             return null;
+        }
+        throw e;
+    }
 }
 
 
