@@ -53,7 +53,7 @@ export default function LandingPage() {
         </Link>
         <nav className="hidden items-center gap-6 md:flex">
           <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#features">Features</a>
-          <Link className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/pricing">Pricing</Link>
+          <Link className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/subscribe">Pricing</Link>
           <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#faq">FAQ</a>
            <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/about">About</a>
         </nav>
@@ -77,7 +77,7 @@ export default function LandingPage() {
             <SheetContent side="right">
               <div className="grid gap-4 py-6">
                 <a className="font-medium hover:text-primary" href="#features">Features</a>
-                <Link className="font-medium hover:text-primary" href="/pricing">Pricing</Link>
+                <Link className="font-medium hover:text-primary" href="/subscribe">Pricing</Link>
                 <a className="font-medium hover:text-primary" href="#faq">FAQ</a>
                 <a className="font-medium hover:text-primary" href="/about">About</a>
                 <div className="h-px w-full bg-border my-2" />
