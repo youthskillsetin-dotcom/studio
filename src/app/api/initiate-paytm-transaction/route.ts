@@ -14,7 +14,7 @@ const plans = {
 };
 
 /**
- * Function to generate checksum
+ * Function to generate Paytm checksum
  * @param {Object} params
  * @param {string} key
  * @returns {Promise<string>}
