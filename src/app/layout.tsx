@@ -23,6 +23,11 @@ export const metadata: Metadata = {
   title: 'YouthSkillSet',
   description: 'Master in-demand skills with AI-powered mentorship.',
   manifest: '/manifest.json',
+  icons: {
+    icon: '/LOGO.png',
+    shortcut: '/LOGO.png',
+    apple: '/LOGO.png',
+  },
 };
 
 export const viewport: Viewport = {
