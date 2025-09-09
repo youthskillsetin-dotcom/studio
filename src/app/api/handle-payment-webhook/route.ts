@@ -26,17 +26,16 @@ export async function POST(req: Request) {
         // You would get the checksum from the request headers/body and verify it
         // using your Merchant Key.
         //
-        // const checksum = req.headers.get('x-paytm-checksum');
-        // const isVerified = PaytmChecksum.verifySignature(
-        //   JSON.stringify(body), 
-        //   process.env.PAYTM_MERCHANT_KEY!, 
-        //   checksum
-        // );
-        // if (!isVerified) {
-        //   return NextResponse.json({ error: 'Webhook checksum mismatch' }, { status: 403 });
-        // }
+        const checksum = req.headers.get('x-paytm-checksum');
+        const isVerified = PaytmChecksum.verifySignature(
+           JSON.stringify(body), 
+           process.env.PAYTM_MERCHANT_KEY!, 
+           checksum || ""
+        );
+        if (!isVerified) {
+           return NextResponse.json({ error: 'Webhook checksum mismatch' }, { status: 403 });
+        }
 
-        // For this example, we proceed without checksum verification.
         // The 'plan' would ideally be retrieved from the order details in the webhook body.
         const plan = body.plan === 'yearly' ? 'yearly' : 'premium';
 
