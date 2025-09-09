@@ -2,6 +2,7 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { updateSession } from '@/lib/supabase/middleware'
 import { createServerClient } from '@supabase/ssr'
+import { supabaseAdmin } from '@/lib/supabase/admin'
 
 export async function middleware(request: NextRequest) {
   // First, update the user's session.
@@ -28,7 +29,7 @@ export async function middleware(request: NextRequest) {
   const { data: { user } } = await supabase.auth.getUser();
 
   // If a user is logged in, ensure their role is synchronized.
-  if (user) {
+  if (user && supabaseAdmin) {
     const { data: profile, error: profileError } = await supabase
         .from('profiles')
         .select('role')
@@ -37,35 +38,17 @@ export async function middleware(request: NextRequest) {
     
     // If the profile exists and the role in the database is different from the token, update the token.
     if (profile && profile.role !== user.user_metadata.role) {
-        if (!process.env.SUPABASE_SERVICE_ROLE_KEY) {
-            console.warn('SUPABASE_SERVICE_ROLE_KEY is not set. Cannot update user metadata.');
+        // Update the user's metadata in the auth schema
+        const { error: adminError } = await supabaseAdmin.auth.admin.updateUserById(
+            user.id,
+            { user_metadata: { ...user.user_metadata, role: profile.role } }
+        );
+
+        if (adminError) {
+            console.error('Error updating user role in middleware:', adminError.message);
         } else {
-            // Re-create a client with service_role key to perform admin actions
-            const supabaseAdmin = createServerClient(
-                process.env.NEXT_PUBLIC_SUPABASE_URL!,
-                process.env.SUPABASE_SERVICE_ROLE_KEY!,
-                {
-                    cookies: {
-                        get(name) {
-                            return request.cookies.get(name)?.value
-                        },
-                    },
-                    auth: { autoRefreshToken: false, persistSession: false }
-                }
-            );
-
-            // Update the user's metadata in the auth schema
-            const { error: adminError } = await supabaseAdmin.auth.admin.updateUserById(
-                user.id,
-                { user_metadata: { ...user.user_metadata, role: profile.role } }
-            );
-
-            if (adminError) {
-                console.error('Error updating user role in middleware:', adminError.message);
-            } else {
-                // The token is now updated on the server.
-                // The client will get the updated user object on the next request.
-            }
+            // The token is now updated on the server.
+            // The client will get the updated user object on the next request.
         }
     }
   }

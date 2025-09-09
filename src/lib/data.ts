@@ -4,7 +4,7 @@ import type { SupabaseClient } from '@supabase/supabase-js';
 import type { Lesson, Subtopic, UserSubtopicProgress, Post, CommentWithAuthor, PostWithAuthor, UserSubscription, UserProfile, UserProfileWithSubscription } from './types';
 import { unstable_noStore as noStore } from 'next/cache';
 import sampleContent from '../../sample-content.json';
-import { createClient } from '@supabase/supabase-js';
+import { supabaseAdmin } from './supabase/admin';
 
 // NOTE: All data fetching now happens from functions in this file, using sample-content.json as the source.
 // This centralizes data access and simulates a real database layer.
@@ -186,15 +186,10 @@ export async function getUserProfile(supabase: SupabaseClient): Promise<UserProf
 export async function getAllUsers(): Promise<UserProfile[]> {
   noStore();
   
-  if (!process.env.SUPABASE_SERVICE_ROLE_KEY) {
-    console.warn('Supabase service role key is not set. Cannot fetch all users.');
+  if (!supabaseAdmin) {
+    console.warn('Supabase admin client is not initialized. Cannot fetch all users.');
     return [];
   }
-  
-  const supabaseAdmin = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
-  );
   
   const { data: { users }, error } = await supabaseAdmin.auth.admin.listUsers();
 
