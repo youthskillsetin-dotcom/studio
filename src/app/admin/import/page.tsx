@@ -2,6 +2,7 @@
 'use client';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import Link from 'next/link';
 
 export default function AdminImportPage() {
 
@@ -10,11 +11,11 @@ export default function AdminImportPage() {
       <Card className="w-full max-w-md text-center rounded-2xl">
           <CardHeader>
             <CardTitle className="font-headline text-2xl">Content Management</CardTitle>
-            <CardDescription>Content is now managed directly in the `sample-content.json` file.</CardDescription>
+            <CardDescription>This page is no longer used.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-sm text-muted-foreground">
-              To add, remove, or edit lessons, please modify the `sample-content.json` file in the project's root directory. The application will update automatically.
+              To manage lesson content, please navigate to the <Link href="/admin/content" className="underline text-primary">Content Management</Link> page.
             </p>
           </CardContent>
       </Card>
