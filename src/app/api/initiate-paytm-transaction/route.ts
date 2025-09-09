@@ -14,8 +14,7 @@ const plans = {
 };
 
 /**
- * Function to generate Paytm checksum
- * This uses the standard Node.js crypto library and is stable.
+ * Function to generate Paytm checksum using Node.js crypto
  * @param {Object} params
  * @param {string} key
  * @returns {Promise<string>}
@@ -23,9 +22,9 @@ const plans = {
 function generateSignature(params: any, key: string): Promise<string> {
     return new Promise((resolve, reject) => {
         try {
-            const body = JSON.stringify(params);
+            const bodyString = JSON.stringify(params);
             const salt = crypto.randomBytes(4).toString('hex');
-            const final_string = body + '|' + salt;
+            const final_string = bodyString + '|' + salt;
             const iv = '@@@@&&&&####$$$$';
 
             const cipher = crypto.createCipheriv('aes-128-cbc', key, iv);

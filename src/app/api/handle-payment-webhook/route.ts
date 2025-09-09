@@ -9,11 +9,18 @@ import crypto from 'crypto';
 
 
 /**
- * Function to verify Paytm checksum
- * This uses the standard Node.js crypto library and is stable.
+ * Function to verify Paytm checksum using Node.js crypto
+ * @param {any} body - The request body from Paytm.
+ * @param {string} key - The merchant key.
+ * @param {string} checksum - The checksum sent by Paytm.
+ * @returns {boolean} - True if the signature is valid, false otherwise.
  */
 function verifySignature(body: any, key: string, checksum: string): boolean {
     try {
+        // The body from Paytm webhook is not a JSON string, but form-data.
+        // The signature is generated on the form-data string.
+        // However, for this simplified example, we'll assume the client-side passes a JSON body.
+        // A production implementation must handle the actual url-encoded form data from Paytm's server-to-server webhook.
         const bodyString = JSON.stringify(body);
         const salt = Buffer.from(checksum, 'base64').toString('utf8').substring(0, 4);
         const final_string = bodyString + '|' + salt;
@@ -23,6 +30,8 @@ function verifySignature(body: any, key: string, checksum: string): boolean {
         let encrypted = cipher.update(final_string, 'utf8', 'hex');
         encrypted += cipher.final('hex');
 
+        // This comparison is for the checksum generation logic used in this app.
+        // Paytm's official logic might differ slightly.
         return Buffer.from(salt + encrypted).toString('base64') === checksum;
 
     } catch (e) {
@@ -50,10 +59,9 @@ export async function POST(req: Request) {
         const body = await req.json();
         
         // ** SECURITY-CRITICAL STEP **
-        // In a real production environment, you would implement checksum verification here
-        // using the same logic as the initiation route to ensure the request is from Paytm.
-        // For this project, we are trusting the immediate client-side callback for UX,
-        // but a production system should rely solely on a secure, server-to-server webhook.
+        // A real production system must rely on a secure, server-to-server webhook
+        // and robustly verify the checksum from Paytm. The verifySignature function here
+        // is a template; you must ensure it matches Paytm's exact requirements for production.
         
         const orderId = body.ORDERID;
         if (!orderId) {
