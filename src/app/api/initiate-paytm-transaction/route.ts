@@ -14,7 +14,8 @@ const plans = {
 };
 
 /**
- * Function to generate Paytm checksum using Node.js crypto
+ * Function to generate Paytm checksum using Node.js crypto.
+ * This replaces the problematic paytm-pg-node-sdk package.
  * @param {Object} params
  * @param {string} key
  * @returns {Promise<string>}
