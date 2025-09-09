@@ -20,24 +20,19 @@ const plans = {
  * @returns {Promise<string>}
  */
 function generateSignature(params: any, key: string): Promise<string> {
-    return new Promise(function (resolve, reject) {
-        if (typeof params !== "object" || params === null || typeof key !== 'string') {
-            const error = "string or object expected, " + (typeof params) + " given.";
-            reject(error);
-        }
+    const body = JSON.stringify(params);
+    const salt = crypto.randomBytes(4).toString('hex');
+    const final_string = body + '|' + salt;
 
-        const body = JSON.stringify(params);
-        const salt = crypto.randomBytes(4).toString('hex');
-        const final_string = body + '|' + salt;
+    const iv = '@@@@&&&&####$$$$'; // Use a fixed IV as per some Paytm examples
 
-        const crypt = crypto.createCipheriv('AES-128-CBC', key, salt);
-        crypt.setAutoPadding(true);
-        let encrypted = crypt.update(final_string, 'utf8', 'hex');
-        encrypted += crypt.final('hex');
+    const cipher = crypto.createCipheriv('AES-128-CBC', key, iv);
+    cipher.setAutoPadding(true);
+    let encrypted = cipher.update(final_string, 'utf8', 'hex');
+    encrypted += cipher.final('hex');
 
-        const checksum = Buffer.from(encrypted).toString('base64');
-        resolve(checksum);
-    });
+    const checksum = Buffer.from(salt + encrypted).toString('base64');
+    return Promise.resolve(checksum);
 }
 
 
