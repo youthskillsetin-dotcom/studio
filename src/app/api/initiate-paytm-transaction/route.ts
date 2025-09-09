@@ -4,7 +4,6 @@
 import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
-import { validateCoupon } from '@/lib/actions';
 import { supabaseAdmin } from '@/lib/supabase/admin';
 import crypto from 'crypto';
 
@@ -65,22 +64,14 @@ export async function POST(req: Request) {
   }
 
   try {
-    const { plan, couponCode } = await req.json();
+    const { plan } = await req.json();
     
     if (!plan || !plans[plan as keyof typeof plans]) {
         return NextResponse.json({ error: 'Invalid plan selected.' }, { status: 400 });
     }
 
-    let discount = 0;
-    if (couponCode) {
-        const couponResult = await validateCoupon(couponCode);
-        if (couponResult.success && couponResult.discount) {
-            discount = couponResult.discount;
-        }
-    }
-
     const basePrice = plans[plan as keyof typeof plans].price;
-    const finalAmount = (basePrice * (1 - discount)).toFixed(2);
+    const finalAmount = basePrice.toFixed(2);
 
 
     const orderId = `YSS_${user.id}_${Date.now()}`;
@@ -96,7 +87,6 @@ export async function POST(req: Request) {
             plan_id: plan,
             amount: parseFloat(finalAmount),
             status: 'PENDING',
-            coupon_used: couponCode,
         });
 
     if (transactionError) {

@@ -13,7 +13,6 @@ import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { validateCoupon } from '@/lib/actions';
 
 
 const plans = {
@@ -60,32 +59,7 @@ function SubscribePageContent() {
   const initialPlan = searchParams.get('plan') === 'yearly' ? 'yearly' : 'premium';
   const [selectedPlanKey, setSelectedPlanKey] = useState<PlanKey>(initialPlan);
   
-  const [couponCode, setCouponCode] = useState('');
-  const [appliedDiscount, setAppliedDiscount] = useState(0);
-    const [finalPrice, setFinalPrice] = useState(plans[selectedPlanKey].price);
-  const [couponMessage, setCouponMessage] = useState<string | null>(null);
-  const [isApplyingCoupon, setIsApplyingCoupon] = useState(false);
-
   const selectedPlan = plans[selectedPlanKey];
-  
-    // Update final price whenever selected plan or discount changes
-    React.useEffect(() => {
-        setFinalPrice(selectedPlan.price * (1 - appliedDiscount));
-    }, [selectedPlan, appliedDiscount]);
-
-
-  const handleApplyCoupon = async () => {
-    setIsApplyingCoupon(true);
-    const result = await validateCoupon(couponCode);
-    if (result.success && result.discount) {
-      setAppliedDiscount(result.discount);
-      setCouponMessage(result.message);
-    } else {
-      setAppliedDiscount(0);
-      setCouponMessage(result.message);
-    }
-    setIsApplyingCoupon(false);
-  };
   
   const handleCheckout = async () => {
     setIsLoading(true);
@@ -96,7 +70,6 @@ function SubscribePageContent() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
             plan: selectedPlan.key,
-            couponCode: couponCode 
         }),
       });
 
@@ -200,14 +173,14 @@ function SubscribePageContent() {
         <CardContent className="space-y-6">
             <div className="grid grid-cols-2 gap-2 rounded-lg bg-muted p-1">
                  <Button
-                    onClick={() => { setSelectedPlanKey('premium'); setAppliedDiscount(0); setCouponCode(''); setCouponMessage(null); }}
+                    onClick={() => { setSelectedPlanKey('premium'); }}
                     className={cn(selectedPlanKey === 'premium' ? 'bg-background text-foreground shadow' : 'bg-transparent text-muted-foreground', 'h-auto py-2')}
                     variant="ghost"
                   >
                     Monthly
                   </Button>
                   <Button
-                    onClick={() => { setSelectedPlanKey('yearly'); setAppliedDiscount(0); setCouponCode(''); setCouponMessage(null); }}
+                    onClick={() => { setSelectedPlanKey('yearly'); }}
                      className={cn(selectedPlanKey === 'yearly' ? 'bg-background text-foreground shadow' : 'bg-transparent text-muted-foreground', 'h-auto py-2')}
                     variant="ghost"
                   >
@@ -223,10 +196,7 @@ function SubscribePageContent() {
                     <Badge variant="destructive" className="mt-1">Limited Time</Badge>
                 </div>
                 <div>
-                    {appliedDiscount > 0 && (
-                         <p className="text-lg text-muted-foreground line-through text-right">₹{selectedPlan.price}</p>
-                    )}
-                    <p className="text-3xl font-bold">₹{finalPrice.toFixed(0)}<span className="text-base font-normal text-muted-foreground">{selectedPlan.period}</span></p>
+                    <p className="text-3xl font-bold">₹{selectedPlan.price}<span className="text-base font-normal text-muted-foreground">{selectedPlan.period}</span></p>
                 </div>
             </div>
           </div>
@@ -243,28 +213,6 @@ function SubscribePageContent() {
           </div>
         </CardContent>
         <CardFooter className="flex-col gap-4">
-             <div className="w-full space-y-2">
-                <Label htmlFor="coupon" className="flex items-center gap-2 font-semibold">
-                    <Ticket className="w-4 h-4" />
-                    Coupon Code
-                </Label>
-                <div className="flex items-center gap-2">
-                    <Input id="coupon" placeholder="Enter code" value={couponCode} onChange={(e) => setCouponCode(e.target.value)} />
-                    <Button variant="outline" onClick={handleApplyCoupon} disabled={isApplyingCoupon}>
-                        {isApplyingCoupon && <Loader2 className="w-4 h-4 animate-spin" />}
-                        {!isApplyingCoupon && 'Apply'}
-                    </Button>
-                </div>
-                {couponMessage && (
-                    <p className={cn(
-                        "text-xs font-medium",
-                        appliedDiscount > 0 ? "text-green-600" : "text-destructive"
-                    )}>
-                        {couponMessage}
-                    </p>
-                )}
-            </div>
-
           <Button className="w-full" onClick={handleCheckout} disabled={isLoading}>
             {isLoading ? (
                 <><Loader2 className="mr-2 animate-spin" /> Processing...</>
@@ -315,5 +263,3 @@ export default function SubscribePage() {
         </Suspense>
     )
 }
-
-    
