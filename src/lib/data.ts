@@ -128,9 +128,9 @@ export async function getUserProgress(supabase: SupabaseClient): Promise<UserSub
 export async function getUserSubscription(supabase: SupabaseClient): Promise<UserSubscription | null> {
     noStore();
     const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return null;
+    if (!user || !supabaseAdmin) return null;
 
-    const { data, error } = await supabase
+    const { data, error } = await supabaseAdmin
         .from('subscriptions')
         .select('*')
         .eq('user_id', user.id)
