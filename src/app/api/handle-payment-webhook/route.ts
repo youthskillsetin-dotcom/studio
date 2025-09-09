@@ -11,13 +11,17 @@ import crypto from 'crypto';
 function verifySignature(body: any, key: string, checksum: string): boolean {
     try {
         const bodyString = JSON.stringify(body);
-        const salt = 'random_salt_string_for_verification'; // This is a placeholder, actual verification might differ
+        const salt = Buffer.from(checksum, 'base64').toString('utf8').substring(0, 4);
         const final_string = bodyString + '|' + salt;
 
-        // This is a simplified verification logic.
-        // A production-grade implementation would need the exact same salt logic as generation.
-        // For now, we trust the successful transaction status from Paytm.
-        return true; 
+        const iv = '@@@@&&&&####$$$$';
+
+        const cipher = crypto.createCipheriv('AES-128-CBC', key, iv);
+        let encrypted = cipher.update(final_string, 'utf8', 'hex');
+        encrypted += cipher.final('hex');
+
+        return Buffer.from(salt + encrypted).toString('base64') === checksum;
+
     } catch (e) {
         console.error("Signature verification error", e);
         return false;

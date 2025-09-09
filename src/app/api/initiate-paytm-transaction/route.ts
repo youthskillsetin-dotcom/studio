@@ -24,7 +24,7 @@ function generateSignature(params: any, key: string): Promise<string> {
     const salt = crypto.randomBytes(4).toString('hex');
     const final_string = body + '|' + salt;
 
-    const iv = '@@@@&&&&####$$$$'; // Use a fixed IV as per some Paytm examples
+    const iv = '@@@@&&&&####$$$$'; 
 
     const cipher = crypto.createCipheriv('AES-128-CBC', key, iv);
     cipher.setAutoPadding(true);
@@ -49,6 +49,15 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Admin client not initialized' }, { status: 500 });
   }
 
+  // These details should be stored securely in your .env file
+  const mid = process.env.NEXT_PUBLIC_PAYTM_MID;
+  const merchantKey = process.env.PAYTM_MERCHANT_KEY;
+  const websiteName = process.env.PAYTM_WEBSITE || 'WEBSTAGING';
+
+  if (!mid || !merchantKey) {
+    return NextResponse.json({ error: 'Payment Gateway is not configured. Please contact support.' }, { status: 500 });
+  }
+
   try {
     const { plan, couponCode } = await req.json();
     
@@ -69,11 +78,7 @@ export async function POST(req: Request) {
 
 
     const orderId = `YSS_${user.id}_${Date.now()}`;
-
-    // These details should be stored securely in your .env file
-    const mid = process.env.NEXT_PUBLIC_PAYTM_MID!;
-    const merchantKey = process.env.PAYTM_MERCHANT_KEY!;
-    const websiteName = process.env.PAYTM_WEBSITE || 'WEBSTAGING';
+    
     const callbackUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/handle-payment-webhook`;
 
     // Securely log the transaction details on the server before sending to Paytm
