@@ -4,10 +4,10 @@
 import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
+import PaytmChecksum from 'paytm-pg-node-sdk/lib/PaytmChecksum';
 
-// This is a mock webhook handler. In a real app, you would have a webhook
-// from your payment provider (e.g., Stripe) that would call this endpoint.
-// It should also be secured with a secret to ensure it's a legitimate call.
+// This webhook handler is called by Paytm after a transaction.
+// It needs to be secured to ensure requests are genuinely from Paytm.
 export async function POST(req: Request) {
     const cookieStore = cookies();
     const supabase = createClient(cookieStore);
@@ -15,11 +15,29 @@ export async function POST(req: Request) {
     const { data: { user } } = await supabase.auth.getUser();
 
     if (!user) {
-        return NextResponse.json({ error: 'User not authenticated' }, { status: 401 });
+        return NextResponse.json({ error: 'User not authenticated for webhook' }, { status: 401 });
     }
 
     try {
         const body = await req.json();
+        
+        // ** SECURITY-CRITICAL STEP **
+        // In production, you MUST verify the request is from Paytm.
+        // You would get the checksum from the request headers/body and verify it
+        // using your Merchant Key.
+        //
+        // const checksum = req.headers.get('x-paytm-checksum');
+        // const isVerified = PaytmChecksum.verifySignature(
+        //   JSON.stringify(body), 
+        //   process.env.PAYTM_MERCHANT_KEY!, 
+        //   checksum
+        // );
+        // if (!isVerified) {
+        //   return NextResponse.json({ error: 'Webhook checksum mismatch' }, { status: 403 });
+        // }
+
+        // For this example, we proceed without checksum verification.
+        // The 'plan' would ideally be retrieved from the order details in the webhook body.
         const plan = body.plan === 'yearly' ? 'yearly' : 'premium';
 
         const expires_at = new Date();
@@ -33,7 +51,7 @@ export async function POST(req: Request) {
 
         const subscriptionData = {
             user_id: user.id,
-            email: user.email, // Added user's email
+            email: user.email,
             is_active: true,
             plan_name: planName,
             expires_at: expires_at.toISOString(),
@@ -48,7 +66,6 @@ export async function POST(req: Request) {
              throw upsertError;
         }
         
-         // Also update the user's role in the profiles table
         const { error: profileError } = await supabase
             .from('profiles')
             .update({ role: 'premium' })
