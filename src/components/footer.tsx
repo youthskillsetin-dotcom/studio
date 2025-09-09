@@ -20,7 +20,7 @@ const supportLinks = [
 ]
 
 const socialLinks = [
-    { href: '#', icon: Twitter, name: 'Twitter' },
+    { href: 'https://x.com/YouthSkillSet', icon: Twitter, name: 'Twitter' },
     { href: '#', icon: Linkedin, name: 'LinkedIn' },
     { href: 'https://www.instagram.com/youthskillset/', icon: Instagram, name: 'Instagram' },
 ];
