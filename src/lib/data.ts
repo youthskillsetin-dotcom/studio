@@ -128,7 +128,13 @@ export async function getUserProgress(supabase: SupabaseClient): Promise<UserSub
 export async function getUserSubscription(supabase: SupabaseClient): Promise<UserSubscription | null> {
     noStore();
     const { data: { user } } = await supabase.auth.getUser();
-    if (!user || !supabaseAdmin) return null;
+    
+    if (!user) return null;
+
+    if (!supabaseAdmin) {
+        console.warn("Supabase admin client not initialized. Cannot fetch user subscription.");
+        return null;
+    }
 
     try {
         const { data, error } = await supabaseAdmin
