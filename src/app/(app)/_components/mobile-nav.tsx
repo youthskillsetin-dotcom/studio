@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
-import { Menu } from 'lucide-react';
+import { Menu, Shield } from 'lucide-react';
 import type { UserProfile } from '@/lib/types';
 import * as React from 'react';
 import { Logo } from '@/components/icons';
@@ -60,14 +60,14 @@ export function MobileNav({ navItems, adminNavItems, userProfile }: MobileNavPro
           {userProfile?.role === 'admin' && (
             <>
               <div className="h-px w-full bg-border my-2" />
-              <p className="text-sm font-semibold text-muted-foreground px-2">Admin</p>
               {adminNavItems.map(item => (
                  <Link
                     key={item.href}
                     href={item.href}
-                    className="text-muted-foreground hover:text-foreground"
+                    className="flex items-center gap-3 rounded-lg py-2 text-muted-foreground transition-all hover:text-primary"
                     onClick={() => setOpen(false)}
                 >
+                    <item.icon className="h-5 w-5" />
                     {item.label}
                 </Link>
               ))}

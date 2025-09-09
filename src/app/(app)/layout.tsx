@@ -12,6 +12,7 @@ import {
   Lock,
   Sparkles,
   UserCog,
+  Shield,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -36,8 +37,7 @@ const navItems = [
 ];
 
 const adminNavItems = [
-    { href: "/admin/users", icon: UserCog, label: "User Management" },
-    { href: "/admin/content", icon: FileText, label: "Content Management" },
+    { href: "/admin", icon: Shield, label: "Admin Panel" },
 ];
 
 const HeaderSkeleton = () => (
@@ -102,8 +102,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 <Link
                     key={item.href}
                     href={item.href}
-                    className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                    className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary flex items-center gap-1"
                 >
+                    <item.icon className="w-4 h-4 mr-1" />
                     {item.label}
                 </Link>
              ))}
@@ -111,6 +112,12 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       )}
     </>
   )
+  
+  const isAdminRoute = userProfile?.role === 'admin' && children?.props?.segmentPath?.[1]?.[1] === 'admin';
+  
+  if (isAdminRoute) {
+    return <div className="min-h-screen w-full">{children}</div>;
+  }
 
   return (
     <div className="flex min-h-screen w-full flex-col">
