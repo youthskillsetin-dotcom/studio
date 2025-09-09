@@ -4,7 +4,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { BookOpen, BarChart, ShieldCheck, Cpu, Briefcase, HandCoins, Scale, User, FileText, Landmark, Search, Target, Bot, Menu } from 'lucide-react';
+import { BookOpen, BarChart, ShieldCheck, Cpu, Briefcase, HandCoins, Scale, User, FileText, Landmark, Search, Target, Bot, Menu, Award, Users, Compass } from 'lucide-react';
 import { Logo } from '@/components/icons';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { motion } from 'framer-motion';
@@ -150,7 +150,7 @@ export default function LandingPage() {
               <h2 className="font-headline text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter">Why Choose YouthSkillSet?</h2>
               <p className="mt-4 text-lg sm:text-xl text-muted-foreground">We combine cutting-edge AI with practical, real-world lessons to make learning effective and engaging.</p>
             </div>
-            <div className="grid gap-8 md:grid-cols-3">
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               <Card className="rounded-lg border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
                 <div className="flex justify-center mb-4"><BookOpen className="w-12 h-12 text-primary" /></div>
                 <h3 className="text-xl font-bold font-headline mb-2">Interactive Lessons</h3>
@@ -165,6 +165,21 @@ export default function LandingPage() {
                 <div className="flex justify-center mb-4"><Target className="w-12 h-12 text-primary" /></div>
                 <h3 className="text-xl font-bold font-headline mb-2">Real-World Skills</h3>
                 <p className="text-muted-foreground">Move beyond theory with practical labs and projects that help you build a portfolio of skills for the future.</p>
+              </Card>
+               <Card className="rounded-lg border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+                <div className="flex justify-center mb-4"><Compass className="w-12 h-12 text-primary" /></div>
+                <h3 className="text-xl font-bold font-headline mb-2">AI Career Guide</h3>
+                <p className="text-muted-foreground">Explore career paths with our AI guide, which provides personalized learning roadmaps and job market insights.</p>
+              </Card>
+               <Card className="rounded-lg border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+                <div className="flex justify-center mb-4"><Award className="w-12 h-12 text-primary" /></div>
+                <h3 className="text-xl font-bold font-headline mb-2">Progress & Achievements</h3>
+                <p className="text-muted-foreground">Stay motivated by tracking your progress, completing quizzes, and earning badges for your accomplishments.</p>
+              </Card>
+               <Card className="rounded-lg border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+                <div className="flex justify-center mb-4"><Users className="w-12 h-12 text-primary" /></div>
+                <h3 className="text-xl font-bold font-headline mb-2">Safe Community</h3>
+                <p className="text-muted-foreground">Connect with peers in a safe, moderated environment to discuss lessons and share ideas (coming soon).</p>
               </Card>
             </div>
           </div>
