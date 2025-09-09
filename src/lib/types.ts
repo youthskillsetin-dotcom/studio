@@ -92,6 +92,19 @@ export type UserProfileWithSubscription = UserProfile & {
     subscription: UserSubscription | null;
 };
 
+export type TransactionStatus = 'PENDING' | 'SUCCESS' | 'FAILED';
+
+export interface Transaction {
+    id: string;
+    order_id: string;
+    user_id: string;
+    plan_id: string;
+    amount: number;
+    status: TransactionStatus;
+    created_at: string;
+    updated_at: string;
+}
+
 
 // Types for Supabase joins
 export type PostWithAuthor = Omit<Post, 'author_email' | 'comments'> & {

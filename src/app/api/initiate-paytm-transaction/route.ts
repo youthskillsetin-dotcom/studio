@@ -14,7 +14,6 @@ const plans = {
 
 /**
  * Function to generate Paytm checksum using Node.js crypto.
- * This replaces the problematic paytm-pg-node-sdk package.
  * @param {Object} params
  * @param {string} key
  * @returns {Promise<string>}
@@ -54,7 +53,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Admin client not initialized' }, { status: 500 });
   }
 
-  // These details should be stored securely in your .env file
   const mid = process.env.NEXT_PUBLIC_PAYTM_MID;
   const merchantKey = process.env.PAYTM_MERCHANT_KEY;
   const websiteName = process.env.PAYTM_WEBSITE || 'WEBSTAGING';
@@ -74,9 +72,9 @@ export async function POST(req: Request) {
     const finalAmount = basePrice.toFixed(2);
 
 
-    const orderId = `YSS_${user.id}_${Date.now()}`;
+    const orderId = `YSS_${user.id.substring(0, 8)}_${Date.now()}`;
     
-    const callbackUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/handle-payment-webhook`;
+    const callbackUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/paytm-callback`;
 
     // Securely log the transaction details on the server before sending to Paytm
     const { error: transactionError } = await supabaseAdmin
@@ -137,11 +135,11 @@ export async function POST(req: Request) {
             txnToken: responseData.body.txnToken,
             orderId: orderId,
             amount: finalAmount,
+            mid: mid
         });
     } else {
         console.error("Paytm initiation failed:", responseData);
-        // Mark transaction as failed if initiation fails
-         await supabaseAdmin.from('transactions').update({ status: 'FAILED' }).eq('order_id', orderId);
+         await supabaseAdmin.from('transactions').update({ status: 'FAILED', updated_at: new Date().toISOString() }).eq('order_id', orderId);
         return NextResponse.json({ error: 'Failed to initiate Paytm transaction', details: responseData.body.resultInfo.resultMsg }, { status: 500 });
     }
 

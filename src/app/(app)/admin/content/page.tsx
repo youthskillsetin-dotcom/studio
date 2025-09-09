@@ -1,4 +1,5 @@
 
+
 import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
@@ -6,7 +7,7 @@ import { getUserProfile } from '@/lib/data';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { FileText, Video } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import sampleContent from '../../../../sample-content.json';
+import sampleContent from '../../../../../sample-content.json';
 import { VideoLinkEditor } from './video-link-editor';
 
 export default async function AdminContentPage() {
@@ -47,7 +48,7 @@ export default async function AdminContentPage() {
                     </AccordionTrigger>
                     <AccordionContent>
                         <div className="space-y-4 pt-4">
-                        {lesson.subtopics.map((subtopic) => (
+                        {lesson.subtopics.length > 0 ? lesson.subtopics.map((subtopic) => (
                             <Card key={subtopic.title} className="p-4 bg-muted/50">
                                 <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                                     <div>
@@ -65,7 +66,7 @@ export default async function AdminContentPage() {
                                     </div>
                                 </div>
                             </Card>
-                        ))}
+                        )) : <p className="text-sm text-muted-foreground">No subtopics in this module.</p>}
                         </div>
                     </AccordionContent>
                 </AccordionItem>
@@ -76,3 +77,4 @@ export default async function AdminContentPage() {
     </div>
   );
 }
+

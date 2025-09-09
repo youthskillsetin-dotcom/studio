@@ -1,19 +1,16 @@
 
 'use client';
 
-import { Suspense, useState, useMemo } from 'react';
+import { Suspense, useState } from 'react';
 import Head from 'next/head';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { CheckCircle, CreditCard, Loader2, Star, Ticket } from 'lucide-react';
+import { CheckCircle, CreditCard, Loader2, Star } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-
 
 const plans = {
   premium: {
@@ -43,7 +40,6 @@ const plans = {
 
 type PlanKey = 'premium' | 'yearly';
 
-// This is a simplified interface for the Paytm configuration
 declare global {
     interface Window {
         Paytm: any;
@@ -64,7 +60,6 @@ function SubscribePageContent() {
   const handleCheckout = async () => {
     setIsLoading(true);
     try {
-      // 1. Call your new backend API to get a transaction token
       const response = await fetch('/api/initiate-paytm-transaction', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -79,9 +74,8 @@ function SubscribePageContent() {
         throw new Error(data.error || 'Failed to initiate transaction.');
       }
 
-      const { txnToken, orderId, amount } = data;
+      const { txnToken, orderId, amount, mid } = data;
 
-      // 2. Configure Paytm checkout
       const config = {
         "root": "",
         "flow": "DEFAULT",
@@ -91,30 +85,16 @@ function SubscribePageContent() {
           "tokenType": "TXN_TOKEN",
           "amount": amount
         },
+        "merchant": {
+            "mid": mid,
+        },
         "handler": {
-          "notifyMerchant": function(eventName: string, data: any) {
-            console.log("notifyMerchant handler function called");
-            console.log("eventName => ", eventName);
-            console.log("data => ", data);
-          },
-           "transactionStatus": async function(paymentStatus: any){
+           "transactionStatus": function(paymentStatus: any){
               console.log("payment status => ", paymentStatus);
-              // After payment, you can redirect or show a success message.
-              // The backend webhook will handle the actual subscription update.
               if (paymentStatus.STATUS === 'TXN_SUCCESS') {
-                 // Manually call our webhook handler logic for immediate feedback
-                  const webhookBody = { ...paymentStatus };
-                  // Note: In a production scenario with proper webhook security from Paytm's side,
-                  // you might not need to manually call this. This is for better UX in this setup.
-                  await fetch('/api/handle-payment-webhook', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(webhookBody),
-                  });
-                 
                  toast({
                     title: "Payment Successful!",
-                    description: `Your ${selectedPlan.name} subscription is now active.`,
+                    description: `Your ${selectedPlan.name} subscription is now active. Redirecting...`,
                   });
                  router.push('/dashboard');
                  router.refresh();
@@ -122,24 +102,29 @@ function SubscribePageContent() {
                  toast({
                     variant: 'destructive',
                     title: "Payment Failed",
-                    description: paymentStatus.RESPMSG || 'An error occurred during payment.',
+                    description: paymentStatus.RESPMSG || 'An error occurred during payment. Please try again.',
                 });
+                setIsLoading(false);
               }
-              setIsLoading(false);
-           }
+           },
+           "notifyMerchant": function(eventName: string, data: any){
+              console.log("notifyMerchant handler function called");
+              console.log("eventName => ", eventName);
+              console.log("data => ", data);
+            }
         }
       };
 
       if (window.Paytm && window.Paytm.CheckoutJS) {
         window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
-          // 3. Open the Paytm payment popup
           window.Paytm.CheckoutJS.invoke();
         }).catch(function onError(error: any) {
           console.log("error => ", error);
+          toast({ variant: 'destructive', title: 'Could not load payment gateway.', description: 'Please check your connection and try again.' });
           setIsLoading(false);
         });
       } else {
-         toast({ variant: 'destructive', title: 'Could not load payment gateway.' });
+         toast({ variant: 'destructive', title: 'Payment gateway script not loaded.' });
          setIsLoading(false);
       }
 
