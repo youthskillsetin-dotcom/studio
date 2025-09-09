@@ -4,7 +4,7 @@
 import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
-import PaytmChecksum from 'paytm-pg-node-sdk/lib/PaytmChecksum';
+import Paytm from 'paytm-pg-node-sdk';
 import { validateCoupon } from '@/lib/actions';
 import { supabaseAdmin } from '@/lib/supabase/admin';
 
@@ -89,7 +89,7 @@ export async function POST(req: Request) {
       },
     };
 
-    const checksum = await PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), merchantKey);
+    const checksum = await Paytm.Checksum.generateSignature(JSON.stringify(paytmParams.body), merchantKey);
 
     paytmParams.head = {
       "signature": checksum
@@ -126,5 +126,3 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: `API Error: ${e.message}` }, { status: 500 });
   }
 }
-
-    

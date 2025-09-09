@@ -4,7 +4,7 @@
 import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
-import PaytmChecksum from 'paytm-pg-node-sdk/lib/PaytmChecksum';
+import Paytm from 'paytm-pg-node-sdk';
 import { supabaseAdmin } from '@/lib/supabase/admin';
 
 // This webhook handler is called by Paytm after a transaction.
@@ -28,7 +28,7 @@ export async function POST(req: Request) {
         const checksum = req.headers.get('x-paytm-checksum');
         // The check here is disabled for the dev environment where we manually call this
         // from the client for immediate UX feedback. In production, this MUST be enabled.
-        const isVerified = process.env.NODE_ENV === 'development' || PaytmChecksum.verifySignature(
+        const isVerified = process.env.NODE_ENV === 'development' || Paytm.Checksum.verifySignature(
            rawBody, 
            process.env.PAYTM_MERCHANT_KEY!, 
            checksum || ""
@@ -105,5 +105,3 @@ export async function POST(req: Request) {
         return NextResponse.json({ error: `Webhook handler failed: ${e.message}` }, { status: 500 });
     }
 }
-
-    
