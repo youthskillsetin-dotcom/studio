@@ -243,5 +243,3 @@ export async function getPostById(id: string): Promise<Post | null> {
   noStore();
   return null;
 }
-
-    
