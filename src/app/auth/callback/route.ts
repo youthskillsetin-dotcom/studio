@@ -1,6 +1,7 @@
 
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { type NextRequest, NextResponse } from 'next/server'
+import { supabaseAdmin } from '@/lib/supabase/admin';
 
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url)
@@ -34,8 +35,27 @@ export async function GET(request: NextRequest) {
         },
       }
     )
-    const { error } = await supabase.auth.exchangeCodeForSession(code)
-    if (!error) {
+    const { data: { session }, error } = await supabase.auth.exchangeCodeForSession(code)
+    
+    if (!error && session && supabaseAdmin) {
+       // --- Start of Role Sync Logic ---
+        const { user } = session;
+        // Fetch the profile role from the database
+        const { data: profile } = await supabaseAdmin
+            .from('profiles')
+            .select('role')
+            .eq('id', user.id)
+            .single();
+
+        // If the database role is different from the token role, update the token.
+        if (profile && profile.role !== user.user_metadata.role) {
+            await supabaseAdmin.auth.admin.updateUserById(
+                user.id,
+                { user_metadata: { ...user.user_metadata, role: profile.role } }
+            );
+        }
+        // --- End of Role Sync Logic ---
+
       return NextResponse.redirect(new URL(next, origin));
     }
   }
