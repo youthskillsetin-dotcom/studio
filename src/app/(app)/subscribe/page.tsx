@@ -1,18 +1,20 @@
 
 'use client';
 
-import { Suspense, useState } from 'react';
+import { Suspense, useState, useMemo } from 'react';
 import Head from 'next/head';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, CreditCard, Loader2, Star, Ticket } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { validateCoupon } from '@/lib/actions';
+
 
 const plans = {
   premium: {
@@ -51,9 +53,13 @@ declare global {
 
 function SubscribePageContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedPlanKey, setSelectedPlanKey] = useState<PlanKey>('premium');
+  
+  const initialPlan = searchParams.get('plan') === 'yearly' ? 'yearly' : 'premium';
+  const [selectedPlanKey, setSelectedPlanKey] = useState<PlanKey>(initialPlan);
+  
   const [couponCode, setCouponCode] = useState('');
   const [appliedDiscount, setAppliedDiscount] = useState(0);
   const [couponMessage, setCouponMessage] = useState<string | null>(null);
@@ -62,30 +68,17 @@ function SubscribePageContent() {
   const selectedPlan = plans[selectedPlanKey];
   const finalPrice = selectedPlan.price * (1 - appliedDiscount);
 
-  const handleApplyCoupon = () => {
+  const handleApplyCoupon = async () => {
     setIsApplyingCoupon(true);
-    setCouponMessage(null);
-    setAppliedDiscount(0);
-
-    const validCoupons: { [code: string]: { discount: number; message: string } } = {
-      'SKILL10': { discount: 0.10, message: 'Success! 10% discount applied.' },
-      'SKILL25': { discount: 0.25, message: 'Success! 25% discount applied.' },
-    };
-
-    setTimeout(() => {
-      const upperCaseCode = couponCode.toUpperCase();
-      const appliedCoupon = validCoupons[upperCaseCode];
-
-      if (appliedCoupon) {
-        setAppliedDiscount(appliedCoupon.discount);
-        setCouponMessage(appliedCoupon.message);
-      } else if (couponCode) {
-        setCouponMessage('Invalid coupon code.');
-      } else {
-        setCouponMessage('Please enter a coupon code.');
-      }
-      setIsApplyingCoupon(false);
-    }, 500);
+    const result = await validateCoupon(couponCode);
+    if (result.success && result.discount) {
+      setAppliedDiscount(result.discount);
+      setCouponMessage(result.message);
+    } else {
+      setAppliedDiscount(0);
+      setCouponMessage(result.message);
+    }
+    setIsApplyingCoupon(false);
   };
   
   const handleCheckout = async () => {
@@ -122,11 +115,18 @@ function SubscribePageContent() {
             console.log("eventName => ", eventName);
             console.log("data => ", data);
           },
-           "transactionStatus": function(paymentStatus: any){
+           "transactionStatus": async function(paymentStatus: any){
               console.log("payment status => ", paymentStatus);
               // After payment, you can redirect or show a success message.
               // The backend webhook will handle the actual subscription update.
               if (paymentStatus.STATUS === 'TXN_SUCCESS') {
+                 // Manually call our webhook handler logic for immediate feedback
+                  await fetch('/api/handle-payment-webhook', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ...paymentStatus, plan: selectedPlan.key }),
+                  });
+                 
                  toast({
                     title: "Payment Successful!",
                     description: `Your ${selectedPlan.name} subscription is now active.`,
@@ -172,6 +172,7 @@ function SubscribePageContent() {
     <>
     <Head>
         <script
+          id="paytm-checkout-js"
           type="application/javascript"
           src={`https://securegw-stage.paytm.in/merchantpgpui/checkoutjs/merchants/${process.env.NEXT_PUBLIC_PAYTM_MID}.js`}
           crossOrigin="anonymous"
@@ -302,3 +303,5 @@ export default function SubscribePage() {
         </Suspense>
     )
 }
+
+    
