@@ -35,6 +35,7 @@ const formSchema = z.object({
   password: z
     .string()
     .min(6, { message: 'Password must be at least 6 characters.' }),
+  contact_no: z.string().min(10, { message: 'Please enter a valid 10-digit mobile number.' }).max(15),
 });
 
 export default function SignupPage() {
@@ -51,6 +52,7 @@ export default function SignupPage() {
       fullName: '',
       email: '',
       password: '',
+      contact_no: '',
     },
   });
 
@@ -64,6 +66,7 @@ export default function SignupPage() {
       options: {
         data: {
           full_name: values.fullName,
+          contact_no: values.contact_no,
         }
       },
     });
@@ -142,6 +145,23 @@ export default function SignupPage() {
                     <FormMessage />
                     </FormItem>
                 )}
+                />
+                 <FormField
+                  control={form.control}
+                  name="contact_no"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Contact No.</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="tel"
+                          placeholder="e.g., 9876543210"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
                 <FormField
                 control={form.control}

@@ -36,6 +36,10 @@ export default async function SettingsPage() {
               <p className="text-sm text-muted-foreground">{userProfile?.email}</p>
             </div>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-sm font-medium">Contact No.</p>
+              <p className="text-sm text-muted-foreground">{userProfile?.contact_no || 'Not provided'}</p>
+            </div>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
               <p className="text-sm font-medium">Joined</p>
               <p className="text-sm text-muted-foreground">
                 {userProfile?.created_at ? new Date(userProfile.created_at).toLocaleDateString() : 'N/A'}

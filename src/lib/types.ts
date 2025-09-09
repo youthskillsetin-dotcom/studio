@@ -84,6 +84,7 @@ export interface UserProfile {
     fullName?: string | null;
     created_at?: string;
     avatar_url?: string | null;
+    contact_no?: string | null;
 }
 
 
