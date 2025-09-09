@@ -20,19 +20,25 @@ const plans = {
  * @returns {Promise<string>}
  */
 function generateSignature(params: any, key: string): Promise<string> {
-    const body = JSON.stringify(params);
-    const salt = crypto.randomBytes(4).toString('hex');
-    const final_string = body + '|' + salt;
+    return new Promise((resolve, reject) => {
+        try {
+            const body = JSON.stringify(params);
+            const salt = crypto.randomBytes(4).toString('hex');
+            const final_string = body + '|' + salt;
 
-    const iv = '@@@@&&&&####$$$$'; 
+            const iv = '@@@@&&&&####$$$$'; 
 
-    const cipher = crypto.createCipheriv('AES-128-CBC', key, iv);
-    cipher.setAutoPadding(true);
-    let encrypted = cipher.update(final_string, 'utf8', 'hex');
-    encrypted += cipher.final('hex');
+            const cipher = crypto.createCipheriv('AES-128-CBC', key, iv);
+            cipher.setAutoPadding(true);
+            let encrypted = cipher.update(final_string, 'utf8', 'hex');
+            encrypted += cipher.final('hex');
 
-    const checksum = Buffer.from(salt + encrypted).toString('base64');
-    return Promise.resolve(checksum);
+            const checksum = Buffer.from(salt + encrypted).toString('base64');
+            resolve(checksum);
+        } catch (e) {
+            reject(e);
+        }
+    });
 }
 
 
