@@ -166,6 +166,7 @@ export async function getUserProfile(supabase: SupabaseClient): Promise<UserProf
         console.error("Error fetching user profile:", error);
     }
     
+    // This is the most reliable source of truth for the role.
     const role = data?.role ?? user?.user_metadata?.role ?? 'user';
     const fullName = data?.full_name ?? user?.user_metadata?.full_name ?? user?.email?.split('@')[0];
     const contact_no = data?.contact_no ?? user?.user_metadata?.contact_no;
