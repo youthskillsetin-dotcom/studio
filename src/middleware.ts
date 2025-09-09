@@ -2,7 +2,6 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { updateSession } from '@/lib/supabase/middleware'
 import { createServerClient } from '@supabase/ssr'
-import { createAdminClient } from '@supabase/supabase-js'
 
 export async function middleware(request: NextRequest) {
   // First, update the user's session.
@@ -41,10 +40,18 @@ export async function middleware(request: NextRequest) {
         if (!process.env.SUPABASE_SERVICE_ROLE_KEY) {
             console.warn('SUPABASE_SERVICE_ROLE_KEY is not set. Cannot update user metadata.');
         } else {
-            const supabaseAdmin = createAdminClient(
+            // Re-create a client with service_role key to perform admin actions
+            const supabaseAdmin = createServerClient(
                 process.env.NEXT_PUBLIC_SUPABASE_URL!,
                 process.env.SUPABASE_SERVICE_ROLE_KEY!,
-                { auth: { autoRefreshToken: false, persistSession: false } }
+                {
+                    cookies: {
+                        get(name) {
+                            return request.cookies.get(name)?.value
+                        },
+                    },
+                    auth: { autoRefreshToken: false, persistSession: false }
+                }
             );
 
             // Update the user's metadata in the auth schema

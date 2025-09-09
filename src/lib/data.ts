@@ -4,7 +4,7 @@ import type { SupabaseClient } from '@supabase/supabase-js';
 import type { Lesson, Subtopic, UserSubtopicProgress, Post, CommentWithAuthor, PostWithAuthor, UserSubscription, UserProfile, UserProfileWithSubscription } from './types';
 import { unstable_noStore as noStore } from 'next/cache';
 import sampleContent from '../../sample-content.json';
-import { createClient as createAdminClient } from '@supabase/supabase-js';
+import { createClient } from '@supabase/supabase-js';
 
 // NOTE: All data fetching now happens from functions in this file, using sample-content.json as the source.
 // This centralizes data access and simulates a real database layer.
@@ -191,7 +191,7 @@ export async function getAllUsers(): Promise<UserProfile[]> {
     return [];
   }
   
-  const supabaseAdmin = createAdminClient(
+  const supabaseAdmin = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!
   );
