@@ -3,7 +3,7 @@
 
 import {
   Instagram,
-  Linkedin,
+  MessageSquare,
   Twitter,
 } from 'lucide-react';
 import Link from 'next/link';
@@ -22,6 +22,7 @@ const supportLinks = [
 const socialLinks = [
     { href: 'https://x.com/YouthSkillSet', icon: Twitter, name: 'Twitter' },
     { href: 'https://www.instagram.com/youthskillset/', icon: Instagram, name: 'Instagram' },
+    { href: 'https://chat.whatsapp.com/LyQqKZ6w2Y77kZHHwKmais?mode=ems_copy_c', icon: MessageSquare, name: 'WhatsApp' },
 ];
 
 export function Footer() {
@@ -61,7 +62,7 @@ export function Footer() {
             <h3 className="font-semibold font-headline text-foreground tracking-wider uppercase">Follow Us</h3>
              <div className="flex justify-center md:justify-start mt-4 space-x-4">
                 {socialLinks.map((item, idx) => (
-                     <Link key={idx} href={item.href} className="text-sm hover:text-primary transition-colors duration-300">
+                     <Link key={idx} href={item.href} className="text-sm hover:text-primary transition-colors duration-300" target="_blank" rel="noopener noreferrer">
                         <item.icon className="w-6 h-6" />
                         <span className="sr-only">{item.name}</span>
                     </Link>
