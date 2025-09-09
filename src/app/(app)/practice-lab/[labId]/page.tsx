@@ -338,48 +338,48 @@ const PhishingSimulation = () => {
 
 // Resume Builder Components
 const ResumePreview = ({ data }: { data: any }) => (
-    <div className="p-8 bg-white text-black font-sans text-sm rounded-lg shadow-lg border">
+    <div className="p-8 bg-white text-black font-sans text-sm rounded-lg shadow-lg border h-full">
         <div className="text-center border-b pb-4 mb-4">
             <h2 className="text-2xl font-bold font-serif">{data.fullName || 'Priya Kumar'}</h2>
-            <div className="flex justify-center items-center gap-4 text-xs mt-2">
+            <div className="flex justify-center items-center flex-wrap gap-x-4 gap-y-1 text-xs mt-2">
                 {data.email && <span className="flex items-center gap-1"><Mail className="w-3 h-3"/>{data.email}</span>}
                 {data.phone && <span className="flex items-center gap-1"><Phone className="w-3 h-3"/>{data.phone}</span>}
                 {data.linkedin && <span className="flex items-center gap-1"><Linkedin className="w-3 h-3"/>{data.linkedin}</span>}
             </div>
         </div>
         <div className="space-y-6">
-            <div>
-                <h3 className="text-sm font-bold font-serif uppercase tracking-widest border-b mb-2 pb-1 text-primary">Experience</h3>
-                <p className="whitespace-pre-wrap">{data.experience || '- Organized school science fair for 150+ students, coordinating 20 teams.\n- Managed social media for the school\'s annual fest, increasing engagement by 30%.'}</p>
-            </div>
-             <div>
-                <h3 className="text-sm font-bold font-serif uppercase tracking-widest border-b mb-2 pb-1 text-primary">Education</h3>
-                <p className="whitespace-pre-wrap">{data.education || 'Delhi Public School, R.K. Puram\n- High School Diploma, Graduated May 2024'}</p>
-            </div>
-             <div>
-                <h3 className="text-sm font-bold font-serif uppercase tracking-widest border-b mb-2 pb-1 text-primary">Skills</h3>
-                <p className="whitespace-pre-wrap">{data.skills || '- Public Speaking\n- Team Leadership\n- Microsoft Excel\n- Python (Beginner)'}</p>
-            </div>
+             {data.experience && (
+                <div>
+                    <h3 className="text-sm font-bold font-serif uppercase tracking-widest border-b mb-2 pb-1 text-primary">Experience</h3>
+                    <div className="whitespace-pre-wrap text-sm" dangerouslySetInnerHTML={{ __html: data.experience.replace(/•/g, '<br>•') || ''}} />
+                </div>
+            )}
+             {data.education && (
+                 <div>
+                    <h3 className="text-sm font-bold font-serif uppercase tracking-widest border-b mb-2 pb-1 text-primary">Education</h3>
+                    <p className="whitespace-pre-wrap text-sm">{data.education}</p>
+                </div>
+            )}
+             {data.skills && (
+                <div>
+                    <h3 className="text-sm font-bold font-serif uppercase tracking-widest border-b mb-2 pb-1 text-primary">Skills</h3>
+                    <p className="whitespace-pre-wrap text-sm">{data.skills}</p>
+                </div>
+            )}
         </div>
     </div>
 );
 
 const ResumeBuilderSimulation = () => {
-    const [step, setStep] = useState(0);
     const [resumeData, setResumeData] = useState({
-        fullName: '',
-        email: '',
-        phone: '',
-        linkedin: '',
-        experience: '',
-        education: '',
-        skills: ''
+        fullName: 'Priya Kumar',
+        email: 'priya.kumar@example.com',
+        phone: '+91 98765 43210',
+        linkedin: 'linkedin.com/in/priya-k',
+        experience: '• Organized school science fair for 150+ students, coordinating 20 teams.\n• Managed social media for the school\'s annual fest, increasing engagement by 30%.',
+        education: 'Delhi Public School, R.K. Puram\n- High School Diploma, Graduated May 2024',
+        skills: '• Public Speaking\n• Team Leadership\n• Microsoft Excel\n• Python (Beginner)'
     });
-    const totalSteps = 4;
-    const progress = ((step + 1) / (totalSteps + 1)) * 100;
-    
-    const nextStep = () => setStep(s => Math.min(s + 1, totalSteps));
-    const prevStep = () => setStep(s => Math.max(s - 1, 0));
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -387,111 +387,110 @@ const ResumeBuilderSimulation = () => {
     };
 
     const handleDownload = () => {
-        const doc = new jsPDF();
-        const margin = 15;
-        const pageHeight = doc.internal.pageSize.getHeight();
+        const doc = new jsPDF('p', 'pt', 'a4');
+        const margin = 40;
+        const pageWidth = doc.internal.pageSize.getWidth();
         let y = margin;
+
+        // --- Helper to add text and handle line breaks ---
+        const addText = (text: string, options: any) => {
+            const splitText = doc.splitTextToSize(text, pageWidth - margin * 2);
+            doc.text(splitText, options.x || margin, y, { align: options.align });
+            y += (doc.getTextDimensions(splitText).h) + (options.spacing || 0);
+        }
 
         // --- Header ---
         doc.setFont('times', 'bold');
         doc.setFontSize(24);
-        doc.text(resumeData.fullName || 'Priya Kumar', doc.internal.pageSize.getWidth() / 2, y, { align: 'center' });
-        y += 8;
-
+        addText(resumeData.fullName, { align: 'center', x: pageWidth / 2, spacing: 10 });
+        
         doc.setFont('helvetica', 'normal');
         doc.setFontSize(10);
-        const contactInfo = [
-            resumeData.email,
-            resumeData.phone,
-            resumeData.linkedin
-        ].filter(Boolean).join(' | ');
-        doc.text(contactInfo, doc.internal.pageSize.getWidth() / 2, y, { align: 'center' });
+        const contactInfo = [resumeData.email, resumeData.phone, resumeData.linkedin].filter(Boolean).join(' | ');
+        addText(contactInfo, { align: 'center', x: pageWidth / 2, spacing: 5 });
+        
         y += 5;
-
         doc.setDrawColor(200, 200, 200);
-        doc.line(margin, y, doc.internal.pageSize.getWidth() - margin, y);
-        y += 10;
+        doc.line(margin, y, pageWidth - margin, y);
+        y += 20;
 
         // --- Helper to add sections ---
         const addSection = (title: string, content: string) => {
-            if (y + 20 > pageHeight - margin) { // check for page break
+            if (!content.trim()) return;
+             if (y + 40 > doc.internal.pageSize.getHeight() - margin) {
                 doc.addPage();
                 y = margin;
             }
             doc.setFont('times', 'bold');
             doc.setFontSize(12);
-            doc.setTextColor(109, 40, 217); // primary color
-            doc.text(title.toUpperCase(), margin, y);
-            y += 2;
+            doc.setTextColor(109, 40, 217);
+            addText(title.toUpperCase(), { spacing: 2 });
             doc.setDrawColor(220, 220, 220);
-            doc.line(margin, y, doc.internal.pageSize.getWidth() - margin, y);
-            y += 8;
+            doc.line(margin, y, pageWidth - margin, y);
+            y += 15;
             
             doc.setFont('helvetica', 'normal');
             doc.setFontSize(11);
-            doc.setTextColor(51, 65, 85); // text-slate-600
-            
-            const splitContent = doc.splitTextToSize(content, doc.internal.pageSize.getWidth() - margin * 2);
-            doc.text(splitContent, margin, y);
-            y += (doc.getTextDimensions(splitContent).h) + 10;
+            doc.setTextColor(51, 65, 85);
+            addText(content, { spacing: 20 });
         }
 
         // --- Sections ---
-        addSection('Experience', resumeData.experience || '- Organized school science fair for 150+ students, coordinating 20 teams.\n- Managed social media for the school\'s annual fest, increasing engagement by 30%.');
-        addSection('Education', resumeData.education || 'Delhi Public School, R.K. Puram\n- High School Diploma, Graduated May 2024');
-        addSection('Skills', resumeData.skills || '- Public Speaking\n- Team Leadership\n- Microsoft Excel\n- Python (Beginner)');
+        addSection('Experience', resumeData.experience);
+        addSection('Education', resumeData.education);
+        addSection('Skills', resumeData.skills);
         
-        doc.save('resume.pdf');
+        doc.save(`${resumeData.fullName.replace(/\s/g, '_')}_Resume.pdf`);
     };
 
     return (
-        <div className="space-y-6">
-            <Card className="rounded-xl">
-                 <CardHeader>
-                    <CardTitle className="font-headline text-lg">
-                       Step {step + 1}: {['Contact Info', 'Experience', 'Education', 'Skills', 'Preview & Download'][step]}
-                    </CardTitle>
-                    <Progress value={progress} className="w-full mt-2" />
-                </CardHeader>
-                <CardContent className="min-h-[350px]">
-                    {step === 0 && <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="space-y-1"><Label>Full Name</Label><Input name="fullName" value={resumeData.fullName} onChange={handleInputChange} placeholder="e.g., Priya Kumar" /></div>
-                        <div className="space-y-1"><Label>Email</Label><Input name="email" value={resumeData.email} onChange={handleInputChange} placeholder="priya.kumar@email.com" type="email"/></div>
-                        <div className="space-y-1"><Label>Phone</Label><Input name="phone" value={resumeData.phone} onChange={handleInputChange} placeholder="9876543210" type="tel"/></div>
-                        <div className="space-y-1"><Label>LinkedIn Profile</Label><Input name="linkedin" value={resumeData.linkedin} onChange={handleInputChange} placeholder="linkedin.com/in/priya-k" /></div>
-                    </div>}
-                    {step === 1 && <div className="space-y-4">
-                        <p className="text-muted-foreground text-sm">Use action verbs to describe your accomplishments. Example: "Organized a school event for 100+ students."</p>
-                        <div className="space-y-1"><Label>Work/Volunteer Experience</Label><Textarea name="experience" value={resumeData.experience} onChange={handleInputChange} placeholder="Describe your roles and achievements..." rows={6}/></div>
-                    </div>}
-                     {step === 2 && <div className="space-y-4">
-                        <div className="space-y-1"><Label>Education</Label><Textarea name="education" value={resumeData.education} onChange={handleInputChange} placeholder="e.g., Delhi Public School, High School Diploma, 2024" rows={4}/></div>
-                    </div>}
-                     {step === 3 && <div className="space-y-4">
-                         <p className="text-muted-foreground text-sm">List both technical (hard) and interpersonal (soft) skills.</p>
-                         <div className="space-y-1"><Label>Skills</Label><Textarea name="skills" value={resumeData.skills} onChange={handleInputChange} placeholder="e.g., Python, Public Speaking, Teamwork, Microsoft Excel" rows={4}/></div>
-                    </div>}
-                    {step === 4 && <div className="space-y-4">
-                            <p className="text-muted-foreground text-center mb-4">Here's a preview of your resume. You can go back to edit any section or download it as a PDF.</p>
-                           <ResumePreview data={resumeData} />
-                    </div>}
-                </CardContent>
-                <CardFooter className="flex justify-between">
-                    <Button variant="outline" onClick={prevStep} disabled={step === 0}>
-                        <ArrowLeft className="w-4 h-4 mr-2"/> Previous
+        <div className="grid lg:grid-cols-2 gap-8">
+            <div className="space-y-4">
+                 <h2 className="text-xl font-bold font-headline">Resume Editor</h2>
+                 <p className="text-sm text-muted-foreground">Fill in your details below. Your resume will update in the preview on the right.</p>
+
+                <Card className="rounded-xl">
+                    <CardHeader><CardTitle className="text-lg">Contact Information</CardTitle></CardHeader>
+                    <CardContent className="space-y-3">
+                        <div className="space-y-1"><Label>Full Name</Label><Input name="fullName" value={resumeData.fullName} onChange={handleInputChange} /></div>
+                        <div className="space-y-1"><Label>Email</Label><Input name="email" value={resumeData.email} onChange={handleInputChange} type="email"/></div>
+                        <div className="space-y-1"><Label>Phone</Label><Input name="phone" value={resumeData.phone} onChange={handleInputChange} type="tel"/></div>
+                        <div className="space-y-1"><Label>LinkedIn Profile</Label><Input name="linkedin" value={resumeData.linkedin} onChange={handleInputChange} /></div>
+                    </CardContent>
+                </Card>
+                 <Card className="rounded-xl">
+                    <CardHeader><CardTitle className="text-lg">Experience</CardTitle></CardHeader>
+                    <CardContent>
+                        <Label className="text-xs text-muted-foreground">Describe your roles and achievements. Start each point with a bullet (•).</Label>
+                        <Textarea name="experience" value={resumeData.experience} onChange={handleInputChange} rows={6}/>
+                    </CardContent>
+                </Card>
+                 <Card className="rounded-xl">
+                    <CardHeader><CardTitle className="text-lg">Education</CardTitle></CardHeader>
+                    <CardContent>
+                         <Label className="text-xs text-muted-foreground">List your school and graduation date.</Label>
+                        <Textarea name="education" value={resumeData.education} onChange={handleInputChange} rows={3}/>
+                    </CardContent>
+                </Card>
+                 <Card className="rounded-xl">
+                    <CardHeader><CardTitle className="text-lg">Skills</CardTitle></CardHeader>
+                    <CardContent>
+                         <Label className="text-xs text-muted-foreground">List your skills, separated by bullets (•) or new lines.</Label>
+                        <Textarea name="skills" value={resumeData.skills} onChange={handleInputChange} rows={4}/>
+                    </CardContent>
+                </Card>
+            </div>
+            <div className="space-y-4">
+                 <h2 className="text-xl font-bold font-headline">Live Preview</h2>
+                 <p className="text-sm text-muted-foreground invisible">Placeholder</p>
+                 <div className="lg:sticky top-24">
+                    <ResumePreview data={resumeData} />
+                     <Button onClick={handleDownload} className="w-full mt-4">
+                        <Download className="w-4 h-4 mr-2" />
+                        Download PDF
                     </Button>
-                    {step < totalSteps ? (
-                        <Button onClick={nextStep}>
-                            Next Step <ArrowRight className="w-4 h-4 ml-2"/>
-                        </Button>
-                    ) : (
-                         <Button onClick={handleDownload}>
-                            <Download className="w-4 h-4 mr-2" />
-                            Download PDF
-                        </Button>
-                    )}
-                </CardFooter>
-            </Card>
+                </div>
+            </div>
         </div>
     )
 }
@@ -507,16 +506,16 @@ const BusinessCanvasSimulation = () => {
                      <p className="text-sm text-muted-foreground">Map out your business idea on this one-page canvas.</p>
                  </CardHeader>
                 <CardContent className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-6">
-                        <div className="space-y-1"><Label>Value Proposition</Label><Textarea placeholder="What unique value do you provide?" /></div>
-                        <div className="space-y-1"><Label>Customer Segments</Label><Textarea placeholder="Who are your target customers?" /></div>
-                        <div className="space-y-1"><Label>Customer Relationships</Label><Textarea placeholder="How do you interact with customers?" /></div>
-                        <div className="space-y-1"><Label>Channels</Label><Textarea placeholder="How do you reach your customers?" /></div>
-                        <div className="space-y-1"><Label>Key Activities</Label><Textarea placeholder="What are the most important things you do?" /></div>
-                        <div className="space-y-1"><Label>Key Resources</Label><Textarea placeholder="What assets do you need?" /></div>
-                        <div className="space-y-1"><Label>Key Partnerships</Label><Textarea placeholder="Who are your key partners/suppliers?" /></div>
-                        <div className="space-y-1"><Label>Revenue Streams</Label><Textarea placeholder="How do you make money?" /></div>
-                        <div className="md:col-span-2 space-y-1"><Label>Cost Structure</Label><Textarea placeholder="What are your major costs?" /></div>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div className="space-y-1"><Label>Value Proposition</Label><Textarea placeholder="What unique value do you provide?" rows={4} /></div>
+                        <div className="space-y-1"><Label>Customer Segments</Label><Textarea placeholder="Who are your target customers?" rows={4} /></div>
+                        <div className="space-y-1"><Label>Customer Relationships</Label><Textarea placeholder="How do you interact with customers?" rows={4} /></div>
+                        <div className="space-y-1"><Label>Channels</Label><Textarea placeholder="How do you reach your customers?" rows={4} /></div>
+                        <div className="space-y-1"><Label>Key Activities</Label><Textarea placeholder="What are the most important things you do?" rows={4} /></div>
+                        <div className="space-y-1"><Label>Key Resources</Label><Textarea placeholder="What assets do you need?" rows={4} /></div>
+                        <div className="space-y-1"><Label>Key Partnerships</Label><Textarea placeholder="Who are your key partners/suppliers?" rows={4} /></div>
+                        <div className="space-y-1 lg:col-span-2"><Label>Revenue Streams</Label><Textarea placeholder="How do you make money?" rows={4} /></div>
+                        <div className="lg:col-span-3 space-y-1"><Label>Cost Structure</Label><Textarea placeholder="What are your major costs?" rows={4} /></div>
                     </div>
                 </CardContent>
                 <CardFooter>
@@ -664,8 +663,10 @@ export default function LabDetailPage() {
     return <div className="flex justify-center items-center h-full"><Skeleton className="w-full max-w-6xl h-[600px]" /></div>
   }
 
+  const isResumeLab = labId === 'resume-builder-lab';
+
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-7xl mx-auto">
         <div className="mb-4">
             <Button variant="link" className="p-0 h-auto text-muted-foreground hover:text-primary" asChild>
                 <Link href="/practice-lab">
@@ -678,28 +679,30 @@ export default function LabDetailPage() {
       <LabHeader lab={lab} />
 
       {!hasPremium ? <PremiumAccessGate /> : (
-        <div className="grid lg:grid-cols-3 gap-8 items-start">
-              <div className="lg:col-span-2">
-                  <LabSimulation labId={labId} />
-              </div>
-              <div className="lg:col-span-1">
-                  <Card className="lg:sticky top-24 rounded-2xl">
-                      <CardHeader>
-                          <CardTitle className="font-headline">Learning Objectives</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                          <ul className="space-y-3">
-                              {lab.learningObjectives.map((objective: string, index: number) => (
-                                  <li key={index} className="flex items-start gap-3">
-                                      <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
-                                      <span className="text-sm text-muted-foreground">{objective}</span>
-                                  </li>
-                              ))}
-                          </ul>
-                      </CardContent>
-                  </Card>
-              </div>
-        </div>
+        isResumeLab ? <ResumeBuilderSimulation /> : (
+            <div className="grid lg:grid-cols-3 gap-8 items-start">
+                  <div className="lg:col-span-2">
+                      <LabSimulation labId={labId} />
+                  </div>
+                  <div className="lg:col-span-1">
+                      <Card className="lg:sticky top-24 rounded-2xl">
+                          <CardHeader>
+                              <CardTitle className="font-headline">Learning Objectives</CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                              <ul className="space-y-3">
+                                  {lab.learningObjectives.map((objective: string, index: number) => (
+                                      <li key={index} className="flex items-start gap-3">
+                                          <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
+                                          <span className="text-sm text-muted-foreground">{objective}</span>
+                                      </li>
+                                  ))}
+                              </ul>
+                          </CardContent>
+                      </Card>
+                  </div>
+            </div>
+        )
       )}
     </div>
   );
