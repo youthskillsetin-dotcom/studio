@@ -14,12 +14,14 @@ function verifySignature(body: any, key: string, checksum: string): boolean {
         const salt = Buffer.from(checksum, 'base64').toString('utf8').substring(0, 4);
         const final_string = bodyString + '|' + salt;
 
+        // Use a constant IV as per Paytm's documentation/SDK implementation
         const iv = '@@@@&&&&####$$$$';
 
         const cipher = crypto.createCipheriv('AES-128-CBC', key, iv);
         let encrypted = cipher.update(final_string, 'utf8', 'hex');
         encrypted += cipher.final('hex');
 
+        // Compare the generated signature with the received checksum
         return Buffer.from(salt + encrypted).toString('base64') === checksum;
 
     } catch (e) {
@@ -38,7 +40,9 @@ export async function POST(req: Request) {
     const { data: { user } } = await supabase.auth.getUser();
 
     if (!user) {
-        return NextResponse.json({ error: 'User not authenticated for webhook' }, { status: 401 });
+        // This can happen if the webhook is called but the user's browser session is gone.
+        // We can still process the webhook if we can securely identify the user from the webhook body.
+        console.warn('Webhook called without an active user session. Proceeding with user data from transaction.');
     }
 
     try {
@@ -69,9 +73,14 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'Transaction not found' }, { status: 404 });
         }
 
-        if (transaction.user_id !== user.id) {
-            return NextResponse.json({ error: 'User mismatch' }, { status: 403 });
+        const userId = transaction.user_id;
+
+        const { data: transactionUser, error: userError } = await supabaseAdmin.auth.admin.getUserById(userId);
+        if(userError || !transactionUser.user) {
+             return NextResponse.json({ error: 'User for transaction not found' }, { status: 404 });
         }
+        
+        const targetUser = transactionUser.user;
 
         const plan = transaction.plan_id;
         const expires_at = new Date();
@@ -84,14 +93,14 @@ export async function POST(req: Request) {
         const planName = plan === 'yearly' ? 'Yearly' : 'Premium';
 
         const subscriptionData = {
-            user_id: user.id,
-            email: user.email,
+            user_id: targetUser.id,
+            email: targetUser.email,
             is_active: true,
             plan_name: planName,
             expires_at: expires_at.toISOString(),
         };
 
-        const { error: upsertError } = await supabase
+        const { error: upsertError } = await supabaseAdmin
             .from('subscriptions')
             .upsert(subscriptionData, { onConflict: 'user_id' });
         
@@ -100,10 +109,10 @@ export async function POST(req: Request) {
              throw upsertError;
         }
         
-        const { error: profileError } = await supabase
+        const { error: profileError } = await supabaseAdmin
             .from('profiles')
             .update({ role: 'premium' })
-            .eq('id', user.id);
+            .eq('id', targetUser.id);
 
         if (profileError) {
             console.error('Error updating user role:', profileError);

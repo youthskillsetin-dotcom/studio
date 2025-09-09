@@ -23,9 +23,11 @@ function generateSignature(params: any, key: string): Promise<string> {
     return new Promise((resolve, reject) => {
         try {
             const body = JSON.stringify(params);
+            // The salt should be random for each request for security.
             const salt = crypto.randomBytes(4).toString('hex');
             const final_string = body + '|' + salt;
 
+            // Use a constant IV as per Paytm's documentation/SDK implementation
             const iv = '@@@@&&&&####$$$$'; 
 
             const cipher = crypto.createCipheriv('AES-128-CBC', key, iv);
