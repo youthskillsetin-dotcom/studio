@@ -22,7 +22,7 @@ export default async function AdminDashboardPage() {
 
   const allUsers = await getAllUsers();
   const totalUsers = allUsers.length;
-  const premiumUsers = allUsers.filter(u => u.role === 'premium').length;
+  const premiumUsers = allUsers.filter(u => u.subscription?.is_active).length;
 
   return (
     <div>
@@ -53,20 +53,6 @@ export default async function AdminDashboardPage() {
             <div className="text-2xl font-bold">{premiumUsers}</div>
             <p className="text-xs text-muted-foreground">
               Users with an active premium plan.
-            </p>
-          </CardContent>
-        </Card>
-        <Card>
-           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Engagement
-            </CardTitle>
-            <BarChart className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">Coming Soon</div>
-             <p className="text-xs text-muted-foreground">
-              Analytics on user activity.
             </p>
           </CardContent>
         </Card>
