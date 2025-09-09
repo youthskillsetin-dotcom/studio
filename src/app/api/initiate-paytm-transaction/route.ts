@@ -5,6 +5,13 @@ import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 import PaytmChecksum from 'paytm-pg-node-sdk/lib/PaytmChecksum';
+import { validateCoupon } from '@/lib/actions';
+import { supabaseAdmin } from '@/lib/supabase/admin';
+
+const plans = {
+  premium: { price: 299 },
+  yearly: { price: 1999 },
+};
 
 export async function POST(req: Request) {
   const cookieStore = cookies();
@@ -15,9 +22,28 @@ export async function POST(req: Request) {
   if (!user) {
     return NextResponse.json({ error: 'User not authenticated' }, { status: 401 });
   }
+   if (!supabaseAdmin) {
+    return NextResponse.json({ error: 'Admin client not initialized' }, { status: 500 });
+  }
 
   try {
-    const { amount, plan } = await req.json();
+    const { plan, couponCode } = await req.json();
+    
+    if (!plan || !plans[plan as keyof typeof plans]) {
+        return NextResponse.json({ error: 'Invalid plan selected.' }, { status: 400 });
+    }
+
+    let discount = 0;
+    if (couponCode) {
+        const couponResult = await validateCoupon(couponCode);
+        if (couponResult.success && couponResult.discount) {
+            discount = couponResult.discount;
+        }
+    }
+
+    const basePrice = plans[plan as keyof typeof plans].price;
+    const finalAmount = (basePrice * (1 - discount)).toFixed(2);
+
 
     const orderId = `YSS_${user.id}_${Date.now()}`;
 
@@ -27,6 +53,24 @@ export async function POST(req: Request) {
     const websiteName = process.env.PAYTM_WEBSITE || 'WEBSTAGING';
     const callbackUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/handle-payment-webhook`;
 
+    // Securely log the transaction details on the server before sending to Paytm
+    const { error: transactionError } = await supabaseAdmin
+        .from('transactions')
+        .insert({
+            order_id: orderId,
+            user_id: user.id,
+            plan_id: plan,
+            amount: parseFloat(finalAmount),
+            status: 'PENDING',
+            coupon_used: couponCode,
+        });
+
+    if (transactionError) {
+        console.error("Error logging transaction:", transactionError);
+        return NextResponse.json({ error: 'Failed to create transaction record.'}, { status: 500 });
+    }
+
+
     const paytmParams: any = {};
 
     paytmParams.body = {
@@ -34,9 +78,9 @@ export async function POST(req: Request) {
       "mid": mid,
       "websiteName": websiteName,
       "orderId": orderId,
-      "callbackUrl": `${callbackUrl}?plan=${plan}`, // Pass plan in callback
+      "callbackUrl": callbackUrl,
       "txnAmount": {
-        "value": amount,
+        "value": finalAmount,
         "currency": "INR",
       },
       "userInfo": {
@@ -68,10 +112,12 @@ export async function POST(req: Request) {
         return NextResponse.json({
             txnToken: responseData.body.txnToken,
             orderId: orderId,
-            amount: amount,
+            amount: finalAmount,
         });
     } else {
         console.error("Paytm initiation failed:", responseData);
+        // Mark transaction as failed if initiation fails
+         await supabaseAdmin.from('transactions').update({ status: 'FAILED' }).eq('order_id', orderId);
         return NextResponse.json({ error: 'Failed to initiate Paytm transaction', details: responseData.body.resultInfo.resultMsg }, { status: 500 });
     }
 
@@ -80,3 +126,5 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: `API Error: ${e.message}` }, { status: 500 });
   }
 }
+
+    

@@ -62,11 +62,17 @@ function SubscribePageContent() {
   
   const [couponCode, setCouponCode] = useState('');
   const [appliedDiscount, setAppliedDiscount] = useState(0);
+    const [finalPrice, setFinalPrice] = useState(plans[selectedPlanKey].price);
   const [couponMessage, setCouponMessage] = useState<string | null>(null);
   const [isApplyingCoupon, setIsApplyingCoupon] = useState(false);
 
   const selectedPlan = plans[selectedPlanKey];
-  const finalPrice = selectedPlan.price * (1 - appliedDiscount);
+  
+    // Update final price whenever selected plan or discount changes
+    React.useEffect(() => {
+        setFinalPrice(selectedPlan.price * (1 - appliedDiscount));
+    }, [selectedPlan, appliedDiscount]);
+
 
   const handleApplyCoupon = async () => {
     setIsApplyingCoupon(true);
@@ -88,7 +94,10 @@ function SubscribePageContent() {
       const response = await fetch('/api/initiate-paytm-transaction', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ amount: finalPrice.toFixed(2), plan: selectedPlan.key }),
+        body: JSON.stringify({ 
+            plan: selectedPlan.key,
+            couponCode: couponCode 
+        }),
       });
 
       const data = await response.json();
@@ -121,10 +130,13 @@ function SubscribePageContent() {
               // The backend webhook will handle the actual subscription update.
               if (paymentStatus.STATUS === 'TXN_SUCCESS') {
                  // Manually call our webhook handler logic for immediate feedback
+                  const webhookBody = { ...paymentStatus };
+                  // Note: In a production scenario with proper webhook security from Paytm's side,
+                  // you might not need to manually call this. This is for better UX in this setup.
                   await fetch('/api/handle-payment-webhook', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ ...paymentStatus, plan: selectedPlan.key }),
+                    body: JSON.stringify(webhookBody),
                   });
                  
                  toast({
@@ -188,14 +200,14 @@ function SubscribePageContent() {
         <CardContent className="space-y-6">
             <div className="grid grid-cols-2 gap-2 rounded-lg bg-muted p-1">
                  <Button
-                    onClick={() => setSelectedPlanKey('premium')}
+                    onClick={() => { setSelectedPlanKey('premium'); setAppliedDiscount(0); setCouponCode(''); setCouponMessage(null); }}
                     className={cn(selectedPlanKey === 'premium' ? 'bg-background text-foreground shadow' : 'bg-transparent text-muted-foreground', 'h-auto py-2')}
                     variant="ghost"
                   >
                     Monthly
                   </Button>
                   <Button
-                    onClick={() => setSelectedPlanKey('yearly')}
+                    onClick={() => { setSelectedPlanKey('yearly'); setAppliedDiscount(0); setCouponCode(''); setCouponMessage(null); }}
                      className={cn(selectedPlanKey === 'yearly' ? 'bg-background text-foreground shadow' : 'bg-transparent text-muted-foreground', 'h-auto py-2')}
                     variant="ghost"
                   >

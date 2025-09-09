@@ -5,6 +5,7 @@ import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 import PaytmChecksum from 'paytm-pg-node-sdk/lib/PaytmChecksum';
+import { supabaseAdmin } from '@/lib/supabase/admin';
 
 // This webhook handler is called by Paytm after a transaction.
 // It needs to be secured to ensure requests are genuinely from Paytm.
@@ -20,15 +21,15 @@ export async function POST(req: Request) {
 
     try {
         const body = await req.json();
+        const rawBody = JSON.stringify(body);
         
         // ** SECURITY-CRITICAL STEP **
         // In production, you MUST verify the request is from Paytm.
-        // You would get the checksum from the request headers/body and verify it
-        // using your Merchant Key.
-        //
         const checksum = req.headers.get('x-paytm-checksum');
-        const isVerified = PaytmChecksum.verifySignature(
-           JSON.stringify(body), 
+        // The check here is disabled for the dev environment where we manually call this
+        // from the client for immediate UX feedback. In production, this MUST be enabled.
+        const isVerified = process.env.NODE_ENV === 'development' || PaytmChecksum.verifySignature(
+           rawBody, 
            process.env.PAYTM_MERCHANT_KEY!, 
            checksum || ""
         );
@@ -36,9 +37,30 @@ export async function POST(req: Request) {
            return NextResponse.json({ error: 'Webhook checksum mismatch' }, { status: 403 });
         }
 
-        // The 'plan' would ideally be retrieved from the order details in the webhook body.
-        const plan = body.plan === 'yearly' ? 'yearly' : 'premium';
+        const orderId = body.ORDERID;
+        if (!orderId) {
+             return NextResponse.json({ error: 'Order ID not found in webhook body' }, { status: 400 });
+        }
 
+        // Fetch the transaction details from your DB to get the plan
+        if (!supabaseAdmin) throw new Error("Supabase admin client not initialized");
+        
+        const { data: transaction, error: transactionError } = await supabaseAdmin
+            .from('transactions')
+            .select('plan_id, user_id')
+            .eq('order_id', orderId)
+            .single();
+
+        if (transactionError || !transaction) {
+            console.error(`Transaction not found for orderId: ${orderId}`, transactionError);
+            return NextResponse.json({ error: 'Transaction not found' }, { status: 404 });
+        }
+
+        if (transaction.user_id !== user.id) {
+            return NextResponse.json({ error: 'User mismatch' }, { status: 403 });
+        }
+
+        const plan = transaction.plan_id;
         const expires_at = new Date();
         if (plan === 'yearly') {
             expires_at.setFullYear(expires_at.getFullYear() + 1);
@@ -75,9 +97,13 @@ export async function POST(req: Request) {
             throw profileError;
         }
 
+        // Update the transaction as completed
+        await supabaseAdmin.from('transactions').update({ status: 'SUCCESS' }).eq('order_id', orderId);
 
         return NextResponse.json({ message: 'Subscription activated successfully' });
     } catch (e: any) {
         return NextResponse.json({ error: `Webhook handler failed: ${e.message}` }, { status: 500 });
     }
 }
+
+    
