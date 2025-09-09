@@ -7,7 +7,7 @@ import { getUserProfile } from '@/lib/data';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { FileText, Video } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import sampleContent from '../../../../../sample-content.json';
+import sampleContent from '../../../../sample-content.json';
 import { VideoLinkEditor } from './video-link-editor';
 
 export default async function AdminContentPage() {
@@ -77,4 +77,3 @@ export default async function AdminContentPage() {
     </div>
   );
 }
-

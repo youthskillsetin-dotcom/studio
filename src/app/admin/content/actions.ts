@@ -49,4 +49,3 @@ export async function updateVideoUrlAction({ subtopicId, newUrl }: { subtopicId:
     return { success: false, error: 'An unexpected error occurred.' };
   }
 }
-

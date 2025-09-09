@@ -64,4 +64,3 @@ export function VideoLinkEditor({ subtopicId, initialUrl }: VideoLinkEditorProps
     </div>
   );
 }
-
