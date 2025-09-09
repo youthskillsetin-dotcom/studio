@@ -25,6 +25,8 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
   icons: {
     icon: '/LOGO.png',
+    shortcut: '/LOGO.png',
+    apple: '/LOGO.png',
   },
 };
 
@@ -40,7 +42,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
        <head>
-        <link rel="icon" href="/LOGO.png" sizes="any" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
       </head>
       <body className={cn('font-body antialiased', inter.variable, spaceGrotesk.variable)}>
