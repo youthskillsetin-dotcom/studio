@@ -8,20 +8,21 @@ import { supabaseAdmin } from '@/lib/supabase/admin';
 import crypto from 'crypto';
 
 
+/**
+ * Function to verify Paytm checksum
+ * This uses the standard Node.js crypto library and is stable.
+ */
 function verifySignature(body: any, key: string, checksum: string): boolean {
     try {
         const bodyString = JSON.stringify(body);
         const salt = Buffer.from(checksum, 'base64').toString('utf8').substring(0, 4);
         const final_string = bodyString + '|' + salt;
-
-        // Use a constant IV as per Paytm's documentation/SDK implementation
         const iv = '@@@@&&&&####$$$$';
 
-        const cipher = crypto.createCipheriv('AES-128-CBC', key, iv);
+        const cipher = crypto.createCipheriv('aes-128-cbc', key, iv);
         let encrypted = cipher.update(final_string, 'utf8', 'hex');
         encrypted += cipher.final('hex');
 
-        // Compare the generated signature with the received checksum
         return Buffer.from(salt + encrypted).toString('base64') === checksum;
 
     } catch (e) {
