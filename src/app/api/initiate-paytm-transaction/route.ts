@@ -4,14 +4,42 @@
 import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
-import Paytm from 'paytm-pg-node-sdk';
 import { validateCoupon } from '@/lib/actions';
 import { supabaseAdmin } from '@/lib/supabase/admin';
+import crypto from 'crypto';
 
 const plans = {
   premium: { price: 299 },
   yearly: { price: 1999 },
 };
+
+/**
+ * Function to generate checksum
+ * @param {Object} params
+ * @param {string} key
+ * @returns {Promise<string>}
+ */
+function generateSignature(params: any, key: string): Promise<string> {
+    return new Promise(function (resolve, reject) {
+        if (typeof params !== "object" || params === null || typeof key !== 'string') {
+            const error = "string or object expected, " + (typeof params) + " given.";
+            reject(error);
+        }
+
+        const body = JSON.stringify(params);
+        const salt = crypto.randomBytes(4).toString('hex');
+        const final_string = body + '|' + salt;
+
+        const crypt = crypto.createCipheriv('AES-128-CBC', key, salt);
+        crypt.setAutoPadding(true);
+        let encrypted = crypt.update(final_string, 'utf8', 'hex');
+        encrypted += crypt.final('hex');
+
+        const checksum = Buffer.from(encrypted).toString('base64');
+        resolve(checksum);
+    });
+}
+
 
 export async function POST(req: Request) {
   const cookieStore = cookies();
@@ -89,7 +117,7 @@ export async function POST(req: Request) {
       },
     };
 
-    const checksum = await Paytm.Checksum.generateSignature(JSON.stringify(paytmParams.body), merchantKey);
+    const checksum = await generateSignature(paytmParams.body, merchantKey);
 
     paytmParams.head = {
       "signature": checksum
