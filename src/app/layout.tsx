@@ -23,11 +23,6 @@ export const metadata: Metadata = {
   title: 'YouthSkillSet',
   description: 'Master in-demand skills with AI-powered mentorship.',
   manifest: '/manifest.json',
-  icons: {
-    icon: '/LOGO.png',
-    shortcut: '/LOGO.png',
-    apple: '/LOGO.png',
-  },
 };
 
 export const viewport: Viewport = {
@@ -39,10 +34,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cacheBuster = new Date().getTime();
   return (
     <html lang="en" suppressHydrationWarning>
        <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <link rel="icon" href={`/LOGO.png?v=${cacheBuster}`} type="image/png" sizes="any" />
+        <link rel="shortcut icon" href={`/LOGO.png?v=${cacheBuster}`} type="image/png" />
+        <link rel="apple-touch-icon" href={`/LOGO.png?v=${cacheBuster}`} type="image/png" />
       </head>
       <body className={cn('font-body antialiased', inter.variable, spaceGrotesk.variable)}>
         <ThemeProvider
