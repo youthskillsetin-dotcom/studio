@@ -11,7 +11,6 @@ import { Skeleton } from '@/components/ui/skeleton';
 export function BottomNav() {
   const pathname = usePathname();
   const { userSubscription, isLoading } = useUserSubscription();
-  const hasPremium = userSubscription?.is_active ?? false;
   
   const navItems = [
     { href: "/dashboard", icon: LayoutGrid, label: "Dashboard", premium: false },
@@ -36,6 +35,7 @@ export function BottomNav() {
     )
   }
 
+  const hasPremium = userSubscription?.is_active ?? false;
 
   return (
     <div className="fixed bottom-0 left-0 z-50 w-full h-16 bg-background border-t">

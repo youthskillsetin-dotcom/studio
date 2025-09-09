@@ -11,7 +11,6 @@ export function useUserSubscription() {
 
   useEffect(() => {
     const fetchUserSubscription = async () => {
-      setIsLoading(true);
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
          const { data, error } = await supabase
@@ -36,7 +35,8 @@ export function useUserSubscription() {
     
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event, session) => {
-        if (event === 'SIGNED_IN' || event === 'SIGNED_OUT') {
+        // We only refetch if state changes, not on session refresh (TOKEN_REFRESHED)
+        if (event === 'SIGNED_IN' || event === 'SIGNED_OUT' || event === 'USER_UPDATED') {
            fetchUserSubscription();
         }
       }

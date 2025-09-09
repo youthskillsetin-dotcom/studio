@@ -12,7 +12,7 @@ export function useUserProfile() {
   
   useEffect(() => {
     const fetchUserProfile = async () => {
-      setIsLoading(true);
+      // Don't set loading to true here to prevent re-triggering skeletons on auth changes
       const { data: { user } } = await supabase.auth.getUser();
 
       if (user) {
