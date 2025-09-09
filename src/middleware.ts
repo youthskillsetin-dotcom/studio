@@ -1,34 +1,26 @@
 
 import { type NextRequest, NextResponse } from 'next/server'
-import { createServerClient } from '@supabase/ssr'
 import { updateSession } from '@/lib/supabase/middleware'
+import { createServerClient } from '@supabase/ssr'
 
 export async function middleware(request: NextRequest) {
-  // First, let's refresh the session.
-  const { supabase, response } = createServerClient(
+  // First, update the user's session.
+  const response = await updateSession(request)
+
+  // Create a Supabase client with the updated cookies
+  const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
-        get(name) {
+        get(name: string) {
           return request.cookies.get(name)?.value
-        },
-        set(name, value, options) {
-          request.cookies.set({ name, value, ...options })
-          const res = NextResponse.next({ request })
-          res.cookies.set({ name, value, ...options })
-          return res
-        },
-        remove(name, options) {
-          request.cookies.set({ name, value: '', ...options })
-          const res = NextResponse.next({ request })
-          res.cookies.set({ name, value: '', ...options })
-          return res
         },
       },
     }
   )
 
+  // Now, get the current user session.
   const { data: { session } } = await supabase.auth.getSession()
 
   const { pathname } = request.nextUrl
@@ -51,8 +43,8 @@ export async function middleware(request: NextRequest) {
   ].includes(pathname)
 
   // API routes and static assets should be ignored
-  if (pathname.startsWith('/api/') || pathname.startsWith('/_next/') || pathname.endsWith('.ico') || pathname.endsWith('.png')) {
-    return NextResponse.next()
+  if (pathname.startsWith('/api/') || pathname.startsWith('/_next/') || pathname.endsWith('.ico') || pathname.endsWith('.png') || pathname.endsWith('.json')) {
+    return response
   }
 
   // If the user is not logged in and is trying to access a protected route
@@ -67,7 +59,8 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/dashboard', request.url))
   }
 
-  return await updateSession(request)
+  // For all other cases, continue with the response from updateSession
+  return response
 }
 
 export const config = {
