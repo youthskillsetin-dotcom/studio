@@ -202,7 +202,7 @@ export async function getAllUsers(): Promise<UserProfile[]> {
   const userIds = users.map(user => user.id);
   const { data: profiles, error: profilesError } = await supabaseAdmin
     .from('profiles')
-    .select('id, role, full_name')
+    .select('id, role, full_name, contact_no')
     .in('id', userIds);
 
   if (profilesError && profilesError.code !== '42P01') {
@@ -214,10 +214,11 @@ export async function getAllUsers(): Promise<UserProfile[]> {
       role: user.user_metadata?.role ?? 'user',
       created_at: user.created_at ?? new Date().toISOString(),
       fullName: user.user_metadata?.full_name,
+      contact_no: user.user_metadata?.contact_no,
     }));
   }
 
-  const profilesMap = new Map(profiles?.map(p => [p.id, { role: p.role, full_name: p.full_name }]) || []);
+  const profilesMap = new Map(profiles?.map(p => [p.id, { role: p.role, full_name: p.full_name, contact_no: p.contact_no }]) || []);
 
   return users.map(user => ({
     id: user.id,
@@ -225,6 +226,7 @@ export async function getAllUsers(): Promise<UserProfile[]> {
     role: profilesMap.get(user.id)?.role ?? user.user_metadata?.role ?? 'user',
     created_at: user.created_at ?? new Date().toISOString(),
     fullName: profilesMap.get(user.id)?.full_name ?? user.user_metadata?.full_name,
+    contact_no: profilesMap.get(user.id)?.contact_no ?? user.user_metadata?.contact_no,
   }));
 }
 
@@ -241,3 +243,5 @@ export async function getPostById(id: string): Promise<Post | null> {
   noStore();
   return null;
 }
+
+    

@@ -37,25 +37,7 @@ export async function GET(request: NextRequest) {
     )
     const { data: { session }, error } = await supabase.auth.exchangeCodeForSession(code)
     
-    if (!error && session && supabaseAdmin) {
-       // --- Start of Role Sync Logic ---
-        const { user } = session;
-        // Fetch the profile role from the database
-        const { data: profile } = await supabaseAdmin
-            .from('profiles')
-            .select('role')
-            .eq('id', user.id)
-            .single();
-
-        // If the database role is different from the token role, update the token.
-        if (profile && profile.role !== user.user_metadata.role) {
-            await supabaseAdmin.auth.admin.updateUserById(
-                user.id,
-                { user_metadata: { ...user.user_metadata, role: profile.role } }
-            );
-        }
-        // --- End of Role Sync Logic ---
-
+    if (!error && session) {
       return NextResponse.redirect(new URL(next, origin));
     }
   }
@@ -63,3 +45,5 @@ export async function GET(request: NextRequest) {
   // return the user to an error page with instructions
   return NextResponse.redirect(new URL('/auth/auth-error', origin))
 }
+
+    

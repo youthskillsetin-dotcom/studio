@@ -52,6 +52,7 @@ export default async function AdminUsersPage() {
               <TableRow>
                 <TableHead>Email</TableHead>
                 <TableHead>Full Name</TableHead>
+                <TableHead>Contact No.</TableHead>
                 <TableHead>Role</TableHead>
                 <TableHead>Joined On</TableHead>
               </TableRow>
@@ -61,6 +62,7 @@ export default async function AdminUsersPage() {
                 <TableRow key={user.id}>
                   <TableCell className="font-medium">{user.email}</TableCell>
                    <TableCell>{user.fullName || 'Not provided'}</TableCell>
+                   <TableCell>{user.contact_no || 'Not provided'}</TableCell>
                   <TableCell>
                     <Badge variant={user.role === 'admin' ? 'destructive' : 'secondary'} className={cn(user.role === 'premium' && 'bg-primary text-primary-foreground')}>
                         {user.role}
@@ -76,3 +78,5 @@ export default async function AdminUsersPage() {
     </div>
   );
 }
+
+    
