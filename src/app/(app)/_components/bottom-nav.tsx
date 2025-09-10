@@ -5,10 +5,11 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { BookOpen, Briefcase, FlaskConical, LayoutGrid, Sparkles, Lock } from 'lucide-react';
-import type { UserSubscription } from '@/lib/types';
+import { useUserSubscription } from '@/hooks/use-user-subscription';
 
-export function BottomNav({ userSubscription }: { userSubscription: UserSubscription | null }) {
+export function BottomNav() {
   const pathname = usePathname();
+  const { userSubscription } = useUserSubscription();
   
   const navItems = [
     { href: "/dashboard", icon: LayoutGrid, label: "Dashboard", premium: false },

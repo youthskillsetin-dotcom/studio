@@ -1,4 +1,6 @@
 
+'use client';
+
 import Link from "next/link";
 import {
   Bell,
@@ -21,9 +23,10 @@ import { UserNav } from "./_components/user-nav";
 import { BottomNav } from "./_components/bottom-nav";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Logo } from "@/components/icons";
-import { createClient } from "@/lib/supabase/server";
-import { cookies } from "next/headers";
-import { getUserProfile, getUserSubscription } from "@/lib/data";
+import { useUserProfile } from "@/hooks/use-user-profile";
+import { useUserSubscription } from "@/hooks/use-user-subscription";
+import { usePathname } from "next/navigation";
+
 
 const navItems = [
   { href: "/dashboard", icon: LayoutGrid, label: "Dashboard", premium: false },
@@ -37,12 +40,10 @@ const adminNavItems = [
     { href: "/admin", icon: Shield, label: "Admin Panel" },
 ];
 
-export default async function AppLayout({ children }: { children: React.ReactNode }) {
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
-  
-  const userProfile = await getUserProfile(supabase);
-  const userSubscription = await getUserSubscription(supabase);
+export default function AppLayout({ children }: { children: React.ReactNode }) {
+  const { userProfile } = useUserProfile();
+  const { userSubscription } = useUserSubscription();
+  const pathname = usePathname();
 
   const hasPremium = userSubscription?.is_active ?? false;
   
@@ -79,7 +80,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
     </>
   )
   
-  const isAdminRoute = userProfile?.role === 'admin' && (children as React.ReactElement)?.props?.segmentPath?.[1]?.[1] === 'admin';
+  const isAdminRoute = userProfile?.role === 'admin' && pathname.startsWith('/admin');
   
   if (isAdminRoute) {
     return <div className="min-h-screen w-full">{children}</div>;
@@ -90,7 +91,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
       <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 z-40">
          <div className="flex items-center gap-2">
             <div className="md:hidden">
-                <MobileNav navItems={navItems} adminNavItems={adminNavItems} userProfile={userProfile} />
+                <MobileNav />
             </div>
             <Link href="/dashboard" className="flex items-center gap-2 font-semibold">
                 <Logo className="h-7 w-7 text-primary" />
@@ -104,14 +105,14 @@ export default async function AppLayout({ children }: { children: React.ReactNod
         
         <div className="flex flex-1 items-center justify-end gap-2">
             <ThemeToggle />
-            <UserNav userProfile={userProfile} />
+            <UserNav />
         </div>
         </header>
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8 pb-20 md:pb-8">
           {children}
       </main>
        <div className="md:hidden">
-        <BottomNav userSubscription={userSubscription} />
+        <BottomNav />
       </div>
     </div>
   );

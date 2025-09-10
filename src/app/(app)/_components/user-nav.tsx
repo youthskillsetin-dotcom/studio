@@ -11,12 +11,12 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import type { UserProfile } from '@/lib/types';
 import { LogOut, UserCog, LifeBuoy } from 'lucide-react';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { useUserProfile } from '@/hooks/use-user-profile';
 
 function getInitials(name?: string | null) {
     if (!name) return 'U';
@@ -27,9 +27,10 @@ function getInitials(name?: string | null) {
     return name[0].toUpperCase();
 }
 
-export function UserNav({ userProfile }: { userProfile: UserProfile | null }) {
+export function UserNav() {
     const supabase = createClient();
     const router = useRouter();
+    const { userProfile } = useUserProfile();
 
     const handleLogout = async () => {
         await supabase.auth.signOut();
@@ -42,7 +43,7 @@ export function UserNav({ userProfile }: { userProfile: UserProfile | null }) {
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon" className="rounded-full h-9 w-9">
               <Avatar className="h-9 w-9">
-                <AvatarImage src={userProfile?.avatar_url} />
+                <AvatarImage src={userProfile?.avatar_url ?? undefined} />
                 <AvatarFallback>{getInitials(userProfile?.fullName)}</AvatarFallback>
               </Avatar>
             </Button>

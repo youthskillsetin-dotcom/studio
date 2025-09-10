@@ -6,9 +6,9 @@ import { usePathname } from 'next/navigation';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { Menu, Shield } from 'lucide-react';
-import type { UserProfile } from '@/lib/types';
 import * as React from 'react';
 import { Logo } from '@/components/icons';
+import { useUserProfile } from '@/hooks/use-user-profile';
 
 interface NavItem {
   href: string;
@@ -16,14 +16,21 @@ interface NavItem {
   label: string;
 }
 
-interface MobileNavProps {
-  navItems: NavItem[];
-  adminNavItems: NavItem[];
-  userProfile: UserProfile | null;
-}
+const navItems = [
+  { href: "/dashboard", icon: Menu, label: "Dashboard" },
+  { href: "/lessons", icon: Menu, label: "Lessons" },
+  { href: "/practice-lab", icon: Menu, label: "Practice Lab" },
+  { href: "/career-guide", icon: Menu, label: "Career Guide" },
+  { href: "/ai-mentor", icon: Menu, label: "AI Mentor" },
+];
 
-export function MobileNav({ navItems, adminNavItems, userProfile }: MobileNavProps) {
+const adminNavItems = [
+    { href: "/admin", icon: Shield, label: "Admin Panel" },
+];
+
+export function MobileNav() {
   const [open, setOpen] = React.useState(false);
+  const { userProfile } = useUserProfile();
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
