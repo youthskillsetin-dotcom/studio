@@ -5,12 +5,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { BookOpen, Briefcase, FlaskConical, LayoutGrid, Sparkles, Lock } from 'lucide-react';
-import { useUserSubscription } from '@/hooks/use-user-subscription';
-import { Skeleton } from '@/components/ui/skeleton';
+import type { UserSubscription } from '@/lib/types';
 
-export function BottomNav() {
+export function BottomNav({ userSubscription }: { userSubscription: UserSubscription | null }) {
   const pathname = usePathname();
-  const { userSubscription, isLoading } = useUserSubscription();
   
   const navItems = [
     { href: "/dashboard", icon: LayoutGrid, label: "Dashboard", premium: false },
@@ -20,21 +18,6 @@ export function BottomNav() {
     { href: "/ai-mentor", icon: Sparkles, label: "Mentor", premium: false },
   ];
   
-  if (isLoading) {
-    return (
-      <div className="fixed bottom-0 left-0 z-50 w-full h-16 bg-background border-t">
-        <div className="grid h-full max-w-lg grid-cols-5 mx-auto">
-            {[...Array(5)].map((_, i) => (
-                <div key={i} className="flex flex-col items-center justify-center">
-                    <Skeleton className="h-6 w-6 rounded-md" />
-                    <Skeleton className="h-3 w-10 mt-1" />
-                </div>
-            ))}
-        </div>
-      </div>
-    )
-  }
-
   const hasPremium = userSubscription?.is_active ?? false;
 
   return (

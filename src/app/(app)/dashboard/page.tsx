@@ -33,36 +33,11 @@ const itemVariants = {
   },
 };
 
-const DashboardSkeleton = () => (
-    <div className="flex-1 space-y-4">
-        <div className="space-y-1.5">
-            <Skeleton className="h-9 w-1/2" />
-            <Skeleton className="h-5 w-3/4" />
-        </div>
-        <div className="grid gap-4 md:gap-8 lg:grid-cols-3">
-            <div className="grid auto-rows-min gap-4 md:gap-8 lg:col-span-2">
-                <Skeleton className="h-60 rounded-2xl" />
-                <Skeleton className="h-48 rounded-2xl" />
-            </div>
-            <div className="grid auto-rows-min gap-4 md:gap-8">
-                 <Skeleton className="h-40 rounded-2xl" />
-                 <Skeleton className="h-48 rounded-2xl" />
-                 <Skeleton className="h-48 rounded-2xl" />
-            </div>
-        </div>
-    </div>
-);
-
-
 export default function DashboardPage() {
-  const { userSubscription, isLoading: isSubLoading } = useUserSubscription();
-  const { userProfile, isLoading: isProfileLoading } = useUserProfile();
+  const { userSubscription } = useUserSubscription();
+  const { userProfile } = useUserProfile();
   const isPremium = userSubscription?.is_active ?? false;
   
-  if (isProfileLoading || isSubLoading) {
-    return <DashboardSkeleton />;
-  }
-
   return (
     <motion.div
       className="flex-1 space-y-4"
