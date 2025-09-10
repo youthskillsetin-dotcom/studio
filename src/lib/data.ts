@@ -4,8 +4,6 @@ import type { SupabaseClient } from '@supabase/supabase-js';
 import type { Lesson, Subtopic, UserSubtopicProgress, Post, CommentWithAuthor, PostWithAuthor, UserSubscription, UserProfile, UserProfileWithSubscription, Transaction } from './types';
 import { unstable_noStore as noStore } from 'next/cache';
 import { supabaseAdmin } from './supabase/admin';
-import { createClient } from './supabase/server';
-import { cookies } from 'next/headers';
 import sampleContent from '@/data/sample-content.json';
 
 // NOTE: All lesson and subtopic data is now read from the sample-content.json file.
