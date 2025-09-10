@@ -229,4 +229,12 @@ export async function getPosts(): Promise<Post[]> {
 }
 
 
-export async function getPostById(id: string): Promise
+export async function getPostById(id: string): Promise<PostWithAuthor | null> {
+    noStore();
+    return null;
+}
+
+export async function getCommentsByPostId(postId: string): Promise<CommentWithAuthor[]> {
+    noStore();
+    return [];
+}

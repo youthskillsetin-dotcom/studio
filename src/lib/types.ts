@@ -1,4 +1,5 @@
 
+
 export interface Lesson {
   id?: string; // Made optional as it's not present in the nested subtopics
   title: string;
@@ -113,4 +114,6 @@ export type PostWithAuthor = Omit<Post, 'author_email' | 'comments'> & {
   profile: { email: string } | null;
 };
 
-export type CommentWithAuthor = O
+export type CommentWithAuthor = Omit<Comment, 'author_email'> & {
+  profile: { email: string } | null;
+};

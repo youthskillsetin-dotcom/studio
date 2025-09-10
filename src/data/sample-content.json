@@ -15,7 +15,7 @@
           "ai_summary": "This lesson introduces the concept of a 'money mindset,' explaining how your thoughts and feelings about money influence your financial habits. It explores key ideas like delayed gratification, emotional spending triggers, and hidden 'money scripts' from childhood. By understanding these concepts, you can build a stronger foundation for financial success and harness the power of compounding.\n\n*   **Delayed Gratification:** Waiting for a bigger reward is a financial superpower.\n*   **Emotional Spending:** Feelings like stress or boredom can trigger impulsive buying; identifying these triggers is the first step to managing them.\n*   **Money Scripts:** Your subconscious beliefs about money, learned in childhood, can shape your financial behavior.\n*   **Compounding:** Small, consistent savings habits grow into large sums over time.",
           "practice_questions": [
             {
-              "id": "q1",
+              "id": "q1-1-1",
               "type": "mcq",
               "question": "What is the main idea behind 'delayed gratification'?",
               "options": [
@@ -27,7 +27,7 @@
               "answer": "Waiting to buy something for a bigger future reward."
             },
             {
-              "id": "q2",
+              "id": "q1-1-2",
               "type": "mcq",
               "question": "Which of the following is an example of an 'emotional spending' trigger?",
               "options": [
@@ -39,7 +39,7 @@
               "answer": "Buying a new video game after a stressful day at school."
             },
             {
-              "id": "q3",
+              "id": "q1-1-3",
               "type": "mcq",
               "question": "A 'money script' is best described as:",
               "options": [
@@ -51,7 +51,7 @@
               "answer": "A hidden belief about money you learned in childhood."
             },
             {
-                "id": "q4",
+                "id": "q1-1-4",
                 "type": "mcq",
                 "question": "The power of compounding means that:",
                 "options": [
@@ -63,7 +63,7 @@
                 "answer": "Small, regular savings can grow into a large amount over time."
             },
             {
-                "id": "q5",
+                "id": "q1-1-5",
                 "type": "mcq",
                 "question": "What is the primary benefit of developing a positive money mindset?",
                 "options": [
@@ -75,13 +75,13 @@
                 "answer": "It helps you make conscious decisions that support your financial goals."
             },
             {
-              "id": "q6",
+              "id": "q1-1-6",
               "type": "text",
               "question": "Identify one impulsive purchase you've made in the past month. What do you think triggered it?",
               "answer": "Answers should identify a specific purchase and a plausible trigger, such as stress, boredom, social pressure, or advertising."
             },
             {
-              "id": "q7",
+              "id": "q1-1-7",
               "type": "text",
               "question": "Explain in your own words why a small, regular saving habit is more powerful than saving a large amount of money once a year.",
               "answer": "A good answer will mention the power of compounding and the benefit of building a consistent habit, which reduces the reliance on willpower and makes saving automatic."
@@ -96,34 +96,34 @@
           "ai_summary": "The 50-30-20 rule offers a simple budgeting framework to manage your money effectively. It suggests allocating 50% of your income to needs, 30% to wants, and 20% to savings and debt repayment, providing a balanced approach to financial planning, especially adaptable for teens with irregular incomes or low essential expenses.\n\n*   **50% for Needs:** Covers essential expenses like phone bills or transport.\n*   **30% for Wants:** Flexible spending on non-essential items like entertainment or hobbies.\n*   **20% for Savings:** Building your future wealth through savings and investments.\n*   **Adaptable for Teens:** The rule can be adjusted for irregular income and low expenses to maximize savings potential.",
           "practice_questions": [
             {
-              "id": "q1",
+              "id": "q1-2-1",
               "type": "mcq",
               "question": "According to the 50-30-20 rule, what percentage of your income should be allocated to 'Wants'?",
               "options": ["50%", "30%", "20%", "10%"],
               "answer": "30%"
             },
             {
-              "id": "q2",
+              "id": "q1-2-2",
               "type": "mcq",
               "question": "Which of the following is considered a 'Need' for a teenager?",
               "options": ["A new video game", "A concert ticket", "A monthly phone bill", "Designer clothes"],
               "answer": "A monthly phone bill"
             },
             {
-              "id": "q3",
+              "id": "q1-2-3",
               "type": "mcq",
               "question": "If you receive a ₹500 gift, how much should you aim to save based on the 50-30-20 rule?",
               "options": ["₹250", "₹150", "₹100", "₹50"],
               "answer": "₹100"
             },
             {
-              "id": "q4",
+              "id": "q1-2-4",
               "type": "text",
               "question": "If you earn ₹1,000 from a part-time job this month, how would you allocate it using the 50-30-20 rule? Specify the amount for Needs, Wants, and Savings.",
               "answer": "A correct answer would allocate ₹500 to Needs, ₹300 to Wants, and ₹200 to Savings."
             },
             {
-              "id": "q5",
+              "id": "q1-2-5",
               "type": "text",
               "question": "Why is the 'Wants' category the most flexible part of the 50-30-20 budget?",
               "answer": "It's the most flexible because wants are non-essential. This makes it the easiest category to cut back on if you need to save more money for a specific goal or an emergency."
@@ -138,34 +138,34 @@
           "ai_summary": "This lesson explains the importance of an emergency fund as a financial safety net for unexpected expenses. It distinguishes between true emergencies and non-emergencies, outlines a phased approach to building the fund, and recommends keeping it in a separate, accessible savings account.\n\n*   **Purpose:** An emergency fund provides financial security and prevents debt during unexpected events.\n*   **Defining Emergencies:** Differentiate between genuine emergencies (e.g., medical costs, urgent repairs) and discretionary spending.\n*   **Building in Phases:** Start with a small fund ($100-$500), grow it to cover one month's expenses, and eventually aim for 3-6 months' worth.\n*   **Accessibility:** Store your fund in a high-yield savings account that is separate from your primary checking account.",
           "practice_questions": [
             {
-              "id": "q1",
+              "id": "q1-3-1",
               "type": "mcq",
               "question": "Which of the following is considered a true emergency for your emergency fund?",
               "options": ["A new pair of shoes on sale", "An unexpected car repair", "Tickets to a movie premiere", "A vacation with friends"],
               "answer": "An unexpected car repair"
             },
             {
-              "id": "q2",
+              "id": "q1-3-2",
               "type": "mcq",
               "question": "What is the recommended first step when building an emergency fund?",
               "options": ["Saving 3-6 months of expenses", "Investing in the stock market", "Creating a starter fund of $100-$500", "Paying off all your debts"],
               "answer": "Creating a starter fund of $100-$500"
             },
             {
-              "id": "q3",
+              "id": "q1-3-3",
               "type": "mcq",
               "question": "Where is the best place to keep your emergency fund?",
               "options": ["In a piggy bank at home", "In your primary checking account", "In a high-yield savings account", "Invested in cryptocurrency"],
               "answer": "In a high-yield savings account"
             },
             {
-              "id": "q4",
+              "id": "q1-3-4",
               "type": "text",
               "question": "Explain why buying concert tickets is not considered a valid reason to use your emergency fund.",
               "answer": "Concert tickets are a 'want,' not a 'need' or an unexpected, essential expense. An emergency fund is strictly for true emergencies like job loss, medical bills, or urgent repairs."
             },
             {
-              "id": "q5",
+              "id": "q1-3-5",
               "type": "text",
               "question": "Why should you keep your emergency fund in a separate account from your everyday checking account?",
               "answer": "Keeping it separate reduces the temptation to spend it on non-emergencies. It creates a mental barrier, reinforcing that the money is for a specific, important purpose."
@@ -180,34 +180,34 @@
           "ai_summary": "This lesson helps you distinguish between needs and wants in the digital age, where marketing often blurs the lines. It teaches you to recognize modern spending traps like subscription creep and social media pressure, while equipping you with a decision-making toolkit to curb impulse buying.\n\n*   **Identify Spending Traps:** Be aware of hidden costs in subscriptions, social media influence, and convenience fees.\n*   **Use the 24-Hour Rule:** Wait a day before making a non-essential purchase to avoid impulse buys.\n*   **Consider Opportunity Cost:** Think about what else you could do with the money before spending it.\n*   **Apply the One-Year Test:** Question if the purchase will still be valuable to you in a year's time.",
           "practice_questions": [
             {
-              "id": "q1",
+              "id": "q1-4-1",
               "type": "mcq",
               "question": "What is 'subscription creep'?",
               "options": ["When a subscription service gets more expensive", "Forgetting about a recurring subscription payment after a free trial", "Subscribing to too many YouTube channels", "A slow-loading subscription website"],
               "answer": "Forgetting about a recurring subscription payment after a free trial"
             },
             {
-              "id": "q2",
+              "id": "q1-4-2",
               "type": "mcq",
               "question": "The '24-Hour Rule' is a strategy to combat what?",
               "options": ["Running out of money", "Impulse buying", "Forgetting your passwords", "Subscription creep"],
               "answer": "Impulse buying"
             },
             {
-              "id": "q3",
+              "id": "q1-4-3",
               "type": "mcq",
               "question": "Asking 'What else could I do with this money?' is an example of what?",
               "options": ["The One-Year Test", "The FOMO Test", "The Opportunity Cost Test", "The Subscription Audit"],
               "answer": "The Opportunity Cost Test"
             },
             {
-              "id": "q4",
+              "id": "q1-4-4",
               "type": "text",
               "question": "List two of your current 'wants' and one of your 'needs'.",
               "answer": "Answers will vary but should correctly differentiate between essential needs (e.g., food, transport) and non-essential wants (e.g., video games, specific clothing brands)."
             },
             {
-              "id": "q5",
+              "id": "q1-4-5",
               "type": "text",
               "question": "How does social media pressure you to spend money on things you don't need?",
               "answer": "Social media creates pressure through influencer marketing, showing curated lifestyles, and creating FOMO (Fear Of Missing Out) when you see friends with new items."
@@ -222,14 +222,14 @@
           "ai_summary": "This lesson teaches you how to set and achieve financial goals by transforming vague aspirations into concrete plans. It introduces the SMART-ER goal framework for creating effective goals and explains how to use a priority matrix and automated systems to stay on track.\n\n*   **Use the SMART-ER Framework:** Make goals Specific, Measurable, Achievable, Relevant, Time-bound, Exciting, and Reviewed.\n*   **Prioritize Your Goals:** Categorize goals into foundational, lifestyle, and future-building tiers to focus your efforts.\n*   **Build Systems:** Rely on systems like automatic savings transfers rather than willpower alone.\n*   **Motivation:** Clear, exciting goals provide the motivation needed to maintain financial discipline.",
           "practice_questions": [
             {
-              "id": "q1",
+              "id": "q1-5-1",
               "type": "mcq",
               "question": "What does the 'S' in the SMART-ER goal framework stand for?",
               "options": ["Simple", "Specific", "Savings", "Serious"],
               "answer": "Specific"
             },
             {
-              "id": "q2",
+              "id": "q1-5-2",
               "type": "mcq",
               "question": "Which of the following is the BEST example of a SMART goal?",
               "options": [
@@ -241,20 +241,20 @@
               "answer": "I will save ₹5,000 for a new phone by saving ₹1,000 per month for the next 5 months."
             },
             {
-              "id": "q3",
+              "id": "q1-5-3",
               "type": "mcq",
               "question": "Setting up an automatic transfer to your savings account is an example of what?",
               "options": ["A priority matrix", "A lifestyle goal", "A system to beat willpower", "A foundational goal"],
               "answer": "A system to beat willpower"
             },
             {
-              "id": "q4",
+              "id": "q1-5-4",
               "type": "text",
               "question": "Take the vague goal 'I want to save for college' and make it a SMART-ER goal.",
               "answer": "A good answer would include all SMART-ER elements, e.g., 'I will save ₹50,000 (Specific, Measurable) for my first-year college fees (Relevant, Exciting) by saving ₹2,000 per month for the next 25 months (Achievable, Time-bound), and I will track my progress on a spreadsheet every month (Reviewed).'"
             },
             {
-              "id": "q5",
+              "id": "q1-5-5",
               "type": "text",
               "question": "Why is it important for a goal to be 'Exciting'?",
               "answer": "An exciting goal provides intrinsic motivation. It's the 'why' behind your saving, which makes it easier to stay disciplined and make sacrifices when you are working toward something you genuinely care about."
@@ -269,7 +269,7 @@
           "ai_summary": "This lesson guides you through creating a personalized budget sheet to gain control over your finances. A budget acts as a financial command center, empowering you to direct your money purposefully rather than questioning where it went. The key is to build a comprehensive tool and review it regularly.\n\n*   **Income Tracker:** Log all sources of money, both regular and irregular.\n*   **Expense Categories:** Detail your spending according to the 50-30-20 rule (Needs, Wants, Savings).\n*   **Savings Goals:** Track progress toward your specific financial objectives.\n*   **Regular Check-ins:** A budget requires consistent attention; perform weekly and monthly reviews to stay on track.",
           "practice_questions": [
             {
-              "id": "q1",
+              "id": "q1-6-1",
               "type": "mcq",
               "question": "What is the primary purpose of a budget sheet?",
               "options": [
@@ -281,7 +281,7 @@
               "answer": "To tell your money where to go"
             },
             {
-              "id": "q2",
+              "id": "q1-6-2",
               "type": "mcq",
               "question": "Which of these is NOT a key component of a good budget sheet?",
               "options": [
@@ -293,20 +293,20 @@
               "answer": "Your friend's spending habits"
             },
             {
-              "id": "q3",
+              "id": "q1-6-3",
               "type": "mcq",
               "question": "How often should you conduct a detailed review of your budget?",
               "options": ["Every day", "Once a year", "Once a month", "Never"],
               "answer": "Once a month"
             },
             {
-              "id": "q4",
+              "id": "q1-6-4",
               "type": "text",
               "question": "List three categories you would include under your 'Wants' section in a budget.",
               "answer": "Answers will vary but should be appropriate wants, e.g., 'Entertainment (Movies/Games)', 'Eating Out', and 'Shopping (Clothes/Gadgets)'."
             },
             {
-              "id": "q5",
+              "id": "q1-6-5",
               "type": "text",
               "question": "Why is it important to track both regular and irregular income?",
               "answer": "Tracking both gives you a complete and accurate picture of your total income, which is necessary for creating a realistic budget. It helps you plan for months where your income might be lower or higher than average."
@@ -321,14 +321,14 @@
           "ai_summary": "This lesson focuses on finalizing your personal budget sheet and turning it into a sustainable financial system. By integrating all the concepts learned, you create a financial roadmap that evolves with your life and relies on automation and flexibility rather than just willpower.\n\n*   **Finalize Your Budget:** Create a comprehensive, one-page overview of your income, expenses, and savings goals.\n*   **Automate Savings:** Set up automatic transfers to your savings accounts to build a consistent habit.\n*   **Build in Flexibility:** Include a 'miscellaneous' category in your budget to handle unexpected costs without derailing your plan.\n*   **Imperfect Action:** The goal is progress, not perfection. Start with a simple budget and refine it over time.",
           "practice_questions": [
             {
-              "id": "q1",
+              "id": "q1-7-1",
               "type": "mcq",
               "question": "What is the key to making a budgeting system sustainable?",
               "options": ["Making it extremely strict", "Ignoring it for months", "Automating savings and building in flexibility", "Only tracking your income"],
               "answer": "Automating savings and building in flexibility"
             },
             {
-              "id": "q2",
+              "id": "q1-7-2",
               "type": "mcq",
               "question": "What does 'imperfect action is better than perfect inaction' mean in the context of budgeting?",
               "options": [
@@ -340,13 +340,13 @@
               "answer": "It's better to start with a simple budget and improve it over time than to wait for the 'perfect' plan."
             },
             {
-              "id": "q3",
+              "id": "q1-7-3",
               "type": "text",
               "question": "Why is automating your savings an effective strategy?",
               "answer": "It removes the need for willpower and discipline. By setting up automatic transfers, you 'pay yourself first' without having to make a conscious decision each time, which makes saving a consistent habit."
             },
             {
-              "id": "q4",
+              "id": "q1-7-4",
               "type": "text",
               "question": "Name two life changes that might require you to adjust your budget in the future.",
               "answer": "Answers could include: getting a full-time job, going to college, moving out of your parents' home, buying a car, or getting married."
