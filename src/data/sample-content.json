@@ -2125,7 +2125,7 @@
       "id": "6",
       "title": "Module 6: Personal Branding & Careers",
       "description": "A complete 7-day journey to discovering your unique identity and future path.",
-      "is_free": true,
+      "is_free": false,
       "order_index": 6,
       "subtopics": [
         {
@@ -2955,7 +2955,7 @@
       "id": "8",
       "title": "Module 8: Cybersecurity & Digital Safety",
       "description": "A complete 7-day learning journey to become a digital safety expert.",
-      "is_free": true,
+      "is_free": false,
       "order_index": 8,
       "subtopics": [
         {
@@ -3728,7 +3728,7 @@
           "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
           "content": "<h2>Building a Better Future with AI</h2><p>The goal of AI ethics and safety isn't to stop progress, but to guide it in a direction that benefits everyone. A future with responsible AI requires a multi-faceted approach.</p><h3>Key Pillars of Responsible AI</h3><ul><li><strong>Human-in-the-Loop:</strong> For critical decisions, an AI should assist a human expert, not replace them.</li><li><strong>Diverse and Inclusive Teams:</strong> Building AI with teams from diverse backgrounds helps to identify and mitigate biases.</li><li><strong>Public Education:</strong> An informed public is better equipped to understand the benefits and risks of AI and participate in conversations about its use.</li><li><strong>Continuous Auditing:</strong> AI systems need to be regularly tested and audited for fairness, safety, and performance even after they are deployed.</li></ul>",
           "order_index": 7,
-          "ai_summary": "This lesson outlines the path toward a future of responsible AI, emphasizing that the goal is to guide, not halt, technological progress. Key strategies include keeping a 'human-in-the-loop' for critical decisions, building diverse teams to reduce bias, promoting public education, and conducting continuous audits of AI systems.\n\n*   **Human-in-the-Loop:** AI should assist, not replace, human experts in critical tasks.\n*   **Diverse Teams:** Inclusivity in AI development helps prevent bias.\n*   **Public Education:** An informed public can make better decisions about AI.\n*   **Continuous Auditing:** Regularly check AI systems for fairness and safety.",
+          "ai_summary": "This final lesson outlines the path toward a future of responsible AI, emphasizing that the goal is to guide, not halt, technological progress. Key strategies include keeping a 'human-in-the-loop' for critical decisions, building diverse teams to reduce bias, promoting public education, and conducting continuous audits of AI systems.\n\n*   **Human-in-the-Loop:** AI should assist, not replace, human experts in critical tasks.\n*   **Diverse Teams:** Inclusivity in AI development helps prevent bias.\n*   **Public Education:** An informed public can make better decisions about AI.\n*   **Continuous Auditing:** Regularly check AI systems for fairness and safety.",
           "practice_questions": [
             {
               "id": "q9-7-1",
