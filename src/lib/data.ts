@@ -27,13 +27,21 @@ const content = {
 export async function getLessons(): Promise<Lesson[]> {
   noStore();
   // Return the lessons from the imported JSON file
-  return content.lessons as Lesson[];
+  const allLessons = content.lessons.map(lesson => ({
+    ...lesson,
+    subtopics: lesson.subtopics.map(subtopic => ({
+      ...subtopic,
+      id: subtopic.id,
+      lesson_id: lesson.id,
+    })),
+  }));
+  return allLessons as Lesson[];
 }
 
 export async function getLessonById(id: string): Promise<Lesson | null> {
     noStore();
     const lesson = content.lessons.find(l => l.id === id);
-    return lesson || null;
+    return lesson as Lesson || null;
 }
 
 export async function getLessonByIdWithSubtopics(id:string): Promise<Lesson | null> {
@@ -47,14 +55,14 @@ export async function getLessonByIdWithSubtopics(id:string): Promise<Lesson | nu
 export async function getSubtopicsByLessonId(lessonId: string): Promise<Subtopic[]> {
     noStore();
     const lesson = content.lessons.find(l => l.id === lessonId);
-    return lesson?.subtopics || [];
+    return lesson?.subtopics as Subtopic[] || [];
 }
 
 export async function getSubtopicById(id: string): Promise<Subtopic | null> {
     noStore();
     for (const lesson of content.lessons) {
       const subtopic = lesson.subtopics.find(s => s.id === id);
-      if (subtopic) return subtopic;
+      if (subtopic) return subtopic as Subtopic;
     }
     return null;
 }
@@ -67,7 +75,7 @@ export async function getSubtopicByIdWithRelations(id: string): Promise<(Subtopi
     for (const lesson of content.lessons) {
         const subtopic = lesson.subtopics.find(s => s.id === id);
         if (subtopic) {
-            foundSubtopic = subtopic;
+            foundSubtopic = subtopic as Subtopic;
             foundLesson = lesson as Lesson;
             break;
         }
@@ -112,13 +120,8 @@ export async function getUserSubscription(supabaseClient: SupabaseClient): Promi
     
     if (!user) return null;
 
-    if (!supabaseAdmin) {
-        console.warn("Supabase admin client not initialized. Cannot fetch user subscription.");
-        return null;
-    }
-
     try {
-        const { data, error } = await supabaseAdmin
+        const { data, error } = await supabaseClient
             .from('subscriptions')
             .select('*')
             .eq('user_id', user.id)
