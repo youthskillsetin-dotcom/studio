@@ -5,6 +5,27 @@
 import { createClient } from '@/lib/supabase/server';
 import { revalidatePath } from 'next/cache';
 import { cookies } from 'next/headers';
+import fs from 'fs/promises';
+import path from 'path';
+import type { Lesson, Subtopic } from '@/lib/types';
+
+const contentFilePath = path.join(process.cwd(), 'src', 'data', 'sample-content.json');
+
+async function readContentFile(): Promise<{lessons: Lesson[], subtopics: Subtopic[]}> {
+    try {
+        const fileContent = await fs.readFile(contentFilePath, 'utf-8');
+        return JSON.parse(fileContent);
+    } catch (error) {
+        console.error("Failed to read content file:", error);
+        // Return a default structure if the file doesn't exist or is invalid
+        return { lessons: [], subtopics: [] };
+    }
+}
+
+async function writeContentFile(data: {lessons: Lesson[], subtopics: Subtopic[]}): Promise<void> {
+    await fs.writeFile(contentFilePath, JSON.stringify(data, null, 2), 'utf-8');
+}
+
 
 export async function updateVideoUrlAction({ subtopicId, newUrl }: { subtopicId: string, newUrl: string }): Promise<{success: boolean, error?: string}> {
   const cookieStore = cookies();
@@ -19,15 +40,16 @@ export async function updateVideoUrlAction({ subtopicId, newUrl }: { subtopicId:
   }
 
   try {
-    const { error } = await supabase
-      .from('subtopics')
-      .update({ video_url: newUrl })
-      .eq('id', subtopicId);
+    const content = await readContentFile();
+    const subtopicIndex = content.subtopics.findIndex(s => s.id === subtopicId);
 
-    if (error) {
-      console.error('Failed to update video URL:', error);
-      return { success: false, error: error.message };
+    if (subtopicIndex === -1) {
+        return { success: false, error: 'Subtopic not found.' };
     }
+
+    content.subtopics[subtopicIndex].video_url = newUrl;
+
+    await writeContentFile(content);
 
     // Revalidate the cache for the lessons and subtopics pages so the changes are immediately visible
     revalidatePath('/lessons');

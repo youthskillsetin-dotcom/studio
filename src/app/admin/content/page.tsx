@@ -1,7 +1,5 @@
 
 
-import { createClient } from '@/lib/supabase/server';
-import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
 import { getLessons, getUserProfile } from '@/lib/data';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -9,16 +7,19 @@ import { FileText, Video } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { VideoLinkEditor } from './video-link-editor';
 import { Lesson, Subtopic } from '@/lib/types';
+import { createClient } from '@/lib/supabase/server';
+import { cookies } from 'next/headers';
+import sampleContent from '@/data/sample-content.json';
 
 
 async function getLessonsWithSubtopics() {
-    const supabase = createClient();
-    const { data, error } = await supabase.from('lessons').select('*, subtopics(*)').order('order_index').order('order_index', { referencedTable: 'subtopics' });
-    if (error) {
-        console.error("Error fetching lessons with subtopics:", error);
-        return [];
-    }
-    return data as (Lesson & { subtopics: Subtopic[] })[];
+    const lessons = sampleContent.lessons as Lesson[];
+    const subtopics = sampleContent.subtopics as Subtopic[];
+
+    return lessons.map(lesson => ({
+        ...lesson,
+        subtopics: subtopics.filter(subtopic => subtopic.lesson_id === lesson.id)
+    })).sort((a,b) => a.order_index - b.order_index);
 }
 
 

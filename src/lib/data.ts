@@ -6,110 +6,76 @@ import { unstable_noStore as noStore } from 'next/cache';
 import { supabaseAdmin } from './supabase/admin';
 import { createClient } from './supabase/server';
 import { cookies } from 'next/headers';
+import sampleContent from '@/data/sample-content.json';
 
-// NOTE: All data fetching now happens from the Supabase database.
-// This centralizes data access and works in a production environment.
-
+// NOTE: All lesson and subtopic data is now read from the sample-content.json file.
 
 export async function getLessons(): Promise<Lesson[]> {
   noStore();
-  const supabase = createClient();
-  const { data, error } = await supabase.from('lessons').select('*').order('order_index');
-  if (error) {
-    console.error('Error fetching lessons:', error);
-    return [];
-  }
-  return data as Lesson[];
+  // Read from the imported JSON file
+  return sampleContent.lessons as Lesson[];
 }
 
 export async function getLessonById(id: string): Promise<Lesson | null> {
     noStore();
-    const supabase = createClient();
-    const { data, error } = await supabase.from('lessons').select('*').eq('id', id).single();
-    if (error) {
-        if(error.code !== 'PGRST116') console.error('Error fetching lesson by id:', error);
-        return null;
-    }
-    return data as Lesson;
+    const lesson = sampleContent.lessons.find(l => l.id === id);
+    return lesson || null;
 }
 
-export async function getLessonByIdWithSubtopics(id: string): Promise<(Lesson & { subtopics: Subtopic[] }) | null> {
+export async function getLessonByIdWithSubtopics(id:string): Promise<(Lesson & { subtopics: Subtopic[] }) | null> {
   noStore();
-  const supabase = createClient();
-  const { data: lessonData, error: lessonError } = await supabase
-    .from('lessons')
-    .select('*, subtopics ( * )')
-    .eq('id', id)
-    .order('order_index', { referencedTable: 'subtopics', ascending: true })
-    .single();
+  const lesson = sampleContent.lessons.find((l) => l.id === id);
+  if (!lesson) return null;
 
-  if (lessonError) {
-    if(lessonError.code !== 'PGRST116') console.error('Error fetching lesson with subtopics:', lessonError);
-    return null;
-  }
+  const subtopics = sampleContent.subtopics.filter((s) => s.lesson_id === id);
   
-  return lessonData as (Lesson & { subtopics: Subtopic[] });
+  return {
+    ...lesson,
+    subtopics: subtopics as Subtopic[],
+  };
 }
 
 
 export async function getSubtopicsByLessonId(lessonId: string): Promise<Subtopic[]> {
     noStore();
-    const supabase = createClient();
-    const { data, error } = await supabase
-        .from('subtopics')
-        .select('*')
-        .eq('lesson_id', lessonId)
-        .order('order_index');
-
-    if (error) {
-        console.error('Error fetching subtopics by lesson id:', error);
-        return [];
-    }
-    return data as Subtopic[];
+    return sampleContent.subtopics.filter(s => s.lesson_id === lessonId) as Subtopic[];
 }
 
 export async function getSubtopicById(id: string): Promise<Subtopic | null> {
     noStore();
-    const supabase = createClient();
-    const { data, error } = await supabase.from('subtopics').select('*').eq('id', id).single();
-    if (error) {
-         if(error.code !== 'PGRST116') console.error('Error fetching subtopic by id:', error);
-        return null;
-    }
-    return data as Subtopic;
+    const subtopic = sampleContent.subtopics.find(s => s.id === id);
+    return subtopic || null;
 }
 
 export async function getSubtopicByIdWithRelations(id: string): Promise<(Subtopic & { lesson: Lesson; nextSubtopicId?: string }) | null> {
     noStore();
-    const supabase = createClient();
-    const { data: subtopicData, error: subtopicError } = await supabase.from('subtopics').select('*, lessons(*)').eq('id', id).single();
-    if (subtopicError || !subtopicData) {
-        if(subtopicError?.code !== 'PGRST116') console.error('Error fetching subtopic with relations:', subtopicError);
-        return null;
-    }
+    const subtopic = sampleContent.subtopics.find(s => s.id === id);
+    if (!subtopic) return null;
 
-    const { data: nextSubtopic } = await supabase
-        .from('subtopics')
-        .select('id')
-        .eq('lesson_id', subtopicData.lesson_id)
-        .gt('order_index', subtopicData.order_index)
-        .order('order_index', { ascending: true })
-        .limit(1)
-        .single();
-  
+    const lesson = sampleContent.lessons.find(l => l.id === subtopic.lesson_id);
+    if (!lesson) return null;
+
+    const subtopicsInLesson = sampleContent.subtopics
+        .filter(s => s.lesson_id === subtopic.lesson_id)
+        .sort((a, b) => a.order_index - b.order_index);
+
+    const currentIndex = subtopicsInLesson.findIndex(s => s.id === id);
+    const nextSubtopic = currentIndex !== -1 && currentIndex < subtopicsInLesson.length - 1
+        ? subtopicsInLesson[currentIndex + 1]
+        : null;
+
     return { 
-      ...subtopicData,
-      lesson: subtopicData.lessons,
+      ...subtopic,
+      lesson: lesson as Lesson,
       nextSubtopicId: nextSubtopic?.id,
     } as (Subtopic & { lesson: Lesson; nextSubtopicId?: string });
 }
 
 export async function getSubtopicTitleById(id: string): Promise<string | null> {
     noStore();
-    const supabase = createClient();
-    const { data, error } = await supabase.from('subtopics').select('title').eq('id', id).single();
-    if(error) return null;
-    return data.title;
+    const subtopic = sampleContent.subtopics.find(s => s.id === id);
+    if (!subtopic) return null;
+    return subtopic.title;
 }
 
 
