@@ -68,12 +68,12 @@ export default function LoginPage() {
         } else {
             setError(error.message);
         }
+        setIsLoading(false);
     } else {
         router.push('/dashboard');
         router.refresh();
+        // Don't set isLoading to false on success, as the page will redirect.
     }
-    
-    setIsLoading(false);
   }
 
   async function handleGoogleLogin() {
@@ -85,7 +85,7 @@ export default function LoginPage() {
         redirectTo: `${location.origin}/auth/callback`,
       },
     });
-    setIsLoading(false);
+    // Don't set isLoading to false, as the user will be redirected.
   }
 
   return (
@@ -151,8 +151,14 @@ export default function LoginPage() {
                 </CardContent>
                 <CardFooter className="flex flex-col gap-4">
                     <Button className="w-full" type="submit" disabled={isLoading}>
-                        {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                        Sign In
+                        {isLoading ? (
+                            <>
+                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                Please wait...
+                            </>
+                         ) : (
+                            "Sign In"
+                         )}
                     </Button>
                      <div className="relative w-full">
                         <div className="absolute inset-0 flex items-center">
