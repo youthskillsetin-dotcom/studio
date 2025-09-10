@@ -2,472 +2,456 @@
 {
   "lessons": [
     {
-      "id": "1",
       "title": "Module 1: Personal Finance 101",
       "description": "A 7-Day Journey to Financial Mastery for Teens (Ages 16-20).",
       "is_free": true,
-      "order_index": 1
+      "order_index": 1,
+      "subtopics": [
+        {
+          "title": "Day 1: The Money Mindset Revolution",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>What's the Big Idea?</h2><p>Your relationship with money starts in your head. Today, we'll explore how your thoughts and feelings about money—your 'money mindset'—shape your financial future. We'll learn to spot sneaky spending habits and build a strong foundation for success.</p><div class=\"mt-8 space-y-6\"><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-brain-circuit\"><path d=\"M12 5V2M9 5H7M17 5h-2M9 9a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2M15 9a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2M12 18v3M10 16l2-2 2 2\"/><path d=\"M12 13a2.5 2.5 0 0 0-2.5 2.5v0a2.5 2.5 0 0 0 2.5 2.5h0a2.5 2.5 0 0 0 2.5-2.5v0A2.5 2.5 0 0 0 12 13Z\"/><path d=\"M9.5 7.5a2.5 2.5 0 0 1 0 5\"/><path d=\"M14.5 7.5a2.5 2.5 0 0 0 0 5\"/></svg></div><div class=\"flex-1\"><h3>Instant vs. Delayed Gratification</h3><p class=\"text-sm text-muted-foreground\">Learn why waiting for a bigger reward is a financial superpower. We'll look at the famous 'marshmallow test' and see how it applies to buying that new video game versus saving for a car.</p></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-zap\"><polygon points=\"13 2 3 14 12 14 11 22 21 10 12 10 13 2\"/></svg></div><div class=\"flex-1\"><h3>Emotional Spending</h3><p class=\"text-sm text-muted-foreground\">Feeling bored, stressed, or pressured by friends? These feelings can lead to 'retail therapy.' We'll identify your personal spending triggers and create a plan to manage them.</p></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-help-circle\"><path d=\"M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3\"/><path d=\"M12 17h.01\"/></svg></div><div class=\"flex-1\"><h3>Uncovering Your Money Scripts</h3><p class=\"text-sm text-muted-foreground\">You have hidden beliefs about money from your childhood. We'll uncover these 'money scripts' (like 'money is the root of all evil' or 'you have to work hard for money') and reframe them for a healthier financial life.</p></div></div></div><h3 class=\"mt-8\">Why This Matters:</h3><p>Small, consistent habits create massive results over time. Saving a little bit from your first part-time job can grow into a significant amount by the time you graduate, thanks to the power of compounding!</p>",
+          "order_index": 1,
+          "ai_summary": "This lesson introduces the concept of a 'money mindset,' explaining how your thoughts and feelings about money influence your financial habits. It explores key ideas like delayed gratification, emotional spending triggers, and hidden 'money scripts' from childhood. By understanding these concepts, you can build a stronger foundation for financial success and harness the power of compounding.\n\n*   **Delayed Gratification:** Waiting for a bigger reward is a financial superpower.\n*   **Emotional Spending:** Feelings like stress or boredom can trigger impulsive buying; identifying these triggers is the first step to managing them.\n*   **Money Scripts:** Your subconscious beliefs about money, learned in childhood, can shape your financial behavior.\n*   **Compounding:** Small, consistent savings habits grow into large sums over time.",
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "mcq",
+              "question": "What is the main idea behind 'delayed gratification'?",
+              "options": [
+                "Spending money as soon as you get it.",
+                "Waiting to buy something for a bigger future reward.",
+                "Avoiding all fun purchases.",
+                "Only buying things that are on sale."
+              ],
+              "answer": "Waiting to buy something for a bigger future reward."
+            },
+            {
+              "id": "q2",
+              "type": "mcq",
+              "question": "Which of the following is an example of an 'emotional spending' trigger?",
+              "options": [
+                "Buying groceries from a planned list.",
+                "Saving a portion of your paycheck.",
+                "Buying a new video game after a stressful day at school.",
+                "Paying your phone bill on time."
+              ],
+              "answer": "Buying a new video game after a stressful day at school."
+            },
+            {
+              "id": "q3",
+              "type": "mcq",
+              "question": "A 'money script' is best described as:",
+              "options": [
+                "A budget you write down.",
+                "A secret code for your bank account.",
+                "A movie about money.",
+                "A hidden belief about money you learned in childhood."
+              ],
+              "answer": "A hidden belief about money you learned in childhood."
+            },
+            {
+                "id": "q4",
+                "type": "mcq",
+                "question": "The power of compounding means that:",
+                "options": [
+                  "The more money you have, the more you spend.",
+                  "Small, regular savings can grow into a large amount over time.",
+                  "You need a lot of money to start saving.",
+                  "Complex math is required for budgeting."
+                ],
+                "answer": "Small, regular savings can grow into a large amount over time."
+            },
+            {
+                "id": "q5",
+                "type": "mcq",
+                "question": "What is the primary benefit of developing a positive money mindset?",
+                "options": [
+                  "It guarantees you will become a millionaire.",
+                  "It helps you make conscious decisions that support your financial goals.",
+                  "It allows you to spend money without worrying.",
+                  "It eliminates the need for a budget."
+                ],
+                "answer": "It helps you make conscious decisions that support your financial goals."
+            },
+            {
+              "id": "q6",
+              "type": "text",
+              "question": "Identify one impulsive purchase you've made in the past month. What do you think triggered it?",
+              "answer": "Answers should identify a specific purchase and a plausible trigger, such as stress, boredom, social pressure, or advertising."
+            },
+            {
+              "id": "q7",
+              "type": "text",
+              "question": "Explain in your own words why a small, regular saving habit is more powerful than saving a large amount of money once a year.",
+              "answer": "A good answer will mention the power of compounding and the benefit of building a consistent habit, which reduces the reliance on willpower and makes saving automatic."
+            }
+          ]
+        },
+        {
+          "title": "Day 2: Mastering the 50-30-20 Rule",
+          "video_url": "https://www.youtube.com/embed/i_ZAnwdi_rA",
+          "content": "<h2>Your Simple Blueprint for Budgeting</h2><p>The 50-30-20 rule is a straightforward way to manage your money without complicated spreadsheets. It’s all about balance and making sure you’re covering your needs, enjoying your life, and saving for the future.</p><div class=\"mt-8 space-y-6\"><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-pie-chart\"><path d=\"M21.21 15.89A10 10 0 1 1 8 2.83\"/><path d=\"M22 12A10 10 0 0 0 12 2v10z\"/></svg></div><div class=\"flex-1\"><h3>50% for Needs</h3><p class=\"text-sm text-muted-foreground\">These are your absolute must-haves. For a teen, this could be your phone bill, transportation to school or work, or essential food costs. If you live at home, this category might be small, which is a huge advantage!</p></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-shopping-bag\"><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg></div><div class=\"flex-1\"><h3>30% for Wants</h3><p class=\"text-sm text-muted-foreground\">This is the fun stuff! Think movies, new clothes, video games, or eating out with friends. This category is flexible and is the first place to cut back if you need to save more.</p></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-piggy-bank\"><path d=\"M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 1.3 3.2 3 3.8V17c0 1 .7 1.7 1.5 2h1c1 0 2-1 2-2v-2h1.5c1.7 0 3-1.3 3-3 0-2.5-3.5-4-7-4\"/><path d=\"M12 5c.5 0 1 .2 1.3.6\"/><path d=\"M10 12v-2\"/><path d=\"M10 17v-1\"/></svg></div><div class=\"flex-1\"><h3>20% for Savings & Debt Repayment</h3><p class=\"text-sm text-muted-foreground\">This is where you pay your future self. This chunk of money goes directly towards your emergency fund, saving for big goals (like a car or college), or paying off any money you owe.</p></div></div></div><h3 class=\"mt-8\">Adapting for Teen Life:</h3><p>Don't have a regular paycheck? We'll show you how to apply these percentages to irregular income from babysitting or summer jobs. Living with parents? We'll discuss how to adjust the percentages when your 'Needs' are low, so you can turbo-charge your savings.</p>",
+          "order_index": 2,
+          "ai_summary": "The 50-30-20 rule offers a simple budgeting framework to manage your money effectively. It suggests allocating 50% of your income to needs, 30% to wants, and 20% to savings and debt repayment, providing a balanced approach to financial planning, especially adaptable for teens with irregular incomes or low essential expenses.\n\n*   **50% for Needs:** Covers essential expenses like phone bills or transport.\n*   **30% for Wants:** Flexible spending on non-essential items like entertainment or hobbies.\n*   **20% for Savings:** Building your future wealth through savings and investments.\n*   **Adaptable for Teens:** The rule can be adjusted for irregular income and low expenses to maximize savings potential.",
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "mcq",
+              "question": "According to the 50-30-20 rule, what percentage of your income should be allocated to 'Wants'?",
+              "options": ["50%", "30%", "20%", "10%"],
+              "answer": "30%"
+            },
+            {
+              "id": "q2",
+              "type": "mcq",
+              "question": "Which of the following is considered a 'Need' for a teenager?",
+              "options": ["A new video game", "A concert ticket", "A monthly phone bill", "Designer clothes"],
+              "answer": "A monthly phone bill"
+            },
+            {
+              "id": "q3",
+              "type": "mcq",
+              "question": "If you receive a ₹500 gift, how much should you aim to save based on the 50-30-20 rule?",
+              "options": ["₹250", "₹150", "₹100", "₹50"],
+              "answer": "₹100"
+            },
+            {
+              "id": "q4",
+              "type": "text",
+              "question": "If you earn ₹1,000 from a part-time job this month, how would you allocate it using the 50-30-20 rule? Specify the amount for Needs, Wants, and Savings.",
+              "answer": "A correct answer would allocate ₹500 to Needs, ₹300 to Wants, and ₹200 to Savings."
+            },
+            {
+              "id": "q5",
+              "type": "text",
+              "question": "Why is the 'Wants' category the most flexible part of the 50-30-20 budget?",
+              "answer": "It's the most flexible because wants are non-essential. This makes it the easiest category to cut back on if you need to save more money for a specific goal or an emergency."
+            }
+          ]
+        },
+        {
+          "title": "Day 3: Emergency Funds - Your Financial Safety Net",
+          "video_url": "https://www.youtube.com/embed/D-Yp2t4_q54",
+          "content": "<h2>Why You Need a Financial Shield</h2><p>An emergency fund is your personal safety net. It's a stash of money set aside for true, unexpected emergencies. This fund gives you confidence, prevents you from going into debt, and can even create opportunities.</p><div class=\"mt-8 space-y-6\"><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-shield-alert\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10\"/><path d=\"M12 8v4\"/><path d=\"M12 16h.01\"/></svg></div><div class=\"flex-1\"><h3>What's a Real Emergency?</h3><ul class=\"list-disc pl-5 text-sm text-muted-foreground\"><li><strong>True Emergencies:</strong> Your phone screen shatters, you get a flat tire, you have an unexpected medical cost.</li><li><strong>Not Emergencies:</strong> Concert tickets for your favorite band, a sale on a new pair of sneakers, a weekend trip with friends.</li></ul></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-bar-chart-3\"><path d=\"M3 3v18h18\"/><path d=\"M18 17V9\"/><path d=\"M13 17V5\"/><path d=\"M8 17v-3\"/></svg></div><div class=\"flex-1\"><h3>Building Your Fund in Phases</h3><ol class=\"list-decimal pl-5 text-sm text-muted-foreground\"><li><strong>The Starter Fund ($100-$500):</strong> Your first goal. This covers small surprises.</li><li><strong>The Basic Fund (1 Month of Expenses):</strong> Once you have a job, aim to save enough to cover one month of your essential costs.</li><li><strong>The Full Fund (3-6 Months of Expenses):</strong> This is the ultimate goal, especially for when you're financially independent.</li></ol></div></div></div><h3 class=\"mt-8\">Where to Keep It:</h3><p>Your emergency fund should be in a separate, high-yield savings account. It needs to be easily accessible but not so easy that you're tempted to dip into it for non-emergencies.</p>",
+          "order_index": 3,
+          "ai_summary": "This lesson explains the importance of an emergency fund as a financial safety net for unexpected expenses. It distinguishes between true emergencies and non-emergencies, outlines a phased approach to building the fund, and recommends keeping it in a separate, accessible savings account.\n\n*   **Purpose:** An emergency fund provides financial security and prevents debt during unexpected events.\n*   **Defining Emergencies:** Differentiate between genuine emergencies (e.g., medical costs, urgent repairs) and discretionary spending.\n*   **Building in Phases:** Start with a small fund ($100-$500), grow it to cover one month's expenses, and eventually aim for 3-6 months' worth.\n*   **Accessibility:** Store your fund in a high-yield savings account that is separate from your primary checking account.",
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "mcq",
+              "question": "Which of the following is considered a true emergency for your emergency fund?",
+              "options": ["A new pair of shoes on sale", "An unexpected car repair", "Tickets to a movie premiere", "A vacation with friends"],
+              "answer": "An unexpected car repair"
+            },
+            {
+              "id": "q2",
+              "type": "mcq",
+              "question": "What is the recommended first step when building an emergency fund?",
+              "options": ["Saving 3-6 months of expenses", "Investing in the stock market", "Creating a starter fund of $100-$500", "Paying off all your debts"],
+              "answer": "Creating a starter fund of $100-$500"
+            },
+            {
+              "id": "q3",
+              "type": "mcq",
+              "question": "Where is the best place to keep your emergency fund?",
+              "options": ["In a piggy bank at home", "In your primary checking account", "In a high-yield savings account", "Invested in cryptocurrency"],
+              "answer": "In a high-yield savings account"
+            },
+            {
+              "id": "q4",
+              "type": "text",
+              "question": "Explain why buying concert tickets is not considered a valid reason to use your emergency fund.",
+              "answer": "Concert tickets are a 'want,' not a 'need' or an unexpected, essential expense. An emergency fund is strictly for true emergencies like job loss, medical bills, or urgent repairs."
+            },
+            {
+              "id": "q5",
+              "type": "text",
+              "question": "Why should you keep your emergency fund in a separate account from your everyday checking account?",
+              "answer": "Keeping it separate reduces the temptation to spend it on non-emergencies. It creates a mental barrier, reinforcing that the money is for a specific, important purpose."
+            }
+          ]
+        },
+        {
+          "title": "Day 4: Needs vs Wants in the Digital Age",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Navigating Modern Spending Traps</h2><p>In today's world, the line between what you need and what you want is blurrier than ever. Marketers are experts at making you feel like you 'need' the latest gadget or subscription. Today, we'll learn to see through the noise.</p><div class=\"mt-8 space-y-6\"><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-mouse-pointer-click\"><path d=\"m9 9 5 12 1.8-5.2L21 14Z\"/><path d=\"M7.2 2.2 8 5.1\"/><path d=\"m5.1 8-2.9-.8\"/><path d=\"M14 4.1 12 6\"/><path d=\"m2.2 7.2 2.9.8\"/><path d=\"m6 12-1.9 2\"/></svg></div><div class=\"flex-1\"><h3>Recognizing the Traps</h3><ul class=\"list-disc pl-5 text-sm text-muted-foreground\"><li><strong>Subscription Creep:</strong> That 'free trial' you signed up for? It's now costing you $10 a month. We'll audit your subscriptions and cut the fat.</li><li><strong>Social Media Pressure:</strong> Seeing influencers and friends with the latest stuff can create serious FOMO (Fear Of Missing Out).</li><li><strong>The Convenience Fee:</strong> Food delivery and one-click purchasing are easy, but they often come with hidden costs.</li></ul></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-list-checks\"><path d=\"m3 17 2 2 4-4\"/><path d=\"m3 7 2 2 4-4\"/><path d=\"M13 6h8\"/><path d=\"M13 12h8\"/><path d=\"M13 18h8\"/></svg></div><div class=\"flex-1\"><h3>Your Decision-Making Toolkit</h3><ul class=\"list-disc pl-5 text-sm text-muted-foreground\"><li><strong>The 24-Hour Rule:</strong> See something you want? Wait 24 hours before buying it. The urge often fades.</li><li><strong>The Opportunity Cost Test:</strong> Ask yourself, 'What else could I do with this money?'</li><li><strong>The One-Year Test:</strong> Will this purchase matter in one year? This helps put impulse buys into perspective.</li></ul></div></div></div>",
+          "order_index": 4,
+          "ai_summary": "This lesson helps you distinguish between needs and wants in the digital age, where marketing often blurs the lines. It teaches you to recognize modern spending traps like subscription creep and social media pressure, while equipping you with a decision-making toolkit to curb impulse buying.\n\n*   **Identify Spending Traps:** Be aware of hidden costs in subscriptions, social media influence, and convenience fees.\n*   **Use the 24-Hour Rule:** Wait a day before making a non-essential purchase to avoid impulse buys.\n*   **Consider Opportunity Cost:** Think about what else you could do with the money before spending it.\n*   **Apply the One-Year Test:** Question if the purchase will still be valuable to you in a year's time.",
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "mcq",
+              "question": "What is 'subscription creep'?",
+              "options": ["When a subscription service gets more expensive", "Forgetting about a recurring subscription payment after a free trial", "Subscribing to too many YouTube channels", "A slow-loading subscription website"],
+              "answer": "Forgetting about a recurring subscription payment after a free trial"
+            },
+            {
+              "id": "q2",
+              "type": "mcq",
+              "question": "The '24-Hour Rule' is a strategy to combat what?",
+              "options": ["Running out of money", "Impulse buying", "Forgetting your passwords", "Subscription creep"],
+              "answer": "Impulse buying"
+            },
+            {
+              "id": "q3",
+              "type": "mcq",
+              "question": "Asking 'What else could I do with this money?' is an example of what?",
+              "options": ["The One-Year Test", "The FOMO Test", "The Opportunity Cost Test", "The Subscription Audit"],
+              "answer": "The Opportunity Cost Test"
+            },
+            {
+              "id": "q4",
+              "type": "text",
+              "question": "List two of your current 'wants' and one of your 'needs'.",
+              "answer": "Answers will vary but should correctly differentiate between essential needs (e.g., food, transport) and non-essential wants (e.g., video games, specific clothing brands)."
+            },
+            {
+              "id": "q5",
+              "type": "text",
+              "question": "How does social media pressure you to spend money on things you don't need?",
+              "answer": "Social media creates pressure through influencer marketing, showing curated lifestyles, and creating FOMO (Fear Of Missing Out) when you see friends with new items."
+            }
+          ]
+        },
+        {
+          "title": "Day 5: Goal Setting and Priority Systems",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Turning Dreams into Reality</h2><p>Saving money without a clear goal is like driving without a destination. Today, we'll learn how to set powerful, motivating financial goals that you'll actually achieve.</p><h3>The SMART-ER Goal Framework</h3><p>Your goals should be:</p><div class=\"mt-4 grid grid-cols-2 md:grid-cols-3 gap-4 text-center\"> <div class=\"p-4 bg-muted/50 rounded-lg\"><p class=\"font-bold\">S</p><p class=\"text-sm text-muted-foreground\">Specific</p></div> <div class=\"p-4 bg-muted/50 rounded-lg\"><p class=\"font-bold\">M</p><p class=\"text-sm text-muted-foreground\">Measurable</p></div> <div class=\"p-4 bg-muted/50 rounded-lg\"><p class=\"font-bold\">A</p><p class=\"text-sm text-muted-foreground\">Achievable</p></div> <div class=\"p-4 bg-muted/50 rounded-lg\"><p class=\"font-bold\">R</p><p class=\"text-sm text-muted-foreground\">Relevant</p></div> <div class=\"p-4 bg-muted/50 rounded-lg\"><p class=\"font-bold\">T</p><p class=\"text-sm text-muted-foreground\">Time-bound</p></div> <div class=\"p-4 bg-muted/50 rounded-lg\"><p class=\"font-bold text-primary\">ER</p><p class=\"text-sm text-muted-foreground\">Exciting & Reviewed</p></div></div><div class=\"mt-8 space-y-6\"><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-flag\"><path d=\"M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z\"/><line x1=\"4\" x2=\"4\" y1=\"22\" y2=\"15\"/></svg></div><div class=\"flex-1\"><h3>Prioritizing Your Goals</h3><p class=\"text-sm text-muted-foreground\">You probably have multiple goals at once. We'll use a priority matrix to decide what to focus on first, organizing goals into three tiers: foundational (emergency fund), lifestyle (new phone), and future-building (college savings).</p></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-settings-2\"><path d=\"M20 7h-9\"/><path d=\"M14 17H5\"/><circle cx=\"17\" cy=\"17\" r=\"3\"/><circle cx=\"7\" cy=\"7\" r=\"3\"/></svg></div><div class=\"flex-1\"><h3>Systems Beat Willpower</h3><p class=\"text-sm text-muted-foreground\">We'll set up systems like automatic transfers to your savings account and visual progress trackers to keep you motivated and on track without relying on sheer willpower.</p></div></div></div>",
+          "order_index": 5,
+          "ai_summary": "This lesson teaches you how to set and achieve financial goals by transforming vague aspirations into concrete plans. It introduces the SMART-ER goal framework for creating effective goals and explains how to use a priority matrix and automated systems to stay on track.\n\n*   **Use the SMART-ER Framework:** Make goals Specific, Measurable, Achievable, Relevant, Time-bound, Exciting, and Reviewed.\n*   **Prioritize Your Goals:** Categorize goals into foundational, lifestyle, and future-building tiers to focus your efforts.\n*   **Build Systems:** Rely on systems like automatic savings transfers rather than willpower alone.\n*   **Motivation:** Clear, exciting goals provide the motivation needed to maintain financial discipline.",
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "mcq",
+              "question": "What does the 'S' in the SMART-ER goal framework stand for?",
+              "options": ["Simple", "Specific", "Savings", "Serious"],
+              "answer": "Specific"
+            },
+            {
+              "id": "q2",
+              "type": "mcq",
+              "question": "Which of the following is the BEST example of a SMART goal?",
+              "options": [
+                "I want to be rich.",
+                "I will save money this year.",
+                "I will save ₹5,000 for a new phone by saving ₹1,000 per month for the next 5 months.",
+                "I hope to buy a phone soon."
+              ],
+              "answer": "I will save ₹5,000 for a new phone by saving ₹1,000 per month for the next 5 months."
+            },
+            {
+              "id": "q3",
+              "type": "mcq",
+              "question": "Setting up an automatic transfer to your savings account is an example of what?",
+              "options": ["A priority matrix", "A lifestyle goal", "A system to beat willpower", "A foundational goal"],
+              "answer": "A system to beat willpower"
+            },
+            {
+              "id": "q4",
+              "type": "text",
+              "question": "Take the vague goal 'I want to save for college' and make it a SMART-ER goal.",
+              "answer": "A good answer would include all SMART-ER elements, e.g., 'I will save ₹50,000 (Specific, Measurable) for my first-year college fees (Relevant, Exciting) by saving ₹2,000 per month for the next 25 months (Achievable, Time-bound), and I will track my progress on a spreadsheet every month (Reviewed).'"
+            },
+            {
+              "id": "q5",
+              "type": "text",
+              "question": "Why is it important for a goal to be 'Exciting'?",
+              "answer": "An exciting goal provides intrinsic motivation. It's the 'why' behind your saving, which makes it easier to stay disciplined and make sacrifices when you are working toward something you genuinely care about."
+            }
+          ]
+        },
+        {
+          "title": "Day 6: Creating Your Personal Budget Sheet",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Building Your Financial Command Center</h2><p>Today, we get hands-on and build a personalized budget sheet that works for your unique life. This isn't about restriction; it's about empowerment. Your budget is a tool that tells your money where to go, instead of wondering where it went.</p><div class=\"mt-8 space-y-6\"><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-file-spreadsheet\"><path d=\"M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z\"/><path d=\"M14 2v4a2 2 0 0 0 2 2h4\"/><path d=\"M8 16h8\"/><path d=\"M8 12h8\"/><path d=\"M15 12h-2\"/><path d=\"M15 16h-2\"/></svg></div><div class=\"flex-1\"><h3>Key Components of Your Budget Sheet</h3><ul class=\"list-disc pl-5 text-sm text-muted-foreground\"><li><strong>Income Tracker:</strong> A section to list all your sources of income, both regular and irregular.</li><li><strong>Expense Categories:</strong> We'll detail your fixed and variable expenses within your 50% Needs and 30% Wants categories.</li><li><strong>Savings Goals:</strong> A dedicated section to track progress towards your different savings goals.</li></ul></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-calendar-check\"><rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\" ry=\"2\"/><line x1=\"16\" x2=\"16\" y1=\"2\" y2=\"6\"/><line x1=\"8\" x2=\"8\" y1=\"2\" y2=\"6\"/><line x1=\"3\" x2=\"21\" y1=\"10\" y2=\"10\"/><path d=\"m9 16 2 2 4-4\"/></svg></div><div class=\"flex-1\"><h3>Staying on Track</h3><p class=\"text-sm text-muted-foreground\">A budget is not a 'set it and forget it' tool. We'll establish a rhythm for checking in: a quick 5-minute weekly check-in and a 30-minute monthly review to celebrate wins and adjust for the month ahead.</p></div></div></div>",
+          "order_index": 6,
+          "ai_summary": "This lesson guides you through creating a personalized budget sheet to gain control over your finances. A budget acts as a financial command center, empowering you to direct your money purposefully rather than questioning where it went. The key is to build a comprehensive tool and review it regularly.\n\n*   **Income Tracker:** Log all sources of money, both regular and irregular.\n*   **Expense Categories:** Detail your spending according to the 50-30-20 rule (Needs, Wants, Savings).\n*   **Savings Goals:** Track progress toward your specific financial objectives.\n*   **Regular Check-ins:** A budget requires consistent attention; perform weekly and monthly reviews to stay on track.",
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "mcq",
+              "question": "What is the primary purpose of a budget sheet?",
+              "options": [
+                "To restrict all fun spending",
+                "To tell your money where to go",
+                "To track only your income",
+                "To make you feel bad about your spending"
+              ],
+              "answer": "To tell your money where to go"
+            },
+            {
+              "id": "q2",
+              "type": "mcq",
+              "question": "Which of these is NOT a key component of a good budget sheet?",
+              "options": [
+                "Income Tracker",
+                "Expense Categories",
+                "Savings Goals",
+                "Your friend's spending habits"
+              ],
+              "answer": "Your friend's spending habits"
+            },
+            {
+              "id": "q3",
+              "type": "mcq",
+              "question": "How often should you conduct a detailed review of your budget?",
+              "options": ["Every day", "Once a year", "Once a month", "Never"],
+              "answer": "Once a month"
+            },
+            {
+              "id": "q4",
+              "type": "text",
+              "question": "List three categories you would include under your 'Wants' section in a budget.",
+              "answer": "Answers will vary but should be appropriate wants, e.g., 'Entertainment (Movies/Games)', 'Eating Out', and 'Shopping (Clothes/Gadgets)'."
+            },
+            {
+              "id": "q5",
+              "type": "text",
+              "question": "Why is it important to track both regular and irregular income?",
+              "answer": "Tracking both gives you a complete and accurate picture of your total income, which is necessary for creating a realistic budget. It helps you plan for months where your income might be lower or higher than average."
+            }
+          ]
+        },
+        {
+          "title": "Day 7: Your Budget Sheet Project & Future Planning",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Bringing It All Together</h2><p>Today, you'll finalize your personal budget sheet, integrating all the lessons from this week. This project will serve as your financial roadmap for the months and years to come.</p><div class=\"mt-8 space-y-6\"><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-rocket\"><path d=\"M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.3.05-3.05A7.5 7.5 0 0 0 4.5 16.5Z\"/><path d=\"M16 2.5 21.5 8\"/><path d=\"M6.12 6.12a5.63 5.63 0 0 1 8.08 8.08\"/><path d=\"m12 12 4 4\"/><path d=\"M17.5 17.5c1.26-1.5 5-2 5-2s-.5 3.74-2 5c-.84.71-2.3.7-3.05.05a7.5 7.5 0 0 1-3.05-3.05Z\"/></svg></div><div class=\"flex-1\"><h3>Finalize Your Budget Project</h3><p class=\"text-sm text-muted-foreground\">Your completed budget should be a comprehensive, one-page overview of your financial life. It should clearly show your total income, your 50-30-20 allocations, a detailed list of your expenses, and clear tracking for each of your savings goals.</p></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-waypoints\"><circle cx=\"12\" cy=\"4.5\" r=\"2.5\"/><path d=\"m10.2 6.3-3.9 3.9\"/><circle cx=\"4.5\" cy=\"12\" r=\"2.5\"/><path d=\"M6.3 13.8 9.5 17\"/><circle cx=\"12\" cy=\"19.5\" r=\"2.5\"/><path d=\"M13.8 17.7 17 14.5\"/><circle cx=\"19.5\" cy=\"12\" r=\"2.5\"/><path d=\"m17.7 10.2-3.9-3.9\"/></svg></div><div class=\"flex-1\"><h3>Build a Sustainable System</h3><p class=\"text-sm text-muted-foreground\">Make your system last. Automate your savings by setting up transfers on payday. Build in flexibility with a 'miscellaneous' category. Plan for how your budget will evolve with life changes like college or moving out.</p></div></div></div><h3 class=\"mt-8\">Final Thought:</h3><p>Remember, imperfect action is better than perfect inaction. The goal is not to be a perfect budgeter overnight, but to build a skill and a habit that will serve you for the rest of your life.</p>",
+          "order_index": 7,
+          "ai_summary": "This lesson focuses on finalizing your personal budget sheet and turning it into a sustainable financial system. By integrating all the concepts learned, you create a financial roadmap that evolves with your life and relies on automation and flexibility rather than just willpower.\n\n*   **Finalize Your Budget:** Create a comprehensive, one-page overview of your income, expenses, and savings goals.\n*   **Automate Savings:** Set up automatic transfers to your savings accounts to build a consistent habit.\n*   **Build in Flexibility:** Include a 'miscellaneous' category in your budget to handle unexpected costs without derailing your plan.\n*   **Imperfect Action:** The goal is progress, not perfection. Start with a simple budget and refine it over time.",
+          "practice_questions": [
+            {
+              "id": "q1",
+              "type": "mcq",
+              "question": "What is the key to making a budgeting system sustainable?",
+              "options": ["Making it extremely strict", "Ignoring it for months", "Automating savings and building in flexibility", "Only tracking your income"],
+              "answer": "Automating savings and building in flexibility"
+            },
+            {
+              "id": "q2",
+              "type": "mcq",
+              "question": "What does 'imperfect action is better than perfect inaction' mean in the context of budgeting?",
+              "options": [
+                "You must never make a mistake in your budget.",
+                "It's better to start with a simple budget and improve it over time than to wait for the 'perfect' plan.",
+                "Budgeting perfectly is easy to do.",
+                "You should not take any action until your plan is perfect."
+              ],
+              "answer": "It's better to start with a simple budget and improve it over time than to wait for the 'perfect' plan."
+            },
+            {
+              "id": "q3",
+              "type": "text",
+              "question": "Why is automating your savings an effective strategy?",
+              "answer": "It removes the need for willpower and discipline. By setting up automatic transfers, you 'pay yourself first' without having to make a conscious decision each time, which makes saving a consistent habit."
+            },
+            {
+              "id": "q4",
+              "type": "text",
+              "question": "Name two life changes that might require you to adjust your budget in the future.",
+              "answer": "Answers could include: getting a full-time job, going to college, moving out of your parents' home, buying a car, or getting married."
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": "2",
       "title": "Module 2: Banking & Investments Mastery",
       "description": "A 7-Day Journey to Financial Growth for Teens (Ages 16-20).",
       "is_free": false,
-      "order_index": 2
+      "order_index": 2,
+      "subtopics": []
     },
     {
-      "id": "3",
       "title": "Module 3: Artificial Intelligence in Real Life",
       "description": "A Complete 7-Day Learning Journey for Teens (Ages 13-16) into AI in finance.",
       "is_free": false,
-      "order_index": 3
+      "order_index": 3,
+      "subtopics": []
     },
     {
-      "id": "4",
       "title": "Module 4: Taxation in India",
       "description": "Learn income tax basics (slabs, PAN, ITR) and GST (how businesses collect & pay).",
       "is_free": false,
-      "order_index": 4
+      "order_index": 4,
+      "subtopics": []
     },
     {
-      "id": "5",
       "title": "Module 5: Entrepreneurship & Startups",
       "description": "Learn to validate ideas, use the business model canvas, and understand costing, pricing, and profit margins.",
       "is_free": false,
-      "order_index": 5
+      "order_index": 5,
+      "subtopics": []
     },
     {
-      "id": "6",
       "title": "Module 6: Personal Branding & Careers",
       "description": "A complete 7-day journey to discovering your unique identity and future path.",
       "is_free": true,
-      "order_index": 6
+      "order_index": 6,
+      "subtopics": [
+         {
+          "title": "Day 1: What is Personal Branding?",
+          "video_url": null,
+          "content": "<h3>What is a Personal Brand?</h3>\n<p>Think about your favorite brands, like Nike or Apple. You know what they stand for, right? Nike is about determination and athleticism. Apple is about innovation and sleek design. A personal brand is the same idea, but for a person—specifically, for you!</p>\n<p><strong>Personal branding</strong> is the process of creating a clear and consistent message about who you are, what you're good at, and what you stand for. It's how the world—classmates, teachers, and future employers—sees you. It's your reputation, both online and offline.</p>\n\n<h3>Why Does It Matter for You?</h3>\n<p>You might think branding is only for celebrities or big companies, but it's incredibly important for students and young professionals. Here's why:</p>\n<ul>\n  <li><strong>It Differentiates You:</strong> In a world full of talented people, your personal brand is what makes you unique. It helps you stand out from the crowd when applying for internships, colleges, or jobs.</li>\n  <li><strong>It Builds Trust and Credibility:</strong> When you consistently share your knowledge and passion for a particular subject (like coding, art, or marketing), people start to see you as a credible and knowledgeable person in that area.</li>\n  <li><strong>It Creates Opportunities:</strong> A strong personal brand can attract opportunities to you. People might reach out with project ideas, internship offers, or networking connections because they see what you're about and they like it.</li>\n  <li><strong>It Guides Your Growth:</strong> Defining your personal brand forces you to think about your strengths, values, and goals. This clarity helps you make better decisions about your career and personal development.</li>\n</ul>\n\n<h3>Your Digital Footprint is Your Brand</h3>\n<p>Today, a huge part of your personal brand is your digital footprint. Every post you like, every comment you make, and every photo you share on social media contributes to how people perceive you. That's why it's so important to be mindful of your online presence. Future employers and college admission officers often look at social media profiles to get a better sense of who you are.</p>\n\n<h3>Key Takeaways</h3>\n<ul>\n  <li>Your personal brand is your reputation and what makes you unique.</li>\n  <li>It's not about being fake; it's about authentically showcasing your strengths and passions.</li>\n  <li>A strong brand can build trust and attract opportunities.</li>\n  <li>Be mindful of your digital footprint, as it's a major part of your brand today.</li>\n</ul>",
+          "order_index": 1,
+          "ai_summary": "Personal branding is about creating a distinct identity for yourself based on your skills, values, and passions, similar to how companies brand themselves. It's crucial for students and young professionals because it helps you stand out, builds trust and credibility in your field, and attracts opportunities like internships and jobs. A key part of your brand is your digital footprint, so it's important to manage your online presence thoughtfully. The main takeaways are that an authentic personal brand showcases your unique strengths, builds trust, and can open doors for your future.",
+          "practice_questions": [
+            {
+              "id": "pq6-1-1",
+              "type": "text",
+              "question": "In one sentence, what is personal branding?",
+              "answer": "Personal branding is the practice of marketing people and their careers as brands."
+            },
+            {
+              "id": "pq6-1-2",
+              "type": "mcq",
+              "question": "Which of the following is NOT a primary benefit of building a personal brand?",
+              "options": [
+                "It helps you stand out.",
+                "It guarantees you will get any job you apply for.",
+                "It can attract opportunities to you.",
+                "It builds credibility."
+              ],
+              "answer": "It guarantees you will get any job you apply for."
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": "7",
       "title": "Module 7: Excel & Data Skills",
       "description": "A complete 7-day learning journey into data, spreadsheets, and basic coding.",
       "is_free": false,
-      "order_index": 7
+      "order_index": 7,
+      "subtopics": []
     },
     {
-      "id": "8",
       "title": "Module 8: Cybersecurity & Digital Safety",
       "description": "A complete 7-day learning journey to become a digital safety expert.",
       "is_free": true,
-      "order_index": 8
+      "order_index": 8,
+      "subtopics": []
     },
      {
-      "id": "9",
       "title": "Module 9: Ethics & AI Safety",
       "description": "A complete 7-day learning journey into the ethics and safety of Artificial Intelligence.",
       "is_free": false,
-      "order_index": 9
+      "order_index": 9,
+      "subtopics": []
     },
     {
-      "id": "10",
       "title": "Module 10: Consumer Rights",
       "description": "A complete 7-day learning journey into consumer rights, covering MRP, safety, choice, and seeking redressal.",
       "is_free": false,
-      "order_index": 10
+      "order_index": 10,
+      "subtopics": []
     },
     {
-      "id": "11",
       "title": "Module 11: Basic Law for Teens",
       "description": "Introduction to Rights & Responsibilities, Cyber Laws, and Legal Awareness",
       "is_free": false,
-      "order_index": 11
-    }
-  ],
-  "subtopics": [
-    {
-      "id": "1-1",
-      "lesson_id": "1",
-      "title": "Day 1: The Money Mindset Revolution",
-      "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
-      "content": "<h2>What's the Big Idea?</h2><p>Your relationship with money starts in your head. Today, we'll explore how your thoughts and feelings about money—your 'money mindset'—shape your financial future. We'll learn to spot sneaky spending habits and build a strong foundation for success.</p><div class=\"mt-8 space-y-6\"><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-brain-circuit\"><path d=\"M12 5V2M9 5H7M17 5h-2M9 9a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2M15 9a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2M12 18v3M10 16l2-2 2 2\"/><path d=\"M12 13a2.5 2.5 0 0 0-2.5 2.5v0a2.5 2.5 0 0 0 2.5 2.5h0a2.5 2.5 0 0 0 2.5-2.5v0A2.5 2.5 0 0 0 12 13Z\"/><path d=\"M9.5 7.5a2.5 2.5 0 0 1 0 5\"/><path d=\"M14.5 7.5a2.5 2.5 0 0 0 0 5\"/></svg></div><div class=\"flex-1\"><h3>Instant vs. Delayed Gratification</h3><p class=\"text-sm text-muted-foreground\">Learn why waiting for a bigger reward is a financial superpower. We'll look at the famous 'marshmallow test' and see how it applies to buying that new video game versus saving for a car.</p></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-zap\"><polygon points=\"13 2 3 14 12 14 11 22 21 10 12 10 13 2\"/></svg></div><div class=\"flex-1\"><h3>Emotional Spending</h3><p class=\"text-sm text-muted-foreground\">Feeling bored, stressed, or pressured by friends? These feelings can lead to 'retail therapy.' We'll identify your personal spending triggers and create a plan to manage them.</p></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-help-circle\"><path d=\"M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3\"/><path d=\"M12 17h.01\"/></svg></div><div class=\"flex-1\"><h3>Uncovering Your Money Scripts</h3><p class=\"text-sm text-muted-foreground\">You have hidden beliefs about money from your childhood. We'll uncover these 'money scripts' (like 'money is the root of all evil' or 'you have to work hard for money') and reframe them for a healthier financial life.</p></div></div></div><h3 class=\"mt-8\">Why This Matters:</h3><p>Small, consistent habits create massive results over time. Saving a little bit from your first part-time job can grow into a significant amount by the time you graduate, thanks to the power of compounding!</p>",
-      "order_index": 1,
-      "ai_summary": "This lesson introduces the concept of a 'money mindset,' explaining how your thoughts and feelings about money influence your financial habits. It explores key ideas like delayed gratification, emotional spending triggers, and hidden 'money scripts' from childhood. By understanding these concepts, you can build a stronger foundation for financial success and harness the power of compounding.\n\n*   **Delayed Gratification:** Waiting for a bigger reward is a financial superpower.\n*   **Emotional Spending:** Feelings like stress or boredom can trigger impulsive buying; identifying these triggers is the first step to managing them.\n*   **Money Scripts:** Your subconscious beliefs about money, learned in childhood, can shape your financial behavior.\n*   **Compounding:** Small, consistent savings habits grow into large sums over time.",
-      "practice_questions": [
-        {
-          "id": "q1",
-          "type": "mcq",
-          "question": "What is the main idea behind 'delayed gratification'?",
-          "options": [
-            "Spending money as soon as you get it.",
-            "Waiting to buy something for a bigger future reward.",
-            "Avoiding all fun purchases.",
-            "Only buying things that are on sale."
-          ],
-          "answer": "Waiting to buy something for a bigger future reward."
-        },
-        {
-          "id": "q2",
-          "type": "mcq",
-          "question": "Which of the following is an example of an 'emotional spending' trigger?",
-          "options": [
-            "Buying groceries from a planned list.",
-            "Saving a portion of your paycheck.",
-            "Buying a new video game after a stressful day at school.",
-            "Paying your phone bill on time."
-          ],
-          "answer": "Buying a new video game after a stressful day at school."
-        },
-        {
-          "id": "q3",
-          "type": "mcq",
-          "question": "A 'money script' is best described as:",
-          "options": [
-            "A budget you write down.",
-            "A secret code for your bank account.",
-            "A movie about money.",
-            "A hidden belief about money you learned in childhood."
-          ],
-          "answer": "A hidden belief about money you learned in childhood."
-        },
-        {
-            "id": "q4",
-            "type": "mcq",
-            "question": "The power of compounding means that:",
-            "options": [
-              "The more money you have, the more you spend.",
-              "Small, regular savings can grow into a large amount over time.",
-              "You need a lot of money to start saving.",
-              "Complex math is required for budgeting."
-            ],
-            "answer": "Small, regular savings can grow into a large amount over time."
-        },
-        {
-            "id": "q5",
-            "type": "mcq",
-            "question": "What is the primary benefit of developing a positive money mindset?",
-            "options": [
-              "It guarantees you will become a millionaire.",
-              "It helps you make conscious decisions that support your financial goals.",
-              "It allows you to spend money without worrying.",
-              "It eliminates the need for a budget."
-            ],
-            "answer": "It helps you make conscious decisions that support your financial goals."
-        },
-        {
-          "id": "q6",
-          "type": "text",
-          "question": "Identify one impulsive purchase you've made in the past month. What do you think triggered it?",
-          "answer": "Answers should identify a specific purchase and a plausible trigger, such as stress, boredom, social pressure, or advertising."
-        },
-        {
-          "id": "q7",
-          "type": "text",
-          "question": "Explain in your own words why a small, regular saving habit is more powerful than saving a large amount of money once a year.",
-          "answer": "A good answer will mention the power of compounding and the benefit of building a consistent habit, which reduces the reliance on willpower and makes saving automatic."
-        }
-      ]
-    },
-    {
-      "id": "1-2",
-      "lesson_id": "1",
-      "title": "Day 2: Mastering the 50-30-20 Rule",
-      "video_url": "https://www.youtube.com/embed/i_ZAnwdi_rA",
-      "content": "<h2>Your Simple Blueprint for Budgeting</h2><p>The 50-30-20 rule is a straightforward way to manage your money without complicated spreadsheets. It’s all about balance and making sure you’re covering your needs, enjoying your life, and saving for the future.</p><div class=\"mt-8 space-y-6\"><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-pie-chart\"><path d=\"M21.21 15.89A10 10 0 1 1 8 2.83\"/><path d=\"M22 12A10 10 0 0 0 12 2v10z\"/></svg></div><div class=\"flex-1\"><h3>50% for Needs</h3><p class=\"text-sm text-muted-foreground\">These are your absolute must-haves. For a teen, this could be your phone bill, transportation to school or work, or essential food costs. If you live at home, this category might be small, which is a huge advantage!</p></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-shopping-bag\"><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg></div><div class=\"flex-1\"><h3>30% for Wants</h3><p class=\"text-sm text-muted-foreground\">This is the fun stuff! Think movies, new clothes, video games, or eating out with friends. This category is flexible and is the first place to cut back if you need to save more.</p></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-piggy-bank\"><path d=\"M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 1.3 3.2 3 3.8V17c0 1 .7 1.7 1.5 2h1c1 0 2-1 2-2v-2h1.5c1.7 0 3-1.3 3-3 0-2.5-3.5-4-7-4\"/><path d=\"M12 5c.5 0 1 .2 1.3.6\"/><path d=\"M10 12v-2\"/><path d=\"M10 17v-1\"/></svg></div><div class=\"flex-1\"><h3>20% for Savings & Debt Repayment</h3><p class=\"text-sm text-muted-foreground\">This is where you pay your future self. This chunk of money goes directly towards your emergency fund, saving for big goals (like a car or college), or paying off any money you owe.</p></div></div></div><h3 class=\"mt-8\">Adapting for Teen Life:</h3><p>Don't have a regular paycheck? We'll show you how to apply these percentages to irregular income from babysitting or summer jobs. Living with parents? We'll discuss how to adjust the percentages when your 'Needs' are low, so you can turbo-charge your savings.</p>",
-      "order_index": 2,
-      "ai_summary": "The 50-30-20 rule offers a simple budgeting framework to manage your money effectively. It suggests allocating 50% of your income to needs, 30% to wants, and 20% to savings and debt repayment, providing a balanced approach to financial planning, especially adaptable for teens with irregular incomes or low essential expenses.\n\n*   **50% for Needs:** Covers essential expenses like phone bills or transport.\n*   **30% for Wants:** Flexible spending on non-essential items like entertainment or hobbies.\n*   **20% for Savings:** Building your future wealth through savings and investments.\n*   **Adaptable for Teens:** The rule can be adjusted for irregular income and low expenses to maximize savings potential.",
-      "practice_questions": [
-        {
-          "id": "q1",
-          "type": "mcq",
-          "question": "According to the 50-30-20 rule, what percentage of your income should be allocated to 'Wants'?",
-          "options": ["50%", "30%", "20%", "10%"],
-          "answer": "30%"
-        },
-        {
-          "id": "q2",
-          "type": "mcq",
-          "question": "Which of the following is considered a 'Need' for a teenager?",
-          "options": ["A new video game", "A concert ticket", "A monthly phone bill", "Designer clothes"],
-          "answer": "A monthly phone bill"
-        },
-        {
-          "id": "q3",
-          "type": "mcq",
-          "question": "If you receive a ₹500 gift, how much should you aim to save based on the 50-30-20 rule?",
-          "options": ["₹250", "₹150", "₹100", "₹50"],
-          "answer": "₹100"
-        },
-        {
-          "id": "q4",
-          "type": "text",
-          "question": "If you earn ₹1,000 from a part-time job this month, how would you allocate it using the 50-30-20 rule? Specify the amount for Needs, Wants, and Savings.",
-          "answer": "A correct answer would allocate ₹500 to Needs, ₹300 to Wants, and ₹200 to Savings."
-        },
-        {
-          "id": "q5",
-          "type": "text",
-          "question": "Why is the 'Wants' category the most flexible part of the 50-30-20 budget?",
-          "answer": "It's the most flexible because wants are non-essential. This makes it the easiest category to cut back on if you need to save more money for a specific goal or an emergency."
-        }
-      ]
-    },
-    {
-      "id": "1-3",
-      "lesson_id": "1",
-      "title": "Day 3: Emergency Funds - Your Financial Safety Net",
-      "video_url": "https://www.youtube.com/embed/D-Yp2t4_q54",
-      "content": "<h2>Why You Need a Financial Shield</h2><p>An emergency fund is your personal safety net. It's a stash of money set aside for true, unexpected emergencies. This fund gives you confidence, prevents you from going into debt, and can even create opportunities.</p><div class=\"mt-8 space-y-6\"><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-shield-alert\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10\"/><path d=\"M12 8v4\"/><path d=\"M12 16h.01\"/></svg></div><div class=\"flex-1\"><h3>What's a Real Emergency?</h3><ul class=\"list-disc pl-5 text-sm text-muted-foreground\"><li><strong>True Emergencies:</strong> Your phone screen shatters, you get a flat tire, you have an unexpected medical cost.</li><li><strong>Not Emergencies:</strong> Concert tickets for your favorite band, a sale on a new pair of sneakers, a weekend trip with friends.</li></ul></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-bar-chart-3\"><path d=\"M3 3v18h18\"/><path d=\"M18 17V9\"/><path d=\"M13 17V5\"/><path d=\"M8 17v-3\"/></svg></div><div class=\"flex-1\"><h3>Building Your Fund in Phases</h3><ol class=\"list-decimal pl-5 text-sm text-muted-foreground\"><li><strong>The Starter Fund ($100-$500):</strong> Your first goal. This covers small surprises.</li><li><strong>The Basic Fund (1 Month of Expenses):</strong> Once you have a job, aim to save enough to cover one month of your essential costs.</li><li><strong>The Full Fund (3-6 Months of Expenses):</strong> This is the ultimate goal, especially for when you're financially independent.</li></ol></div></div></div><h3 class=\"mt-8\">Where to Keep It:</h3><p>Your emergency fund should be in a separate, high-yield savings account. It needs to be easily accessible but not so easy that you're tempted to dip into it for non-emergencies.</p>",
-      "order_index": 3,
-      "ai_summary": "This lesson explains the importance of an emergency fund as a financial safety net for unexpected expenses. It distinguishes between true emergencies and non-emergencies, outlines a phased approach to building the fund, and recommends keeping it in a separate, accessible savings account.\n\n*   **Purpose:** An emergency fund provides financial security and prevents debt during unexpected events.\n*   **Defining Emergencies:** Differentiate between genuine emergencies (e.g., medical costs, urgent repairs) and discretionary spending.\n*   **Building in Phases:** Start with a small fund ($100-$500), grow it to cover one month's expenses, and eventually aim for 3-6 months' worth.\n*   **Accessibility:** Store your fund in a high-yield savings account that is separate from your primary checking account.",
-      "practice_questions": [
-        {
-          "id": "q1",
-          "type": "mcq",
-          "question": "Which of the following is considered a true emergency for your emergency fund?",
-          "options": ["A new pair of shoes on sale", "An unexpected car repair", "Tickets to a movie premiere", "A vacation with friends"],
-          "answer": "An unexpected car repair"
-        },
-        {
-          "id": "q2",
-          "type": "mcq",
-          "question": "What is the recommended first step when building an emergency fund?",
-          "options": ["Saving 3-6 months of expenses", "Investing in the stock market", "Creating a starter fund of $100-$500", "Paying off all your debts"],
-          "answer": "Creating a starter fund of $100-$500"
-        },
-        {
-          "id": "q3",
-          "type": "mcq",
-          "question": "Where is the best place to keep your emergency fund?",
-          "options": ["In a piggy bank at home", "In your primary checking account", "In a high-yield savings account", "Invested in cryptocurrency"],
-          "answer": "In a high-yield savings account"
-        },
-        {
-          "id": "q4",
-          "type": "text",
-          "question": "Explain why buying concert tickets is not considered a valid reason to use your emergency fund.",
-          "answer": "Concert tickets are a 'want,' not a 'need' or an unexpected, essential expense. An emergency fund is strictly for true emergencies like job loss, medical bills, or urgent repairs."
-        },
-        {
-          "id": "q5",
-          "type": "text",
-          "question": "Why should you keep your emergency fund in a separate account from your everyday checking account?",
-          "answer": "Keeping it separate reduces the temptation to spend it on non-emergencies. It creates a mental barrier, reinforcing that the money is for a specific, important purpose."
-        }
-      ]
-    },
-    {
-      "id": "1-4",
-      "lesson_id": "1",
-      "title": "Day 4: Needs vs Wants in the Digital Age",
-      "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
-      "content": "<h2>Navigating Modern Spending Traps</h2><p>In today's world, the line between what you need and what you want is blurrier than ever. Marketers are experts at making you feel like you 'need' the latest gadget or subscription. Today, we'll learn to see through the noise.</p><div class=\"mt-8 space-y-6\"><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-mouse-pointer-click\"><path d=\"m9 9 5 12 1.8-5.2L21 14Z\"/><path d=\"M7.2 2.2 8 5.1\"/><path d=\"m5.1 8-2.9-.8\"/><path d=\"M14 4.1 12 6\"/><path d=\"m2.2 7.2 2.9.8\"/><path d=\"m6 12-1.9 2\"/></svg></div><div class=\"flex-1\"><h3>Recognizing the Traps</h3><ul class=\"list-disc pl-5 text-sm text-muted-foreground\"><li><strong>Subscription Creep:</strong> That 'free trial' you signed up for? It's now costing you $10 a month. We'll audit your subscriptions and cut the fat.</li><li><strong>Social Media Pressure:</strong> Seeing influencers and friends with the latest stuff can create serious FOMO (Fear Of Missing Out).</li><li><strong>The Convenience Fee:</strong> Food delivery and one-click purchasing are easy, but they often come with hidden costs.</li></ul></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-list-checks\"><path d=\"m3 17 2 2 4-4\"/><path d=\"m3 7 2 2 4-4\"/><path d=\"M13 6h8\"/><path d=\"M13 12h8\"/><path d=\"M13 18h8\"/></svg></div><div class=\"flex-1\"><h3>Your Decision-Making Toolkit</h3><ul class=\"list-disc pl-5 text-sm text-muted-foreground\"><li><strong>The 24-Hour Rule:</strong> See something you want? Wait 24 hours before buying it. The urge often fades.</li><li><strong>The Opportunity Cost Test:</strong> Ask yourself, 'What else could I do with this money?'</li><li><strong>The One-Year Test:</strong> Will this purchase matter in one year? This helps put impulse buys into perspective.</li></ul></div></div></div>",
-      "order_index": 4,
-      "ai_summary": "This lesson helps you distinguish between needs and wants in the digital age, where marketing often blurs the lines. It teaches you to recognize modern spending traps like subscription creep and social media pressure, while equipping you with a decision-making toolkit to curb impulse buying.\n\n*   **Identify Spending Traps:** Be aware of hidden costs in subscriptions, social media influence, and convenience fees.\n*   **Use the 24-Hour Rule:** Wait a day before making a non-essential purchase to avoid impulse buys.\n*   **Consider Opportunity Cost:** Think about what else you could do with the money before spending it.\n*   **Apply the One-Year Test:** Question if the purchase will still be valuable to you in a year's time.",
-      "practice_questions": [
-        {
-          "id": "q1",
-          "type": "mcq",
-          "question": "What is 'subscription creep'?",
-          "options": ["When a subscription service gets more expensive", "Forgetting about a recurring subscription payment after a free trial", "Subscribing to too many YouTube channels", "A slow-loading subscription website"],
-          "answer": "Forgetting about a recurring subscription payment after a free trial"
-        },
-        {
-          "id": "q2",
-          "type": "mcq",
-          "question": "The '24-Hour Rule' is a strategy to combat what?",
-          "options": ["Running out of money", "Impulse buying", "Forgetting your passwords", "Subscription creep"],
-          "answer": "Impulse buying"
-        },
-        {
-          "id": "q3",
-          "type": "mcq",
-          "question": "Asking 'What else could I do with this money?' is an example of what?",
-          "options": ["The One-Year Test", "The FOMO Test", "The Opportunity Cost Test", "The Subscription Audit"],
-          "answer": "The Opportunity Cost Test"
-        },
-        {
-          "id": "q4",
-          "type": "text",
-          "question": "List two of your current 'wants' and one of your 'needs'.",
-          "answer": "Answers will vary but should correctly differentiate between essential needs (e.g., food, transport) and non-essential wants (e.g., video games, specific clothing brands)."
-        },
-        {
-          "id": "q5",
-          "type": "text",
-          "question": "How does social media pressure you to spend money on things you don't need?",
-          "answer": "Social media creates pressure through influencer marketing, showing curated lifestyles, and creating FOMO (Fear Of Missing Out) when you see friends with new items."
-        }
-      ]
-    },
-    {
-      "id": "1-5",
-      "lesson_id": "1",
-      "title": "Day 5: Goal Setting and Priority Systems",
-      "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
-      "content": "<h2>Turning Dreams into Reality</h2><p>Saving money without a clear goal is like driving without a destination. Today, we'll learn how to set powerful, motivating financial goals that you'll actually achieve.</p><h3>The SMART-ER Goal Framework</h3><p>Your goals should be:</p><div class=\"mt-4 grid grid-cols-2 md:grid-cols-3 gap-4 text-center\"> <div class=\"p-4 bg-muted/50 rounded-lg\"><p class=\"font-bold\">S</p><p class=\"text-sm text-muted-foreground\">Specific</p></div> <div class=\"p-4 bg-muted/50 rounded-lg\"><p class=\"font-bold\">M</p><p class=\"text-sm text-muted-foreground\">Measurable</p></div> <div class=\"p-4 bg-muted/50 rounded-lg\"><p class=\"font-bold\">A</p><p class=\"text-sm text-muted-foreground\">Achievable</p></div> <div class=\"p-4 bg-muted/50 rounded-lg\"><p class=\"font-bold\">R</p><p class=\"text-sm text-muted-foreground\">Relevant</p></div> <div class=\"p-4 bg-muted/50 rounded-lg\"><p class=\"font-bold\">T</p><p class=\"text-sm text-muted-foreground\">Time-bound</p></div> <div class=\"p-4 bg-muted/50 rounded-lg\"><p class=\"font-bold text-primary\">ER</p><p class=\"text-sm text-muted-foreground\">Exciting & Reviewed</p></div></div><div class=\"mt-8 space-y-6\"><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-flag\"><path d=\"M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z\"/><line x1=\"4\" x2=\"4\" y1=\"22\" y2=\"15\"/></svg></div><div class=\"flex-1\"><h3>Prioritizing Your Goals</h3><p class=\"text-sm text-muted-foreground\">You probably have multiple goals at once. We'll use a priority matrix to decide what to focus on first, organizing goals into three tiers: foundational (emergency fund), lifestyle (new phone), and future-building (college savings).</p></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-settings-2\"><path d=\"M20 7h-9\"/><path d=\"M14 17H5\"/><circle cx=\"17\" cy=\"17\" r=\"3\"/><circle cx=\"7\" cy=\"7\" r=\"3\"/></svg></div><div class=\"flex-1\"><h3>Systems Beat Willpower</h3><p class=\"text-sm text-muted-foreground\">We'll set up systems like automatic transfers to your savings account and visual progress trackers to keep you motivated and on track without relying on sheer willpower.</p></div></div></div>",
-      "order_index": 5,
-      "ai_summary": "This lesson teaches you how to set and achieve financial goals by transforming vague aspirations into concrete plans. It introduces the SMART-ER goal framework for creating effective goals and explains how to use a priority matrix and automated systems to stay on track.\n\n*   **Use the SMART-ER Framework:** Make goals Specific, Measurable, Achievable, Relevant, Time-bound, Exciting, and Reviewed.\n*   **Prioritize Your Goals:** Categorize goals into foundational, lifestyle, and future-building tiers to focus your efforts.\n*   **Build Systems:** Rely on systems like automatic savings transfers rather than willpower alone.\n*   **Motivation:** Clear, exciting goals provide the motivation needed to maintain financial discipline.",
-      "practice_questions": [
-        {
-          "id": "q1",
-          "type": "mcq",
-          "question": "What does the 'S' in the SMART-ER goal framework stand for?",
-          "options": ["Simple", "Specific", "Savings", "Serious"],
-          "answer": "Specific"
-        },
-        {
-          "id": "q2",
-          "type": "mcq",
-          "question": "Which of the following is the BEST example of a SMART goal?",
-          "options": [
-            "I want to be rich.",
-            "I will save money this year.",
-            "I will save ₹5,000 for a new phone by saving ₹1,000 per month for the next 5 months.",
-            "I hope to buy a phone soon."
-          ],
-          "answer": "I will save ₹5,000 for a new phone by saving ₹1,000 per month for the next 5 months."
-        },
-        {
-          "id": "q3",
-          "type": "mcq",
-          "question": "Setting up an automatic transfer to your savings account is an example of what?",
-          "options": ["A priority matrix", "A lifestyle goal", "A system to beat willpower", "A foundational goal"],
-          "answer": "A system to beat willpower"
-        },
-        {
-          "id": "q4",
-          "type": "text",
-          "question": "Take the vague goal 'I want to save for college' and make it a SMART-ER goal.",
-          "answer": "A good answer would include all SMART-ER elements, e.g., 'I will save ₹50,000 (Specific, Measurable) for my first-year college fees (Relevant, Exciting) by saving ₹2,000 per month for the next 25 months (Achievable, Time-bound), and I will track my progress on a spreadsheet every month (Reviewed).'"
-        },
-        {
-          "id": "q5",
-          "type": "text",
-          "question": "Why is it important for a goal to be 'Exciting'?",
-          "answer": "An exciting goal provides intrinsic motivation. It's the 'why' behind your saving, which makes it easier to stay disciplined and make sacrifices when you are working toward something you genuinely care about."
-        }
-      ]
-    },
-    {
-      "id": "1-6",
-      "lesson_id": "1",
-      "title": "Day 6: Creating Your Personal Budget Sheet",
-      "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
-      "content": "<h2>Building Your Financial Command Center</h2><p>Today, we get hands-on and build a personalized budget sheet that works for your unique life. This isn't about restriction; it's about empowerment. Your budget is a tool that tells your money where to go, instead of wondering where it went.</p><div class=\"mt-8 space-y-6\"><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-file-spreadsheet\"><path d=\"M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z\"/><path d=\"M14 2v4a2 2 0 0 0 2 2h4\"/><path d=\"M8 16h8\"/><path d=\"M8 12h8\"/><path d=\"M15 12h-2\"/><path d=\"M15 16h-2\"/></svg></div><div class=\"flex-1\"><h3>Key Components of Your Budget Sheet</h3><ul class=\"list-disc pl-5 text-sm text-muted-foreground\"><li><strong>Income Tracker:</strong> A section to list all your sources of income, both regular and irregular.</li><li><strong>Expense Categories:</strong> We'll detail your fixed and variable expenses within your 50% Needs and 30% Wants categories.</li><li><strong>Savings Goals:</strong> A dedicated section to track progress towards your different savings goals.</li></ul></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-calendar-check\"><rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\" ry=\"2\"/><line x1=\"16\" x2=\"16\" y1=\"2\" y2=\"6\"/><line x1=\"8\" x2=\"8\" y1=\"2\" y2=\"6\"/><line x1=\"3\" x2=\"21\" y1=\"10\" y2=\"10\"/><path d=\"m9 16 2 2 4-4\"/></svg></div><div class=\"flex-1\"><h3>Staying on Track</h3><p class=\"text-sm text-muted-foreground\">A budget is not a 'set it and forget it' tool. We'll establish a rhythm for checking in: a quick 5-minute weekly check-in and a 30-minute monthly review to celebrate wins and adjust for the month ahead.</p></div></div></div>",
-      "order_index": 6,
-      "ai_summary": "This lesson guides you through creating a personalized budget sheet to gain control over your finances. A budget acts as a financial command center, empowering you to direct your money purposefully rather than questioning where it went. The key is to build a comprehensive tool and review it regularly.\n\n*   **Income Tracker:** Log all sources of money, both regular and irregular.\n*   **Expense Categories:** Detail your spending according to the 50-30-20 rule (Needs, Wants, Savings).\n*   **Savings Goals:** Track progress toward your specific financial objectives.\n*   **Regular Check-ins:** A budget requires consistent attention; perform weekly and monthly reviews to stay on track.",
-      "practice_questions": [
-        {
-          "id": "q1",
-          "type": "mcq",
-          "question": "What is the primary purpose of a budget sheet?",
-          "options": [
-            "To restrict all fun spending",
-            "To tell your money where to go",
-            "To track only your income",
-            "To make you feel bad about your spending"
-          ],
-          "answer": "To tell your money where to go"
-        },
-        {
-          "id": "q2",
-          "type": "mcq",
-          "question": "Which of these is NOT a key component of a good budget sheet?",
-          "options": [
-            "Income Tracker",
-            "Expense Categories",
-            "Savings Goals",
-            "Your friend's spending habits"
-          ],
-          "answer": "Your friend's spending habits"
-        },
-        {
-          "id": "q3",
-          "type": "mcq",
-          "question": "How often should you conduct a detailed review of your budget?",
-          "options": ["Every day", "Once a year", "Once a month", "Never"],
-          "answer": "Once a month"
-        },
-        {
-          "id": "q4",
-          "type": "text",
-          "question": "List three categories you would include under your 'Wants' section in a budget.",
-          "answer": "Answers will vary but should be appropriate wants, e.g., 'Entertainment (Movies/Games)', 'Eating Out', and 'Shopping (Clothes/Gadgets)'."
-        },
-        {
-          "id": "q5",
-          "type": "text",
-          "question": "Why is it important to track both regular and irregular income?",
-          "answer": "Tracking both gives you a complete and accurate picture of your total income, which is necessary for creating a realistic budget. It helps you plan for months where your income might be lower or higher than average."
-        }
-      ]
-    },
-    {
-      "id": "1-7",
-      "lesson_id": "1",
-      "title": "Day 7: Your Budget Sheet Project & Future Planning",
-      "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
-      "content": "<h2>Bringing It All Together</h2><p>Today, you'll finalize your personal budget sheet, integrating all the lessons from this week. This project will serve as your financial roadmap for the months and years to come.</p><div class=\"mt-8 space-y-6\"><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-rocket\"><path d=\"M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.3.05-3.05A7.5 7.5 0 0 0 4.5 16.5Z\"/><path d=\"M16 2.5 21.5 8\"/><path d=\"M6.12 6.12a5.63 5.63 0 0 1 8.08 8.08\"/><path d=\"m12 12 4 4\"/><path d=\"M17.5 17.5c1.26-1.5 5-2 5-2s-.5 3.74-2 5c-.84.71-2.3.7-3.05.05a7.5 7.5 0 0 1-3.05-3.05Z\"/></svg></div><div class=\"flex-1\"><h3>Finalize Your Budget Project</h3><p class=\"text-sm text-muted-foreground\">Your completed budget should be a comprehensive, one-page overview of your financial life. It should clearly show your total income, your 50-30-20 allocations, a detailed list of your expenses, and clear tracking for each of your savings goals.</p></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-waypoints\"><circle cx=\"12\" cy=\"4.5\" r=\"2.5\"/><path d=\"m10.2 6.3-3.9 3.9\"/><circle cx=\"4.5\" cy=\"12\" r=\"2.5\"/><path d=\"M6.3 13.8 9.5 17\"/><circle cx=\"12\" cy=\"19.5\" r=\"2.5\"/><path d=\"M13.8 17.7 17 14.5\"/><circle cx=\"19.5\" cy=\"12\" r=\"2.5\"/><path d=\"m17.7 10.2-3.9-3.9\"/></svg></div><div class=\"flex-1\"><h3>Build a Sustainable System</h3><p class=\"text-sm text-muted-foreground\">Make your system last. Automate your savings by setting up transfers on payday. Build in flexibility with a 'miscellaneous' category. Plan for how your budget will evolve with life changes like college or moving out.</p></div></div></div><h3 class=\"mt-8\">Final Thought:</h3><p>Remember, imperfect action is better than perfect inaction. The goal is not to be a perfect budgeter overnight, but to build a skill and a habit that will serve you for the rest of your life.</p>",
-      "order_index": 7,
-      "ai_summary": "This lesson focuses on finalizing your personal budget sheet and turning it into a sustainable financial system. By integrating all the concepts learned, you create a financial roadmap that evolves with your life and relies on automation and flexibility rather than just willpower.\n\n*   **Finalize Your Budget:** Create a comprehensive, one-page overview of your income, expenses, and savings goals.\n*   **Automate Savings:** Set up automatic transfers to your savings accounts to build a consistent habit.\n*   **Build in Flexibility:** Include a 'miscellaneous' category in your budget to handle unexpected costs without derailing your plan.\n*   **Imperfect Action:** The goal is progress, not perfection. Start with a simple budget and refine it over time.",
-      "practice_questions": [
-        {
-          "id": "q1",
-          "type": "mcq",
-          "question": "What is the key to making a budgeting system sustainable?",
-          "options": ["Making it extremely strict", "Ignoring it for months", "Automating savings and building in flexibility", "Only tracking your income"],
-          "answer": "Automating savings and building in flexibility"
-        },
-        {
-          "id": "q2",
-          "type": "mcq",
-          "question": "What does 'imperfect action is better than perfect inaction' mean in the context of budgeting?",
-          "options": [
-            "You must never make a mistake in your budget.",
-            "It's better to start with a simple budget and improve it over time than to wait for the 'perfect' plan.",
-            "Budgeting perfectly is easy to do.",
-            "You should not take any action until your plan is perfect."
-          ],
-          "answer": "It's better to start with a simple budget and improve it over time than to wait for the 'perfect' plan."
-        },
-        {
-          "id": "q3",
-          "type": "text",
-          "question": "Why is automating your savings an effective strategy?",
-          "answer": "It removes the need for willpower and discipline. By setting up automatic transfers, you 'pay yourself first' without having to make a conscious decision each time, which makes saving a consistent habit."
-        },
-        {
-          "id": "q4",
-          "type": "text",
-          "question": "Name two life changes that might require you to adjust your budget in the future.",
-          "answer": "Answers could include: getting a full-time job, going to college, moving out of your parents' home, buying a car, or getting married."
-        }
-      ]
-    },
-    {
-      "id": "6-1",
-      "lesson_id": "6",
-      "title": "Day 1: What is Personal Branding?",
-      "video_url": null,
-      "content": "<h3>What is a Personal Brand?</h3>\n<p>Think about your favorite brands, like Nike or Apple. You know what they stand for, right? Nike is about determination and athleticism. Apple is about innovation and sleek design. A personal brand is the same idea, but for a person—specifically, for you!</p>\n<p><strong>Personal branding</strong> is the process of creating a clear and consistent message about who you are, what you're good at, and what you stand for. It's how the world—classmates, teachers, and future employers—sees you. It's your reputation, both online and offline.</p>\n\n<h3>Why Does It Matter for You?</h3>\n<p>You might think branding is only for celebrities or big companies, but it's incredibly important for students and young professionals. Here's why:</p>\n<ul>\n  <li><strong>It Differentiates You:</strong> In a world full of talented people, your personal brand is what makes you unique. It helps you stand out from the crowd when applying for internships, colleges, or jobs.</li>\n  <li><strong>It Builds Trust and Credibility:</strong> When you consistently share your knowledge and passion for a particular subject (like coding, art, or marketing), people start to see you as a credible and knowledgeable person in that area.</li>\n  <li><strong>It Creates Opportunities:</strong> A strong personal brand can attract opportunities to you. People might reach out with project ideas, internship offers, or networking connections because they see what you're about and they like it.</li>\n  <li><strong>It Guides Your Growth:</strong> Defining your personal brand forces you to think about your strengths, values, and goals. This clarity helps you make better decisions about your career and personal development.</li>\n</ul>\n\n<h3>Your Digital Footprint is Your Brand</h3>\n<p>Today, a huge part of your personal brand is your digital footprint. Every post you like, every comment you make, and every photo you share on social media contributes to how people perceive you. That's why it's so important to be mindful of your online presence. Future employers and college admission officers often look at social media profiles to get a better sense of who you are.</p>\n\n<h3>Key Takeaways</h3>\n<ul>\n  <li>Your personal brand is your reputation and what makes you unique.</li>\n  <li>It's not about being fake; it's about authentically showcasing your strengths and passions.</li>\n  <li>A strong brand can build trust and attract opportunities.</li>\n  <li>Be mindful of your digital footprint, as it's a major part of your brand today.</li>\n</ul>",
-      "order_index": 1,
-      "practice_questions": [
-        {
-          "id": "pq6-1-1",
-          "type": "text",
-          "question": "In one sentence, what is personal branding?",
-          "answer": "Personal branding is the practice of marketing people and their careers as brands."
-        },
-        {
-          "id": "pq6-1-2",
-          "type": "mcq",
-          "question": "Which of the following is NOT a primary benefit of building a personal brand?",
-          "options": [
-            "It helps you stand out.",
-            "It guarantees you will get any job you apply for.",
-            "It can attract opportunities to you.",
-            "It builds credibility."
-          ],
-          "answer": "It guarantees you will get any job you apply for."
-        }
-      ],
-      "ai_summary": "Personal branding is about creating a distinct identity for yourself based on your skills, values, and passions, similar to how companies brand themselves. It's crucial for students and young professionals because it helps you stand out, builds trust and credibility in your field, and attracts opportunities like internships and jobs. A key part of your brand is your digital footprint, so it's important to manage your online presence thoughtfully. The main takeaways are that an authentic personal brand showcases your unique strengths, builds trust, and can open doors for your future."
+      "order_index": 11,
+      "subtopics": []
     }
   ]
 }

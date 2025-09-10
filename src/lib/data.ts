@@ -4,74 +4,93 @@ import type { SupabaseClient } from '@supabase/supabase-js';
 import type { Lesson, Subtopic, UserSubtopicProgress, Post, CommentWithAuthor, PostWithAuthor, UserSubscription, UserProfile, UserProfileWithSubscription, Transaction } from './types';
 import { unstable_noStore as noStore } from 'next/cache';
 import { supabaseAdmin } from './supabase/admin';
-import sampleContent from '@/data/sample-content.json';
+import rawContent from '@/data/sample-content.json';
+
+// Helper to add IDs to lessons and subtopics for compatibility
+const content = {
+  lessons: rawContent.lessons.map((lesson, lessonIndex) => {
+    const lessonId = (lessonIndex + 1).toString();
+    return {
+      ...lesson,
+      id: lessonId,
+      subtopics: lesson.subtopics.map((subtopic, subtopicIndex) => ({
+        ...subtopic,
+        id: `${lessonId}-${subtopicIndex + 1}`,
+        lesson_id: lessonId,
+      })),
+    }
+  })
+}
 
 // NOTE: All lesson and subtopic data is now read from the sample-content.json file.
 
 export async function getLessons(): Promise<Lesson[]> {
   noStore();
-  // Read from the imported JSON file
-  return sampleContent.lessons as Lesson[];
+  // Return the lessons from the imported JSON file
+  return content.lessons as Lesson[];
 }
 
 export async function getLessonById(id: string): Promise<Lesson | null> {
     noStore();
-    const lesson = sampleContent.lessons.find(l => l.id === id);
+    const lesson = content.lessons.find(l => l.id === id);
     return lesson || null;
 }
 
-export async function getLessonByIdWithSubtopics(id:string): Promise<(Lesson & { subtopics: Subtopic[] }) | null> {
+export async function getLessonByIdWithSubtopics(id:string): Promise<Lesson | null> {
   noStore();
-  const lesson = sampleContent.lessons.find((l) => l.id === id);
+  const lesson = content.lessons.find((l) => l.id === id);
   if (!lesson) return null;
-
-  const subtopics = sampleContent.subtopics.filter((s) => s.lesson_id === id);
-  
-  return {
-    ...lesson,
-    subtopics: subtopics as Subtopic[],
-  };
+  return lesson as Lesson;
 }
 
 
 export async function getSubtopicsByLessonId(lessonId: string): Promise<Subtopic[]> {
     noStore();
-    return sampleContent.subtopics.filter(s => s.lesson_id === lessonId) as Subtopic[];
+    const lesson = content.lessons.find(l => l.id === lessonId);
+    return lesson?.subtopics || [];
 }
 
 export async function getSubtopicById(id: string): Promise<Subtopic | null> {
     noStore();
-    const subtopic = sampleContent.subtopics.find(s => s.id === id);
-    return subtopic || null;
+    for (const lesson of content.lessons) {
+      const subtopic = lesson.subtopics.find(s => s.id === id);
+      if (subtopic) return subtopic;
+    }
+    return null;
 }
 
 export async function getSubtopicByIdWithRelations(id: string): Promise<(Subtopic & { lesson: Lesson; nextSubtopicId?: string }) | null> {
     noStore();
-    const subtopic = sampleContent.subtopics.find(s => s.id === id);
-    if (!subtopic) return null;
+    let foundLesson: Lesson | null = null;
+    let foundSubtopic: Subtopic | null = null;
 
-    const lesson = sampleContent.lessons.find(l => l.id === subtopic.lesson_id);
-    if (!lesson) return null;
+    for (const lesson of content.lessons) {
+        const subtopic = lesson.subtopics.find(s => s.id === id);
+        if (subtopic) {
+            foundSubtopic = subtopic;
+            foundLesson = lesson as Lesson;
+            break;
+        }
+    }
+    
+    if (!foundSubtopic || !foundLesson) return null;
 
-    const subtopicsInLesson = sampleContent.subtopics
-        .filter(s => s.lesson_id === subtopic.lesson_id)
-        .sort((a, b) => a.order_index - b.order_index);
-
+    const subtopicsInLesson = foundLesson.subtopics.sort((a, b) => a.order_index - b.order_index);
     const currentIndex = subtopicsInLesson.findIndex(s => s.id === id);
     const nextSubtopic = currentIndex !== -1 && currentIndex < subtopicsInLesson.length - 1
         ? subtopicsInLesson[currentIndex + 1]
         : null;
 
     return { 
-      ...subtopic,
-      lesson: lesson as Lesson,
+      ...foundSubtopic,
+      lesson: foundLesson,
       nextSubtopicId: nextSubtopic?.id,
-    } as (Subtopic & { lesson: Lesson; nextSubtopicId?: string });
+    };
 }
 
 export async function getSubtopicTitleById(id: string): Promise<string | null> {
     noStore();
-    const subtopic = sampleContent.subtopics.find(s => s.id === id);
+    const subtopic = await getSubtopicById(id);
     if (!subtopic) return null;
     return subtopic.title;
 }
@@ -210,7 +229,4 @@ export async function getPosts(): Promise<Post[]> {
 }
 
 
-export async function getPostById(id: string): Promise<Post | null> {
-  noStore();
-  return null;
-}
+export async function getPostById(id: string): Promise

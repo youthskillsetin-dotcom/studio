@@ -1,12 +1,12 @@
 
-
 export interface Lesson {
-  id: string; 
+  id?: string; // Made optional as it's not present in the nested subtopics
   title: string;
   description: string;
   is_free: boolean;
   order_index: number;
   created_at?: string;
+  subtopics: Subtopic[];
 }
 
 export interface PracticeQuestion {
@@ -18,13 +18,13 @@ export interface PracticeQuestion {
 }
 
 export interface Subtopic {
-  id:string;
-  lesson_id: string;
+  id?: string; // Made optional as it's not present in the nested subtopics
+  lesson_id?: string; // No longer needed in nested structure but kept for loose coupling if needed
   title: string;
   content: string;
   order_index: number;
   practice_questions: PracticeQuestion[];
-  video_url?: string;
+  video_url?: string | null;
   ai_summary?: string;
   created_at?: string;
 }
@@ -113,6 +113,4 @@ export type PostWithAuthor = Omit<Post, 'author_email' | 'comments'> & {
   profile: { email: string } | null;
 };
 
-export type CommentWithAuthor = Omit<Comment, 'author_email'> & {
-  profile: { email: string } | null;
-};
+export type CommentWithAuthor = O
