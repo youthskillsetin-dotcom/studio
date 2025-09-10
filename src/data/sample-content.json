@@ -2,12 +2,15 @@
 {
   "lessons": [
     {
+      "id": "1",
       "title": "Module 1: Personal Finance 101",
       "description": "A 7-Day Journey to Financial Mastery for Teens (Ages 16-20).",
       "is_free": true,
       "order_index": 1,
       "subtopics": [
         {
+          "id": "1-1",
+          "lesson_id": "1",
           "title": "Day 1: The Money Mindset Revolution",
           "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
           "content": "<h2>What's the Big Idea?</h2><p>Your relationship with money starts in your head. Today, we'll explore how your thoughts and feelings about money—your 'money mindset'—shape your financial future. We'll learn to spot sneaky spending habits and build a strong foundation for success.</p><div class=\"mt-8 space-y-6\"><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-brain-circuit\"><path d=\"M12 5V2M9 5H7M17 5h-2M9 9a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2M15 9a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2M12 18v3M10 16l2-2 2 2\"/><path d=\"M12 13a2.5 2.5 0 0 0-2.5 2.5v0a2.5 2.5 0 0 0 2.5 2.5h0a2.5 2.5 0 0 0 2.5-2.5v0A2.5 2.5 0 0 0 12 13Z\"/><path d=\"M9.5 7.5a2.5 2.5 0 0 1 0 5\"/><path d=\"M14.5 7.5a2.5 2.5 0 0 0 0 5\"/></svg></div><div class=\"flex-1\"><h3>Instant vs. Delayed Gratification</h3><p class=\"text-sm text-muted-foreground\">Learn why waiting for a bigger reward is a financial superpower. We'll look at the famous 'marshmallow test' and see how it applies to buying that new video game versus saving for a car.</p></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-zap\"><polygon points=\"13 2 3 14 12 14 11 22 21 10 12 10 13 2\"/></svg></div><div class=\"flex-1\"><h3>Emotional Spending</h3><p class=\"text-sm text-muted-foreground\">Feeling bored, stressed, or pressured by friends? These feelings can lead to 'retail therapy.' We'll identify your personal spending triggers and create a plan to manage them.</p></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-help-circle\"><path d=\"M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3\"/><path d=\"M12 17h.01\"/></svg></div><div class=\"flex-1\"><h3>Uncovering Your Money Scripts</h3><p class=\"text-sm text-muted-foreground\">You have hidden beliefs about money from your childhood. We'll uncover these 'money scripts' (like 'money is the root of all evil' or 'you have to work hard for money') and reframe them for a healthier financial life.</p></div></div></div><h3 class=\"mt-8\">Why This Matters:</h3><p>Small, consistent habits create massive results over time. Saving a little bit from your first part-time job can grow into a significant amount by the time you graduate, thanks to the power of compounding!</p>",
@@ -51,28 +54,28 @@
               "answer": "A hidden belief about money you learned in childhood."
             },
             {
-                "id": "q1-1-4",
-                "type": "mcq",
-                "question": "The power of compounding means that:",
-                "options": [
-                  "The more money you have, the more you spend.",
-                  "Small, regular savings can grow into a large amount over time.",
-                  "You need a lot of money to start saving.",
-                  "Complex math is required for budgeting."
-                ],
-                "answer": "Small, regular savings can grow into a large amount over time."
+              "id": "q1-1-4",
+              "type": "mcq",
+              "question": "The power of compounding means that:",
+              "options": [
+                "The more money you have, the more you spend.",
+                "Small, regular savings can grow into a large amount over time.",
+                "You need a lot of money to start saving.",
+                "Complex math is required for budgeting."
+              ],
+              "answer": "Small, regular savings can grow into a large amount over time."
             },
             {
-                "id": "q1-1-5",
-                "type": "mcq",
-                "question": "What is the primary benefit of developing a positive money mindset?",
-                "options": [
-                  "It guarantees you will become a millionaire.",
-                  "It helps you make conscious decisions that support your financial goals.",
-                  "It allows you to spend money without worrying.",
-                  "It eliminates the need for a budget."
-                ],
-                "answer": "It helps you make conscious decisions that support your financial goals."
+              "id": "q1-1-5",
+              "type": "mcq",
+              "question": "What is the primary benefit of developing a positive money mindset?",
+              "options": [
+                "It guarantees you will become a millionaire.",
+                "It helps you make conscious decisions that support your financial goals.",
+                "It allows you to spend money without worrying.",
+                "It eliminates the need for a budget."
+              ],
+              "answer": "It helps you make conscious decisions that support your financial goals."
             },
             {
               "id": "q1-1-6",
@@ -89,6 +92,8 @@
           ]
         },
         {
+          "id": "1-2",
+          "lesson_id": "1",
           "title": "Day 2: Mastering the 50-30-20 Rule",
           "video_url": "https://www.youtube.com/embed/i_ZAnwdi_rA",
           "content": "<h2>Your Simple Blueprint for Budgeting</h2><p>The 50-30-20 rule is a straightforward way to manage your money without complicated spreadsheets. It’s all about balance and making sure you’re covering your needs, enjoying your life, and saving for the future.</p><div class=\"mt-8 space-y-6\"><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-pie-chart\"><path d=\"M21.21 15.89A10 10 0 1 1 8 2.83\"/><path d=\"M22 12A10 10 0 0 0 12 2v10z\"/></svg></div><div class=\"flex-1\"><h3>50% for Needs</h3><p class=\"text-sm text-muted-foreground\">These are your absolute must-haves. For a teen, this could be your phone bill, transportation to school or work, or essential food costs. If you live at home, this category might be small, which is a huge advantage!</p></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-shopping-bag\"><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg></div><div class=\"flex-1\"><h3>30% for Wants</h3><p class=\"text-sm text-muted-foreground\">This is the fun stuff! Think movies, new clothes, video games, or eating out with friends. This category is flexible and is the first place to cut back if you need to save more.</p></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-piggy-bank\"><path d=\"M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 1.3 3.2 3 3.8V17c0 1 .7 1.7 1.5 2h1c1 0 2-1 2-2v-2h1.5c1.7 0 3-1.3 3-3 0-2.5-3.5-4-7-4\"/><path d=\"M12 5c.5 0 1 .2 1.3.6\"/><path d=\"M10 12v-2\"/><path d=\"M10 17v-1\"/></svg></div><div class=\"flex-1\"><h3>20% for Savings & Debt Repayment</h3><p class=\"text-sm text-muted-foreground\">This is where you pay your future self. This chunk of money goes directly towards your emergency fund, saving for big goals (like a car or college), or paying off any money you owe.</p></div></div></div><h3 class=\"mt-8\">Adapting for Teen Life:</h3><p>Don't have a regular paycheck? We'll show you how to apply these percentages to irregular income from babysitting or summer jobs. Living with parents? We'll discuss how to adjust the percentages when your 'Needs' are low, so you can turbo-charge your savings.</p>",
@@ -131,6 +136,8 @@
           ]
         },
         {
+          "id": "1-3",
+          "lesson_id": "1",
           "title": "Day 3: Emergency Funds - Your Financial Safety Net",
           "video_url": "https://www.youtube.com/embed/D-Yp2t4_q54",
           "content": "<h2>Why You Need a Financial Shield</h2><p>An emergency fund is your personal safety net. It's a stash of money set aside for true, unexpected emergencies. This fund gives you confidence, prevents you from going into debt, and can even create opportunities.</p><div class=\"mt-8 space-y-6\"><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-shield-alert\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10\"/><path d=\"M12 8v4\"/><path d=\"M12 16h.01\"/></svg></div><div class=\"flex-1\"><h3>What's a Real Emergency?</h3><ul class=\"list-disc pl-5 text-sm text-muted-foreground\"><li><strong>True Emergencies:</strong> Your phone screen shatters, you get a flat tire, you have an unexpected medical cost.</li><li><strong>Not Emergencies:</strong> Concert tickets for your favorite band, a sale on a new pair of sneakers, a weekend trip with friends.</li></ul></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-bar-chart-3\"><path d=\"M3 3v18h18\"/><path d=\"M18 17V9\"/><path d=\"M13 17V5\"/><path d=\"M8 17v-3\"/></svg></div><div class=\"flex-1\"><h3>Building Your Fund in Phases</h3><ol class=\"list-decimal pl-5 text-sm text-muted-foreground\"><li><strong>The Starter Fund ($100-$500):</strong> Your first goal. This covers small surprises.</li><li><strong>The Basic Fund (1 Month of Expenses):</strong> Once you have a job, aim to save enough to cover one month of your essential costs.</li><li><strong>The Full Fund (3-6 Months of Expenses):</strong> This is the ultimate goal, especially for when you're financially independent.</li></ol></div></div></div><h3 class=\"mt-8\">Where to Keep It:</h3><p>Your emergency fund should be in a separate, high-yield savings account. It needs to be easily accessible but not so easy that you're tempted to dip into it for non-emergencies.</p>",
@@ -173,6 +180,8 @@
           ]
         },
         {
+          "id": "1-4",
+          "lesson_id": "1",
           "title": "Day 4: Needs vs Wants in the Digital Age",
           "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
           "content": "<h2>Navigating Modern Spending Traps</h2><p>In today's world, the line between what you need and what you want is blurrier than ever. Marketers are experts at making you feel like you 'need' the latest gadget or subscription. Today, we'll learn to see through the noise.</p><div class=\"mt-8 space-y-6\"><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-mouse-pointer-click\"><path d=\"m9 9 5 12 1.8-5.2L21 14Z\"/><path d=\"M7.2 2.2 8 5.1\"/><path d=\"m5.1 8-2.9-.8\"/><path d=\"M14 4.1 12 6\"/><path d=\"m2.2 7.2 2.9.8\"/><path d=\"m6 12-1.9 2\"/></svg></div><div class=\"flex-1\"><h3>Recognizing the Traps</h3><ul class=\"list-disc pl-5 text-sm text-muted-foreground\"><li><strong>Subscription Creep:</strong> That 'free trial' you signed up for? It's now costing you $10 a month. We'll audit your subscriptions and cut the fat.</li><li><strong>Social Media Pressure:</strong> Seeing influencers and friends with the latest stuff can create serious FOMO (Fear Of Missing Out).</li><li><strong>The Convenience Fee:</strong> Food delivery and one-click purchasing are easy, but they often come with hidden costs.</li></ul></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-list-checks\"><path d=\"m3 17 2 2 4-4\"/><path d=\"m3 7 2 2 4-4\"/><path d=\"M13 6h8\"/><path d=\"M13 12h8\"/><path d=\"M13 18h8\"/></svg></div><div class=\"flex-1\"><h3>Your Decision-Making Toolkit</h3><ul class=\"list-disc pl-5 text-sm text-muted-foreground\"><li><strong>The 24-Hour Rule:</strong> See something you want? Wait 24 hours before buying it. The urge often fades.</li><li><strong>The Opportunity Cost Test:</strong> Ask yourself, 'What else could I do with this money?'</li><li><strong>The One-Year Test:</strong> Will this purchase matter in one year? This helps put impulse buys into perspective.</li></ul></div></div></div>",
@@ -215,6 +224,8 @@
           ]
         },
         {
+          "id": "1-5",
+          "lesson_id": "1",
           "title": "Day 5: Goal Setting and Priority Systems",
           "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
           "content": "<h2>Turning Dreams into Reality</h2><p>Saving money without a clear goal is like driving without a destination. Today, we'll learn how to set powerful, motivating financial goals that you'll actually achieve.</p><h3>The SMART-ER Goal Framework</h3><p>Your goals should be:</p><div class=\"mt-4 grid grid-cols-2 md:grid-cols-3 gap-4 text-center\"> <div class=\"p-4 bg-muted/50 rounded-lg\"><p class=\"font-bold\">S</p><p class=\"text-sm text-muted-foreground\">Specific</p></div> <div class=\"p-4 bg-muted/50 rounded-lg\"><p class=\"font-bold\">M</p><p class=\"text-sm text-muted-foreground\">Measurable</p></div> <div class=\"p-4 bg-muted/50 rounded-lg\"><p class=\"font-bold\">A</p><p class=\"text-sm text-muted-foreground\">Achievable</p></div> <div class=\"p-4 bg-muted/50 rounded-lg\"><p class=\"font-bold\">R</p><p class=\"text-sm text-muted-foreground\">Relevant</p></div> <div class=\"p-4 bg-muted/50 rounded-lg\"><p class=\"font-bold\">T</p><p class=\"text-sm text-muted-foreground\">Time-bound</p></div> <div class=\"p-4 bg-muted/50 rounded-lg\"><p class=\"font-bold text-primary\">ER</p><p class=\"text-sm text-muted-foreground\">Exciting & Reviewed</p></div></div><div class=\"mt-8 space-y-6\"><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-flag\"><path d=\"M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z\"/><line x1=\"4\" x2=\"4\" y1=\"22\" y2=\"15\"/></svg></div><div class=\"flex-1\"><h3>Prioritizing Your Goals</h3><p class=\"text-sm text-muted-foreground\">You probably have multiple goals at once. We'll use a priority matrix to decide what to focus on first, organizing goals into three tiers: foundational (emergency fund), lifestyle (new phone), and future-building (college savings).</p></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-settings-2\"><path d=\"M20 7h-9\"/><path d=\"M14 17H5\"/><circle cx=\"17\" cy=\"17\" r=\"3\"/><circle cx=\"7\" cy=\"7\" r=\"3\"/></svg></div><div class=\"flex-1\"><h3>Systems Beat Willpower</h3><p class=\"text-sm text-muted-foreground\">We'll set up systems like automatic transfers to your savings account and visual progress trackers to keep you motivated and on track without relying on sheer willpower.</p></div></div></div>",
@@ -262,6 +273,8 @@
           ]
         },
         {
+          "id": "1-6",
+          "lesson_id": "1",
           "title": "Day 6: Creating Your Personal Budget Sheet",
           "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
           "content": "<h2>Building Your Financial Command Center</h2><p>Today, we get hands-on and build a personalized budget sheet that works for your unique life. This isn't about restriction; it's about empowerment. Your budget is a tool that tells your money where to go, instead of wondering where it went.</p><div class=\"mt-8 space-y-6\"><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-file-spreadsheet\"><path d=\"M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z\"/><path d=\"M14 2v4a2 2 0 0 0 2 2h4\"/><path d=\"M8 16h8\"/><path d=\"M8 12h8\"/><path d=\"M15 12h-2\"/><path d=\"M15 16h-2\"/></svg></div><div class=\"flex-1\"><h3>Key Components of Your Budget Sheet</h3><ul class=\"list-disc pl-5 text-sm text-muted-foreground\"><li><strong>Income Tracker:</strong> A section to list all your sources of income, both regular and irregular.</li><li><strong>Expense Categories:</strong> We'll detail your fixed and variable expenses within your 50% Needs and 30% Wants categories.</li><li><strong>Savings Goals:</strong> A dedicated section to track progress towards your different savings goals.</li></ul></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-calendar-check\"><rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\" ry=\"2\"/><line x1=\"16\" x2=\"16\" y1=\"2\" y2=\"6\"/><line x1=\"8\" x2=\"8\" y1=\"2\" y2=\"6\"/><line x1=\"3\" x2=\"21\" y1=\"10\" y2=\"10\"/><path d=\"m9 16 2 2 4-4\"/></svg></div><div class=\"flex-1\"><h3>Staying on Track</h3><p class=\"text-sm text-muted-foreground\">A budget is not a 'set it and forget it' tool. We'll establish a rhythm for checking in: a quick 5-minute weekly check-in and a 30-minute monthly review to celebrate wins and adjust for the month ahead.</p></div></div></div>",
@@ -314,6 +327,8 @@
           ]
         },
         {
+          "id": "1-7",
+          "lesson_id": "1",
           "title": "Day 7: Your Budget Sheet Project & Future Planning",
           "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
           "content": "<h2>Bringing It All Together</h2><p>Today, you'll finalize your personal budget sheet, integrating all the lessons from this week. This project will serve as your financial roadmap for the months and years to come.</p><div class=\"mt-8 space-y-6\"><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-rocket\"><path d=\"M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.3.05-3.05A7.5 7.5 0 0 0 4.5 16.5Z\"/><path d=\"M16 2.5 21.5 8\"/><path d=\"M6.12 6.12a5.63 5.63 0 0 1 8.08 8.08\"/><path d=\"m12 12 4 4\"/><path d=\"M17.5 17.5c1.26-1.5 5-2 5-2s-.5 3.74-2 5c-.84.71-2.3.7-3.05.05a7.5 7.5 0 0 1-3.05-3.05Z\"/></svg></div><div class=\"flex-1\"><h3>Finalize Your Budget Project</h3><p class=\"text-sm text-muted-foreground\">Your completed budget should be a comprehensive, one-page overview of your financial life. It should clearly show your total income, your 50-30-20 allocations, a detailed list of your expenses, and clear tracking for each of your savings goals.</p></div></div><div class=\"p-6 rounded-xl border bg-card flex flex-col md:flex-row items-center gap-6\"><div class=\"flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-waypoints\"><circle cx=\"12\" cy=\"4.5\" r=\"2.5\"/><path d=\"m10.2 6.3-3.9 3.9\"/><circle cx=\"4.5\" cy=\"12\" r=\"2.5\"/><path d=\"M6.3 13.8 9.5 17\"/><circle cx=\"12\" cy=\"19.5\" r=\"2.5\"/><path d=\"M13.8 17.7 17 14.5\"/><circle cx=\"19.5\" cy=\"12\" r=\"2.5\"/><path d=\"m17.7 10.2-3.9-3.9\"/></svg></div><div class=\"flex-1\"><h3>Build a Sustainable System</h3><p class=\"text-sm text-muted-foreground\">Make your system last. Automate your savings by setting up transfers on payday. Build in flexibility with a 'miscellaneous' category. Plan for how your budget will evolve with life changes like college or moving out.</p></div></div></div><h3 class=\"mt-8\">Final Thought:</h3><p>Remember, imperfect action is better than perfect inaction. The goal is not to be a perfect budgeter overnight, but to build a skill and a habit that will serve you for the rest of your life.</p>",
@@ -356,393 +371,1246 @@
       ]
     },
     {
+      "id": "2",
       "title": "Module 2: Banking & Investments Mastery",
       "description": "A 7-Day Journey to Financial Growth for Teens (Ages 16-20).",
       "is_free": false,
       "order_index": 2,
       "subtopics": [
         {
+          "id": "2-1",
+          "lesson_id": "2",
           "title": "Day 1: Understanding the Banking System",
           "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
-          "content": "<h2>How Banks Work</h2><p>Explore the role of banks, different types of accounts (savings, current), and the importance of having a bank account.</p>",
+          "content": "<h2>How Banks Really Work</h2><p>Banks are more than just places to store money; they are the backbone of the economy. We'll explore the different types of bank accounts, how banks use your money, and why choosing the right bank matters.</p><h3>Key Account Types</h3><ul><li><strong>Savings Account:</strong> Your primary tool for storing money safely while earning a small amount of interest. Ideal for your emergency fund and short-term goals.</li><li><strong>Current Account:</strong> Designed for frequent transactions. This is what businesses use, and it often comes with features like overdraft facilities. For most teens, a savings account is enough.</li></ul><h3>Digital Banking is Your Friend</h3><p>Learn to navigate mobile banking apps, set up UPI for instant payments, and use online portals to track your finances without ever needing to visit a branch.</p>",
           "order_index": 1,
-          "ai_summary": "Learn the basics of the banking system, including the function of banks, the difference between savings and current accounts, and why a bank account is essential for financial management.",
+          "ai_summary": "This lesson demystifies the banking system, explaining the core functions of banks and the differences between savings and current accounts. It emphasizes the importance of digital banking tools like mobile apps and UPI for modern financial management.\n\n*   **Savings vs. Current:** Savings accounts are for storing and growing money, while current accounts are for frequent transactions.\n*   **Digital Tools:** Mobile banking and UPI are essential for easy and efficient money management.\n*   **Bank's Role:** Banks use deposits to lend money to others, which helps the economy grow.",
           "practice_questions": [
             {
               "id": "q2-1-1",
               "type": "mcq",
               "question": "What is the primary purpose of a savings account?",
-              "options": ["For daily transactions", "To store money safely and earn interest", "For business purposes", "To get a loan"],
+              "options": ["For daily, frequent transactions", "To store money safely and earn interest", "For business overdrafts", "To get a loan"],
               "answer": "To store money safely and earn interest"
             },
             {
               "id": "q2-1-2",
               "type": "text",
-              "question": "Name two benefits of having a bank account.",
-              "answer": "Benefits include safety, earning interest, ease of making payments, and building a financial history."
+              "question": "Name two benefits of using a mobile banking app.",
+              "answer": "Benefits include checking your balance anytime, transferring money instantly, paying bills, and tracking spending easily."
             }
           ]
         },
         {
+          "id": "2-2",
+          "lesson_id": "2",
           "title": "Day 2: Introduction to Investing",
           "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
-          "content": "<h2>Why Invest?</h2><p>Understand the difference between saving and investing, the concept of risk vs. return, and the power of compounding in investments.</p>",
+          "content": "<h2>Putting Your Money to Work</h2><p>Saving keeps your money safe, but investing makes it grow. We'll explore the fundamental concept of making your money work for you, beating inflation, and achieving long-term wealth.</p><h3>Risk vs. Return</h3><p>This is the most important trade-off in investing. Higher potential returns almost always come with higher risk. We'll analyze why this is and how to find a balance you're comfortable with.</p><h3>The Magic of Compounding</h3><p>We'll revisit compounding from a new perspective: not just for savings, but for investments. See how your returns can start generating their own returns, leading to exponential growth over time.</p>",
           "order_index": 2,
-          "ai_summary": "This lesson introduces investing, highlighting the difference from saving, the relationship between risk and return, and how compounding can significantly grow wealth over time.",
+          "ai_summary": "This lesson introduces the core principles of investing, contrasting it with saving. Key topics include making your money work for you, the risk-return trade-off, and the power of compounding to accelerate wealth growth over time.\n\n*   **Saving vs. Investing:** Saving is for safety; investing is for growth.\n*   **Risk-Return Trade-off:** Higher potential rewards typically involve higher risk.\n*   **Compounding:** Reinvesting your earnings to generate exponential growth is the key to long-term wealth.",
           "practice_questions": [
             {
               "id": "q2-2-1",
               "type": "mcq",
               "question": "What is the main advantage of investing over saving?",
-              "options": ["It is risk-free", "It has the potential for higher returns", "The money is more accessible", "It is government-guaranteed"],
-              "answer": "It has the potential for higher returns"
+              "options": ["It is risk-free", "It has the potential for higher returns to beat inflation", "The money is more accessible", "It is government-guaranteed"],
+              "answer": "It has the potential for higher returns to beat inflation"
             },
             {
               "id": "q2-2-2",
               "type": "text",
-              "question": "What does 'risk vs. return' mean in investing?",
-              "answer": "It means that higher potential returns are usually associated with higher risk of losing money."
+              "question": "In simple terms, what does 'risk vs. return' mean in investing?",
+              "answer": "It means that to get a chance at higher profits, you usually have to accept a greater possibility of losing money."
             }
           ]
         },
         {
+          "id": "2-3",
+          "lesson_id": "2",
           "title": "Day 3: Exploring Investment Options",
           "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
-          "content": "<h2>Stocks, Bonds, and Mutual Funds</h2><p>Get a simple overview of different investment types: what they are, how they work, and who they are suitable for.</p>",
+          "content": "<h2>Your Investment Toolbox</h2><p>Let's open the toolbox of investing. We'll break down the most common investment types in simple terms so you know your options.</p><ul><li><strong>Stocks (Equities):</strong> Buying a stock means you own a tiny piece of a company. If the company does well, your piece becomes more valuable.</li><li><strong>Bonds (Debt):</strong> When you buy a bond, you're essentially lending money to a government or company. In return, they pay you interest. It's generally safer than stocks.</li><li><strong>Mutual Funds:</strong> A basket of stocks and/or bonds managed by a professional. Great for instant diversification.</li></ul>",
           "order_index": 3,
-          "ai_summary": "Learn about various investment options like stocks, bonds, and mutual funds. This lesson covers their basic definitions, mechanics, and suitability for different types of investors.",
+          "ai_summary": "This lesson provides an overview of common investment options, including stocks, bonds, and mutual funds. It explains what each asset is, how it works, and its general risk profile, giving you a foundational understanding of your investment choices.\n\n*   **Stocks:** Ownership in a company, offering growth potential.\n*   **Bonds:** A loan to an entity, providing regular income and lower risk.\n*   **Mutual Funds:** A professionally managed collection of assets, offering easy diversification.",
           "practice_questions": [
             {
               "id": "q2-3-1",
               "type": "mcq",
               "question": "What do you own when you buy a stock?",
-              "options": ["A loan to a company", "A piece of a company", "A government debt", "A collection of stocks"],
-              "answer": "A piece of a company"
+              "options": ["A loan to a company", "A small ownership stake in a company", "A government debt instrument", "A basket of different investments"],
+              "answer": "A small ownership stake in a company"
             },
             {
               "id": "q2-3-2",
               "type": "text",
-              "question": "What is a mutual fund?",
-              "answer": "A mutual fund is a pool of money collected from many investors to invest in a diversified portfolio of stocks, bonds, or other assets."
+              "question": "What is the main benefit of investing in a mutual fund for a beginner?",
+              "answer": "The main benefit is instant diversification, which means your money is spread across many different investments, reducing risk."
             }
           ]
         },
         {
+          "id": "2-4",
+          "lesson_id": "2",
           "title": "Day 4: How to Start Investing",
           "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
-          "content": "<h2>Your First Investment</h2><p>Learn about DEMAT and trading accounts, and the steps to make your first investment in a mutual fund or stock.</p>",
+          "content": "<h2>Your First Step into the Market</h2><p>Ready to get started? We'll walk you through the practical steps of opening the accounts you need to begin your investment journey.</p><h3>DEMAT & Trading Accounts</h3><p>A <strong>DEMAT account</strong> is like a digital locker that holds your shares and bonds. A <strong>Trading account</strong> is the platform you use to buy and sell them. You need both, and they are usually opened together through a stockbroker.</p><h3>Choosing a Broker</h3><p>We'll discuss the difference between full-service brokers and discount brokers (like Zerodha, Groww), and what to look for when choosing one.</p>",
           "order_index": 4,
-          "ai_summary": "This lesson provides practical steps on how to begin investing, including understanding DEMAT and trading accounts, and a guide to making your first investment.",
+          "ai_summary": "This lesson provides a practical guide on how to start investing. It explains the roles of DEMAT and trading accounts, the process of opening them, and how to choose a suitable stockbroker based on your needs.\n\n*   **DEMAT Account:** A digital wallet for your securities.\n*   **Trading Account:** The interface used to buy and sell securities.\n*   **Stockbroker:** A platform (e.g., Zerodha, Groww) that facilitates your trades. You need one to access the market.",
           "practice_questions": [
             {
               "id": "q2-4-1",
               "type": "mcq",
-              "question": "What is a DEMAT account used for?",
+              "question": "A DEMAT account is used for:",
               "options": ["Depositing cash", "Holding shares and securities in electronic form", "Daily spending", "Applying for loans"],
               "answer": "Holding shares and securities in electronic form"
             },
             {
               "id": "q2-4-2",
               "type": "text",
-              "question": "What is the first step to start investing in stocks?",
-              "answer": "The first step is to open a DEMAT and trading account with a registered broker."
+              "question": "What is the difference between a DEMAT and a Trading account?",
+              "answer": "A DEMAT account holds your investments (like a locker), while a Trading account is what you use to place buy and sell orders (like a marketplace)."
             }
           ]
         },
         {
+          "id": "2-5",
+          "lesson_id": "2",
           "title": "Day 5: Long-Term vs. Short-Term Investing",
           "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
-          "content": "<h2>Time Horizon Matters</h2><p>Understand the difference in strategy between long-term goals (like retirement) and short-term goals (like buying a bike).</p>",
+          "content": "<h2>Time is Your Biggest Ally</h2><p>Your investment strategy should depend heavily on your goals' timeline. We'll differentiate between strategies for short-term and long-term objectives.</p><h3>Short-Term Goals (1-3 years)</h3><p>Examples: Saving for a new laptop or a trip. Strategy: Focus on capital preservation. Use safer options like Fixed Deposits (FDs) or liquid mutual funds. Growth is secondary to safety.</p><h3>Long-Term Goals (5+ years)</h3><p>Examples: Saving for college, a house, or retirement. Strategy: Focus on growth. Use investments like stocks and equity mutual funds. You have time to ride out market ups and downs for higher potential returns.</p>",
           "order_index": 5,
-          "ai_summary": "This lesson explains how your investment strategy should change based on your time horizon, comparing long-term goals with short-term financial objectives.",
+          "ai_summary": "This lesson explains how your investment strategy must adapt to your financial goals' time horizon. It contrasts the low-risk, capital preservation approach needed for short-term goals with the growth-focused, higher-risk strategy suitable for long-term objectives.\n\n*   **Short-Term Goals:** Prioritize safety with instruments like FDs. The goal is to have the money when you need it.\n*   **Long-Term Goals:** Prioritize growth with instruments like stocks. You have time to recover from market dips.\n*   **Time Horizon:** The length of time you have to invest is a critical factor in choosing your investments.",
           "practice_questions": [
             {
               "id": "q2-5-1",
               "type": "mcq",
-              "question": "Which investment is generally more suitable for a long-term goal?",
-              "options": ["Savings account", "Stocks", "Fixed deposit", "Cash"],
-              "answer": "Stocks"
+              "question": "Which investment is generally most suitable for a long-term goal like retirement?",
+              "options": ["Savings account", "Equity Mutual Funds", "Fixed Deposit", "Cash"],
+              "answer": "Equity Mutual Funds"
             },
             {
               "id": "q2-5-2",
               "type": "text",
-              "question": "Why is it important to have a different strategy for short-term goals?",
-              "answer": "Short-term goals require less risky investments to ensure the money is available when needed and not subject to market volatility."
+              "question": "Why shouldn't you invest money for a short-term goal in the stock market?",
+              "answer": "The stock market can be volatile in the short term. If the market drops when you need the money, you could be forced to sell at a loss."
             }
           ]
         },
         {
+          "id": "2-6",
+          "lesson_id": "2",
           "title": "Day 6: Understanding Investment Risks",
           "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
-          "content": "<h2>What Could Go Wrong?</h2><p>Learn about different types of investment risks like market risk and inflation risk, and how diversification can help manage them.</p>",
+          "content": "<h2>Navigating the Unknowns</h2><p>Investing isn't without its risks. Understanding them is the first step to managing them intelligently.</p><h3>Key Risks to Know</h3><ul><li><strong>Market Risk:</strong> The risk that the entire market will decline, affecting all investments.</li><li><strong>Inflation Risk:</strong> The risk that your investment returns won't keep up with the rising cost of living, so you lose purchasing power.</li></ul><h3>The Power of Diversification</h3><p>Don't put all your eggs in one basket! Diversification means spreading your money across different types of assets (stocks, bonds), industries, and geographic locations to reduce the impact of any single investment performing poorly.</p>",
           "order_index": 6,
-          "ai_summary": "This lesson covers the various risks associated with investing, such as market and inflation risk, and introduces diversification as a key strategy to mitigate these risks.",
+          "ai_summary": "This lesson covers essential investment risks, including market risk and inflation risk. It introduces diversification—spreading investments across various assets—as the most powerful strategy to mitigate these risks and protect your portfolio.\n\n*   **Market Risk:** The danger of losing money due to a general market downturn.\n*   **Inflation Risk:** The risk that your money's growth won't outpace the rising cost of living.\n*   **Diversification:** The core principle of not putting all your eggs in one basket to reduce overall risk.",
           "practice_questions": [
             {
               "id": "q2-6-1",
               "type": "mcq",
-              "question": "What is diversification?",
-              "options": ["Putting all your money in one stock", "Spreading your investments across various assets", "Only investing in safe options", "Avoiding stocks completely"],
-              "answer": "Spreading your investments across various assets"
+              "question": "What is the best definition of diversification?",
+              "options": ["Putting all your money in the safest stock", "Spreading your investments across various asset classes to reduce risk", "Only investing in options with guaranteed returns", "Avoiding the stock market completely"],
+              "answer": "Spreading your investments across various asset classes to reduce risk"
             },
             {
               "id": "q2-6-2",
               "type": "text",
-              "question": "What is inflation risk?",
-              "answer": "Inflation risk is the risk that the returns from your investment will not keep pace with the rate of inflation, reducing the purchasing power of your money."
+              "question": "If your investment grows by 6% in a year, but inflation is 7%, have you made a 'real' return? Explain.",
+              "answer": "No, you have not made a real return. Your money's purchasing power has actually decreased by 1% because the cost of living grew faster than your investment."
             }
           ]
         },
         {
+          "id": "2-7",
+          "lesson_id": "2",
           "title": "Day 7: Building Your Investment Plan",
           "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
-          "content": "<h2>Your Investment Roadmap</h2><p>Create a simple investment plan based on your age, risk tolerance, and financial goals. Set yourself up for a future of financial growth.</p>",
+          "content": "<h2>Your Personal Investment Roadmap</h2><p>Let's bring everything together. An investment plan is a simple document that outlines your goals, timeline, and strategy. It's your guide to making disciplined decisions.</p><h3>Key Components</h3><ul><li><strong>Financial Goals:</strong> What are you investing for? (e.g., college, a car)</li><li><strong>Time Horizon:</strong> When do you need the money?</li><li><strong>Risk Tolerance:</strong> How much volatility can you handle? Be honest with yourself.</li><li><strong>Asset Allocation:</strong> Based on the above, how will you split your money between different investments (e.g., 80% equity mutual funds, 20% bonds)?</li></ul><h3>Review and Rebalance</h3><p>Your plan isn't set in stone. Review it once a year or when a major life event occurs to ensure it still aligns with your goals.</p>",
           "order_index": 7,
-          "ai_summary": "This lesson guides you in creating a personalized investment plan tailored to your age, risk tolerance, and financial goals, setting the stage for long-term financial growth.",
+          "ai_summary": "This lesson guides you in creating a simple yet effective investment plan. It covers defining your financial goals, time horizon, and risk tolerance, which then inform your asset allocation. The plan acts as your roadmap for disciplined investing.\n\n*   **Goals & Timeline:** Define what you're saving for and when you'll need the money.\n*   **Risk Tolerance:** Honestly assess how much market fluctuation you can stomach.\n*   **Asset Allocation:** Decide the mix of investments (e.g., stocks vs. bonds) that fits your profile.\n*   **Review Regularly:** An investment plan should be a living document that you review annually.",
           "practice_questions": [
             {
               "id": "q2-7-1",
               "type": "mcq",
-              "question": "What is 'risk tolerance'?",
-              "options": ["How much risk you are willing to take for potential returns", "How much risk an investment has", "How much money you have", "How old you are"],
-              "answer": "How much risk you are willing to take for potential returns"
+              "question": "What is 'asset allocation'?",
+              "options": ["How much money you have", "How you divide your investment portfolio among different asset categories", "How you choose a stockbroker", "How you calculate returns"],
+              "answer": "How you divide your investment portfolio among different asset categories"
             },
             {
               "id": "q2-7-2",
               "type": "text",
-              "question": "Why is it important to have an investment plan?",
-              "answer": "An investment plan helps you stay focused on your goals, make disciplined decisions, and avoid emotional reactions to market fluctuations."
+              "question": "Why is it important to know your own risk tolerance?",
+              "answer": "Knowing your risk tolerance helps you choose investments you can stick with during market downturns, preventing panic selling and helping you stay on track with your long-term goals."
             }
           ]
         }
       ]
     },
     {
+      "id": "3",
       "title": "Module 3: Artificial Intelligence in Real Life",
       "description": "A Complete 7-Day Learning Journey for Teens (Ages 13-16) into AI in finance.",
       "is_free": false,
       "order_index": 3,
       "subtopics": [
         {
+          "id": "3-1",
+          "lesson_id": "3",
           "title": "Day 1: What is AI?",
           "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
-          "content": "<h2>Understanding AI</h2><p>Learn what Artificial Intelligence is, the difference between AI, Machine Learning, and Deep Learning, and see examples in your daily life.</p>",
+          "content": "<h2>Decoding AI</h2><p>Artificial Intelligence (AI) is the science of making machines that can think and learn like humans. We'll break down the jargon and see how AI is already a part of your world.</p><h3>AI vs. Machine Learning vs. Deep Learning</h3><ul><li><strong>AI (Artificial Intelligence):</strong> The broad concept of intelligent machines.</li><li><strong>Machine Learning (ML):</strong> A subset of AI where machines learn from data without being explicitly programmed. This is how recommendation engines work.</li><li><strong>Deep Learning (DL):</strong> A subset of ML that uses 'neural networks' with many layers to solve complex problems, like image recognition.</li></ul>",
           "order_index": 1,
-          "ai_summary": "This lesson provides a foundational understanding of AI, distinguishing it from Machine Learning and Deep Learning, and illustrates its presence in everyday applications.",
+          "ai_summary": "This lesson provides a foundational understanding of AI, distinguishing it from Machine Learning (ML) and Deep Learning (DL). AI is the broad field of intelligent machines, ML is a subset where machines learn from data, and DL is a further subset for complex tasks like image recognition.\n\n*   **AI:** The big picture of creating smart machines.\n*   **Machine Learning:** AI that learns from examples and data.\n*   **Deep Learning:** A powerful type of ML for complex pattern recognition.",
           "practice_questions": [
             {
               "id": "q3-1-1",
               "type": "mcq",
-              "question": "Which of these is a common example of AI?",
-              "options": ["A calculator", "A movie recommendation system", "A light switch", "A book"],
-              "answer": "A movie recommendation system"
+              "question": "Which of these is the broadest category?",
+              "options": ["Machine Learning", "Deep Learning", "Artificial Intelligence", "Neural Networks"],
+              "answer": "Artificial Intelligence"
             },
             {
               "id": "q3-1-2",
               "type": "text",
-              "question": "What is the main goal of AI?",
-              "answer": "The main goal of AI is to create machines that can perform tasks that typically require human intelligence."
+              "question": "How does Machine Learning differ from traditional programming?",
+              "answer": "In traditional programming, humans write explicit rules for the computer to follow. In Machine Learning, the machine learns the rules itself by analyzing data."
             }
           ]
         },
         {
+          "id": "3-2",
+          "lesson_id": "3",
           "title": "Day 2: AI in Your Pocket",
           "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
-          "content": "<h2>AI on Your Smartphone</h2><p>Discover how AI powers features on your phone like virtual assistants (Siri, Google Assistant), facial recognition, and predictive text.</p>",
+          "content": "<h2>The AI on Your Smartphone</h2><p>Your phone is an AI powerhouse. We'll uncover the AI working behind the scenes in your favorite apps and features.</p><ul><li><strong>Virtual Assistants:</strong> Siri and Google Assistant use Natural Language Processing (NLP) to understand and respond to your voice commands.</li><li><strong>Facial Recognition:</strong> Deep learning models analyze the unique points of your face to securely unlock your phone.</li><li><strong>Predictive Text:</strong> ML algorithms learn your typing style to suggest the next word, making texting faster.</li></ul>",
           "order_index": 2,
-          "ai_summary": "Explore the various AI-powered features on your smartphone, including virtual assistants, facial recognition technology, and predictive text functionalities.",
+          "ai_summary": "This lesson reveals the AI integrated into your smartphone. It covers how virtual assistants use Natural Language Processing to understand you, how facial recognition provides security, and how predictive text learns from your habits to speed up typing.\n\n*   **Virtual Assistants:** Understand voice commands using NLP.\n*   **Face ID:** Uses deep learning for secure authentication.\n*   **Predictive Text:** Learns your language patterns to suggest words.",
           "practice_questions": [
             {
               "id": "q3-2-1",
               "type": "mcq",
-              "question": "Which feature uses AI to unlock your phone?",
-              "options": ["PIN code", "Password", "Facial Recognition", "A physical key"],
-              "answer": "Facial Recognition"
+              "question": "What AI technology allows Siri to understand your speech?",
+              "options": ["Facial Recognition", "Predictive Text", "Natural Language Processing (NLP)", "Deep Learning"],
+              "answer": "Natural Language Processing (NLP)"
             },
             {
               "id": "q3-2-2",
               "type": "text",
-              "question": "How does predictive text work?",
-              "answer": "Predictive text uses AI to analyze your past typing patterns and predict the next word you are likely to type."
+              "question": "Besides unlocking your phone, name one other use for facial recognition technology.",
+              "answer": "Other uses include tagging people in photos on social media, security surveillance, or verifying identity for payments."
             }
           ]
         },
         {
+          "id": "3-3",
+          "lesson_id": "3",
           "title": "Day 3: AI in Entertainment",
           "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
-          "content": "<h2>How AI Shapes What You Watch and Play</h2><p>Learn how streaming services like Netflix use AI to recommend shows and how AI is used to create smarter characters in video games.</p>",
+          "content": "<h2>How AI Curates Your Fun</h2><p>From movie night to gaming sessions, AI plays a huge role in modern entertainment.</p><h3>Personalized Recommendations</h3><p>Services like Netflix, YouTube, and Spotify use 'collaborative filtering'. The AI analyzes your viewing/listening history and compares it to millions of other users to predict what you'll enjoy next.</p><h3>AI in Gaming</h3><p>AI controls non-player characters (NPCs), making them challenging and realistic. It also helps with procedural generation, where AI creates vast, unique game worlds automatically.</p>",
           "order_index": 3,
-          "ai_summary": "This lesson examines the role of AI in entertainment, from personalized recommendations on streaming platforms to the development of intelligent characters in video games.",
+          "ai_summary": "This lesson explores AI's role in entertainment, focusing on personalized recommendations and gaming. It explains how services like Netflix use collaborative filtering to suggest content and how AI creates intelligent characters and environments in video games.\n\n*   **Recommendations:** AI analyzes your behavior to predict what you'll like.\n*   **Gaming AI:** Controls NPCs and can automatically generate game levels.\n*   **Collaborative Filtering:** A key technique that matches your tastes with similar users.",
           "practice_questions": [
             {
               "id": "q3-3-1",
               "type": "mcq",
-              "question": "Why does Netflix recommend shows to you?",
-              "options": ["Because your friends watched them", "It's random", "An AI algorithm analyzes your viewing habits", "The shows are new"],
-              "answer": "An AI algorithm analyzes your viewing habits"
+              "question": "The main goal of a recommendation algorithm is to:",
+              "options": ["Show you random content", "Show you the most popular content", "Keep you engaged on the platform by showing relevant content", "Show you only high-budget movies"],
+              "answer": "Keep you engaged on the platform by showing relevant content"
             },
             {
               "id": "q3-3-2",
               "type": "text",
-              "question": "Give an example of AI in a video game.",
-              "answer": "AI controls non-player characters (NPCs) to make them behave intelligently and react to the player's actions."
+              "question": "What does NPC stand for in gaming, and what is its role?",
+              "answer": "NPC stands for Non-Player Character. Its role is to be an in-game character controlled by AI, acting as an opponent, ally, or part of the story."
             }
           ]
         },
         {
+          "id": "3-4",
+          "lesson_id": "3",
           "title": "Day 4: AI in Finance",
           "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
-          "content": "<h2>How AI Manages Money</h2><p>Discover how AI is used for fraud detection on your bank card, personalized financial advice, and even in stock market trading.</p>",
+          "content": "<h2>AI and Your Money</h2><p>The financial world is being transformed by AI, making it safer and more personalized.</p><ul><li><strong>Fraud Detection:</strong> AI systems monitor transactions in real-time. If a purchase is made that doesn't fit your usual pattern (e.g., a large purchase in another country), the AI can flag it as potential fraud and block it.</li><li><strong>Credit Scoring:</strong> AI helps lenders assess risk more accurately by analyzing thousands of data points to decide if someone is likely to repay a loan.</li><li><strong>Robo-Advisors:</strong> These are automated platforms that use algorithms to build and manage an investment portfolio for you based on your goals and risk tolerance.</li></ul>",
           "order_index": 4,
-          "ai_summary": "Learn about the applications of AI in the financial sector, including fraud detection, personalized financial advisory services, and algorithmic trading in the stock market.",
+          "ai_summary": "This lesson covers the impact of AI on finance. It details how AI is used for real-time fraud detection by analyzing spending patterns, for more accurate credit scoring, and by robo-advisors to provide automated, personalized investment management.\n\n*   **Fraud Detection:** AI spots unusual activity to protect your accounts.\n*   **Credit Scoring:** AI helps determine creditworthiness for loans.\n*   **Robo-Advisors:** Automated platforms for accessible investment management.",
           "practice_questions": [
             {
               "id": "q3-4-1",
               "type": "mcq",
-              "question": "How can AI help prevent fraud?",
-              "options": ["By calling the police", "By identifying unusual spending patterns", "By blocking all transactions", "By asking for your PIN"],
-              "answer": "By identifying unusual spending patterns"
+              "question": "How does AI detect credit card fraud?",
+              "options": ["By guessing", "By identifying spending patterns that are unusual for you", "By blocking all online transactions", "By calling you for every purchase"],
+              "answer": "By identifying spending patterns that are unusual for you"
             },
             {
               "id": "q3-4-2",
               "type": "text",
-              "question": "What is a 'robo-advisor'?",
-              "answer": "A robo-advisor is an AI-powered platform that provides automated, algorithm-driven financial planning services."
+              "question": "What is the main benefit of a robo-advisor?",
+              "answer": "The main benefit is that it makes investing accessible and affordable by using algorithms to manage your portfolio, often with lower fees than a human advisor."
             }
           ]
         },
         {
+          "id": "3-5",
+          "lesson_id": "3",
           "title": "Day 5: The Rise of Generative AI",
           "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
-          "content": "<h2>Creating with AI</h2><p>Explore the world of generative AI like ChatGPT and DALL-E. Understand how they create text, images, and code, and what a 'prompt' is.</p>",
+          "content": "<h2>AI That Creates</h2><p>Generative AI is a type of AI that can create brand new content—text, images, music, and code—that has never existed before.</p><h3>How it Works: LLMs</h3><p>At the heart of tools like ChatGPT are Large Language Models (LLMs). They are trained on vast amounts of text from the internet and learn the patterns, grammar, and relationships between words. When you give it a 'prompt', it predicts the most likely sequence of words to come next, generating a coherent response.</p><h3>Prompt Engineering</h3><p>The key to getting good results from Generative AI is learning to write good prompts. This is called prompt engineering. A good prompt is specific, provides context, and clearly defines the desired output format.</p>",
           "order_index": 5,
-          "ai_summary": "This lesson delves into generative AI, explaining how models like ChatGPT and DALL-E generate text, images, and code, and the importance of crafting effective prompts.",
+          "ai_summary": "This lesson introduces Generative AI, a technology that can create original content. It explains that tools like ChatGPT are powered by Large Language Models (LLMs) trained on huge datasets. The key to using them effectively is 'prompt engineering'—crafting clear and specific instructions.\n\n*   **Generative AI:** Creates new content like text, images, and code.\n*   **LLMs:** The core technology that learns from vast amounts of text data.\n*   **Prompt Engineering:** The skill of writing effective instructions to get the desired output from an AI.",
           "practice_questions": [
             {
               "id": "q3-5-1",
               "type": "mcq",
-              "question": "What does a generative AI like DALL-E create?",
-              "options": ["Music", "Text", "Images", "Spreadsheets"],
-              "answer": "Images"
+              "question": "What is a Large Language Model (LLM)?",
+              "options": ["A big dictionary", "An AI model trained on vast amounts of text to understand and generate language", "A tool for translating languages", "A spell checker"],
+              "answer": "An AI model trained on vast amounts of text to understand and generate language"
             },
             {
               "id": "q3-5-2",
               "type": "text",
-              "question": "What is a 'prompt'?",
-              "answer": "A prompt is the instruction or question you give to a generative AI to get a specific output."
+              "question": "Why is a prompt like 'Write a poem' less effective than 'Write a short, rhyming poem about the challenges of being a student in a humorous tone'?",
+              "answer": "The second prompt is more effective because it is specific, provides context (challenges of being a student), and defines the desired format and tone (short, rhyming, humorous)."
             }
           ]
         },
         {
+          "id": "3-6",
+          "lesson_id": "3",
           "title": "Day 6: The Ethics of AI",
           "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
-          "content": "<h2>AI for Good or Bad?</h2><p>Discuss the ethical challenges of AI, including bias in algorithms, privacy concerns, and the impact on jobs. Learn why responsible AI development is crucial.</p>",
+          "content": "<h2>The Double-Edged Sword</h2><p>AI has incredible potential for good, but it also comes with serious ethical challenges that we must address.</p><h3>Key Ethical Concerns</h3><ul><li><strong>Bias:</strong> If an AI is trained on biased data, its decisions will also be biased. For example, an AI hiring tool trained on historical data from a male-dominated industry might unfairly favor male candidates.</li><li><strong>Privacy:</strong> AI systems collect vast amounts of data. We must ensure this data is used responsibly and protected from misuse.</li><li><strong>Accountability:</strong> If an AI makes a mistake (e.g., a self-driving car accident), who is responsible? The owner, the programmer, or the company?</li></ul>",
           "order_index": 6,
-          "ai_summary": "Explore the ethical dimensions of AI, including algorithmic bias, privacy issues, and job market impacts. This lesson emphasizes the need for responsible AI development.",
+          "ai_summary": "This lesson explores the significant ethical challenges posed by AI. It covers the risk of algorithmic bias stemming from training data, concerns over data privacy, and the complex question of accountability when AI systems make mistakes. Addressing these issues is crucial for responsible AI development.\n\n*   **AI Bias:** AI can perpetuate and amplify human biases present in its training data.\n*   **Privacy:** AI's data-hungry nature raises concerns about how personal information is collected and used.\n*   **Accountability:** Determining responsibility when an autonomous system fails is a major legal and ethical hurdle.",
           "practice_questions": [
             {
               "id": "q3-6-1",
               "type": "mcq",
               "question": "What is 'AI bias'?",
-              "options": ["When an AI is always correct", "When an AI makes unfair decisions based on biased data", "When an AI is too slow", "When an AI has a personal opinion"],
-              "answer": "When an AI makes unfair decisions based on biased data"
+              "options": ["When an AI model is always correct", "When an AI system produces unfair or prejudicial outcomes because of flawed training data", "When an AI model works slowly", "When an AI has a personal preference"],
+              "answer": "When an AI system produces unfair or prejudicial outcomes because of flawed training data"
             },
             {
               "id": "q3-6-2",
               "type": "text",
-              "question": "Why is AI ethics an important topic?",
-              "answer": "It is important to ensure that AI is developed and used in a way that is fair, safe, and beneficial for humanity, without causing harm or discrimination."
+              "question": "Give a real-world example of why AI accountability is a difficult problem.",
+              "answer": "A good example is a self-driving car accident. It's difficult to determine who is at fault: the owner who was supposed to be supervising, the manufacturer of the car, the programmers who wrote the AI software, or the company that made the sensors."
             }
           ]
         },
         {
+          "id": "3-7",
+          "lesson_id": "3",
           "title": "Day 7: The Future with AI",
           "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
-          "content": "<h2>AI and Your Future</h2><p>Look at how AI might change future jobs and what skills will be important. Learn how you can start learning more about AI today and prepare for an AI-driven world.</p>",
+          "content": "<h2>Preparing for an AI-Powered World</h2><p>AI is not just a tool; it's a new reality. Understanding its potential impact is key to preparing for your future career.</p><h3>Jobs of the Future</h3><p>While AI may automate some tasks, it will also create new jobs. Roles like AI Ethicist, Prompt Engineer, and AI Trainer will become more common. The most valuable skills will be those that complement AI, such as creativity, critical thinking, and emotional intelligence.</p><h3>How You Can Start Learning</h3><p>You don't need to be a math genius to get involved. You can start by following AI news, experimenting with tools like ChatGPT, and trying out free online courses on platforms like Coursera or Khan Academy.</p>",
           "order_index": 7,
-          "ai_summary": "This lesson explores the future impact of AI on jobs and society, highlighting the essential skills needed to thrive and providing resources for you to begin your AI learning journey.",
+          "ai_summary": "This lesson discusses how to prepare for a future where AI is ubiquitous. It highlights that while AI will automate certain tasks, it will also create new jobs that require human skills like creativity and critical thinking. You can begin preparing now by staying informed and experimenting with accessible AI tools.\n\n*   **Future Jobs:** AI will create new roles that require collaboration between humans and machines.\n*   **Essential Skills:** Creativity, critical thinking, and emotional intelligence will be highly valued.\n*   **Start Now:** You can begin learning about AI through online resources and by using publicly available tools.",
           "practice_questions": [
             {
               "id": "q3-7-1",
               "type": "mcq",
-              "question": "Which skill will likely become MORE important in a future with AI?",
-              "options": ["Manual data entry", "Creative problem-solving", "Following simple instructions", "Factory assembly line work"],
+              "question": "Which skill will likely become MORE valuable in a future with AI?",
+              "options": ["Performing repetitive calculations", "Creative problem-solving", "Following simple instructions", "Memorizing facts"],
               "answer": "Creative problem-solving"
             },
             {
               "id": "q3-7-2",
               "type": "text",
-              "question": "What is one way you can start learning about AI today?",
-              "answer": "You can start by experimenting with generative AI tools, taking free online courses, or following AI news and developments."
+              "question": "What is a 'Prompt Engineer' and why might that be an important job?",
+              "answer": "A Prompt Engineer is someone who specializes in designing effective inputs (prompts) to get the best possible results from generative AI. It's important because the quality of the AI's output is highly dependent on the quality of the prompt."
             }
           ]
         }
       ]
     },
     {
+      "id": "4",
       "title": "Module 4: Taxation in India",
       "description": "Learn income tax basics (slabs, PAN, ITR) and GST (how businesses collect & pay).",
       "is_free": false,
       "order_index": 4,
-      "subtopics": []
+      "subtopics": [
+        {
+          "id": "4-1",
+          "lesson_id": "4",
+          "title": "Day 1: Why Do We Pay Taxes?",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>The Building Blocks of a Nation</h2><p>Taxes are how a government funds public services. Think of roads, schools, hospitals, and national defense—they are all paid for by taxes collected from citizens and businesses. Understanding this is the first step to seeing taxes not as a burden, but as a civic responsibility.</p><h3>Direct vs. Indirect Taxes</h3><ul><li><strong>Direct Tax:</strong> A tax you pay directly to the government, like Income Tax.</li><li><strong>Indirect Tax:</strong> A tax you pay indirectly through goods and services you buy, like GST (Goods and Services Tax). The seller collects the tax from you and pays it to the government.</li></ul>",
+          "order_index": 1,
+          "ai_summary": "This lesson explains the fundamental purpose of taxes: to fund public services like infrastructure, education, and healthcare. It introduces the two main categories of taxes: direct taxes (e.g., Income Tax) which are paid by individuals to the government, and indirect taxes (e.g., GST) which are paid through the purchase of goods and services.\n\n*   **Purpose of Tax:** To fund government-provided public services.\n*   **Direct Tax:** Paid directly by an individual or organization (e.g., Income Tax).\n*   **Indirect Tax:** Paid indirectly via consumption (e.g., GST on a product).",
+          "practice_questions": [
+            {
+              "id": "q4-1-1",
+              "type": "mcq",
+              "question": "Which of the following is an example of a direct tax?",
+              "options": ["GST on a movie ticket", "Income Tax on your salary", "VAT on clothes", "Customs duty on an imported item"],
+              "answer": "Income Tax on your salary"
+            },
+            {
+              "id": "q4-1-2",
+              "type": "text",
+              "question": "Name two public services that are funded by taxes.",
+              "answer": "Examples include public roads, government schools, public hospitals, police, and the military."
+            }
+          ]
+        },
+        {
+          "id": "4-2",
+          "lesson_id": "4",
+          "title": "Day 2: Understanding Your PAN Card",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Your Financial Fingerprint</h2><p>A Permanent Account Number (PAN) is a unique 10-character alphanumeric identifier issued by the Indian Income Tax Department. It's essential for almost all financial transactions.</p><h3>Why is a PAN Card Mandatory?</h3><ul><li>Filing income tax returns.</li><li>Opening a bank account.</li><li>Buying or selling assets above certain limits.</li><li>Making large investments.</li></ul><h3>How to Apply for a PAN</h3><p>We'll walk through the simple online process of applying for a PAN card through the NSDL or UTIITSL portals, which is a crucial first step for anyone starting to earn.</p>",
+          "order_index": 2,
+          "ai_summary": "This lesson explains the importance of the Permanent Account Number (PAN) card as a unique financial identifier in India. It details why a PAN is mandatory for major financial activities like filing taxes and opening bank accounts, and provides an overview of the online application process.\n\n*   **What is PAN:** A unique 10-character code for tracking financial transactions.\n*   **Why it's needed:** Essential for filing taxes, banking, and high-value transactions.\n*   **How to apply:** Can be applied for online through official government portals.",
+          "practice_questions": [
+            {
+              "id": "q4-2-1",
+              "type": "mcq",
+              "question": "How many characters are in a PAN?",
+              "options": ["8", "12", "10", "16"],
+              "answer": "10"
+            },
+            {
+              "id": "q4-2-2",
+              "type": "text",
+              "question": "List two situations where you absolutely need a PAN card.",
+              "answer": "Filing income tax returns and opening a bank account are two primary examples."
+            }
+          ]
+        },
+        {
+          "id": "4-3",
+          "lesson_id": "4",
+          "title": "Day 3: Decoding Income Tax Slabs",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>How Much Tax Do You Pay?</h2><p>India has a progressive tax system, which means people with higher incomes pay a higher percentage of their income in taxes. This is done through 'tax slabs'.</p><h3>Understanding the Slabs</h3><p>We'll look at the latest income tax slabs for the New Tax Regime. For example (note: slabs change):</p><ul><li>Up to ₹3 lakh: No tax</li><li>₹3 lakh to ₹6 lakh: 5%</li><li>₹6 lakh to ₹9 lakh: 10%</li></ul><p>We'll explain how to calculate your tax liability by applying these percentages only to the income that falls within each slab, not your total income.</p>",
+          "order_index": 3,
+          "ai_summary": "This lesson explains India's progressive income tax system and the concept of tax slabs. It demonstrates how to calculate tax liability by applying different tax rates to the portions of income that fall into each specific slab, clarifying that you don't pay the highest rate on your entire income.\n\n*   **Progressive Tax:** Higher income means a higher tax rate.\n*   **Tax Slabs:** Different income ranges are taxed at different percentages.\n*   **Calculation:** You calculate tax for each slab separately and add it up.",
+          "practice_questions": [
+            {
+              "id": "q4-3-1",
+              "type": "mcq",
+              "question": "A progressive tax system means:",
+              "options": ["Everyone pays the same tax", "People with lower income pay a higher percentage in tax", "People with higher income pay a higher percentage in tax", "There are no taxes"],
+              "answer": "People with higher income pay a higher percentage in tax"
+            },
+            {
+              "id": "q4-3-2",
+              "type": "text",
+              "question": "If your taxable income is ₹7 lakh, which tax slab rate would apply to the income between ₹6 lakh and ₹7 lakh (as per the example)?",
+              "answer": "The 10% tax rate would apply to that portion of the income."
+            }
+          ]
+        },
+        {
+          "id": "4-4",
+          "lesson_id": "4",
+          "title": "Day 4: Tax Deductions - Saving Your Money",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Lowering Your Taxable Income</h2><p>Tax deductions are specific expenses or investments that the government allows you to subtract from your gross income, which lowers your taxable income and, therefore, the amount of tax you have to pay.</p><h3>Popular Deductions (Old Regime)</h3><ul><li><strong>Section 80C:</strong> A popular section with a limit of ₹1.5 lakh for investments in things like Public Provident Fund (PPF), ELSS mutual funds, and life insurance premiums.</li><li><strong>Section 80D:</strong> For health insurance premiums paid for yourself and your family.</li></ul><p>We'll explain the difference between the Old and New Tax Regimes and who might benefit from each.</p>",
+          "order_index": 4,
+          "ai_summary": "This lesson introduces tax deductions as a way to legally reduce your taxable income and save money on taxes. It highlights popular deductions like Section 80C for investments and Section 80D for health insurance, and explains the key differences between the Old and New Tax Regimes.\n\n*   **Deductions:** Government-allowed expenses that reduce your taxable income.\n*   **Section 80C:** Allows deductions up to ₹1.5 lakh for specified investments.\n*   **Old vs. New Regime:** The Old Regime allows for many deductions, while the New Regime offers lower tax rates with fewer deductions.",
+          "practice_questions": [
+            {
+              "id": "q4-4-1",
+              "type": "mcq",
+              "question": "What is the primary purpose of a tax deduction?",
+              "options": ["To increase your tax bill", "To reduce your taxable income", "To get a refund on all taxes paid", "To avoid filing taxes"],
+              "answer": "To reduce your taxable income"
+            },
+            {
+              "id": "q4-4-2",
+              "type": "text",
+              "question": "Name one type of investment that qualifies for a deduction under Section 80C.",
+              "answer": "Examples include Public Provident Fund (PPF), Equity Linked Savings Scheme (ELSS) mutual funds, or life insurance premiums."
+            }
+          ]
+        },
+        {
+          "id": "4-5",
+          "lesson_id": "4",
+          "title": "Day 5: What is ITR and Who Should File It?",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Your Annual Report Card to the Taxman</h2><p>An Income Tax Return (ITR) is a form you submit to the Income Tax Department to report your annual income and the taxes you've paid. It's a declaration of your financial activity for the year.</p><h3>Who Needs to File?</h3><p>It's mandatory for every individual whose total income exceeds the basic exemption limit. Even if you don't owe any tax, filing an ITR is a good practice as it serves as proof of income for loan applications and visa processes.</p><h3>Different ITR Forms</h3><p>We'll briefly cover the different forms, focusing on ITR-1 (Sahaj), which is the simplest form used by most salaried individuals.</p>",
+          "order_index": 5,
+          "ai_summary": "This lesson explains that an Income Tax Return (ITR) is an annual statement of your income and taxes filed with the government. It's mandatory if your income is above the exemption limit, but it's also beneficial as proof of income. The lesson focuses on the most common form, ITR-1 (Sahaj).\n\n*   **What is ITR:** A form to declare your annual income and tax payments.\n*   **Who should file:** Anyone with income above the basic exemption limit.\n*   **Benefits of Filing:** Acts as a legal proof of income for loans and visas.",
+          "practice_questions": [
+            {
+              "id": "q4-5-1",
+              "type": "mcq",
+              "question": "What is an ITR?",
+              "options": ["A tax savings scheme", "A form to report your income to the government", "A type of bank account", "A penalty for not paying tax"],
+              "answer": "A form to report your income to the government"
+            },
+            {
+              "id": "q4-5-2",
+              "type": "text",
+              "question": "Besides it being mandatory, give one good reason to file an ITR even if you don't owe any tax.",
+              "answer": "Filing an ITR serves as a crucial proof of income, which is often required when applying for a loan or a travel visa."
+            }
+          ]
+        },
+        {
+          "id": "4-6",
+          "lesson_id": "4",
+          "title": "Day 6: Introduction to GST",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>The Tax on Almost Everything You Buy</h2><p>The Goods and Services Tax (GST) is an indirect tax that has replaced many other indirect taxes like VAT, service tax, etc. It's levied on the supply of goods and services.</p><h3>How GST Works</h3><p>When you buy a product, the price includes GST. The shopkeeper collects this GST from you and pays it to the government. This makes it a consumption-based tax.</p><h3>Different GST Slabs</h3><p>Goods and services are categorized into different tax slabs (0%, 5%, 12%, 18%, 28%) based on their nature. Essential items have lower or no GST, while luxury items have higher rates.</p>",
+          "order_index": 6,
+          "ai_summary": "This lesson introduces the Goods and Services Tax (GST) as a comprehensive indirect tax on goods and services in India. It explains how GST is a consumption-based tax collected by sellers and categorized into different slabs (0% to 28%) based on the item's necessity or luxury status.\n\n*   **What is GST:** An indirect tax on the supply of goods and services.\n*   **How it works:** Collected by sellers from consumers at the point of sale.\n*   **GST Slabs:** Different rates for different categories of items, with essentials being taxed lower than luxuries.",
+          "practice_questions": [
+            {
+              "id": "q4-6-1",
+              "type": "mcq",
+              "question": "GST is a type of:",
+              "options": ["Direct Tax", "Income Tax", "Indirect Tax", "Property Tax"],
+              "answer": "Indirect Tax"
+            },
+            {
+              "id": "q4-6-2",
+              "type": "text",
+              "question": "Why would a luxury car have a higher GST rate than milk?",
+              "answer": "The GST system is designed to be progressive, where essential items like milk are taxed at a lower rate (or not at all) to make them affordable for everyone, while luxury items are taxed at a higher rate."
+            }
+          ]
+        },
+        {
+          "id": "4-7",
+          "lesson_id": "4",
+          "title": "Day 7: E-filing Your ITR - A Simple Walkthrough",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Filing Your Taxes Online</h2><p>In this final lesson, we'll go through a simplified, step-by-step process of how to e-file your ITR on the official Income Tax portal. We'll cover the key sections of the online form.</p><h3>The E-Filing Process</h3><ol><li><strong>Registration:</strong> Creating an account on the income tax portal using your PAN.</li><li><strong>Form Selection:</strong> Choosing the correct ITR form (usually ITR-1).</li><li><strong>Filling in Details:</strong> Entering personal information, income details, and deductions. Much of this is pre-filled.</li><li><strong>Verification:</strong> Verifying your return using an Aadhaar OTP or other methods. This is a crucial final step.</li></ol><p>By the end of this lesson, you'll have the confidence to file your own taxes when the time comes.</p>",
+          "order_index": 7,
+          "ai_summary": "This lesson provides a step-by-step guide to e-filing your Income Tax Return (ITR) online. It covers the essential stages: registering on the tax portal with your PAN, selecting the correct form, filling in your details (many of which are pre-filled), and the crucial final step of verifying your return with an Aadhaar OTP.\n\n*   **Registration:** Sign up on the official portal using your PAN.\n*   **Form Selection:** Choose the appropriate ITR form for your income type.\n*   **Data Entry:** Fill in personal, income, and deduction details.\n*   **Verification:** The mandatory final step to authenticate your return, often with an OTP.",
+          "practice_questions": [
+            {
+              "id": "q4-7-1",
+              "type": "mcq",
+              "question": "What is the most common way to verify your e-filed ITR?",
+              "options": ["Sending a letter by post", "Using an Aadhaar-based OTP", "Visiting the tax office", "Calling a helpline"],
+              "answer": "Using an Aadhaar-based OTP"
+            },
+            {
+              "id": "q4-7-2",
+              "type": "text",
+              "question": "What does it mean when information in your ITR form is 'pre-filled'?",
+              "answer": "'Pre-filled' means the tax portal automatically populates some of your information (like name, PAN, and salary details from your employer) to make the filing process easier and reduce errors."
+            }
+          ]
+        }
+      ]
     },
     {
+      "id": "5",
       "title": "Module 5: Entrepreneurship & Startups",
       "description": "Learn to validate ideas, use the business model canvas, and understand costing, pricing, and profit margins.",
       "is_free": false,
       "order_index": 5,
-      "subtopics": []
+      "subtopics": [
+        {
+          "id": "5-1",
+          "lesson_id": "5",
+          "title": "Day 1: What Makes an Entrepreneur?",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>The Entrepreneurial Mindset</h2><p>An entrepreneur is more than just a business owner; they are a problem-solver, an innovator, and a risk-taker. Today we explore the key traits that define the entrepreneurial spirit.</p><h3>Core Traits</h3><ul><li><strong>Resilience:</strong> The ability to bounce back from failure and keep going.</li><li><strong>Curiosity:</strong> Always asking 'why' and 'what if' to find new opportunities.</li><li><strong>Vision:</strong> Seeing what the future could look like and having a clear idea of how to get there.</li></ul><p>We'll discuss how these are not just innate traits but skills you can develop over time.</p>",
+          "order_index": 1,
+          "ai_summary": "This lesson defines an entrepreneur as an innovative problem-solver and risk-taker. It highlights core entrepreneurial traits like resilience, curiosity, and vision, emphasizing that these are skills that can be cultivated and developed over time, not just inborn qualities.\n\n*   **Entrepreneurship:** About solving problems and innovating.\n*   **Key Traits:** Resilience to overcome failure, curiosity to find opportunities, and vision to guide the way.\n*   **Skills, Not Just Traits:** These qualities can be learned and strengthened.",
+          "practice_questions": [
+            {
+              "id": "q5-1-1",
+              "type": "mcq",
+              "question": "Which of the following is a key trait of an entrepreneur?",
+              "options": ["Avoiding all risks", "Resilience", "Following instructions without question", "Waiting for opportunities to appear"],
+              "answer": "Resilience"
+            },
+            {
+              "id": "q5-1-2",
+              "type": "text",
+              "question": "Why is 'curiosity' important for an entrepreneur?",
+              "answer": "Curiosity drives entrepreneurs to question the status quo, identify unmet needs, and discover innovative solutions to problems, which is the foundation of a new business."
+            }
+          ]
+        },
+        {
+          "id": "5-2",
+          "lesson_id": "5",
+          "title": "Day 2: From Idea to Validation",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Is Your Idea Any Good?</h2><p>Every great business starts with an idea, but not every idea is a great business. Idea validation is the crucial process of testing your idea with real potential customers before you invest too much time and money.</p><h3>Validation Techniques</h3><ul><li><strong>Surveys & Interviews:</strong> Directly ask your target audience about their problems and if your solution would help.</li><li><strong>Landing Page Test:</strong> Create a simple one-page website describing your product and see how many people sign up for more information.</li><li><strong>Minimum Viable Product (MVP):</strong> Build the most basic, core version of your product to get it into users' hands and gather feedback.</li></ul>",
+          "order_index": 2,
+          "ai_summary": "This lesson covers the critical process of idea validation: testing your business concept before significant investment. It outlines key techniques like conducting customer surveys, creating a simple landing page to gauge interest, and building a Minimum Viable Product (MVP) to gather real-world feedback.\n\n*   **Validation is Key:** Test your idea to see if it solves a real problem for customers.\n*   **Techniques:** Use surveys, landing pages, and MVPs to gather data.\n*   **MVP:** The simplest version of your product that delivers core value.",
+          "practice_questions": [
+            {
+              "id": "q5-2-1",
+              "type": "mcq",
+              "question": "What does MVP stand for?",
+              "options": ["Most Valuable Player", "Minimum Viable Product", "Maximum Value Proposition", "Major Venture Proposal"],
+              "answer": "Minimum Viable Product"
+            },
+            {
+              "id": "q5-2-2",
+              "type": "text",
+              "question": "Why is it important to validate a business idea before building the full product?",
+              "answer": "It saves time and money by ensuring you are building something that customers actually want and are willing to pay for, reducing the risk of failure."
+            }
+          ]
+        },
+        {
+          "id": "5-3",
+          "lesson_id": "5",
+          "title": "Day 3: The Business Model Canvas",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Your Business on a Single Page</h2><p>The Business Model Canvas (BMC) is a strategic tool that helps you visualize, design, and pivot your business model. It's a one-page overview of the 9 essential building blocks of your business.</p><h3>Key Blocks</h3><ul><li><strong>Value Proposition:</strong> What value do you deliver to the customer? What problem are you solving?</li><li><strong>Customer Segments:</strong> Who are your most important customers?</li><li><strong>Revenue Streams:</strong> How will you make money? (e.g., sales, subscriptions)</li><li><strong>Cost Structure:</strong> What are your most important costs?</li></ul><p>We will explore all 9 blocks and how they relate to each other.</p>",
+          "order_index": 3,
+          "ai_summary": "This lesson introduces the Business Model Canvas (BMC) as a powerful one-page tool for mapping out your business. It covers the 9 building blocks of a business, focusing on key areas like your Value Proposition, Customer Segments, Revenue Streams, and Cost Structure to create a holistic view of your strategy.\n\n*   **BMC:** A one-page strategic plan for your business.\n*   **Value Proposition:** The core problem you solve for customers.\n*   **Customer Segments:** Your target audience.\n*   **Revenue & Costs:** How you make money and what you spend it on.",
+          "practice_questions": [
+            {
+              "id": "q5-3-1",
+              "type": "mcq",
+              "question": "Which block of the Business Model Canvas describes 'who you are helping'?",
+              "options": ["Value Proposition", "Revenue Streams", "Customer Segments", "Key Activities"],
+              "answer": "Customer Segments"
+            },
+            {
+              "id": "q5-3-2",
+              "type": "text",
+              "question": "What is the 'Value Proposition'?",
+              "answer": "The Value Proposition is the unique value or solution that your business offers to solve your customers' problems or satisfy their needs."
+            }
+          ]
+        },
+        {
+          "id": "5-4",
+          "lesson_id": "5",
+          "title": "Day 4: Understanding Costing and Pricing",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>How to Price Your Product</h2><p>Setting the right price is crucial for profitability. We'll break down the difference between cost and price and explore common strategies.</p><h3>Costing Basics</h3><ul><li><strong>Fixed Costs:</strong> Costs that don't change with sales volume (e.g., rent, salaries, website hosting).</li><li><strong>Variable Costs:</strong> Costs that change directly with sales volume (e.g., raw materials for each product sold).</li></ul><h3>Pricing Strategies</h3><ul><li><strong>Cost-Plus Pricing:</strong> Calculating your total cost and adding a markup percentage.</li><li><strong>Value-Based Pricing:</strong> Setting a price based on the perceived value to the customer, not just the cost.</li></ul>",
+          "order_index": 4,
+          "ai_summary": "This lesson covers the fundamentals of costing and pricing. It distinguishes between fixed costs (which are constant) and variable costs (which change with production), and explores key pricing strategies like cost-plus and value-based pricing to help you set the right price for your product.\n\n*   **Fixed vs. Variable Costs:** Understand the two types of expenses your business has.\n*   **Cost-Plus Pricing:** Add a profit margin on top of your total costs.\n*   **Value-Based Pricing:** Price based on the value you provide to the customer.",
+          "practice_questions": [
+            {
+              "id": "q5-4-1",
+              "type": "mcq",
+              "question": "The rent for your office is an example of what kind of cost?",
+              "options": ["Variable Cost", "Fixed Cost", "Revenue", "Profit"],
+              "answer": "Fixed Cost"
+            },
+            {
+              "id": "q5-4-2",
+              "type": "text",
+              "question": "What is the main difference between cost-plus pricing and value-based pricing?",
+              "answer": "Cost-plus pricing is internally focused on your expenses, while value-based pricing is externally focused on the customer's perception of your product's worth."
+            }
+          ]
+        },
+        {
+          "id": "5-5",
+          "lesson_id": "5",
+          "title": "Day 5: Introduction to Marketing and Sales",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Reaching Your Customers</h2><p>Having a great product is not enough; you need to let people know about it. We'll cover the basics of getting your product in front of the right audience.</p><h3>Marketing vs. Sales</h3><ul><li><strong>Marketing:</strong> The process of creating awareness and interest in your product (e.g., social media, content creation). It's about attracting leads.</li><li><strong>Sales:</strong> The process of converting that interest into a purchase (e.g., a one-on-one demo, a checkout page). It's about closing deals.</li></ul><h3>The Marketing Funnel</h3><p>We'll introduce the concept of the marketing funnel: Awareness, Interest, Decision, Action (AIDA).</p>",
+          "order_index": 5,
+          "ai_summary": "This lesson introduces the fundamentals of marketing and sales. It clarifies that marketing is about creating awareness and attracting potential customers, while sales is about converting that interest into actual purchases. It also introduces the AIDA marketing funnel (Awareness, Interest, Decision, Action).\n\n*   **Marketing:** Attracting people to your product.\n*   **Sales:** Turning attracted people into paying customers.\n*   **AIDA Funnel:** A model describing the customer journey from awareness to purchase.",
+          "practice_questions": [
+            {
+              "id": "q5-5-1",
+              "type": "mcq",
+              "question": "Which activity is part of Marketing?",
+              "options": ["Processing a credit card payment", "Running an Instagram ad campaign", "Giving a product demo", "Signing a contract"],
+              "answer": "Running an Instagram ad campaign"
+            },
+            {
+              "id": "q5-5-2",
+              "type": "text",
+              "question": "What are the four stages of the AIDA marketing funnel?",
+              "answer": "Awareness, Interest, Decision, and Action."
+            }
+          ]
+        },
+        {
+          "id": "5-6",
+          "lesson_id": "5",
+          "title": "Day 6: Building a Simple Brand",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Creating Your Startup's Identity</h2><p>Your brand is how your customers perceive you. It's the look, feel, and voice of your company. We'll cover the essential first steps to building a simple, memorable brand.</p><h3>Core Brand Elements</h3><ul><li><strong>Name:</strong> Choose something memorable and easy to pronounce.</li><li><strong>Logo & Colors:</strong> Create a simple visual identity. Tools like Canva can help you get started without a design background.</li><li><strong>Brand Voice:</strong> How do you talk to your customers? Are you formal and professional, or fun and casual? Be consistent.</li></ul>",
+          "order_index": 6,
+          "ai_summary": "This lesson covers the basics of creating a brand identity for your startup. It explains that a brand is the overall perception customers have of your company and outlines the core elements you need to define: a memorable name, a simple logo and color scheme, and a consistent brand voice.\n\n*   **Brand Identity:** The look, feel, and voice of your company.\n*   **Core Elements:** Name, logo, colors, and brand voice.\n*   **Consistency is Key:** Ensure your brand voice and visuals are consistent across all platforms.",
+          "practice_questions": [
+            {
+              "id": "q5-6-1",
+              "type": "mcq",
+              "question": "Which of the following is NOT a core element of a brand's visual identity?",
+              "options": ["Logo", "Color Palette", "Brand Name", "Cost Structure"],
+              "answer": "Cost Structure"
+            },
+            {
+              "id": "q5-6-2",
+              "type": "text",
+              "question": "What is 'brand voice'?",
+              "answer": "Brand voice is the specific personality and tone a company uses in its communications. For example, it could be professional, humorous, inspiring, or friendly."
+            }
+          ]
+        },
+        {
+          "id": "5-7",
+          "lesson_id": "5",
+          "title": "Day 7: The Pitch - Telling Your Story",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>How to Sell Your Idea</h2><p>An 'elevator pitch' is a short, persuasive speech that you can use to spark interest in your project. The goal is to be able to explain your idea in the time it takes to ride an elevator (about 30-60 seconds).</p><h3>Key Components of a Pitch</h3><ol><li><strong>The Problem:</strong> Clearly state the problem you are solving.</li><li><strong>Your Solution:</strong> Explain how your product or service solves that problem.</li><li><strong>Target Market:</strong> Who are your customers?</li><li><strong>The 'Ask':</strong> What do you want from the listener? (e.g., feedback, an introduction, an investment).</li></ol><p>We will practice crafting a concise and compelling pitch for your own business idea.</p>",
+          "order_index": 7,
+          "ai_summary": "This lesson teaches you how to craft a compelling 'elevator pitch'—a short, persuasive summary of your business idea. It breaks down the essential components of a successful pitch: clearly defining the problem, presenting your solution, identifying your target market, and making a specific 'ask'.\n\n*   **Elevator Pitch:** A 30-60 second summary to spark interest.\n*   **The Problem:** Start with the pain point you are solving.\n*   **The Solution:** Explain how your product fixes the problem.\n*   **The Ask:** Be clear about what you need next.",
+          "practice_questions": [
+            {
+              "id": "q5-7-1",
+              "type": "mcq",
+              "question": "What is the main goal of an elevator pitch?",
+              "options": ["To get immediate funding", "To explain every detail of your business", "To spark interest and secure a follow-up meeting", "To hire employees"],
+              "answer": "To spark interest and secure a follow-up meeting"
+            },
+            {
+              "id": "q5-7-2",
+              "type": "text",
+              "question": "List the four key components of a good pitch mentioned in the lesson.",
+              "answer": "The four components are: The Problem, Your Solution, Target Market, and The 'Ask'."
+            }
+          ]
+        }
+      ]
     },
     {
+      "id": "6",
       "title": "Module 6: Personal Branding & Careers",
       "description": "A complete 7-day journey to discovering your unique identity and future path.",
       "is_free": true,
       "order_index": 6,
       "subtopics": [
-         {
-          "title": "Day 1: What is Personal Branding?",
-          "video_url": null,
-          "content": "<h3>What is a Personal Brand?</h3>\n<p>Think about your favorite brands, like Nike or Apple. You know what they stand for, right? Nike is about determination and athleticism. Apple is about innovation and sleek design. A personal brand is the same idea, but for a person—specifically, for you!</p>\n<p><strong>Personal branding</strong> is the process of creating a clear and consistent message about who you are, what you're good at, and what you stand for. It's how the world—classmates, teachers, and future employers—sees you. It's your reputation, both online and offline.</p>\n\n<h3>Why Does It Matter for You?</h3>\n<p>You might think branding is only for celebrities or big companies, but it's incredibly important for students and young professionals. Here's why:</p>\n<ul>\n  <li><strong>It Differentiates You:</strong> In a world full of talented people, your personal brand is what makes you unique. It helps you stand out from the crowd when applying for internships, colleges, or jobs.</li>\n  <li><strong>It Builds Trust and Credibility:</strong> When you consistently share your knowledge and passion for a particular subject (like coding, art, or marketing), people start to see you as a credible and knowledgeable person in that area.</li>\n  <li><strong>It Creates Opportunities:</strong> A strong personal brand can attract opportunities to you. People might reach out with project ideas, internship offers, or networking connections because they see what you're about and they like it.</li>\n  <li><strong>It Guides Your Growth:</strong> Defining your personal brand forces you to think about your strengths, values, and goals. This clarity helps you make better decisions about your career and personal development.</li>\n</ul>\n\n<h3>Your Digital Footprint is Your Brand</h3>\n<p>Today, a huge part of your personal brand is your digital footprint. Every post you like, every comment you make, and every photo you share on social media contributes to how people perceive you. That's why it's so important to be mindful of your online presence. Future employers and college admission officers often look at social media profiles to get a better sense of who you are.</p>\n\n<h3>Key Takeaways</h3>\n<ul>\n  <li>Your personal brand is your reputation and what makes you unique.</li>\n  <li>It's not about being fake; it's about authentically showcasing your strengths and passions.</li>\n  <li>A strong brand can build trust and attract opportunities.</li>\n  <li>Be mindful of your digital footprint, as it's a major part of your brand today.</li>\n</ul>",
+        {
+          "id": "6-1",
+          "lesson_id": "6",
+          "title": "Day 1: What is a Personal Brand?",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Your Personal Reputation</h2><p>A personal brand is the unique combination of skills, experience, and personality that you want the world to see. It's about telling your story and controlling the narrative of your career.</p><h3>Why It Matters</h3><ul><li><strong>Stand Out:</strong> In a competitive world, a strong brand helps you differentiate yourself from others.</li><li><strong>Build Credibility:</strong> It positions you as an expert in your field of interest.</li><li><strong>Attract Opportunities:</strong> A good brand can bring job offers, collaborations, and network connections to you.</li></ul>",
           "order_index": 1,
-          "ai_summary": "Personal branding is about creating a distinct identity for yourself based on your skills, values, and passions, similar to how companies brand themselves. It's crucial for students and young professionals because it helps you stand out, builds trust and credibility in your field, and attracts opportunities like internships and jobs. A key part of your brand is your digital footprint, so it's important to manage your online presence thoughtfully. The main takeaways are that an authentic personal brand showcases your unique strengths, builds trust, and can open doors for your future.",
+          "ai_summary": "This lesson introduces personal branding as the art of shaping your professional reputation. It explains that a strong brand helps you stand out, builds credibility in your field, and can proactively attract career opportunities.\n\n*   **What it is:** Your unique professional identity and reputation.\n*   **Why it matters:** To differentiate yourself and build credibility.\n*   **The Goal:** To attract opportunities rather than just chasing them.",
           "practice_questions": [
             {
-              "id": "pq6-1-1",
-              "type": "text",
-              "question": "In one sentence, what is personal branding?",
-              "answer": "Personal branding is the practice of marketing people and their careers as brands."
+              "id": "q6-1-1",
+              "type": "mcq",
+              "question": "What is a personal brand?",
+              "options": ["A company logo", "Your professional reputation and story", "Your social media follower count", "Your salary"],
+              "answer": "Your professional reputation and story"
             },
             {
-              "id": "pq6-1-2",
+              "id": "q6-1-2",
+              "type": "text",
+              "question": "List two benefits of having a strong personal brand.",
+              "answer": "Two benefits are standing out from the competition and attracting opportunities."
+            }
+          ]
+        },
+        {
+          "id": "6-2",
+          "lesson_id": "6",
+          "title": "Day 2: Discovering Your Strengths & Passions",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>The Foundation of Your Brand</h2><p>An authentic brand is built on your genuine strengths and passions. We'll use self-reflection exercises to identify what you're good at and what you love to do.</p><h3>Self-Assessment Tools</h3><ul><li><strong>The 'Flow' State:</strong> What activities make you lose track of time? This is often where your passion lies.</li><li><strong>Ask for Feedback:</strong> Ask trusted friends, family, and teachers what they see as your top 3 strengths.</li><li><strong>The Ikigai Concept:</strong> We'll explore the Japanese concept of Ikigai, finding the intersection of what you love, what you're good at, what the world needs, and what you can be paid for.</li></ul>",
+          "order_index": 2,
+          "ai_summary": "This lesson focuses on self-discovery as the foundation for an authentic personal brand. It introduces methods like identifying your 'flow' state, seeking feedback from others, and using the Ikigai framework to find the intersection of your passions, skills, and potential career paths.\n\n*   **Authenticity is Key:** Your brand must be based on your true self.\n*   **Self-Reflection:** Use exercises like the 'flow' state to find your passions.\n*   **Ikigai:** A framework for finding a fulfilling career path.",
+          "practice_questions": [
+            {
+              "id": "q6-2-1",
               "type": "mcq",
-              "question": "Which of the following is NOT a primary benefit of building a personal brand?",
-              "options": [
-                "It helps you stand out.",
-                "It guarantees you will get any job you apply for.",
-                "It can attract opportunities to you.",
-                "It builds credibility."
-              ],
-              "answer": "It guarantees you will get any job you apply for."
+              "question": "What is the concept of 'Ikigai'?",
+              "options": ["A type of Japanese food", "A framework for finding your life's purpose", "A branding strategy", "A type of exercise"],
+              "answer": "A framework for finding your life's purpose"
+            },
+            {
+              "id": "q6-2-2",
+              "type": "text",
+              "question": "What is one way to discover your strengths?",
+              "answer": "One way is to ask trusted friends or mentors for honest feedback on what they think you are good at."
+            }
+          ]
+        },
+        {
+          "id": "6-3",
+          "lesson_id": "6",
+          "title": "Day 3: Crafting Your Resume & LinkedIn Profile",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Your Digital Handshake</h2><p>Your resume and LinkedIn profile are the cornerstones of your professional brand. We'll learn how to make them compelling and effective.</p><h3>Resume Best Practices</h3><ul><li><strong>The STAR Method:</strong> Frame your experience using Situation, Task, Action, Result to create impactful bullet points.</li><li><strong>Keywords:</strong> Tailor your resume with keywords from the job description you're applying for.</li></ul><h3>LinkedIn Optimization</h3><ul><li><strong>Professional Headshot:</strong> A clear, friendly photo is a must.</li><li><strong>Compelling Headline:</strong> Go beyond just 'Student'. Use something like 'Aspiring Marketing Professional | Passionate about Digital Storytelling'.</li></ul>",
+          "order_index": 3,
+          "ai_summary": "This lesson covers how to build the core assets of your professional brand: your resume and LinkedIn profile. It teaches resume best practices like using the STAR method for bullet points and tailoring with keywords, along with LinkedIn optimization tips like having a professional headshot and a compelling headline.\n\n*   **Resume is Key:** A well-crafted resume is essential.\n*   **STAR Method:** A technique to show impact (Situation, Task, Action, Result).\n*   **LinkedIn is Your Digital CV:** Optimize your profile with a good photo and a strong headline.",
+          "practice_questions": [
+            {
+              "id": "q6-3-1",
+              "type": "mcq",
+              "question": "What does STAR stand for in the STAR method?",
+              "options": ["Skill, Talent, Action, Result", "Situation, Task, Action, Result", "Strength, Teamwork, Ambition, Reward", "Success, Training, Aptitude, Role"],
+              "answer": "Situation, Task, Action, Result"
+            },
+            {
+              "id": "q6-3-2",
+              "type": "text",
+              "question": "Why is it important to have a professional headshot on LinkedIn?",
+              "answer": "It creates a positive first impression, makes your profile appear more complete and credible, and helps recruiters connect a face to your name."
+            }
+          ]
+        },
+        {
+          "id": "6-4",
+          "lesson_id": "6",
+          "title": "Day 4: Networking for Beginners",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Building Meaningful Connections</h2><p>Networking isn't about collecting contacts; it's about building genuine relationships. We'll explore how to network effectively, even if you're an introvert.</p><h3>Networking Strategies</h3><ul><li><strong>Informational Interviews:</strong> Reach out to professionals in fields you're interested in and ask for 15 minutes of their time to learn about their journey. People love to talk about themselves.</li><li><strong>LinkedIn Networking:</strong> Send personalized connection requests. Instead of the default message, mention something specific you admire about their work or a mutual connection.</li><li><strong>Quality over Quantity:</strong> It's better to have a few strong connections than hundreds of weak ones.</li></ul>",
+          "order_index": 4,
+          "ai_summary": "This lesson demystifies networking, presenting it as the art of building genuine relationships rather than just collecting contacts. It provides practical strategies for beginners, such as conducting informational interviews and sending personalized LinkedIn requests, emphasizing the importance of quality connections over quantity.\n\n*   **Networking is Relationship-Building:** Focus on genuine connection.\n*   **Informational Interviews:** A low-pressure way to learn from professionals.\n*   **Personalize Your Outreach:** Avoid generic messages when connecting on platforms like LinkedIn.",
+          "practice_questions": [
+            {
+              "id": "q6-4-1",
+              "type": "mcq",
+              "question": "What is an informational interview?",
+              "options": ["A job interview", "A casual chat to learn about someone's career path", "A performance review", "A sales pitch"],
+              "answer": "A casual chat to learn about someone's career path"
+            },
+            {
+              "id": "q6-4-2",
+              "type": "text",
+              "question": "When sending a LinkedIn connection request, why is it better to add a personal note?",
+              "answer": "A personal note shows you've done your research and are genuinely interested in connecting, which dramatically increases the chance they will accept your request."
+            }
+          ]
+        },
+        {
+          "id": "6-5",
+          "lesson_id": "6",
+          "title": "Day 5: Interview Skills and Preparation",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Nailing Your First Interview</h2><p>An interview is your chance to bring your resume to life. Preparation is the key to confidence and success.</p><h3>Common Interview Questions</h3><ul><li><strong>'Tell me about yourself':</strong> We'll learn how to craft a compelling 'elevator pitch' about your journey and goals.</li><li><strong>'What is your biggest weakness?':</strong> The trick is to choose a real weakness and show how you are actively working to improve it.</li></ul><h3>Before, During, and After</h3><p>We'll cover the full interview lifecycle: researching the company beforehand, making a strong impression during the interview, and sending a thank-you note afterward.</p>",
+          "order_index": 5,
+          "ai_summary": "This lesson provides a comprehensive guide to succeeding in interviews through preparation. It covers how to answer common questions like 'Tell me about yourself' and 'What is your biggest weakness?', and details best practices for all three stages of the interview process: research, performance, and follow-up.\n\n*   **Preparation is Key:** Research the company and prepare your answers.\n*   **Answer Strategically:** Frame your answers to highlight your strengths and self-awareness.\n*   **Follow Up:** Always send a thank-you note after the interview.",
+          "practice_questions": [
+            {
+              "id": "q6-5-1",
+              "type": "mcq",
+              "question": "When asked 'What is your biggest weakness?', what is the best approach?",
+              "options": ["Say you have no weaknesses", "Name a fake weakness that is actually a strength", "Name a real but manageable weakness and explain how you're improving", "Blame a previous employer"],
+              "answer": "Name a real but manageable weakness and explain how you're improving"
+            },
+            {
+              "id": "q6-5-2",
+              "type": "text",
+              "question": "Why is it important to send a thank-you note after an interview?",
+              "answer": "It shows professionalism, reinforces your interest in the role, and gives you another opportunity to mention a key strength or connection you made during the conversation."
+            }
+          ]
+        },
+        {
+          "id": "6-6",
+          "lesson_id": "6",
+          "title": "Day 6: Building an Online Presence",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Showcasing Your Skills to the World</h2><p>In the digital age, your online presence is your portfolio. We'll explore simple ways to showcase your skills and knowledge online.</p><h3>Platforms for Your Brand</h3><ul><li><strong>LinkedIn:</strong> Regularly share articles, write posts about what you're learning, and engage with others in your field.</li><li><strong>GitHub (for coders):</strong> Share your coding projects, even small ones. It's a public portfolio of your skills.</li><li><strong>Personal Blog/Portfolio Website:</strong> A dedicated space to showcase your work in detail. Tools like Medium, WordPress, or Carrd make this easy.</li></ul><p>The key is to pick one platform and be consistent.</p>",
+          "order_index": 6,
+          "ai_summary": "This lesson explains how to build an online presence to act as a digital portfolio for your skills. It suggests using platforms like LinkedIn for professional engagement, GitHub for coding projects, and personal blogs or portfolio sites for in-depth showcases, emphasizing consistency on your chosen platform.\n\n*   **Your Online Presence is Your Portfolio:** Use it to showcase your work.\n*   **Choose a Platform:** Focus your efforts on LinkedIn, GitHub, or a personal blog.\n*   **Consistency is Crucial:** Regular engagement and updates are more important than being on every platform.",
+          "practice_questions": [
+            {
+              "id": "q6-6-1",
+              "type": "mcq",
+              "question": "Which platform is best for showcasing coding projects?",
+              "options": ["Instagram", "LinkedIn", "GitHub", "Facebook"],
+              "answer": "GitHub"
+            },
+            {
+              "id": "q6-6-2",
+              "type": "text",
+              "question": "Why is it better to be active on one platform than to be inactive on many?",
+              "answer": "Being consistently active on one platform allows you to build a deeper audience and a more credible reputation in a specific community, which is more effective than spreading yourself thin."
+            }
+          ]
+        },
+        {
+          "id": "6-7",
+          "lesson_id": "6",
+          "title": "Day 7: The Lifelong Learner",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Your Brand is a Living Thing</h2><p>Your personal brand isn't a one-time project; it evolves as you grow. The most successful professionals are lifelong learners who constantly adapt and add new skills.</p><h3>Staying Relevant</h3><ul><li><strong>Continuous Learning:</strong> Dedicate time each week to learn something new in your field, whether through online courses, books, or podcasts.</li><li><strong>Adaptability:</strong> Be open to new technologies and changes in your industry.</li><li><strong>Review and Refine:</strong> Revisit your personal brand statement and online profiles every 6-12 months to ensure they still reflect your goals and accomplishments.</li></ul>",
+          "order_index": 7,
+          "ai_summary": "This final lesson emphasizes that personal branding is an ongoing process of growth and adaptation. It highlights the importance of being a lifelong learner, staying adaptable to industry changes, and regularly reviewing and refining your brand to reflect your evolving skills and goals.\n\n*   **Branding is a Journey:** Your brand should evolve with you.\n*   **Be a Lifelong Learner:** Continuously acquire new skills to stay relevant.\n*   **Review and Adapt:** Regularly update your brand assets to reflect your growth.",
+          "practice_questions": [
+            {
+              "id": "q6-7-1",
+              "type": "mcq",
+              "question": "How often should you review and update your personal brand?",
+              "options": ["Every day", "Once a week", "Every 6-12 months", "Never"],
+              "answer": "Every 6-12 months"
+            },
+            {
+              "id": "q6-7-2",
+              "type": "text",
+              "question": "Why is being a 'lifelong learner' important for your career and personal brand?",
+              "answer": "Industries and technologies are constantly changing. Being a lifelong learner ensures your skills stay relevant and valuable, which strengthens your personal brand and makes you a more attractive candidate for opportunities."
             }
           ]
         }
       ]
     },
     {
+      "id": "7",
       "title": "Module 7: Excel & Data Skills",
       "description": "A complete 7-day learning journey into data, spreadsheets, and basic coding.",
       "is_free": false,
       "order_index": 7,
-      "subtopics": []
+      "subtopics": [
+        {
+          "id": "7-1",
+          "lesson_id": "7",
+          "title": "Day 1: Introduction to Spreadsheets",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Your Data Playground</h2><p>Spreadsheets (like Microsoft Excel or Google Sheets) are powerful tools for organizing, analyzing, and visualizing data. They are used in almost every industry.</p><h3>Basic Terminology</h3><ul><li><strong>Cell:</strong> An individual box in a spreadsheet.</li><li><strong>Row:</strong> A horizontal line of cells.</li><li><strong>Column:</strong> A vertical line of cells.</li><li><strong>Formula:</strong> An expression that performs calculations on values in cells. All formulas start with an equals sign (=).</li></ul>",
+          "order_index": 1,
+          "ai_summary": "This lesson introduces spreadsheets as essential tools for data management. It covers basic terminology including cells, rows, columns, and the fundamental concept that all formulas must begin with an equals sign (=).\n\n*   **Spreadsheets:** Tools for organizing and analyzing data.\n*   **Core Components:** Cells, rows, and columns.\n*   **Formulas:** Start with '=' to perform calculations.",
+          "practice_questions": [
+            {
+              "id": "q7-1-1",
+              "type": "mcq",
+              "question": "What is a vertical line of cells in a spreadsheet called?",
+              "options": ["Row", "Cell", "Formula", "Column"],
+              "answer": "Column"
+            },
+            {
+              "id": "q7-1-2",
+              "type": "text",
+              "question": "What is the first character of every formula in Excel or Google Sheets?",
+              "answer": "An equals sign (=)."
+            }
+          ]
+        },
+        {
+          "id": "7-2",
+          "lesson_id": "7",
+          "title": "Day 2: Essential Formulas and Functions",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Automating Your Calculations</h2><p>Functions are pre-built formulas that make complex calculations easy. We'll cover the most essential ones.</p><h3>Must-Know Functions</h3><ul><li><strong>SUM:</strong> Adds up a range of numbers. (e.g., `=SUM(A1:A10)`)</li><li><strong>AVERAGE:</strong> Calculates the average of a range of numbers.</li><li><strong>COUNT:</strong> Counts the number of cells that contain numbers.</li><li><strong>IF:</strong> Performs a logical test. (e.g., `=IF(A1>10, 'Yes', 'No')`). This checks if the value in cell A1 is greater than 10. If true, it returns 'Yes'; otherwise, it returns 'No'.</li></ul>",
+          "order_index": 2,
+          "ai_summary": "This lesson covers fundamental spreadsheet functions that automate calculations. It introduces SUM for addition, AVERAGE for calculating the mean, COUNT for tallying cells with numbers, and the IF function for performing logical tests.\n\n*   **SUM:** Adds numbers in a range.\n*   **AVERAGE:** Calculates the mean of a range.\n*   **COUNT:** Counts numeric cells.\n*   **IF Function:** Returns one value if a condition is true, and another if it's false.",
+          "practice_questions": [
+            {
+              "id": "q7-2-1",
+              "type": "mcq",
+              "question": "Which function would you use to add up the values in cells A1 through A5?",
+              "options": ["=ADD(A1:A5)", "=TOTAL(A1:A5)", "=SUM(A1:A5)", "=COMBINE(A1:A5)"],
+              "answer": "=SUM(A1:A5)"
+            },
+            {
+              "id": "q7-2-2",
+              "type": "text",
+              "question": "What would the formula `=IF(B2>100, 'Pass', 'Fail')` return if cell B2 contained the number 95?",
+              "answer": "It would return 'Fail'."
+            }
+          ]
+        },
+        {
+          "id": "7-3",
+          "lesson_id": "7",
+          "title": "Day 3: Sorting, Filtering, and Conditional Formatting",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Making Sense of Your Data</h2><p>Once you have data, you need to organize it. We'll learn three powerful techniques for managing large datasets.</p><ul><li><strong>Sorting:</strong> Arrange your data alphabetically or numerically (A-Z, Z-A, smallest to largest, etc.).</li><li><strong>Filtering:</strong> Temporarily hide rows that don't meet your criteria, allowing you to focus on specific data.</li><li><strong>Conditional Formatting:</strong> Automatically change a cell's appearance (e.g., background color) based on its value. This is great for highlighting important data, like sales numbers above a certain target.</li></ul>",
+          "order_index": 3,
+          "ai_summary": "This lesson teaches key techniques for organizing and interpreting data in spreadsheets. It covers sorting to arrange data, filtering to view specific subsets, and conditional formatting to visually highlight data based on rules, making large datasets easier to understand.\n\n*   **Sorting:** Arrange data in a specific order.\n*   **Filtering:** Show only the data that meets certain criteria.\n*   **Conditional Formatting:** Automatically change cell appearance based on its value.",
+          "practice_questions": [
+            {
+              "id": "q7-3-1",
+              "type": "mcq",
+              "question": "Which feature would you use to see only the sales from the 'North' region?",
+              "options": ["Sorting", "Filtering", "Conditional Formatting", "A formula"],
+              "answer": "Filtering"
+            },
+            {
+              "id": "q7-3-2",
+              "type": "text",
+              "question": "What is a practical use for Conditional Formatting?",
+              "answer": "A practical use is to automatically color-code all failing grades in a grade sheet red, making them easy to spot."
+            }
+          ]
+        },
+        {
+          "id": "7-4",
+          "lesson_id": "7",
+          "title": "Day 4: Creating Charts and Graphs",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Visualizing Your Data Story</h2><p>A chart can tell a story much faster than a table of numbers. We'll learn how to create basic charts to make your data understandable at a glance.</p><h3>Common Chart Types</h3><ul><li><strong>Bar Chart:</strong> Great for comparing quantities between different categories (e.g., sales per product).</li><li><strong>Line Chart:</strong> Perfect for showing a trend over time (e.g., website traffic per month).</li><li><strong>Pie Chart:</strong> Used to show parts of a whole (e.g., budget allocation by percentage). Use sparingly, as they can be hard to read with many slices.</li></ul>",
+          "order_index": 4,
+          "ai_summary": "This lesson focuses on data visualization by teaching how to create basic charts. It explains that charts communicate data stories more effectively than raw numbers and covers the best uses for common chart types: bar charts for comparisons, line charts for trends, and pie charts for proportions.\n\n*   **Data Visualization:** Turning numbers into visual stories.\n*   **Bar Charts:** Compare different categories.\n*   **Line Charts:** Show changes over time.\n*   **Pie Charts:** Display parts of a whole.",
+          "practice_questions": [
+            {
+              "id": "q7-4-1",
+              "type": "mcq",
+              "question": "Which chart is best for showing your company's sales growth over the last 5 years?",
+              "options": ["Pie Chart", "Bar Chart", "Line Chart", "Scatter Plot"],
+              "answer": "Line Chart"
+            },
+            {
+              "id": "q7-4-2",
+              "type": "text",
+              "question": "When is a pie chart a poor choice for visualizing data?",
+              "answer": "A pie chart is a poor choice when you have too many categories, as it becomes cluttered and difficult to compare the sizes of the slices accurately."
+            }
+          ]
+        },
+        {
+          "id": "7-5",
+          "lesson_id": "7",
+          "title": "Day 5: Introduction to PivotTables",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Summarizing Data in a Snap</h2><p>PivotTables are one of the most powerful features in Excel. They allow you to quickly summarize large amounts of data with a simple drag-and-drop interface.</p><h3>What Can You Do with a PivotTable?</h3><ul><li>Quickly group data by categories (e.g., see total sales per region AND per product category).</li><li>Calculate sums, averages, and counts without writing any formulas.</li><li>Restructure your data to see it from different perspectives.</li></ul><p>We'll work through an example to see how a PivotTable can turn a huge, messy table into a clear summary in seconds.</p>",
+          "order_index": 5,
+          "ai_summary": "This lesson introduces PivotTables as a powerful spreadsheet feature for summarizing large datasets efficiently. It explains how you can use their drag-and-drop interface to group data, perform calculations without formulas, and dynamically restructure information to gain different insights quickly.\n\n*   **PivotTables:** A tool for quickly summarizing large tables of data.\n*   **Key Functions:** Group, sum, average, and count data dynamically.\n*   **Main Benefit:** Allows you to see data from multiple perspectives without manual work.",
+          "practice_questions": [
+            {
+              "id": "q7-5-1",
+              "type": "mcq",
+              "question": "What is the primary advantage of using a PivotTable?",
+              "options": ["It creates colorful charts", "It allows for quick and flexible data summarization without formulas", "It checks for spelling errors", "It connects to the internet"],
+              "answer": "It allows for quick and flexible data summarization without formulas"
+            },
+            {
+              "id": "q7-5-2",
+              "type": "text",
+              "question": "If you had a large table of sales data, what question could a PivotTable help you answer?",
+              "answer": "A PivotTable could help answer questions like 'What were the total sales for each product category in each region?' or 'Which salesperson had the highest average sale amount?'"
+            }
+          ]
+        },
+        {
+          "id": "7-6",
+          "lesson_id": "7",
+          "title": "Day 6: What is 'Data' and 'Data Analysis'?",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Beyond the Numbers</h2><p>Data is more than just numbers; it's a collection of facts, figures, and observations. Data Analysis is the process of inspecting, cleaning, transforming, and modeling this data to discover useful information and support decision-making.</p><h3>The Data Analysis Process</h3><ol><li><strong>Ask a Question:</strong> What do you want to find out?</li><li><strong>Gather Data:</strong> Collect the relevant information.</li><li><strong>Clean Data:</strong> Fix errors, remove duplicates, and handle missing values.</li><li><strong>Analyze Data:</strong> Look for patterns, trends, and relationships.</li><li><strong>Interpret and Share Results:</strong> Turn your findings into a story that others can understand.</li></ol>",
+          "order_index": 6,
+          "ai_summary": "This lesson defines data as a collection of facts and data analysis as the process of examining that data to find useful insights. It outlines the five key steps of the data analysis process: asking a question, gathering data, cleaning it, analyzing for patterns, and interpreting the results to inform decisions.\n\n*   **Data:** A collection of facts and observations.\n*   **Data Analysis:** The process of turning raw data into useful information.\n*   **The Process:** Ask, Gather, Clean, Analyze, Interpret.",
+          "practice_questions": [
+            {
+              "id": "q7-6-1",
+              "type": "mcq",
+              "question": "What is the first step in the data analysis process?",
+              "options": ["Gathering Data", "Creating a Chart", "Asking a Question", "Cleaning Data"],
+              "answer": "Asking a Question"
+            },
+            {
+              "id": "q7-6-2",
+              "type": "text",
+              "question": "Why is 'cleaning data' an important step?",
+              "answer": "Cleaning data is important because real-world data is often messy, with errors or missing values. If you don't clean it, your analysis will be inaccurate and lead to wrong conclusions ('garbage in, garbage out')."
+            }
+          ]
+        },
+        {
+          "id": "7-7",
+          "lesson_id": "7",
+          "title": "Day 7: Introduction to Coding for Data",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Leveling Up from Spreadsheets</h2><p>While spreadsheets are great, they have limits with very large datasets. Languages like Python and SQL are the next step for serious data analysis.</p><h3>Why Code?</h3><ul><li><strong>Automation:</strong> You can write a script to perform the same analysis on new data automatically.</li><li><strong>Scalability:</strong> Code can handle millions of rows of data much faster than a spreadsheet.</li><li><strong>Advanced Analysis:</strong> Coding opens the door to advanced statistical modeling and machine learning.</li></ul><h3>Python & SQL</h3><ul><li><strong>SQL (Structured Query Language):</strong> The language used to communicate with and extract data from databases.</li><li><strong>Python:</strong> A versatile programming language with powerful data analysis libraries like Pandas and Matplotlib.</li></ul>",
+          "order_index": 7,
+          "ai_summary": "This lesson explains why coding is the next step after spreadsheets for data analysis. It highlights that coding offers superior automation, scalability for large datasets, and access to advanced analytical methods. It introduces SQL as the language for databases and Python as a versatile tool with powerful data analysis libraries.\n\n*   **Why Code?:** For automation, scalability, and advanced analysis.\n*   **SQL:** The language for getting data from databases.\n*   **Python:** A powerful, all-purpose language for data analysis (using libraries like Pandas).",
+          "practice_questions": [
+            {
+              "id": "q7-7-1",
+              "type": "mcq",
+              "question": "Which language is primarily used for getting data out of databases?",
+              "options": ["Python", "HTML", "SQL", "JavaScript"],
+              "answer": "SQL"
+            },
+            {
+              "id": "q7-7-2",
+              "type": "text",
+              "question": "Give one reason why a data analyst might use Python instead of Excel.",
+              "answer": "An analyst might use Python because it can handle much larger datasets than Excel, or because they need to automate a repetitive data cleaning and analysis task."
+            }
+          ]
+        }
+      ]
     },
     {
+      "id": "8",
       "title": "Module 8: Cybersecurity & Digital Safety",
       "description": "A complete 7-day learning journey to become a digital safety expert.",
       "is_free": true,
       "order_index": 8,
-      "subtopics": []
+      "subtopics": [
+        {
+          "id": "8-1",
+          "lesson_id": "8",
+          "title": "Day 1: Strong Passwords & 2FA",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Your First Line of Defense</h2><p>Your password is the key to your digital life. A weak password is like leaving your front door unlocked.</p><h3>Creating a Strong Password</h3><ul><li><strong>Length is Strength:</strong> Aim for at least 12 characters.</li><li><strong>Mix it Up:</strong> Use a combination of uppercase letters, lowercase letters, numbers, and symbols.</li><li><strong>Avoid Personal Info:</strong> Don't use your name, birthday, or common words.</li></ul><h3>Two-Factor Authentication (2FA)</h3><p>2FA adds a second layer of security. Even if someone steals your password, they can't log in without a second code, usually sent to your phone. We'll show you how to enable it on your important accounts.</p>",
+          "order_index": 1,
+          "ai_summary": "This lesson covers the two most critical components of account security: strong passwords and Two-Factor Authentication (2FA). It provides guidelines for creating hard-to-guess passwords and explains how 2FA adds a vital second layer of protection to your digital accounts.\n\n*   **Strong Passwords:** Make them long (12+ characters) and complex (mix of cases, numbers, symbols).\n*   **2FA:** A second verification step (like a code to your phone) that protects you even if your password is stolen.\n*   **Enable 2FA Everywhere:** Turn on 2FA for all important accounts like email and banking.",
+          "practice_questions": [
+            {
+              "id": "q8-1-1",
+              "type": "mcq",
+              "question": "Which of the following is the strongest password?",
+              "options": ["password123", "MyDogSparky", "P@ssw0rd!", "Tr33-h0usE-B@tTle!"],
+              "answer": "Tr33-h0usE-B@tTle!"
+            },
+            {
+              "id": "q8-1-2",
+              "type": "text",
+              "question": "What is the purpose of Two-Factor Authentication (2FA)?",
+              "answer": "The purpose of 2FA is to add a second layer of security, so that even if a hacker steals your password, they still cannot access your account without the second factor (e.g., a code from your phone)."
+            }
+          ]
+        },
+        {
+          "id": "8-2",
+          "lesson_id": "8",
+          "title": "Day 2: Recognizing Phishing Scams",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Don't Take the Bait!</h2><p>Phishing is a type of scam where attackers try to trick you into giving them your personal information, like passwords or credit card numbers, by pretending to be someone trustworthy (like your bank or a popular website).</p><h3>Red Flags of Phishing</h3><ul><li><strong>Sense of Urgency:</strong> Messages that say 'Your account will be suspended!' or 'Urgent action required!'.</li><li><strong>Suspicious Links & Senders:</strong> Hover over links to see the real destination. Check the sender's email address for slight misspellings (e.g., 'bankofamerica.net' instead of '.com').</li><li><strong>Generic Greetings:</strong> Legitimate companies usually address you by name, not 'Dear Customer'.</li><li><strong>Poor Grammar & Spelling:</strong> A sign of an unprofessional, likely fraudulent email.</li></ul>",
+          "order_index": 2,
+          "ai_summary": "This lesson teaches you how to identify phishing scams, where attackers try to steal your information by impersonating trusted entities. It highlights common red flags to watch out for, such as a false sense of urgency, suspicious links, generic greetings, and poor grammar.\n\n*   **Phishing:** A scam to trick you into revealing personal information.\n*   **Urgency:** A common tactic to make you act without thinking.\n*   **Check the Source:** Verify the sender's email and hover over links before clicking.\n*   **Look for Errors:** Spelling and grammar mistakes are major red flags.",
+          "practice_questions": [
+            {
+              "id": "q8-2-1",
+              "type": "mcq",
+              "question": "Which of the following is a major red flag for a phishing email?",
+              "options": ["A personalized greeting with your name", "A message creating a sense of urgency", "A link to the company's official website", "Perfect grammar and spelling"],
+              "answer": "A message creating a sense of urgency"
+            },
+            {
+              "id": "q8-2-2",
+              "type": "text",
+              "question": "Before clicking a link in an email, what should you do to check if it's legitimate?",
+              "answer": "You should hover your mouse cursor over the link (without clicking) to see the actual destination URL that appears in the bottom corner of your browser or email client."
+            }
+          ]
+        },
+        {
+          "id": "8-3",
+          "lesson_id": "8",
+          "title": "Day 3: Social Media Privacy & Safety",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Curating Your Digital Footprint</h2><p>What you post online can last forever. Managing your social media privacy is about controlling who sees your information and protecting your future self.</p><h3>Key Privacy Settings</h3><ul><li><strong>Make Your Accounts Private:</strong> This is the simplest and most effective step. Only approved followers can see your content.</li><li><strong>Review Your Tags:</strong> Set your account to require your approval before a photo you're tagged in appears on your profile.</li><li><strong>Think Before You Post:</strong> Ask yourself, 'Would I be okay with my future boss or college admissions officer seeing this?' If the answer is no, don't post it.</li></ul><h3>Oversharing Risks</h3><p>Avoid posting sensitive information like your full address, phone number, or that you're going on vacation (which signals your house is empty).</p>",
+          "order_index": 3,
+          "ai_summary": "This lesson focuses on managing your digital footprint by securing your social media privacy. It recommends making accounts private, reviewing photo tags, and thinking critically before posting. It also warns against the risks of oversharing sensitive personal information like your address or vacation plans.\n\n*   **Control Your Audience:** Make social media accounts private.\n*   **Manage Tags:** Approve photos you're tagged in before they appear on your profile.\n*   **Think Before You Post:** Consider your future self before sharing content.\n*   **Avoid Oversharing:** Don't post sensitive data like your location or phone number.",
+          "practice_questions": [
+            {
+              "id": "q8-3-1",
+              "type": "mcq",
+              "question": "What is the most effective first step to improve your social media privacy?",
+              "options": ["Posting daily", "Setting your accounts to private", "Using lots of hashtags", "Tagging all your friends"],
+              "answer": "Setting your accounts to private"
+            },
+            {
+              "id": "q8-3-2",
+              "type": "text",
+              "question": "Why is it risky to post that you are on vacation while you are still away?",
+              "answer": "It publicly announces that your home is empty, which can make you a target for burglars."
+            }
+          ]
+        },
+        {
+          "id": "8-4",
+          "lesson_id": "8",
+          "title": "Day 4: Safe Online Shopping",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>How to Shop Online Without Getting Scammed</h2><p>Online shopping is convenient, but it comes with risks. We'll learn the key signs of a safe and secure online store.</p><h3>The Secure Website Checklist</h3><ol><li><strong>Look for HTTPS:</strong> The 'S' stands for 'Secure'. The website address should start with `https://` and have a padlock icon in the address bar.</li><li><strong>Check for Reviews:</strong> Look for reviews of the website on other platforms, not just on the site itself. No reviews or all perfect reviews can be a red flag.</li><li><strong>Use Secure Payment Methods:</strong> Use credit cards (which have better fraud protection) or trusted third-party services like PayPal or UPI. Avoid direct bank transfers to unknown sellers.</li><li><strong>If it Seems Too Good to Be True...:</strong> It probably is. A brand new iPhone for 90% off is a scam.</li></ol>",
+          "order_index": 4,
+          "ai_summary": "This lesson provides a checklist for safe online shopping to help you avoid scams. Key practices include verifying that the website uses HTTPS, checking for independent reviews, using secure payment methods like credit cards or PayPal, and being wary of deals that seem too good to be true.\n\n*   **Check for HTTPS:** Ensure the website address starts with `https://` and has a padlock icon.\n*   **Verify Reviews:** Look for genuine reviews on third-party sites.\n*   **Use Safe Payments:** Prefer credit cards or trusted services over direct bank transfers.\n*   **Be Skeptical:** Unbelievably good deals are almost always scams.",
+          "practice_questions": [
+            {
+              "id": "q8-4-1",
+              "type": "mcq",
+              "question": "What does the 'S' in `https://` stand for?",
+              "options": ["Shopping", "Secure", "Site", "Special"],
+              "answer": "Secure"
+            },
+            {
+              "id": "q8-4-2",
+              "type": "text",
+              "question": "Why is it generally safer to use a credit card for online shopping than a debit card?",
+              "answer": "Credit cards typically offer stronger fraud protection. If a fraudulent charge is made, it's the bank's money that is at stake initially, and it's easier to dispute the charge. With a debit card, the money is taken directly from your account."
+            }
+          ]
+        },
+        {
+          "id": "8-5",
+          "lesson_id": "8",
+          "title": "Day 5: Understanding Malware and Viruses",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Protecting Your Devices</h2><p>Malware (malicious software) is a general term for any software designed to harm your computer or steal your data. We'll explore the common types.</p><h3>Types of Malware</h3><ul><li><strong>Viruses:</strong> Attach themselves to clean files and spread to other files.</li><li><strong>Worms:</strong> Can travel from computer to computer without human action.</li><li><strong>Spyware:</strong> Secretly records what you do on your computer, like your passwords.</li><li><strong>Ransomware:</strong> Locks up your files and demands a payment (a ransom) to unlock them.</li></ul><h3>How to Protect Yourself</h3><p>Keep your operating system and software updated, use a reputable antivirus program, and be very careful about what you download and what email attachments you open.</p>",
+          "order_index": 5,
+          "ai_summary": "This lesson explains what malware is and details its common forms, including viruses, worms, spyware, and ransomware. It emphasizes crucial protective measures such as keeping your software updated, using antivirus programs, and being cautious about downloads and email attachments.\n\n*   **Malware:** Software designed to harm your device or steal data.\n*   **Common Types:** Viruses, worms, spyware, and ransomware.\n*   **Protection:** Keep software updated, use antivirus, and be careful what you click and download.",
+          "practice_questions": [
+            {
+              "id": "q8-5-1",
+              "type": "mcq",
+              "question": "What type of malware locks your files and demands a payment?",
+              "options": ["Virus", "Worm", "Spyware", "Ransomware"],
+              "answer": "Ransomware"
+            },
+            {
+              "id": "q8-5-2",
+              "type": "text",
+              "question": "What is the single most important habit to avoid getting a computer virus?",
+              "answer": "The most important habit is to be extremely cautious about downloading files or opening attachments from unknown or untrusted sources."
+            }
+          ]
+        },
+        {
+          "id": "8-6",
+          "lesson_id": "8",
+          "title": "Day 6: Public Wi-Fi Safety",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>The Dangers of Free Wi-Fi</h2><p>Public Wi-Fi at cafes, airports, or hotels is convenient, but it's not secure. Hackers on the same network can potentially 'eavesdrop' on your internet activity and steal your data.</p><h3>How to Stay Safe</h3><ol><li><strong>Avoid Sensitive Transactions:</strong> Do not do any online banking or enter passwords or credit card details on public Wi-Fi. Wait until you're on a trusted network (like your home Wi-Fi).</li><li><strong>Use a VPN:</strong> A Virtual Private Network (VPN) encrypts your internet traffic, creating a secure 'tunnel' that makes it unreadable to anyone on the network. This is the best way to stay safe on public Wi-Fi.</li><li><strong>Look for 'Official' Networks:</strong> Ask an employee for the correct Wi-Fi network name. Hackers can set up fake networks with similar names (e.g., 'Free Cafe Wi-Fi' instead of 'Cafe Official Wi-Fi') to trick you.</li></ol>",
+          "order_index": 6,
+          "ai_summary": "This lesson highlights the security risks of using public Wi-Fi, where hackers can intercept your data. It provides key safety rules: avoid sensitive transactions like banking, use a VPN to encrypt your connection, and always verify you are connecting to the official network to avoid malicious hotspots.\n\n*   **Public Wi-Fi is Unsafe:** Your data can be intercepted by others on the same network.\n*   **Avoid Sensitive Data:** Never log in to important accounts or shop online on public Wi-Fi.\n*   **Use a VPN:** A VPN encrypts your connection, making it secure and private.",
+          "practice_questions": [
+            {
+              "id": "q8-6-1",
+              "type": "mcq",
+              "question": "What is the best tool to use for security on public Wi-Fi?",
+              "options": ["Antivirus Software", "A firewall", "A VPN (Virtual Private Network)", "A strong password"],
+              "answer": "A VPN (Virtual Private Network)"
+            },
+            {
+              "id": "q8-6-2",
+              "type": "text",
+              "question": "Why shouldn't you do online banking on public Wi-Fi without a VPN?",
+              "answer": "Because the network is unsecure, a hacker on the same network could potentially intercept your login credentials and gain access to your bank account."
+            }
+          ]
+        },
+        {
+          "id": "8-7",
+          "lesson_id": "8",
+          "title": "Day 7: What to Do If You're Hacked",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Your Digital Emergency Plan</h2><p>Getting hacked can be scary, but acting quickly can limit the damage. We'll create a simple action plan.</p><h3>Immediate Steps to Take</h3><ol><li><strong>Disconnect from the Internet:</strong> This can stop malware from spreading or sending more of your data.</li><li><strong>Change Your Passwords:</strong> Immediately change the password for the affected account, and any other accounts that use the same or a similar password. Start with your primary email account.</li><li><strong>Scan for Malware:</strong> Run a full scan with your antivirus software.</li><li><strong>Notify Your Bank:</strong> If any financial information was compromised, contact your bank immediately to alert them of potential fraud.</li><li><strong>Report the Incident:</strong> Report scams and hacked accounts to the relevant platforms and to the National Cyber Crime Reporting Portal in India.</li></ol>",
+          "order_index": 7,
+          "ai_summary": "This lesson provides a clear action plan for what to do if you get hacked. The immediate, critical steps are to disconnect from the internet, change your passwords (starting with your email), run a malware scan, and notify your bank if financial details were compromised. Finally, report the incident to the appropriate authorities.\n\n*   **Act Fast:** Quick action can minimize the damage.\n*   **Disconnect & Change Passwords:** Your first two steps to contain the breach.\n*   **Scan & Notify:** Run antivirus and alert your bank of any financial risk.\n*   **Report It:** Inform the platform and the cybercrime portal.",
+          "practice_questions": [
+            {
+              "id": "q8-7-1",
+              "type": "mcq",
+              "question": "What is the very first thing you should do if you suspect your computer has been hacked?",
+              "options": ["Delete all your files", "Disconnect from the internet", "Turn off your computer", "Post about it on social media"],
+              "answer": "Disconnect from the internet"
+            },
+            {
+              "id": "q8-7-2",
+              "type": "text",
+              "question": "After a hack, which account's password should you prioritize changing first and why?",
+              "answer": "You should change your primary email account password first. This is because your email is often the key to resetting passwords for all your other online accounts."
+            }
+          ]
+        }
+      ]
     },
-     {
+    {
+      "id": "9",
       "title": "Module 9: Ethics & AI Safety",
       "description": "A complete 7-day learning journey into the ethics and safety of Artificial Intelligence.",
       "is_free": false,
@@ -750,6 +1618,7 @@
       "subtopics": []
     },
     {
+      "id": "10",
       "title": "Module 10: Consumer Rights",
       "description": "A complete 7-day learning journey into consumer rights, covering MRP, safety, choice, and seeking redressal.",
       "is_free": false,
@@ -757,6 +1626,7 @@
       "subtopics": []
     },
     {
+      "id": "11",
       "title": "Module 11: Basic Law for Teens",
       "description": "Introduction to Rights & Responsibilities, Cyber Laws, and Legal Awareness",
       "is_free": false,
