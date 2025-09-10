@@ -10,10 +10,10 @@ import { cookies } from 'next/headers';
 // NOTE: All data fetching now happens from the Supabase database.
 // This centralizes data access and works in a production environment.
 
-const supabase = createClient();
 
 export async function getLessons(): Promise<Lesson[]> {
   noStore();
+  const supabase = createClient();
   const { data, error } = await supabase.from('lessons').select('*').order('order_index');
   if (error) {
     console.error('Error fetching lessons:', error);
@@ -24,6 +24,7 @@ export async function getLessons(): Promise<Lesson[]> {
 
 export async function getLessonById(id: string): Promise<Lesson | null> {
     noStore();
+    const supabase = createClient();
     const { data, error } = await supabase.from('lessons').select('*').eq('id', id).single();
     if (error) {
         if(error.code !== 'PGRST116') console.error('Error fetching lesson by id:', error);
@@ -34,6 +35,7 @@ export async function getLessonById(id: string): Promise<Lesson | null> {
 
 export async function getLessonByIdWithSubtopics(id: string): Promise<(Lesson & { subtopics: Subtopic[] }) | null> {
   noStore();
+  const supabase = createClient();
   const { data: lessonData, error: lessonError } = await supabase
     .from('lessons')
     .select('*, subtopics ( * )')
@@ -52,6 +54,7 @@ export async function getLessonByIdWithSubtopics(id: string): Promise<(Lesson & 
 
 export async function getSubtopicsByLessonId(lessonId: string): Promise<Subtopic[]> {
     noStore();
+    const supabase = createClient();
     const { data, error } = await supabase
         .from('subtopics')
         .select('*')
@@ -67,6 +70,7 @@ export async function getSubtopicsByLessonId(lessonId: string): Promise<Subtopic
 
 export async function getSubtopicById(id: string): Promise<Subtopic | null> {
     noStore();
+    const supabase = createClient();
     const { data, error } = await supabase.from('subtopics').select('*').eq('id', id).single();
     if (error) {
          if(error.code !== 'PGRST116') console.error('Error fetching subtopic by id:', error);
@@ -77,7 +81,7 @@ export async function getSubtopicById(id: string): Promise<Subtopic | null> {
 
 export async function getSubtopicByIdWithRelations(id: string): Promise<(Subtopic & { lesson: Lesson; nextSubtopicId?: string }) | null> {
     noStore();
-    
+    const supabase = createClient();
     const { data: subtopicData, error: subtopicError } = await supabase.from('subtopics').select('*, lessons(*)').eq('id', id).single();
     if (subtopicError || !subtopicData) {
         if(subtopicError?.code !== 'PGRST116') console.error('Error fetching subtopic with relations:', subtopicError);
@@ -102,6 +106,7 @@ export async function getSubtopicByIdWithRelations(id: string): Promise<(Subtopi
 
 export async function getSubtopicTitleById(id: string): Promise<string | null> {
     noStore();
+    const supabase = createClient();
     const { data, error } = await supabase.from('subtopics').select('title').eq('id', id).single();
     if(error) return null;
     return data.title;
@@ -143,8 +148,8 @@ export async function getUserSubscription(supabaseClient: SupabaseClient): Promi
 
         return data || null;
     } catch (e) {
-        if (e instanceof Error && e.message.includes("Cannot read properties of null")) {
-             console.warn("Supabase admin client not initialized. Cannot fetch user subscription.");
+        if (e instanceof Error && (e.message.includes("Cannot read properties of null") || e.message.includes("relation 'subscriptions' does not exist"))) {
+             console.warn("Could not fetch user subscription. This might be because the admin client is not initialized or the table does not exist.");
              return null;
         }
         throw e;
