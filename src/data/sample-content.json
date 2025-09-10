@@ -360,14 +360,324 @@
       "description": "A 7-Day Journey to Financial Growth for Teens (Ages 16-20).",
       "is_free": false,
       "order_index": 2,
-      "subtopics": []
+      "subtopics": [
+        {
+          "title": "Day 1: Understanding the Banking System",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>How Banks Work</h2><p>Explore the role of banks, different types of accounts (savings, current), and the importance of having a bank account.</p>",
+          "order_index": 1,
+          "ai_summary": "Learn the basics of the banking system, including the function of banks, the difference between savings and current accounts, and why a bank account is essential for financial management.",
+          "practice_questions": [
+            {
+              "id": "q2-1-1",
+              "type": "mcq",
+              "question": "What is the primary purpose of a savings account?",
+              "options": ["For daily transactions", "To store money safely and earn interest", "For business purposes", "To get a loan"],
+              "answer": "To store money safely and earn interest"
+            },
+            {
+              "id": "q2-1-2",
+              "type": "text",
+              "question": "Name two benefits of having a bank account.",
+              "answer": "Benefits include safety, earning interest, ease of making payments, and building a financial history."
+            }
+          ]
+        },
+        {
+          "title": "Day 2: Introduction to Investing",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Why Invest?</h2><p>Understand the difference between saving and investing, the concept of risk vs. return, and the power of compounding in investments.</p>",
+          "order_index": 2,
+          "ai_summary": "This lesson introduces investing, highlighting the difference from saving, the relationship between risk and return, and how compounding can significantly grow wealth over time.",
+          "practice_questions": [
+            {
+              "id": "q2-2-1",
+              "type": "mcq",
+              "question": "What is the main advantage of investing over saving?",
+              "options": ["It is risk-free", "It has the potential for higher returns", "The money is more accessible", "It is government-guaranteed"],
+              "answer": "It has the potential for higher returns"
+            },
+            {
+              "id": "q2-2-2",
+              "type": "text",
+              "question": "What does 'risk vs. return' mean in investing?",
+              "answer": "It means that higher potential returns are usually associated with higher risk of losing money."
+            }
+          ]
+        },
+        {
+          "title": "Day 3: Exploring Investment Options",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Stocks, Bonds, and Mutual Funds</h2><p>Get a simple overview of different investment types: what they are, how they work, and who they are suitable for.</p>",
+          "order_index": 3,
+          "ai_summary": "Learn about various investment options like stocks, bonds, and mutual funds. This lesson covers their basic definitions, mechanics, and suitability for different types of investors.",
+          "practice_questions": [
+            {
+              "id": "q2-3-1",
+              "type": "mcq",
+              "question": "What do you own when you buy a stock?",
+              "options": ["A loan to a company", "A piece of a company", "A government debt", "A collection of stocks"],
+              "answer": "A piece of a company"
+            },
+            {
+              "id": "q2-3-2",
+              "type": "text",
+              "question": "What is a mutual fund?",
+              "answer": "A mutual fund is a pool of money collected from many investors to invest in a diversified portfolio of stocks, bonds, or other assets."
+            }
+          ]
+        },
+        {
+          "title": "Day 4: How to Start Investing",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Your First Investment</h2><p>Learn about DEMAT and trading accounts, and the steps to make your first investment in a mutual fund or stock.</p>",
+          "order_index": 4,
+          "ai_summary": "This lesson provides practical steps on how to begin investing, including understanding DEMAT and trading accounts, and a guide to making your first investment.",
+          "practice_questions": [
+            {
+              "id": "q2-4-1",
+              "type": "mcq",
+              "question": "What is a DEMAT account used for?",
+              "options": ["Depositing cash", "Holding shares and securities in electronic form", "Daily spending", "Applying for loans"],
+              "answer": "Holding shares and securities in electronic form"
+            },
+            {
+              "id": "q2-4-2",
+              "type": "text",
+              "question": "What is the first step to start investing in stocks?",
+              "answer": "The first step is to open a DEMAT and trading account with a registered broker."
+            }
+          ]
+        },
+        {
+          "title": "Day 5: Long-Term vs. Short-Term Investing",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Time Horizon Matters</h2><p>Understand the difference in strategy between long-term goals (like retirement) and short-term goals (like buying a bike).</p>",
+          "order_index": 5,
+          "ai_summary": "This lesson explains how your investment strategy should change based on your time horizon, comparing long-term goals with short-term financial objectives.",
+          "practice_questions": [
+            {
+              "id": "q2-5-1",
+              "type": "mcq",
+              "question": "Which investment is generally more suitable for a long-term goal?",
+              "options": ["Savings account", "Stocks", "Fixed deposit", "Cash"],
+              "answer": "Stocks"
+            },
+            {
+              "id": "q2-5-2",
+              "type": "text",
+              "question": "Why is it important to have a different strategy for short-term goals?",
+              "answer": "Short-term goals require less risky investments to ensure the money is available when needed and not subject to market volatility."
+            }
+          ]
+        },
+        {
+          "title": "Day 6: Understanding Investment Risks",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>What Could Go Wrong?</h2><p>Learn about different types of investment risks like market risk and inflation risk, and how diversification can help manage them.</p>",
+          "order_index": 6,
+          "ai_summary": "This lesson covers the various risks associated with investing, such as market and inflation risk, and introduces diversification as a key strategy to mitigate these risks.",
+          "practice_questions": [
+            {
+              "id": "q2-6-1",
+              "type": "mcq",
+              "question": "What is diversification?",
+              "options": ["Putting all your money in one stock", "Spreading your investments across various assets", "Only investing in safe options", "Avoiding stocks completely"],
+              "answer": "Spreading your investments across various assets"
+            },
+            {
+              "id": "q2-6-2",
+              "type": "text",
+              "question": "What is inflation risk?",
+              "answer": "Inflation risk is the risk that the returns from your investment will not keep pace with the rate of inflation, reducing the purchasing power of your money."
+            }
+          ]
+        },
+        {
+          "title": "Day 7: Building Your Investment Plan",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Your Investment Roadmap</h2><p>Create a simple investment plan based on your age, risk tolerance, and financial goals. Set yourself up for a future of financial growth.</p>",
+          "order_index": 7,
+          "ai_summary": "This lesson guides you in creating a personalized investment plan tailored to your age, risk tolerance, and financial goals, setting the stage for long-term financial growth.",
+          "practice_questions": [
+            {
+              "id": "q2-7-1",
+              "type": "mcq",
+              "question": "What is 'risk tolerance'?",
+              "options": ["How much risk you are willing to take for potential returns", "How much risk an investment has", "How much money you have", "How old you are"],
+              "answer": "How much risk you are willing to take for potential returns"
+            },
+            {
+              "id": "q2-7-2",
+              "type": "text",
+              "question": "Why is it important to have an investment plan?",
+              "answer": "An investment plan helps you stay focused on your goals, make disciplined decisions, and avoid emotional reactions to market fluctuations."
+            }
+          ]
+        }
+      ]
     },
     {
       "title": "Module 3: Artificial Intelligence in Real Life",
       "description": "A Complete 7-Day Learning Journey for Teens (Ages 13-16) into AI in finance.",
       "is_free": false,
       "order_index": 3,
-      "subtopics": []
+      "subtopics": [
+        {
+          "title": "Day 1: What is AI?",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Understanding AI</h2><p>Learn what Artificial Intelligence is, the difference between AI, Machine Learning, and Deep Learning, and see examples in your daily life.</p>",
+          "order_index": 1,
+          "ai_summary": "This lesson provides a foundational understanding of AI, distinguishing it from Machine Learning and Deep Learning, and illustrates its presence in everyday applications.",
+          "practice_questions": [
+            {
+              "id": "q3-1-1",
+              "type": "mcq",
+              "question": "Which of these is a common example of AI?",
+              "options": ["A calculator", "A movie recommendation system", "A light switch", "A book"],
+              "answer": "A movie recommendation system"
+            },
+            {
+              "id": "q3-1-2",
+              "type": "text",
+              "question": "What is the main goal of AI?",
+              "answer": "The main goal of AI is to create machines that can perform tasks that typically require human intelligence."
+            }
+          ]
+        },
+        {
+          "title": "Day 2: AI in Your Pocket",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>AI on Your Smartphone</h2><p>Discover how AI powers features on your phone like virtual assistants (Siri, Google Assistant), facial recognition, and predictive text.</p>",
+          "order_index": 2,
+          "ai_summary": "Explore the various AI-powered features on your smartphone, including virtual assistants, facial recognition technology, and predictive text functionalities.",
+          "practice_questions": [
+            {
+              "id": "q3-2-1",
+              "type": "mcq",
+              "question": "Which feature uses AI to unlock your phone?",
+              "options": ["PIN code", "Password", "Facial Recognition", "A physical key"],
+              "answer": "Facial Recognition"
+            },
+            {
+              "id": "q3-2-2",
+              "type": "text",
+              "question": "How does predictive text work?",
+              "answer": "Predictive text uses AI to analyze your past typing patterns and predict the next word you are likely to type."
+            }
+          ]
+        },
+        {
+          "title": "Day 3: AI in Entertainment",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>How AI Shapes What You Watch and Play</h2><p>Learn how streaming services like Netflix use AI to recommend shows and how AI is used to create smarter characters in video games.</p>",
+          "order_index": 3,
+          "ai_summary": "This lesson examines the role of AI in entertainment, from personalized recommendations on streaming platforms to the development of intelligent characters in video games.",
+          "practice_questions": [
+            {
+              "id": "q3-3-1",
+              "type": "mcq",
+              "question": "Why does Netflix recommend shows to you?",
+              "options": ["Because your friends watched them", "It's random", "An AI algorithm analyzes your viewing habits", "The shows are new"],
+              "answer": "An AI algorithm analyzes your viewing habits"
+            },
+            {
+              "id": "q3-3-2",
+              "type": "text",
+              "question": "Give an example of AI in a video game.",
+              "answer": "AI controls non-player characters (NPCs) to make them behave intelligently and react to the player's actions."
+            }
+          ]
+        },
+        {
+          "title": "Day 4: AI in Finance",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>How AI Manages Money</h2><p>Discover how AI is used for fraud detection on your bank card, personalized financial advice, and even in stock market trading.</p>",
+          "order_index": 4,
+          "ai_summary": "Learn about the applications of AI in the financial sector, including fraud detection, personalized financial advisory services, and algorithmic trading in the stock market.",
+          "practice_questions": [
+            {
+              "id": "q3-4-1",
+              "type": "mcq",
+              "question": "How can AI help prevent fraud?",
+              "options": ["By calling the police", "By identifying unusual spending patterns", "By blocking all transactions", "By asking for your PIN"],
+              "answer": "By identifying unusual spending patterns"
+            },
+            {
+              "id": "q3-4-2",
+              "type": "text",
+              "question": "What is a 'robo-advisor'?",
+              "answer": "A robo-advisor is an AI-powered platform that provides automated, algorithm-driven financial planning services."
+            }
+          ]
+        },
+        {
+          "title": "Day 5: The Rise of Generative AI",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>Creating with AI</h2><p>Explore the world of generative AI like ChatGPT and DALL-E. Understand how they create text, images, and code, and what a 'prompt' is.</p>",
+          "order_index": 5,
+          "ai_summary": "This lesson delves into generative AI, explaining how models like ChatGPT and DALL-E generate text, images, and code, and the importance of crafting effective prompts.",
+          "practice_questions": [
+            {
+              "id": "q3-5-1",
+              "type": "mcq",
+              "question": "What does a generative AI like DALL-E create?",
+              "options": ["Music", "Text", "Images", "Spreadsheets"],
+              "answer": "Images"
+            },
+            {
+              "id": "q3-5-2",
+              "type": "text",
+              "question": "What is a 'prompt'?",
+              "answer": "A prompt is the instruction or question you give to a generative AI to get a specific output."
+            }
+          ]
+        },
+        {
+          "title": "Day 6: The Ethics of AI",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>AI for Good or Bad?</h2><p>Discuss the ethical challenges of AI, including bias in algorithms, privacy concerns, and the impact on jobs. Learn why responsible AI development is crucial.</p>",
+          "order_index": 6,
+          "ai_summary": "Explore the ethical dimensions of AI, including algorithmic bias, privacy issues, and job market impacts. This lesson emphasizes the need for responsible AI development.",
+          "practice_questions": [
+            {
+              "id": "q3-6-1",
+              "type": "mcq",
+              "question": "What is 'AI bias'?",
+              "options": ["When an AI is always correct", "When an AI makes unfair decisions based on biased data", "When an AI is too slow", "When an AI has a personal opinion"],
+              "answer": "When an AI makes unfair decisions based on biased data"
+            },
+            {
+              "id": "q3-6-2",
+              "type": "text",
+              "question": "Why is AI ethics an important topic?",
+              "answer": "It is important to ensure that AI is developed and used in a way that is fair, safe, and beneficial for humanity, without causing harm or discrimination."
+            }
+          ]
+        },
+        {
+          "title": "Day 7: The Future with AI",
+          "video_url": "https://www.youtube.com/embed/cQT33O0_q-w",
+          "content": "<h2>AI and Your Future</h2><p>Look at how AI might change future jobs and what skills will be important. Learn how you can start learning more about AI today and prepare for an AI-driven world.</p>",
+          "order_index": 7,
+          "ai_summary": "This lesson explores the future impact of AI on jobs and society, highlighting the essential skills needed to thrive and providing resources for you to begin your AI learning journey.",
+          "practice_questions": [
+            {
+              "id": "q3-7-1",
+              "type": "mcq",
+              "question": "Which skill will likely become MORE important in a future with AI?",
+              "options": ["Manual data entry", "Creative problem-solving", "Following simple instructions", "Factory assembly line work"],
+              "answer": "Creative problem-solving"
+            },
+            {
+              "id": "q3-7-2",
+              "type": "text",
+              "question": "What is one way you can start learning about AI today?",
+              "answer": "You can start by experimenting with generative AI tools, taking free online courses, or following AI news and developments."
+            }
+          ]
+        }
+      ]
     },
     {
       "title": "Module 4: Taxation in India",
