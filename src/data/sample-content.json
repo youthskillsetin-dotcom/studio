@@ -1,3 +1,4 @@
+
 {
   "lessons": [
     {
@@ -83,23 +84,60 @@
       "id": "1-1",
       "lesson_id": "1",
       "title": "Day 1: What is Money?",
-      "content": "<p>Content for Day 1: What is Money?</p>",
+      "content": "<h3>Introduction: Beyond Coins and Notes</h3>\n<p>Hey there! Welcome to Day 1 of your financial journey. When you think of money, what comes to mind? Probably the colorful notes in your wallet or the coins jingling in your pocket. But money is much more than just physical cash. It's a tool, a system, and a language that helps us get the things we need and want.</p>\n\n<h3>The Three Jobs of Money</h3>\n<p>To really understand money, let's look at its three main jobs:</p>\n<ol>\n  <li>\n    <strong>Medium of Exchange:</strong> This is the most obvious one. Instead of trading your old video game for a pizza (which is called bartering), you use money. You sell the game for cash, and then use that cash to buy the pizza. It’s a middleman that makes buying and selling things super easy.\n  </li>\n  <li>\n    <strong>Unit of Account:</strong> Money gives us a common way to measure the value of things. How do you know if a new phone is more expensive than a new pair of sneakers? Because they have price tags! Money acts like a ruler, allowing us to compare the value of different items and services easily.\n  </li>\n  <li>\n    <strong>Store of Value:</strong> Money allows you to save your purchasing power for later. If you get ₹500 for your birthday, you don't have to spend it right away. You can save it, and it will (mostly) hold its value, so you can buy something with it next week, next month, or even next year.\n  </li>\n</ol>\n\n<h3>From Barter to Bitcoin: A Quick History</h3>\n<p>A long time ago, people bartered. A farmer might trade a bag of rice for some tools. It worked, but it was inefficient. What if the toolmaker didn't want rice? Then, people started using commodity money—items that had value on their own, like salt, shells, or cattle.</p>\n<p>Eventually, we moved to coins made of precious metals like gold and silver, and then to paper money (fiat money), which is valuable simply because the government says it is. Today, most of our money is digital—just numbers in a bank account that we access with cards or apps. And now, we even have cryptocurrencies like Bitcoin, which is a new, decentralized form of digital money.</p>\n\n<h3>Key Takeaways</h3>\n<ul>\n  <li>Money is a tool that serves as a medium of exchange, a unit of account, and a store of value.</li>\n  <li>It simplifies trade and allows us to compare the value of different goods and services.</li>\n  <li>Understanding what money is and its history helps you appreciate its role in our lives and make smarter financial decisions.</li>\n</ul>",
       "order_index": 1,
-      "practice_questions": []
+      "practice_questions": [
+        {
+          "id": "pq1-1-1",
+          "type": "mcq",
+          "question": "If you use money to buy a movie ticket, which function of money are you using?",
+          "options": [
+            "Store of Value",
+            "Unit of Account",
+            "Medium of Exchange",
+            "Standard of Credit"
+          ],
+          "answer": "Medium of Exchange"
+        },
+        {
+          "id": "pq1-1-2",
+          "type": "text",
+          "question": "In your own words, explain why bartering is less efficient than using money.",
+          "answer": "Bartering is inefficient because it requires a 'double coincidence of wants,' meaning both people must have something the other person desires at the same time. Money solves this by being a universally accepted medium of exchange."
+        }
+      ],
+      "ai_summary": "This lesson introduces the fundamental concept of money beyond physical cash, defining it as a tool with three primary jobs: a medium of exchange to simplify trade, a unit of account to measure value, and a store of value to save purchasing power. It also briefly traces the evolution of money from bartering to modern digital currencies. Key takeaways are that money is a multi-functional tool that makes our economic lives easier, and understanding its basic functions is the first step toward financial literacy."
     },
     {
       "id": "1-2",
       "lesson_id": "1",
       "title": "Day 2: Mastering the 50-30-20 Rule",
-      "content": "<p>Content for Day 2: The 50-30-20 Rule.</p>",
+      "content": "<h3>What is the 50-30-20 Rule?</h3>\n<p>The 50-30-20 rule is a simple, yet powerful, budgeting framework designed to help you manage your money effectively. It divides your after-tax income into three categories: 50% for Needs, 30% for Wants, and 20% for Savings and Debt Repayment. It's a great starting point for anyone looking to take control of their finances without complex spreadsheets.</p>\n\n<h3>Breaking It Down</h3>\n<ol>\n  <li>\n    <strong>50% for Needs:</strong> These are your essential expenses—the things you absolutely must pay for to live. This category includes:\n    <ul>\n      <li>Housing (Rent/Mortgage)</li>\n      <li>Utilities (Electricity, Water, Wi-Fi)</li>\n      <li>Transportation (to work/school)</li>\n      <li>Groceries</li>\n      <li>Insurance</li>\n    </ul>\n    <p>The goal is to keep these core expenses at or below 50% of your take-home pay.</p>\n  </li>\n  <li>\n    <strong>30% for Wants:</strong> This category is for all the non-essential lifestyle choices that make life more enjoyable. This includes:\n    <ul>\n      <li>Dining out and entertainment</li>\n      <li>Shopping for non-essential items (like the latest sneakers)</li>\n      <li>Hobbies and subscriptions (Netflix, Spotify)</li>\n      <li>Vacations</li>\n    </ul>\n    <p>This is the flexible part of your budget. If you need to cut back, this is the first place to look.</p>\n  </li>\n  <li>\n    <strong>20% for Savings & Debt:</strong> This is the most crucial category for your future financial health. This 20% should be allocated towards:\n    <ul>\n      <li>Building an emergency fund</li>\n      <li>Saving for long-term goals (like a down payment or retirement)</li>\n      <li>Investing in stocks or mutual funds</li>\n      <li>Paying off high-interest debt (like credit card balances)</li>\n    </ul>\n    <p>Think of this as paying your future self first.</p>\n  </li>\n</ol>\n\n<h3>How to Apply It</h3>\n<p>Let's say your monthly take-home income is ₹30,000.</p>\n<ul>\n    <li><strong>Needs (50%):</strong> You'd have ₹15,000 for your essential expenses.</li>\n    <li><strong>Wants (30%):</strong> You'd have ₹9,000 for your lifestyle choices.</li>\n    <li><strong>Savings (20%):</strong> You'd allocate ₹6,000 to savings and debt repayment.</li>\n</ul>\n\n<h3>Key Takeaways</h3>\n<ul>\n  <li>The 50-30-20 rule is a guideline, not a strict law. You can adjust the percentages to fit your personal situation.</li>\n  <li>The most important part is to prioritize your savings (the 20%) to build a secure financial future.</li>\n  <li>Regularly tracking your spending is essential to see if you're staying within your budget categories.</li>\n</ul>",
       "order_index": 2,
       "practice_questions": [
         {
           "id": "pq1-2-1",
           "type": "mcq",
           "question": "What does the 50% in the 50-30-20 rule represent?",
-          "options": ["Wants", "Needs", "Savings", "Investments"],
+          "options": [
+            "Wants",
+            "Needs",
+            "Savings",
+            "Investments"
+          ],
           "answer": "Needs"
+        },
+        {
+          "id": "pq1-2-2",
+          "type": "mcq",
+          "question": "If your monthly income is ₹20,000, how much should you allocate to Savings according to the rule?",
+          "options": [
+            "₹2,000",
+            "₹4,000",
+            "₹6,000",
+            "₹10,000"
+          ],
+          "answer": "₹4,000"
         }
       ]
     },
@@ -107,7 +145,7 @@
       "id": "6-1",
       "lesson_id": "6",
       "title": "Day 1: What is Personal Branding?",
-      "content": "<p>Content for Day 1: Personal Branding Intro</p>",
+      "content": "<h3>What is a Personal Brand?</h3>\n<p>Think about your favorite brands, like Nike or Apple. You know what they stand for, right? Nike is about determination and athleticism. Apple is about innovation and sleek design. A personal brand is the same idea, but for a person—specifically, for you!</p>\n<p><strong>Personal branding</strong> is the process of creating a clear and consistent message about who you are, what you're good at, and what you stand for. It's how the world—classmates, teachers, and future employers—sees you. It's your reputation, both online and offline.</p>\n\n<h3>Why Does It Matter for You?</h3>\n<p>You might think branding is only for celebrities or big companies, but it's incredibly important for students and young professionals. Here's why:</p>\n<ul>\n  <li><strong>It Differentiates You:</strong> In a world full of talented people, your personal brand is what makes you unique. It helps you stand out from the crowd when applying for internships, colleges, or jobs.</li>\n  <li><strong>It Builds Trust and Credibility:</strong> When you consistently share your knowledge and passion for a particular subject (like coding, art, or marketing), people start to see you as a credible and knowledgeable person in that area.</li>\n  <li><strong>It Creates Opportunities:</strong> A strong personal brand can attract opportunities to you. People might reach out with project ideas, internship offers, or networking connections because they see what you're about and they like it.</li>\n  <li><strong>It Guides Your Growth:</strong> Defining your personal brand forces you to think about your strengths, values, and goals. This clarity helps you make better decisions about your career and personal development.</li>\n</ul>\n\n<h3>Your Digital Footprint is Your Brand</h3>\n<p>Today, a huge part of your personal brand is your digital footprint. Every post you like, every comment you make, and every photo you share on social media contributes to how people perceive you. That's why it's so important to be mindful of your online presence. Future employers and college admission officers often look at social media profiles to get a better sense of who you are.</p>\n\n<h3>Key Takeaways</h3>\n<ul>\n  <li>Your personal brand is your reputation and what makes you unique.</li>\n  <li>It's not about being fake; it's about authentically showcasing your strengths and passions.</li>\n  <li>A strong brand can build trust and attract opportunities.</li>\n  <li>Be mindful of your digital footprint, as it's a major part of your brand today.</li>\n</ul>",
       "order_index": 1,
       "practice_questions": [
         {
@@ -115,6 +153,18 @@
           "type": "text",
           "question": "In one sentence, what is personal branding?",
           "answer": "Personal branding is the practice of marketing people and their careers as brands."
+        },
+        {
+          "id": "pq6-1-2",
+          "type": "mcq",
+          "question": "Which of the following is NOT a primary benefit of building a personal brand?",
+          "options": [
+            "It helps you stand out.",
+            "It guarantees you will get any job you apply for.",
+            "It can attract opportunities to you.",
+            "It builds credibility."
+          ],
+          "answer": "It guarantees you will get any job you apply for."
         }
       ]
     }
