@@ -6,77 +6,77 @@ import { unstable_noStore as noStore } from 'next/cache';
 import { supabaseAdmin } from './supabase/admin';
 import rawContent from '@/data/sample-content.json';
 
-// Helper to add IDs to lessons and subtopics for compatibility
-const content = {
-  lessons: rawContent.lessons.map((lesson, lessonIndex) => {
+// NOTE: All lesson and subtopic data is now read from the sample-content.json file.
+
+function addIdsToContent(content: any) {
+  return content.lessons.map((lesson: any, lessonIndex: number) => {
     const lessonId = (lessonIndex + 1).toString();
     return {
       ...lesson,
       id: lessonId,
-      subtopics: lesson.subtopics.map((subtopic, subtopicIndex) => ({
+      subtopics: lesson.subtopics.map((subtopic: any, subtopicIndex: number) => ({
         ...subtopic,
         id: `${lessonId}-${subtopicIndex + 1}`,
         lesson_id: lessonId,
+        practice_questions: subtopic.practice_questions.map((q: any, qIndex: number) => ({
+            ...q,
+            id: q.id || `q${lessonId}-${subtopicIndex + 1}-${qIndex + 1}`
+        }))
       })),
-    }
-  })
+    };
+  });
 }
 
-// NOTE: All lesson and subtopic data is now read from the sample-content.json file.
+const lessonsWithIds = addIdsToContent(rawContent);
 
 export async function getLessons(): Promise<Lesson[]> {
   noStore();
-  // Return the lessons from the imported JSON file
-  const allLessons = content.lessons.map(lesson => ({
-    ...lesson,
-    subtopics: lesson.subtopics.map(subtopic => ({
-      ...subtopic,
-      id: subtopic.id,
-      lesson_id: lesson.id,
-    })),
-  }));
-  return allLessons as Lesson[];
+  return lessonsWithIds as Lesson[];
 }
 
 export async function getLessonById(id: string): Promise<Lesson | null> {
     noStore();
-    const lesson = content.lessons.find(l => l.id === id);
-    return lesson as Lesson || null;
+    const lessons = await getLessons();
+    const lesson = lessons.find(l => l.id === id);
+    return lesson || null;
 }
 
 export async function getLessonByIdWithSubtopics(id:string): Promise<Lesson | null> {
   noStore();
-  const lesson = content.lessons.find((l) => l.id === id);
+  const lessons = await getLessons();
+  const lesson = lessons.find((l) => l.id === id);
   if (!lesson) return null;
-  return lesson as Lesson;
+  return lesson;
 }
 
 
 export async function getSubtopicsByLessonId(lessonId: string): Promise<Subtopic[]> {
     noStore();
-    const lesson = content.lessons.find(l => l.id === lessonId);
-    return lesson?.subtopics as Subtopic[] || [];
+    const lesson = await getLessonById(lessonId);
+    return lesson?.subtopics || [];
 }
 
 export async function getSubtopicById(id: string): Promise<Subtopic | null> {
     noStore();
-    for (const lesson of content.lessons) {
+    const lessons = await getLessons();
+    for (const lesson of lessons) {
       const subtopic = lesson.subtopics.find(s => s.id === id);
-      if (subtopic) return subtopic as Subtopic;
+      if (subtopic) return subtopic;
     }
     return null;
 }
 
 export async function getSubtopicByIdWithRelations(id: string): Promise<(Subtopic & { lesson: Lesson; nextSubtopicId?: string }) | null> {
     noStore();
+    const lessons = await getLessons();
     let foundLesson: Lesson | null = null;
     let foundSubtopic: Subtopic | null = null;
 
-    for (const lesson of content.lessons) {
+    for (const lesson of lessons) {
         const subtopic = lesson.subtopics.find(s => s.id === id);
         if (subtopic) {
-            foundSubtopic = subtopic as Subtopic;
-            foundLesson = lesson as Lesson;
+            foundSubtopic = subtopic;
+            foundLesson = lesson;
             break;
         }
     }
@@ -127,7 +127,7 @@ export async function getUserSubscription(supabaseClient: SupabaseClient): Promi
             .eq('user_id', user.id)
             .single();
             
-        if (error && error.code !== 'PGRST116') { 
+        if (error && error.code !== 'PGRST116' && error.code !== '42P01') { 
             console.error("Error fetching user subscription:", error);
             return null;
         }
@@ -154,7 +154,7 @@ export async function getUserProfile(supabaseClient: SupabaseClient): Promise<Us
         .eq('id', user.id)
         .single();
 
-    if (error && error.code !== 'PGRST116') {
+    if (error && error.code !== 'PGRST116' && error.code !== '42P01') {
         console.error("Error fetching user profile:", error);
     }
     
