@@ -1,11 +1,12 @@
 
 
 export interface Lesson {
-  id: string; // Will be dynamically generated (e.g., "1", "2")
+  id: string; 
   title: string;
   description: string;
   is_free: boolean;
   order_index: number;
+  created_at?: string;
 }
 
 export interface PracticeQuestion {
@@ -17,7 +18,7 @@ export interface PracticeQuestion {
 }
 
 export interface Subtopic {
-  id:string; // Will be dynamically generated (e.g., "1-1", "1-2")
+  id:string;
   lesson_id: string;
   title: string;
   content: string;
@@ -25,6 +26,7 @@ export interface Subtopic {
   practice_questions: PracticeQuestion[];
   video_url?: string;
   ai_summary?: string;
+  created_at?: string;
 }
 
 export interface UserSubtopicProgress {

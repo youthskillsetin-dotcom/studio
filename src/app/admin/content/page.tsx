@@ -3,12 +3,24 @@
 import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
-import { getUserProfile } from '@/lib/data';
+import { getLessons, getUserProfile } from '@/lib/data';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { FileText, Video } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import sampleContent from '../../../../sample-content.json';
 import { VideoLinkEditor } from './video-link-editor';
+import { Lesson, Subtopic } from '@/lib/types';
+
+
+async function getLessonsWithSubtopics() {
+    const supabase = createClient();
+    const { data, error } = await supabase.from('lessons').select('*, subtopics(*)').order('order_index').order('order_index', { referencedTable: 'subtopics' });
+    if (error) {
+        console.error("Error fetching lessons with subtopics:", error);
+        return [];
+    }
+    return data as (Lesson & { subtopics: Subtopic[] })[];
+}
+
 
 export default async function AdminContentPage() {
   const cookieStore = cookies();
@@ -21,7 +33,7 @@ export default async function AdminContentPage() {
     notFound();
   }
 
-  const lessons = sampleContent.lessons;
+  const lessons = await getLessonsWithSubtopics();
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -41,15 +53,15 @@ export default async function AdminContentPage() {
         </CardHeader>
         <CardContent>
            <Accordion type="single" collapsible className="w-full">
-            {lessons.map((lesson, lessonIndex) => (
-                <AccordionItem key={lesson.title} value={`item-${lessonIndex}`}>
+            {lessons.map((lesson) => (
+                <AccordionItem key={lesson.id} value={`item-${lesson.id}`}>
                     <AccordionTrigger className="font-semibold text-lg hover:no-underline">
                         {lesson.title}
                     </AccordionTrigger>
                     <AccordionContent>
                         <div className="space-y-4 pt-4">
                         {lesson.subtopics.length > 0 ? lesson.subtopics.map((subtopic) => (
-                            <Card key={subtopic.title} className="p-4 bg-muted/50">
+                            <Card key={subtopic.id} className="p-4 bg-muted/50">
                                 <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                                     <div>
                                         <h4 className="font-semibold">{subtopic.title}</h4>
@@ -60,7 +72,7 @@ export default async function AdminContentPage() {
                                     </div>
                                     <div className="mt-4 md:mt-0">
                                         <VideoLinkEditor 
-                                            subtopicId={`${lessonIndex + 1}-${subtopic.order_index}`} 
+                                            subtopicId={subtopic.id} 
                                             initialUrl={subtopic.video_url || ''} 
                                         />
                                     </div>
