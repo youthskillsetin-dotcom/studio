@@ -24,8 +24,8 @@ export const metadata: Metadata = {
   description: 'Master in-demand skills with AI-powered mentorship.',
   manifest: '/manifest.json',
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
+    icon: '/LOGO.png',
+    shortcut: '/LOGO.png',
     apple: '/LOGO.png',
   }
 };
