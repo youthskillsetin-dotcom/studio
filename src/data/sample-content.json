@@ -84,6 +84,7 @@
       "id": "1-1",
       "lesson_id": "1",
       "title": "Day 1: What is Money?",
+      "video_url": "https://www.youtube.com/watch?v=D-Yp2t4_q54",
       "content": "<h3>Introduction: Beyond Coins and Notes</h3>\n<p>Hey there! Welcome to Day 1 of your financial journey. When you think of money, what comes to mind? Probably the colorful notes in your wallet or the coins jingling in your pocket. But money is much more than just physical cash. It's a tool, a system, and a language that helps us get the things we need and want.</p>\n\n<h3>The Three Jobs of Money</h3>\n<p>To really understand money, let's look at its three main jobs:</p>\n<ol>\n  <li>\n    <strong>Medium of Exchange:</strong> This is the most obvious one. Instead of trading your old video game for a pizza (which is called bartering), you use money. You sell the game for cash, and then use that cash to buy the pizza. It’s a middleman that makes buying and selling things super easy.\n  </li>\n  <li>\n    <strong>Unit of Account:</strong> Money gives us a common way to measure the value of things. How do you know if a new phone is more expensive than a new pair of sneakers? Because they have price tags! Money acts like a ruler, allowing us to compare the value of different items and services easily.\n  </li>\n  <li>\n    <strong>Store of Value:</strong> Money allows you to save your purchasing power for later. If you get ₹500 for your birthday, you don't have to spend it right away. You can save it, and it will (mostly) hold its value, so you can buy something with it next week, next month, or even next year.\n  </li>\n</ol>\n\n<h3>From Barter to Bitcoin: A Quick History</h3>\n<p>A long time ago, people bartered. A farmer might trade a bag of rice for some tools. It worked, but it was inefficient. What if the toolmaker didn't want rice? Then, people started using commodity money—items that had value on their own, like salt, shells, or cattle.</p>\n<p>Eventually, we moved to coins made of precious metals like gold and silver, and then to paper money (fiat money), which is valuable simply because the government says it is. Today, most of our money is digital—just numbers in a bank account that we access with cards or apps. And now, we even have cryptocurrencies like Bitcoin, which is a new, decentralized form of digital money.</p>\n\n<h3>Key Takeaways</h3>\n<ul>\n  <li>Money is a tool that serves as a medium of exchange, a unit of account, and a store of value.</li>\n  <li>It simplifies trade and allows us to compare the value of different goods and services.</li>\n  <li>Understanding what money is and its history helps you appreciate its role in our lives and make smarter financial decisions.</li>\n</ul>",
       "order_index": 1,
       "practice_questions": [
@@ -112,6 +113,7 @@
       "id": "1-2",
       "lesson_id": "1",
       "title": "Day 2: Mastering the 50-30-20 Rule",
+      "video_url": "https://www.youtube.com/watch?v=i_ZAnwdi_rA",
       "content": "<h3>What is the 50-30-20 Rule?</h3>\n<p>The 50-30-20 rule is a simple, yet powerful, budgeting framework designed to help you manage your money effectively. It divides your after-tax income into three categories: 50% for Needs, 30% for Wants, and 20% for Savings and Debt Repayment. It's a great starting point for anyone looking to take control of their finances without complex spreadsheets.</p>\n\n<h3>Breaking It Down</h3>\n<ol>\n  <li>\n    <strong>50% for Needs:</strong> These are your essential expenses—the things you absolutely must pay for to live. This category includes:\n    <ul>\n      <li>Housing (Rent/Mortgage)</li>\n      <li>Utilities (Electricity, Water, Wi-Fi)</li>\n      <li>Transportation (to work/school)</li>\n      <li>Groceries</li>\n      <li>Insurance</li>\n    </ul>\n    <p>The goal is to keep these core expenses at or below 50% of your take-home pay.</p>\n  </li>\n  <li>\n    <strong>30% for Wants:</strong> This category is for all the non-essential lifestyle choices that make life more enjoyable. This includes:\n    <ul>\n      <li>Dining out and entertainment</li>\n      <li>Shopping for non-essential items (like the latest sneakers)</li>\n      <li>Hobbies and subscriptions (Netflix, Spotify)</li>\n      <li>Vacations</li>\n    </ul>\n    <p>This is the flexible part of your budget. If you need to cut back, this is the first place to look.</p>\n  </li>\n  <li>\n    <strong>20% for Savings & Debt:</strong> This is the most crucial category for your future financial health. This 20% should be allocated towards:\n    <ul>\n      <li>Building an emergency fund</li>\n      <li>Saving for long-term goals (like a down payment or retirement)</li>\n      <li>Investing in stocks or mutual funds</li>\n      <li>Paying off high-interest debt (like credit card balances)</li>\n    </ul>\n    <p>Think of this as paying your future self first.</p>\n  </li>\n</ol>\n\n<h3>How to Apply It</h3>\n<p>Let's say your monthly take-home income is ₹30,000.</p>\n<ul>\n    <li><strong>Needs (50%):</strong> You'd have ₹15,000 for your essential expenses.</li>\n    <li><strong>Wants (30%):</strong> You'd have ₹9,000 for your lifestyle choices.</li>\n    <li><strong>Savings (20%):</strong> You'd allocate ₹6,000 to savings and debt repayment.</li>\n</ul>\n\n<h3>Key Takeaways</h3>\n<ul>\n  <li>The 50-30-20 rule is a guideline, not a strict law. You can adjust the percentages to fit your personal situation.</li>\n  <li>The most important part is to prioritize your savings (the 20%) to build a secure financial future.</li>\n  <li>Regularly tracking your spending is essential to see if you're staying within your budget categories.</li>\n</ul>",
       "order_index": 2,
       "practice_questions": [
@@ -139,7 +141,8 @@
           ],
           "answer": "₹4,000"
         }
-      ]
+      ],
+      "ai_summary": "The 50-30-20 rule is a simple budgeting strategy that divides your after-tax income into three main categories. You allocate 50% for essential needs like housing and groceries, 30% for wants like entertainment and hobbies, and the final 20% towards savings and paying off debt. This framework helps you prioritize your financial goals and build a secure future by ensuring you 'pay yourself first'. The key is to track your spending and adjust the percentages to fit your personal circumstances."
     },
     {
       "id": "6-1",
@@ -166,7 +169,8 @@
           ],
           "answer": "It guarantees you will get any job you apply for."
         }
-      ]
+      ],
+      "ai_summary": "Personal branding is about creating a distinct identity for yourself based on your skills, values, and passions, similar to how companies brand themselves. It's crucial for students and young professionals because it helps you stand out, builds trust and credibility in your field, and attracts opportunities like internships and jobs. A key part of your brand is your digital footprint, so it's important to manage your online presence thoughtfully. The main takeaways are that an authentic personal brand showcases your unique strengths, builds trust, and can open doors for your future."
     }
   ]
 }
