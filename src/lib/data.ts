@@ -155,7 +155,7 @@ export async function getUserProfile(supabaseClient: SupabaseClient): Promise<Us
         .single();
 
     if (error && error.code !== 'PGRST116' && error.code !== '42P01') {
-        console.error("Error fetching user profile:", error);
+        // Intentionally not logging this error to the console to avoid clutter.
     }
     
     const role = data?.role ?? user?.user_metadata?.role ?? 'user';
