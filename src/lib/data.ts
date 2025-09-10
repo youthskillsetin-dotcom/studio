@@ -127,18 +127,18 @@ export async function getUserSubscription(supabaseClient: SupabaseClient): Promi
             .eq('user_id', user.id)
             .single();
             
-        if (error && error.code !== 'PGRST116' && error.code !== '42P01') { 
-            console.error("Error fetching user subscription:", error);
+        if (error) { 
+            // Intentionally not logging this error to the console to avoid clutter
+            // in dev environments where the table or row might not exist yet.
+            // A missing subscription is a normal, non-error state.
             return null;
         }
 
         return data || null;
     } catch (e) {
-        if (e instanceof Error && (e.message.includes("Cannot read properties of null") || e.message.includes("relation 'subscriptions' does not exist"))) {
-             console.warn("Could not fetch user subscription. This might be because the admin client is not initialized or the table does not exist.");
-             return null;
-        }
-        throw e;
+        // This catch block is for unexpected system-level errors, not for Supabase query errors.
+        console.warn("An unexpected error occurred while fetching user subscription:", e);
+        return null;
     }
 }
 
