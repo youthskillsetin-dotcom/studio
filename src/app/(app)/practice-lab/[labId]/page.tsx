@@ -247,7 +247,7 @@ const phishingEmails = [
       from: 'YouthSkillSet <newsletter@youthskillset.com>',
       body: 'Hi Learner, here is your weekly dose of tips and tricks for mastering new skills. Check out our latest article on building a great resume!',
       isPhishing: false,
-      reason: 'The sender email is legitimate, and the content is relevant and not asking for sensitive information.'
+      reason: 'The sender email is legitimate, and the content is not asking for sensitive information.'
     },
     {
       id: 3,
@@ -629,40 +629,14 @@ const LabSimulation = ({ labId }: { labId: string }) => {
     }
 }
 
-const PremiumAccessGate = () => (
-    <Card className="text-center max-w-lg mx-auto rounded-2xl shadow-lg mt-10">
-        <CardHeader>
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 mb-4">
-                <Crown className="h-8 w-8 text-primary" />
-            </div>
-            <CardTitle className="font-headline text-2xl">Unlock this Practice Lab</CardTitle>
-            <CardDescription>
-                This interactive simulation is a premium feature. Upgrade your plan to access this lab and build real-world skills.
-            </CardDescription>
-        </CardHeader>
-        <CardFooter>
-            <Button asChild className="w-full">
-                <Link href="/subscribe?plan=premium">Upgrade to Premium</Link>
-            </Button>
-        </CardFooter>
-    </Card>
-);
-
 export default function LabDetailPage() {
   const params = useParams();
   const labId = Array.isArray(params.labId) ? params.labId[0] : params.labId;
-  const { userSubscription, isLoading } = useUserSubscription();
-  const hasPremium = userSubscription?.is_active ?? false;
 
   if (!labId || !labsData[labId]) {
     notFound();
   }
   const lab = labsData[labId];
-
-  if (isLoading) {
-    return <div className="flex justify-center items-center h-full"><Skeleton className="w-full max-w-6xl h-[600px]" /></div>
-  }
-
   const isResumeLab = labId === 'resume-builder-lab';
 
   return (
@@ -678,32 +652,32 @@ export default function LabDetailPage() {
 
       <LabHeader lab={lab} />
 
-      {!hasPremium ? <PremiumAccessGate /> : (
-        isResumeLab ? <ResumeBuilderSimulation /> : (
-            <div className="grid lg:grid-cols-3 gap-8 items-start">
-                  <div className="lg:col-span-2">
-                      <LabSimulation labId={labId} />
-                  </div>
-                  <div className="lg:col-span-1">
-                      <Card className="lg:sticky top-24 rounded-2xl">
-                          <CardHeader>
-                              <CardTitle className="font-headline">Learning Objectives</CardTitle>
-                          </CardHeader>
-                          <CardContent>
-                              <ul className="space-y-3">
-                                  {lab.learningObjectives.map((objective: string, index: number) => (
-                                      <li key={index} className="flex items-start gap-3">
-                                          <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
-                                          <span className="text-sm text-muted-foreground">{objective}</span>
-                                      </li>
-                                  ))}
-                              </ul>
-                          </CardContent>
-                      </Card>
-                  </div>
-            </div>
-        )
+      {isResumeLab ? <ResumeBuilderSimulation /> : (
+        <div className="grid lg:grid-cols-3 gap-8 items-start">
+              <div className="lg:col-span-2">
+                  <LabSimulation labId={labId} />
+              </div>
+              <div className="lg:col-span-1">
+                  <Card className="lg:sticky top-24 rounded-2xl">
+                      <CardHeader>
+                          <CardTitle className="font-headline">Learning Objectives</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                          <ul className="space-y-3">
+                              {lab.learningObjectives.map((objective: string, index: number) => (
+                                  <li key={index} className="flex items-start gap-3">
+                                      <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
+                                      <span className="text-sm text-muted-foreground">{objective}</span>
+                                  </li>
+                              ))}
+                          </ul>
+                      </CardContent>
+                  </Card>
+              </div>
+        </div>
       )}
     </div>
   );
 }
+
+    
