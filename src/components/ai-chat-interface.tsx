@@ -219,6 +219,20 @@ export default function AIChatInterface() {
               </motion.div>
             ))}
 
+            {messages.length > 1 && !isLoading && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="flex justify-center"
+              >
+                <Button variant="outline" onClick={handleNewChat} className="mt-4">
+                  <PlusCircle className="mr-2 h-4 w-4" />
+                  Create a new chat
+                </Button>
+              </motion.div>
+            )}
+
             {messages.length <= 1 && !isLoading && (
               <motion.div 
                 className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4"
