@@ -5,23 +5,25 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
-import { Menu, Shield } from 'lucide-react';
+import { BookOpen, Briefcase, FlaskConical, LayoutGrid, Menu, Shield, Sparkles } from 'lucide-react';
 import * as React from 'react';
 import { Logo } from '@/components/icons';
 import { useUserProfile } from '@/hooks/use-user-profile';
+import { PremiumFeatureGuard } from '@/components/premium-feature-guard';
 
 interface NavItem {
   href: string;
   icon: React.ElementType;
   label: string;
+  premium: boolean;
 }
 
-const navItems = [
-  { href: "/dashboard", icon: Menu, label: "Dashboard" },
-  { href: "/lessons", icon: Menu, label: "Lessons" },
-  { href: "/practice-lab", icon: Menu, label: "Practice Lab" },
-  { href: "/career-guide", icon: Menu, label: "Career Guide" },
-  { href: "/ai-mentor", icon: Menu, label: "AI Mentor" },
+const navItems: NavItem[] = [
+  { href: "/dashboard", icon: LayoutGrid, label: "Dashboard", premium: false },
+  { href: "/lessons", icon: BookOpen, label: "Lessons", premium: false },
+  { href: "/practice-lab", icon: FlaskConical, label: "Practice Lab", premium: true },
+  { href: "/career-guide", icon: Briefcase, label: "Career Guide", premium: true },
+  { href: "/ai-mentor", icon: Sparkles, label: "AI Mentor", premium: false },
 ];
 
 const adminNavItems = [
@@ -54,16 +56,30 @@ export function MobileNav() {
             <Logo className="h-6 w-6 text-primary" />
             <span className="font-headline">YouthSkillSet</span>
           </Link>
-          {navItems.map(item => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-muted-foreground hover:text-foreground"
-              onClick={() => setOpen(false)}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map(item => {
+              if (item.premium) {
+                return (
+                   <PremiumFeatureGuard
+                     key={item.href}
+                     href={item.href}
+                     featureName={item.label}
+                     className="text-muted-foreground hover:text-foreground"
+                   >
+                     <span onClick={() => setOpen(false)}>{item.label}</span>
+                   </PremiumFeatureGuard>
+                )
+              }
+              return (
+                 <Link
+                    key={item.href}
+                    href={item.href}
+                    className="text-muted-foreground hover:text-foreground"
+                    onClick={() => setOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+              )
+          })}
           {userProfile?.role === 'admin' && (
             <>
               <div className="h-px w-full bg-border my-2" />

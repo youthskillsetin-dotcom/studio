@@ -26,6 +26,7 @@ import { Logo } from "@/components/icons";
 import { useUserProfile } from "@/hooks/use-user-profile";
 import { useUserSubscription } from "@/hooks/use-user-subscription";
 import { usePathname } from "next/navigation";
+import { PremiumFeatureGuard } from "@/components/premium-feature-guard";
 
 
 const navItems = [
@@ -50,15 +51,25 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   const desktopNav = (
      <>
       {navItems.map((item) => {
-        const isLocked = item.premium && !hasPremium;
+        if (item.premium) {
+          return (
+            <PremiumFeatureGuard
+              key={item.href}
+              href={item.href}
+              featureName={item.label}
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+            >
+              <span>{item.label}</span>
+            </PremiumFeatureGuard>
+          );
+        }
         return (
             <Link
-            key={item.href}
-            href={isLocked ? '/subscribe' : item.href}
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary flex items-center gap-1"
+              key={item.href}
+              href={item.href}
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
-            {item.label}
-            {isLocked && <Lock className="w-3 h-3 text-accent-foreground fill-accent" />}
+              {item.label}
             </Link>
         )
       })}
