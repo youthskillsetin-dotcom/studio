@@ -19,15 +19,31 @@ const spaceGrotesk = Space_Grotesk({
   variable: '--font-space-grotesk',
 })
 
+const title = 'YouthSkillSet | Learn In-Demand Skills with AI';
+const description = 'Master practical skills in finance, technology, and career development with AI-powered mentorship. YouthSkillSet is your guide to real-world readiness.';
+
 export const metadata: Metadata = {
-  title: 'YouthSkillSet',
-  description: 'Master in-demand skills with AI-powered mentorship.',
+  title: title,
+  description: description,
   manifest: '/manifest.json',
   icons: {
     icon: '/LOGO.png',
     shortcut: '/LOGO.png',
     apple: '/LOGO.png',
-  }
+  },
+  openGraph: {
+    title: title,
+    description: description,
+    siteName: 'YouthSkillSet',
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://youthskillset.in',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: title,
+    description: description,
+  },
 };
 
 export const viewport: Viewport = {

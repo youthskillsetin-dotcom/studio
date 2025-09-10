@@ -11,6 +11,46 @@ import { cookies } from 'next/headers';
 import { getUserSubscription, getSubtopicByIdWithRelations, getSubtopicTitleById } from '@/lib/data';
 import { Suspense } from 'react';
 import { AISummaryCard, AISummaryCardSkeleton } from '@/components/ai-summary-card';
+import { Metadata, ResolvingMetadata } from 'next';
+
+type Props = {
+  params: { id: string }
+}
+
+function stripHtml(html: string) {
+  return html.replace(/<[^>]*>?/gm, '');
+}
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const data = await getSubtopicByIdWithRelations(params.id)
+
+  if (!data) {
+    return {
+      title: 'Subtopic Not Found',
+      description: 'The requested subtopic could not be found.',
+    }
+  }
+  const { lesson, ...subtopic } = data
+
+  const description = subtopic.ai_summary 
+    ? stripHtml(subtopic.ai_summary).split('\n')[0] 
+    : stripHtml(subtopic.content).substring(0, 150) + '...';
+
+  const previousImages = (await parent).openGraph?.images || []
+
+  return {
+    title: `${subtopic.title} | ${lesson.title}`,
+    description: description,
+    openGraph: {
+      title: `${subtopic.title} | ${lesson.title}`,
+      description: description,
+      images: [...previousImages],
+    },
+  }
+}
 
 export default async function SubtopicPage({ params }: { params: { id: string } }) {
   const cookieStore = cookies();

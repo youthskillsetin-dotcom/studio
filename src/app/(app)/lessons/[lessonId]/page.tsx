@@ -10,6 +10,37 @@ import { getUserSubscription, getLessonByIdWithSubtopics } from '@/lib/data';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft } from 'lucide-react';
+import { Metadata, ResolvingMetadata } from 'next';
+
+type Props = {
+  params: { lessonId: string }
+}
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const lesson = await getLessonByIdWithSubtopics(params.lessonId)
+
+  if (!lesson) {
+    return {
+      title: 'Lesson Not Found',
+      description: 'The requested lesson could not be found.',
+    }
+  }
+
+  const previousImages = (await parent).openGraph?.images || []
+
+  return {
+    title: `${lesson.title} | YouthSkillSet`,
+    description: lesson.description,
+    openGraph: {
+        title: lesson.title,
+        description: lesson.description,
+        images: [...previousImages],
+    },
+  }
+}
 
 export default async function LessonDetailPage({ params }: { params: { lessonId: string } }) {
   const cookieStore = cookies();
@@ -33,8 +64,24 @@ export default async function LessonDetailPage({ params }: { params: { lessonId:
   
   const nextUnlockDate = getNextUnlockTime();
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    name: lesson.title,
+    description: lesson.description,
+    provider: {
+      '@type': 'Organization',
+      name: 'YouthSkillSet',
+      url: 'https://youthskillset.in'
+    },
+  };
+
   return (
     <div className="space-y-6">
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       <Button asChild variant="link" className="p-0 text-muted-foreground hover:text-primary">
           <Link href="/lessons">
             <ChevronLeft className="w-4 h-4 mr-1" />
