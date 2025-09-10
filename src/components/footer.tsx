@@ -40,16 +40,16 @@ function WhatsappIcon(props: SVGProps<SVGSVGElement>) {
 
 function RedditIcon(props: SVGProps<SVGSVGElement>) {
     return (
-        <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            viewBox="0 0 24 24" 
-            fill="currentColor" 
-            stroke="currentColor" 
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            stroke="currentColor"
             strokeWidth="0.5"
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            width="24"
-            height="24"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            width="28"
+            height="28"
             {...props}>
                 <path d="M12,0C5.373,0,0,5.373,0,12s5.373,12,12,12s12-5.373,12-12S18.627,0,12,0z M5.65,13.088c0,0.584,0.473,1.058,1.058,1.058 s1.058-0.474,1.058-1.058s-0.473-1.058-1.058-1.058S5.65,12.504,5.65,13.088z M9.843,18.72c-0.499,0.5-1.223,0.801-2.023,0.801 c-1.585,0-2.869-1.284-2.869-2.869c0-1.585,1.284-2.869,2.869-2.869c0.799,0,1.523,0.301,2.023,0.801L12,14.659l2.157,2.862 c0.499-0.5,1.224-0.801,2.023-0.801c1.585,0,2.869,1.284,2.869,2.869c0,1.585-1.284,2.869-2.869,2.869 c-0.799,0-1.523-0.301-2.023-0.801L12,17.581L9.843,18.72z M17.292,14.146c0.584,0,1.058-0.474,1.058-1.058 s-0.474-1.058-1.058-1.058s-1.058,0.474-1.058,1.058S16.708,14.146,17.292,14.146z"></path>
         </svg>
