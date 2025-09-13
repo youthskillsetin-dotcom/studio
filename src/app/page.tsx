@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import Link from 'next/link';
@@ -131,12 +132,6 @@ export default function LandingPage() {
 
       return (
           <>
-            <nav className="items-center gap-6 hidden md:flex">
-              <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#features">Features</a>
-              <Link className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/subscribe">Pricing</Link>
-              <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#faq">FAQ</a>
-              <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/about">About</a>
-            </nav>
             <div className="items-center gap-2 hidden md:flex">
                 <ThemeToggle />
                 <Button asChild variant="ghost">
@@ -157,6 +152,12 @@ export default function LandingPage() {
           <Logo className="h-8 w-8 text-primary" />
           <span className="text-xl font-bold font-headline">YouthSkillSet</span>
         </Link>
+         <nav className="items-center gap-6 hidden md:flex">
+            <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#features">Features</a>
+            <Link className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/subscribe">Pricing</Link>
+            <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#faq">FAQ</a>
+            <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/about">About</a>
+        </nav>
         <div className="flex items-center gap-2">
           <NavControls />
         </div>
