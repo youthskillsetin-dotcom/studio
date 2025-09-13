@@ -71,17 +71,17 @@ const modules = [
   }
 ];
 
-const MotionWrapper = ({ children }: { children: ReactNode }) => {
+const MotionWrapper = ({ children, ...props }: { children: ReactNode, [key: string]: any }) => {
     const [isMounted, setIsMounted] = useState(false);
     useEffect(() => {
         setIsMounted(true);
     }, []);
 
     if (!isMounted) {
-        return null;
+        return <div {...props}>{children}</div>;
     }
 
-    return <>{children}</>;
+    return <motion.div {...props}>{children}</motion.div>;
 }
 
 
@@ -143,43 +143,41 @@ export default function LandingPage() {
       <main className="flex-1">
          <section className="relative text-left py-20 md:py-32 flex flex-col items-start justify-center overflow-hidden">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
-                <MotionWrapper>
+                <MotionWrapper
+                    initial="hidden"
+                    animate="show"
+                    viewport={{ once: true }}
+                    variants={{
+                        hidden: {},
+                        show: {
+                        transition: {
+                            staggerChildren: 0.15,
+                        },
+                        },
+                    }}
+                    className="relative z-10"
+                    >
+                    <motion.h1
+                        variants={FADE_IN_ANIMATION_VARIANTS}
+                        className="text-4xl md:text-6xl font-extrabold font-headline tracking-tight text-foreground"
+                    >
+                        Unlock Your Potential.
+                        <br />
+                        <span className="text-primary">Build Your Future.</span>
+                    </motion.h1>
+                    <motion.p
+                        variants={FADE_IN_ANIMATION_VARIANTS}
+                        className="mt-6 max-w-2xl text-lg text-muted-foreground"
+                    >
+                        YouthSkillset is an AI-powered platform that equips teens with the essential life and career skills needed to succeed in the real world. From financial literacy to personal branding, start your journey today.
+                    </motion.p>
                     <motion.div
-                        initial="hidden"
-                        animate="show"
-                        viewport={{ once: true }}
-                        variants={{
-                            hidden: {},
-                            show: {
-                            transition: {
-                                staggerChildren: 0.15,
-                            },
-                            },
-                        }}
-                        className="relative z-10"
-                        >
-                        <motion.h1
-                            variants={FADE_IN_ANIMATION_VARIANTS}
-                            className="text-4xl md:text-6xl font-extrabold font-headline tracking-tight text-foreground"
-                        >
-                            Unlock Your Potential.
-                            <br />
-                            <span className="text-primary">Build Your Future.</span>
-                        </motion.h1>
-                        <motion.p
-                            variants={FADE_IN_ANIMATION_VARIANTS}
-                            className="mt-6 max-w-2xl text-lg text-muted-foreground"
-                        >
-                            YouthSkillset is an AI-powered platform that equips teens with the essential life and career skills needed to succeed in the real world. From financial literacy to personal branding, start your journey today.
-                        </motion.p>
-                        <motion.div
-                            variants={FADE_IN_ANIMATION_VARIANTS}
-                            className="mt-8 flex justify-start gap-4"
-                        >
-                            <Button size="lg" asChild>
-                            <Link href="/signup">Start Learning for Free</Link>
-                            </Button>
-                        </motion.div>
+                        variants={FADE_IN_ANIMATION_VARIANTS}
+                        className="mt-8 flex justify-start gap-4"
+                    >
+                        <Button size="lg" asChild>
+                        <Link href="/signup">Start Learning for Free</Link>
+                        </Button>
                     </motion.div>
                 </MotionWrapper>
 
