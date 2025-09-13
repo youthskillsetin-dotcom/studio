@@ -4,7 +4,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { BookOpen, Briefcase, FlaskConical, LayoutGrid, Sparkles, Lock } from 'lucide-react';
+import { BookOpen, Briefcase, FlaskConical, LayoutGrid, Sparkles, Lock, Map } from 'lucide-react';
 import { useUserSubscription } from '@/hooks/use-user-subscription';
 import { PremiumFeatureGuard } from '@/components/premium-feature-guard';
 
@@ -15,7 +15,7 @@ export function BottomNav() {
   const navItems = [
     { href: "/dashboard", icon: LayoutGrid, label: "Dashboard", premium: false },
     { href: "/lessons", icon: BookOpen, label: "Lessons", premium: false },
-    { href: "/practice-lab", icon: FlaskConical, label: "Labs", premium: true },
+    { href: "/learning-plan", icon: Map, label: "Plan", premium: true },
     { href: "/career-guide", icon: Briefcase, label: "Careers", premium: true },
     { href: "/ai-mentor", icon: Sparkles, label: "Mentor", premium: false },
   ];

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
-import { BookOpen, Briefcase, FlaskConical, LayoutGrid, Menu, Shield, Sparkles } from 'lucide-react';
+import { BookOpen, Briefcase, FlaskConical, LayoutGrid, Menu, Shield, Sparkles, Map } from 'lucide-react';
 import * as React from 'react';
 import { Logo } from '@/components/icons';
 import { useUserProfile } from '@/hooks/use-user-profile';
@@ -21,6 +21,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { href: "/dashboard", icon: LayoutGrid, label: "Dashboard", premium: false },
   { href: "/lessons", icon: BookOpen, label: "Lessons", premium: false },
+  { href: "/learning-plan", icon: Map, label: "Learning Plan", premium: true },
   { href: "/practice-lab", icon: FlaskConical, label: "Practice Lab", premium: true },
   { href: "/career-guide", icon: Briefcase, label: "Career Guide", premium: true },
   { href: "/ai-mentor", icon: Sparkles, label: "AI Mentor", premium: false },
