@@ -1,16 +1,21 @@
 {
-  "name": "YouthSkillSet",
-  "short_name": "YouthSkillSet",
-  "description": "Master in-demand skills with AI-powered mentorship.",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#09090b",
-  "theme_color": "#6D28D9",
-  "icons": [
-    {
-      "src": "/LOGO.png",
-      "sizes": "any",
-      "type": "image/png"
-    }
-  ]
+    "name": "YouthSkillSet",
+    "short_name": "YouthSkillSet",
+    "description": "Learn In-Demand Skills with AI. Master finance, technology, and career development with AI-powered mentorship.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#6D28D9",
+    "icons": [
+        {
+            "src": "/LOGO-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/LOGO-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
 }

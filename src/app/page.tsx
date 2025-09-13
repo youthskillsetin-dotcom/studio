@@ -92,9 +92,9 @@ export default function LandingPage() {
       if (!isMounted) {
           return (
              <div className="flex items-center gap-2">
-                <div className="h-9 w-9 bg-muted rounded-md" />
-                <div className="h-9 w-[100px] bg-muted rounded-md" />
-                <div className="h-9 w-[100px] bg-muted rounded-md" />
+                <div className="h-9 w-9 bg-muted rounded-md animate-pulse" />
+                <div className="h-9 w-[100px] bg-muted rounded-md animate-pulse" />
+                <div className="h-9 w-[100px] bg-muted rounded-md animate-pulse" />
             </div>
           );
       }
