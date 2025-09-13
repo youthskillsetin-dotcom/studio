@@ -6,7 +6,7 @@ import { notFound, useParams } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ChevronLeft, FileText, CheckCircle, ArrowRight, ArrowLeft, Banknote, ClipboardList, Lightbulb, ShieldAlert, Download, Mail, Phone, Linkedin, CalendarIcon, Crown } from 'lucide-react';
+import { ChevronLeft, FileText, CheckCircle, ArrowRight, ArrowLeft, Banknote, ClipboardList, Lightbulb, ShieldAlert, Download, Mail, Phone, Linkedin, CalendarIcon, Crown, Save } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { useState } from 'react';
 import { Progress } from '@/components/ui/progress';
@@ -19,8 +19,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
 import { Calendar } from '@/components/ui/calendar';
-import { useUserSubscription } from '@/hooks/use-user-subscription';
-import { Skeleton } from '@/components/ui/skeleton';
+import { Tooltip, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 
 const labsData: { [key: string]: any } = {
@@ -498,33 +497,70 @@ const ResumeBuilderSimulation = () => {
 
 // Business Idea Canvas Components
 const BusinessCanvasSimulation = () => {
+    const canvasSections = {
+        'Key Partnerships': 'Who are your key partners and suppliers? What key resources are you acquiring from partners?',
+        'Key Activities': 'What key activities do your value propositions require? (e.g., production, problem-solving)',
+        'Key Resources': 'What key resources do your value propositions require? (e.g., physical, intellectual, human, financial)',
+        'Value Proposition': 'What value do you deliver to the customer? Which one of your customer’s problems are you helping to solve?',
+        'Customer Relationships': 'What type of relationship does each of your customer segments expect you to establish and maintain with them?',
+        'Channels': 'Through which channels do your customer segments want to be reached? How are you reaching them now?',
+        'Customer Segments': 'For whom are you creating value? Who are your most important customers?',
+        'Cost Structure': 'What are the most important costs inherent in your business model? Which key resources/activities are most expensive?',
+        'Revenue Streams': 'For what value are your customers willing to pay? How do they currently pay?'
+    };
+
     return (
          <div>
             <Card className="rounded-xl">
                  <CardHeader>
                      <CardTitle className="font-headline text-lg">Business Model Canvas</CardTitle>
-                     <p className="text-sm text-muted-foreground">Map out your business idea on this one-page canvas.</p>
+                     <p className="text-sm text-muted-foreground">Map out your business idea on this one-page canvas. Hover over a section title for more info.</p>
                  </CardHeader>
-                <CardContent className="space-y-6">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div className="space-y-1"><Label>Value Proposition</Label><Textarea placeholder="What unique value do you provide?" rows={4} /></div>
-                        <div className="space-y-1"><Label>Customer Segments</Label><Textarea placeholder="Who are your target customers?" rows={4} /></div>
-                        <div className="space-y-1"><Label>Customer Relationships</Label><Textarea placeholder="How do you interact with customers?" rows={4} /></div>
-                        <div className="space-y-1"><Label>Channels</Label><Textarea placeholder="How do you reach your customers?" rows={4} /></div>
-                        <div className="space-y-1"><Label>Key Activities</Label><Textarea placeholder="What are the most important things you do?" rows={4} /></div>
-                        <div className="space-y-1"><Label>Key Resources</Label><Textarea placeholder="What assets do you need?" rows={4} /></div>
-                        <div className="space-y-1"><Label>Key Partnerships</Label><Textarea placeholder="Who are your key partners/suppliers?" rows={4} /></div>
-                        <div className="space-y-1 lg:col-span-2"><Label>Revenue Streams</Label><Textarea placeholder="How do you make money?" rows={4} /></div>
-                        <div className="lg:col-span-3 space-y-1"><Label>Cost Structure</Label><Textarea placeholder="What are your major costs?" rows={4} /></div>
-                    </div>
+                <CardContent>
+                    <TooltipProvider>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div className="lg:col-span-1 space-y-6">
+                                <TextareaWithTooltip name="Key Partnerships" tooltip={canvasSections['Key Partnerships']} />
+                                <TextareaWithTooltip name="Key Activities" tooltip={canvasSections['Key Activities']} />
+                                <TextareaWithTooltip name="Key Resources" tooltip={canvasSections['Key Resources']} />
+                            </div>
+                            <div className="lg:col-span-2 space-y-6">
+                                <TextareaWithTooltip name="Value Proposition" tooltip={canvasSections['Value Proposition']} className="min-h-[200px]" />
+                            </div>
+                            <div className="lg:col-span-1 space-y-6">
+                                <TextareaWithTooltip name="Customer Relationships" tooltip={canvasSections['Customer Relationships']} />
+                                <TextareaWithTooltip name="Channels" tooltip={canvasSections['Channels']} />
+                                <TextareaWithTooltip name="Customer Segments" tooltip={canvasSections['Customer Segments']} />
+                            </div>
+                            <div className="lg:col-span-2">
+                                <TextareaWithTooltip name="Cost Structure" tooltip={canvasSections['Cost Structure']} />
+                            </div>
+                            <div className="lg:col-span-2">
+                                <TextareaWithTooltip name="Revenue Streams" tooltip={canvasSections['Revenue Streams']} />
+                            </div>
+                        </div>
+                    </TooltipProvider>
                 </CardContent>
                 <CardFooter>
-                    <Button>Save Canvas</Button>
+                    <Button><Save className="w-4 h-4 mr-2" />Save Canvas</Button>
                 </CardFooter>
             </Card>
         </div>
     )
 }
+
+const TextareaWithTooltip = ({ name, tooltip, className }: { name: string, tooltip: string, className?: string }) => (
+    <div className="space-y-1">
+        <Tooltip>
+            <TooltipTrigger asChild>
+                <Label className="cursor-help underline decoration-dashed">{name}</Label>
+            </TooltipTrigger>
+            <TooltipContent><p className="max-w-xs">{tooltip}</p></TooltipContent>
+        </Tooltip>
+        <Textarea placeholder={`Your notes on ${name}...`} rows={4} className={className} />
+    </div>
+);
+
 
 // Budgeting Challenge Components
 const BudgetingSimulation = () => {
@@ -544,26 +580,34 @@ const BudgetingSimulation = () => {
                     </CardTitle>
                     <Progress value={progress} className="w-full mt-2" />
                 </CardHeader>
-                <CardContent className="min-h-[250px]">
+                <CardContent className="min-h-[300px]">
                     <div className="mb-4 p-4 bg-muted/50 rounded-lg">
                         <p className="font-semibold">Your Scenario:</p>
                         <p className="text-sm text-muted-foreground">You have a monthly income of ₹20,000. Your goal is to apply the 50-30-20 rule.</p>
                     </div>
 
                     {step === 0 && <div className="space-y-4">
-                        <p className="text-muted-foreground">Allocate your ₹20,000 income. Needs (50% = ₹10,000), Wants (30% = ₹6,000), Savings (20% = ₹4,000).</p>
-                        <div className="space-y-1"><Label>Needs (e.g., Rent, Bills)</Label><Input type="number" placeholder="10000" /></div>
-                        <div className="space-y-1"><Label>Wants (e.g., Entertainment, Shopping)</Label><Input type="number" placeholder="6000" /></div>
-                        <div className="space-y-1"><Label>Savings/Debt</Label><Input type="number" placeholder="4000" /></div>
+                        <p className="text-muted-foreground">Allocate your ₹20,000 income. The 50-30-20 rule suggests: Needs (50% = ₹10,000), Wants (30% = ₹6,000), Savings (20% = ₹4,000).</p>
+                        <div className="space-y-1"><Label>Needs (e.g., Rent, Bills)</Label><Input type="number" defaultValue="10000" /></div>
+                        <div className="space-y-1"><Label>Wants (e.g., Entertainment, Shopping)</Label><Input type="number" defaultValue="6000" /></div>
+                        <div className="space-y-1"><Label>Savings/Debt</Label><Input type="number" defaultValue="4000" /></div>
+                        <Alert>
+                            <AlertDescription>Make sure your allocated amounts add up to ₹20,000 before proceeding.</AlertDescription>
+                        </Alert>
                     </div>}
                     {step === 1 && <div className="space-y-4">
-                        <p className="text-muted-foreground">Log your expenses for the simulated month.</p>
+                        <p className="text-muted-foreground">Log your expenses for the simulated month. Be honest!</p>
                         <div className="space-y-1"><Label>Total Spent on Needs</Label><Input type="number" placeholder="e.g. 9500"/></div>
                         <div className="space-y-1"><Label>Total Spent on Wants</Label><Input type="number" placeholder="e.g. 7000"/></div>
                         <div className="space-y-1"><Label>Total Saved</Label><Input type="number" placeholder="e.g. 3500"/></div>
+                         <Alert variant="destructive">
+                             <ShieldAlert className="h-4 w-4" />
+                            <AlertTitle>Surprise Expense!</AlertTitle>
+                            <AlertDescription>An unexpected medical bill of ₹1,500 came up. How did this affect your savings or wants?</AlertDescription>
+                        </Alert>
                     </div>}
                     {step === 2 && <div className="space-y-4 text-center">
-                        <h3 className="font-semibold text-lg">Did You Meet Your Goal?</h3>
+                        <h3 className="font-semibold text-lg">Ready for Your Results?</h3>
                         <p className="text-muted-foreground">Based on your entries, the next step will analyze your performance and give you feedback on your budgeting skills.</p>
                     </div>}
                     {step === 3 && <div className="space-y-4 text-center">
@@ -632,12 +676,33 @@ const LabSimulation = ({ labId }: { labId: string }) => {
 export default function LabDetailPage() {
   const params = useParams();
   const labId = Array.isArray(params.labId) ? params.labId[0] : params.labId;
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return (
+        <div className="max-w-7xl mx-auto">
+             <div className="grid lg:grid-cols-3 gap-8 items-start">
+                  <div className="lg:col-span-2 space-y-4">
+                     <Card className="rounded-2xl"><CardHeader><div className="h-48 w-full bg-muted rounded-lg"></div></CardHeader></Card>
+                  </div>
+                  <div className="lg:col-span-1">
+                      <Card className="lg:sticky top-24 rounded-2xl"><CardHeader><div className="h-48 w-full bg-muted rounded-lg"></div></CardHeader></Card>
+                  </div>
+            </div>
+        </div>
+    )
+  }
 
   if (!labId || !labsData[labId]) {
     notFound();
   }
   const lab = labsData[labId];
-  const isResumeLab = labId === 'resume-builder-lab';
+  const isSpecialLayout = ['resume-builder-lab', 'business-idea-canvas'].includes(labId);
+
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -652,7 +717,7 @@ export default function LabDetailPage() {
 
       <LabHeader lab={lab} />
 
-      {isResumeLab ? <ResumeBuilderSimulation /> : (
+      {isSpecialLayout ? <LabSimulation labId={labId} /> : (
         <div className="grid lg:grid-cols-3 gap-8 items-start">
               <div className="lg:col-span-2">
                   <LabSimulation labId={labId} />
