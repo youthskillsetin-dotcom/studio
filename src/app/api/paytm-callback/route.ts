@@ -92,12 +92,13 @@ export async function POST(req: Request) {
             
             const planName = plan === 'yearly' ? 'Yearly' : 'Premium';
 
+            // Use upsert to create or update the subscription. This is simpler.
             await supabaseAdmin.from('subscriptions').upsert({
                 user_id: userId,
                 is_active: true,
                 plan_name: planName,
                 expires_at: expires_at.toISOString(),
-            }, { onConflict: 'user_id' });
+            });
             
             await supabaseAdmin.from('profiles').update({ role: 'premium' }).eq('id', userId);
             

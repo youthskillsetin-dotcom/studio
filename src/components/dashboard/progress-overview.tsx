@@ -15,7 +15,8 @@ export function ProgressOverview() {
   useEffect(() => {
     // This ensures the animation happens on the client side
     setMounted(true);
-    setProgress(28); 
+    const timer = setTimeout(() => setProgress(28), 100); // Small delay to trigger animation
+    return () => clearTimeout(timer);
   }, []);
 
 
