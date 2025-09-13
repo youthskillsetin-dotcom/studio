@@ -27,8 +27,10 @@ function capitalize(str?: string | null) {
 
 export function WelcomeHeader({ variants, name }: WelcomeHeaderProps) {
     const [quote, setQuote] = useState('');
+    const [hasMounted, setHasMounted] = useState(false);
     
     useEffect(() => {
+        setHasMounted(true);
         setQuote(getDailyQuote());
     }, []);
 
@@ -38,7 +40,7 @@ export function WelcomeHeader({ variants, name }: WelcomeHeaderProps) {
             Welcome Back, {capitalize(name)}!
           </h1>
           <p className="text-muted-foreground text-base">
-            {quote}
+            {hasMounted ? quote : '...'}
           </p>
         </motion.div>
     )
