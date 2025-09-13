@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -12,16 +13,17 @@ import { Form, FormControl, FormField, FormItem, FormMessage, FormLabel } from '
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { generateCareerProfile, type GenerateCareerProfileOutput } from '@/ai/flows/generate-career-profile';
 import { generateCareerArchetypes, type GenerateCareerArchetypesOutput } from '@/ai/flows/generate-career-archetypes';
-import { Compass, Briefcase, Wand2, BookOpen, BarChart, IndianRupee, Rocket, Lightbulb, Brain, Star, Map, Building, BriefcaseBusiness, AlertTriangle, Download, ArrowRight, ArrowLeft, Users, Wrench, Puzzle, PaintBrush, Heart, User } from 'lucide-react';
+import { Compass, Briefcase, Wand2, BookOpen, BarChart, IndianRupee, Rocket, Lightbulb, Brain, Star, Map, Building, BriefcaseBusiness, AlertTriangle, Download, ArrowRight, ArrowLeft, Users, Wrench, Puzzle, PaintBrush, Heart, User, Search } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Skeleton } from '@/components/ui/skeleton';
 import jsPDF from 'jspdf';
 import { Progress } from '@/components/ui/progress';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 
 const profileFormSchema = z.object({
-  userInput: z.string().min(2, { message: 'Please enter a value.' }),
+  userInput: z.string().min(2, { message: 'Please enter at least 2 characters.' }),
 });
 
 const quizFormSchema = z.object({
@@ -144,7 +146,7 @@ const CareerQuiz = ({ onSubmit, isLoading } : { onSubmit: (values: QuizFormValue
     const progress = ((step) / questions.length) * 100;
     
     return (
-        <Card className="shadow-lg rounded-2xl w-full max-w-2xl mx-auto">
+        <Card className="shadow-lg rounded-2xl w-full max-w-2xl mx-auto border-0">
             <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
                 <CardHeader>
@@ -224,6 +226,53 @@ const CareerQuiz = ({ onSubmit, isLoading } : { onSubmit: (values: QuizFormValue
                     )}
                 </CardFooter>
             </form>
+            </Form>
+        </Card>
+    );
+}
+
+const CareerSearch = ({ onSubmit, isLoading }: { onSubmit: (values: ProfileFormValues) => void, isLoading: boolean }) => {
+    const form = useForm<ProfileFormValues>({
+        resolver: zodResolver(profileFormSchema)
+    });
+    return (
+        <Card className="shadow-lg rounded-2xl w-full max-w-2xl mx-auto border-0">
+            <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)}>
+                    <CardHeader>
+                        <CardTitle className="font-headline">Explore a Career</CardTitle>
+                        <CardDescription>Enter a career title, skill, or interest to get a detailed profile.</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                         <FormField
+                            control={form.control}
+                            name="userInput"
+                            render={({ field }) => (
+                            <FormItem>
+                                <FormControl>
+                                    <Input placeholder="e.g. 'Software Developer', 'Python', or 'Video Games'" {...field} className="text-base py-6"/>
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                            )}
+                        />
+                    </CardContent>
+                    <CardFooter>
+                        <Button type="submit" disabled={isLoading} className="w-full">
+                            {isLoading ? (
+                                <>
+                                    <Wand2 className="mr-2 h-5 w-5 animate-spin" />
+                                    Generating...
+                                </>
+                            ) : (
+                                <>
+                                    <Wand2 className="mr-2 h-5 w-5" />
+                                    Generate Profile
+                                </>
+                            )}
+                        </Button>
+                    </CardFooter>
+                </form>
             </Form>
         </Card>
     );
@@ -351,6 +400,23 @@ export default function CareerGuidePage() {
 
     doc.save(`${profile.careerTitle.replace(/\s+/g, '_')}_Profile.pdf`);
   };
+
+  async function onProfileSearch(values: ProfileFormValues) {
+    setIsLoading(true);
+    setError(null);
+    setProfile(null);
+    setArchetypes(null);
+
+    try {
+      const result = await generateCareerProfile({ userInput: values.userInput });
+      setProfile(result);
+    } catch (err) {
+      setError('Sorry, the career crystal ball is a bit cloudy. Please try again.');
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
+  }
   
   async function onQuizSubmit(values: QuizFormValues) {
     setIsLoading(true);
@@ -412,11 +478,21 @@ export default function CareerGuidePage() {
      )
   }
 
+  if (isLoading && !profile) {
+    return (
+        <div className="max-w-4xl mx-auto">
+            <AnimatePresence>
+                {isLoading && <CareerProfileSkeleton />}
+            </AnimatePresence>
+        </div>
+    )
+  }
+
 
   if (profile) {
     return (
         <div className="max-w-4xl mx-auto">
-             <Button variant="link" onClick={resetAll} className="mb-4 text-muted-foreground"><ArrowLeft className="w-4 h-4 mr-2"/>Back to Quiz</Button>
+             <Button variant="link" onClick={resetAll} className="mb-4 text-muted-foreground"><ArrowLeft className="w-4 h-4 mr-2"/>Back to Career Guide</Button>
             <motion.div 
             className="space-y-10"
             initial="hidden"
@@ -545,12 +621,24 @@ export default function CareerGuidePage() {
       <div className="text-center mb-10">
         <Compass className="w-16 h-16 mx-auto text-primary mb-4" />
         <h1 className="text-4xl font-extrabold font-headline tracking-tight">AI Career Guide</h1>
-        <p className="text-muted-foreground mt-2 text-lg">
-          Not sure where to start? Take our quiz to discover career paths that fit you.
+        <p className="text-muted-foreground mt-2 text-lg max-w-2xl mx-auto">
+          Discover your ideal career path. Explore roles with our AI-powered search, or take the quiz if you're unsure where to start.
         </p>
       </div>
 
-     {!archetypes && <CareerQuiz onSubmit={onQuizSubmit} isLoading={isLoading} />}
+     <Tabs defaultValue="search" className="w-full max-w-2xl mx-auto">
+        <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="search"><Search className="w-4 h-4 mr-2"/>Explore Careers</TabsTrigger>
+            <TabsTrigger value="quiz"><Wand2 className="w-4 h-4 mr-2"/>Take the Quiz</TabsTrigger>
+        </TabsList>
+        <TabsContent value="search">
+             {!archetypes && <CareerSearch onSubmit={onProfileSearch} isLoading={isLoading} />}
+        </TabsContent>
+        <TabsContent value="quiz">
+             {!archetypes && <CareerQuiz onSubmit={onQuizSubmit} isLoading={isLoading} />}
+        </TabsContent>
+    </Tabs>
+
       
       {error && (
         <Alert variant="destructive" className="mt-12">
@@ -604,5 +692,3 @@ export default function CareerGuidePage() {
     </div>
   );
 }
-
-    
