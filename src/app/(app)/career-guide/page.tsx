@@ -2,27 +2,37 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem, FormMessage, FormLabel } from '@/components/ui/form';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { generateCareerProfile, type GenerateCareerProfileOutput } from '@/ai/flows/generate-career-profile';
-import { Compass, Briefcase, Wand2, BookOpen, BarChart, IndianRupee, Rocket, Lightbulb, Brain, Star, Map, Building, BriefcaseBusiness, AlertTriangle, Download, Lock, Crown } from 'lucide-react';
+import { generateCareerArchetypes, type GenerateCareerArchetypesOutput } from '@/ai/flows/generate-career-archetypes';
+import { Compass, Briefcase, Wand2, BookOpen, BarChart, IndianRupee, Rocket, Lightbulb, Brain, Star, Map, Building, BriefcaseBusiness, AlertTriangle, Download, ArrowRight, ArrowLeft, Users, Wrench, Puzzle, PaintBrush, Heart } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Skeleton } from '@/components/ui/skeleton';
 import jsPDF from 'jspdf';
-import { useUserSubscription } from '@/hooks/use-user-subscription';
+import { Progress } from '@/components/ui/progress';
 
-const formSchema = z.object({
+
+const profileFormSchema = z.object({
   userInput: z.string().min(2, { message: 'Please enter a value.' }),
 });
 
-type FormValues = z.infer<typeof formSchema>;
+const quizFormSchema = z.object({
+    teamwork: z.string({ required_error: 'Please select an option.'}),
+    workStyle: z.string({ required_error: 'Please select an option.'}),
+    interest: z.string({ required_error: 'Please select an option.'}),
+    subject: z.string({ required_error: 'Please select an option.'}),
+});
+
+type ProfileFormValues = z.infer<typeof profileFormSchema>;
+type QuizFormValues = z.infer<typeof quizFormSchema>;
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -54,6 +64,26 @@ const formatSalary = (amount: number | string) => {
     return `₹${numericAmount.toFixed(1)} LPA`;
 }
 
+const ArchetypeSkeleton = () => (
+     <motion.div
+      className="space-y-6"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+        <div className="text-center">
+            <Skeleton className="h-8 w-1/2 mx-auto mb-2" />
+            <Skeleton className="h-5 w-3/4 mx-auto" />
+        </div>
+        <div className="grid md:grid-cols-3 gap-6">
+            <Card className="rounded-xl"><CardHeader><Skeleton className="h-32 w-full" /></CardHeader></Card>
+            <Card className="rounded-xl"><CardHeader><Skeleton className="h-32 w-full" /></CardHeader></Card>
+            <Card className="rounded-xl"><CardHeader><Skeleton className="h-32 w-full" /></CardHeader></Card>
+        </div>
+    </motion.div>
+);
+
+
 const CareerProfileSkeleton = () => (
     <motion.div
       className="space-y-10"
@@ -75,74 +105,6 @@ const CareerProfileSkeleton = () => (
     </motion.div>
   );
 
-const SearchCard = ({ 
-    title, 
-    description, 
-    placeholder, 
-    icon: Icon,
-    onSubmit,
-    isLoading
-}: {
-    title: string,
-    description: string,
-    placeholder: string,
-    icon: React.ElementType,
-    onSubmit: (values: FormValues) => void,
-    isLoading: boolean
-}) => {
-    const form = useForm<FormValues>({
-        resolver: zodResolver(formSchema),
-        defaultValues: { userInput: '' },
-    });
-    
-    return (
-         <Card className="shadow-lg rounded-2xl flex-1">
-            <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)}>
-                <CardHeader className="flex-row items-center gap-4">
-                    <div className="p-3 bg-primary/10 rounded-lg"><Icon className="w-6 h-6 text-primary"/></div>
-                    <div>
-                        <CardTitle className="font-headline">{title}</CardTitle>
-                        <CardDescription>{description}</CardDescription>
-                    </div>
-                </CardHeader>
-                <CardContent>
-                <FormField
-                    control={form.control}
-                    name="userInput"
-                    render={({ field }) => (
-                    <FormItem>
-                        <FormControl>
-                        <Input 
-                            className="text-base py-6"
-                            placeholder={placeholder} {...field} />
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
-                    )}
-                />
-                </CardContent>
-                <CardFooter>
-                <Button type="submit" disabled={isLoading} className="w-full">
-                    {isLoading ? (
-                    <>
-                        <Wand2 className="mr-2 h-5 w-5 animate-spin" />
-                        Generating...
-                    </>
-                    ) : (
-                    <>
-                        <Wand2 className="mr-2 h-5 w-5" />
-                        Generate Profile
-                    </>
-                    )}
-                </Button>
-                </CardFooter>
-            </form>
-            </Form>
-        </Card>
-    )
-}
-
 const RoadmapStep = ({ number, title, description }: { number: number, title: string, description: string }) => (
     <div className="flex">
         <div className="flex flex-col items-center mr-4">
@@ -161,8 +123,116 @@ const RoadmapStep = ({ number, title, description }: { number: number, title: st
 );
 
 
+const questions = [
+    { name: 'teamwork', label: 'Do you prefer working in a team or on your own?', options: [{value: 'team', label: 'In a team', icon: Users}, {value: 'alone', label: 'On my own', icon: User}]},
+    { name: 'workStyle', label: 'Would you rather build something with your hands or with ideas?', options: [{value: 'hands', label: 'With my hands', icon: Wrench}, {value: 'ideas', label: 'With ideas', icon: Lightbulb}]},
+    { name: 'interest', label: 'What excites you more?', options: [{value: 'puzzle', label: 'Solving a complex puzzle', icon: Puzzle}, {value: 'design', label: 'Creating a beautiful design', icon: PaintBrush}]},
+    { name: 'subject', label: 'Which sounds more interesting to understand?', options: [{value: 'money', label: 'How money moves around the world', icon: IndianRupee}, {value: 'people', label: 'How people think and connect', icon: Heart}]},
+]
+
+const CareerQuiz = ({ onSubmit, isLoading } : { onSubmit: (values: QuizFormValues) => void, isLoading: boolean }) => {
+    const [step, setStep] = useState(0);
+    const form = useForm<QuizFormValues>({
+        resolver: zodResolver(quizFormSchema)
+    });
+    
+    const currentQuestion = questions[step];
+
+    const nextStep = () => setStep(s => Math.min(s + 1, questions.length));
+    const prevStep = () => setStep(s => Math.max(s - 1, 0));
+
+    const progress = ((step) / questions.length) * 100;
+    
+    return (
+        <Card className="shadow-lg rounded-2xl w-full max-w-2xl mx-auto">
+            <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)}>
+                <CardHeader>
+                    <CardTitle className="font-headline">Career Explorer Quiz</CardTitle>
+                    <CardDescription>Answer a few questions to discover career paths that match your personality.</CardDescription>
+                    <Progress value={progress} className="mt-2"/>
+                </CardHeader>
+                <CardContent className="min-h-[250px]">
+                    <AnimatePresence mode="wait">
+                         <motion.div
+                            key={step}
+                            initial={{ opacity: 0, x: 50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -50 }}
+                            transition={{ duration: 0.3 }}
+                         >
+                            {step < questions.length ? (
+                                 <FormField
+                                    control={form.control}
+                                    name={currentQuestion.name as keyof QuizFormValues}
+                                    render={({ field }) => (
+                                    <FormItem className="space-y-4">
+                                        <FormLabel className="text-lg font-semibold">{currentQuestion.label}</FormLabel>
+                                        <FormControl>
+                                            <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                                {currentQuestion.options.map(opt => (
+                                                     <FormItem key={opt.value}>
+                                                        <FormControl>
+                                                            <RadioGroupItem value={opt.value} id={opt.value} className="sr-only" />
+                                                        </FormControl>
+                                                        <FormLabel htmlFor={opt.value} className="flex flex-col items-center justify-center p-4 border-2 rounded-lg cursor-pointer hover:bg-accent/50 has-[:checked]:bg-primary/10 has-[:checked]:border-primary transition-all">
+                                                            <opt.icon className="w-8 h-8 mb-2" />
+                                                            {opt.label}
+                                                        </FormLabel>
+                                                     </FormItem>
+                                                ))}
+                                            </RadioGroup>
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                    )}
+                                />
+                            ) : (
+                                <div className="text-center flex flex-col items-center justify-center h-full">
+                                    <h3 className="text-xl font-bold">You're all set!</h3>
+                                    <p className="text-muted-foreground mt-2">Ready to discover your career archetypes?</p>
+                                    <Button type="submit" disabled={isLoading} className="mt-6">
+                                        {isLoading ? (
+                                        <>
+                                            <Wand2 className="mr-2 h-5 w-5 animate-spin" />
+                                            Analyzing...
+                                        </>
+                                        ) : (
+                                        <>
+                                            <Wand2 className="mr-2 h-5 w-5" />
+                                            Generate My Archetypes
+                                        </>
+                                        )}
+                                    </Button>
+                                </div>
+                            )}
+                         </motion.div>
+                    </AnimatePresence>
+                </CardContent>
+                <CardFooter className="flex justify-between">
+                    <Button variant="outline" onClick={prevStep} disabled={step === 0}>
+                        <ArrowLeft className="w-4 h-4 mr-2"/> Previous
+                    </Button>
+                     {step < questions.length - 1 ? (
+                        <Button type="button" onClick={nextStep} disabled={!form.watch(currentQuestion.name as keyof QuizFormValues)}>
+                            Next <ArrowRight className="w-4 h-4 ml-2"/>
+                        </Button>
+                    ) : step === questions.length - 1 && (
+                         <Button type="button" onClick={nextStep} disabled={!form.watch(currentQuestion.name as keyof QuizFormValues)}>
+                            Finish <ArrowRight className="w-4 h-4 ml-2"/>
+                        </Button>
+                    )}
+                </CardFooter>
+            </form>
+            </Form>
+        </Card>
+    );
+}
+
+
 export default function CareerGuidePage() {
   const [profile, setProfile] = useState<GenerateCareerProfileOutput | null>(null);
+  const [archetypes, setArchetypes] = useState<GenerateCareerArchetypesOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   
@@ -280,15 +350,32 @@ export default function CareerGuidePage() {
 
     doc.save(`${profile.careerTitle.replace(/\s+/g, '_')}_Profile.pdf`);
   };
+  
+  async function onQuizSubmit(values: QuizFormValues) {
+    setIsLoading(true);
+    setError(null);
+    setArchetypes(null);
+    try {
+      const result = await generateCareerArchetypes({ answers: values });
+      setArchetypes(result);
+    } catch (err) {
+      setError('Sorry, the career crystal ball is a bit cloudy. Please try again.');
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onRoleSelect(role: string) {
     setIsLoading(true);
     setError(null);
     setProfile(null);
     
     try {
-      const result = await generateCareerProfile({ userInput: values.userInput });
+      const result = await generateCareerProfile({ userInput: role });
       setProfile(result);
+      // scroll to top
+      window.scrollTo(0, 0);
     } catch (err) {
       setError('Sorry, the career crystal ball is a bit cloudy right now. Please try again.');
       console.error(err);
@@ -297,57 +384,39 @@ export default function CareerGuidePage() {
     }
   }
 
-  return (
-    <div className="max-w-4xl mx-auto">
-      <div className="text-center mb-10">
-        <Compass className="w-16 h-16 mx-auto text-primary mb-4" />
-        <h1 className="text-4xl font-extrabold font-headline tracking-tight">AI Career Guide</h1>
-        <p className="text-muted-foreground mt-2 text-lg">
-          Explore any career path. Just type a job title, skill, or interest to begin.
-        </p>
-      </div>
+  const resetAll = () => {
+    setProfile(null);
+    setArchetypes(null);
+    setError(null);
+    setIsLoading(false);
+  }
 
-      <div className="flex flex-col md:flex-row gap-6 mb-12">
-        <SearchCard 
-            title="By Career"
-            description="Know a job title?"
-            placeholder="e.g., 'Software Engineer'"
-            icon={Briefcase}
-            onSubmit={onSubmit}
-            isLoading={isLoading}
-        />
-         <SearchCard 
-            title="By Skill"
-            description="Have a skill?"
-            placeholder="e.g., 'Python'"
-            icon={Brain}
-            onSubmit={onSubmit}
-            isLoading={isLoading}
-        />
-         <SearchCard 
-            title="By Interest"
-            description="Have a passion?"
-            placeholder="e.g., 'Video Games'"
-            icon={Star}
-            onSubmit={onSubmit}
-            isLoading={isLoading}
-        />
-      </div>
-      
-      <AnimatePresence>
-        {isLoading && <CareerProfileSkeleton />}
-      </AnimatePresence>
+  if (isLoading && !profile && !archetypes) {
+     return (
+        <div className="max-w-4xl mx-auto">
+            <AnimatePresence>
+                {isLoading && <ArchetypeSkeleton />}
+            </AnimatePresence>
+        </div>
+     )
+  }
 
-      {error && !isLoading && (
-        <Alert variant="destructive" className="mt-12">
-            <AlertTriangle className="h-4 w-4" />
-          <AlertTitle>Error Generating Profile</AlertTitle>
-          <AlertDescription>{error}</AlertDescription>
-        </Alert>
-      )}
+  if (isLoading && !profile && archetypes) {
+     return (
+        <div className="max-w-4xl mx-auto">
+            <AnimatePresence>
+                {isLoading && <CareerProfileSkeleton />}
+            </AnimatePresence>
+        </div>
+     )
+  }
 
-      {profile && !isLoading && (
-        <motion.div 
+
+  if (profile) {
+    return (
+        <div className="max-w-4xl mx-auto">
+             <Button variant="link" onClick={resetAll} className="mb-4 text-muted-foreground"><ArrowLeft className="w-4 h-4 mr-2"/>Back to Quiz</Button>
+            <motion.div 
             className="space-y-10"
             initial="hidden"
             animate="visible"
@@ -466,9 +535,71 @@ export default function CareerGuidePage() {
             </motion.div>
           </div>
         </motion.div>
+        </div>
+    )
+  }
+
+  return (
+    <div className="max-w-4xl mx-auto">
+      <div className="text-center mb-10">
+        <Compass className="w-16 h-16 mx-auto text-primary mb-4" />
+        <h1 className="text-4xl font-extrabold font-headline tracking-tight">AI Career Guide</h1>
+        <p className="text-muted-foreground mt-2 text-lg">
+          Not sure where to start? Take our quiz to discover career paths that fit you.
+        </p>
+      </div>
+
+     {!archetypes && <CareerQuiz onSubmit={onQuizSubmit} isLoading={isLoading} />}
+      
+      {error && (
+        <Alert variant="destructive" className="mt-12">
+            <AlertTriangle className="h-4 w-4" />
+          <AlertTitle>Error Generating Results</AlertTitle>
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
+      )}
+
+      {archetypes && (
+        <motion.div 
+            className="space-y-8 mt-12"
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+        >
+             <motion.div variants={itemVariants} className="text-center">
+                <h2 className="text-3xl font-bold font-headline">Your Career Archetypes</h2>
+                <p className="text-muted-foreground text-lg max-w-2xl mx-auto mt-2">Based on your answers, here are a few paths that might interest you. Click a job title to explore it in detail.</p>
+             </motion.div>
+            <div className="grid md:grid-cols-3 gap-6 items-stretch">
+                {archetypes.archetypes.map(archetype => (
+                    <motion.div variants={itemVariants} key={archetype.title}>
+                        <Card className="h-full rounded-xl flex flex-col">
+                            <CardHeader>
+                                <CardTitle>{archetype.title}</CardTitle>
+                                <CardDescription>{archetype.description}</CardDescription>
+                            </CardHeader>
+                            <CardContent className="flex-grow">
+                                <h4 className="font-semibold mb-2 text-sm">Suggested Roles:</h4>
+                                <div className="flex flex-col gap-2">
+                                    {archetype.suggested_roles.map(role => (
+                                        <Button key={role} variant="link" className="p-0 h-auto justify-start" onClick={() => onRoleSelect(role)}>
+                                            {role}
+                                        </Button>
+                                    ))}
+                                </div>
+                            </CardContent>
+                        </Card>
+                    </motion.div>
+                ))}
+            </div>
+            <motion.div variants={itemVariants} className="text-center">
+                 <Button variant="outline" onClick={resetAll}>
+                    <ArrowLeft className="w-4 h-4 mr-2"/>
+                    Start Over
+                </Button>
+            </motion.div>
+        </motion.div>
       )}
     </div>
   );
 }
-
-    
