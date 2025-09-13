@@ -45,6 +45,7 @@ const getAvailableLessons = ai.defineTool(
     async () => {
       const lessons = await getLessons();
       // We only return a subset of the data to the AI to keep the context clean.
+      // Ensure the ID is a string to match the schema.
       return lessons.map(({ id, title, description }) => ({ id: id || '', title, description }));
     }
 );
@@ -66,7 +67,7 @@ const prompt = ai.definePrompt({
     3.  **Create a Step-by-Step Plan:** Generate a 3-5 step plan. For each step:
         *   Provide a clear title (e.g., "Step 1: Master the Fundamentals of Finance").
         *   Write a detailed description of what the user should do.
-        *   If a step directly relates to one or more modules on the platform, you **must** include the \`relevant_module_ids\` in your response for that step. For instance, if the step is about learning finance, and the tool returns a module with the ID "1" and title "Personal Finance 101", you must include "1" in the \`relevant_module_ids\` array.
+        *   If a step directly relates to one or more modules on the platform, you **must** include the \`relevant_module_ids\` in your response for that step. For instance, if the tool returns a module with the ID "1" and title "Personal Finance 101", you must include "1" in the \`relevant_module_ids\` array.
 
     4.  **Structure the Output:**
         *   Start with a brief, encouraging introduction.
