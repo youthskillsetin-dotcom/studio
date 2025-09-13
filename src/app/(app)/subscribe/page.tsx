@@ -1,7 +1,7 @@
 
 'use client';
 
-import { Suspense, useState } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import Head from 'next/head';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -11,6 +11,7 @@ import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import Script from 'next/script';
 
 const plans = {
   premium: {
@@ -51,6 +52,7 @@ function SubscribePageContent() {
   const searchParams = useSearchParams();
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
+  const [isScriptLoaded, setIsScriptLoaded] = useState(false);
   
   const initialPlan = searchParams.get('plan') === 'yearly' ? 'yearly' : 'premium';
   const [selectedPlanKey, setSelectedPlanKey] = useState<PlanKey>(initialPlan);
@@ -58,6 +60,15 @@ function SubscribePageContent() {
   const selectedPlan = plans[selectedPlanKey];
   
   const handleCheckout = async () => {
+    if (!isScriptLoaded) {
+      toast({
+        variant: 'destructive',
+        title: 'Payment Gateway Not Ready',
+        description: 'Please wait a moment for the payment gateway to load and try again.',
+      });
+      return;
+    }
+    
     setIsLoading(true);
     try {
       const response = await fetch('/api/initiate-paytm-transaction', {
@@ -140,17 +151,26 @@ function SubscribePageContent() {
 
   return (
     <>
-    <Head>
-        <script
+      <Script
           id="paytm-checkout-js"
-          type="application/javascript"
           src={`https://securegw-stage.paytm.in/merchantpgpui/checkoutjs/merchants/${process.env.NEXT_PUBLIC_PAYTM_MID}.js`}
+          onLoad={() => {
+            console.log('Paytm script loaded.');
+            setIsScriptLoaded(true);
+          }}
+          onError={(e) => {
+            console.error('Failed to load Paytm script:', e);
+            toast({
+              variant: 'destructive',
+              title: 'Payment Gateway Error',
+              description: 'Could not load the payment gateway. Please refresh the page.',
+            });
+          }}
           crossOrigin="anonymous"
-        ></script>
-      </Head>
+        />
     <div className="max-w-md mx-auto">
       <h1 className="text-3xl font-bold font-headline mb-6 text-center">Checkout</h1>
-      <Card>
+      <Card className="rounded-2xl">
         <CardHeader>
           <CardTitle className="font-headline text-2xl">Choose Your Plan</CardTitle>
           <CardDescription>Select the plan that works best for you.</CardDescription>
@@ -198,7 +218,7 @@ function SubscribePageContent() {
           </div>
         </CardContent>
         <CardFooter className="flex-col gap-4">
-          <Button className="w-full" onClick={handleCheckout} disabled={isLoading}>
+          <Button className="w-full" onClick={handleCheckout} disabled={isLoading || !isScriptLoaded}>
             {isLoading ? (
                 <><Loader2 className="mr-2 animate-spin" /> Processing...</>
             ) : (
@@ -248,3 +268,5 @@ export default function SubscribePage() {
         </Suspense>
     )
 }
+
+    

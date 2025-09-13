@@ -18,25 +18,11 @@ const plans = {
  * @param {string} key
  * @returns {Promise<string>}
  */
-function generateSignature(params: any, key: string): Promise<string> {
-    return new Promise((resolve, reject) => {
-        try {
-            const bodyString = JSON.stringify(params);
-            const salt = crypto.randomBytes(4).toString('hex');
-            const final_string = bodyString + '|' + salt;
-            const iv = '@@@@&&&&####$$$$';
-
-            const cipher = crypto.createCipheriv('aes-128-cbc', key, iv);
-            cipher.setAutoPadding(true);
-            let encrypted = cipher.update(final_string, 'utf8', 'hex');
-            encrypted += cipher.final('hex');
-
-            const checksum = Buffer.from(salt + encrypted).toString('base64');
-            resolve(checksum);
-        } catch (e) {
-            reject(e);
-        }
-    });
+async function generateSignature(params: any, key: string): Promise<string> {
+    const bodyString = JSON.stringify(params);
+    const salt = crypto.randomBytes(4).toString('hex');
+    const checksum = crypto.createHash('sha256').update(bodyString + '|' + salt).digest('hex') + salt;
+    return Promise.resolve(checksum);
 }
 
 
@@ -56,6 +42,9 @@ export async function POST(req: Request) {
   const mid = process.env.NEXT_PUBLIC_PAYTM_MID;
   const merchantKey = process.env.PAYTM_MERCHANT_KEY;
   const websiteName = process.env.PAYTM_WEBSITE || 'WEBSTAGING';
+  const paytmUrl = process.env.PAYTM_ENVIRONMENT === 'PROD'
+    ? 'https://securegw.paytm.in'
+    : 'https://securegw-stage.paytm.in';
 
   if (!mid || !merchantKey) {
     return NextResponse.json({ error: 'Payment Gateway is not configured. Please contact support.' }, { status: 500 });
@@ -118,7 +107,7 @@ export async function POST(req: Request) {
     };
 
     const response = await fetch(
-      `https://securegw-stage.paytm.in/theia/api/v1/initiateTransaction?mid=${mid}&orderId=${orderId}`,
+      `${paytmUrl}/theia/api/v1/initiateTransaction?mid=${mid}&orderId=${orderId}`,
       {
         method: 'POST',
         headers: {
@@ -148,3 +137,5 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: `API Error: ${e.message}` }, { status: 500 });
   }
 }
+
+    

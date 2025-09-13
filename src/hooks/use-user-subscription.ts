@@ -20,8 +20,7 @@ export function useUserSubscription() {
             .single();
         
         if (error && error.code !== 'PGRST116' && error.code !== '42P01') {
-            // Intentionally not logging this error to the console to avoid clutter
-            // in dev environments where the table might not exist yet.
+            console.warn("Error fetching user subscription:", error.message);
         }
         
         setUserSubscription(data);
@@ -33,19 +32,34 @@ export function useUserSubscription() {
 
     fetchUserSubscription();
     
+    // Listen to auth events to refetch subscription when user signs in/out or is updated
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event, session) => {
-        // We only refetch if state changes, not on session refresh (TOKEN_REFRESHED)
-        if (event === 'SIGNED_IN' || event === 'SIGNED_OUT' || event === 'USER_UPDATED') {
-           fetchUserSubscription();
-        }
+        fetchUserSubscription();
       }
     );
 
+    // Also listen for database changes on the subscriptions table
+    const subscriptionChannel = supabase
+        .channel('subscriptions-changes')
+        .on(
+            'postgres_changes',
+            { event: '*', schema: 'public', table: 'subscriptions' },
+            (payload) => {
+                // Refetch the subscription data when any change occurs
+                fetchUserSubscription();
+            }
+        )
+        .subscribe();
+
+
     return () => {
       authListener.subscription.unsubscribe();
+      supabase.removeChannel(subscriptionChannel);
     };
-  }, []);
+  }, [supabase]);
 
   return { userSubscription, isLoading };
 }
+
+    

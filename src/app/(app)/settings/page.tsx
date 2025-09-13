@@ -7,7 +7,8 @@ import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
 import { getUserProfile, getUserSubscription } from '@/lib/data';
 import { format } from 'date-fns';
-import { CheckCircle, XCircle } from 'lucide-react';
+import { CheckCircle, XCircle, Crown } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export default async function SettingsPage() {
   const cookieStore = cookies();
@@ -21,7 +22,7 @@ export default async function SettingsPage() {
     <div>
       <h1 className="text-3xl font-bold font-headline mb-6">Settings</h1>
       <div className="grid gap-6 max-w-4xl mx-auto">
-        <Card>
+        <Card className="rounded-2xl">
           <CardHeader>
             <CardTitle>Account Information</CardTitle>
             <CardDescription>Your account details.</CardDescription>
@@ -48,16 +49,16 @@ export default async function SettingsPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="rounded-2xl">
           <CardHeader>
-            <CardTitle>Subscription</CardTitle>
+            <CardTitle className="flex items-center gap-2"><Crown className="w-5 h-5 text-accent"/>Subscription</CardTitle>
             <CardDescription>Manage your subscription plan and billing.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 rounded-lg bg-muted/50">
+             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 rounded-lg bg-muted/50 border">
               <div>
                 <p className="text-sm font-medium mb-2">Current Plan</p>
-                <Badge variant={isPremium ? "default" : "secondary"}>
+                <Badge variant={isPremium ? "default" : "secondary"} className={cn(isPremium ? 'bg-gradient-to-r from-amber-500 to-yellow-300 text-black shadow-lg' : '')}>
                     {userSubscription?.plan_name ?? 'Free'}
                 </Badge>
               </div>
@@ -65,16 +66,16 @@ export default async function SettingsPage() {
               <div className="text-sm text-muted-foreground mt-4 sm:mt-0 sm:text-right">
                 {isPremium && userSubscription?.expires_at ? (
                     <>
-                        <p className="flex items-center gap-2 justify-end"> <CheckCircle className="w-4 h-4 text-green-500" /> Active</p>
+                        <p className="flex items-center gap-2 justify-end text-green-600 dark:text-green-400 font-semibold"> <CheckCircle className="w-4 h-4" /> Active</p>
                         <p>Renews on {format(new Date(userSubscription.expires_at), 'PPP')}</p>
                     </>
                 ) : (
-                    <p className="flex items-center gap-2 justify-end"><XCircle className="w-4 h-4 text-destructive" /> Inactive</p>
+                    <p className="flex items-center gap-2 justify-end font-semibold"><XCircle className="w-4 h-4 text-destructive" /> Inactive</p>
                 )}
                </div>
             </div>
-             <div className="flex justify-end">
-                 <Button asChild variant="outline" className="mt-4 sm:mt-0">
+             <div className="flex justify-end pt-4">
+                 <Button asChild className={cn(!isPremium && "bg-gradient-to-r from-primary to-purple-600 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-px transition-all")}>
                     <Link href="/subscribe">
                     {isPremium ? 'Manage Subscription' : 'Upgrade to Premium'}
                     </Link>
@@ -86,3 +87,5 @@ export default async function SettingsPage() {
     </div>
   );
 }
+
+    

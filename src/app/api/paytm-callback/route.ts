@@ -13,23 +13,20 @@ import crypto from 'crypto';
  * @param {string} checksum - The checksum sent by Paytm.
  * @returns {boolean} - True if the signature is valid, false otherwise.
  */
-function verifySignature(body: string, key: string, checksum: string): boolean {
+function verifySignature(body: any, key: string, checksum: string): boolean {
     try {
-        if (!body || !key || !checksum) {
+        if (typeof body !== 'object' || body === null || !key || !checksum) {
             return false;
         }
 
-        const iv = '@@@@&&&&####$$$$';
-        const salt = Buffer.from(checksum, 'base64').toString('utf8').substring(0, 4);
-        const ciphertext = Buffer.from(checksum, 'base64').toString('utf8').substring(4);
+        const bodyString = JSON.stringify(body);
         
-        const decipher = crypto.createDecipheriv('aes-128-cbc', key, iv);
-        let decrypted = decipher.update(ciphertext, 'hex', 'utf8');
-        decrypted += decipher.final('utf8');
+        let received_checksum = decodeURIComponent(checksum);
+        const salt = received_checksum.slice(-4);
+        const sha256 = received_checksum.slice(0, -4);
+        const hash = crypto.createHash('sha256').update(bodyString + '|' + salt).digest('hex');
 
-        const receivedBodyHash = decrypted.split('|')[0];
-        
-        return receivedBodyHash === body;
+        return hash === sha256;
 
     } catch (e) {
         console.error("Signature verification error", e);
@@ -39,24 +36,23 @@ function verifySignature(body: string, key: string, checksum: string): boolean {
 
 
 export async function POST(req: Request) {
-    let bodyText = '';
+    let body;
     try {
-        const body = await req.json();
-        bodyText = JSON.stringify(body);
+        body = await req.json();
         
         const checksum = req.headers.get('x-checksum');
         const merchantKey = process.env.PAYTM_MERCHANT_KEY;
 
         if (!checksum || !merchantKey) {
+            console.error("Callback Error: Checksum or merchant key missing.");
             return NextResponse.json({ error: 'Checksum or merchant key missing' }, { status: 400 });
         }
 
         // ** SECURITY-CRITICAL STEP **
-        // For a production app, ensure this validation is robust and secure.
-        // It's also wise to verify the transaction status with Paytm's server-to-server API.
-        const isVerified = verifySignature(bodyText, merchantKey, checksum);
+        const isVerified = verifySignature(body, merchantKey, checksum);
         
         if (!isVerified) {
+            console.error("Callback Error: Checksum Mismatch.");
             return NextResponse.json({ error: 'Checksum Mismatch' }, { status: 400 });
         }
 
@@ -72,9 +68,11 @@ export async function POST(req: Request) {
 
         if (transactionError || !transaction) {
             console.error(`Transaction not found for orderId: ${ORDERID}`, transactionError);
-            return NextResponse.json({ error: 'Transaction not found' }, { status: 404 });
+            // Even if transaction not found, redirect user to avoid showing an error page.
+            return NextResponse.redirect(new URL('/subscribe?payment=failed&error=not_found', req.url));
         }
         
+        // Idempotency check: If already processed, just redirect.
         if (transaction.status === 'SUCCESS') {
             return NextResponse.redirect(new URL('/dashboard?payment=already_processed', req.url));
         }
@@ -92,15 +90,18 @@ export async function POST(req: Request) {
             
             const planName = plan === 'yearly' ? 'Yearly' : 'Premium';
 
-            // Use upsert to create or update the subscription. This is simpler.
-            await supabaseAdmin.from('subscriptions').upsert({
+            const { error: subsError } = await supabaseAdmin.from('subscriptions').upsert({
                 user_id: userId,
                 is_active: true,
                 plan_name: planName,
                 expires_at: expires_at.toISOString(),
-            });
+            }, { onConflict: 'user_id' });
+            if (subsError) throw subsError;
+
             
-            await supabaseAdmin.from('profiles').update({ role: 'premium' }).eq('id', userId);
+            const { error: profileError } = await supabaseAdmin.from('profiles').update({ role: 'premium' }).eq('id', userId);
+            if (profileError) throw profileError;
+
             
             await supabaseAdmin.from('transactions').update({ status: 'SUCCESS', updated_at: new Date().toISOString() }).eq('order_id', ORDERID);
 
@@ -116,3 +117,5 @@ export async function POST(req: Request) {
         return NextResponse.json({ error: `Webhook handler failed: ${e.message}` }, { status: 500 });
     }
 }
+
+    

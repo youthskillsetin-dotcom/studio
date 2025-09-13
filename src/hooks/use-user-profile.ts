@@ -12,12 +12,9 @@ export function useUserProfile() {
   
   useEffect(() => {
     const fetchUserProfile = async () => {
-      // Don't set loading to true here to prevent re-triggering skeletons on auth changes
       const { data: { user } } = await supabase.auth.getUser();
 
       if (user) {
-        // Fetch the role and full_name directly from the profiles table.
-        // This is the most reliable source of truth, especially after manual changes.
         const { data: profileData, error } = await supabase
             .from('profiles')
             .select('role, full_name, avatar_url, contact_no')
@@ -25,10 +22,11 @@ export function useUserProfile() {
             .single();
 
         if (error && error.code !== 'PGRST116' && error.code !== '42P01') {
-             // Intentionally not logging this error to the console to avoid clutter.
+             // PGRST116 means no rows found, which is not an error in this case.
+             // 42P01 means table does not exist, which can happen in early dev.
+             console.warn("Error fetching user profile:", error.message);
         }
         
-        // Prioritize data from the 'profiles' table first, then fall back to metadata.
         const role = profileData?.role ?? user.user_metadata?.role ?? 'user';
         const fullName = profileData?.full_name ?? user.user_metadata?.full_name ?? user.email?.split('@')[0];
         
@@ -53,6 +51,7 @@ export function useUserProfile() {
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event, session) => {
         // Refetch the profile on any auth event to ensure data is fresh.
+        // This covers sign in, sign out, and token refreshes which might have new metadata.
         fetchUserProfile();
       }
     );
@@ -60,8 +59,10 @@ export function useUserProfile() {
     return () => {
       authListener.subscription.unsubscribe();
     };
-  }, []);
+  }, [supabase]);
 
 
   return { userProfile, isLoading };
 }
+
+    
