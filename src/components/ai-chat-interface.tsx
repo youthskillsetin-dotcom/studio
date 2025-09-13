@@ -90,8 +90,8 @@ export default function AIChatInterface() {
   }, [messages]);
 
   const handleNewChat = () => {
-    setMessages([initialMessage]);
     localStorage.removeItem(CHAT_HISTORY_KEY);
+    setMessages([initialMessage]);
   };
   
   const handleCopy = (content: string, index: number) => {
