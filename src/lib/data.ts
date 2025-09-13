@@ -6,7 +6,7 @@ import { supabaseAdmin } from './supabase/admin';
 
 // This is a temporary workaround to simulate a database.
 // In a real application, this data would be fetched from Supabase.
-import sampleContent from '../data/sample-content.json';
+import sampleContent from '@/data/sample-content.json';
 
 export async function getLessons(): Promise<Lesson[]> {
   noStore();

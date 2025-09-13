@@ -9,6 +9,8 @@ import fs from 'fs/promises';
 import path from 'path';
 import type { Lesson, Subtopic } from '@/lib/types';
 
+// IMPORTANT: This approach of writing to the file system will not work in a serverless environment.
+// This is a temporary solution for local development. In production, this data should be in a database.
 const contentFilePath = path.join(process.cwd(), 'src', 'data', 'sample-content.json');
 
 async function readContentFile(): Promise<{lessons: Lesson[], subtopics: Subtopic[]}> {
@@ -33,6 +35,10 @@ export async function updateVideoUrlAction({ subtopicId, newUrl }: { subtopicId:
 
   // Check for admin role
   const { data: { user } } = await supabase.auth.getUser();
+  if (!user) {
+    return { success: false, error: 'Authentication required.' };
+  }
+
   const { data: profile } = await supabase.from('profiles').select('role').eq('id', user?.id).single();
 
   if (profile?.role !== 'admin') {
@@ -52,8 +58,8 @@ export async function updateVideoUrlAction({ subtopicId, newUrl }: { subtopicId:
     await writeContentFile(content);
 
     // Revalidate the cache for the lessons and subtopics pages so the changes are immediately visible
-    revalidatePath('/lessons');
-    revalidatePath(`/subtopic/${subtopicId}`); // Revalidate specific subtopic
+    revalidatePath('/lessons', 'layout');
+    revalidatePath(`/subtopic/${subtopicId}`);
     revalidatePath('/admin/content');
 
     return { success: true };

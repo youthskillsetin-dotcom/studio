@@ -73,7 +73,7 @@ export default async function AdminContentPage() {
                                     </div>
                                     <div className="mt-4 md:mt-0">
                                         <VideoLinkEditor 
-                                            subtopicId={subtopic.id} 
+                                            subtopicId={subtopic.id!} 
                                             initialUrl={subtopic.video_url || ''} 
                                         />
                                     </div>
