@@ -31,86 +31,65 @@ const getIconForModule = (title: string) => {
     return BookOpen;
 };
 
-async function getLessonsForLandingPage(): Promise<Lesson[]> {
-    // This is a temporary client-side fetch, ideal for static/infrequent data
-    // On a real app, this might be a dedicated API route with caching
-    try {
-        const res = await fetch('/api/get-lessons');
-        if (!res.ok) return [];
-        const data = await res.json();
-        return data.lessons;
-    } catch (error) {
-        console.error("Could not fetch lessons for landing page", error);
-        return [];
-    }
-}
+const modules = [
+  {
+    icon: HandCoins,
+    title: "Module 1: Personal Finance 101",
+    description: "A 7-Day Journey to Financial Mastery for Teens (Ages 16-20)."
+  },
+  {
+    icon: Landmark,
+    title: "Module 2: Banking & Investments Mastery",
+    description: "A 7-Day Journey to Financial Growth for Teens (Ages 16-20)."
+  },
+  {
+    icon: Cpu,
+    title: "Module 3: Artificial Intelligence in Real Life",
+    description: "A Complete 7-Day Learning Journey for Teens (Ages 13-16) into AI in finance."
+  },
+  {
+    icon: FileText,
+    title: "Module 4: Taxation in India",
+    description: "Learn income tax basics (slabs, PAN, ITR) and GST (how businesses collect & pay)."
+  },
+  {
+    icon: Briefcase,
+    title: "Module 5: Entrepreneurship & Startups",
+    description: "Learn to validate ideas, use the business model canvas, and understand costing, pricing, and profit margins."
+  },
+  {
+    icon: User,
+    title: "Module 6: Personal Branding & Careers",
+    description: "A complete 7-day journey to discovering your unique identity and future path."
+  },
+  {
+    icon: BarChart,
+    title: "Module 7: Excel & Data Skills",
+    description: "A complete 7-day learning journey into data, spreadsheets, and basic coding."
+  },
+  {
+    icon: ShieldCheck,
+    title: "Module 8: Cybersecurity & Digital Safety",
+    description: "A complete 7-day learning journey to become a digital safety expert."
+  },
+   {
+    icon: Scale,
+    title: "Module 9: Ethics & AI Safety",
+    description: "A complete 7-day learning journey into the ethics and safety of Artificial Intelligence."
+  },
+  {
+    icon: Search,
+    title: "Module 10: Consumer Rights",
+    description: "A complete 7-day learning journey into consumer rights, covering MRP, safety, choice, and seeking redressal."
+  },
+  {
+    icon: Scale,
+    title: "Module 11: Basic Law for Teens",
+    description: "Introduction to Rights & Responsibilities, Cyber Laws, and Legal Awareness"
+  }
+];
 
 export default function LandingPage() {
-  const [modules, setModules] = useState<any[]>([]);
-
-  useEffect(() => {
-    async function loadData() {
-        // This is a placeholder for fetching data in a client component
-        // A better approach for SEO would be to fetch this in a server component and pass as props
-        const sampleContent = {
-            "lessons": [
-              {
-                "title": "Module 1: Personal Finance 101",
-                "description": "A 7-Day Journey to Financial Mastery for Teens (Ages 16-20)."
-              },
-              {
-                "title": "Module 2: Banking & Investments Mastery",
-                "description": "A 7-Day Journey to Financial Growth for Teens (Ages 16-20)."
-              },
-              {
-                "title": "Module 3: Artificial Intelligence in Real Life",
-                "description": "A Complete 7-Day Learning Journey for Teens (Ages 13-16) into AI in finance."
-              },
-              {
-                "title": "Module 4: Taxation in India",
-                "description": "Learn income tax basics (slabs, PAN, ITR) and GST (how businesses collect & pay)."
-              },
-              {
-                "title": "Module 5: Entrepreneurship & Startups",
-                "description": "Learn to validate ideas, use the business model canvas, and understand costing, pricing, and profit margins."
-              },
-              {
-                "title": "Module 6: Personal Branding & Careers",
-                "description": "A complete 7-day journey to discovering your unique identity and future path."
-              },
-              {
-                "title": "Module 7: Excel & Data Skills",
-                "description": "A complete 7-day learning journey into data, spreadsheets, and basic coding."
-              },
-              {
-                "title": "Module 8: Cybersecurity & Digital Safety",
-                "description": "A complete 7-day learning journey to become a digital safety expert."
-              },
-               {
-                "title": "Module 9: Ethics & AI Safety",
-                "description": "A complete 7-day learning journey into the ethics and safety of Artificial Intelligence."
-              },
-              {
-                "title": "Module 10: Consumer Rights",
-                "description": "A complete 7-day learning journey into consumer rights, covering MRP, safety, choice, and seeking redressal."
-              },
-              {
-                "title": "Module 11: Basic Law for Teens",
-                "description": "Introduction to Rights & Responsibilities, Cyber Laws, and Legal Awareness"
-              }
-            ]
-        };
-        const lessonData = sampleContent.lessons.map(lesson => ({
-            icon: getIconForModule(lesson.title),
-            title: lesson.title,
-            description: lesson.description
-        }));
-        setModules(lessonData);
-    }
-    loadData();
-  }, []);
-
-
   const FADE_IN_ANIMATION_VARIANTS = {
     hidden: { opacity: 0, y: 10 },
     show: { opacity: 1, y: 0, transition: { type: 'spring' } },
