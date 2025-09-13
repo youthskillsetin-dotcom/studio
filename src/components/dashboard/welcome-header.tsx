@@ -21,9 +21,10 @@ interface WelcomeHeaderProps {
   name?: string | null;
 }
 
-function capitalize(str?: string | null) {
-    if (!str) return 'Learner';
-    return str.charAt(0).toUpperCase() + str.slice(1);
+function getFirstName(fullName?: string | null) {
+    if (!fullName) return 'Learner';
+    const nameParts = fullName.split(' ');
+    return nameParts[0].charAt(0).toUpperCase() + nameParts[0].slice(1);
 }
 
 export function WelcomeHeader({ variants, name }: WelcomeHeaderProps) {
@@ -37,10 +38,10 @@ export function WelcomeHeader({ variants, name }: WelcomeHeaderProps) {
 
     return (
         <motion.div className="space-y-1.5" variants={variants}>
-          <h1 className="text-2xl md:text-3xl font-bold tracking-tight font-headline">
-            Welcome Back, {capitalize(name)}!
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight font-headline">
+            Welcome Back, {getFirstName(name)}!
           </h1>
-          <div className="text-muted-foreground text-base">
+          <div className="text-muted-foreground text-lg">
             {hasMounted ? quote : <Skeleton className="h-6 w-3/4" />}
           </div>
         </motion.div>

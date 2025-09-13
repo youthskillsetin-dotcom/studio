@@ -42,17 +42,19 @@ export default function DashboardPage() {
   
   if (isProfileLoading || isSubscriptionLoading) {
     return (
-        <div className="flex-1 space-y-4">
-            <Skeleton className="h-16 w-1/2" />
-            <div className="grid gap-4 md:gap-8 lg:grid-cols-3">
-                <div className="grid auto-rows-min gap-4 md:gap-8 lg:col-span-2">
-                    <Skeleton className="h-48" />
-                    <Skeleton className="h-48" />
+        <div className="flex-1 space-y-8">
+            <Skeleton className="h-20 w-2/3" />
+            <div className="grid gap-6 md:gap-8 lg:grid-cols-3">
+                <div className="grid auto-rows-min gap-6 md:gap-8 lg:col-span-2">
+                    <div className="grid gap-6 md:grid-cols-2">
+                        <Skeleton className="h-48 rounded-2xl" />
+                        <Skeleton className="h-48 rounded-2xl" />
+                    </div>
+                    <Skeleton className="h-40 rounded-2xl" />
                 </div>
-                <div className="grid auto-rows-min gap-4 md:gap-8">
-                    <Skeleton className="h-32" />
-                    <Skeleton className="h-48" />
-                    <Skeleton className="h-32" />
+                <div className="grid auto-rows-min gap-6 md:gap-8">
+                    <Skeleton className="h-48 rounded-2xl" />
+                    <Skeleton className="h-32 rounded-2xl" />
                 </div>
             </div>
         </div>
@@ -61,27 +63,32 @@ export default function DashboardPage() {
 
   return (
     <motion.div
-      className="flex-1 space-y-4"
+      className="flex-1 space-y-8"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
       <WelcomeHeader variants={itemVariants} name={userProfile?.fullName} />
 
-      <div className="grid gap-4 md:gap-8 lg:grid-cols-3">
-        <motion.div
-          className="grid auto-rows-min gap-4 md:gap-8 lg:col-span-2"
-          variants={itemVariants}
-        >
-          <ProgressOverview />
-          <TodaysLessonCard />
-        </motion.div>
+      <div className="grid gap-6 md:gap-8 lg:grid-cols-3">
+        <div className="grid auto-rows-min gap-6 md:gap-8 lg:col-span-2">
+            <div className="grid gap-6 md:grid-cols-2">
+                 <motion.div variants={itemVariants}>
+                    <ProgressOverview />
+                </motion.div>
+                 <motion.div variants={itemVariants}>
+                    <AIMentorCard />
+                </motion.div>
+            </div>
+             <motion.div variants={itemVariants}>
+                <TodaysLessonCard />
+            </motion.div>
+        </div>
         
         <motion.div 
-          className="grid auto-rows-min gap-4 md:gap-8"
+          className="grid auto-rows-min gap-6 md:gap-8"
           variants={itemVariants}
         >
-          <AIMentorCard />
           <SubscriptionCard isPremium={isPremium} />
           <BadgesGrid />
         </motion.div>

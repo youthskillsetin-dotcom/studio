@@ -13,64 +13,64 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { useState, useEffect } from 'react';
-import { useIsMobile } from '@/hooks/use-mobile';
+import { useIsMobile } from '@/hooks/use-is-mobile';
 
 
 const modules = [
   {
     icon: HandCoins,
-    title: "Module 1: Personal Finance 101",
-    description: "A 7-Day Journey to Financial Mastery for Teens (Ages 16-20)."
+    title: "Personal Finance 101",
+    description: "Master budgeting, saving, and the 50-30-20 rule."
   },
   {
     icon: Landmark,
-    title: "Module 2: Banking & Investments Mastery",
-    description: "A 7-Day Journey to Financial Growth for Teens (Ages 16-20)."
+    title: "Banking & Investments",
+    description: "Understand stocks, mutual funds, and digital banking with UPI."
   },
   {
     icon: Cpu,
-    title: "Module 3: Artificial Intelligence in Real Life",
-    description: "A Complete 7-Day Learning Journey for Teens (Ages 13-16) into AI in finance."
+    title: "AI in Real Life",
+    description: "Learn about LLMs, prompt engineering, and generative AI."
   },
   {
     icon: FileText,
-    title: "Module 4: Taxation in India",
-    description: "Learn income tax basics (slabs, PAN, ITR) and GST (how businesses collect & pay)."
+    title: "Taxation in India",
+    description: "Get to know the basics of ITR, GST, and your duties as a taxpayer."
   },
   {
     icon: Briefcase,
-    title: "Module 5: Entrepreneurship & Startups",
-    description: "Learn to validate ideas, use the business model canvas, and understand costing, pricing, and profit margins."
+    title: "Entrepreneurship",
+    description: "From idea validation to the Business Model Canvas."
   },
   {
     icon: User,
-    title: "Module 6: Personal Branding & Careers",
-    description: "A complete 7-day journey to discovering your unique identity and future path."
+    title: "Personal Branding",
+    description: "Build your resume, LinkedIn profile, and networking skills."
   },
   {
     icon: BarChart,
-    title: "Module 7: Excel & Data Skills",
-    description: "A complete 7-day learning journey into data, spreadsheets, and basic coding."
+    title: "Excel & Data Skills",
+    description: "Learn formulas, PivotTables, and the basics of Python."
   },
   {
     icon: ShieldCheck,
-    title: "Module 8: Cybersecurity & Digital Safety",
-    description: "A complete 7-day learning journey to become a digital safety expert."
+    title: "Cybersecurity",
+    description: "Stay safe online by learning about passwords, phishing, and scams."
   },
    {
     icon: Scale,
-    title: "Module 9: Ethics & AI Safety",
-    description: "A complete 7-day learning journey into the ethics and safety of Artificial Intelligence."
+    title: "Ethics & AI Safety",
+    description: "Explore AI bias, deepfakes, and responsible AI usage."
   },
   {
     icon: Search,
-    title: "Module 10: Consumer Rights",
-    description: "A complete 7-day learning journey into consumer rights, covering MRP, safety, choice, and seeking redressal."
+    title: "Consumer Rights",
+    description: "Understand your rights, from MRP to seeking redressal."
   },
   {
     icon: Scale,
-    title: "Module 11: Basic Law for Teens",
-    description: "Introduction to Rights & Responsibilities, Cyber Laws, and Legal Awareness"
+    title: "Basic Law for Teens",
+    description: "Learn about the Constitution, contracts, and cyber laws."
   }
 ];
 
@@ -90,7 +90,13 @@ export default function LandingPage() {
 
   const NavControls = () => {
       if (!isMounted) {
-          return null; // Render nothing on the server and initial client render
+          return (
+             <div className="flex items-center gap-2">
+                <div className="h-9 w-9 bg-muted rounded-md" />
+                <div className="h-9 w-[100px] bg-muted rounded-md" />
+                <div className="h-9 w-[100px] bg-muted rounded-md" />
+            </div>
+          );
       }
 
       if (isMobile) {
@@ -155,8 +161,12 @@ export default function LandingPage() {
       </header>
 
       <main className="flex-1">
-         <section className="relative text-left py-20 md:py-32 flex flex-col items-start justify-center overflow-hidden">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
+         <section className="relative text-center py-20 md:py-32 flex flex-col items-center justify-center overflow-hidden">
+            <div 
+                className="absolute inset-0 w-full h-full bg-grid-slate-100/[0.05] [mask-image:linear-gradient(to_bottom,white,transparent)] dark:bg-grid-slate-900/[0.1]"
+                style={{ backgroundSize: '30px 30px' }}
+            />
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div
                     initial="hidden"
                     whileInView="show"
@@ -169,7 +179,7 @@ export default function LandingPage() {
                         },
                         },
                     }}
-                    className="relative z-10"
+                    className="relative z-10 max-w-4xl mx-auto"
                     >
                     <motion.h1
                         variants={FADE_IN_ANIMATION_VARIANTS}
@@ -181,34 +191,26 @@ export default function LandingPage() {
                     </motion.h1>
                     <motion.p
                         variants={FADE_IN_ANIMATION_VARIANTS}
-                        className="mt-6 max-w-2xl text-lg text-muted-foreground"
+                        className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground"
                     >
                         YouthSkillset is an AI-powered platform that equips teens with the essential life and career skills needed to succeed in the real world. From financial literacy to personal branding, start your journey today.
                     </motion.p>
                     <motion.div
                         variants={FADE_IN_ANIMATION_VARIANTS}
-                        className="mt-8 flex justify-start gap-4"
+                        className="mt-8 flex justify-center gap-4"
                     >
                         <Button size="lg" asChild>
                         <Link href="/signup">Start Learning for Free</Link>
                         </Button>
+                         <Button size="lg" asChild variant="outline">
+                            <Link href="#features">Explore Features</Link>
+                        </Button>
                     </motion.div>
                 </motion.div>
-
-                <div className="relative w-full max-w-lg h-80 lg:h-96 mx-auto lg:mx-0" aria-hidden="true">
-                    <div
-                        className="absolute inset-0 w-full h-full transition-opacity duration-1000"
-                        style={{ opacity: isMounted ? 1 : 0 }}
-                    >
-                        <div className="absolute top-0 -left-4 w-72 h-72 bg-primary/20 rounded-full filter blur-3xl opacity-70 animate-blob"></div>
-                        <div className="absolute top-0 -right-4 w-72 h-72 bg-accent/20 rounded-full filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
-                        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-secondary/20 rounded-full filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
-                    </div>
-                </div>
             </div>
         </section>
         
-        <section id="features" className="py-20 md:py-32 bg-muted/40">
+        <section id="features" className="py-20 md:py-32 bg-secondary/40">
           <div className="container px-4 md:px-6">
             <motion.div
                 initial="hidden"
@@ -221,33 +223,33 @@ export default function LandingPage() {
               <p className="mt-4 text-lg sm:text-xl text-muted-foreground">We combine cutting-edge AI with practical, real-world lessons to make learning effective and engaging.</p>
             </motion.div>
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              <Card className="rounded-2xl border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
-                <div className="flex justify-center mb-4"><BookOpen className="w-12 h-12 text-primary" /></div>
+              <Card className="rounded-2xl bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl border-0">
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 mb-4"><BookOpen className="w-8 h-8 text-primary" /></div>
                 <h3 className="text-xl font-bold font-headline mb-2">Interactive Lessons</h3>
                 <p className="text-muted-foreground">Engaging, bite-sized lessons designed for teens, covering critical topics like finance, careers, and AI.</p>
               </Card>
-              <Card className="rounded-2xl border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
-                <div className="flex justify-center mb-4"><Bot className="w-12 h-12 text-primary" /></div>
+              <Card className="rounded-2xl bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl border-0">
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 mb-4"><Bot className="w-8 h-8 text-primary" /></div>
                 <h3 className="text-xl font-bold font-headline mb-2">AI Mentor</h3>
                 <p className="text-muted-foreground">Get personalized guidance and answers to your questions 24/7 from our friendly AI mentor.</p>
               </Card>
-              <Card className="rounded-2xl border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
-                <div className="flex justify-center mb-4"><Target className="w-12 h-12 text-primary" /></div>
+              <Card className="rounded-2xl bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl border-0">
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 mb-4"><Target className="w-8 h-8 text-primary" /></div>
                 <h3 className="text-xl font-bold font-headline mb-2">Real-World Skills</h3>
                 <p className="text-muted-foreground">Move beyond theory with practical labs and projects that help you build a portfolio of skills for the future.</p>
               </Card>
-               <Card className="rounded-2xl border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
-                <div className="flex justify-center mb-4"><Compass className="w-12 h-12 text-primary" /></div>
+               <Card className="rounded-2xl bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl border-0">
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 mb-4"><Compass className="w-8 h-8 text-primary" /></div>
                 <h3 className="text-xl font-bold font-headline mb-2">AI Career Guide</h3>
                 <p className="text-muted-foreground">Explore career paths with our AI guide, which provides personalized learning roadmaps and job market insights.</p>
               </Card>
-               <Card className="rounded-2xl border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
-                <div className="flex justify-center mb-4"><Award className="w-12 h-12 text-primary" /></div>
+               <Card className="rounded-2xl bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl border-0">
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 mb-4"><Award className="w-8 h-8 text-primary" /></div>
                 <h3 className="text-xl font-bold font-headline mb-2">Progress & Achievements</h3>
                 <p className="text-muted-foreground">Stay motivated by tracking your progress, completing quizzes, and earning badges for your accomplishments.</p>
               </Card>
-               <Card className="rounded-2xl border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
-                <div className="flex justify-center mb-4"><Users className="w-12 h-12 text-primary" /></div>
+               <Card className="rounded-2xl bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl border-0">
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 mb-4"><Users className="w-8 h-8 text-primary" /></div>
                 <h3 className="text-xl font-bold font-headline mb-2">Safe Community</h3>
                 <p className="text-muted-foreground">Connect with peers in a safe, moderated environment to discuss lessons and share ideas (coming soon).</p>
               </Card>
@@ -271,14 +273,14 @@ export default function LandingPage() {
                         Explore the wide range of topics we cover to build a solid foundation for your success.
                     </p>
                 </motion.div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {modules.map((item, index) => (
-                        <div key={index} className="flex items-start gap-4 rounded-xl bg-muted/40 p-6 transition-all hover:bg-card hover:shadow-xl hover:-translate-y-1 border">
-                           <div className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                                <item.icon className="w-7 h-7" />
+                        <div key={index} className="flex items-start gap-4 rounded-xl p-4 transition-all">
+                           <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                                <item.icon className="w-6 h-6" />
                            </div>
                            <div>
-                                <h3 className="font-headline text-lg font-semibold">{item.title}</h3>
+                                <h3 className="font-headline text-base font-semibold">{item.title}</h3>
                                 <p className="mt-1 text-sm text-muted-foreground">{item.description}</p>
                            </div>
                         </div>
@@ -287,7 +289,7 @@ export default function LandingPage() {
             </div>
         </section>
 
-        <section className="bg-muted/40 py-20 md:py-32">
+        <section className="bg-secondary/40 py-20 md:py-32">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div
                     initial="hidden"
@@ -397,7 +399,7 @@ export default function LandingPage() {
 
         <section className="py-20 md:py-32">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="bg-primary/90 rounded-2xl p-10 md:p-16 text-center text-primary-foreground relative overflow-hidden">
+                <div className="bg-primary text-primary-foreground rounded-2xl p-10 md:p-16 text-center relative overflow-hidden">
                     <div className="absolute -top-10 -left-10 w-32 h-32 bg-primary-foreground/10 rounded-full" />
                     <div className="absolute -bottom-16 -right-5 w-40 h-40 bg-primary-foreground/10 rounded-full" />
                     <motion.div
