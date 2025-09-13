@@ -13,6 +13,7 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { useState, useEffect } from 'react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 
 const modules = [
@@ -76,6 +77,7 @@ const modules = [
 
 export default function LandingPage() {
   const [isMounted, setIsMounted] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     setIsMounted(true);
@@ -93,49 +95,50 @@ export default function LandingPage() {
           <Logo className="h-8 w-8 text-primary" />
           <span className="text-xl font-bold font-headline">YouthSkillSet</span>
         </Link>
-        {isMounted && (
-            <>
-                <nav className="hidden items-center gap-6 md:flex">
-                  <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#features">Features</a>
-                  <Link className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/subscribe">Pricing</Link>
-                  <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#faq">FAQ</a>
-                   <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/about">About</a>
-                </nav>
-                <div className="hidden md:flex items-center gap-2">
-                    <ThemeToggle />
-                    <Button asChild variant="ghost">
+        {isMobile ? (
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="outline" size="icon">
+                  <Menu className="h-6 w-6" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right">
+                <div className="grid gap-4 py-6">
+                  <a className="font-medium hover:text-primary" href="#features">Features</a>
+                  <Link className="font-medium hover:text-primary" href="/subscribe">Pricing</Link>
+                  <a className="font-medium hover:text-primary" href="#faq">FAQ</a>
+                  <a className="font-medium hover:text-primary" href="/about">About</a>
+                  <div className="h-px w-full bg-border my-2" />
+                  <Button asChild variant="outline">
                       <Link href="/login">Log In</Link>
-                    </Button>
-                    <Button asChild>
+                  </Button>
+                  <Button asChild>
                       <Link href="/signup">Get Started</Link>
-                    </Button>
+                  </Button>
                 </div>
-                <div className="md:hidden flex items-center gap-2">
-                   <ThemeToggle />
-                   <Sheet>
-                    <SheetTrigger asChild>
-                      <Button variant="outline" size="icon">
-                        <Menu className="h-6 w-6" />
-                      </Button>
-                    </SheetTrigger>
-                    <SheetContent side="right">
-                      <div className="grid gap-4 py-6">
-                        <a className="font-medium hover:text-primary" href="#features">Features</a>
-                        <Link className="font-medium hover:text-primary" href="/subscribe">Pricing</Link>
-                        <a className="font-medium hover:text-primary" href="#faq">FAQ</a>
-                        <a className="font-medium hover:text-primary" href="/about">About</a>
-                        <div className="h-px w-full bg-border my-2" />
-                        <Button asChild variant="outline">
-                            <Link href="/login">Log In</Link>
-                        </Button>
-                        <Button asChild>
-                            <Link href="/signup">Get Started</Link>
-                        </Button>
-                      </div>
-                    </SheetContent>
-                  </Sheet>
-                </div>
-            </>
+              </SheetContent>
+            </Sheet>
+          </div>
+        ) : (
+          <>
+            <nav className="items-center gap-6 hidden md:flex">
+              <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#features">Features</a>
+              <Link className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/subscribe">Pricing</Link>
+              <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#faq">FAQ</a>
+              <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/about">About</a>
+            </nav>
+            <div className="items-center gap-2 hidden md:flex">
+                <ThemeToggle />
+                <Button asChild variant="ghost">
+                  <Link href="/login">Log In</Link>
+                </Button>
+                <Button asChild>
+                  <Link href="/signup">Get Started</Link>
+                </Button>
+            </div>
+          </>
         )}
       </header>
 
