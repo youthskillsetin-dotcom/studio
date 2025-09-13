@@ -14,6 +14,7 @@ import {
   UserCog,
   Shield,
   Map,
+  Users,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -36,6 +37,7 @@ import { useMobile } from "@/hooks/use-mobile";
 const navItems = [
   { href: "/dashboard", icon: LayoutGrid, label: "Dashboard", premium: false },
   { href: "/lessons", icon: BookOpen, label: "Lessons", premium: false },
+  { href: "/community", icon: Users, label: "Community", premium: true },
   { href: "/learning-plan", icon: Map, label: "Learning Plan", premium: true },
   { href: "/practice-lab", icon: FlaskConical, label: "Practice Lab", premium: true},
   { href: "/career-guide", icon: Briefcase, label: "Career Guide", premium: true },
@@ -85,13 +87,14 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
            {isMounted && userProfile ? (
              <>
               {navItems.map((item) => {
+                const isActive = pathname.startsWith(item.href);
                 if (item.premium) {
                   return (
                     <PremiumFeatureGuard
                       key={item.href}
                       href={item.href}
                       featureName={item.label}
-                      className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                      className={cn("text-sm font-medium text-muted-foreground transition-colors hover:text-primary", isActive && "text-primary")}
                     >
                       <span>{item.label}</span>
                     </PremiumFeatureGuard>
@@ -101,7 +104,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                      className={cn("text-sm font-medium text-muted-foreground transition-colors hover:text-primary", isActive && "text-primary")}
                     >
                       {item.label}
                     </Link>
@@ -110,16 +113,19 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               {userProfile?.role === 'admin' && (
                 <div className="hidden md:flex gap-5">
                      <div className="h-5 w-px bg-border mx-2 self-center" />
-                     {adminNavItems.map((item) => (
-                        <Link
-                            key={item.href}
-                            href={item.href}
-                            className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary flex items-center gap-1"
-                        >
-                            <item.icon className="w-4 h-4 mr-1" />
-                            {item.label}
-                        </Link>
-                     ))}
+                     {adminNavItems.map((item) => {
+                        const isActive = pathname.startsWith(item.href);
+                        return (
+                            <Link
+                                key={item.href}
+                                href={item.href}
+                                className={cn("text-sm font-medium text-muted-foreground transition-colors hover:text-primary flex items-center gap-1", isActive && "text-primary")}
+                            >
+                                <item.icon className="w-4 h-4 mr-1" />
+                                {item.label}
+                            </Link>
+                        )
+                    })}
                 </div>
               )}
             </>

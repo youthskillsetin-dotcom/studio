@@ -219,21 +219,81 @@ export async function getAllUsers(): Promise<UserProfileWithSubscription[]> {
   }
 }
 
+export async function getPosts(): Promise<PostWithAuthor[]> {
+    noStore();
+    try {
+        const { data, error } = await supabaseAdmin
+            .from('posts')
+            .select(`
+                id,
+                created_at,
+                title,
+                content,
+                user_id,
+                profile:profiles(email)
+            `)
+            .order('created_at', { ascending: false });
 
-// The community features are under construction.
-// These functions will return empty data to prevent errors.
-export async function getPosts(): Promise<Post[]> {
-  noStore();
-  return [];
+        if (error) {
+            if (error.code !== '42P01') console.error('Error fetching posts:', error);
+            return [];
+        }
+        return data as PostWithAuthor[];
+    } catch(e) {
+        return [];
+    }
 }
-
 
 export async function getPostById(id: string): Promise<PostWithAuthor | null> {
     noStore();
-    return null;
+     try {
+        const { data, error } = await supabaseAdmin
+            .from('posts')
+            .select(`
+                id,
+                created_at,
+                title,
+                content,
+                user_id,
+                profile:profiles(email, full_name)
+            `)
+            .eq('id', id)
+            .single();
+
+        if (error) {
+            if (error.code !== '42P01') console.error(`Error fetching post ${id}:`, error);
+            return null;
+        }
+
+        return data as PostWithAuthor;
+    } catch(e) {
+        return null;
+    }
 }
 
 export async function getCommentsByPostId(postId: string): Promise<CommentWithAuthor[]> {
     noStore();
-    return [];
+     try {
+        const { data, error } = await supabaseAdmin
+            .from('comments')
+            .select(`
+                id,
+                created_at,
+                content,
+                user_id,
+                post_id,
+                profile:profiles(email, full_name, avatar_url)
+            `)
+            .eq('post_id', postId)
+            .order('created_at', { ascending: true });
+
+        if (error) {
+            if (error.code !== '42P01') console.error(`Error fetching comments for post ${postId}:`, error);
+            return [];
+        }
+
+        return data as CommentWithAuthor[];
+    } catch(e) {
+        return [];
+    }
 }
