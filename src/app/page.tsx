@@ -12,24 +12,6 @@ import { Footer } from '@/components/footer';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useEffect, useState } from 'react';
-import type { Lesson } from '@/lib/types';
-
-
-const getIconForModule = (title: string) => {
-    const lowerTitle = title.toLowerCase();
-    if (lowerTitle.includes('finance')) return HandCoins;
-    if (lowerTitle.includes('banking') || lowerTitle.includes('investments')) return Landmark;
-    if (lowerTitle.includes('ai') || lowerTitle.includes('intelligence')) return Cpu;
-    if (lowerTitle.includes('taxation')) return FileText;
-    if (lowerTitle.includes('entrepreneurship')) return Briefcase;
-    if (lowerTitle.includes('branding') || lowerTitle.includes('careers')) return User;
-    if (lowerTitle.includes('excel') || lowerTitle.includes('data')) return BarChart;
-    if (lowerTitle.includes('cybersecurity')) return ShieldCheck;
-    if (lowerTitle.includes('ethics')) return Scale;
-    if (lowerTitle.includes('consumer') || lowerTitle.includes('rights')) return Search;
-    if (lowerTitle.includes('law')) return Scale;
-    return BookOpen;
-};
 
 const modules = [
   {
@@ -88,6 +70,19 @@ const modules = [
     description: "Introduction to Rights & Responsibilities, Cyber Laws, and Legal Awareness"
   }
 ];
+
+const ClientOnlyMotion = ({ children, variants }: { children: React.ReactNode, variants?: any }) => {
+    const [hasMounted, setHasMounted] = useState(false);
+    useEffect(() => {
+        setHasMounted(true);
+    }, []);
+
+    if (!hasMounted) {
+        return null;
+    }
+
+    return <motion.div variants={variants}>{children}</motion.div>;
+};
 
 export default function LandingPage() {
   const FADE_IN_ANIMATION_VARIANTS = {
@@ -161,28 +156,31 @@ export default function LandingPage() {
                     }}
                     className="relative z-10"
                     >
-                    <motion.h1
-                        className="text-4xl md:text-6xl font-extrabold font-headline tracking-tight text-foreground"
-                        variants={FADE_IN_ANIMATION_VARIANTS}
-                    >
-                        Unlock Your Potential.
-                        <br />
-                        <span className="text-primary">Build Your Future.</span>
-                    </motion.h1>
-                    <motion.p
-                        className="mt-6 max-w-2xl text-lg text-muted-foreground"
-                        variants={FADE_IN_ANIMATION_VARIANTS}
-                    >
-                        YouthSkillset is an AI-powered platform that equips teens with the essential life and career skills needed to succeed in the real world. From financial literacy to personal branding, start your journey today.
-                    </motion.p>
-                    <motion.div
-                        className="mt-8 flex justify-start gap-4"
-                        variants={FADE_IN_ANIMATION_VARIANTS}
-                    >
-                        <Button size="lg" asChild>
-                        <Link href="/signup">Start Learning for Free</Link>
-                        </Button>
-                    </motion.div>
+                    <ClientOnlyMotion variants={FADE_IN_ANIMATION_VARIANTS}>
+                        <h1
+                            className="text-4xl md:text-6xl font-extrabold font-headline tracking-tight text-foreground"
+                        >
+                            Unlock Your Potential.
+                            <br />
+                            <span className="text-primary">Build Your Future.</span>
+                        </h1>
+                    </ClientOnlyMotion>
+                     <ClientOnlyMotion variants={FADE_IN_ANIMATION_VARIANTS}>
+                        <p
+                            className="mt-6 max-w-2xl text-lg text-muted-foreground"
+                        >
+                            YouthSkillset is an AI-powered platform that equips teens with the essential life and career skills needed to succeed in the real world. From financial literacy to personal branding, start your journey today.
+                        </p>
+                    </ClientOnlyMotion>
+                     <ClientOnlyMotion variants={FADE_IN_ANIMATION_VARIANTS}>
+                        <div
+                            className="mt-8 flex justify-start gap-4"
+                        >
+                            <Button size="lg" asChild>
+                            <Link href="/signup">Start Learning for Free</Link>
+                            </Button>
+                        </div>
+                    </ClientOnlyMotion>
                 </motion.div>
 
                 <div className="relative w-full max-w-lg h-80 lg:h-96 mx-auto lg:mx-0" aria-hidden="true">
