@@ -25,7 +25,7 @@ export function LessonCard({ lesson, hasPremium }: LessonCardProps) {
     >
       <CardHeader>
         <div className="flex justify-between items-start">
-          <CardTitle className="text-lg font-semibold">
+          <CardTitle className="text-xl font-headline">
             {lesson.title}
           </CardTitle>
           <Badge variant={lesson.is_free ? "default" : "secondary"} className={cn(lesson.is_free ? 'bg-primary/10 text-primary border-primary/20' : 'bg-accent/10 text-accent-foreground border-accent/20', 'shrink-0')}>
@@ -42,18 +42,20 @@ export function LessonCard({ lesson, hasPremium }: LessonCardProps) {
   );
 
   if (isLocked) {
-    return (
-       <Link href="/subscribe?plan=premium" className="block h-full group relative">
-        <div className="absolute inset-0 bg-black/30 z-10 rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-          <div className="text-center text-white">
-            <Lock className="w-8 h-8 mx-auto mb-2" />
-            <p className="font-semibold">Upgrade to Premium</p>
+       return (
+         <Link href="/subscribe?plan=premium" className="block h-full group relative">
+          <div className="absolute inset-0 bg-black/50 z-10 rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="text-center text-white">
+              <Lock className="w-8 h-8 mx-auto mb-2" />
+              <p className="font-semibold">Upgrade to Premium</p>
+              <p className="text-xs">to unlock this module</p>
+            </div>
           </div>
-        </div>
-        <CardInnerContent />
-      </Link>
-    );
+          <CardInnerContent />
+        </Link>
+       );
   }
+
 
   return (
     <Link href={`/lessons/${lesson.id}`} className="block h-full">

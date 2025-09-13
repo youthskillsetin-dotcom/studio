@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { BookOpen, BarChart, ShieldCheck, Cpu, Briefcase, HandCoins, Scale, User, FileText, Landmark, Search, Target, Bot, Menu, Award, Users, Compass } from 'lucide-react';
 import { Logo } from '@/components/icons';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -12,6 +12,22 @@ import { Footer } from '@/components/footer';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useEffect, useState, type ReactNode } from 'react';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+
+
+const MotionWrapper = ({ children, ...props }: { children: ReactNode, [key: string]: any }) => {
+    const [isMounted, setIsMounted] = useState(false);
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    if (!isMounted) {
+        return <div {...props}>{children}</div>;
+    }
+
+    return <motion.div {...props}>{children}</motion.div>;
+}
+
 
 const modules = [
   {
@@ -70,19 +86,6 @@ const modules = [
     description: "Introduction to Rights & Responsibilities, Cyber Laws, and Legal Awareness"
   }
 ];
-
-const MotionWrapper = ({ children, ...props }: { children: ReactNode, [key: string]: any }) => {
-    const [isMounted, setIsMounted] = useState(false);
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
-
-    if (!isMounted) {
-        return <div {...props}>{children}</div>;
-    }
-
-    return <motion.div {...props}>{children}</motion.div>;
-}
 
 
 export default function LandingPage() {
@@ -200,32 +203,32 @@ export default function LandingPage() {
               <p className="mt-4 text-lg sm:text-xl text-muted-foreground">We combine cutting-edge AI with practical, real-world lessons to make learning effective and engaging.</p>
             </div>
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              <Card className="rounded-lg border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+              <Card className="rounded-2xl border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
                 <div className="flex justify-center mb-4"><BookOpen className="w-12 h-12 text-primary" /></div>
                 <h3 className="text-xl font-bold font-headline mb-2">Interactive Lessons</h3>
                 <p className="text-muted-foreground">Engaging, bite-sized lessons designed for teens, covering critical topics like finance, careers, and AI.</p>
               </Card>
-              <Card className="rounded-lg border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+              <Card className="rounded-2xl border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
                 <div className="flex justify-center mb-4"><Bot className="w-12 h-12 text-primary" /></div>
                 <h3 className="text-xl font-bold font-headline mb-2">AI Mentor</h3>
                 <p className="text-muted-foreground">Get personalized guidance and answers to your questions 24/7 from our friendly AI mentor.</p>
               </Card>
-              <Card className="rounded-lg border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+              <Card className="rounded-2xl border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
                 <div className="flex justify-center mb-4"><Target className="w-12 h-12 text-primary" /></div>
                 <h3 className="text-xl font-bold font-headline mb-2">Real-World Skills</h3>
                 <p className="text-muted-foreground">Move beyond theory with practical labs and projects that help you build a portfolio of skills for the future.</p>
               </Card>
-               <Card className="rounded-lg border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+               <Card className="rounded-2xl border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
                 <div className="flex justify-center mb-4"><Compass className="w-12 h-12 text-primary" /></div>
                 <h3 className="text-xl font-bold font-headline mb-2">AI Career Guide</h3>
                 <p className="text-muted-foreground">Explore career paths with our AI guide, which provides personalized learning roadmaps and job market insights.</p>
               </Card>
-               <Card className="rounded-lg border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+               <Card className="rounded-2xl border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
                 <div className="flex justify-center mb-4"><Award className="w-12 h-12 text-primary" /></div>
                 <h3 className="text-xl font-bold font-headline mb-2">Progress & Achievements</h3>
                 <p className="text-muted-foreground">Stay motivated by tracking your progress, completing quizzes, and earning badges for your accomplishments.</p>
               </Card>
-               <Card className="rounded-lg border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+               <Card className="rounded-2xl border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
                 <div className="flex justify-center mb-4"><Users className="w-12 h-12 text-primary" /></div>
                 <h3 className="text-xl font-bold font-headline mb-2">Safe Community</h3>
                 <p className="text-muted-foreground">Connect with peers in a safe, moderated environment to discuss lessons and share ideas (coming soon).</p>
@@ -259,8 +262,65 @@ export default function LandingPage() {
                 </div>
             </div>
         </section>
+
+        <section className="bg-muted/40 py-20 md:py-32">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-12">
+                     <h2 className="text-3xl md:text-4xl font-extrabold font-headline">
+                        Don't Just Take Our Word For It
+                    </h2>
+                    <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+                        See what our learners are saying about their journey with YouthSkillSet.
+                    </p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <Card className="rounded-2xl p-6 border-0 shadow-lg">
+                        <CardContent className="p-0">
+                            <div className="flex items-center gap-4 mb-4">
+                                <Avatar className="h-12 w-12">
+                                    <AvatarFallback>AS</AvatarFallback>
+                                </Avatar>
+                                <div>
+                                    <p className="font-semibold">Anika S.</p>
+                                    <p className="text-sm text-muted-foreground">Class 12 Student</p>
+                                </div>
+                            </div>
+                            <p className="text-muted-foreground">"The AI Career Guide was a game-changer! I was so confused about what to do after school, but the quiz gave me a clear direction. I'm now learning UX design and feel confident about my future."</p>
+                        </CardContent>
+                    </Card>
+                     <Card className="rounded-2xl p-6 border-0 shadow-lg">
+                        <CardContent className="p-0">
+                            <div className="flex items-center gap-4 mb-4">
+                                <Avatar className="h-12 w-12">
+                                    <AvatarFallback>RP</AvatarFallback>
+                                </Avatar>
+                                <div>
+                                    <p className="font-semibold">Rohan P.</p>
+                                    <p className="text-sm text-muted-foreground">First-Year College Student</p>
+                                </div>
+                            </div>
+                            <p className="text-muted-foreground">"I wish I had this in school. The lessons on personal finance are so practical. I've already started my first mutual fund investment using what I learned in the 'Banking & Investments' module."</p>
+                        </CardContent>
+                    </Card>
+                     <Card className="rounded-2xl p-6 border-0 shadow-lg">
+                        <CardContent className="p-0">
+                            <div className="flex items-center gap-4 mb-4">
+                                <Avatar className="h-12 w-12">
+                                    <AvatarFallback>VG</AvatarFallback>
+                                </Avatar>
+                                <div>
+                                    <p className="font-semibold">Vikram G.</p>
+                                    <p className="text-sm text-muted-foreground">Aspiring Entrepreneur</p>
+                                </div>
+                            </div>
+                            <p className="text-muted-foreground">"The AI Mentor is like having a personal tutor 24/7. I was stuck on a concept in the entrepreneurship module, and the AI explained it to me in a way I could actually understand. Worth the subscription alone!"</p>
+                        </CardContent>
+                    </Card>
+                </div>
+            </div>
+        </section>
         
-        <section id="faq" className="bg-muted/40 py-20">
+        <section id="faq" className="bg-background py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-extrabold font-headline">

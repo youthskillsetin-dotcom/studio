@@ -13,7 +13,6 @@ export function ProgressOverview() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // This ensures the animation happens on the client side
     setMounted(true);
     const timer = setTimeout(() => setProgress(28), 100); // Small delay to trigger animation
     return () => clearTimeout(timer);
@@ -32,7 +31,7 @@ export function ProgressOverview() {
     <Card className="rounded-2xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col">
       <CardHeader className="items-center pb-0">
         <CardTitle className="font-headline text-lg">Learning Progress</CardTitle>
-        <CardDescription className="text-xs">You're on the right track!</CardDescription>
+        <CardDescription className="text-xs">You're on a 3-day streak!</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
         {!mounted ? (

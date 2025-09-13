@@ -22,7 +22,7 @@ export default async function LessonsPage() {
         <p className="text-muted-foreground mt-2 text-lg">Expand your knowledge with our curated lessons.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {lessons.map((lesson: Lesson) => (
           <LessonCard key={lesson.id} lesson={lesson} hasPremium={hasPremium} />
         ))}
