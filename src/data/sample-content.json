@@ -86,7 +86,7 @@
       "title": "Day 1: Understanding Income and Expenses",
       "content": "<h1>Welcome to Personal Finance 101!</h1><p>Today, we'll start with the basics: understanding where your money comes from (income) and where it goes (expenses). Tracking this is the first step to financial freedom.</p><h2>What is Income?</h2><p>Income is any money you receive. For a teen, this could be pocket money, allowance, gifts, or earnings from a part-time job.</p><h2>What are Expenses?</h2><p>Expenses are what you spend money on. We can categorize them into 'Needs' (things you must have, like food or school supplies) and 'Wants' (things you'd like to have, like video games or movie tickets).</p>",
       "order_index": 1,
-      "video_url": "https://www.youtube.com/watch?v=some_video_id",
+      "video_url": "https://www.youtube.com/watch?v=l4gVn323T-4",
       "ai_summary": "This lesson introduces the core concepts of personal finance: income (money you receive) and expenses (money you spend). It emphasizes the importance of categorizing expenses into 'Needs' (essentials) and 'Wants' (desires) as the foundational step toward managing your money effectively.\n\n*   **Income:** Any money you get, like allowance or job earnings.\n*   **Expenses:** What you spend money on.\n*   **Needs vs. Wants:** Differentiating between essential and non-essential spending is key.\n*   **First Step:** Tracking income and expenses is crucial for financial awareness.",
       "practice_questions": [
         {
@@ -114,7 +114,7 @@
       "title": "Day 2: Mastering the 50-30-20 Rule",
       "content": "<h1>The 50-30-20 Rule</h1><p>The 50-30-20 rule is a simple budgeting guideline. It suggests you allocate your after-tax income as follows:</p><ul><li><strong>50% to Needs:</strong> Covers your essential living expenses like housing, food, and utilities.</li><li><strong>30% to Wants:</strong> For lifestyle expenses like entertainment, hobbies, and dining out.</li><li><strong>20% to Savings & Debt Repayment:</strong> This portion goes towards building savings, investing, or paying off any debts.</li></ul><p>This rule provides a great starting point for taking control of your financial life.</p>",
       "order_index": 2,
-      "video_url": "https://www.youtube.com/watch?v=some_video_id",
+      "video_url": "https://www.youtube.com/watch?v=pDiH4HJs3vQ",
       "ai_summary": "The 50-30-20 rule is a straightforward budgeting framework. It recommends dividing your after-tax income into three categories: 50% for essential needs, 30% for personal wants, and 20% for savings and paying off debt. This method provides a clear and effective way to manage your money.\n\n*   **50% for Needs:** Covers essential expenses like housing and food.\n*   **30% for Wants:** Allocated for lifestyle choices like hobbies and entertainment.\n*   **20% for Savings:** Used for building savings, investing, or debt repayment.\n*   **Simplicity:** It's an easy-to-follow guideline for financial planning.",
       "practice_questions": [
         {
@@ -142,12 +142,350 @@
       ]
     },
     {
+        "id": "1-3",
+        "lesson_id": "1",
+        "title": "Day 3: Budgeting Tools & Apps",
+        "content": "<h1>Digital Budgeting</h1><p>Manually tracking every rupee can be tough. Luckily, technology can help! There are many apps designed to make budgeting simple and automatic.</p><h2>Popular Budgeting Apps:</h2><ul><li><strong>Wallet by BudgetBakers:</strong> Connects to your bank accounts to automatically track spending.</li><li><strong>Splitwise:</strong> Perfect for sharing expenses with friends or roommates.</li><li><strong>YNAB (You Need A Budget):</strong> A more detailed system where you give every dollar a job.</li></ul><p>Even a simple spreadsheet can be a powerful tool. The goal is to find a method that works for you and stick with it.</p>",
+        "order_index": 3,
+        "video_url": "https://www.youtube.com/watch?v=u8t_S_t-23w",
+        "ai_summary": "This lesson explores modern digital tools that simplify budgeting. It highlights popular apps like Wallet, Splitwise, and YNAB, which help automate expense tracking, manage shared costs, and implement detailed financial planning. The key is to find a consistent method, whether it's an app or a simple spreadsheet.\n\n*   **Automation:** Use apps to automatically track income and expenses.\n*   **App Examples:** Wallet (tracking), Splitwise (sharing), YNAB (planning).\n*   **Flexibility:** Spreadsheets are also a powerful, customizable option.\n*   **Consistency:** The best tool is the one you use regularly.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "Which app is best suited for managing shared expenses with friends?",
+                "options": ["Wallet", "YNAB", "Splitwise"],
+                "answer": "Splitwise"
+            }
+        ]
+    },
+    {
+        "id": "1-4",
+        "lesson_id": "1",
+        "title": "Day 4: Introduction to Saving & Interest",
+        "content": "<h1>The Power of Saving</h1><p>Saving is not just about stashing money away; it's about making your money work for you. The key to this is understanding interest.</p><h2>What is Interest?</h2><p>Interest is the 'rent' you earn for letting a bank use your money. There are two types:</p><ul><li><strong>Simple Interest:</strong> Calculated only on the initial amount (the principal).</li><li><strong>Compound Interest:</strong> Calculated on the principal *and* the accumulated interest. Albert Einstein called it the 'eighth wonder of the world' because it makes your money grow exponentially over time!</li></ul><p>The earlier you start saving, the more time compound interest has to work its magic.</p>",
+        "order_index": 4,
+        "video_url": "https://www.youtube.com/watch?v=wf9_DBhY3_A",
+        "ai_summary": "This lesson explains the fundamental concept of saving and the power of interest. It distinguishes between simple interest (earned on the principal amount) and compound interest (earned on both principal and accumulated interest), highlighting why starting to save early is crucial for long-term growth.\n\n*   **Saving:** Making your money work for you.\n*   **Simple Interest:** Interest on the initial amount only.\n*   **Compound Interest:** Interest on interest, leading to exponential growth.\n*   **Time is Key:** The earlier you start saving, the greater the effect of compounding.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "Which type of interest helps your money grow faster?",
+                "options": ["Simple Interest", "Compound Interest", "Both are the same"],
+                "answer": "Compound Interest"
+            }
+        ]
+    },
+    {
+        "id": "1-5",
+        "lesson_id": "1",
+        "title": "Day 5: Understanding Debt (Good vs. Bad)",
+        "content": "<h1>All Debt is Not Equal</h1><p>Debt is when you owe money to someone else. While it's often seen as negative, some debt can be beneficial.</p><h2>Good Debt vs. Bad Debt</h2><ul><li><strong>Good Debt:</strong> Money borrowed to acquire an asset that can increase in value or generate income. Examples include a student loan for a valuable degree or a loan to start a business.</li><li><strong>Bad Debt:</strong> Money borrowed to buy depreciating assets or for consumption. Examples include credit card debt for luxury items or a loan for a fancy car that you don't need.</li></ul><p>The key is to use debt wisely to build wealth, not just to fund your lifestyle.</p>",
+        "order_index": 5,
+        "video_url": "https://www.youtube.com/watch?v=R-Q8g_5Tr0Y",
+        "ai_summary": "This lesson clarifies that not all debt is bad. It introduces the concepts of 'good debt,' which is an investment that can grow in value or generate income (like a student loan), and 'bad debt,' which is used for consumption or depreciating assets (like credit card debt for luxuries). The main idea is to use debt strategically to build wealth.\n\n*   **Good Debt:** An investment in your future (e.g., education, business).\n*   **Bad Debt:** For items that lose value (e.g., luxury goods, expensive cars).\n*   **Strategic Use:** Use debt to acquire appreciating assets, not just for lifestyle spending.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "Which of the following is an example of 'good debt'?",
+                "options": ["A loan for a vacation", "A student loan for a professional degree", "Credit card debt from shopping"],
+                "answer": "A student loan for a professional degree"
+            }
+        ]
+    },
+    {
+        "id": "1-6",
+        "lesson_id": "1",
+        "title": "Day 6: Setting Financial Goals",
+        "content": "<h1>Give Your Money a Purpose</h1><p>Budgeting and saving are easier when you have clear goals. Financial goals give your efforts direction and motivation.</p><h2>SMART Goals</h2><p>A great way to set goals is to use the SMART framework:</p><ul><li><strong>Specific:</strong> What exactly do you want to achieve? (e.g., 'Save for a new laptop')</li><li><strong>Measurable:</strong> How much do you need? (e.g., '₹50,000')</li><li><strong>Achievable:</strong> Is it realistic with your income? (e.g., 'I can save ₹5,000 a month')</li><li><strong>Relevant:</strong> Why is this goal important to you?</li><li><strong>Time-bound:</strong> When do you want to achieve it? (e.g., 'In 10 months')</li></ul><p>Example: 'I will save ₹5,000 per month for 10 months to buy a new laptop that costs ₹50,000.'</p>",
+        "order_index": 6,
+        "video_url": "https://www.youtube.com/watch?v=cpo6ag22H-A",
+        "ai_summary": "This lesson stresses the importance of setting clear financial goals to provide motivation for saving and budgeting. It introduces the SMART framework (Specific, Measurable, Achievable, Relevant, Time-bound) as an effective method for creating actionable and well-defined financial objectives.\n\n*   **Specific:** Clearly define your goal.\n*   **Measurable:** Quantify the amount needed.\n*   **Achievable:** Ensure the goal is realistic.\n*   **Relevant:** Understand the goal's importance to you.\n*   **Time-bound:** Set a clear deadline.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "text",
+                "question": "Use the SMART framework to write a financial goal for saving for a new phone.",
+                "answer": "A good answer would look like: 'I will save ₹2,000 a month for 5 months to buy a new phone that costs ₹10,000 for my birthday.'"
+            }
+        ]
+    },
+    {
+        "id": "1-7",
+        "lesson_id": "1",
+        "title": "Day 7: Review and Create Your First Budget",
+        "content": "<h1>Putting It All Together</h1><p>Congratulations! You've learned the fundamentals. Now it's time to create your first simple budget.</p><h2>Your First Budget Plan</h2><ol><li><strong>List Your Income:</strong> Write down all the money you expect to receive this month.</li><li><strong>Track Your Expenses:</strong> For one week, write down everything you spend money on. Be honest!</li><li><strong>Categorize:</strong> Group your expenses into 'Needs' and 'Wants'.</li><li><strong>Apply the 50-30-20 Rule:</strong> See how your spending aligns with the rule. Are you overspending on wants? Not saving enough?</li><li><strong>Adjust:</strong> Find one area where you can cut back to meet your savings goal.</li></ol><p>This is your personal financial roadmap. Review it monthly and adjust as your income or goals change!</p>",
+        "order_index": 7,
+        "video_url": "https://www.youtube.com/watch?v=g1a721o6C8E",
+        "ai_summary": "This final lesson guides you through creating your first budget by applying all the concepts learned. It involves listing income, tracking expenses, categorizing them as needs and wants, and using the 50-30-20 rule to analyze and adjust your spending habits. This process creates a personal financial roadmap to be reviewed and adapted regularly.\n\n*   **Step 1:** List all income sources.\n*   **Step 2:** Track all spending for a week.\n*   **Step 3:** Categorize spending into Needs and Wants.\n*   **Step 4:** Compare your spending with the 50-30-20 rule.\n*   **Step 5:** Adjust spending to meet savings goals.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "What is the final step in creating your first budget?",
+                "options": ["Listing income", "Tracking expenses", "Adjusting your spending"],
+                "answer": "Adjusting your spending"
+            }
+        ]
+    },
+    {
+      "id": "2-1",
+      "lesson_id": "2",
+      "title": "Day 1: How Banks Work & Types of Accounts",
+      "content": "<h1>Understanding Banks</h1><p>Banks are more than just a place to store money. They are financial institutions that accept deposits, make loans, and provide other financial services.</p><h2>Key Functions of a Bank</h2><ul><li><strong>Accepting Deposits:</strong> You give the bank your money (a deposit), and they keep it safe for you.</li><li><strong>Lending Money:</strong> The bank uses the money from deposits to give out loans to other people or businesses. They charge interest on these loans, which is how they make a profit.</li></ul><h2>Common Types of Bank Accounts</h2><ul><li><strong>Savings Account:</strong> For storing money you don't need immediately. It earns a small amount of interest.</li><li><strong>Current Account:</strong> Designed for frequent transactions, often used by businesses. Usually doesn't earn interest.</li><li><strong>Fixed Deposit (FD):</strong> You lock your money away for a fixed period (e.g., 1 year) to earn a higher interest rate than a savings account.</li></ul>",
+      "order_index": 1,
+      "video_url": "https://www.youtube.com/watch?v=D52bs2oF2-E",
+      "ai_summary": "This lesson explains the basic functions of a bank, which include accepting deposits for safekeeping and lending that money out to earn interest. It also covers the three most common types of bank accounts: Savings Accounts for earning interest, Current Accounts for frequent transactions, and Fixed Deposits for earning higher interest over a set term.\n\n*   **Banks:** Accept deposits and provide loans.\n*   **Savings Account:** For storing and earning some interest.\n*   **Current Account:** For frequent transactions, usually by businesses.\n*   **Fixed Deposit (FD):** For locking money for a fixed term to get higher interest.",
+      "practice_questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "question": "Which account is best for earning a higher, fixed interest rate by locking money away?",
+          "options": ["Savings Account", "Current Account", "Fixed Deposit"],
+          "answer": "Fixed Deposit"
+        }
+      ]
+    },
+    {
+        "id": "2-2",
+        "lesson_id": "2",
+        "title": "Day 2: Digital Banking & UPI",
+        "content": "<h1>Banking at Your Fingertips</h1><p>Digital banking allows you to manage your accounts online through a website or a mobile app, without visiting a bank branch.</p><h2>What is UPI?</h2><p>Unified Payments Interface (UPI) is an instant real-time payment system developed in India. It allows you to transfer money between bank accounts using just a mobile number or a simple UPI ID (e.g., yourname@bank).</p><h2>Key Features of UPI:</h2><ul><li><strong>Instant:</strong> Transfers happen in seconds, 24/7.</li><li><strong>Easy to Use:</strong> No need to remember account numbers or IFSC codes.</li><li><strong>Secure:</strong> Requires a secret UPI PIN for every transaction.</li></ul><p>UPI has revolutionized payments in India, making them faster and more convenient than ever.</p>",
+        "order_index": 2,
+        "video_url": "https://www.youtube.com/watch?v=c_s8y2SkDqA",
+        "ai_summary": "This lesson introduces digital banking and focuses on the Unified Payments Interface (UPI) in India. It explains that UPI is an instant payment system allowing easy money transfers using a mobile number or UPI ID. Key features highlighted are its speed, simplicity, and security through a PIN.\n\n*   **Digital Banking:** Manage your bank account online or via app.\n*   **UPI:** An instant payment system in India.\n*   **Key Features:** UPI is fast, easy, and secure.\n*   **UPI ID:** A simple address for receiving money (e.g., name@bank).",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "What is required for every UPI transaction to ensure security?",
+                "options": ["Your email password", "Your UPI PIN", "Your Aadhaar number"],
+                "answer": "Your UPI PIN"
+            }
+        ]
+    },
+    {
+        "id": "2-3",
+        "lesson_id": "2",
+        "title": "Day 3: Introduction to Investing",
+        "content": "<h1>Why Invest?</h1><p>Saving money is great, but investing is how you truly build wealth. Investing means using your money to buy assets that have the potential to grow in value over time.</p><h2>Saving vs. Investing</h2><ul><li><strong>Saving:</strong> Low-risk, for short-term goals. Your money is safe but grows very slowly (e.g., in a savings account).</li><li><strong>Investing:</strong> Higher-risk, for long-term goals. Your money has the potential to grow much faster, but you could also lose some.</li></ul><p>The goal of investing is to beat inflation—the rate at which the cost of living increases. If your money isn't growing faster than inflation, you're actually losing purchasing power over time.</p>",
+        "order_index": 3,
+        "video_url": "https://www.youtube.com/watch?v=3g_u2I9HS-0",
+        "ai_summary": "This lesson distinguishes between saving and investing. While saving is a low-risk method for short-term goals, investing is a higher-risk strategy for long-term wealth creation where money is used to buy assets that can grow in value. A primary goal of investing is to outpace inflation, which otherwise erodes the value of your money.\n\n*   **Saving:** Low-risk, slow growth, for short-term goals.\n*   **Investing:** Higher-risk, high growth potential, for long-term goals.\n*   **Goal of Investing:** Beat inflation and increase purchasing power.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "What is the main reason to invest your money instead of just saving it?",
+                "options": ["It's completely risk-free", "To beat inflation and grow your wealth faster", "To access your money immediately"],
+                "answer": "To beat inflation and grow your wealth faster"
+            }
+        ]
+    },
+    {
+        "id": "2-4",
+        "lesson_id": "2",
+        "title": "Day 4: Stocks, Bonds, and Mutual Funds",
+        "content": "<h1>The Building Blocks of Investing</h1><p>Let's look at the most common investment types.</p><h2>Asset Classes</h2><ul><li><strong>Stocks (or Equities):</strong> When you buy a stock, you're buying a small piece of ownership in a company. If the company does well, the value of your stock can go up. It's higher risk but has high growth potential.</li><li><strong>Bonds:</strong> When you buy a bond, you're essentially lending money to a government or a company. In return, they promise to pay you back with interest. It's lower risk compared to stocks.</li><li><strong>Mutual Funds:</strong> A mutual fund pools money from many investors to buy a diversified collection of stocks, bonds, or other assets. It's an easy way to start investing without having to pick individual stocks yourself.</li></ul>",
+        "order_index": 4,
+        "video_url": "https://www.youtube.com/watch?v=24-p-zV-cT0",
+        "ai_summary": "This lesson breaks down the three primary investment types. Stocks represent ownership in a company, offering high growth potential with higher risk. Bonds are loans to a government or company, offering lower risk. Mutual funds are collections of stocks and bonds, providing an easy way for beginners to diversify their investments.\n\n*   **Stocks:** A share of a company. High risk, high reward.\n*   **Bonds:** A loan to an entity. Lower risk, lower reward.\n*   **Mutual Funds:** A mix of investments, good for diversification.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "If you want to own a small piece of a company like Reliance or TCS, you should buy its...",
+                "options": ["Bond", "Stock", "Mutual Fund"],
+                "answer": "Stock"
+            }
+        ]
+    },
+    {
+        "id": "2-5",
+        "lesson_id": "2",
+        "title": "Day 5: Understanding Risk and Diversification",
+        "content": "<h1>The Golden Rule: Don't Put All Your Eggs in One Basket</h1><p>All investments carry some level of risk. The value of your investment can go down as well as up. But there are ways to manage this risk.</p><h2>What is Diversification?</h2><p>Diversification means spreading your money across different types of investments (stocks, bonds), industries (tech, healthcare, banking), and geographies (India, US, Europe).<p>Why? If one investment performs poorly, your other investments can help balance out the loss. For example, if the tech industry is down, maybe the healthcare industry is up. Mutual funds are a great way to achieve instant diversification.</p>",
+        "order_index": 5,
+        "video_url": "https://www.youtube.com/watch?v=wXan7-86i0I",
+        "ai_summary": "This lesson focuses on managing investment risk through diversification. It explains that spreading your money across different asset types, industries, and regions can protect you from losses if one particular investment performs poorly. Mutual funds are highlighted as an effective tool for achieving instant diversification.\n\n*   **Risk:** All investments have risk; their value can fall.\n*   **Diversification:** Spreading investments to reduce risk.\n*   **How it Works:** Balances losses from one investment with gains from another.\n*   **Easy Method:** Mutual funds offer built-in diversification.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "text",
+                "question": "In your own words, why is diversification important?",
+                "answer": "It's important because it reduces risk. If you put all your money in one thing and it fails, you lose everything. But if your money is in many different things, the failure of one won't wipe you out."
+            }
+        ]
+    },
+    {
+        "id": "2-6",
+        "lesson_id": "2",
+        "title": "Day 6: How to Start Your First Investment",
+        "content": "<h1>Taking the First Step</h1><p>Ready to start? Here's what you'll need.</p><h2>Requirements to Invest in India:</h2><ol><li><strong>PAN Card:</strong> A must-have for all financial transactions.</li><li><strong>Bank Account:</strong> To transfer money for your investments.</li><li><strong>Demat and Trading Account:</strong> A Demat account holds your stocks and bonds in digital form. A Trading account is what you use to buy and sell them. Many brokers offer a 2-in-1 account.</li></ol><h2>Choosing a Broker</h2><p>A stockbroker is a platform that lets you buy and sell investments. Popular options in India for beginners include Zerodha, Groww, and Upstox. They have low fees and user-friendly apps.</p>",
+        "order_index": 6,
+        "video_url": "https://www.youtube.com/watch?v=AOfRigH-GMM",
+        "ai_summary": "This lesson outlines the practical steps to begin investing in India. It lists the three essential requirements: a PAN Card, a bank account, and a Demat/Trading account for holding and transacting investments. It also suggests popular, beginner-friendly brokerage platforms like Zerodha, Groww, and Upstox.\n\n*   **Requirement 1:** PAN Card.\n*   **Requirement 2:** Bank Account.\n*   **Requirement 3:** Demat and Trading Account.\n*   **Brokers:** Platforms like Zerodha or Groww are good for beginners.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "Which account is used to hold your stocks in a digital format?",
+                "options": ["Savings Account", "Trading Account", "Demat Account"],
+                "answer": "Demat Account"
+            }
+        ]
+    },
+    {
+        "id": "2-7",
+        "lesson_id": "2",
+        "title": "Day 7: Long-Term Wealth Creation",
+        "content": "<h1>The Marathon, Not a Sprint</h1><p>Successful investing is about patience and consistency, not getting rich quick.</p><h2>Key Principles for Long-Term Success</h2><ul><li><strong>Start Early:</strong> The longer your money is invested, the more it can grow thanks to compounding.</li><li><strong>Invest Regularly:</strong> Use a Systematic Investment Plan (SIP) to invest a fixed amount every month, regardless of market ups and downs. This is called 'rupee cost averaging'.</li><li><strong>Think Long-Term:</strong> Don't panic and sell when the market drops. Historically, markets have always recovered and trended upwards over the long run.</li><li><strong>Stay Informed:</strong> You don't need to be an expert, but keep learning about where your money is going.</li></ul><p>Consistency is more important than timing the market. Start small, stay consistent, and let time do the heavy lifting.</p>",
+        "order_index": 7,
+        "video_url": "https://www.youtube.com/watch?v=qkLpcr-2m3I",
+        "ai_summary": "This final lesson emphasizes that successful investing is a long-term commitment. It covers key principles like starting early to maximize compounding, investing regularly through SIPs to average out costs, avoiding panic selling during market dips, and staying informed. The core message is that consistency over time is the key to building wealth.\n\n*   **Start Early:** Leverage the power of compounding.\n*   **Invest Regularly:** Use SIPs for discipline and cost averaging.\n*   **Think Long-Term:** Don't react to short-term market volatility.\n*   **Stay Consistent:** Regular, disciplined investing is more important than trying to time the market.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "What is a Systematic Investment Plan (SIP)?",
+                "options": ["A one-time large investment", "Investing a fixed amount regularly", "A plan to sell all stocks quickly"],
+                "answer": "Investing a fixed amount regularly"
+            }
+        ]
+    },
+    {
+      "id": "3-1",
+      "lesson_id": "3",
+      "title": "Day 1: What is AI? Demystifying the Buzzword",
+      "content": "<h1>Beyond the Sci-Fi Movies</h1><p>Artificial Intelligence (AI) isn't just about robots. At its core, AI is the ability of a computer or a machine to think, learn, and perform tasks that typically require human intelligence.</p><h2>Types of AI</h2><ul><li><strong>Narrow AI (ANI):</strong> This is the AI we see all around us today. It's designed to perform a single specific task very well. Examples include recommendation engines on Netflix, voice assistants like Siri, and spam filters in your email.</li><li><strong>General AI (AGI):</strong> This is the 'human-like' AI you see in movies. It's a hypothetical type of AI that could understand, learn, and apply its intelligence to solve any problem, just like a human. AGI does not exist yet.</li></ul><p>Today, we're living in the era of Narrow AI, where specialized systems are making our lives easier and more efficient.</p>",
+      "order_index": 1,
+      "video_url": "https://www.youtube.com/watch?v=ad79nYk2keg",
+      "ai_summary": "This lesson demystifies Artificial Intelligence, explaining it as a machine's ability to simulate human thinking and learning. It differentiates between Narrow AI (ANI), which excels at specific tasks and is common today (e.g., Siri, Netflix recommendations), and General AI (AGI), a hypothetical, human-like intelligence that does not yet exist.\n\n*   **AI:** Machines performing human-like tasks.\n*   **Narrow AI (ANI):** AI specialized for one task. This is the AI we use today.\n*   **General AI (AGI):** Hypothetical AI with human-like, broad intelligence.\n*   **Current State:** We are in the age of Narrow AI.",
+      "practice_questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "question": "Your phone's spam filter is an example of which type of AI?",
+          "options": ["General AI (AGI)", "Narrow AI (ANI)", "Sentient AI"],
+          "answer": "Narrow AI (ANI)"
+        }
+      ]
+    },
+    {
+        "id": "3-2",
+        "lesson_id": "3",
+        "title": "Day 2: How AI is Used in Daily Life",
+        "content": "<h1>AI is Everywhere!</h1><p>You probably use AI dozens of times a day without even realizing it. Let's explore some common examples.</p><h2>Everyday AI</h2><ul><li><strong>Entertainment:</strong> YouTube, Spotify, and Netflix use AI to analyze your viewing/listening history and recommend new content you might like.</li><li><strong>Navigation:</strong> Google Maps and Waze use AI to analyze traffic data in real-time to find you the fastest route.</li><li><strong>Social Media:</strong> Instagram and TikTok use AI to decide what content to show you in your feed to keep you engaged.</li><li><strong>Shopping:</strong> Amazon and Flipkart use AI to recommend products based on your browsing history and past purchases.</li></ul><p>From suggesting your next song to helping you avoid a traffic jam, AI is already deeply integrated into our digital lives.</p>",
+        "order_index": 2,
+        "video_url": "https://www.youtube.com/watch?v=P2L-V5d3-yQ",
+        "ai_summary": "This lesson reveals how deeply AI is integrated into our daily activities. It provides concrete examples, such as content recommendations on streaming services like Netflix, real-time route optimization in Google Maps, personalized feeds on social media, and product suggestions on e-commerce sites like Amazon.\n\n*   **Entertainment:** Recommends movies and music.\n*   **Navigation:** Finds the fastest routes by analyzing traffic.\n*   **Social Media:** Curates your feed content.\n*   **Shopping:** Suggests products you might want to buy.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "text",
+                "question": "Besides the examples in the lesson, can you think of one other way you use AI in your daily life?",
+                "answer": "Good answers could include: smartphone camera processing (portrait mode), spam filters in email, predictive text on your keyboard, or chatbots on websites."
+            }
+        ]
+    },
+    {
+        "id": "3-3",
+        "lesson_id": "3",
+        "title": "Day 3: AI in Banking and Finance",
+        "content": "<h1>Money & Machines</h1><p>The financial world has been revolutionized by AI. It's used to make services faster, smarter, and more secure.</p><h2>AI's Role in Finance</h2><ul><li><strong>Fraud Detection:</strong> AI systems monitor your transactions in real-time. If a transaction looks unusual (e.g., a large purchase in a foreign country), the AI can flag it and alert you or block the transaction to prevent fraud.</li><li><strong>Loan Approvals:</strong> AI can analyze thousands of data points (income, credit history, etc.) in seconds to decide if someone is eligible for a loan, making the process much faster.</li><li><strong>Algorithmic Trading:</strong> In the stock market, AI programs can execute trades at speeds impossible for humans, based on complex market analysis.</li><li><strong>Chatbots:</strong> Banking apps use AI chatbots to answer customer questions 24/7.</li></ul>",
+        "order_index": 3,
+        "video_url": "https://www.youtube.com/watch?v=jWYsu9HcrrE",
+        "ai_summary": "This lesson explains how AI is transforming the finance and banking sectors. Key applications include real-time fraud detection by analyzing transaction patterns, faster loan approvals by processing vast amounts of data, high-speed algorithmic trading in stock markets, and 24/7 customer service through AI chatbots.\n\n*   **Fraud Detection:** AI flags suspicious transactions.\n*   **Loan Approvals:** AI quickly assesses creditworthiness.\n*   **Trading:** AI executes stock trades at high speeds.\n*   **Customer Service:** AI chatbots provide round-the-clock support.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "How does AI help prevent credit card fraud?",
+                "options": ["By increasing your credit limit", "By analyzing your transactions for unusual activity", "By calling you for every transaction"],
+                "answer": "By analyzing your transactions for unusual activity"
+            }
+        ]
+    },
+    {
+        "id": "3-4",
+        "lesson_id": "3",
+        "title": "Day 4: What are Large Language Models (LLMs)?",
+        "content": "<h1>The Brains Behind ChatGPT</h1><p>A Large Language Model (LLM) is a type of AI that has been trained on vast amounts of text data. This training allows it to understand, generate, and interact with human language.</p><h2>How do LLMs work?</h2><p>Think of it like a super-powered predictive text. Based on the sequence of words it has seen millions of times, it predicts the most likely next word, and then the next, and so on, to form coherent sentences and paragraphs.</p><h2>Examples of LLMs:</h2><ul><li><strong>GPT Series (from OpenAI):</strong> The models that power ChatGPT.</li><li><strong>Gemini (from Google):</strong> Google's family of powerful AI models.</li><li><strong>Llama (from Meta):</strong> An open-source model developed by Meta (Facebook).</li></ul><p>LLMs are the technology behind the recent explosion in generative AI tools that can write essays, create code, and answer complex questions.</p>",
+        "order_index": 4,
+        "video_url": "https://www.youtube.com/watch?v=iR2O2GPbB0E",
+        "ai_summary": "This lesson defines Large Language Models (LLMs) as a type of AI trained on massive text datasets to understand and generate human-like language. It explains that they work by predicting the most probable next word in a sequence. Examples include OpenAI's GPT series, Google's Gemini, and Meta's Llama.\n\n*   **LLM:** An AI trained on text to understand language.\n*   **How it Works:** Predicts the next word in a sequence.\n*   **Examples:** GPT (ChatGPT), Gemini (Google), Llama (Meta).\n*   **Use Case:** Powers generative AI tools for writing, coding, and more.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "An LLM generates text by...",
+                "options": ["Copying from a website", "Predicting the most likely next word", "Thinking like a human"],
+                "answer": "Predicting the most likely next word"
+            }
+        ]
+    },
+    {
+        "id": "3-5",
+        "lesson_id": "3",
+        "title": "Day 5: Prompt Engineering: Talking to AI",
+        "content": "<h1>Getting the Best Answers</h1><p>Prompt engineering is the art of designing effective inputs (prompts) to get the best possible output from an AI, especially an LLM.</p><h2>Tips for Better Prompts:</h2><ul><li><strong>Be Specific:</strong> Don't just say 'Write about cars.' Say 'Write a 100-word paragraph about the evolution of electric cars, focusing on battery technology.'</li><li><strong>Provide Context:</strong> Give the AI background information. 'I am a 10th-grade student writing a report on renewable energy.'</li><li><strong>Define the Persona:</strong> Tell the AI who to be. 'Act as an expert career counselor and suggest three career paths for someone who loves art and technology.'</li><li><strong>Give Examples:</strong> If you want a specific format, show it. 'Summarize the text in three bullet points, like this: - Point 1...'</li></ul><p>A better prompt leads to a better response. It's a skill that's becoming increasingly valuable.</p>",
+        "order_index": 5,
+        "video_url": "https://www.youtube.com/watch?v=d_3A-2A2y74",
+        "ai_summary": "This lesson introduces prompt engineering, the skill of crafting effective inputs to get better results from AI models. Key techniques include being specific with your request, providing context, assigning a persona for the AI to adopt, and giving examples of the desired output format. A well-designed prompt significantly improves the quality of the AI's response.\n\n*   **Be Specific:** Vague questions get vague answers.\n*   **Provide Context:** Give background information.\n*   **Define a Persona:** Tell the AI who to be (e.g., 'Act as a tutor').\n*   **Give Examples:** Show the format you want.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "text",
+                "question": "Improve this prompt: 'Tell me about climate change.'",
+                "answer": "A better prompt would be: 'Explain the main causes of climate change in simple terms for a high school student. List three main causes in bullet points.'"
+            }
+        ]
+    },
+    {
+        "id": "3-6",
+        "lesson_id": "3",
+        "title": "Day 6: Generative AI: Creating with Machines",
+        "content": "<h1>Beyond Answering Questions</h1><p>Generative AI is a category of AI that can create new, original content. It's not just reciting information; it's generating something that didn't exist before.</p><h2>Types of Generative AI</h2><ul><li><strong>Text Generation:</strong> LLMs like ChatGPT can write poems, emails, code, and articles.</li><li><strong>Image Generation:</strong> Models like Midjourney and DALL-E can create stunning images from a simple text description (e.g., 'An astronaut riding a horse on the moon, photorealistic style').</li><li><strong>Music Generation:</strong> AI can compose melodies and even full songs in various styles.</li><li><strong>Video Generation:</strong> Emerging AI models can create short video clips from text prompts.</li></ul><p>Generative AI is a powerful creative tool that is changing industries from art and design to software development.</p>",
+        "order_index": 6,
+        "video_url": "https://www.youtube.com/watch?v=G2fA0jIe-mU",
+        "ai_summary": "This lesson defines Generative AI as a type of artificial intelligence capable of creating new, original content. It covers the main applications: text generation for writing, image generation from text prompts, music composition, and emerging video generation technologies. Generative AI is presented as a transformative tool for creative and technical fields.\n\n*   **Generative AI:** AI that creates new content.\n*   **Text Generation:** Writing articles, code, etc.\n*   **Image Generation:** Creating images from text (e.g., Midjourney).\n*   **Other Forms:** Includes music and video generation.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "An AI that creates a picture of 'a cat wearing a chef's hat' is an example of...",
+                "options": ["Narrow AI", "General AI", "Generative AI"],
+                "answer": "Generative AI"
+            }
+        ]
+    },
+    {
+        "id": "3-7",
+        "lesson_id": "3",
+        "title": "Day 7: The Future of AI and You",
+        "content": "<h1>What's Next?</h1><p>AI is evolving at an incredible pace. It's poised to change the job market and our world in profound ways. But this isn't a cause for fear—it's an opportunity.</p><h2>AI and Your Career</h2><p>Many jobs will be transformed by AI, not necessarily replaced. AI will become a tool that helps professionals in all fields work more efficiently and creatively.</p><ul><li>Doctors will use AI to diagnose diseases faster.</li><li>Programmers will use AI to write code more quickly.</li><li>Artists will use AI to generate new ideas and styles.</li></ul><p>The most important skill for the future will be the ability to work *with* AI. By learning how to use these tools effectively (like through prompt engineering), you are preparing yourself for the jobs of tomorrow.</p>",
+        "order_index": 7,
+        "video_url": "https://www.youtube.com/watch?v=S29a-w9_z9s",
+        "ai_summary": "This lesson discusses the future impact of AI on jobs and society. It posits that AI will transform, rather than replace, most professions, acting as a powerful tool to enhance efficiency and creativity. The key takeaway is that learning to collaborate with AI systems is the most critical skill for future career success.\n\n*   **AI's Impact:** AI will transform jobs, not just replace them.\n*   **AI as a Tool:** It will assist professionals in various fields.\n*   **Future-Proof Skill:** The ability to work *with* AI is crucial.\n*   **Opportunity:** Understanding AI is an opportunity, not a threat.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "What is the most important skill for the future in an AI-driven world?",
+                "options": ["The ability to avoid AI", "The ability to build AI from scratch", "The ability to work effectively with AI tools"],
+                "answer": "The ability to work effectively with AI tools"
+            }
+        ]
+    },
+    {
       "id": "4-1",
       "lesson_id": "4",
       "title": "Day 1: What is Income Tax and PAN?",
-      "content": "<h1>Intro to Indian Taxation</h1><p>Income tax is a tax that the government imposes on the income generated by individuals and businesses. It's a key source of revenue for the government to fund public services.</p><h2>What is a PAN Card?</h2><p>A Permanent Account Number (PAN) is a unique ten-digit alphanumeric number issued by the Indian Income Tax Department. It is mandatory for all taxpayers in India and is used to track financial transactions and prevent tax evasion.</p>",
+      "content": "<h1>Intro to Indian Taxation</h1><p>Income tax is a tax that the government imposes on the income generated by individuals and businesses. It's a key source of revenue for the government to fund public services like roads, hospitals, and defense.</p><h2>What is a PAN Card?</h2><p>A Permanent Account Number (PAN) is a unique ten-digit alphanumeric number issued by the Indian Income Tax Department. It is mandatory for all taxpayers in India and is used to track financial transactions, prevent tax evasion, and is required for most financial activities like opening a bank account or investing.</p>",
       "order_index": 1,
-      "video_url": "https://www.youtube.com/watch?v=some_video_id",
+      "video_url": "https://www.youtube.com/watch?v=NnOFJ2j8Pnw",
       "ai_summary": "This lesson explains the basics of income tax in India, identifying it as a government-levied tax on the earnings of individuals and businesses to fund public services. It also defines a PAN (Permanent Account Number) as a unique 10-digit code required for all taxpayers to track financial activities.\n\n*   **Income Tax:** A tax on income to fund public services.\n*   **PAN:** A unique 10-digit number for taxpayers.\n*   **Purpose of PAN:** Used to track financial transactions and prevent tax evasion.\n*   **Mandatory:** Required for all taxpayers in India.",
       "practice_questions": [
         {
@@ -162,6 +500,988 @@
           "answer": "10"
         }
       ]
+    },
+    {
+        "id": "4-2",
+        "lesson_id": "4",
+        "title": "Day 2: The Different 'Heads' of Income",
+        "content": "<h1>Sources of Your Earnings</h1><p>The Income Tax Act categorizes income into five 'heads' to make taxation simpler.</p><h2>The Five Heads of Income:</h2><ol><li><strong>Income from Salary:</strong> This is what you earn from your employer, including your basic salary, allowances, and perquisites.</li><li><strong>Income from House Property:</strong> If you own a property and earn rent from it, that rental income is taxed under this head.</li><li><strong>Profits and Gains from Business or Profession:</strong> This includes income earned by a shopkeeper, a doctor, a freelancer, or any business owner.</li><li><strong>Capital Gains:</strong> Profit earned from selling a capital asset like property, stocks, or mutual funds.</li><li><strong>Income from Other Sources:</strong> Any income that doesn't fit into the other four heads, such as interest from a savings account, lottery winnings, or dividends.</li></ol>",
+        "order_index": 2,
+        "video_url": "https://www.youtube.com/watch?v=8b5vHH5yS5A",
+        "ai_summary": "This lesson explains that the Income Tax Act classifies income into five categories, or 'heads': Salary, House Property (rental income), Business/Profession, Capital Gains (from selling assets), and Other Sources (like savings interest or lottery wins). This classification helps in organizing and taxing different types of earnings.\n\n*   **Salary:** Income from employment.\n*   **House Property:** Rental income.\n*   **Business/Profession:** Profits from self-employment or business.\n*   **Capital Gains:** Profit from selling assets like stocks or property.\n*   **Other Sources:** Miscellaneous income like interest.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "Interest earned from your bank's savings account falls under which head of income?",
+                "options": ["Income from Salary", "Capital Gains", "Income from Other Sources"],
+                "answer": "Income from Other Sources"
+            }
+        ]
+    },
+    {
+        "id": "4-3",
+        "lesson_id": "4",
+        "title": "Day 3: Understanding Tax Slabs (New vs. Old Regime)",
+        "content": "<h1>How Your Tax is Calculated</h1><p>India has a progressive tax system, meaning people with higher incomes pay a higher percentage of their income in tax. This is done through tax slabs. India currently offers two tax regimes to choose from:</p><h2>The Old Tax Regime</h2><p>This regime has higher tax rates but allows you to claim various deductions and exemptions (like for investments in PPF, health insurance, etc.), which can lower your taxable income.</p><h2>The New Tax Regime</h2><p>This is the default regime. It has lower tax rates but does not allow you to claim most of the popular deductions. It's simpler for people who don't make many tax-saving investments.</p><p>You can choose the regime that is more beneficial for you each year.</p>",
+        "order_index": 3,
+        "video_url": "https://www.youtube.com/watch?v=cZED0kG-t6o",
+        "ai_summary": "This lesson explains India's progressive tax system, which uses tax slabs to tax higher incomes at higher rates. It details the two available tax regimes: the Old Regime, with higher rates but more deductions, and the New Regime, which has lower rates but fewer deductions and is simpler for those with minimal investments.\n\n*   **Tax Slabs:** Higher income means a higher tax rate.\n*   **Old Regime:** Higher rates, but allows deductions.\n*   **New Regime:** Lower rates, but most deductions are disallowed.\n*   **Choice:** Taxpayers can choose the more beneficial regime annually.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "Which tax regime is generally better if you make a lot of tax-saving investments?",
+                "options": ["The New Tax Regime", "The Old Tax Regime", "Both are the same"],
+                "answer": "The Old Tax Regime"
+            }
+        ]
+    },
+    {
+        "id": "4-4",
+        "lesson_id": "4",
+        "title": "Day 4: What is an ITR (Income Tax Return)?",
+        "content": "<h1>Reporting Your Income</h1><p>An Income Tax Return (ITR) is a form that you submit to the Income Tax Department to report your annual income, deductions, and tax liability.</p><h2>Why Should You File an ITR?</h2><ul><li><strong>It's a Legal Requirement:</strong> If your income is above the basic exemption limit (e.g., ₹2.5 Lakhs in the old regime), you must file an ITR.</li><li><strong>Claiming Refunds:</strong> If more tax has been deducted from your income than you were liable to pay (e.g., TDS on salary), you can only get a refund by filing an ITR.</li><li><strong>Proof of Income:</strong> An ITR is an essential document for loan applications, visa processing, and buying insurance.</li><li><strong>Carry Forward Losses:</strong> If you have losses from stocks or business, you can carry them forward to offset future profits only if you file your ITR on time.</li></ul>",
+        "order_index": 4,
+        "video_url": "https://www.youtube.com/watch?v=e2z1yCar0uk",
+        "ai_summary": "This lesson defines an Income Tax Return (ITR) as the official form used to report annual income and tax liability to the government. It explains that filing an ITR is not only a legal obligation for those earning above a certain limit but also necessary for claiming tax refunds, providing proof of income for loans or visas, and carrying forward financial losses.\n\n*   **ITR:** A form to report your income and tax to the government.\n*   **Legal Duty:** Mandatory if your income exceeds the exemption limit.\n*   **Benefits:** Crucial for claiming refunds and as proof of income.\n*   **Losses:** Allows you to carry forward losses to future years.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "Which of these is NOT a primary reason to file an ITR?",
+                "options": ["To get a loan", "To claim a tax refund", "To get a discount on shopping"],
+                "answer": "To get a discount on shopping"
+            }
+        ]
+    },
+    {
+        "id": "4-5",
+        "lesson_id": "4",
+        "title": "Day 5: What is GST (Goods and Services Tax)?",
+        "content": "<h1>One Nation, One Tax</h1><p>The Goods and Services Tax (GST) is an indirect tax that has replaced many other indirect taxes in India like excise duty, VAT, and service tax. It is levied on the supply of goods and services.</p><h2>How does GST work?</h2><p>GST is a destination-based tax. This means the tax is collected by the state where the goods are consumed, not where they are produced. It is collected at every stage of the supply chain, but the end consumer is the one who ultimately bears the cost.</p><h2>GST Slabs in India</h2><p>There are different GST rates for different items, primarily 0%, 5%, 12%, 18%, and 28%. Essential items have lower rates, while luxury items have higher rates.</p>",
+        "order_index": 5,
+        "video_url": "https://www.youtube.com/watch?v=GH-d-aI4-s4",
+        "ai_summary": "This lesson explains that the Goods and Services Tax (GST) is a unified indirect tax in India levied on goods and services, replacing multiple previous taxes. It is a destination-based tax collected where goods are consumed, with the final cost borne by the end consumer. GST rates are structured in slabs (0%, 5%, 12%, 18%, 28%), with essential items taxed lower than luxury ones.\n\n*   **GST:** A single indirect tax on goods and services in India.\n*   **Destination-Based:** Tax goes to the state where the item is consumed.\n*   **Consumer Bears Cost:** The final price paid by the consumer includes GST.\n*   **Tax Slabs:** Rates vary from 0% to 28% based on the item's category.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "Who ultimately pays the GST?",
+                "options": ["The shopkeeper", "The manufacturer", "The end consumer"],
+                "answer": "The end consumer"
+            }
+        ]
+    },
+    {
+        "id": "4-6",
+        "lesson_id": "4",
+        "title": "Day 6: How Businesses Handle GST",
+        "content": "<h1>Input Tax Credit (ITC)</h1><p>The core concept of GST for businesses is the Input Tax Credit (ITC). It's a mechanism to avoid 'tax on tax'.</p><h2>Understanding ITC: An Example</h2><ol><li>A manufacturer makes a shirt and sells it to a wholesaler for ₹200 + 12% GST (₹24). The manufacturer pays ₹24 to the government.</li><li>The wholesaler sells the shirt to a retailer for ₹300 + 12% GST (₹36). The wholesaler has to pay ₹36 in tax, but they can claim a credit of ₹24 (the tax they already paid when buying the shirt). So, they only pay the difference of ₹12 (₹36 - ₹24) to the government.</li><li>The retailer sells the shirt to you for ₹400 + 12% GST (₹48). The retailer can claim a credit of ₹36. They only pay the difference of ₹12 (₹48 - ₹36) to the government.</li></ol><p>This ensures tax is only paid on the 'value added' at each stage. The total tax paid to the government (₹24 + ₹12 + ₹12 = ₹48) is the same as what the final consumer paid.</p>",
+        "order_index": 6,
+        "video_url": "https://www.youtube.com/watch?v=E_m9vnyb0dE",
+        "ai_summary": "This lesson explains how businesses manage GST through the Input Tax Credit (ITC) system, which prevents the cascading effect of 'tax on tax.' At each stage of the supply chain, a business can claim a credit for the GST it paid on its purchases, only paying tax on the 'value added.' The final consumer bears the full tax amount, which is the sum of the taxes paid at each stage.\n\n*   **ITC:** A mechanism to avoid paying tax on tax.\n*   **Value Added:** Tax is applied only on the increase in value at each step.\n*   **How it works:** Businesses get a credit for the tax they paid on inputs.\n*   **Result:** The total tax is smoothly passed down to the final consumer.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "What is the primary purpose of Input Tax Credit (ITC)?",
+                "options": ["To increase the price of goods", "To avoid 'tax on tax' and tax only the value addition", "To give a discount to the final consumer"],
+                "answer": "To avoid 'tax on tax' and tax only the value addition"
+            }
+        ]
+    },
+    {
+        "id": "4-7",
+        "lesson_id": "4",
+        "title": "Day 7: Your Role as a Tax-Aware Citizen",
+        "content": "<h1>Be a Smart Consumer and Future Taxpayer</h1><p>Understanding taxes isn't just for accountants. It empowers you to make informed financial decisions and fulfill your civic duties.</p><h2>Key Takeaways:</h2><ul><li><strong>Always Take a Bill:</strong> When you buy something, especially from a formal shop, insist on a bill. A proper bill shows that the seller is registered and will pay the collected GST to the government. This fights tax evasion.</li><li><strong>Understand Your Salary Slip:</strong> When you get your first job, look at your salary slip. You'll see deductions for 'TDS' (Tax Deducted at Source). This is your employer deducting and paying tax on your behalf.</li><li><strong>Plan Your Taxes:</strong> As your income grows, learning about legal tax-saving options (like those in the Old Regime) can save you a lot of money.</li></ul><p>Being tax-aware makes you a responsible citizen and a smarter manager of your own money.</p>",
+        "order_index": 7,
+        "video_url": "https://www.youtube.com/watch?v=kigAYlV6nUs",
+        "ai_summary": "This lesson emphasizes the importance of tax awareness for every citizen. Key actions include always requesting a bill to ensure GST is paid to the government, understanding TDS (Tax Deducted at Source) on a salary slip, and planning for legal tax-saving opportunities as income increases. This knowledge fosters responsible citizenship and better personal financial management.\n\n*   **Take a Bill:** Helps ensure GST is paid and fights tax evasion.\n*   **Understand TDS:** Know that tax is being paid on your salary.\n*   **Plan Ahead:** Learn about legal ways to save tax as your income grows.\n*   **Empowerment:** Tax awareness makes you a smarter, more responsible citizen.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "Why is it important to ask for a bill when you make a purchase?",
+                "options": ["It's a souvenir", "It helps ensure the seller pays the correct GST to the government", "It's required to get a discount"],
+                "answer": "It helps ensure the seller pays the correct GST to the government"
+            }
+        ]
+    },
+    {
+      "id": "5-1",
+      "lesson_id": "5",
+      "title": "Day 1: What Makes an Entrepreneur?",
+      "content": "<h1>The Entrepreneurial Mindset</h1><p>An entrepreneur is not just a business owner. They are innovators who identify a problem and create a solution for it, often taking on financial risks in the hope of profit.</p><h2>Key Traits of an Entrepreneur:</h2><ul><li><strong>Problem-Solver:</strong> They are obsessed with solving a particular problem for a group of people (their customers).</li><li><strong>Risk-Taker:</strong> They are willing to invest their time, money, and energy into an unproven idea.</li><li><strong>Resilient:</strong> They don't give up easily. They learn from failures and keep going.</li><li><strong>Visionary:</strong> They can see a future that doesn't exist yet and inspire others to help build it.</li></ul><p>Entrepreneurship starts with a mindset of seeing problems not as obstacles, but as opportunities.</p>",
+      "order_index": 1,
+      "video_url": "https://www.youtube.com/watch?v=uC0_5pPymU0",
+      "ai_summary": "This lesson defines an entrepreneur as an innovative problem-solver who takes calculated risks to create new solutions. It outlines key traits such as being a resilient risk-taker, a visionary, and having a mindset that views problems as opportunities. The focus is on the proactive and creative spirit of entrepreneurship, not just business ownership.\n\n*   **Core Idea:** An entrepreneur solves problems.\n*   **Key Traits:** Risk-taking, resilience, and vision.\n*   **Mindset:** Seeing problems as opportunities.\n*   **Action:** They invest time and money to build their vision.",
+      "practice_questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "question": "What is the most fundamental trait of an entrepreneur?",
+          "options": ["Having a lot of money", "Identifying and solving a problem", "Being famous"],
+          "answer": "Identifying and solving a problem"
+        }
+      ]
+    },
+    {
+        "id": "5-2",
+        "lesson_id": "5",
+        "title": "Day 2: Finding and Validating Your Idea",
+        "content": "<h1>Is Your Idea Any Good?</h1><p>A great idea is not enough. You need to know if people actually want or need your solution. This process is called idea validation.</p><h2>How to Validate Your Idea:</h2><ul><li><strong>Solve Your Own Problem:</strong> The best ideas often come from solving a problem you personally face. If you need it, chances are others do too.</li><li><strong>Talk to Potential Customers:</strong> Don't build in secret! Go out and talk to people you think would use your product. Ask them about their problems. Do they see value in your proposed solution?</li><li><strong>Create a Minimum Viable Product (MVP):</strong> An MVP is the simplest, most basic version of your product that you can build to test your idea. It could be a simple website, a basic app, or even just a presentation. The goal is to get real-world feedback without spending too much time or money.</li></ul><p>Validation is about learning what your customers want *before* you build it.</p>",
+        "order_index": 2,
+        "video_url": "https://www.youtube.com/watch?v=f-h_8gKOO6U",
+        "ai_summary": "This lesson explains that a good idea must be validated to ensure there is a real need for it. Key validation methods include solving a personal problem, talking directly to potential customers to gauge their interest, and creating a Minimum Viable Product (MVP)—the simplest version of the product—to gather real-world feedback without significant investment.\n\n*   **Validation:** Checking if people actually want your idea.\n*   **Methods:** Solve your own problem, talk to users, build an MVP.\n*   **MVP:** The most basic version of your product used for testing.\n*   **Goal:** Learn what customers want before you build the full product.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "What is an MVP (Minimum Viable Product)?",
+                "options": ["The final, perfect version of a product", "A marketing plan", "The simplest version of a product to test an idea"],
+                "answer": "The simplest version of a product to test an idea"
+            }
+        ]
+    },
+    {
+        "id": "5-3",
+        "lesson_id": "5",
+        "title": "Day 3: The Business Model Canvas (Part 1)",
+        "content": "<h1>Your Business on One Page</h1><p>The Business Model Canvas (BMC) is a strategic tool that lets you visualize, design, and pivot your business model on a single page. It has 9 building blocks. Let's cover the first four today.</p><h2>The Right Side of the Canvas (The Customer)</h2><ul><li><strong>1. Customer Segments:</strong> Who are your customers? Are you selling to students, parents, small businesses? Be specific.</li><li><strong>2. Value Proposition:</strong> What problem are you solving for your customers? What value are you delivering? Is it cost savings, convenience, better design? This is the heart of your business.</li><li><strong>3. Channels:</strong> How do you reach your customers? Through a website, a physical store, social media, or a mobile app?</li><li><strong>4. Customer Relationships:</strong> How do you interact with your customers? Is it automated, personal assistance, or a community?</li></ul>",
+        "order_index": 3,
+        "video_url": "https://www.youtube.com/watch?v=IP0jC-iU4gA",
+        "ai_summary": "This lesson introduces the Business Model Canvas (BMC) as a one-page tool for visualizing a business. It focuses on the first four blocks, which are customer-facing: Customer Segments (who you're selling to), Value Proposition (what problem you solve), Channels (how you reach customers), and Customer Relationships (how you interact with them).\n\n*   **BMC:** A one-page plan for your business.\n*   **Customer Segments:** Your target audience.\n*   **Value Proposition:** The value or solution you offer.\n*   **Channels:** How you deliver your value proposition.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "The 'Value Proposition' on the Business Model Canvas answers which question?",
+                "options": ["How much will it cost?", "Who are my customers?", "What problem am I solving for my customers?"],
+                "answer": "What problem am I solving for my customers?"
+            }
+        ]
+    },
+    {
+        "id": "5-4",
+        "lesson_id": "5",
+        "title": "Day 4: The Business Model Canvas (Part 2)",
+        "content": "<h1>The Engine Room of Your Business</h1><p>Let's complete the Business Model Canvas by looking at the backend operations and finances.</p><h2>The Left Side & Bottom of the Canvas</h2><ul><li><strong>5. Key Activities:</strong> What are the most important things you must *do* to make your business model work? (e.g., coding, marketing, manufacturing).</li><li><strong>6. Key Resources:</strong> What are the most important *assets* you need? (e.g., a website, an office, expert staff, patents).</li><li><strong>7. Key Partnerships:</strong> Who are the key partners and suppliers you need to rely on? (e.g., a payment gateway, a delivery service).</li><li><strong>8. Cost Structure:</strong> What are the most significant costs in your business? (e.g., salaries, server costs, marketing spend).</li><li><strong>9. Revenue Streams:</strong> How do you make money? Is it a one-time sale, a subscription, advertising?</li></ul><p>Once filled out, the BMC gives you a complete, high-level view of your entire business.</p>",
+        "order_index": 4,
+        "video_url": "https://www.youtube.com/watch?v=QoAOzMTLP5s",
+        "ai_summary": "This lesson completes the Business Model Canvas by covering the operational and financial building blocks. These include Key Activities (what you do), Key Resources (what you need), Key Partnerships (who helps you), Cost Structure (what you spend), and Revenue Streams (how you make money). Together, these 9 blocks provide a full overview of the business.\n\n*   **Key Activities/Resources:** The essential actions and assets for your business.\n*   **Key Partnerships:** External companies you rely on.\n*   **Cost Structure:** Your main business expenses.\n*   **Revenue Streams:** How your business earns money.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "A subscription fee is an example of which BMC block?",
+                "options": ["Cost Structure", "Key Partnerships", "Revenue Streams"],
+                "answer": "Revenue Streams"
+            }
+        ]
+    },
+    {
+        "id": "5-5",
+        "lesson_id": "5",
+        "title": "Day 5: Costing, Pricing, and Profit",
+        "content": "<h1>The Numbers Game</h1><p>Understanding your costs is critical to setting the right price and making a profit.</p><h2>Key Financial Concepts</h2><ul><li><strong>Cost of Goods Sold (COGS):</strong> The direct costs of producing your product or service. For a t-shirt business, this would be the cost of the blank t-shirt and the printing.</li><li><strong>Operating Expenses (OpEx):</strong> The indirect costs of running the business, like marketing, salaries, and rent.</li><li><strong>Price:</strong> The amount you charge the customer for your product/service.</li><li><strong>Profit:</strong> What's left after you subtract all costs from your revenue (Revenue - COGS - OpEx = Profit).</li></ul><p>Your price must be high enough to cover all your costs and leave you with a healthy profit, but also be competitive enough for customers to choose you.</p>",
+        "order_index": 5,
+        "video_url": "https://www.youtube.com/watch?v=Mwq9a501P5I",
+        "ai_summary": "This lesson focuses on the essential financial concepts for any business. It defines Cost of Goods Sold (direct costs), Operating Expenses (indirect costs), Price (what you charge), and Profit (what remains after all costs are paid). It emphasizes that pricing must be set to cover all costs and generate a profit while remaining competitive.\n\n*   **COGS:** Direct costs of making a product.\n*   **OpEx:** Indirect costs of running the business.\n*   **Price:** What the customer pays.\n*   **Profit:** Revenue minus all costs.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "text",
+                "question": "For a coffee shop, what is one example of COGS and one example of an Operating Expense?",
+                "answer": "COGS could be the coffee beans and milk. An Operating Expense could be the rent for the shop or the barista's salary."
+            }
+        ]
+    },
+    {
+        "id": "5-6",
+        "lesson_id": "5",
+        "title": "Day 6: Introduction to Marketing & Sales",
+        "content": "<h1>Getting Your Product to Customers</h1><p>You can have the best product in the world, but if nobody knows about it, you won't make any sales.</p><h2>Marketing vs. Sales</h2><ul><li><strong>Marketing:</strong> The process of creating awareness and interest in your product. It's about telling your story and reaching your target audience. Examples include social media content, advertising, and SEO (Search Engine Optimization).</li><li><strong>Sales:</strong> The process of converting that interest into a purchase. It's about closing the deal. Examples include a 'Buy Now' button on a website, a salesperson in a store, or a discount offer.</li></ul><p>Marketing brings people to your door; sales invites them in and makes them a customer.</p>",
+        "order_index": 6,
+        "video_url": "https://www.youtube.com/watch?v=He4Qx3_N36A",
+        "ai_summary": "This lesson differentiates between marketing and sales. Marketing is the process of building awareness and generating interest in a product through activities like social media and advertising. Sales is the process of converting that interest into an actual purchase, for example, through a checkout process or a salesperson.\n\n*   **Marketing:** Creating awareness and interest.\n*   **Sales:** Converting interest into a purchase.\n*   **Analogy:** Marketing brings customers to your shop; sales convinces them to buy.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "Running an Instagram ad for your new product is an example of...",
+                "options": ["Sales", "Marketing", "Accounting"],
+                "answer": "Marketing"
+            }
+        ]
+    },
+    {
+        "id": "5-7",
+        "lesson_id": "5",
+        "title": "Day 7: The Pitch: Telling Your Story",
+        "content": "<h1>Selling Your Vision</h1><p>A pitch is a brief and persuasive presentation of your business idea. You'll need to pitch to potential investors, customers, and employees.</p><h2>Elements of a Great Pitch (Elevator Pitch)</h2><p>An elevator pitch is a 30-60 second summary of your business. It should be clear and memorable.</p><ol><li><strong>The Problem:</strong> Start with the problem you are solving in a relatable way.</li><li><strong>The Solution:</strong> Clearly explain how your product or service solves that problem.</li><li><strong>The Target Market:</strong> Who are you solving this problem for?</li><li><strong>The 'Secret Sauce':</strong> What makes you unique? Why are you different from competitors?</li><li><strong>The Ask (if for investors):</strong> What do you need? (e.g., 'We are seeking ₹10 Lakhs to scale our user acquisition.')</li></ol><p>Practice your pitch until you can deliver it confidently and passionately.</p>",
+        "order_index": 7,
+        "video_url": "https://www.youtube.com/watch?v=i6O98o2FRro",
+        "ai_summary": "This lesson explains how to create a compelling business pitch, focusing on the 'elevator pitch'—a 30-60 second summary. It outlines the five key components: starting with the Problem, presenting your Solution, identifying the Target Market, explaining your Unique Advantage ('Secret Sauce'), and, if applicable, stating your 'Ask' from investors.\n\n*   **Pitch:** A brief, persuasive presentation of your business.\n*   **Elevator Pitch:** A 30-60 second version.\n*   **Key Elements:** Problem, Solution, Target Market, Secret Sauce, Ask.\n*   **Goal:** Be clear, confident, and memorable.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "text",
+                "question": "In one sentence, describe a problem you face in your daily life that a startup could solve.",
+                "answer": "Any reasonable answer is acceptable, e.g., 'I waste a lot of time finding relevant study materials for my exams online' or 'It's hard to coordinate group projects with my classmates efficiently.'"
+            }
+        ]
+    },
+    {
+        "id": "6-1",
+        "lesson_id": "6",
+        "title": "Day 1: What is Personal Branding?",
+        "content": "<h1>You Are a Brand</h1><p>Personal branding is the conscious and intentional effort to create and influence public perception of an individual. It's the story people tell about you when you're not in the room.</p><h2>Why Does it Matter?</h2><p>In the digital age, everyone has a personal brand, whether they cultivate it or not. A strong personal brand can:</p><ul><li>Open up career opportunities.</li><li>Build trust and credibility in your field.</li><li>Help you connect with like-minded people and mentors.</li><li>Give you a platform to share your ideas and make an impact.</li></ul><p>Your brand is a combination of your skills, your personality, your values, and how you express them.</p>",
+        "order_index": 1,
+        "video_url": "https://www.youtube.com/watch?v=T4Ah0QdKofY",
+        "ai_summary": "This lesson defines personal branding as the intentional process of shaping how others perceive you. It emphasizes that a strong personal brand is crucial in the digital age for creating career opportunities, building credibility, and networking. Your brand is a mix of your skills, values, and how you present yourself to the world.\n\n*   **Personal Brand:** The story people tell about you.\n*   **Why it Matters:** It creates opportunities and builds trust.\n*   **Everyone has one:** Whether you manage it or not.\n*   **Components:** Skills + Personality + Values.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "What is personal branding?",
+                "options": ["Being famous on Instagram", "The process of managing how others see you", "Changing your personality"],
+                "answer": "The process of managing how others see you"
+            }
+        ]
+    },
+    {
+        "id": "6-2",
+        "lesson_id": "6",
+        "title": "Day 2: Discovering Your Strengths & Passions",
+        "content": "<h1>The Foundation of Your Brand</h1><p>An authentic personal brand is built on your genuine strengths and passions. You can't fake it for long!</p><h2>How to Self-Reflect:</h2><ul><li><strong>What are you good at?</strong> Think about school subjects, hobbies, or skills. What do people compliment you on?</li><li><strong>What do you enjoy doing?</strong> What activities make you lose track of time? What topics do you love learning about?</li><li><strong>What are your core values?</strong> What is most important to you? (e.g., honesty, creativity, helping others, financial security).</li></ul><p>The intersection of what you're good at and what you love doing is a powerful place. This is the core message your brand should communicate.</p>",
+        "order_index": 2,
+        "video_url": "https://www.youtube.com/watch?v=0k6C31osA3A",
+        "ai_summary": "This lesson explains that an authentic personal brand must be based on your true strengths, passions, and values. It encourages self-reflection by asking what you are skilled at, what you enjoy, and what your core values are. The intersection of your skills and passions forms the core message of your brand.\n\n*   **Authenticity:** Your brand must be based on the real you.\n*   **Self-Reflection:** Identify your skills, passions, and values.\n*   **Core Message:** The sweet spot where your skills and passions meet.\n*   **Goal:** Understand yourself to build a genuine brand.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "text",
+                "question": "List one thing you are good at and one thing you are passionate about.",
+                "answer": "Answers will be personal but should list one skill and one interest. For example: 'I am good at math and I am passionate about video games.'"
+            }
+        ]
+    },
+    {
+        "id": "6-3",
+        "lesson_id": "6",
+        "title": "Day 3: Crafting Your Online Presence (LinkedIn)",
+        "content": "<h1>Your Digital Handshake</h1><p>LinkedIn is the world's largest professional network. It's your online resume and a powerful tool for career growth. A professional profile is non-negotiable.</p><h2>Key Elements of a Strong LinkedIn Profile:</h2><ul><li><strong>Professional Photo:</strong> A clear, friendly headshot. No selfies or group photos.</li><li><strong>Headline:</strong> More than just your job title. Describe what you do and who you help. (e.g., 'Aspiring Data Analyst | Passionate about turning data into stories').</li><li><strong>'About' Section:</strong> Your story. Write a few paragraphs about your skills, interests, and career goals.</li><li><strong>Experience:</strong> List jobs, internships, and even significant volunteer or project work. Use action verbs to describe what you accomplished.</li></ul><p>Keep your profile updated and connect with people in fields that interest you.</p>",
+        "order_index": 3,
+        "video_url": "https://www.youtube.com/watch?v=hp35grLzG3A",
+        "ai_summary": "This lesson positions LinkedIn as an essential tool for professional branding, acting as a 'digital resume.' It details the key components of a strong profile: a professional photo, a descriptive headline, a compelling 'About' section, and a detailed 'Experience' section that lists jobs and projects. Maintaining an updated profile and networking are emphasized.\n\n*   **LinkedIn:** Your online professional identity.\n*   **Photo:** A professional headshot is a must.\n*   **Headline:** Describe who you are and what you do.\n*   **About Section:** Tell your professional story.\n*   **Experience:** Detail your accomplishments, not just your duties.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "What is the most important part of your LinkedIn profile to make a first impression?",
+                "options": ["Your number of connections", "Your photo and headline", "Your list of skills"],
+                "answer": "Your photo and headline"
+            }
+        ]
+    },
+    {
+        "id": "6-4",
+        "lesson_id": "6",
+        "title": "Day 4: Creating a Killer Resume",
+        "content": "<h1>Your Career on One Page</h1><p>A resume is a formal document that summarizes your education, skills, and work experience. It's often the first impression you make on a potential employer.</p><h2>Key Resume Sections:</h2><ul><li><strong>Contact Information:</strong> Your name, phone number, email, and a link to your LinkedIn profile.</li><li><strong>Summary/Objective:</strong> A brief 2-3 sentence overview of who you are and what you're looking for.</li><li><strong>Education:</strong> Your school, degree/course, and graduation date.</li><li><strong>Experience:</strong> Internships, part-time jobs, and volunteer work. Use bullet points and action verbs (e.g., 'Managed', 'Created', 'Organized').</li><li><strong>Skills:</strong> List your relevant hard skills (like programming languages, software) and soft skills (like communication, teamwork).</li></ul><p>Keep it clean, professional, and ideally to one page.</p>",
+        "order_index": 4,
+        "video_url": "https://www.youtube.com/watch?v=hB2nZqY1m4o",
+        "ai_summary": "This lesson outlines how to create an effective resume, describing it as a one-page summary of your qualifications for employers. It covers the essential sections: Contact Information, a brief Summary/Objective, Education, Experience (using action verbs and bullet points), and a list of relevant Skills. The importance of a clean, professional, one-page format is highlighted.\n\n*   **Resume:** A formal summary of your professional self.\n*   **Key Sections:** Contact, Summary, Education, Experience, Skills.\n*   **Action Verbs:** Use strong verbs to describe accomplishments.\n*   **Format:** Keep it clean, professional, and one page long.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "Which of these is a strong action verb for a resume?",
+                "options": ["Was responsible for", "Did", "Organized"],
+                "answer": "Organized"
+            }
+        ]
+    },
+    {
+        "id": "6-5",
+        "lesson_id": "6",
+        "title": "Day 5: Networking for Beginners",
+        "content": "<h1>It's Not What You Know, It's Who You Know</h1><p>Networking is about building genuine relationships with people in your field of interest. It's a long-term investment in your career.</p><h2>How to Network:</h2><ul><li><strong>Informational Interviews:</strong> Reach out to people in roles you find interesting. Ask for 15 minutes of their time to hear about their journey. People love talking about themselves! Don't ask for a job.</li><li><strong>Use LinkedIn:</strong> Connect with people at companies you admire. Send a personalized connection request: 'Hi [Name], I'm a student interested in [their field] and I was inspired by your work on [a project]. I'd love to connect and follow your work.'</li><li><strong>Attend Events:</strong> Go to webinars, workshops, and (when possible) in-person meetups related to your interests.</li></ul><p>The goal is to learn and build relationships, not just to collect contacts.</p>",
+        "order_index": 5,
+        "video_url": "https://www.youtube.com/watch?v=TDV39D11OqA",
+        "ai_summary": "This lesson introduces networking as the art of building genuine professional relationships. It provides practical tips for beginners, such as conducting informational interviews to learn from professionals, sending personalized connection requests on LinkedIn, and attending industry events and webinars. The emphasis is on learning and relationship-building, not just collecting contacts or asking for jobs.\n\n*   **Networking:** Building genuine professional relationships.\n*   **Informational Interviews:** A great way to learn without pressure.\n*   **LinkedIn:** Personalize your connection requests.\n*   **Goal:** Focus on learning and building rapport.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "What is the primary goal of an informational interview?",
+                "options": ["To get a job immediately", "To learn about someone's career path and industry", "To sell a product"],
+                "answer": "To learn about someone's career path and industry"
+            }
+        ]
+    },
+    {
+        "id": "6-6",
+        "lesson_id": "6",
+        "title": "Day 6: Acing Your First Interview",
+        "content": "<h1>Making a Great Impression</h1><p>An interview is a two-way conversation to see if you're a good fit for the company, and if the company is a good fit for you.</p><h2>Interview Preparation Tips:</h2><ul><li><strong>Research the Company:</strong> Understand what the company does, its mission, and its recent projects.</li><li><strong>Prepare for Common Questions:</strong> Be ready to answer questions like 'Tell me about yourself,' 'What are your strengths and weaknesses?', and 'Why do you want to work here?'.</li><li><strong>Use the STAR Method:</strong> When answering behavioral questions ('Tell me about a time when...'), use the STAR method: <strong>S</strong>ituation (context), <strong>T</strong>ask (your responsibility), <strong>A</strong>ction (what you did), <strong>R</strong>esult (the outcome).</li><li><strong>Prepare Your Own Questions:</strong> Always have 2-3 thoughtful questions to ask the interviewer. It shows you're engaged and curious.</li></ul>",
+        "order_index": 6,
+        "video_url": "https://www.youtube.com/watch?v=h-Mr3pqnBCY",
+        "ai_summary": "This lesson provides key strategies for succeeding in a job interview. It stresses the importance of researching the company beforehand and preparing for common questions. It introduces the STAR method (Situation, Task, Action, Result) for answering behavioral questions and advises preparing your own questions to ask the interviewer, which demonstrates engagement and interest.\n\n*   **Research:** Know the company's mission and work.\n*   **Prepare:** Practice answers to common questions.\n*   **STAR Method:** A structured way to answer behavioral questions.\n*   **Ask Questions:** Show your interest by having questions for them.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "What does the 'A' in the STAR method stand for?",
+                "options": ["Attitude", "Action", "Answer"],
+                "answer": "Action"
+            }
+        ]
+    },
+    {
+        "id": "6-7",
+        "lesson_id": "6",
+        "title": "Day 7: The Art of Communication & Follow-Up",
+        "content": "<h1>Closing the Loop</h1><p>Your communication skills are always on display, from your resume to your follow-up email.</p><h2>Professional Communication</h2><ul><li><strong>Written Communication:</strong> Keep emails and messages clear, concise, and free of typos. Use a professional greeting and closing.</li><li><strong>Verbal Communication:</strong> Speak clearly and confidently. Listen actively and avoid interrupting others.</li></ul><h2>The Follow-Up Email</h2><p>Always send a thank-you email within 24 hours of an interview. It's a simple but powerful gesture.</p><p>Your email should:</p><ol><li>Thank the interviewer for their time.</li><li>Briefly reiterate your interest in the role.</li><li>Mention something specific you discussed that you found interesting.</li></ol><p>Good communication and thoughtful follow-up can set you apart from other candidates.</p>",
+        "order_index": 7,
+        "video_url": "https://www.youtube.com/watch?v=TJ3a2sL1P8M",
+        "ai_summary": "This lesson focuses on the importance of professional communication throughout the job application process. It covers maintaining clear and error-free written communication and confident verbal skills. It also highlights the critical step of sending a personalized thank-you email within 24 hours of an interview to reiterate interest and leave a lasting positive impression.\n\n*   **Be Professional:** Ensure all communication is clear and polite.\n*   **Follow Up:** Always send a thank-you email after an interview.\n*   **Thank-You Email:** Thank them, restate your interest, and mention a specific point from the conversation.\n*   **Impact:** Good follow-up makes you stand out.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "How soon should you send a thank-you email after an interview?",
+                "options": ["Within a week", "Within 24 hours", "You don't need to send one"],
+                "answer": "Within 24 hours"
+            }
+        ]
+    },
+    {
+      "id": "7-1",
+      "lesson_id": "7",
+      "title": "Day 1: What is Data? The New Oil",
+      "content": "<h1>Understanding Data</h1><p>Data is a collection of facts, such as numbers, words, measurements, observations or even just descriptions of things. In today's world, data is one of the most valuable assets.</p><h2>Types of Data</h2><ul><li><strong>Quantitative Data:</strong> Data that can be measured with numbers. (e.g., your height, the temperature outside, the price of a phone).</li><li><strong>Qualitative Data:</strong> Data that is descriptive and cannot be measured. (e.g., the color of your eyes, your favorite type of music, reviews of a movie).</li></ul><h2>Why is Data Important?</h2><p>Companies like Google, Netflix, and Amazon use data to understand their customers, make better decisions, and create better products. For example, Netflix analyzes what you watch to recommend new shows you might like.</p>",
+      "order_index": 1,
+      "video_url": "https://www.youtube.com/watch?v=CX-68_O-9GE",
+      "ai_summary": "This lesson defines data as a collection of facts and distinguishes between two main types: quantitative (numerical) and qualitative (descriptive). It emphasizes data's value in the modern world, explaining how companies use it to understand customers and make informed decisions, using Netflix's recommendation system as an example.\n\n*   **Data:** A collection of facts.\n*   **Quantitative:** Numerical data (e.g., height, price).\n*   **Qualitative:** Descriptive data (e.g., color, opinion).\n*   **Value:** Data helps companies make better decisions.",
+      "practice_questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "question": "The number of students in a class is an example of what type of data?",
+          "options": ["Quantitative", "Qualitative", "Both"],
+          "answer": "Quantitative"
+        }
+      ]
+    },
+    {
+        "id": "7-2",
+        "lesson_id": "7",
+        "title": "Day 2: Introduction to Spreadsheets (Excel/Sheets)",
+        "content": "<h1>Organizing Your Data</h1><p>A spreadsheet is a computer application for organization, analysis and storage of data in tabular form. Excel and Google Sheets are the most popular spreadsheet tools.</p><h2>Basic Spreadsheet Terminology</h2><ul><li><strong>Cell:</strong> A single box in the spreadsheet. Each cell has an address (e.g., A1, B2).</li><li><strong>Row:</strong> A horizontal line of cells, numbered 1, 2, 3...</li><li><strong>Column:</strong> A vertical line of cells, lettered A, B, C...</li><li><strong>Formula:</strong> An expression that calculates a value. Formulas always start with an equals sign (=). For example, <code>=A1+B1</code> will add the values in cells A1 and B1.</li><li><strong>Function:</strong> A predefined formula, like <code>SUM()</code>, <code>AVERAGE()</code>, or <code>VLOOKUP()</code>.</li></ul>",
+        "order_index": 2,
+        "video_url": "https://www.youtube.com/watch?v=c6jKBY2n7g8",
+        "ai_summary": "This lesson introduces spreadsheets (like Excel and Google Sheets) as tools for organizing data in tables. It covers basic terminology: a Cell (a single box with an address like A1), a Row (horizontal), a Column (vertical), a Formula (a calculation starting with '='), and a Function (a built-in formula like SUM()).\n\n*   **Spreadsheet:** A tool for organizing data in tables.\n*   **Cell:** A single box in the grid.\n*   **Formula:** An expression to calculate a value (e.g., `=A1+B1`).\n*   **Function:** A preset formula like `SUM()` or `AVERAGE()`.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "What is the address of the cell in the first column and second row?",
+                "options": ["1A", "2A", "A2"],
+                "answer": "A2"
+            }
+        ]
+    },
+    {
+        "id": "7-3",
+        "lesson_id": "7",
+        "title": "Day 3: Basic Formulas & Functions",
+        "content": "<h1>Making Spreadsheets Smart</h1><p>The real power of spreadsheets comes from formulas and functions. They can do the math for you!</p><h2>Essential Functions to Know</h2><p>Imagine you have a list of numbers in cells A1 to A10.</p><ul><li><strong>SUM:</strong> <code>=SUM(A1:A10)</code> will add up all the numbers in the range.</li><li><strong>AVERAGE:</strong> <code>=AVERAGE(A1:A10)</code> will calculate the average of the numbers.</li><li><strong>COUNT:</strong> <code>=COUNT(A1:A10)</code> will count how many cells in the range contain numbers.</li><li><strong>MAX:</strong> <code>=MAX(A1:A10)</code> will find the largest number in the range.</li><li><strong>MIN:</strong> <code>=MIN(A1:A10)</code> will find the smallest number in the range.</li></ul><p>By learning these basic functions, you can quickly analyze large sets of data.</p>",
+        "order_index": 3,
+        "video_url": "https://www.youtube.com/watch?v=2sW5Qp_oE6k",
+        "ai_summary": "This lesson focuses on the core power of spreadsheets: using functions to automate calculations. It introduces five essential functions for data analysis: SUM (to add numbers), AVERAGE (to find the mean), COUNT (to count entries), MAX (to find the largest value), and MIN (to find the smallest value).\n\n*   **SUM:** Adds all numbers in a range.\n*   **AVERAGE:** Calculates the average of a range.\n*   **COUNT:** Counts the number of cells with numbers.\n*   **MAX / MIN:** Finds the highest or lowest value in a range.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "Which function would you use to find the total sales from a list of transactions?",
+                "options": ["AVERAGE", "COUNT", "SUM"],
+                "answer": "SUM"
+            }
+        ]
+    },
+    {
+        "id": "7-4",
+        "lesson_id": "7",
+        "title": "Day 4: Sorting and Filtering Data",
+        "content": "<h1>Finding What You Need</h1><p>When you have a lot of data, you need ways to organize it and find specific information quickly.</p><h2>Sorting</h2><p>Sorting allows you to reorder your data. For example, you can sort a list of students alphabetically by name, or from highest to lowest by their exam scores.</p><h2>Filtering</h2><p>Filtering allows you to hide data that you don't want to see and show only the data that meets certain criteria. For example, in a list of students from different cities, you could filter the list to show only the students from 'Delhi'. The other rows are not deleted, just temporarily hidden.</p><p>Sorting and filtering are essential skills for managing and analyzing datasets of any size.</p>",
+        "order_index": 4,
+        "video_url": "https://www.youtube.com/watch?v=b4Y9T6iK_Ok",
+        "ai_summary": "This lesson explains two crucial data management techniques: sorting and filtering. Sorting is used to reorder data, such as arranging a list alphabetically or by numerical value. Filtering is used to selectively display data that meets specific criteria while temporarily hiding the rest. These skills are fundamental for working with large datasets.\n\n*   **Sorting:** Reordering data (e.g., A-Z, highest to lowest).\n*   **Filtering:** Showing only the data that matches a condition.\n*   **Purpose:** To quickly organize and find specific information.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "If you want to see only the sales made in the month of March from a list of yearly sales, you should use...",
+                "options": ["Sorting", "Filtering", "Formulas"],
+                "answer": "Filtering"
+            }
+        ]
+    },
+    {
+        "id": "7-5",
+        "lesson_id": "7",
+        "title": "Day 5: Introduction to PivotTables",
+        "content": "<h1>Summarizing Data Like a Pro</h1><p>A PivotTable is one of the most powerful features in Excel and Google Sheets. It's an interactive tool that allows you to quickly summarize large amounts of data.</p><h2>What can a PivotTable do?</h2><p>Imagine you have a long list of sales data with columns for 'Product', 'Region', and 'Sale Amount'. With a PivotTable, you can instantly answer questions like:</p><ul><li>'What were the total sales for each region?'</li><li>'Which product sold the most in the North region?'</li><li>'How many units were sold per product?'</li></ul><p>A PivotTable lets you 'pivot' or rearrange your data by dragging and dropping fields, turning a flat list of data into a meaningful summary report without using any complex formulas.</p>",
+        "order_index": 5,
+        "video_url": "https://www.youtube.com/watch?v=333-Qv3gA-Q",
+        "ai_summary": "This lesson introduces PivotTables as a powerful tool in Excel and Google Sheets for summarizing large datasets. It explains that a PivotTable can interactively rearrange data to quickly answer complex questions—such as finding total sales per region or identifying top-selling products—all without needing to write complex formulas.\n\n*   **PivotTable:** A tool to quickly summarize large data.\n*   **Function:** Answers questions about data interactively.\n*   **How it Works:** Drag and drop fields to 'pivot' data.\n*   **Benefit:** Creates summary reports without complex formulas.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "text",
+                "question": "In your own words, what is the main benefit of using a PivotTable?",
+                "answer": "The main benefit is that it can quickly summarize a lot of data and create reports without needing to write complicated formulas."
+            }
+        ]
+    },
+    {
+        "id": "7-6",
+        "lesson_id": "7",
+        "title": "Day 6: Creating Your First Chart",
+        "content": "<h1>A Picture is Worth a Thousand Numbers</h1><p>Charts and graphs are visual representations of your data. They make it much easier to see patterns, trends, and comparisons than looking at a table of numbers.</p><h2>Common Chart Types:</h2><ul><li><strong>Bar Chart:</strong> Great for comparing values across different categories (e.g., sales per product).</li><li><strong>Line Chart:</strong> Perfect for showing a trend over time (e.g., monthly sales over a year).</li><li><strong>Pie Chart:</strong> Used to show parts of a whole (e.g., percentage of students from different cities). Be careful not to use these for too many categories, as they can become hard to read.</li></ul><p>Excel and Google Sheets have built-in tools that make creating a chart as simple as selecting your data and clicking a button.</p>",
+        "order_index": 6,
+        "video_url": "https://www.youtube.com/watch?v=uTr3i3L-Cyo",
+        "ai_summary": "This lesson explains that charts and graphs are visual tools that help in understanding data patterns and trends more easily than raw numbers. It covers the three most common types: Bar Charts for comparing categories, Line Charts for showing trends over time, and Pie Charts for representing parts of a whole. Spreadsheet software makes creating these charts simple.\n\n*   **Charts:** Visual representations of data.\n*   **Bar Chart:** Compares different categories.\n*   **Line Chart:** Shows changes over time.\n*   **Pie Chart:** Shows percentage breakdown of a whole.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "Which chart is best to show your exam scores improving over a semester?",
+                "options": ["Pie Chart", "Line Chart", "Bar Chart"],
+                "answer": "Line Chart"
+            }
+        ]
+    },
+    {
+        "id": "7-7",
+        "lesson_id": "7",
+        "title": "Day 7: Introduction to Coding (Python)",
+        "content": "<h1>Beyond Spreadsheets: The Power of Code</h1><p>While spreadsheets are powerful, coding gives you ultimate flexibility to analyze data. Python is one of the most popular programming languages for data analysis due to its simple syntax and powerful libraries.</p><h2>Your First Python Code</h2><p>Let's look at some basic concepts:</p><ul><li><strong>Variables:</strong> A container for storing data. <code>name = 'Aisha'</code> or <code>age = 17</code>.</li><li><strong>Data Types:</strong> Python has different data types like strings (text), integers (whole numbers), and floats (decimal numbers).</li><li><strong>Print:</strong> The <code>print()</code> function displays output to the screen. <code>print('Hello, World!')</code>.</li></ul><p>This is just the beginning. Learning to code opens up a new world of possibilities for working with data and automating tasks, skills that are highly valued in many careers.</p>",
+        "order_index": 7,
+        "video_url": "https://www.youtube.com/watch?v=kqtD5dpn9C8",
+        "ai_summary": "This lesson introduces Python as a popular and powerful programming language for data analysis, offering more flexibility than spreadsheets. It covers fundamental coding concepts: variables (for storing data), data types (like text and numbers), and the print() function (for displaying output). This serves as a starting point for learning a highly valued career skill.\n\n*   **Python:** A top programming language for data analysis.\n*   **Variables:** Used to store information (e.g., `age = 17`).\n*   **Data Types:** Different kinds of data like text and numbers.\n*   **Print:** A function to show output on the screen.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "In Python, what is a 'variable'?",
+                "options": ["A type of chart", "A container for storing data", "A function to display text"],
+                "answer": "A container for storing data"
+            }
+        ]
+    },
+    {
+        "id": "8-1",
+        "lesson_id": "8",
+        "title": "Day 1: What is Cybersecurity?",
+        "content": "<h1>Protecting Your Digital World</h1><p>Cybersecurity is the practice of protecting computers, servers, mobile devices, electronic systems, networks, and data from malicious attacks. It's about keeping your digital information safe and private.</p><h2>The CIA Triad</h2><p>Cybersecurity is often defined by three core principles, known as the CIA Triad:</p><ul><li><strong>Confidentiality:</strong> Ensuring that data is accessible only to authorized individuals. It's about privacy.</li><li><strong>Integrity:</strong> Maintaining the consistency, accuracy, and trustworthiness of data. It's about making sure your data hasn't been tampered with.</li><li><strong>Availability:</strong> Ensuring that data and services are available for use when needed by authorized users.</li></ul><p>Every security measure is designed to uphold one or more of these principles.</p>",
+        "order_index": 1,
+        "video_url": "https://www.youtube.com/watch?v=inWWhr5tnEA",
+        "ai_summary": "This lesson defines cybersecurity as the practice of protecting digital systems and data from attacks. It introduces the CIA Triad, the three fundamental principles of cybersecurity: Confidentiality (keeping data private), Integrity (ensuring data is accurate and untampered), and Availability (making sure data is accessible when needed).\n\n*   **Cybersecurity:** Protecting digital systems and data.\n*   **Confidentiality:** Keeping data secret.\n*   **Integrity:** Keeping data accurate.\n*   **Availability:** Ensuring data is accessible.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "Ensuring that only you can access your private files relates to which principle?",
+                "options": ["Confidentiality", "Integrity", "Availability"],
+                "answer": "Confidentiality"
+            }
+        ]
+    },
+    {
+        "id": "8-2",
+        "lesson_id": "8",
+        "title": "Day 2: Strong Passwords & 2FA",
+        "content": "<h1>Your First Line of Defense</h1><p>Passwords are the keys to your digital life. Weak passwords are like leaving your front door unlocked.</p><h2>Creating a Strong Password:</h2><ul><li><strong>Length is Strength:</strong> Aim for at least 12 characters. The longer, the better.</li><li><strong>Use a Mix:</strong> Include uppercase letters, lowercase letters, numbers, and symbols (e.g., !, @, #).</li><li><strong>Avoid Personal Info:</strong> Don't use your name, birthday, or common words.</li><li><strong>Use a Passphrase:</strong> Think of a memorable but random phrase like 'Correct!Horse-Battery-Staple'. It's long and hard to guess.</li></ul><h2>Two-Factor Authentication (2FA)</h2><p>2FA adds a second layer of security. Even if someone steals your password, they can't log in without a second piece of information, usually a code sent to your phone. <strong>You should enable 2FA on all your important accounts (email, social media, banking).</strong></p>",
+        "order_index": 2,
+        "video_url": "https://www.youtube.com/watch?v=g6guPqgJq-w",
+        "ai_summary": "This lesson focuses on creating strong passwords as a primary security measure. It recommends long passwords (12+ characters) with a mix of character types or using a memorable passphrase. It also strongly advises enabling Two-Factor Authentication (2FA), which requires a second verification step (like a code sent to your phone) to prevent unauthorized access even if your password is stolen.\n\n*   **Strong Password:** Long (12+ chars) and complex.\n*   **Passphrase:** A memorable phrase is a great password.\n*   **2FA:** A second layer of security, like a code from your phone.\n*   **Action:** Enable 2FA on all important accounts.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "What is Two-Factor Authentication (2FA)?",
+                "options": ["Using two different passwords", "A second layer of security, like a code sent to your phone", "A type of antivirus software"],
+                "answer": "A second layer of security, like a code sent to your phone"
+            }
+        ]
+    },
+    {
+        "id": "8-3",
+        "lesson_id": "8",
+        "title": "Day 3: What is Phishing?",
+        "content": "<h1>Don't Take the Bait!</h1><p>Phishing is a type of cyber attack where attackers try to trick you into giving them sensitive information, like your passwords or credit card numbers. They usually do this by sending fake emails, messages, or creating fake websites that look like real ones.</p><h2>Common Red Flags of a Phishing Email:</h2><ul><li><strong>Sense of Urgency:</strong> 'Your account will be suspended in 24 hours!' They want you to act fast without thinking.</li><li><strong>Generic Greetings:</strong> 'Dear Customer' instead of your actual name.</li><li><strong>Suspicious Links or Attachments:</strong> Hover over a link before you click to see the real URL. Never open unexpected attachments.</li><li><strong>Poor Grammar and Spelling:</strong> Professional companies usually don't make obvious mistakes.</li><li><strong>Sender's Email Address:</strong> The address might look slightly off (e.g., 'support@netflix-security.com' instead of '@netflix.com').</li></ul><p>When in doubt, don't click. Go directly to the official website or app instead.</p>",
+        "order_index": 3,
+        "video_url": "https://www.youtube.com/watch?v=o0leQAUgsq4",
+        "ai_summary": "This lesson defines phishing as a cyber attack where criminals use deceptive emails and websites to steal sensitive information. It lists common red flags to watch out for, including a false sense of urgency, generic greetings, suspicious links, poor grammar, and slightly incorrect sender email addresses. The main advice is to be cautious and visit official websites directly if an email seems suspicious.\n\n*   **Phishing:** Tricking you into giving up your data.\n*   **Red Flag:** A sense of urgency ('Act Now!').\n*   **Red Flag:** Suspicious links and sender email addresses.\n*   **Rule:** When in doubt, don't click the link.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "You receive an email from 'Amazon' saying your account is locked. What is the safest action?",
+                "options": ["Click the link in the email to unlock it", "Reply with your password to prove it's you", "Close the email and log in to your Amazon account directly through the official website"],
+                "answer": "Close the email and log in to your Amazon account directly through the official website"
+            }
+        ]
+    },
+    {
+        "id": "8-4",
+        "lesson_id": "8",
+        "title": "Day 4: Malware and Antivirus Software",
+        "content": "<h1>Malicious Software Explained</h1><p>Malware, short for malicious software, is any software intentionally designed to cause damage to a computer, server, client, or computer network.</p><h2>Types of Malware:</h2><ul><li><strong>Virus:</strong> Attaches itself to a clean file and spreads, infecting other clean files.</li><li><strong>Worm:</strong> Can replicate itself and spread to other computers on its own, without being attached to a file.</li><li><strong>Trojan Horse:</strong> Disguises itself as legitimate software to trick you into installing it.</li><li><strong>Ransomware:</strong> Locks and encrypts your files, demanding a ransom payment to unlock them.</li><li><strong>Spyware:</strong> Secretly records what you do on your computer, like your keystrokes, to steal information.</li></ul><h2>How to Protect Yourself</h2><p>Use a reputable antivirus software (like Windows Defender, which is built-in to Windows) and keep it updated. Be careful about what you download and install.</p>",
+        "order_index": 4,
+        "video_url": "https://www.youtube.com/watch?v=FpmA8v5e-I8",
+        "ai_summary": "This lesson defines malware as software designed to cause harm. It covers common types: Viruses (attach to files), Worms (self-spreading), Trojans (disguised as legit software), Ransomware (locks files for a fee), and Spyware (steals information by recording your activity). The best protection is using updated antivirus software and being cautious with downloads.\n\n*   **Malware:** Software designed to harm your computer.\n*   **Types:** Virus, Worm, Trojan, Ransomware, Spyware.\n*   **Protection:** Use a good antivirus program.\n*   **Caution:** Be careful about what you download and install.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "What type of malware locks your files and demands a payment to get them back?",
+                "options": ["Virus", "Spyware", "Ransomware"],
+                "answer": "Ransomware"
+            }
+        ]
+    },
+    {
+        "id": "8-5",
+        "lesson_id": "8",
+        "title": "Day 5: Social Media Privacy & Digital Footprint",
+        "content": "<h1>Think Before You Post</h1><p>Your digital footprint is the trail of data you leave behind when you use the internet. This includes your social media posts, comments, photos, and even things you've 'liked'.</p><h2>Managing Your Privacy on Social Media</h2><ul><li><strong>Check Your Privacy Settings:</strong> On platforms like Instagram and Facebook, set your profile to 'Private'. This means only your approved followers can see what you post.</li><li><strong>Be Selective:</strong> Don't accept friend or follow requests from people you don't know in real life.</li><li><strong>The 'Grandma Test':</strong> Before you post something, ask yourself: 'Would I be okay with my grandma seeing this?' If the answer is no, don't post it. Information on the internet can be permanent.</li><li><strong>Avoid Oversharing:</strong> Be careful about posting sensitive personal information, like your full address, phone number, or your real-time location.</li></ul>",
+        "order_index": 5,
+        "video_url": "https://www.youtube.com/watch?v=T_p6kSM2_U0",
+        "ai_summary": "This lesson explains that your digital footprint is the data trail you leave online. To manage it, you should adjust social media privacy settings to 'Private,' be selective about friend requests, and apply the 'Grandma Test'—don't post anything you wouldn't want your grandmother to see. It also warns against oversharing sensitive personal information like your address or location.\n\n*   **Digital Footprint:** The data you leave online.\n*   **Privacy Settings:** Set your social media accounts to private.\n*   **The Grandma Test:** If you wouldn't show it to your grandma, don't post it.\n*   **Oversharing:** Avoid posting your location, phone number, or address.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "What is the 'Grandma Test'?",
+                "options": ["A test to see if your grandma can use social media", "A rule of thumb: if you wouldn't want your grandma to see it, don't post it", "A way to share photos with your grandma"],
+                "answer": "A rule of thumb: if you wouldn't want your grandma to see it, don't post it"
+            }
+        ]
+    },
+    {
+        "id": "8-6",
+        "lesson_id": "8",
+        "title": "Day 6: Public Wi-Fi Dangers",
+        "content": "<h1>The Risks of 'Free' Wi-Fi</h1><p>Public Wi-Fi networks, like those in cafes, airports, and hotels, are convenient but often not secure. Anyone on the same network can potentially 'eavesdrop' on your internet traffic.</p><h2>How to Stay Safe on Public Wi-Fi:</h2><ul><li><strong>Avoid Sensitive Activities:</strong> Do not log in to your bank account, make online purchases, or enter any passwords while on public Wi-Fi.</li><li><strong>Look for 'HTTPS':</strong> When browsing, make sure the website address starts with 'https'. The 's' stands for 'secure', meaning the connection between your browser and the website is encrypted.</li><li><strong>Use a VPN:</strong> A Virtual Private Network (VPN) is the best way to stay safe. It creates a secure, encrypted 'tunnel' for your internet traffic, making it unreadable to anyone trying to snoop on the network.</li><li><strong>Turn Off Sharing:</strong> Make sure your device's file-sharing features are turned off.</li></ul>",
+        "order_index": 6,
+        "video_url": "https://www.youtube.com/watch?v=jS58Y65a-6A",
+        "ai_summary": "This lesson warns that public Wi-Fi is often insecure, allowing others on the network to potentially monitor your activity. To stay safe, you should avoid sensitive tasks like banking, ensure websites use HTTPS encryption, and turn off file sharing. The most effective protection is using a Virtual Private Network (VPN), which encrypts your internet connection.\n\n*   **Risk:** Public Wi-Fi is not secure.\n*   **Rule:** Avoid logging into important accounts (banking, email).\n*   **Look for HTTPS:** Ensure websites have the padlock icon.\n*   **Best Protection:** Use a VPN to encrypt your connection.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "What is the best tool for securing your connection on public Wi-Fi?",
+                "options": ["Antivirus Software", "A strong password", "A VPN (Virtual Private Network)"],
+                "answer": "A VPN (Virtual Private Network)"
+            }
+        ]
+    },
+    {
+        "id": "8-7",
+        "lesson_id": "8",
+        "title": "Day 7: Online Scams and How to Spot Them",
+        "content": "<h1>If It Seems Too Good to Be True...</h1><p>Scammers use various tricks to steal your money or personal information. Being aware of common scams is the best way to avoid them.</p><h2>Common Online Scams:</h2><ul><li><strong>Job Scams:</strong> An offer for a high-paying job that requires little effort, but asks you to pay a 'registration fee' or 'training fee' upfront. Real jobs don't ask you for money.</li><li><strong>Lottery/Prize Scams:</strong> An email or message saying you've won a lot of money or a prize, but you need to pay a 'processing fee' or 'tax' to claim it. You can't win a lottery you didn't enter.</li><li><strong>Tech Support Scams:</strong> A pop-up or call claiming your computer is infected with a virus, and they need remote access or payment to fix it. Microsoft or Apple will never call you about a virus.</li><li><strong>Online Shopping Scams:</strong> Fake websites that offer luxury products at unbelievably low prices. They either send you a cheap counterfeit or nothing at all.</li></ul><p>Always be skeptical of unsolicited offers. If it seems too good to be true, it probably is.</p>",
+        "order_index": 7,
+        "video_url": "https://www.youtube.com/watch?v=R3o_u4wARqA",
+        "ai_summary": "This lesson covers common online scams and how to identify them. These include job scams requiring an upfront fee, prize scams asking for a processing fee, tech support scams where fake representatives request payment or access to your computer, and shopping scams with deals that are too good to be true. The core advice is to remain skeptical of unsolicited offers.\n\n*   **Job Scams:** Real jobs don't ask you to pay them.\n*   **Prize Scams:** You can't win a lottery you didn't play.\n*   **Tech Support Scams:** Legitimate companies won't call you about viruses.\n*   **Rule of Thumb:** If it seems too good to be true, it is.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "A website offers the latest iPhone for ₹5,000. This is most likely a...",
+                "options": ["Great deal", "Online shopping scam", "Limited-time offer"],
+                "answer": "Online shopping scam"
+            }
+        ]
+    },
+    {
+        "id": "9-1",
+        "lesson_id": "9",
+        "title": "Day 1: What are Ethics in AI?",
+        "content": "<h1>Teaching Machines to be Good</h1><p>AI ethics is a field of study that focuses on the moral principles and values that should guide the design, development, and use of artificial intelligence. It's about ensuring AI is used for good and not for harm.</p><h2>Key Ethical Questions in AI:</h2><ul><li><strong>Fairness:</strong> Is the AI treating all groups of people fairly? Or does it have biases?</li><li><strong>Accountability:</strong> If an AI makes a mistake, who is responsible? The programmer, the user, or the company that built it?</li><li><strong>Transparency:</strong> Can we understand how the AI made its decision? Or is it a 'black box'?</li><li><strong>Privacy:</strong> How is the AI using our personal data? Is it being collected and used responsibly?</li></ul><p>As AI becomes more powerful, answering these questions becomes critically important for a safe and just society.</p>",
+        "order_index": 1,
+        "video_url": "https://www.youtube.com/watch?v=0k56Xsz_MK4",
+        "ai_summary": "This lesson introduces AI ethics as the moral framework guiding the development and use of artificial intelligence. It highlights the key ethical questions that need to be addressed: ensuring fairness and lack of bias, determining accountability for AI mistakes, achieving transparency in AI decision-making, and protecting user privacy.\n\n*   **AI Ethics:** Moral principles for building and using AI.\n*   **Fairness:** Does the AI treat everyone equally?\n*   **Accountability:** Who is responsible if an AI fails?\n*   **Transparency:** Can we understand the AI's decision process?\n*   **Privacy:** Is our data being used responsibly?",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "The question 'If a self-driving car has an accident, who is at fault?' relates to...",
+                "options": ["Privacy", "Accountability", "Transparency"],
+                "answer": "Accountability"
+            }
+        ]
+    },
+    {
+        "id": "9-2",
+        "lesson_id": "9",
+        "title": "Day 2: Algorithmic Bias",
+        "content": "<h1>When AI Gets it Wrong</h1><p>Algorithmic bias occurs when an AI system reflects the implicit biases of the humans who created it or the data it was trained on. This can lead to unfair and discriminatory outcomes.</p><h2>How Does Bias Happen?</h2><p>Imagine an AI is trained to screen resumes for a tech company. If, historically, the company has hired mostly men, the training data will reflect this. The AI might learn that male candidates are 'better' and unfairly screen out qualified female candidates. The AI isn't 'sexist'; it's just reflecting the bias present in its data.</p><h2>Real-World Examples:</h2><ul><li>Facial recognition systems that are less accurate for women and people of color.</li><li>Loan approval AI that unfairly denies loans to people from certain neighborhoods.</li></ul><p>Fighting bias in AI is a major challenge and requires careful data collection and continuous testing.</p>",
+        "order_index": 2,
+        "video_url": "https://www.youtube.com/watch?v=59bMh59JQDo",
+        "ai_summary": "This lesson explains that algorithmic bias occurs when an AI system produces unfair outcomes because it was trained on biased data or reflects the biases of its creators. Using a resume screening example, it shows how an AI could learn to favor one group over another based on historical data. This can lead to real-world problems like discriminatory facial recognition or loan approvals.\n\n*   **Algorithmic Bias:** AI systems making unfair decisions.\n*   **Cause:** Biased training data or human creators.\n*   **Example:** An AI learning to prefer male candidates because its training data showed more male hires.\n*   **Impact:** Can lead to discrimination in the real world.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "text",
+                "question": "Besides hiring, what is another area where AI bias could be a serious problem?",
+                "answer": "Good answers could include: criminal justice (predicting who might commit a crime), healthcare (diagnosing diseases), or access to insurance."
+            }
+        ]
+    },
+    {
+        "id": "9-3",
+        "lesson_id": "9",
+        "title": "Day 3: The 'Black Box' Problem (Transparency)",
+        "content": "<h1>How Did the AI Decide That?</h1><p>Some advanced AI models, especially deep learning networks, are so complex that even their creators don't fully understand how they arrive at a specific decision. This is known as the 'black box' problem.</p><h2>Why is Transparency Important?</h2><p>If an AI denies you a loan, you have a right to know why. If an AI makes a medical diagnosis, doctors need to understand its reasoning to trust it. Without transparency, we can't:</p><ul><li>Check for biases.</li><li>Fix errors.</li><li>Hold anyone accountable.</li><li>Trust the system.</li></ul><p>Researchers are working on 'Explainable AI' (XAI), a field dedicated to building AI systems that can explain their decisions in a way humans can understand.</p>",
+        "order_index": 3,
+        "video_url": "https://www.youtube.com/watch?v=AtojoA0GjN8",
+        "ai_summary": "This lesson describes the 'black box' problem in AI, where complex models make decisions that are difficult for even their creators to understand. This lack of transparency is problematic because it prevents us from checking for bias, fixing errors, and establishing accountability. The field of 'Explainable AI' (XAI) is emerging to create systems that can justify their reasoning.\n\n*   **Black Box Problem:** When we can't understand an AI's decision-making process.\n*   **Importance of Transparency:** It's essential for trust, accountability, and error-checking.\n*   **Example:** If an AI denies you a loan, you need to know why.\n*   **Solution:** 'Explainable AI' (XAI) aims to make AI decisions understandable.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "Why is a 'black box' AI a problem in medicine?",
+                "options": ["It costs too much", "Doctors can't trust a diagnosis if they don't understand the AI's reasoning", "It is too slow"],
+                "answer": "Doctors can't trust a diagnosis if they don't understand the AI's reasoning"
+            }
+        ]
+    },
+    {
+        "id": "9-4",
+        "lesson_id": "9",
+        "title": "Day 4: AI and Data Privacy",
+        "content": "<h1>Your Data Fuels AI</h1><p>AI models, especially LLMs, are trained on enormous amounts of data, much of which is scraped from the public internet. This raises significant privacy concerns.</p><h2>Privacy Risks with AI:</h2><ul><li><strong>Data Collection:</strong> Your public posts, photos, and comments could be part of an AI's training data without your direct consent.</li><li><strong>Inference:</strong> AI can analyze your data to infer sensitive information about you that you never shared, such as your political beliefs, health conditions, or personality traits.</li><li><strong>Surveillance:</strong> Facial recognition and other AI-powered surveillance technologies can track people's movements and activities on a massive scale.</li></ul><p>It's crucial for companies and governments to be transparent about what data they are collecting and how they are using it to train and run AI systems. Regulations like GDPR in Europe are a step in this direction.</p>",
+        "order_index": 4,
+        "video_url": "https://www.youtube.com/watch?v=pc13GEeC-a8",
+        "ai_summary": "This lesson explores the privacy risks associated with AI, which is trained on vast amounts of data, often from public sources. Key concerns include the non-consensual use of personal data for training, the ability of AI to infer sensitive information that wasn't explicitly shared, and the potential for mass surveillance through technologies like facial recognition. The need for transparency and regulation is emphasized.\n\n*   **AI Needs Data:** AI models are trained on massive datasets.\n*   **Privacy Risks:** Your data can be used without consent, and AI can infer private details about you.\n*   **Surveillance:** AI can be used for mass monitoring.\n*   **Solution:** Transparency and data protection regulations are needed.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "If an AI analyzes your music playlist to guess your personality type, this is an example of...",
+                "options": ["Inference", "Surveillance", "Data Collection"],
+                "answer": "Inference"
+            }
+        ]
+    },
+    {
+        "id": "9-5",
+        "lesson_id": "9",
+        "title": "Day 5: AI's Impact on Jobs",
+        "content": "<h1>Will a Robot Take My Job?</h1><p>This is one of the biggest questions in AI ethics. While AI will automate many tasks, it's more likely to *change* jobs than to eliminate them entirely.</p><h2>Tasks vs. Jobs</h2><p>AI is good at automating specific, repetitive *tasks*. A job, however, is usually a collection of many different tasks, including ones that require creativity, critical thinking, and empathy—skills that are very difficult for AI to replicate.</p><ul><li><strong>Jobs at Risk:</strong> Jobs that are highly repetitive and data-driven, like data entry or basic customer service.</li><li><strong>Jobs to be Transformed:</strong> AI will act as a co-pilot for doctors, lawyers, programmers, and artists, helping them work faster and better.</li><li><strong>New Jobs Created:</strong> New roles will emerge, such as 'AI trainer', 'prompt engineer', and 'AI ethics officer'.</li></ul><p>The key to staying relevant is to focus on developing human skills that AI can't replace and learning how to use AI as a tool.</p>",
+        "order_index": 5,
+        "video_url": "https://www.youtube.com/watch?v=yGqj49xo148",
+        "ai_summary": "This lesson addresses concerns about AI's impact on employment. It argues that AI is more likely to change jobs by automating specific tasks rather than eliminating jobs entirely. While repetitive roles are at risk, AI will also act as a 'co-pilot' in many professions and create new job categories. The key to career security is to focus on human-centric skills like creativity and critical thinking while learning to leverage AI as a tool.\n\n*   **AI automates tasks, not jobs:** Most jobs involve more than just repetitive tasks.\n*   **Transformation, not elimination:** Many jobs will be changed, not lost.\n*   **New jobs will emerge:** Roles like 'prompt engineer' are becoming common.\n*   **Future Skills:** Focus on creativity, critical thinking, and learning to work with AI.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "Which type of job is most likely to be automated by AI?",
+                "options": ["A highly repetitive and predictable job", "A job requiring creativity and empathy", "A job that involves building new things"],
+                "answer": "A highly repetitive and predictable job"
+            }
+        ]
+    },
+    {
+        "id": "9-6",
+        "lesson_id": "9",
+        "title": "Day 6: Deepfakes and Misinformation",
+        "content": "<h1>Seeing is No Longer Believing</h1><p>A 'deepfake' is a synthetic media (video or audio) that has been manipulated by AI to replace someone's likeness with that of another person. The technology has become so good that it can be very difficult to tell if a video is real or fake.</p><h2>The Dangers of Deepfakes:</h2><ul><li><strong>Misinformation:</strong> A deepfake video could be created to show a politician saying something they never said, influencing an election.</li><li><strong>Fraud:</strong> Scammers could use a deepfake of a family member's voice to ask for money.</li><li><strong>Harassment:</strong> Malicious actors can use deepfakes to create fake pornographic content or to bully and defame individuals.</li></ul><p>Developing technology to detect deepfakes and promoting digital literacy to help people question what they see online are crucial defenses against this threat.</p>",
+        "order_index": 6,
+        "video_url": "https://www.youtube.com/watch?v=o2D2-3Mw9iM",
+        "ai_summary": "This lesson explains that deepfakes are AI-manipulated videos or audio that realistically replace a person's likeness, making it hard to distinguish real from fake. This technology poses significant risks, including the spread of political misinformation, financial fraud through voice cloning, and personal harassment. The key defenses are developing detection technology and improving public digital literacy.\n\n*   **Deepfake:** AI-generated fake video or audio.\n*   **Danger:** Can be used to spread misinformation and commit fraud.\n*   **Example:** A fake video of a politician saying something they never said.\n*   **Defense:** Technology to detect fakes and public education are key.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "What is the primary danger of deepfake technology?",
+                "options": ["It is expensive to create", "It can be used to create harmless funny videos", "It can be used to spread believable misinformation and commit fraud"],
+                "answer": "It can be used to spread believable misinformation and commit fraud"
+            }
+        ]
+    },
+    {
+        "id": "9-7",
+        "lesson_id": "9",
+        "title": "Day 7: Responsible AI and Your Role",
+        "content": "<h1>Building a Better AI Future</h1><p>Responsible AI is a commitment to developing and using artificial intelligence with good judgment, transparency, and respect for human rights and ethical principles.</p><h2>Your Role as a User and Citizen:</h2><ul><li><strong>Be a Critical Consumer:</strong> Don't blindly trust everything an AI tells you. Question its sources and be aware of potential biases.</li><li><strong>Protect Your Data:</strong> Be mindful of what personal information you share online and with AI services. Use strong privacy settings.</li><li><strong>Advocate for Transparency:</strong> Support companies and policies that demand transparency and accountability from AI systems.</li><li><strong>Stay Educated:</strong> The world of AI is changing fast. Continue to learn about the technology and its societal impact.</li></ul><p>The future of AI is not something that happens *to* us; it's something we can all help shape. By being informed and responsible users, we can steer AI towards a more positive and equitable future.</p>",
+        "order_index": 7,
+        "video_url": "https://www.youtube.com/watch?v=Nn_i-p22ppM",
+        "ai_summary": "This lesson defines Responsible AI as a commitment to developing AI ethically and with respect for human rights. It outlines the individual's role in this ecosystem, which includes being a critical user of AI, protecting personal data, advocating for transparency and accountability, and staying educated about the technology's evolution. It concludes that everyone has a part to play in shaping a positive future for AI.\n\n*   **Be Critical:** Don't automatically trust AI-generated content.\n*   **Protect Your Data:** Be mindful of what you share.\n*   **Advocate:** Support policies that demand AI transparency.\n*   **Stay Educated:** Keep learning about AI's impact.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "text",
+                "question": "What is one thing you can do this week to be a more responsible AI user?",
+                "answer": "Good answers could include: 'I will check the privacy settings on my social media accounts,' 'I will double-check a fact that an AI tells me,' or 'I will read an article about AI bias.'"
+            }
+        ]
+    },
+    {
+        "id": "10-1",
+        "lesson_id": "10",
+        "title": "Day 1: What are Consumer Rights?",
+        "content": "<h1>Your Power as a Customer</h1><p>Consumer rights are a set of protections and entitlements designed to ensure that all consumers are treated fairly and honestly in the marketplace. In India, these rights are primarily protected by the Consumer Protection Act.</p><h2>The Core Idea</h2><p>The basic idea is that when you buy a product or service, you have a right to get what you paid for, and the product should be safe and of good quality. If a business fails to meet these standards, you have a right to a remedy.</p><h2>Why it Matters</h2><p>Understanding your rights prevents you from being cheated or sold substandard goods. It empowers you to demand quality and accountability from businesses, leading to a fairer marketplace for everyone.</p>",
+        "order_index": 1,
+        "video_url": "https://www.youtube.com/watch?v=Lbbk8a-d7a8",
+        "ai_summary": "This lesson defines consumer rights as legal protections that ensure fair treatment in the marketplace, primarily governed by India's Consumer Protection Act. The fundamental principle is that consumers are entitled to receive safe, quality goods and services as promised, and have a right to a remedy if businesses fail to deliver. Knowing these rights empowers consumers to demand accountability.\n\n*   **Consumer Rights:** Protections for buyers of goods and services.\n*   **Core Idea:** You should get what you pay for.\n*   **Why it Matters:** Protects you from being cheated and improves market fairness.\n*   **Governing Law:** The Consumer Protection Act in India.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "What is the main purpose of consumer rights?",
+                "options": ["To help businesses make more profit", "To protect consumers from unfair or unsafe business practices", "To set the price of products"],
+                "answer": "To protect consumers from unfair or unsafe business practices"
+            }
+        ]
+    },
+    {
+        "id": "10-2",
+        "lesson_id": "10",
+        "title": "Day 2: The Right to Safety",
+        "content": "<h1>Protection from Harm</h1><p>The Right to Safety means you have the right to be protected against the marketing of goods and services that are hazardous to life and property.</p><h2>What does this mean in practice?</h2><ul><li>Products like electronics, pressure cookers, and cars must meet certain safety standards. Look for certifications like the ISI mark on products in India, which indicates they have been tested for safety.</li><li>Food items must be safe to consume and free from adulteration. Look for the FSSAI license number on packaged foods.</li><li>Services that can impact safety, like construction or transportation, must follow safety regulations.</li></ul><p>If you buy a product that turns out to be unsafe and causes you harm, you have the right to seek compensation.</p>",
+        "order_index": 2,
+        "video_url": "https://www.youtube.com/watch?v=kS-G1C71_vY",
+        "ai_summary": "This lesson explains the Right to Safety, which protects consumers from hazardous goods and services. In practice, this means products must meet safety standards (indicated by marks like ISI), and food must be unadulterated (verified by FSSAI licensing). If an unsafe product causes harm, the consumer has the right to seek compensation.\n\n*   **Right to Safety:** Protection from dangerous products.\n*   **Examples:** Electronics must be safe, food must be pure.\n*   **Certifications:** Look for quality marks like ISI and FSSAI.\n*   **Remedy:** You can claim compensation for harm caused by an unsafe product.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "The ISI mark on an electronic appliance indicates what?",
+                "options": ["It is the most expensive brand", "It has met certain safety standards", "It is made in India"],
+                "answer": "It has met certain safety standards"
+            }
+        ]
+    },
+    {
+        "id": "10-3",
+        "lesson_id": "10",
+        "title": "Day 3: The Right to Be Informed (MRP & More)",
+        "content": "<h1>Know Before You Buy</h1><p>The Right to be Informed means you have the right to be given the facts needed to make an informed choice. You should not be misled by false or incomplete information.</p><h2>Key Information You're Entitled To:</h2><ul><li><strong>Maximum Retail Price (MRP):</strong> A shopkeeper cannot legally charge you more than the MRP printed on a product's packaging. It is the *maximum* price, and they can sell it for less.</li><li><strong>Manufacturing and Expiry Dates:</strong> Especially important for food and medicine.</li><li><strong>Ingredients and Nutritional Information:</strong> For food products.</li><li><strong>Net Weight/Quantity.</strong></li><li><strong>Country of Origin.</strong></li></ul><p>Always read the label before you buy!</p>",
+        "order_index": 3,
+        "video_url": "https://www.youtube.com/watch?v=T_31iH5-d7w",
+        "ai_summary": "This lesson covers the Right to be Informed, which entitles consumers to the necessary facts to make a purchase decision without being misled. This includes key details on product labels like the Maximum Retail Price (MRP), which is the highest price a seller can charge, as well as manufacturing/expiry dates, ingredients, and quantity. The key message is to always read product labels carefully.\n\n*   **Right to Information:** The right to have accurate product details.\n*   **MRP:** A seller cannot charge more than the Maximum Retail Price.\n*   **Key Labels:** Always check MRP, expiry date, and ingredients.\n*   **Action:** Read the label before you buy.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "A shopkeeper is selling a bottle of coke with an MRP of ₹40 for ₹45, claiming it's chilled. Is this legal?",
+                "options": ["Yes, because it's chilled", "No, it is illegal to charge more than the MRP", "It depends on the shop"],
+                "answer": "No, it is illegal to charge more than the MRP"
+            }
+        ]
+    },
+    {
+        "id": "10-4",
+        "lesson_id": "10",
+        "title": "Day 4: The Right to Choose",
+        "content": "<h1>Freedom from Monopoly</h1><p>The Right to Choose means you have the right to access a variety of goods and services at competitive prices. In a healthy market, businesses must compete for your money by offering better quality and prices.</p><h2>What this right protects you from:</h2><ul><li><strong>Monopolies:</strong> A situation where one single company controls the entire supply of a product or service and can charge any price they want.</li><li><strong>Cartels:</strong> When a group of 'competing' companies secretly agrees to fix prices at a high level, eliminating real competition.</li><li><strong>Tie-in Sales:</strong> When a seller forces you to buy a product you don't want (Product B) in order to buy the product you do want (Product A). For example, a gas agency forcing you to buy a new stove to get a gas connection.</li></ul><p>This right ensures that you, the consumer, have choices and that businesses must work to earn your patronage.</p>",
+        "order_index": 4,
+        "video_url": "https://www.youtube.com/watch?v=z8X-D-k2DEM",
+        "ai_summary": "This lesson explains the Right to Choose, which ensures consumers have access to a variety of products at competitive prices. This right protects against unfair market practices like monopolies (a single seller), cartels (companies colluding to fix prices), and tie-in sales (being forced to buy an unwanted product to get a desired one). It empowers consumers by fostering a competitive marketplace.\n\n*   **Right to Choose:** The right to access a variety of products at fair prices.\n*   **Protects Against:** Monopolies, cartels, and forced sales.\n*   **Tie-in Sale Example:** Forcing a customer to buy a stove to get a gas connection.\n*   **Goal:** To ensure a competitive market where businesses must earn your choice.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "A mobile phone company telling you that you *must* buy their specific brand of headphones to use their phone is an example of what?",
+                "options": ["A good deal", "A tie-in sale", "A monopoly"],
+                "answer": "A tie-in sale"
+            }
+        ]
+    },
+    {
+        "id": "10-5",
+        "lesson_id": "10",
+        "title": "Day 5: The Right to be Heard",
+        "content": "<h1>Your Voice Matters</h1><p>The Right to be Heard means that your interests as a consumer will receive due consideration at appropriate forums. It also includes the right to be represented in various forums formed to consider the consumer’s welfare.</p><h2>How to Make Your Voice Heard:</h2><ul><li><strong>Customer Service:</strong> The first step is always to contact the company's customer service department. Keep a record of your communication (emails, call reference numbers).</li><li><strong>Social Media:</strong> Sometimes, posting your complaint publicly on social media platforms like Twitter and tagging the company can lead to a faster resolution.</li><li><strong>Review Platforms:</strong> Leaving a detailed, honest review on Google, Amazon, or other platforms can inform other consumers and pressure the company to respond.</li></ul><p>This right ensures that businesses cannot simply ignore customer complaints.</p>",
+        "order_index": 5,
+        "video_url": "https://www.youtube.com/watch?v=gT8jG-koCgE",
+        "ai_summary": "This lesson covers the Right to be Heard, which ensures that consumer interests are considered and that businesses cannot ignore complaints. Practical ways to exercise this right include contacting a company's customer service, posting a public complaint on social media, or leaving a detailed review on a public platform. The goal is to hold businesses accountable and get your issues addressed.\n\n*   **Right to be Heard:** Your complaint cannot be ignored.\n*   **First Step:** Always contact customer service first.\n*   **Escalation:** Use social media or review platforms if you don't get a response.\n*   **Goal:** To ensure your consumer interests are given due consideration.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "text",
+                "question": "You bought a faulty product and the company's customer service is not responding. What is one other thing you can do to be 'heard'?",
+                "answer": "You can post about the issue on social media and tag the company, or write a detailed negative review on a review website."
+            }
+        ]
+    },
+    {
+        "id": "10-6",
+        "lesson_id": "10",
+        "title": "Day 6: The Right to Seek Redressal",
+        "content": "<h1>Getting Justice</h1><p>The Right to Seek Redressal means you have the right to get relief in case of unfair trade practices or exploitation. If a product is defective, a service is deficient, or a promise is broken, you can seek compensation.</p><h2>The Consumer Dispute Redressal Commissions:</h2><p>If the company doesn't resolve your issue, you can file a formal complaint. India has a three-tier system of consumer courts:</p><ul><li><strong>District Commission:</strong> For claims up to ₹50 lakh.</li><li><strong>State Commission:</strong> For claims between ₹50 lakh and ₹2 crore.</li><li><strong>National Commission:</strong> For claims above ₹2 crore.</li></ul><p>You can file a complaint yourself without a lawyer. There is a nominal fee, and the process is designed to be consumer-friendly.</p>",
+        "order_index": 6,
+        "video_url": "https://www.youtube.com/watch?v=1rA5-Z_iWAc",
+        "ai_summary": "This lesson explains the Right to Seek Redressal, which allows consumers to get relief and compensation for faulty products or services. If a company fails to resolve an issue, a complaint can be filed in a consumer court. India has a three-tier system of these courts (District, State, and National) based on the value of the claim, and the process is designed to be accessible to individuals without a lawyer.\n\n*   **Right to Redressal:** The right to compensation for a bad product or service.\n*   **Consumer Courts:** A formal system for resolving disputes.\n*   **Three Tiers:** District, State, and National commissions based on claim value.\n*   **Accessibility:** You can file a case yourself without a lawyer.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "If you have a claim against a company for ₹10 lakh, where would you file your complaint?",
+                "options": ["The Supreme Court", "The National Commission", "The District Commission"],
+                "answer": "The District Commission"
+            }
+        ]
+    },
+    {
+        "id": "10-7",
+        "lesson_id": "10",
+        "title": "Day 7: The Right to Consumer Education",
+        "content": "<h1>Knowledge is Power</h1><p>The Right to Consumer Education means you have the right to acquire the knowledge and skill to be an informed consumer throughout life. This very module is an example of this right in action!</p><h2>How to Be an Empowered Consumer:</h2><ul><li><strong>Stay Informed:</strong> Keep learning about your rights and be aware of new types of scams.</li><li><strong>Read Reviews:</strong> Before making a significant purchase, read reviews from multiple sources.</li><li><strong>Compare Prices:</strong> Don't just buy from the first shop. Compare prices online and offline.</li><li><strong>Don't Be Pressured:</strong> Don't let a salesperson pressure you into making a hasty decision. Take your time to think.</li><li><strong>Share Your Knowledge:</strong> Help your friends and family become aware of their rights too.</li></ul><p>By being an educated consumer, you not only protect yourself but also contribute to a healthier, more transparent marketplace.</p>",
+        "order_index": 7,
+        "video_url": "https://www.youtube.com/watch?v=Vl3rDq3-hYo",
+        "ai_summary": "This final lesson focuses on the Right to Consumer Education—the right to acquire the knowledge needed to be an informed consumer. It encourages continuous learning, reading reviews, comparing prices, resisting sales pressure, and sharing knowledge with others. An educated consumer is not only self-protected but also helps create a more transparent and fair marketplace for everyone.\n\n*   **Right to Education:** The right to learn how to be a smart consumer.\n*   **Be Proactive:** Read reviews and compare prices before buying.\n*   **Resist Pressure:** Don't let salespeople rush your decisions.\n*   **Share Knowledge:** Help others become aware of their rights.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "What is the best way to exercise your Right to Consumer Education?",
+                "options": ["Memorizing the law", "Continuously learning about your rights and being a cautious buyer", "Only buying from one trusted brand"],
+                "answer": "Continuously learning about your rights and being a cautious buyer"
+            }
+        ]
+    },
+    {
+        "id": "11-1",
+        "lesson_id": "11",
+        "title": "Day 1: Introduction to the Indian Constitution & Fundamental Rights",
+        "content": "<h1>The Rulebook of a Nation</h1><p>The Constitution of India is the supreme law of India. It lays down the framework that defines the political principles, establishes the structure, procedures, powers, and duties of government institutions, and sets out fundamental rights, directive principles, and the duties of citizens.</p><h2>Fundamental Rights</h2><p>These are the basic human rights of all citizens. They are enforceable by the courts. Some key rights include:</p><ul><li><strong>Right to Equality:</strong> Everyone is equal before the law.</li><li><strong>Right to Freedom:</strong> Includes freedom of speech and expression.</li><li><strong>Right against Exploitation:</strong> Prohibits human trafficking and forced labor.</li><li><strong>Right to Freedom of Religion:</strong> Guarantees religious freedom.</li><li><strong>Right to Constitutional Remedies:</strong> The right to go to court to enforce your fundamental rights.</li></ul>",
+        "order_index": 1,
+        "video_url": "https://www.youtube.com/watch?v=yBEbM7p6eLM",
+        "ai_summary": "This lesson introduces the Constitution of India as the country's supreme law, outlining the structure of government and the rights and duties of citizens. It focuses on the enforceable Fundamental Rights, including the Right to Equality, Freedom of Speech, Freedom of Religion, the Right against Exploitation, and the Right to Constitutional Remedies (the right to approach a court).\n\n*   **Constitution:** The supreme law of India.\n*   **Fundamental Rights:** Basic, enforceable human rights.\n*   **Key Rights:** Include Equality, Freedom of Speech, and Religion.\n*   **Right to Remedies:** You can go to court to protect your other rights.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "Which right allows you to approach a court if your fundamental rights are violated?",
+                "options": ["Right to Equality", "Right to Freedom", "Right to Constitutional Remedies"],
+                "answer": "Right to Constitutional Remedies"
+            }
+        ]
+    },
+    {
+        "id": "11-2",
+        "lesson_id": "11",
+        "title": "Day 2: Understanding Contracts",
+        "content": "<h1>What is a Contract?</h1><p>A contract is a legally enforceable agreement between two or more parties. It doesn't always have to be a complex written document; even a verbal agreement can be a contract, though written ones are easier to prove.</p><h2>Essential Elements of a Valid Contract:</h2><ul><li><strong>Offer and Acceptance:</strong> One person must make an offer, and the other must accept it.</li><li><strong>Intention to Create Legal Relations:</strong> Both parties must intend for the agreement to be legally binding (e.g., a promise to take a friend to lunch is usually not a contract).</li><li><strong>Consideration:</strong> Something of value must be exchanged (e.g., money for goods). It can't be a one-sided promise.</li><li><strong>Capacity to Contract:</strong> The parties must be legally capable of entering a contract (e.g., not be a minor, be of sound mind).</li><li><strong>Free Consent:</strong> The agreement must be made without coercion, fraud, or misrepresentation.</li></ul>",
+        "order_index": 2,
+        "video_url": "https://www.youtube.com/watch?v=5_u6-55m_2k",
+        "ai_summary": "This lesson defines a contract as a legally binding agreement. It outlines the five essential elements for a contract to be valid: a clear Offer and Acceptance, an Intention to create a legal relationship, Consideration (an exchange of value), the legal Capacity of the parties to enter the contract, and Free Consent without any force or fraud.\n\n*   **Contract:** A legally enforceable agreement.\n*   **Offer & Acceptance:** One party offers, the other agrees.\n*   **Consideration:** Something of value must be exchanged.\n*   **Capacity & Consent:** Parties must be legally able and agree freely.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "If your friend promises to give you ₹100 for free, and you agree, is this a valid contract?",
+                "options": ["Yes, because there was an offer and acceptance", "No, because there is no 'consideration' (you are not giving anything in return)", "Yes, because it's a promise"],
+                "answer": "No, because there is no 'consideration' (you are not giving anything in return)"
+            }
+        ]
+    },
+    {
+        "id": "11-3",
+        "lesson_id": "11",
+        "title": "Day 3: Basic Cyber Laws in India (IT Act)",
+        "content": "<h1>Law in the Digital Age</h1><p>The Information Technology (IT) Act, 2000 is the primary law in India that deals with cybercrime and electronic commerce.</p><h2>Key Provisions You Should Know:</h2><ul><li><strong>Section 66A (Struck Down):</strong> This section, which made it a crime to send 'offensive' messages, was struck down by the Supreme Court as it violated the freedom of speech. It's an important example of how laws are tested against the Constitution.</li><li><strong>Section 66C: Identity Theft.</strong> It is a crime to fraudulently use someone else's password, digital signature, or other unique identification feature.</li><li><strong>Section 66D: Cheating by Personation.</strong> It is a crime to cheat by pretending to be someone else online (e.g., creating a fake social media profile to trick someone).</li><li><strong>Section 67: Publishing Obscene Information.</strong> It is illegal to publish or transmit obscene material in electronic form.</li></ul><p>The IT Act is crucial for providing a legal framework for the online world.</p>",
+        "order_index": 3,
+        "video_url": "https://www.youtube.com/watch?v=S07-p3Jfc80",
+        "ai_summary": "This lesson introduces India's Information Technology (IT) Act, 2000, which governs cybercrime. It highlights key sections, including 66C (making identity theft a crime), 66D (making online impersonation for cheating a crime), and 67 (prohibiting the publication of obscene electronic content). It also mentions that Section 66A, related to 'offensive' messages, was struck down by the Supreme Court as unconstitutional.\n\n*   **IT Act, 2000:** India's primary law for cybercrime.\n*   **Section 66C:** Prohibits identity theft.\n*   **Section 66D:** Prohibits cheating by online impersonation.\n*   **Section 67:** Prohibits publishing obscene electronic material.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "Creating a fake Instagram profile of your friend to post embarrassing content could be a crime under which section of the IT Act?",
+                "options": ["Section 66D (Cheating by Personation)", "Section 66A", "It's not a crime, just a prank"],
+                "answer": "Section 66D (Cheating by Personation)"
+            }
+        ]
+    },
+    {
+        "id": "11-4",
+        "lesson_id": "11",
+        "title": "Day 4: Understanding FIRs (First Information Report)",
+        "content": "<h1>The First Step to Justice</h1><p>A First Information Report (FIR) is a written document prepared by the police when they receive information about the commission of a cognizable offence. A cognizable offence is one for which the police can make an arrest without a warrant (e.g., theft, robbery, murder).</p><h2>Key Facts about FIRs:</h2><ul><li><strong>Who can file an FIR?</strong> Anyone who has knowledge of a cognizable crime can file an FIR. It doesn't have to be the victim.</li><li><strong>Where to file?</strong> At the police station that has jurisdiction over the area where the crime occurred.</li><li><strong>Zero FIR:</strong> If the police station says they don't have jurisdiction, they are still required to file a 'Zero FIR' and transfer it to the correct station. You cannot be turned away.</li><li><strong>It's Free:</strong> There is no charge for filing an FIR. You are also entitled to a free copy of the FIR.</li></ul><p>An FIR is a crucial document that sets the process of criminal justice in motion.</p>",
+        "order_index": 4,
+        "video_url": "https://www.youtube.com/watch?v=0LzwdLptyjY",
+        "ai_summary": "This lesson explains that a First Information Report (FIR) is a document prepared by police upon receiving information about a serious (cognizable) crime, for which they can arrest without a warrant. It clarifies that anyone can file an FIR, it's free of charge, and if a police station lacks jurisdiction, they must file a 'Zero FIR' and transfer it. The FIR is the critical first step in the criminal justice process.\n\n*   **FIR:** A police report about a serious crime.\n*   **Cognizable Offence:** A crime where police can arrest without a warrant.\n*   **Zero FIR:** A police station must register an FIR even if it's not their jurisdiction.\n*   **Free:** Filing an FIR is free, and you must be given a copy.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "If you witness a robbery and go to the police station, but they say it's not their area, what should they do?",
+                "options": ["Tell you to go away", "File a 'Zero FIR' and transfer it", "Ask you to pay a fee"],
+                "answer": "File a 'Zero FIR' and transfer it"
+            }
+        ]
+    },
+    {
+        "id": "11-5",
+        "lesson_id": "11",
+        "title": "Day 5: Right to Information (RTI)",
+        "content": "<h1>Demanding Transparency</h1><p>The Right to Information (RTI) Act, 2005 is a landmark law that empowers Indian citizens to request information from any public authority (i.e., a government body or state-funded organization).</p><h2>How does RTI work?</h2><p>You can file an RTI application with a simple letter or online, asking for specific information. For example, you could ask:</p><ul><li>'How much money was spent on repairing the road in my area?'</li><li>'Please provide a copy of the safety inspection report for the new metro line.'</li></ul><p>The public authority is legally required to respond within 30 days. There is a small application fee (usually ₹10). RTI is a powerful tool to promote transparency and accountability in government.</p>",
+        "order_index": 5,
+        "video_url": "https://www.youtube.com/watch?v=PkjSZu4p5M0",
+        "ai_summary": "This lesson explains the Right to Information (RTI) Act, 2005, a law that allows Indian citizens to request information from government bodies to promote transparency and accountability. By filing a simple application with a small fee, citizens can ask for details on public matters, such as government spending on a local project. The authority must respond within 30 days.\n\n*   **RTI:** A law allowing citizens to request information from the government.\n*   **Goal:** To promote transparency and accountability.\n*   **How it Works:** File an application asking for specific information.\n*   **Timeline:** The government body must reply within 30 days.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "Using RTI, you can request information from...",
+                "options": ["A private company like Reliance", "A government body like your local Municipal Corporation", "A foreign country's embassy"],
+                "answer": "A government body like your local Municipal Corporation"
+            }
+        ]
+    },
+    {
+        "id": "11-6",
+        "lesson_id": "11",
+        "title": "Day 6: Traffic Rules and Your Rights",
+        "content": "<h1>On the Road with the Law</h1><p>Understanding basic traffic laws is essential for your safety and the safety of others. The Motor Vehicles Act governs these rules in India.</p><h2>Key Rules & Rights:</h2><ul><li><strong>Documents:</strong> When driving, you must carry your Driving License (DL) and Registration Certificate (RC). These can be physical copies or digital versions in apps like DigiLocker or mParivahan, which are legally valid.</li><li><strong>Traffic Police:</strong> A traffic police officer can ask for your DL and RC. They must be in uniform. An officer of the rank of Sub-Inspector or above can issue a challan (fine).</li><li><strong>Your Rights:</strong> You have the right to ask for the officer's identification. You are not required to hand over your keys or original physical documents (showing them is enough).</li><li><strong>Helmets and Seatbelts:</strong> Helmets are mandatory for both rider and pillion on a two-wheeler. Seatbelts are mandatory for the driver and front-seat passenger in a car.</li></ul>",
+        "order_index": 6,
+        "video_url": "https://www.youtube.com/watch?v=lO0iF2-s1yY",
+        "ai_summary": "This lesson covers essential traffic laws from India's Motor Vehicles Act. It states that drivers must carry their Driving License and Registration Certificate, which can be digital copies in apps like DigiLocker. It clarifies that only officers of a certain rank can issue fines and that drivers have the right to see an officer's identification. The mandatory use of helmets and seatbelts is also highlighted.\n\n*   **Documents:** Always carry your DL and RC (digital is okay).\n*   **Police Stops:** You must show your documents, but you don't have to hand them over.\n*   **Fines (Challans):** Can be issued by an officer of Sub-Inspector rank or above.\n*   **Safety Gear:** Helmets and seatbelts are compulsory.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "mcq",
+                "question": "A traffic constable asks you for your original RC book. What should you do?",
+                "options": ["Hand it over immediately", "Refuse and drive away", "Politely show the document (physical or digital) without handing it over"],
+                "answer": "Politely show the document (physical or digital) without handing it over"
+            }
+        ]
+    },
+    {
+        "id": "11-7",
+        "lesson_id": "11",
+        "title": "Day 7: Being a Legally Aware Citizen",
+        "content": "<h1>Knowledge for Empowerment</h1><p>Legal awareness is not about becoming a lawyer; it's about understanding your rights and responsibilities so you can navigate the world confidently and protect yourself from exploitation.</p><h2>Why Legal Awareness Matters:</h2><ul><li><strong>Empowerment:</strong> Knowing your rights prevents others (including authorities) from taking advantage of you.</li><li><strong>Problem Solving:</strong> It helps you know the right steps to take when you face a problem, whether it's a consumer dispute or a cybercrime issue.</li><li><strong>Civic Duty:</strong> Understanding the law helps you become a more responsible citizen who respects the rights of others.</li></ul><p>The law is a tool for justice. By learning the basics, you are equipping yourself with a powerful tool for life.</p>",
+        "order_index": 7,
+        "video_url": "https://www.youtube.com/watch?v=N66R22Eudyk",
+        "ai_summary": "This final lesson emphasizes that legal awareness is a form of empowerment, helping you understand your rights and responsibilities to navigate society confidently. Knowing the law protects you from exploitation, provides the correct steps for problem-solving (like in consumer or cybercrime cases), and helps you become a more responsible citizen who respects others' rights.\n\n*   **Empowerment:** Knowing your rights protects you.\n*   **Problem Solving:** Helps you take the right legal steps when needed.\n*   **Civic Duty:** Makes you a more responsible citizen.\n*   **Conclusion:** The law is a powerful tool for justice and self-protection.",
+        "practice_questions": [
+            {
+                "id": "q1",
+                "type": "text",
+                "question": "In your own words, why is it important for a young person to have basic legal awareness?",
+                "answer": "A good answer would mention that it helps them know their rights, protects them from being cheated or taken advantage of, and helps them know what to do if they get into trouble."
+            }
+        ]
     }
   ]
 }
