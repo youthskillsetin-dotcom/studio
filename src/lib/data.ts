@@ -128,7 +128,50 @@ export async function getLessons(): Promise<Lesson[]> {
         "description": "Unlock the secrets of banking, mutual funds, and stock market investing.",
         "is_free": false,
         "order_index": 2,
-        "subtopics": []
+        "subtopics": [
+          {
+            "id": "2-1",
+            "lesson_id": "2",
+            "title": "Day 1: Your First Bank Account",
+            "video_url": "https://www.youtube.com/watch?v=some_video_id",
+            "content": "<h2>Welcome to the World of Banking</h2><p>Opening a bank account is your first step into the official financial world. It's not just a place to store money; it's a tool for managing it.</p><h3>Key Concepts:</h3><ul><li><strong>Savings Account:</strong> Your primary account for storing money, earning a small amount of interest. Ideal for your emergency fund and short-term goals.</li><li><strong>Current Account:</strong> Used for frequent transactions, typically by businesses. As a teen, a savings account is all you need.</li><li><strong>KYC (Know Your Customer):</strong> A mandatory process where banks verify your identity using documents like Aadhaar and PAN cards.</li></ul>",
+            "order_index": 1,
+            "ai_summary": "This lesson covers the basics of opening your first bank account. You'll learn the difference between a savings and current account, and understand the KYC (Know Your Customer) process required by banks.\\n\\n* **Savings Account:** For storing money and earning interest.\\n* **KYC:** The identity verification process using documents like Aadhaar.",
+            "practice_questions": [
+              {
+                "id": "q2-1-1",
+                "type": "mcq",
+                "question": "What is the primary purpose of a savings account?",
+                "options": ["Frequent transactions", "Storing money and earning interest", "For businesses only", "Getting a loan"],
+                "answer": "Storing money and earning interest"
+              },
+              {
+                "id": "q2-1-2",
+                "type": "text",
+                "question": "What does KYC stand for and why is it important?",
+                "answer": "KYC stands for Know Your Customer. It's a mandatory process for banks to verify a customer's identity to prevent fraud and illegal activities."
+              }
+            ]
+          },
+          {
+            "id": "2-2",
+            "lesson_id": "2",
+            "title": "Day 2: The Magic of Compounding",
+            "video_url": "https://www.youtube.com/watch?v=some_video_id",
+            "content": "<h2>The 8th Wonder of the World</h2><p>Albert Einstein reportedly called compound interest the eighth wonder of the world. It’s the process where your interest starts earning its own interest. It’s like a snowball rolling down a hill, getting bigger and bigger.</p><h3>How it Works:</h3><p>Imagine you invest ₹1,000 and earn 10% interest in a year. You now have ₹1,100. The next year, you earn 10% on ₹1,100, not just the original ₹1,000. This might seem small at first, but over many years, the effect is massive.</p>",
+            "order_index": 2,
+            "ai_summary": "Compounding is the process where your investment's earnings generate their own earnings. This 'interest on interest' can dramatically grow your wealth over time, especially when you start early.\\n\\n* **Start Early:** The longer your money is invested, the more compounding works its magic.\\n* **Be Patient:** Compounding effects are most significant over long periods.",
+            "practice_questions": [
+              {
+                "id": "q2-2-1",
+                "type": "mcq",
+                "question": "If you invest ₹100 at 10% interest, how much will you have after two years with compounding?",
+                "options": ["₹120", "₹121", "₹110", "₹200"],
+                "answer": "₹121"
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "3",
@@ -136,7 +179,26 @@ export async function getLessons(): Promise<Lesson[]> {
         "description": "Learn how AI works, its impact on jobs, and how to use it ethically.",
         "is_free": false,
         "order_index": 3,
-        "subtopics": []
+        "subtopics": [
+          {
+            "id": "3-1",
+            "lesson_id": "3",
+            "title": "Day 1: What Is AI, Really?",
+            "video_url": "https://www.youtube.com/watch?v=some_video_id",
+            "content": "<h2>Beyond the Hype</h2><p>AI isn't just about robots. It's about creating computer systems that can perform tasks that normally require human intelligence.</p><h3>Key Types of AI:</h3><ul><li><strong>Machine Learning (ML):</strong> The most common type of AI. It's about teaching computers to find patterns in data. Your Netflix recommendations are a perfect example.</li><li><strong>Deep Learning (DL):</strong> A subset of ML that uses 'neural networks' with many layers to solve complex problems, like image recognition.</li><li><strong>Generative AI (GenAI):</strong> The new kid on the block. This AI creates new content—like text, images, or music—based on what it has learned. Think ChatGPT or Midjourney.</li></ul>",
+            "order_index": 1,
+            "ai_summary": "This lesson demystifies AI, explaining it as computer systems performing human-like tasks. It covers key types: Machine Learning (finding patterns in data), Deep Learning (using neural networks for complex tasks), and Generative AI (creating new content).\\n\\n* **Machine Learning:** Powers recommendations and predictions.\\n* **Generative AI:** Creates new text, images, and other media.",
+            "practice_questions": [
+              {
+                "id": "q3-1-1",
+                "type": "mcq",
+                "question": "Which type of AI is responsible for creating new images from a text prompt?",
+                "options": ["Machine Learning", "Generative AI", "Predictive AI", "Analytical AI"],
+                "answer": "Generative AI"
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "4",
@@ -144,7 +206,26 @@ export async function getLessons(): Promise<Lesson[]> {
         "description": "Understand income tax, GST, and how to file your taxes correctly.",
         "is_free": false,
         "order_index": 4,
-        "subtopics": []
+        "subtopics": [
+          {
+            "id": "4-1",
+            "lesson_id": "4",
+            "title": "Day 1: Intro to Indian Taxes",
+            "video_url": "https://www.youtube.com/watch?v=some_video_id",
+            "content": "<h2>Taxes: The Price of a Civilized Society</h2><p>Taxes are how the government funds everything from roads and hospitals to schools and national defense. There are two main types.</p><h3>Key Concepts:</h3><ul><li><strong>Direct Tax:</strong> A tax you pay directly to the government, like Income Tax.</li><li><strong>Indirect Tax:</strong> A tax you pay indirectly through goods and services you buy, like GST (Goods and Services Tax).</li><li><strong>PAN Card:</strong> Your Permanent Account Number, a unique 10-digit code that is essential for all financial transactions and tax filing.</li></ul>",
+            "order_index": 1,
+            "ai_summary": "This lesson introduces the two primary types of taxes in India: Direct Tax (like Income Tax) and Indirect Tax (like GST). It also explains the importance of the PAN card for financial transactions.\\n\\n* **Direct Tax:** Paid directly by you (e.g., Income Tax).\\n* **Indirect Tax:** Paid on goods and services (e.g., GST).",
+            "practice_questions": [
+              {
+                "id": "q4-1-1",
+                "type": "mcq",
+                "question": "Goods and Services Tax (GST) is an example of what kind of tax?",
+                "options": ["Direct Tax", "Indirect Tax", "Wealth Tax", "Property Tax"],
+                "answer": "Indirect Tax"
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "5",
@@ -152,7 +233,25 @@ export async function getLessons(): Promise<Lesson[]> {
         "description": "From idea to business plan, learn the fundamentals of starting your own venture.",
         "is_free": false,
         "order_index": 5,
-        "subtopics": []
+        "subtopics": [
+          {
+            "id": "5-1",
+            "lesson_id": "5",
+            "title": "Day 1: What Makes an Entrepreneur?",
+            "video_url": "https://www.youtube.com/watch?v=some_video_id",
+            "content": "<h2>More Than Just an Idea</h2><p>An entrepreneur is someone who identifies a problem and creates a business to solve it. It’s about being a problem-solver, a risk-taker, and a leader.</p><h3>Key Traits:</h3><ul><li><strong>Resilience:</strong> The ability to bounce back from failure.</li><li><strong>Creativity:</strong> Thinking of new ways to solve old problems.</li><li><strong>Risk Appetite:</strong> Being willing to take calculated risks to achieve a goal.</li></ul>",
+            "order_index": 1,
+            "ai_summary": "This lesson defines an entrepreneur as a problem-solver who builds a business. It highlights key traits like resilience, creativity, and a willingness to take calculated risks.\\n\\n* **Problem-Solver:** Entrepreneurs identify needs and create solutions.\\n* **Resilience is Key:** Bouncing back from setbacks is crucial.",
+            "practice_questions": [
+              {
+                "id": "q5-1-1",
+                "type": "text",
+                "question": "In your own words, what is an entrepreneur?",
+                "answer": "An entrepreneur is someone who identifies a problem, takes a risk, and starts a business to provide a solution."
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "6",
@@ -160,7 +259,26 @@ export async function getLessons(): Promise<Lesson[]> {
         "description": "Build a powerful resume, ace interviews, and create a personal brand that stands out.",
         "is_free": false,
         "order_index": 6,
-        "subtopics": []
+        "subtopics": [
+           {
+            "id": "6-1",
+            "lesson_id": "6",
+            "title": "Day 1: What is a Personal Brand?",
+            "video_url": "https://www.youtube.com/watch?v=some_video_id",
+            "content": "<h2>You Are a Brand</h2><p>Your personal brand is how you present yourself to the world. It’s the unique combination of your skills, experiences, and personality. It’s what people say about you when you’re not in the room.</p><h3>Why it Matters:</h3><ul><li><strong>Differentiation:</strong> It helps you stand out in a crowded field of job applicants or college admissions.</li><li><strong>Opportunity:</strong> A strong brand attracts opportunities—mentors, collaborators, and employers may find you.</li><li><strong>Authenticity:</strong> It’s about showcasing the real you, not a fake persona.</li></ul>",
+            "order_index": 1,
+            "ai_summary": "Your personal brand is your reputation and how you present your unique skills and personality to the world. It's crucial for standing out, attracting opportunities, and showcasing your authentic self.\\n\\n* **Stand Out:** A personal brand helps you differentiate yourself.\\n* **Attracts Opportunity:** It can bring career and networking opportunities to you.",
+            "practice_questions": [
+              {
+                "id": "q6-1-1",
+                "type": "mcq",
+                "question": "What is the primary goal of building a personal brand?",
+                "options": ["To become famous", "To show a fake version of yourself", "To clearly communicate your unique value and skills", "To get as many social media followers as possible"],
+                "answer": "To clearly communicate your unique value and skills"
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "7",
