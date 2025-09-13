@@ -11,22 +11,7 @@ import { motion } from 'framer-motion';
 import { Footer } from '@/components/footer';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { useEffect, useState, type ReactNode } from 'react';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-
-
-const MotionWrapper = ({ children, ...props }: { children: ReactNode, [key: string]: any }) => {
-    const [isMounted, setIsMounted] = useState(false);
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
-
-    if (!isMounted) {
-        return <div {...props}>{children}</div>;
-    }
-
-    return <motion.div {...props}>{children}</motion.div>;
-}
 
 
 const modules = [
@@ -146,7 +131,7 @@ export default function LandingPage() {
       <main className="flex-1">
          <section className="relative text-left py-20 md:py-32 flex flex-col items-start justify-center overflow-hidden">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
-                <MotionWrapper
+                <motion.div
                     initial="hidden"
                     animate="show"
                     viewport={{ once: true }}
@@ -182,15 +167,15 @@ export default function LandingPage() {
                         <Link href="/signup">Start Learning for Free</Link>
                         </Button>
                     </motion.div>
-                </MotionWrapper>
+                </motion.div>
 
                 <div className="relative w-full max-w-lg h-80 lg:h-96 mx-auto lg:mx-0" aria-hidden="true">
                     <div className="absolute inset-0 w-full h-full">
-                         <MotionWrapper>
+                         <motion.div>
                             <motion.div className="absolute top-0 -left-4 w-72 h-72 bg-primary/20 rounded-full filter blur-3xl opacity-70 animate-blob"></motion.div>
                             <motion.div className="absolute top-0 -right-4 w-72 h-72 bg-accent/20 rounded-full filter blur-3xl opacity-70 animate-blob animation-delay-2000"></motion.div>
                             <motion.div className="absolute -bottom-8 left-20 w-72 h-72 bg-secondary/20 rounded-full filter blur-3xl opacity-70 animate-blob animation-delay-4000"></motion.div>
-                        </MotionWrapper>
+                        </motion.div>
                     </div>
                 </div>
             </div>
@@ -384,5 +369,3 @@ export default function LandingPage() {
     </div>
   );
 }
-
-    
