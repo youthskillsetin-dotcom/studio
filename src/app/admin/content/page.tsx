@@ -1,5 +1,4 @@
 
-
 import { notFound } from 'next/navigation';
 import { getLessons, getUserProfile, getLessonByIdWithSubtopics } from '@/lib/data';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -41,7 +40,7 @@ export default async function AdminContentPage() {
             <p className="text-muted-foreground">Edit and manage lesson video links.</p>
         </div>
       </div>
-      <Card className="rounded-2xl">
+      <Card>
         <CardHeader>
           <CardTitle>All Lessons & Subtopics</CardTitle>
           <CardDescription>

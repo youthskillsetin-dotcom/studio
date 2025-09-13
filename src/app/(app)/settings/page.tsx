@@ -21,7 +21,7 @@ export default async function SettingsPage() {
     <div>
       <h1 className="text-3xl font-bold font-headline mb-6">Settings</h1>
       <div className="grid gap-6 max-w-4xl mx-auto">
-        <Card className="rounded-2xl">
+        <Card>
           <CardHeader>
             <CardTitle>Account Information</CardTitle>
             <CardDescription>Your account details.</CardDescription>
@@ -48,7 +48,7 @@ export default async function SettingsPage() {
           </CardContent>
         </Card>
 
-        <Card className="rounded-2xl">
+        <Card>
           <CardHeader>
             <CardTitle>Subscription</CardTitle>
             <CardDescription>Manage your subscription plan and billing.</CardDescription>

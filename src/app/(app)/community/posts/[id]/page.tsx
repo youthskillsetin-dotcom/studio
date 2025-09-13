@@ -42,7 +42,7 @@ export default async function PostPage({ params }: { params: { id: string } }) {
           </Link>
       </Button>
 
-      <Card className="rounded-2xl mb-8">
+      <Card className="mb-8">
         <CardHeader>
           <CardTitle className="text-2xl md:text-3xl font-bold font-headline">{post.title}</CardTitle>
           <CardDescription className="text-sm flex items-center gap-2 pt-2">
@@ -65,7 +65,7 @@ export default async function PostPage({ params }: { params: { id: string } }) {
 
         <div className="space-y-6 mb-8">
           {comments.map(comment => (
-            <Card key={comment.id} className="p-4 rounded-xl bg-muted/40">
+            <Card key={comment.id} className="p-4 bg-muted/40">
               <div className="flex items-start gap-4">
                 <Avatar className="h-9 w-9">
                     <AvatarImage src={comment.profile?.avatar_url || undefined} />

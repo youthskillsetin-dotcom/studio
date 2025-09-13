@@ -26,7 +26,7 @@ export default async function CommunityPage() {
       <div className="space-y-4">
         {posts.length > 0 ? (
           posts.map((post) => (
-            <Card key={post.id} className="hover:bg-muted/50 transition-colors rounded-2xl">
+            <Card key={post.id} className="hover:bg-muted/50 transition-colors">
               <Link href={`/community/posts/${post.id}`}>
                 <CardHeader>
                     <CardTitle className="text-lg font-bold font-headline line-clamp-2">{post.title}</CardTitle>
@@ -40,7 +40,7 @@ export default async function CommunityPage() {
             </Card>
           ))
         ) : (
-          <Card className="text-center py-16 rounded-2xl">
+          <Card className="text-center py-16">
              <MessageSquare className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
             <CardHeader>
               <CardTitle className="font-headline text-2xl">It's quiet in here...</CardTitle>

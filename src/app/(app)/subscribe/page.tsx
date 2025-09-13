@@ -150,7 +150,7 @@ function SubscribePageContent() {
       </Head>
     <div className="max-w-md mx-auto">
       <h1 className="text-3xl font-bold font-headline mb-6 text-center">Checkout</h1>
-      <Card className="rounded-2xl">
+      <Card>
         <CardHeader>
           <CardTitle className="font-headline text-2xl">Choose Your Plan</CardTitle>
           <CardDescription>Select the plan that works best for you.</CardDescription>

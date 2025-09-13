@@ -52,7 +52,7 @@ export function CreateCommentForm({ postId, user }: { postId: string, user: User
   }, [state, toast]);
 
   return (
-    <Card className="rounded-2xl">
+    <Card>
         <CardHeader className="p-4 border-b">
             <h3 className="font-semibold">Add a comment</h3>
         </CardHeader>
