@@ -235,11 +235,7 @@ export default function CareerGuidePage() {
   const [archetypes, setArchetypes] = useState<GenerateCareerArchetypesOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [isMounted, setIsMounted] = useState(false);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
   
   const handleDownload = () => {
     if (!profile) return;
@@ -394,14 +390,6 @@ export default function CareerGuidePage() {
     setArchetypes(null);
     setError(null);
     setIsLoading(false);
-  }
-
-  if (!isMounted) {
-    return (
-        <div className="max-w-4xl mx-auto">
-            <ArchetypeSkeleton />
-        </div>
-     )
   }
 
   if (isLoading && !profile && !archetypes) {

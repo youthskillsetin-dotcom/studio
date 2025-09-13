@@ -69,10 +69,8 @@ export default function LearningPlannerPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [lessons, setLessons] = useState<Lesson[]>([]);
-  const [isMounted, setIsMounted] = useState(false);
-
+  
   useEffect(() => {
-    setIsMounted(true);
     // This is a workaround to get lesson data on the client.
     // In a real app, you might use a dedicated context or API route.
     async function loadLessons() {
@@ -173,7 +171,7 @@ export default function LearningPlannerPage() {
         </Alert>
       )}
 
-      {isMounted && plan && !isLoading && (
+      {plan && !isLoading && (
         <motion.div 
           className="space-y-10 mt-12"
           initial="hidden"
@@ -222,5 +220,3 @@ export default function LearningPlannerPage() {
     </div>
   );
 }
-
-    

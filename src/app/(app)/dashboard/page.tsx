@@ -36,33 +36,9 @@ const itemVariants = {
 };
 
 export default function DashboardPage() {
-  const { userSubscription, isLoading: isSubscriptionLoading } = useUserSubscription();
-  const { userProfile, isLoading: isProfileLoading } = useUserProfile();
+  const { userSubscription } = useUserSubscription();
+  const { userProfile } = useUserProfile();
   const isPremium = userSubscription?.is_active ?? false;
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-  
-  if (isProfileLoading || isSubscriptionLoading || !isMounted) {
-    return (
-      <div className="flex-1 space-y-4">
-        <Skeleton className="h-16 w-1/2" />
-        <div className="grid gap-4 md:gap-8 lg:grid-cols-3">
-          <div className="grid auto-rows-min gap-4 md:gap-8 lg:col-span-2">
-            <Skeleton className="h-48" />
-            <Skeleton className="h-48" />
-          </div>
-          <div className="grid auto-rows-min gap-4 md:gap-8">
-            <Skeleton className="h-32" />
-            <Skeleton className="h-48" />
-            <Skeleton className="h-32" />
-          </div>
-        </div>
-      </div>
-    );
-  }
   
   return (
     <motion.div

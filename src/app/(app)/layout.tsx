@@ -28,6 +28,8 @@ import { useUserProfile } from "@/hooks/use-user-profile";
 import { useUserSubscription } from "@/hooks/use-user-subscription";
 import { usePathname } from "next/navigation";
 import { PremiumFeatureGuard } from "@/components/premium-feature-guard";
+import { useState, useEffect } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 
 const navItems = [
@@ -43,10 +45,61 @@ const adminNavItems = [
     { href: "/admin", icon: Shield, label: "Admin Panel" },
 ];
 
+function AppLayoutSkeleton() {
+  return (
+    <div className="flex min-h-screen w-full flex-col">
+      <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 z-40">
+        <div className="flex items-center gap-2">
+          <Skeleton className="h-9 w-9 md:hidden" />
+          <Link href="/dashboard" className="flex items-center gap-2 font-semibold">
+              <Logo className="h-7 w-7 text-primary" />
+              <span className="text-xl font-headline hidden sm:inline-block">YouthSkillSet</span>
+          </Link>
+        </div>
+        <nav className="hidden flex-1 justify-center flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
+          <Skeleton className="h-5 w-20" />
+          <Skeleton className="h-5 w-20" />
+          <Skeleton className="h-5 w-24" />
+          <Skeleton className="h-5 w-28" />
+          <Skeleton className="h-5 w-24" />
+        </nav>
+        <div className="flex flex-1 items-center justify-end gap-2">
+          <Skeleton className="h-9 w-9" />
+          <Skeleton className="h-9 w-9 rounded-full" />
+        </div>
+      </header>
+      <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8 pb-20 md:pb-8">
+        <div className="flex-1 space-y-4">
+          <Skeleton className="h-16 w-1/2" />
+          <div className="grid gap-4 md:gap-8 lg:grid-cols-3">
+            <div className="grid auto-rows-min gap-4 md:gap-8 lg:col-span-2">
+              <Skeleton className="h-48" />
+              <Skeleton className="h-48" />
+            </div>
+            <div className="grid auto-rows-min gap-4 md:gap-8">
+              <Skeleton className="h-32" />
+              <Skeleton className="h-48" />
+              <Skeleton className="h-32" />
+            </div>
+          </div>
+        </div>
+      </main>
+      <div className="md:hidden">
+        <Skeleton className="h-16 w-full fixed bottom-0" />
+      </div>
+    </div>
+  )
+}
+
 export default function AppLayout({ children }: { children: React.ReactNode }) {
+  const [isMounted, setIsMounted] = useState(false);
   const { userProfile } = useUserProfile();
   const { userSubscription } = useUserSubscription();
   const pathname = usePathname();
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const hasPremium = userSubscription?.is_active ?? false;
   
@@ -97,6 +150,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   
   if (isAdminRoute) {
     return <div className="min-h-screen w-full">{children}</div>;
+  }
+  
+  if (!isMounted) {
+    return <AppLayoutSkeleton />;
   }
 
   return (
