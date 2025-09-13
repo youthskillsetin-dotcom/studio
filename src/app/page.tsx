@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import Link from 'next/link';
@@ -152,7 +151,7 @@ export default function LandingPage() {
           <Logo className="h-8 w-8 text-primary" />
           <span className="text-xl font-bold font-headline">YouthSkillSet</span>
         </Link>
-         <nav className="items-center gap-6 hidden md:flex">
+         <nav className="items-center gap-6 hidden md:flex flex-1 justify-center">
             <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#features">Features</a>
             <Link className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/subscribe">Pricing</Link>
             <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#faq">FAQ</a>
@@ -200,7 +199,7 @@ export default function LandingPage() {
                     </motion.p>
                     <motion.div
                         variants={FADE_IN_ANIMATION_VARIANTS}
-                        className="mt-8 flex justify-center gap-4"
+                        className="mt-8 flex flex-col sm:flex-row justify-center gap-4"
                     >
                         <Button size="lg" asChild>
                         <Link href="/signup">Start Learning for Free</Link>
