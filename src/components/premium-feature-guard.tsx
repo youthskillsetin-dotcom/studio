@@ -35,6 +35,12 @@ export function PremiumFeatureGuard({ children, featureName, href, className }: 
   const isMobile = useIsMobile();
   const hasPremium = userSubscription?.is_active ?? false;
   
+  // This state ensures the component renders the same way on server and client initially
+  const [isMounted, setIsMounted] = React.useState(false);
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
+  
   const handleNavigate = (e: React.MouseEvent) => {
     if (hasPremium) {
       router.push(href);
@@ -47,6 +53,16 @@ export function PremiumFeatureGuard({ children, featureName, href, className }: 
              {children}
         </Link>
     );
+  }
+
+  // Render a non-interactive version on the server and during initial client render
+  if (!isMounted) {
+      return (
+         <button className={cn("flex items-center w-full", className)}>
+            {children}
+            <Lock className="w-3 h-3 text-accent-foreground fill-accent ml-1" />
+        </button>
+      )
   }
 
   return (
