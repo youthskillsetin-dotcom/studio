@@ -30,6 +30,10 @@ const GenerateCareerArchetypesOutputSchema = z.object({
 });
 export type GenerateCareerArchetypesOutput = z.infer<typeof GenerateCareerArchetypesOutputSchema>;
 
+export async function generateCareerArchetypes(input: GenerateCareerArchetypesInput): Promise<GenerateCareerArchetypesOutput> {
+  return generateCareerArchetypesFlow(input);
+}
+
 const prompt = ai.definePrompt({
   name: 'generateCareerArchetypesPrompt',
   input: {schema: GenerateCareerArchetypesInputSchema},
@@ -61,14 +65,14 @@ const generateCareerArchetypesFlow = ai.defineFlow(
     outputSchema: GenerateCareerArchetypesOutputSchema,
   },
   async (input) => {
-    const result = await prompt.generate({
+    const { output } = await prompt.generate({
       input,
       model: 'googleai/gemini-1.5-pro-latest',
     });
-    return result.output!;
+    
+    if (!output) {
+      throw new Error("The AI model failed to generate valid career archetypes.");
+    }
+    return output;
   }
 );
-
-export async function generateCareerArchetypes(input: GenerateCareerArchetypesInput): Promise<GenerateCareerArchetypesOutput> {
-  return generateCareerArchetypesFlow(input);
-}

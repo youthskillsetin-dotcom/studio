@@ -30,6 +30,11 @@ const GenerateLearningPlanOutputSchema = z.object({
 export type GenerateLearningPlanOutput = z.infer<typeof GenerateLearningPlanOutputSchema>;
 
 
+export async function generateLearningPlan(input: GenerateLearningPlanInput): Promise<GenerateLearningPlanOutput> {
+  return generateLearningPlanFlow(input);
+}
+
+
 // This is the tool the AI agent can use. It allows the AI to "look up"
 // the available course content on the platform.
 const getAvailableLessons = ai.defineTool(
@@ -83,15 +88,14 @@ const generateLearningPlanFlow = ai.defineFlow(
     outputSchema: GenerateLearningPlanOutputSchema,
   },
   async (input) => {
-    const result = await prompt.generate({
+    const { output } = await prompt.generate({
       input,
       model: 'googleai/gemini-1.5-pro-latest',
     });
-    return result.output!;
+
+    if (!output) {
+      throw new Error("The AI model failed to generate a valid learning plan.");
+    }
+    return output;
   }
 );
-
-
-export async function generateLearningPlan(input: GenerateLearningPlanInput): Promise<GenerateLearningPlanOutput> {
-  return generateLearningPlanFlow(input);
-}
