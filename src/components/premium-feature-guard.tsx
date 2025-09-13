@@ -58,9 +58,8 @@ export function PremiumFeatureGuard({ children, featureName, href, className }: 
   // Render a non-interactive version on the server and during initial client render
   if (!isMounted) {
       return (
-         <button className={cn("flex items-center w-full", className)}>
+         <button className={cn("flex items-center w-full", className)} disabled>
             {children}
-            <Lock className="w-3 h-3 text-accent-foreground fill-accent ml-1" />
         </button>
       )
   }
@@ -70,7 +69,6 @@ export function PremiumFeatureGuard({ children, featureName, href, className }: 
       <AlertDialogTrigger asChild>
         <button className={cn("flex items-center w-full", className)}>
             {children}
-            <Lock className="w-3 h-3 text-accent-foreground fill-accent ml-1" />
         </button>
       </AlertDialogTrigger>
       <AlertDialogContent>
@@ -93,3 +91,4 @@ export function PremiumFeatureGuard({ children, featureName, href, className }: 
     </AlertDialog>
   );
 }
+
