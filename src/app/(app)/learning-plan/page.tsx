@@ -69,8 +69,10 @@ export default function LearningPlannerPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [lessons, setLessons] = useState<Lesson[]>([]);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     // This is a workaround to get lesson data on the client.
     // In a real app, you might use a dedicated context or API route.
     async function loadLessons() {
@@ -171,7 +173,7 @@ export default function LearningPlannerPage() {
         </Alert>
       )}
 
-      {plan && !isLoading && (
+      {isMounted && plan && !isLoading && (
         <motion.div 
           className="space-y-10 mt-12"
           initial="hidden"
@@ -185,7 +187,7 @@ export default function LearningPlannerPage() {
           
           <motion.div variants={itemVariants} className="space-y-6">
             {plan.steps.map((step, index) => (
-              <Card key={index} className="rounded-xl overflow-hidden">
+              <Card key={index} className="rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                 <CardHeader className="bg-muted/40">
                   <CardTitle className="text-lg font-headline text-primary">Step {step.step}: {step.title}</CardTitle>
                 </CardHeader>
@@ -220,3 +222,5 @@ export default function LearningPlannerPage() {
     </div>
   );
 }
+
+    

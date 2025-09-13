@@ -10,6 +10,7 @@ import { AIMentorCard } from '@/components/dashboard/ai-mentor-card';
 import { useUserSubscription } from '@/hooks/use-user-subscription';
 import { useUserProfile } from '@/hooks/use-user-profile';
 import { Skeleton } from '@/components/ui/skeleton';
+import { useEffect, useState } from 'react';
 
 
 const containerVariants = {
@@ -38,8 +39,13 @@ export default function DashboardPage() {
   const { userSubscription, isLoading: isSubscriptionLoading } = useUserSubscription();
   const { userProfile, isLoading: isProfileLoading } = useUserProfile();
   const isPremium = userSubscription?.is_active ?? false;
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   
-  if (isProfileLoading || isSubscriptionLoading) {
+  if (isProfileLoading || isSubscriptionLoading || !isMounted) {
     return (
       <div className="flex-1 space-y-4">
         <Skeleton className="h-16 w-1/2" />
@@ -88,3 +94,5 @@ export default function DashboardPage() {
     </motion.div>
   );
 }
+
+    

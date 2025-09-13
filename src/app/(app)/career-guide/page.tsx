@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -235,6 +235,11 @@ export default function CareerGuidePage() {
   const [archetypes, setArchetypes] = useState<GenerateCareerArchetypesOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   
   const handleDownload = () => {
     if (!profile) return;
@@ -391,6 +396,14 @@ export default function CareerGuidePage() {
     setIsLoading(false);
   }
 
+  if (!isMounted) {
+    return (
+        <div className="max-w-4xl mx-auto">
+            <ArchetypeSkeleton />
+        </div>
+     )
+  }
+
   if (isLoading && !profile && !archetypes) {
      return (
         <div className="max-w-4xl mx-auto">
@@ -437,7 +450,7 @@ export default function CareerGuidePage() {
           
           <div className="grid md:grid-cols-2 gap-8">
             <motion.div variants={itemVariants}>
-                 <Card className="h-full rounded-xl">
+                 <Card className="h-full rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                     <CardHeader className="flex-row items-center gap-4">
                         <div className="p-3 bg-primary/10 rounded-lg"><BarChart className="w-6 h-6 text-primary"/></div>
                         <CardTitle className="text-lg font-headline">Typical Responsibilities</CardTitle>
@@ -450,7 +463,7 @@ export default function CareerGuidePage() {
                 </Card>
             </motion.div>
             <motion.div variants={itemVariants}>
-                 <Card className="h-full rounded-xl">
+                 <Card className="h-full rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                     <CardHeader className="flex-row items-center gap-4">
                         <div className="p-3 bg-primary/10 rounded-lg"><Rocket className="w-6 h-6 text-primary"/></div>
                         <CardTitle className="text-lg font-headline">Job Market Insights</CardTitle>
@@ -476,7 +489,7 @@ export default function CareerGuidePage() {
             <h3 className="text-2xl font-bold font-headline mb-6 text-center">Essential Skills</h3>
             <div className="grid md:grid-cols-2 gap-6">
                 {profile.skills.map((item, index) => (
-                <Card key={index} className="h-full hover:shadow-lg hover:-translate-y-1 transition-all duration-300 rounded-xl">
+                <Card key={index} className="h-full hover:shadow-lg hover:-translate-y-1 transition-all duration-300 rounded-xl shadow-sm">
                     <CardHeader className="flex-row items-center gap-4">
                         <div className="p-3 bg-primary/10 rounded-lg"><Lightbulb className="w-6 h-6 text-primary" /></div>
                         <CardTitle className="text-lg">{item.skill}</CardTitle>
@@ -490,7 +503,7 @@ export default function CareerGuidePage() {
           </motion.div>
 
           <motion.div variants={itemVariants}>
-            <Card className="h-full rounded-xl">
+            <Card className="h-full rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                 <CardHeader className="flex-row items-center gap-4">
                     <div className="p-3 bg-primary/10 rounded-lg"><Map className="w-6 h-6 text-primary"/></div>
                     <CardTitle className="text-lg font-headline">Your Learning Roadmap</CardTitle>
@@ -508,7 +521,7 @@ export default function CareerGuidePage() {
           
           <div className="grid md:grid-cols-2 gap-8">
             <motion.div variants={itemVariants}>
-                 <Card className="h-full rounded-xl">
+                 <Card className="h-full rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                     <CardHeader className="flex-row items-center gap-4">
                         <div className="p-3 bg-primary/10 rounded-lg"><BriefcaseBusiness className="w-6 h-6 text-primary"/></div>
                         <CardTitle className="text-lg font-headline">Possible Job Roles</CardTitle>
@@ -521,7 +534,7 @@ export default function CareerGuidePage() {
                 </Card>
             </motion.div>
              <motion.div variants={itemVariants}>
-                 <Card className="h-full rounded-xl">
+                 <Card className="h-full rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                     <CardHeader className="flex-row items-center gap-4">
                         <div className="p-3 bg-primary/10 rounded-lg"><Building className="w-6 h-6 text-primary"/></div>
                         <CardTitle className="text-lg font-headline">Companies Hiring</CardTitle>
@@ -603,3 +616,5 @@ export default function CareerGuidePage() {
     </div>
   );
 }
+
+    
