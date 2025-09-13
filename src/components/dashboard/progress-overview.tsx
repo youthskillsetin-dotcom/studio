@@ -39,11 +39,11 @@ export function ProgressOverview() {
             </CardContent>
             <CardFooter className="flex-col gap-1 text-xs pt-2">
                 <div className="flex items-center gap-1 font-medium leading-none">
-                    <TrendingUp className="h-3 w-3" />
-                     Up 5% this week
+                    <Skeleton className="h-3 w-3" />
+                     <Skeleton className="h-4 w-24" />
                 </div>
                 <div className="leading-none text-muted-foreground">
-                    Completed 2/7 subtopics in 'Personal Finance 101'.
+                    <Skeleton className="h-4 w-48" />
                 </div>
             </CardFooter>
         </Card>
