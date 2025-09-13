@@ -29,6 +29,7 @@ const GenerateLearningPlanOutputSchema = z.object({
 });
 export type GenerateLearningPlanOutput = z.infer<typeof GenerateLearningPlanOutputSchema>;
 
+
 // This is the tool the AI agent can use. It allows the AI to "look up"
 // the available course content on the platform.
 const getAvailableLessons = ai.defineTool(
@@ -45,8 +46,7 @@ const getAvailableLessons = ai.defineTool(
     async () => {
       const lessons = await getLessons();
       // We only return a subset of the data to the AI to keep the context clean.
-      // Ensure the ID is a string to match the schema.
-      return lessons.map(({ id, title, description }) => ({ id: id || '', title, description }));
+      return lessons.map(({ id, title, description }) => ({ id: id!, title, description }));
     }
 );
 

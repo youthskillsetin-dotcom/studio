@@ -30,10 +30,6 @@ const GenerateCareerArchetypesOutputSchema = z.object({
 });
 export type GenerateCareerArchetypesOutput = z.infer<typeof GenerateCareerArchetypesOutputSchema>;
 
-export async function generateCareerArchetypes(input: GenerateCareerArchetypesInput): Promise<GenerateCareerArchetypesOutput> {
-  return generateCareerArchetypesFlow(input);
-}
-
 const prompt = ai.definePrompt({
   name: 'generateCareerArchetypesPrompt',
   input: {schema: GenerateCareerArchetypesInputSchema},
@@ -72,3 +68,7 @@ const generateCareerArchetypesFlow = ai.defineFlow(
     return result.output!;
   }
 );
+
+export async function generateCareerArchetypes(input: GenerateCareerArchetypesInput): Promise<GenerateCareerArchetypesOutput> {
+  return generateCareerArchetypesFlow(input);
+}
