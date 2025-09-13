@@ -23,7 +23,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { useState } from 'react';
-import { Loader2, ArrowLeft } from 'lucide-react';
+import { Loader2, ArrowLeft, MailCheck } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { motion } from 'framer-motion';
@@ -49,19 +49,13 @@ export default function ForgotPasswordPage() {
     setIsLoading(true);
     setError(null);
     setIsSuccess(false);
-
-    // In a real app, this would send a password reset email.
-    // For this dev environment, we simulate the success state
-    // as Supabase email services are not configured.
+    
     const { error } = await supabase.auth.resetPasswordForEmail(values.email, {
       redirectTo: `${window.location.origin}/update-password`,
     });
 
     if (error) {
-      // In a real app, you would handle the error.
-      // For this demo, we'll assume success even if email sending fails locally.
-      console.warn(`Supabase password reset email failed (this is expected in local dev): ${error.message}`);
-      setIsSuccess(true);
+      setError(error.message);
     } else {
       setIsSuccess(true);
     }
@@ -86,9 +80,10 @@ export default function ForgotPasswordPage() {
             {isSuccess ? (
                 <CardContent>
                      <Alert variant="default" className="border-green-500/50 text-green-700 [&>svg]:text-green-700 dark:border-green-500/60 dark:text-green-400 dark:[&>svg]:text-green-400">
+                        <MailCheck className="h-4 w-4" />
                         <AlertTitle>Check your email</AlertTitle>
                         <AlertDescription>
-                        A password reset link has been sent to your email address. (In development, this email is logged in your Supabase dashboard).
+                        A password reset link has been sent to your email address. Please check your inbox (and spam folder).
                         </AlertDescription>
                     </Alert>
                 </CardContent>
@@ -129,7 +124,7 @@ export default function ForgotPasswordPage() {
                 </Form>
             )}
              <CardFooter>
-                <Button variant="link" asChild className="w-full">
+                <Button variant="link" asChild className="w-full text-muted-foreground">
                     <Link href="/login">
                         <ArrowLeft className="mr-2 h-4 w-4" />
                         Back to login

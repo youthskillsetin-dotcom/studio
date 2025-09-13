@@ -67,16 +67,28 @@ export default function SignupPage() {
         data: {
           full_name: values.fullName,
           contact_no: values.contact_no,
-        }
+        },
+        // This will send a confirmation email with an OTP
+        // It's the default behavior, but we make it explicit
+        emailRedirectTo: `${location.origin}/auth/callback`,
       },
     });
 
     if (error) {
       setError(error.message);
+      setIsLoading(false);
     } else if (data.user) {
-        router.push(`/verify-otp?email=${values.email}`);
+        if (data.user.identities && data.user.identities.length === 0) {
+            setError("This user already exists. Please try logging in.");
+            setIsLoading(false);
+        } else {
+            // Redirect to OTP verification page on successful signup request
+            router.push(`/verify-otp?email=${encodeURIComponent(values.email)}`);
+        }
+    } else {
+        setError("An unexpected error occurred during sign-up. Please try again.");
+        setIsLoading(false);
     }
-    setIsLoading(false);
   }
 
   async function handleGoogleLogin() {

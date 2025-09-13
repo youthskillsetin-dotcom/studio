@@ -1,7 +1,7 @@
 
 'use client';
 
-import { Suspense, useState } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import {
     Card,
     CardContent,
@@ -17,8 +17,14 @@ import Link from 'next/link';
 import { MailCheck, Loader2, KeyRound } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { createClient } from '@/lib/supabase/client';
-import { Input } from '@/components/ui/input';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot,
+} from "@/components/ui/input-otp"
+
 
 function VerifyOtpPageContent() {
     const { toast } = useToast();
@@ -30,19 +36,27 @@ function VerifyOtpPageContent() {
     const searchParams = useSearchParams();
     const email = searchParams.get('email');
     const supabase = createClient();
+    const [emailForResend, setEmailForResend] = useState<string | null>(null);
 
-    const handleVerifyOtp = async (e: React.FormEvent) => {
-        e.preventDefault();
+    useEffect(() => {
+        if (email) {
+            setEmailForResend(decodeURIComponent(email));
+        }
+    }, [email]);
+
+
+    const handleVerifyOtp = async (value: string) => {
+        setOtp(value);
         setError(null);
-        if (!email || !otp) {
-            setError("Email and OTP are required.");
+
+        if (!emailForResend || value.length < 6) {
             return;
         }
 
         setIsSubmitting(true);
         const { error } = await supabase.auth.verifyOtp({
-            email,
-            token: otp,
+            email: emailForResend,
+            token: value,
             type: 'signup',
         });
 
@@ -51,15 +65,16 @@ function VerifyOtpPageContent() {
         } else {
             toast({
                 title: "Verification Successful!",
-                description: "Your account has been activated. You can now log in.",
+                description: "Your account has been activated. Redirecting to login...",
             });
             router.push('/login');
         }
         setIsSubmitting(false);
+        setOtp(''); // Clear OTP input after attempt
     };
 
     const handleResend = async () => {
-        if (!email) {
+        if (!emailForResend) {
             toast({
                 variant: "destructive",
                 title: "Error",
@@ -69,12 +84,12 @@ function VerifyOtpPageContent() {
         }
 
         setIsResending(true);
-        // Note: The resend API for OTP is different from magic link. 
-        // We call signUp again which resends the OTP if the user exists but is not confirmed.
-        // A more direct `resend` for OTP might be available in future Supabase versions.
+        setError(null);
+        // Supabase `resend` is for magic links/password resets. 
+        // For OTP, `signUp` is used to re-trigger the email if the user is not confirmed.
         const { error } = await supabase.auth.resend({
             type: 'signup',
-            email: email,
+            email: emailForResend,
         });
 
         if (error) {
@@ -86,7 +101,7 @@ function VerifyOtpPageContent() {
         } else {
              toast({
                 title: "OTP Sent!",
-                description: "A new verification code has been sent to your email.",
+                description: `A new verification code has been sent to ${emailForResend}.`,
             });
         }
         setIsResending(false);
@@ -100,44 +115,52 @@ function VerifyOtpPageContent() {
         className="w-full max-w-sm"
     >
         <Card>
-            <form onSubmit={handleVerifyOtp}>
                 <CardHeader className="text-center">
                     <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 mb-4">
                         <KeyRound className="h-8 w-8 text-primary" />
                     </div>
                     <CardTitle className="text-2xl font-headline">Enter Verification Code</CardTitle>
                     <CardDescription>
-                        We've sent a 6-digit code to your email address. Please enter it below to activate your account.
+                        We've sent a 6-digit code to <span className="font-semibold text-foreground">{emailForResend}</span>. Please enter it below.
                     </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="flex flex-col items-center gap-6">
                      {error && (
-                        <Alert variant="destructive">
+                        <Alert variant="destructive" className="w-full">
                             <AlertTitle>Verification Failed</AlertTitle>
                             <AlertDescription>{error}</AlertDescription>
                         </Alert>
                     )}
-                    <Input 
-                        placeholder="123456" 
-                        maxLength={6}
-                        value={otp}
-                        onChange={(e) => setOtp(e.target.value)}
-                        className="text-center text-lg tracking-[0.5em]"
-                    />
+                    <InputOTP maxLength={6} value={otp} onChange={(value) => handleVerifyOtp(value)}>
+                        <InputOTPGroup>
+                            <InputOTPSlot index={0} />
+                            <InputOTPSlot index={1} />
+                            <InputOTPSlot index={2} />
+                        </InputOTPGroup>
+                        <InputOTPSeparator />
+                        <InputOTPGroup>
+                            <InputOTPSlot index={3} />
+                            <InputOTPSlot index={4} />
+                            <InputOTPSlot index={5} />
+                        </InputOTPGroup>
+                    </InputOTP>
+                     {isSubmitting && <Loader2 className="h-6 w-6 animate-spin text-primary" />}
                 </CardContent>
                 <CardFooter className="flex-col gap-4">
-                    <Button className="w-full" type="submit" disabled={isSubmitting || otp.length < 6}>
-                         {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                        Verify Account
-                    </Button>
-                    {email && (
-                        <Button variant="link" type="button" onClick={handleResend} disabled={isResending}>
-                            {isResending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                            Didn't receive a code? Resend
+                    <p className="text-sm text-muted-foreground">
+                        Didn't receive a code?
+                    </p>
+                    {emailForResend && (
+                        <Button variant="link" type="button" onClick={handleResend} disabled={isResending} className="p-0 h-auto">
+                            {isResending ? (
+                                <>
+                                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                 Resending...
+                                </>
+                            ): "Click to Resend"}
                         </Button>
                     )}
                 </CardFooter>
-            </form>
         </Card>
     </motion.div>
     );

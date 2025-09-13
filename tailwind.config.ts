@@ -77,12 +77,17 @@ const config = {
             "33%": { transform: "translate(30px, -50px) scale(1.1)" },
             "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
             "100%": { transform: "translate(0px, 0px) scale(1)" },
-        }
+        },
+        "caret-blink": {
+          "0%,70%,100%": { opacity: "1" },
+          "20%,50%": { opacity: "0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "blob": "blob 7s infinite",
+        "caret-blink": "caret-blink 1.25s ease-out infinite",
       },
       typography: (theme: (arg0: string) => any) => ({
         DEFAULT: {
