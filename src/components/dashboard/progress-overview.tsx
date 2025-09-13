@@ -19,13 +19,36 @@ export function ProgressOverview() {
   }, []);
 
 
-  const chartData = [{ name: 'Progress', value: mounted ? progress : 0, fill: 'var(--color-primary)' }];
+  const chartData = [{ name: 'Progress', value: progress, fill: 'var(--color-primary)' }];
   const chartConfig = {
     value: {
       label: 'Progress',
       color: 'hsl(var(--primary))',
     },
   };
+
+  if (!mounted) {
+    return (
+        <Card className="rounded-2xl shadow-sm flex flex-col">
+             <CardHeader className="items-center pb-0">
+                <CardTitle className="font-headline text-lg">Learning Progress</CardTitle>
+                <CardDescription className="text-xs">You're on a 3-day streak!</CardDescription>
+            </CardHeader>
+            <CardContent className="flex-1 pb-0 flex items-center justify-center">
+                 <Skeleton className="h-[180px] w-[180px] rounded-full" />
+            </CardContent>
+            <CardFooter className="flex-col gap-1 text-xs pt-2">
+                <div className="flex items-center gap-1 font-medium leading-none">
+                    <TrendingUp className="h-3 w-3" />
+                     Up 5% this week
+                </div>
+                <div className="leading-none text-muted-foreground">
+                    Completed 2/7 subtopics in 'Personal Finance 101'.
+                </div>
+            </CardFooter>
+        </Card>
+    )
+  }
 
   return (
     <Card className="rounded-2xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col">
@@ -41,7 +64,7 @@ export function ProgressOverview() {
         <RadialBarChart
             data={chartData}
             startAngle={-90}
-            endAngle={360 * (progress / 100) - 90}
+            endAngle={-90 + (360 * progress / 100)}
             innerRadius="70%"
             outerRadius="100%"
             barSize={12}
@@ -76,3 +99,4 @@ export function ProgressOverview() {
     </Card>
   );
 }
+
