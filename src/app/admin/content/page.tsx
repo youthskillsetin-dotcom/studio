@@ -1,7 +1,7 @@
 
 
 import { notFound } from 'next/navigation';
-import { getLessons, getUserProfile } from '@/lib/data';
+import { getLessons, getUserProfile, getLessonByIdWithSubtopics } from '@/lib/data';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { FileText, Video } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -9,16 +9,12 @@ import { VideoLinkEditor } from './video-link-editor';
 import { Lesson, Subtopic } from '@/lib/types';
 import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
-import sampleContent from '@/data/sample-content.json';
-
 
 async function getLessonsWithSubtopics() {
-    const lessons = sampleContent.lessons as Lesson[];
-    const subtopics = sampleContent.subtopics as Subtopic[];
-
+    const lessons = await getLessons();
     return lessons.map(lesson => ({
         ...lesson,
-        subtopics: subtopics.filter(subtopic => subtopic.lesson_id === lesson.id)
+        subtopics: lesson.subtopics.sort((a, b) => a.order_index - b.order_index)
     })).sort((a,b) => a.order_index - b.order_index);
 }
 
@@ -55,7 +51,7 @@ export default async function AdminContentPage() {
         <CardContent>
            <Accordion type="single" collapsible className="w-full">
             {lessons.map((lesson) => (
-                <AccordionItem key={lesson.id} value={`item-${lesson.id}`}>
+                <AccordionItem key={lesson.id} value={`item-${lesson.id!}`}>
                     <AccordionTrigger className="font-semibold text-lg hover:no-underline">
                         {lesson.title}
                     </AccordionTrigger>

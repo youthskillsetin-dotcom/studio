@@ -10,13 +10,18 @@ import sampleContent from '@/data/sample-content.json';
 
 export async function getLessons(): Promise<Lesson[]> {
   noStore();
-  const lessons = sampleContent.lessons as Lesson[];
-  const subtopics = sampleContent.subtopics as Subtopic[];
+  try {
+    const lessons = sampleContent.lessons as Lesson[];
+    const subtopics = sampleContent.subtopics as Subtopic[];
 
-  return lessons.map(lesson => ({
-    ...lesson,
-    subtopics: subtopics.filter(st => st.lesson_id === lesson.id)
-  })).sort((a,b) => a.order_index - b.order_index);
+    return lessons.map(lesson => ({
+      ...lesson,
+      subtopics: subtopics.filter(st => st.lesson_id === lesson.id)
+    })).sort((a,b) => a.order_index - b.order_index);
+  } catch (error) {
+    console.error("Failed to load or parse sample-content.json:", error);
+    return [];
+  }
 }
 
 
@@ -114,16 +119,16 @@ export async function getUserSubscription(supabaseClient: SupabaseClient): Promi
             .single();
             
         if (error) { 
-            // Intentionally not logging this error to the console to avoid clutter
-            // in dev environments where the table or row might not exist yet.
-            // A missing subscription is a normal, non-error state.
+            if (error.code !== 'PGRST116') {
+               console.warn("Error fetching user subscription:", error.message);
+            }
             return null;
         }
 
         return data || null;
-    } catch (e) {
+    } catch (e: any) {
         // This catch block is for unexpected system-level errors, not for Supabase query errors.
-        console.warn("An unexpected error occurred while fetching user subscription:", e);
+        console.error("An unexpected error occurred while fetching user subscription:", e);
         return null;
     }
 }
@@ -134,79 +139,84 @@ export async function getUserProfile(supabaseClient: SupabaseClient): Promise<Us
     const { data: { user } } = await supabaseClient.auth.getUser();
     if (!user) return null;
 
-    const { data, error } = await supabaseClient
-        .from('profiles')
-        .select('role, full_name, avatar_url, contact_no')
-        .eq('id', user.id)
-        .single();
+    try {
+        const { data, error } = await supabaseClient
+            .from('profiles')
+            .select('role, full_name, avatar_url, contact_no')
+            .eq('id', user.id)
+            .single();
 
-    if (error && error.code !== 'PGRST116' && error.code !== '42P01') {
-        // Intentionally not logging this error to the console to avoid clutter.
+        if (error && error.code !== 'PGRST116') {
+            console.warn("Error fetching user profile:", error.message);
+        }
+        
+        const role = data?.role ?? user?.user_metadata?.role ?? 'user';
+        const fullName = data?.full_name ?? user?.user_metadata?.full_name ?? user?.email?.split('@')[0];
+        const contact_no = data?.contact_no ?? user?.user_metadata?.contact_no;
+
+        return {
+            id: user.id,
+            email: user.email || 'user@example.com',
+            role: role,
+            created_at: user.created_at, 
+            fullName: fullName,
+            avatar_url: data?.avatar_url,
+            contact_no: contact_no,
+        };
+    } catch (e: any) {
+        console.error("An unexpected error occurred while fetching user profile:", e);
+        return null;
     }
-    
-    const role = data?.role ?? user?.user_metadata?.role ?? 'user';
-    const fullName = data?.full_name ?? user?.user_metadata?.full_name ?? user?.email?.split('@')[0];
-    const contact_no = data?.contact_no ?? user?.user_metadata?.contact_no;
-
-    return {
-        id: user.id,
-        email: user.email || 'user@example.com',
-        role: role,
-        created_at: user.created_at, 
-        fullName: fullName,
-        avatar_url: data?.avatar_url,
-        contact_no: contact_no,
-    };
 }
 
 
 export async function getAllUsers(): Promise<UserProfileWithSubscription[]> {
   noStore();
   
-  if (!supabaseAdmin) {
-    console.warn('Supabase admin client is not initialized. Cannot fetch all users.');
-    return [];
+  try {
+    const { data: { users }, error } = await supabaseAdmin.auth.admin.listUsers();
+
+    if (error || !users) {
+      console.error('Error fetching users:', error?.message);
+      return [];
+    }
+
+    // Fetch profiles and subscriptions for all users
+    const userIds = users.map(user => user.id);
+    const { data: profiles, error: profilesError } = await supabaseAdmin
+      .from('profiles')
+      .select('id, role, full_name, contact_no')
+      .in('id', userIds);
+
+     const { data: subscriptions, error: subscriptionsError } = await supabaseAdmin
+      .from('subscriptions')
+      .select('*')
+      .in('user_id', userIds);
+
+    if (profilesError) {
+      console.error('Error fetching profiles:', profilesError.message);
+    }
+     if (subscriptionsError) {
+      console.error('Error fetching subscriptions:', subscriptionsError.message);
+    }
+
+    const profilesMap = new Map(profiles?.map(p => [p.id, { role: p.role, full_name: p.full_name, contact_no: p.contact_no }]) || []);
+    const subscriptionsMap = new Map(subscriptions?.map(s => [s.user_id, s]) || []);
+
+
+    return users.map(user => ({
+      id: user.id,
+      email: user.email ?? 'No email',
+      role: profilesMap.get(user.id)?.role ?? user.user_metadata?.role ?? 'user',
+      created_at: user.created_at ?? new Date().toISOString(),
+      fullName: profilesMap.get(user.id)?.full_name ?? user.user_metadata?.full_name,
+      contact_no: profilesMap.get(user.id)?.contact_no ?? user.user_metadata?.contact_no,
+      subscription: subscriptionsMap.get(user.id) || null,
+    }));
+  } catch(e: any) {
+      console.error("An unexpected error occurred while fetching all users:", e);
+      return [];
   }
-  
-  const { data: { users }, error } = await supabaseAdmin.auth.admin.listUsers();
-
-  if (error || !users) {
-    console.error('Error fetching users:', error?.message);
-    return [];
-  }
-
-  // Fetch profiles and subscriptions for all users
-  const userIds = users.map(user => user.id);
-  const { data: profiles, error: profilesError } = await supabaseAdmin
-    .from('profiles')
-    .select('id, role, full_name, contact_no')
-    .in('id', userIds);
-
-   const { data: subscriptions, error: subscriptionsError } = await supabaseAdmin
-    .from('subscriptions')
-    .select('*')
-    .in('user_id', userIds);
-
-  if (profilesError && profilesError.code !== '42P01') {
-    console.error('Error fetching profiles:', profilesError.message);
-  }
-   if (subscriptionsError && subscriptionsError.code !== '42P01') {
-    console.error('Error fetching subscriptions:', subscriptionsError.message);
-  }
-
-  const profilesMap = new Map(profiles?.map(p => [p.id, { role: p.role, full_name: p.full_name, contact_no: p.contact_no }]) || []);
-  const subscriptionsMap = new Map(subscriptions?.map(s => [s.user_id, s]) || []);
-
-
-  return users.map(user => ({
-    id: user.id,
-    email: user.email ?? 'No email',
-    role: profilesMap.get(user.id)?.role ?? user.user_metadata?.role ?? 'user',
-    created_at: user.created_at ?? new Date().toISOString(),
-    fullName: profilesMap.get(user.id)?.full_name ?? user.user_metadata?.full_name,
-    contact_no: profilesMap.get(user.id)?.contact_no ?? user.user_metadata?.contact_no,
-    subscription: subscriptionsMap.get(user.id) || null,
-  }));
 }
 
 

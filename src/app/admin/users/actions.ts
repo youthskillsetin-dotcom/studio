@@ -21,7 +21,6 @@ async function verifyAdmin() {
 export async function grantPremiumAccess(userId: string): Promise<{success: boolean, error?: string}> {
   try {
     await verifyAdmin();
-    if (!supabaseAdmin) throw new Error('Admin client not initialized.');
 
     // Update role in profiles table
     const { error: profileError } = await supabaseAdmin
@@ -59,7 +58,6 @@ export async function grantPremiumAccess(userId: string): Promise<{success: bool
 export async function revokePremiumAccess(userId: string): Promise<{success: boolean, error?: string}> {
     try {
         await verifyAdmin();
-        if (!supabaseAdmin) throw new Error('Admin client not initialized.');
 
         // Update role in profiles table
         const { error: profileError } = await supabaseAdmin

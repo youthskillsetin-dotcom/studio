@@ -9,6 +9,19 @@ import fs from 'fs/promises';
 import path from 'path';
 import type { Lesson, Subtopic } from '@/lib/types';
 
+async function verifyAdmin() {
+    const cookieStore = cookies();
+    const supabase = createClient(cookieStore);
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) throw new Error('Authentication required.');
+
+    const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single();
+    if (profile?.role !== 'admin') throw new Error('Permission denied. You must be an admin.');
+    
+    return user;
+}
+
+
 // IMPORTANT: This approach of writing to the file system will not work in a serverless environment.
 // This is a temporary solution for local development. In production, this data should be in a database.
 const contentFilePath = path.join(process.cwd(), 'src', 'data', 'sample-content.json');
@@ -30,22 +43,9 @@ async function writeContentFile(data: {lessons: Lesson[], subtopics: Subtopic[]}
 
 
 export async function updateVideoUrlAction({ subtopicId, newUrl }: { subtopicId: string, newUrl: string }): Promise<{success: boolean, error?: string}> {
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
-
-  // Check for admin role
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) {
-    return { success: false, error: 'Authentication required.' };
-  }
-
-  const { data: profile } = await supabase.from('profiles').select('role').eq('id', user?.id).single();
-
-  if (profile?.role !== 'admin') {
-      return { success: false, error: 'Permission denied. You must be an admin.' };
-  }
-
   try {
+    await verifyAdmin();
+
     const content = await readContentFile();
     const subtopicIndex = content.subtopics.findIndex(s => s.id === subtopicId);
 
@@ -64,7 +64,7 @@ export async function updateVideoUrlAction({ subtopicId, newUrl }: { subtopicId:
 
     return { success: true };
   } catch (error: any) {
-    console.error('An unexpected error occurred:', error);
-    return { success: false, error: 'An unexpected server error occurred.' };
+    console.error('An unexpected error occurred in updateVideoUrlAction:', error);
+    return { success: false, error: error.message || 'An unexpected server error occurred.' };
   }
 }
