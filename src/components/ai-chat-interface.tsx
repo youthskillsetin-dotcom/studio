@@ -113,7 +113,7 @@ export default function AIChatInterface() {
     setShowSlashCommands(false);
 
     try {
-      // This is the critical change: the chat history is now passed in the correct, simplified format.
+      // The chat history for the API should not include the current user message
       const chatHistoryForApi = currentMessages.slice(0, -1);
       
       const response = await aiMentorChat({
@@ -124,6 +124,7 @@ export default function AIChatInterface() {
       const assistantMessage: Message = { role: 'model', content: response.response };
       setMessages((prev) => [...prev, assistantMessage]);
     } catch (error) {
+      console.error("AI Mentor Chat Error:", error);
       const errorMessage: Message = { role: 'model', content: 'Sorry, I encountered an error. Please try again.' };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
@@ -190,7 +191,7 @@ export default function AIChatInterface() {
                       : 'bg-muted'
                   )}
                 >
-                  <div dangerouslySetInnerHTML={{ __html: message.content.replace(/\n/g, '<br />') }} className="prose prose-sm dark:prose-invert max-w-none" />
+                  <div dangerouslySetInnerHTML={{ __html: message.content.replace(/\\n/g, '<br />') }} className="prose prose-sm dark:prose-invert max-w-none" />
                 </div>
                  {message.role === 'model' && (
                   <TooltipProvider>
