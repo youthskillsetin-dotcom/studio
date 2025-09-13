@@ -81,7 +81,7 @@ export async function revokePremiumAccess(userId: string): Promise<{success: boo
         revalidatePath('/admin/users');
         return { success: true };
 
-    } catch (error: any {
+    } catch (error: any) {
         console.error('Revoke Premium Access Error:', error);
         return { success: false, error: error.message };
     }
