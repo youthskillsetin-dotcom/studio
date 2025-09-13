@@ -34,7 +34,7 @@ export async function middleware(request: NextRequest) {
     '/update-password',
     '/verify-otp',
     '/about',
-    '/pricing',
+    '/plans',
     '/support',
     '/terms',
     '/privacy',
