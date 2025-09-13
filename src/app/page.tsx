@@ -11,7 +11,7 @@ import { motion } from 'framer-motion';
 import { Footer } from '@/components/footer';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 
 const modules = [
   {
@@ -71,18 +71,19 @@ const modules = [
   }
 ];
 
-const ClientOnlyMotion = ({ children, variants }: { children: React.ReactNode, variants?: any }) => {
-    const [hasMounted, setHasMounted] = useState(false);
+const MotionWrapper = ({ children }: { children: ReactNode }) => {
+    const [isMounted, setIsMounted] = useState(false);
     useEffect(() => {
-        setHasMounted(true);
+        setIsMounted(true);
     }, []);
 
-    if (!hasMounted) {
+    if (!isMounted) {
         return null;
     }
 
-    return <motion.div variants={variants}>{children}</motion.div>;
-};
+    return <>{children}</>;
+}
+
 
 export default function LandingPage() {
   const FADE_IN_ANIMATION_VARIANTS = {
@@ -142,52 +143,53 @@ export default function LandingPage() {
       <main className="flex-1">
          <section className="relative text-left py-20 md:py-32 flex flex-col items-start justify-center overflow-hidden">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
-                <motion.div
-                    initial="hidden"
-                    animate="show"
-                    viewport={{ once: true }}
-                    variants={{
-                        hidden: {},
-                        show: {
-                        transition: {
-                            staggerChildren: 0.15,
-                        },
-                        },
-                    }}
-                    className="relative z-10"
-                    >
-                    <ClientOnlyMotion variants={FADE_IN_ANIMATION_VARIANTS}>
-                        <h1
+                <MotionWrapper>
+                    <motion.div
+                        initial="hidden"
+                        animate="show"
+                        viewport={{ once: true }}
+                        variants={{
+                            hidden: {},
+                            show: {
+                            transition: {
+                                staggerChildren: 0.15,
+                            },
+                            },
+                        }}
+                        className="relative z-10"
+                        >
+                        <motion.h1
+                            variants={FADE_IN_ANIMATION_VARIANTS}
                             className="text-4xl md:text-6xl font-extrabold font-headline tracking-tight text-foreground"
                         >
                             Unlock Your Potential.
                             <br />
                             <span className="text-primary">Build Your Future.</span>
-                        </h1>
-                    </ClientOnlyMotion>
-                     <ClientOnlyMotion variants={FADE_IN_ANIMATION_VARIANTS}>
-                        <p
+                        </motion.h1>
+                        <motion.p
+                            variants={FADE_IN_ANIMATION_VARIANTS}
                             className="mt-6 max-w-2xl text-lg text-muted-foreground"
                         >
                             YouthSkillset is an AI-powered platform that equips teens with the essential life and career skills needed to succeed in the real world. From financial literacy to personal branding, start your journey today.
-                        </p>
-                    </ClientOnlyMotion>
-                     <ClientOnlyMotion variants={FADE_IN_ANIMATION_VARIANTS}>
-                        <div
+                        </motion.p>
+                        <motion.div
+                            variants={FADE_IN_ANIMATION_VARIANTS}
                             className="mt-8 flex justify-start gap-4"
                         >
                             <Button size="lg" asChild>
                             <Link href="/signup">Start Learning for Free</Link>
                             </Button>
-                        </div>
-                    </ClientOnlyMotion>
-                </motion.div>
+                        </motion.div>
+                    </motion.div>
+                </MotionWrapper>
 
                 <div className="relative w-full max-w-lg h-80 lg:h-96 mx-auto lg:mx-0" aria-hidden="true">
                     <div className="absolute inset-0 w-full h-full">
-                        <div className="absolute top-0 -left-4 w-72 h-72 bg-primary/20 rounded-full filter blur-3xl opacity-70 animate-blob"></div>
-                        <div className="absolute top-0 -right-4 w-72 h-72 bg-accent/20 rounded-full filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
-                        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-secondary/20 rounded-full filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+                         <MotionWrapper>
+                            <motion.div className="absolute top-0 -left-4 w-72 h-72 bg-primary/20 rounded-full filter blur-3xl opacity-70 animate-blob"></motion.div>
+                            <motion.div className="absolute top-0 -right-4 w-72 h-72 bg-accent/20 rounded-full filter blur-3xl opacity-70 animate-blob animation-delay-2000"></motion.div>
+                            <motion.div className="absolute -bottom-8 left-20 w-72 h-72 bg-secondary/20 rounded-full filter blur-3xl opacity-70 animate-blob animation-delay-4000"></motion.div>
+                        </MotionWrapper>
                     </div>
                 </div>
             </div>
