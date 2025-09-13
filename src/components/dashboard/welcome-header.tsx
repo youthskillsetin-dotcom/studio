@@ -40,9 +40,9 @@ export function WelcomeHeader({ variants, name }: WelcomeHeaderProps) {
           <h1 className="text-2xl md:text-3xl font-bold tracking-tight font-headline">
             Welcome Back, {capitalize(name)}!
           </h1>
-          <p className="text-muted-foreground text-base">
+          <div className="text-muted-foreground text-base">
             {hasMounted ? quote : <Skeleton className="h-6 w-3/4" />}
-          </p>
+          </div>
         </motion.div>
     )
 }
