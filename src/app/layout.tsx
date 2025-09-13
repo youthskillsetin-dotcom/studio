@@ -60,7 +60,7 @@ export default function RootLayout({
        <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
       </head>
-      <body className={cn('font-body antialiased', inter.variable, spaceGrotesk.variable)}>
+      <body className={cn('font-body antialiased', inter.variable, spaceGrotesk.variable)} suppressHydrationWarning>
         <ThemeProvider
             attribute="class"
             defaultTheme="system"
