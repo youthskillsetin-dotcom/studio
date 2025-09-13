@@ -73,11 +73,6 @@ const prompt = ai.definePrompt({
     `,
   });
 
-export async function aiMentorChat(input: Pick<AIMentorChatInput, 'message' | 'chatHistory'>): Promise<AIMentorChatOutput> {
-    const lessons = await getLessons();
-    const allModulesContent = JSON.stringify(lessons);
-    return aiMentorChatFlow({ ...input, allModulesContent });
-}
 
 const aiMentorChatFlow = ai.defineFlow(
   {
@@ -97,3 +92,11 @@ const aiMentorChatFlow = ai.defineFlow(
     return output;
   }
 );
+
+
+export async function aiMentorChat(input: Pick<AIMentorChatInput, 'message' | 'chatHistory'>): Promise<AIMentorChatOutput> {
+    const lessons = await getLessons();
+    const allModulesContent = JSON.stringify(lessons);
+    return aiMentorChatFlow({ ...input, allModulesContent });
+}
+

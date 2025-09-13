@@ -25,10 +25,6 @@ const GenerateCareerSkillsOutputSchema = z.object({
 });
 export type GenerateCareerSkillsOutput = z.infer<typeof GenerateCareerSkillsOutputSchema>;
 
-export async function generateCareerSkills(input: GenerateCareerSkillsInput): Promise<GenerateCareerSkillsOutput> {
-  return generateCareerSkillsFlow(input);
-}
-
 const prompt = ai.definePrompt({
   name: 'generateCareerSkillsPrompt',
   input: {schema: GenerateCareerSkillsInputSchema},
@@ -60,3 +56,7 @@ const generateCareerSkillsFlow = ai.defineFlow(
     return output;
   }
 );
+
+export async function generateCareerSkills(input: GenerateCareerSkillsInput): Promise<GenerateCareerSkillsOutput> {
+  return generateCareerSkillsFlow(input);
+}

@@ -23,10 +23,6 @@ const GenerateSubtopicSummaryOutputSchema = z.object({
 });
 export type GenerateSubtopicSummaryOutput = z.infer<typeof GenerateSubtopicSummaryOutputSchema>;
 
-export async function generateSubtopicSummary(input: GenerateSubtopicSummaryInput): Promise<GenerateSubtopicSummaryOutput> {
-  return generateSubtopicSummaryFlow(input);
-}
-
 const prompt = ai.definePrompt({
   name: 'generateSubtopicSummaryPrompt',
   input: {schema: GenerateSubtopicSummaryInputSchema},
@@ -64,3 +60,7 @@ const generateSubtopicSummaryFlow = ai.defineFlow(
     return output;
   }
 );
+
+export async function generateSubtopicSummary(input: GenerateSubtopicSummaryInput): Promise<GenerateSubtopicSummaryOutput> {
+  return generateSubtopicSummaryFlow(input);
+}

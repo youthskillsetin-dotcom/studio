@@ -25,10 +25,6 @@ const GenerateAIFeedbackOutputSchema = z.object({
 });
 export type GenerateAIFeedbackOutput = z.infer<typeof GenerateAIFeedbackOutputSchema>;
 
-export async function generateAIFeedback(input: GenerateAIFeedbackInput): Promise<GenerateAIFeedbackOutput> {
-  return generateAIFeedbackFlow(input);
-}
-
 const prompt = ai.definePrompt({
   name: 'generateAIFeedbackPrompt',
   input: {schema: GenerateAIFeedbackInputSchema},
@@ -82,3 +78,7 @@ const generateAIFeedbackFlow = ai.defineFlow(
     return output;
   }
 );
+
+export async function generateAIFeedback(input: GenerateAIFeedbackInput): Promise<GenerateAIFeedbackOutput> {
+  return generateAIFeedbackFlow(input);
+}
