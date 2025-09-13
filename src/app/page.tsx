@@ -12,6 +12,7 @@ import { Footer } from '@/components/footer';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { useState, useEffect } from 'react';
 
 
 const modules = [
@@ -74,6 +75,12 @@ const modules = [
 
 
 export default function LandingPage() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const FADE_IN_ANIMATION_VARIANTS = {
     hidden: { opacity: 0, y: 10 },
     show: { opacity: 1, y: 0, transition: { type: 'spring' } },
@@ -170,13 +177,15 @@ export default function LandingPage() {
                 </motion.div>
 
                 <div className="relative w-full max-w-lg h-80 lg:h-96 mx-auto lg:mx-0" aria-hidden="true">
-                    <div className="absolute inset-0 w-full h-full">
-                         <motion.div>
-                            <motion.div className="absolute top-0 -left-4 w-72 h-72 bg-primary/20 rounded-full filter blur-3xl opacity-70 animate-blob"></motion.div>
-                            <motion.div className="absolute top-0 -right-4 w-72 h-72 bg-accent/20 rounded-full filter blur-3xl opacity-70 animate-blob animation-delay-2000"></motion.div>
-                            <motion.div className="absolute -bottom-8 left-20 w-72 h-72 bg-secondary/20 rounded-full filter blur-3xl opacity-70 animate-blob animation-delay-4000"></motion.div>
-                        </motion.div>
-                    </div>
+                    {isMounted && (
+                      <div className="absolute inset-0 w-full h-full">
+                           <motion.div>
+                              <motion.div className="absolute top-0 -left-4 w-72 h-72 bg-primary/20 rounded-full filter blur-3xl opacity-70 animate-blob"></motion.div>
+                              <motion.div className="absolute top-0 -right-4 w-72 h-72 bg-accent/20 rounded-full filter blur-3xl opacity-70 animate-blob animation-delay-2000"></motion.div>
+                              <motion.div className="absolute -bottom-8 left-20 w-72 h-72 bg-secondary/20 rounded-full filter blur-3xl opacity-70 animate-blob animation-delay-4000"></motion.div>
+                          </motion.div>
+                      </div>
+                    )}
                 </div>
             </div>
         </section>
