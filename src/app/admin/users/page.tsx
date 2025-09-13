@@ -16,6 +16,7 @@ import { Badge } from '@/components/ui/badge';
 import { format } from 'date-fns';
 import { UserCog } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { UserActions } from './user-actions';
 
 export default async function AdminUsersPage() {
   const cookieStore = cookies();
@@ -52,9 +53,9 @@ export default async function AdminUsersPage() {
               <TableRow>
                 <TableHead>Email</TableHead>
                 <TableHead>Full Name</TableHead>
-                <TableHead>Contact No.</TableHead>
                 <TableHead>Role</TableHead>
                 <TableHead>Joined On</TableHead>
+                <TableHead className="text-right">Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -62,7 +63,6 @@ export default async function AdminUsersPage() {
                 <TableRow key={user.id}>
                   <TableCell className="font-medium">{user.email}</TableCell>
                    <TableCell>{user.fullName || 'Not provided'}</TableCell>
-                   <TableCell>{user.contact_no || 'Not provided'}</TableCell>
                   <TableCell>
                     <Badge 
                       variant={user.role === 'admin' ? 'destructive' : 'secondary'} 
@@ -74,6 +74,11 @@ export default async function AdminUsersPage() {
                     </Badge>
                   </TableCell>
                   <TableCell>{user.created_at ? format(new Date(user.created_at), 'PPP') : 'N/A'}</TableCell>
+                   <TableCell className="text-right">
+                    {currentUserProfile.id !== user.id && (
+                        <UserActions user={user} />
+                    )}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -83,5 +88,3 @@ export default async function AdminUsersPage() {
     </div>
   );
 }
-
-    
