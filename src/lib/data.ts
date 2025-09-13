@@ -121,6 +121,86 @@ export async function getLessons(): Promise<Lesson[]> {
             ]
           }
         ]
+      },
+      {
+        "id": "2",
+        "title": "Module 2: Banking & Investments",
+        "description": "Unlock the secrets of banking, mutual funds, and stock market investing.",
+        "is_free": false,
+        "order_index": 2,
+        "subtopics": []
+      },
+      {
+        "id": "3",
+        "title": "Module 3: Artificial Intelligence",
+        "description": "Learn how AI works, its impact on jobs, and how to use it ethically.",
+        "is_free": false,
+        "order_index": 3,
+        "subtopics": []
+      },
+      {
+        "id": "4",
+        "title": "Module 4: Taxation in India",
+        "description": "Understand income tax, GST, and how to file your taxes correctly.",
+        "is_free": false,
+        "order_index": 4,
+        "subtopics": []
+      },
+      {
+        "id": "5",
+        "title": "Module 5: Entrepreneurship",
+        "description": "From idea to business plan, learn the fundamentals of starting your own venture.",
+        "is_free": false,
+        "order_index": 5,
+        "subtopics": []
+      },
+      {
+        "id": "6",
+        "title": "Module 6: Personal Branding & Careers",
+        "description": "Build a powerful resume, ace interviews, and create a personal brand that stands out.",
+        "is_free": false,
+        "order_index": 6,
+        "subtopics": []
+      },
+      {
+        "id": "7",
+        "title": "Module 7: Excel & Data Skills",
+        "description": "Master spreadsheets, basic data analysis, and visualization techniques.",
+        "is_free": false,
+        "order_index": 7,
+        "subtopics": []
+      },
+      {
+        "id": "8",
+        "title": "Module 8: Cybersecurity & Digital Safety",
+        "description": "Learn to protect yourself online from scams, phishing, and other digital threats.",
+        "is_free": false,
+        "order_index": 8,
+        "subtopics": []
+      },
+      {
+        "id": "9",
+        "title": "Module 9: Ethics & AI Safety",
+        "description": "Explore the ethical dilemmas of AI and the importance of building safe AI systems.",
+        "is_free": false,
+        "order_index": 9,
+        "subtopics": []
+      },
+      {
+        "id": "10",
+        "title": "Module 10: Consumer Rights",
+        "description": "Know your rights as a consumer and learn how to seek redressal.",
+        "is_free": false,
+        "order_index": 10,
+        "subtopics": []
+      },
+      {
+        "id": "11",
+        "title": "Module 11: Basic Law for Teens",
+        "description": "An introduction to your fundamental rights, responsibilities, and key cyber laws.",
+        "is_free": false,
+        "order_index": 11,
+        "subtopics": []
       }
     ]
   };
@@ -352,3 +432,5 @@ export async function getCommentsByPostId(postId: string): Promise<CommentWithAu
     noStore();
     return [];
 }
+
+    
