@@ -88,64 +88,61 @@ export default function LandingPage() {
     show: { opacity: 1, y: 0, transition: { type: 'spring' } },
   };
 
-  const renderNavControls = () => {
-    if (!isMounted) {
-      // Render a placeholder or nothing on the server and initial client render
+  const NavControls = () => {
+      if (!isMounted) {
+          return null; // Render nothing on the server and initial client render
+      }
+
+      if (isMobile) {
+          return (
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="outline" size="icon">
+                    <Menu className="h-6 w-6" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right">
+                  <div className="grid gap-4 py-6">
+                    <a className="font-medium hover:text-primary" href="#features">Features</a>
+                    <Link className="font-medium hover:text-primary" href="/subscribe">Pricing</Link>
+                    <a className="font-medium hover:text-primary" href="#faq">FAQ</a>
+                    <a className="font-medium hover:text-primary" href="/about">About</a>
+                    <div className="h-px w-full bg-border my-2" />
+                    <Button asChild variant="outline">
+                        <Link href="/login">Log In</Link>
+                    </Button>
+                    <Button asChild>
+                        <Link href="/signup">Get Started</Link>
+                    </Button>
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
+          );
+      }
+
       return (
-        <div className="flex items-center gap-2 h-10">
-          {/* This empty div matches the structure of the desktop nav, preventing layout shift */}
-        </div>
-      );
-    }
-    if (isMobile) {
-      return (
-        <div className="flex items-center gap-2">
-          <ThemeToggle />
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="outline" size="icon">
-                <Menu className="h-6 w-6" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right">
-              <div className="grid gap-4 py-6">
-                <a className="font-medium hover:text-primary" href="#features">Features</a>
-                <Link className="font-medium hover:text-primary" href="/subscribe">Pricing</Link>
-                <a className="font-medium hover:text-primary" href="#faq">FAQ</a>
-                <a className="font-medium hover:text-primary" href="/about">About</a>
-                <div className="h-px w-full bg-border my-2" />
-                <Button asChild variant="outline">
-                    <Link href="/login">Log In</Link>
+          <>
+            <nav className="items-center gap-6 hidden md:flex">
+              <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#features">Features</a>
+              <Link className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/subscribe">Pricing</Link>
+              <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#faq">FAQ</a>
+              <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/about">About</a>
+            </nav>
+            <div className="items-center gap-2 hidden md:flex">
+                <ThemeToggle />
+                <Button asChild variant="ghost">
+                  <Link href="/login">Log In</Link>
                 </Button>
                 <Button asChild>
-                    <Link href="/signup">Get Started</Link>
+                  <Link href="/signup">Get Started</Link>
                 </Button>
-              </div>
-            </SheetContent>
-          </Sheet>
-        </div>
+            </div>
+          </>
       );
-    }
-    return (
-      <>
-        <nav className="items-center gap-6 hidden md:flex">
-          <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#features">Features</a>
-          <Link className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/subscribe">Pricing</Link>
-          <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#faq">FAQ</a>
-          <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/about">About</a>
-        </nav>
-        <div className="items-center gap-2 hidden md:flex">
-            <ThemeToggle />
-            <Button asChild variant="ghost">
-              <Link href="/login">Log In</Link>
-            </Button>
-            <Button asChild>
-              <Link href="/signup">Get Started</Link>
-            </Button>
-        </div>
-      </>
-    );
-  };
+  }
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
@@ -154,7 +151,7 @@ export default function LandingPage() {
           <Logo className="h-8 w-8 text-primary" />
           <span className="text-xl font-bold font-headline">YouthSkillSet</span>
         </Link>
-        {renderNavControls()}
+        <NavControls />
       </header>
 
       <main className="flex-1">
@@ -429,5 +426,3 @@ export default function LandingPage() {
     </div>
   );
 }
-
-    

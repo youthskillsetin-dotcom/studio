@@ -50,6 +50,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   const { userProfile } = useUserProfile();
   const pathname = usePathname();
   const isMobile = useIsMobile();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   
   const isAdminRoute = userProfile?.role === 'admin' && pathname.startsWith('/admin');
   
@@ -61,15 +66,22 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     <div className="flex min-h-screen w-full flex-col">
       <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 z-40">
          <div className="flex items-center gap-2">
-            {isMobile && <MobileNav />}
-            <Link href="/dashboard" className="flex items-center gap-2 font-semibold">
-                <Logo className="h-7 w-7 text-primary" />
-                <span className="text-xl font-headline hidden sm:inline-block">YouthSkillSet</span>
-            </Link>
+            {isMounted && isMobile && <MobileNav />}
+            {!isMobile && (
+                <Link href="/dashboard" className="flex items-center gap-2 font-semibold">
+                    <Logo className="h-7 w-7 text-primary" />
+                    <span className="text-xl font-headline hidden sm:inline-block">YouthSkillSet</span>
+                </Link>
+            )}
+             {isMobile && (
+                 <Link href="/dashboard" className="flex items-center gap-2 font-semibold sm:hidden">
+                    <Logo className="h-7 w-7 text-primary" />
+                </Link>
+             )}
          </div>
           
         <nav className="hidden flex-1 justify-center flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
-           {userProfile ? (
+           {isMounted && userProfile ? (
              <>
               {navItems.map((item) => {
                 if (item.premium) {
@@ -111,25 +123,25 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               )}
             </>
            ) : (
-            <>
+            <div className="hidden md:flex items-center gap-5">
                 <Skeleton className="h-5 w-20" />
                 <Skeleton className="h-5 w-20" />
                 <Skeleton className="h-5 w-24" />
                 <Skeleton className="h-5 w-28" />
                 <Skeleton className="h-5 w-24" />
-            </>
+            </div>
            )}
         </nav>
         
         <div className="flex flex-1 items-center justify-end gap-2">
             <ThemeToggle />
-            <UserNav />
+            {isMounted ? <UserNav /> : <Skeleton className="h-9 w-9 rounded-full" />}
         </div>
         </header>
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8 pb-20 md:pb-8">
           {children}
       </main>
-       {isMobile && <BottomNav />}
+       {isMounted && isMobile && <BottomNav />}
     </div>
   );
 }
