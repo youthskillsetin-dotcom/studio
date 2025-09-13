@@ -59,8 +59,8 @@ function RedditIcon(props: SVGProps<SVGSVGElement>) {
 const socialLinks = [
     { href: 'https://x.com/YouthSkillSet', icon: Twitter, name: 'Twitter' },
     { href: 'https://www.instagram.com/youthskillset/', icon: Instagram, name: 'Instagram' },
-    { href: 'https://chat.whatsapp.com/LyQqKZ6w2Y77kZHHwKmais?mode=ems_copy_c', icon: WhatsappIcon, name: 'WhatsApp' },
-    { href: 'https://www.reddit.com/r/youthskillset/s/NOnwnriOE2', icon: RedditIcon, name: 'Reddit' },
+    { href: 'https://chat.whatsapp.com/LyQqKZ6w2Y77kZHHwKmais', icon: WhatsappIcon, name: 'WhatsApp' },
+    { href: 'https://www.reddit.com/r/youthskillset/', icon: RedditIcon, name: 'Reddit' },
 ];
 
 export function Footer() {

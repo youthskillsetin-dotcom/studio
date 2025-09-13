@@ -254,7 +254,7 @@ export default function LandingPage() {
                <Card className="rounded-2xl bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl border-0">
                 <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 mb-4"><Users className="w-8 h-8 text-primary" /></div>
                 <h3 className="text-xl font-bold font-headline mb-2">Safe Community</h3>
-                <p className="text-muted-foreground">Connect with peers in a safe, moderated environment to discuss lessons and share ideas (coming soon).</p>
+                <p className="text-muted-foreground">Connect with peers in a safe, moderated environment to discuss lessons and share ideas.</p>
               </Card>
             </div>
           </div>
