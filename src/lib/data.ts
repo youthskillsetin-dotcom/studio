@@ -146,7 +146,7 @@ export async function getUserProfile(supabaseClient: SupabaseClient): Promise<Us
             .eq('id', user.id)
             .single();
 
-        if (error && error.code !== 'PGRST116') {
+        if (error && error.code !== 'PGRST116' && error.code !== '42P01') {
             console.warn("Error fetching user profile:", error.message);
         }
         

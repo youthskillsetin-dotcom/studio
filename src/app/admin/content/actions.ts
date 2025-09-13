@@ -1,5 +1,4 @@
 
-
 'use server';
 
 import { createClient } from '@/lib/supabase/server';
@@ -24,7 +23,7 @@ async function verifyAdmin() {
 
 // IMPORTANT: This approach of writing to the file system will not work in a serverless environment.
 // This is a temporary solution for local development. In production, this data should be in a database.
-const contentFilePath = path.join(process.cwd(), 'src', 'data', 'sample-content.json');
+const contentFilePath = path.join(process.cwd(), 'src/data', 'sample-content.json');
 
 async function readContentFile(): Promise<{lessons: Lesson[], subtopics: Subtopic[]}> {
     try {
