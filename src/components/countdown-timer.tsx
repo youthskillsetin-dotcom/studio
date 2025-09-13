@@ -15,14 +15,14 @@ export function CountdownTimer({ targetDate }: CountdownTimerProps) {
     minutes: 0,
     seconds: 0,
   });
-  const [hasMounted, setHasMounted] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setHasMounted(true);
+    setIsMounted(true);
   }, []);
 
   useEffect(() => {
-    if (!hasMounted) return;
+    if (!isMounted) return;
 
     const calculateTimeLeft = () => {
       const difference = +targetDate - +new Date();
@@ -46,7 +46,7 @@ export function CountdownTimer({ targetDate }: CountdownTimerProps) {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [targetDate, hasMounted]);
+  }, [targetDate, isMounted]);
 
   const Casing = ({ value, label }: { value: number; label: string }) => (
     <div className="flex flex-col items-center justify-center bg-muted/80 p-4 rounded-lg w-24">
@@ -55,7 +55,7 @@ export function CountdownTimer({ targetDate }: CountdownTimerProps) {
     </div>
   );
 
-  if (!hasMounted) {
+  if (!isMounted) {
     return (
         <div className="flex gap-4">
             <Skeleton className="h-[92px] w-24 rounded-lg" />

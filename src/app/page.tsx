@@ -13,7 +13,7 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { useState, useEffect } from 'react';
-import { useIsMobile } from '@/hooks/use-is-mobile';
+import { useMobile } from '@/hooks/use-mobile';
 
 
 const modules = [
@@ -77,7 +77,7 @@ const modules = [
 
 export default function LandingPage() {
   const [isMounted, setIsMounted] = useState(false);
-  const isMobile = useIsMobile();
+  const isMobile = useMobile();
 
   useEffect(() => {
     setIsMounted(true);
@@ -157,7 +157,9 @@ export default function LandingPage() {
           <Logo className="h-8 w-8 text-primary" />
           <span className="text-xl font-bold font-headline">YouthSkillSet</span>
         </Link>
-        <NavControls />
+        <div className="flex items-center gap-2">
+          <NavControls />
+        </div>
       </header>
 
       <main className="flex-1">

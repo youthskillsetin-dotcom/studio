@@ -30,7 +30,7 @@ import { usePathname } from "next/navigation";
 import { PremiumFeatureGuard } from "@/components/premium-feature-guard";
 import { useState, useEffect } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { useMobile } from "@/hooks/use-mobile";
 
 
 const navItems = [
@@ -49,7 +49,7 @@ const adminNavItems = [
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const { userProfile } = useUserProfile();
   const pathname = usePathname();
-  const isMobile = useIsMobile();
+  const isMobile = useMobile();
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -66,14 +66,15 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     <div className="flex min-h-screen w-full flex-col">
       <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 z-40">
          <div className="flex items-center gap-2">
-            {isMounted && isMobile && <MobileNav />}
-            {!isMobile && (
-                <Link href="/dashboard" className="flex items-center gap-2 font-semibold">
+            {isMounted && isMobile ? (
+                <MobileNav />
+            ) : (
+                <Link href="/dashboard" className="hidden items-center gap-2 font-semibold md:flex">
                     <Logo className="h-7 w-7 text-primary" />
                     <span className="text-xl font-headline hidden sm:inline-block">YouthSkillSet</span>
                 </Link>
             )}
-             {isMobile && (
+             {isMounted && isMobile && (
                  <Link href="/dashboard" className="flex items-center gap-2 font-semibold sm:hidden">
                     <Logo className="h-7 w-7 text-primary" />
                 </Link>

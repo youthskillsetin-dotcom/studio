@@ -10,14 +10,14 @@ import { Skeleton } from '../ui/skeleton';
 
 export function ProgressOverview() {
   const [progress, setProgress] = useState(0);
-  const [hasMounted, setHasMounted] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setHasMounted(true);
-    const timer = setTimeout(() => setProgress(28), 100); // Small delay to trigger animation
+    setIsMounted(true);
+    // Animate progress on mount
+    const timer = setTimeout(() => setProgress(28), 100);
     return () => clearTimeout(timer);
   }, []);
-
 
   const chartData = [{ name: 'Progress', value: progress, fill: 'var(--color-primary)' }];
   const chartConfig = {
@@ -27,7 +27,7 @@ export function ProgressOverview() {
     },
   };
 
-  if (!hasMounted) {
+  if (!isMounted) {
     return (
         <Card className="rounded-2xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col">
              <CardHeader className="items-center pb-0">
