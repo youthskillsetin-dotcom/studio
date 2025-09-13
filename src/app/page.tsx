@@ -133,7 +133,7 @@ export default function LandingPage() {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
                 <motion.div
                     initial="hidden"
-                    animate="show"
+                    whileInView="show"
                     viewport={{ once: true }}
                     variants={{
                         hidden: {},
@@ -183,10 +183,16 @@ export default function LandingPage() {
         
         <section id="features" className="py-20 md:py-32 bg-muted/40">
           <div className="container px-4 md:px-6">
-            <div className="max-w-xl mx-auto text-center mb-12">
+            <motion.div
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                variants={FADE_IN_ANIMATION_VARIANTS}
+                className="max-w-xl mx-auto text-center mb-12"
+            >
               <h2 className="font-headline text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter">Why Choose YouthSkillSet?</h2>
               <p className="mt-4 text-lg sm:text-xl text-muted-foreground">We combine cutting-edge AI with practical, real-world lessons to make learning effective and engaging.</p>
-            </div>
+            </motion.div>
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               <Card className="rounded-2xl border bg-card text-card-foreground shadow-sm text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
                 <div className="flex justify-center mb-4"><BookOpen className="w-12 h-12 text-primary" /></div>
@@ -224,14 +230,20 @@ export default function LandingPage() {
 
         <section className="bg-background py-20">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-12">
+                <motion.div
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true }}
+                    variants={FADE_IN_ANIMATION_VARIANTS}
+                    className="text-center mb-12"
+                >
                     <h2 className="text-3xl md:text-4xl font-extrabold font-headline">
                         Our Curriculum
                     </h2>
                     <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
                         Explore the wide range of topics we cover to build a solid foundation for your success.
                     </p>
-                </div>
+                </motion.div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {modules.map((item, index) => (
                         <div key={index} className="flex items-start gap-4 rounded-xl bg-muted/40 p-6 transition-all hover:bg-card hover:shadow-xl hover:-translate-y-1 border">
@@ -250,14 +262,20 @@ export default function LandingPage() {
 
         <section className="bg-muted/40 py-20 md:py-32">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-12">
+                <motion.div
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true }}
+                    variants={FADE_IN_ANIMATION_VARIANTS}
+                    className="text-center mb-12"
+                >
                      <h2 className="text-3xl md:text-4xl font-extrabold font-headline">
                         Don't Just Take Our Word For It
                     </h2>
                     <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
                         See what our learners are saying about their journey with YouthSkillSet.
                     </p>
-                </div>
+                </motion.div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <Card className="rounded-2xl p-6 border-0 shadow-lg">
                         <CardContent className="p-0">
@@ -307,14 +325,20 @@ export default function LandingPage() {
         
         <section id="faq" className="bg-background py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-            <div className="text-center mb-12">
+             <motion.div
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                variants={FADE_IN_ANIMATION_VARIANTS}
+                className="text-center mb-12"
+            >
               <h2 className="text-3xl md:text-4xl font-extrabold font-headline">
                 Frequently Asked Questions
               </h2>
               <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
                 Have questions? We've got answers. If you can't find what you're looking for, feel free to contact our support team.
               </p>
-            </div>
+            </motion.div>
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="item-1">
                 <AccordionTrigger className="text-left">What is YouthSkillSet?</AccordionTrigger>
@@ -349,7 +373,13 @@ export default function LandingPage() {
                 <div className="bg-primary/90 rounded-2xl p-10 md:p-16 text-center text-primary-foreground relative overflow-hidden">
                     <div className="absolute -top-10 -left-10 w-32 h-32 bg-primary-foreground/10 rounded-full" />
                     <div className="absolute -bottom-16 -right-5 w-40 h-40 bg-primary-foreground/10 rounded-full" />
-                    <div className="relative z-10">
+                    <motion.div
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true }}
+                        variants={FADE_IN_ANIMATION_VARIANTS}
+                        className="relative z-10"
+                    >
                         <h2 className="text-3xl md:text-4xl font-extrabold font-headline">Ready to Start Your Journey?</h2>
                         <p className="mt-4 max-w-xl mx-auto text-lg text-primary-foreground/80">
                             Join thousands of young learners who are building a brighter future. Your first lesson is just a click away.
@@ -359,7 +389,7 @@ export default function LandingPage() {
                                 <Link href="/signup">Sign Up for Free</Link>
                             </Button>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>

@@ -39,7 +39,7 @@ export function ProgressOverview() {
             </CardContent>
             <CardFooter className="flex-col gap-1 text-xs pt-2">
                 <div className="flex items-center gap-1 font-medium leading-none">
-                    <Skeleton className="h-3 w-3" />
+                    <TrendingUp className="h-3 w-3" />
                      <Skeleton className="h-4 w-24" />
                 </div>
                 <div className="leading-none text-muted-foreground">
