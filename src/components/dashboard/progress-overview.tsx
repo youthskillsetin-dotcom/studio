@@ -10,10 +10,10 @@ import { Skeleton } from '../ui/skeleton';
 
 export function ProgressOverview() {
   const [progress, setProgress] = useState(0);
-  const [mounted, setMounted] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    setHasMounted(true);
     const timer = setTimeout(() => setProgress(28), 100); // Small delay to trigger animation
     return () => clearTimeout(timer);
   }, []);
@@ -27,9 +27,9 @@ export function ProgressOverview() {
     },
   };
 
-  if (!mounted) {
+  if (!hasMounted) {
     return (
-        <Card className="rounded-2xl shadow-sm flex flex-col">
+        <Card className="rounded-2xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col">
              <CardHeader className="items-center pb-0">
                 <CardTitle className="font-headline text-lg">Learning Progress</CardTitle>
                 <CardDescription className="text-xs">You're on a 3-day streak!</CardDescription>

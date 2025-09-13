@@ -3,6 +3,7 @@
 
 import { motion, type Variants } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { Skeleton } from '../ui/skeleton';
 
 const quotes = [
     "The best way to predict the future is to create it.",
@@ -40,7 +41,7 @@ export function WelcomeHeader({ variants, name }: WelcomeHeaderProps) {
             Welcome Back, {capitalize(name)}!
           </h1>
           <p className="text-muted-foreground text-base">
-            {hasMounted ? quote : '...'}
+            {hasMounted ? quote : <Skeleton className="h-6 w-3/4" />}
           </p>
         </motion.div>
     )

@@ -2,6 +2,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { Skeleton } from './ui/skeleton';
 
 interface CountdownTimerProps {
   targetDate: Date;
@@ -18,7 +19,11 @@ export function CountdownTimer({ targetDate }: CountdownTimerProps) {
 
   useEffect(() => {
     setHasMounted(true);
-    
+  }, []);
+
+  useEffect(() => {
+    if (!hasMounted) return;
+
     const calculateTimeLeft = () => {
       const difference = +targetDate - +new Date();
       let newTimeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
@@ -41,7 +46,7 @@ export function CountdownTimer({ targetDate }: CountdownTimerProps) {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [targetDate]);
+  }, [targetDate, hasMounted]);
 
   const Casing = ({ value, label }: { value: number; label: string }) => (
     <div className="flex flex-col items-center justify-center bg-muted/80 p-4 rounded-lg w-24">
@@ -53,10 +58,10 @@ export function CountdownTimer({ targetDate }: CountdownTimerProps) {
   if (!hasMounted) {
     return (
         <div className="flex gap-4">
-            <div className="flex flex-col items-center justify-center bg-muted/80 p-4 rounded-lg w-24 h-[92px]"></div>
-            <div className="flex flex-col items-center justify-center bg-muted/80 p-4 rounded-lg w-24 h-[92px]"></div>
-            <div className="flex flex-col items-center justify-center bg-muted/80 p-4 rounded-lg w-24 h-[92px]"></div>
-            <div className="flex flex-col items-center justify-center bg-muted/80 p-4 rounded-lg w-24 h-[92px]"></div>
+            <Skeleton className="h-[92px] w-24 rounded-lg" />
+            <Skeleton className="h-[92px] w-24 rounded-lg" />
+            <Skeleton className="h-[92px] w-24 rounded-lg" />
+            <Skeleton className="h-[92px] w-24 rounded-lg" />
         </div>
     );
   }

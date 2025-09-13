@@ -32,8 +32,6 @@ interface PremiumFeatureGuardProps {
 export function PremiumFeatureGuard({ children, featureName, href, className }: PremiumFeatureGuardProps) {
   const { userSubscription } = useUserSubscription();
   const router = useRouter();
-  const isMobile = useIsMobile();
-  const hasPremium = userSubscription?.is_active ?? false;
   
   // This state ensures the component renders the same way on server and client initially
   const [isMounted, setIsMounted] = React.useState(false);
@@ -41,11 +39,23 @@ export function PremiumFeatureGuard({ children, featureName, href, className }: 
     setIsMounted(true);
   }, []);
   
+  const hasPremium = userSubscription?.is_active ?? false;
+  
   const handleNavigate = (e: React.MouseEvent) => {
     if (hasPremium) {
       router.push(href);
     }
   };
+
+  // On the server, and during the initial client render before `isMounted` is true,
+  // we render a version that matches the `hasPremium = false` state but without the interactive dialog.
+  if (!isMounted) {
+    return (
+      <button className={cn("flex items-center w-full", className)} disabled>
+        {children}
+      </button>
+    )
+  }
 
   if (hasPremium) {
     return (
@@ -53,15 +63,6 @@ export function PremiumFeatureGuard({ children, featureName, href, className }: 
              {children}
         </Link>
     );
-  }
-
-  // Render a non-interactive version on the server and during initial client render
-  if (!isMounted) {
-      return (
-         <button className={cn("flex items-center w-full", className)} disabled>
-            {children}
-        </button>
-      )
   }
 
   return (
@@ -91,4 +92,3 @@ export function PremiumFeatureGuard({ children, featureName, href, className }: 
     </AlertDialog>
   );
 }
-
