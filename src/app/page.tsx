@@ -93,46 +93,50 @@ export default function LandingPage() {
           <Logo className="h-8 w-8 text-primary" />
           <span className="text-xl font-bold font-headline">YouthSkillSet</span>
         </Link>
-        <nav className="hidden items-center gap-6 md:flex">
-          <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#features">Features</a>
-          <Link className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/subscribe">Pricing</Link>
-          <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#faq">FAQ</a>
-           <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/about">About</a>
-        </nav>
-        <div className="hidden md:flex items-center gap-2">
-            <ThemeToggle />
-            <Button asChild variant="ghost">
-              <Link href="/login">Log In</Link>
-            </Button>
-            <Button asChild>
-              <Link href="/signup">Get Started</Link>
-            </Button>
-        </div>
-        <div className="md:hidden flex items-center gap-2">
-           <ThemeToggle />
-           <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="outline" size="icon">
-                <Menu className="h-6 w-6" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right">
-              <div className="grid gap-4 py-6">
-                <a className="font-medium hover:text-primary" href="#features">Features</a>
-                <Link className="font-medium hover:text-primary" href="/subscribe">Pricing</Link>
-                <a className="font-medium hover:text-primary" href="#faq">FAQ</a>
-                <a className="font-medium hover:text-primary" href="/about">About</a>
-                <div className="h-px w-full bg-border my-2" />
-                <Button asChild variant="outline">
-                    <Link href="/login">Log In</Link>
-                </Button>
-                <Button asChild>
-                    <Link href="/signup">Get Started</Link>
-                </Button>
-              </div>
-            </SheetContent>
-          </Sheet>
-        </div>
+        {isMounted && (
+            <>
+                <nav className="hidden items-center gap-6 md:flex">
+                  <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#features">Features</a>
+                  <Link className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/subscribe">Pricing</Link>
+                  <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="#faq">FAQ</a>
+                   <a className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/about">About</a>
+                </nav>
+                <div className="hidden md:flex items-center gap-2">
+                    <ThemeToggle />
+                    <Button asChild variant="ghost">
+                      <Link href="/login">Log In</Link>
+                    </Button>
+                    <Button asChild>
+                      <Link href="/signup">Get Started</Link>
+                    </Button>
+                </div>
+                <div className="md:hidden flex items-center gap-2">
+                   <ThemeToggle />
+                   <Sheet>
+                    <SheetTrigger asChild>
+                      <Button variant="outline" size="icon">
+                        <Menu className="h-6 w-6" />
+                      </Button>
+                    </SheetTrigger>
+                    <SheetContent side="right">
+                      <div className="grid gap-4 py-6">
+                        <a className="font-medium hover:text-primary" href="#features">Features</a>
+                        <Link className="font-medium hover:text-primary" href="/subscribe">Pricing</Link>
+                        <a className="font-medium hover:text-primary" href="#faq">FAQ</a>
+                        <a className="font-medium hover:text-primary" href="/about">About</a>
+                        <div className="h-px w-full bg-border my-2" />
+                        <Button asChild variant="outline">
+                            <Link href="/login">Log In</Link>
+                        </Button>
+                        <Button asChild>
+                            <Link href="/signup">Get Started</Link>
+                        </Button>
+                      </div>
+                    </SheetContent>
+                  </Sheet>
+                </div>
+            </>
+        )}
       </header>
 
       <main className="flex-1">
