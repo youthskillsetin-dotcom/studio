@@ -12,7 +12,7 @@ import { Form, FormControl, FormField, FormItem, FormMessage, FormLabel } from '
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { generateCareerProfile, type GenerateCareerProfileOutput } from '@/ai/flows/generate-career-profile';
 import { generateCareerArchetypes, type GenerateCareerArchetypesOutput } from '@/ai/flows/generate-career-archetypes';
-import { Compass, Briefcase, Wand2, BookOpen, BarChart, IndianRupee, Rocket, Lightbulb, Brain, Star, Map, Building, BriefcaseBusiness, AlertTriangle, Download, ArrowRight, ArrowLeft, Users, Wrench, Puzzle, PaintBrush, Heart } from 'lucide-react';
+import { Compass, Briefcase, Wand2, BookOpen, BarChart, IndianRupee, Rocket, Lightbulb, Brain, Star, Map, Building, BriefcaseBusiness, AlertTriangle, Download, ArrowRight, ArrowLeft, Users, Wrench, Puzzle, PaintBrush, Heart, User } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -573,7 +573,7 @@ export default function CareerGuidePage() {
             <div className="grid md:grid-cols-3 gap-6 items-stretch">
                 {archetypes.archetypes.map(archetype => (
                     <motion.div variants={itemVariants} key={archetype.title}>
-                        <Card className="h-full rounded-xl flex flex-col">
+                        <Card className="h-full rounded-xl flex flex-col hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                             <CardHeader>
                                 <CardTitle>{archetype.title}</CardTitle>
                                 <CardDescription>{archetype.description}</CardDescription>
