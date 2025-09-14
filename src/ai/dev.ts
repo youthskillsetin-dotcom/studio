@@ -9,3 +9,4 @@ import '@/ai/flows/generate-career-profile.ts';
 import '@/ai/flows/generate-career-skills.ts';
 import '@/ai/flows/generate-subtopic-summary.ts';
 import '@/ai/flows/generate-learning-plan.ts';
+import '@/ai/flows/generate-resume-feedback.ts';

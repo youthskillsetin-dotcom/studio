@@ -6,9 +6,9 @@ import { notFound, useParams } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ChevronLeft, FileText, CheckCircle, ArrowRight, ArrowLeft, Banknote, ClipboardList, Lightbulb, ShieldAlert, Download, Mail, Phone, Linkedin, CalendarIcon, Crown, Save } from 'lucide-react';
+import { ChevronLeft, FileText, CheckCircle, ArrowRight, ArrowLeft, Banknote, ClipboardList, Lightbulb, ShieldAlert, Download, Mail, Phone, Linkedin, CalendarIcon, Crown, Save, Wand2, Sparkles, Loader2 } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Progress } from '@/components/ui/progress';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -19,7 +19,9 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
 import { Calendar } from '@/components/ui/calendar';
-import { Tooltip, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
+import { generateResumeFeedback, type GenerateResumeFeedbackOutput } from '@/ai/flows/generate-resume-feedback';
+import { motion, AnimatePresence } from 'framer-motion';
 
 
 const labsData: { [key: string]: any } = {
@@ -379,11 +381,31 @@ const ResumeBuilderSimulation = () => {
         education: 'Delhi Public School, R.K. Puram\n- High School Diploma, Graduated May 2024',
         skills: '• Public Speaking\n• Team Leadership\n• Microsoft Excel\n• Python (Beginner)'
     });
+    const [feedback, setFeedback] = useState<GenerateResumeFeedbackOutput | null>(null);
+    const [isGeneratingFeedback, setIsGeneratingFeedback] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setResumeData(prev => ({ ...prev, [name]: value }));
     };
+
+    const handleGetFeedback = async () => {
+        setIsGeneratingFeedback(true);
+        setFeedback(null);
+        setError(null);
+        try {
+            const result = await generateResumeFeedback({ resumeData });
+            setFeedback(result);
+        } catch (e) {
+            setError("Sorry, the AI feedback generator is currently unavailable. Please try again later.");
+            console.error(e);
+        } finally {
+            setIsGeneratingFeedback(false);
+        }
+    };
+
 
     const handleDownload = () => {
         const doc = new jsPDF('p', 'pt', 'a4');
@@ -480,14 +502,67 @@ const ResumeBuilderSimulation = () => {
                 </Card>
             </div>
             <div className="space-y-4">
-                 <h2 className="text-xl font-bold font-headline">Live Preview</h2>
-                 <p className="text-sm text-muted-foreground invisible">Placeholder</p>
-                 <div className="lg:sticky top-24">
+                 <h2 className="text-xl font-bold font-headline">Live Preview & Feedback</h2>
+                 <div className="lg:sticky top-24 space-y-4">
                     <ResumePreview data={resumeData} />
-                     <Button onClick={handleDownload} className="w-full mt-4">
-                        <Download className="w-4 h-4 mr-2" />
-                        Download PDF
-                    </Button>
+                    <div className="grid grid-cols-2 gap-2">
+                        <Button onClick={handleGetFeedback} disabled={isGeneratingFeedback}>
+                            {isGeneratingFeedback ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Sparkles className="w-4 h-4 mr-2" />}
+                            Get AI Feedback
+                        </Button>
+                         <Button onClick={handleDownload} variant="outline">
+                            <Download className="w-4 h-4 mr-2" />
+                            Download PDF
+                        </Button>
+                    </div>
+
+                    <AnimatePresence>
+                    {isGeneratingFeedback && (
+                        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
+                            <Card className="rounded-xl p-6">
+                                <div className="flex items-center gap-4">
+                                <Loader2 className="w-6 h-6 animate-spin text-primary" />
+                                <div>
+                                    <p className="font-semibold">Our AI Career Coach is reviewing your resume...</p>
+                                    <p className="text-sm text-muted-foreground">This may take a moment.</p>
+                                </div>
+                                </div>
+                            </Card>
+                        </motion.div>
+                    )}
+                    </AnimatePresence>
+                     
+                    {error && (
+                        <Alert variant="destructive">
+                            <AlertTitle>Error</AlertTitle>
+                            <AlertDescription>{error}</AlertDescription>
+                        </Alert>
+                    )}
+
+                    {feedback && (
+                        <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}>
+                            <Card className="rounded-xl">
+                                <CardHeader>
+                                    <CardTitle className="flex items-center gap-2 font-headline text-lg"><Wand2 className="w-5 h-5 text-primary"/>AI Feedback</CardTitle>
+                                    <CardDescription>Overall Score: {feedback.overallScore}/100</CardDescription>
+                                </CardHeader>
+                                <CardContent className="space-y-4">
+                                     <div>
+                                        <h4 className="font-semibold">Overall Summary:</h4>
+                                        <p className="text-sm text-muted-foreground">{feedback.overallFeedback}</p>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-semibold">Section-wise Suggestions:</h4>
+                                        <ul className="list-disc list-inside space-y-2 mt-2 text-sm text-muted-foreground">
+                                             {Object.entries(feedback.sectionFeedback).map(([section, suggestion]) => (
+                                                <li key={section}><strong>{section}:</strong> {suggestion}</li>
+                                             ))}
+                                        </ul>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </motion.div>
+                    )}
                 </div>
             </div>
         </div>
