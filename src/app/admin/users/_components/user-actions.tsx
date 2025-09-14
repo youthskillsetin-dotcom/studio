@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
-import { grantPremiumAccess, revokePremiumAccess } from './actions';
+import { grantPremiumAccess, revokePremiumAccess } from '../actions';
 import type { UserProfileWithSubscription } from '@/lib/types';
 import {
   AlertDialog,
