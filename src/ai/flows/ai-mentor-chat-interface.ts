@@ -17,9 +17,10 @@ import type { Lesson } from '@/lib/types';
 
 
 // This defines the structure of each message in the chat history.
+// It's flexible to handle user, model, and tool messages.
 const ChatMessageSchema = z.object({
-    role: z.enum(['user', 'model']),
-    content: z.string(),
+    role: z.enum(['user', 'model', 'tool']),
+    content: z.any(),
 });
 
 const AIMentorChatInputSchema = z.object({
