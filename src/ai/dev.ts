@@ -12,3 +12,4 @@ import '@/ai/flows/generate-learning-plan.ts';
 import '@/ai/flows/generate-resume-feedback.ts';
 import '@/ai/flows/generate-lesson-content.ts';
 import '@/ai/flows/generate-full-course.ts';
+import '@/ai/flows/generate-cover-letter.ts';

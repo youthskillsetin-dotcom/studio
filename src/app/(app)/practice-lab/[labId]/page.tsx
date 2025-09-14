@@ -6,7 +6,7 @@ import { notFound, useParams } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ChevronLeft, FileText, CheckCircle, ArrowRight, ArrowLeft, Banknote, ClipboardList, Lightbulb, ShieldAlert, Download, Mail, Phone, Linkedin, CalendarIcon, Crown, Save, Wand2, Sparkles, Loader2 } from 'lucide-react';
+import { ChevronLeft, FileText, CheckCircle, ArrowRight, ArrowLeft, Banknote, ClipboardList, Lightbulb, ShieldAlert, Download, Mail, Phone, Linkedin, CalendarIcon, Crown, Save, Wand2, Sparkles, Loader2, Copy } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { useState, useEffect } from 'react';
 import { Progress } from '@/components/ui/progress';
@@ -21,6 +21,7 @@ import { format } from 'date-fns';
 import { Calendar } from '@/components/ui/calendar';
 import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { generateResumeFeedback, type GenerateResumeFeedbackOutput } from '@/ai/flows/generate-resume-feedback';
+import { generateCoverLetter, type GenerateCoverLetterOutput } from '@/ai/flows/generate-cover-letter';
 import { motion, AnimatePresence } from 'framer-motion';
 
 
@@ -48,15 +49,26 @@ const labsData: { [key: string]: any } = {
         icon: Banknote,
     },
     'resume-builder-lab': { 
-        title: 'Resume Builder Lab',
-        description: 'Create your first professional resume using our guided builder. Learn what to include to impress recruiters.',
+        title: 'AI Resume Builder & Reviewer',
+        description: 'Create your first professional resume using our guided builder and get instant feedback from our AI career coach.',
         learningObjectives: [
             'Understand the key sections of a professional resume.',
             'Learn how to write impactful bullet points using action verbs.',
-            'Choose a clean, professional template.',
-            'Tailor your resume for a specific job application.',
+            'Get AI-powered feedback to improve your content.',
+            'Download a professional PDF version of your resume.',
         ],
         icon: ClipboardList,
+    },
+    'cover-letter-lab': { 
+        title: 'AI Cover Letter Generator',
+        description: 'Paste a job description and use your resume details to generate a tailored cover letter in seconds.',
+        learningObjectives: [
+            'Understand how to tailor an application to a job description.',
+            'Learn the key components of a persuasive cover letter.',
+            'Generate a personalized first draft using AI.',
+            'Save time and overcome writer\'s block in job applications.',
+        ],
+        icon: Mail,
     },
     'business-idea-canvas': { 
         title: 'Business Idea Canvas',
@@ -569,6 +581,106 @@ const ResumeBuilderSimulation = () => {
     )
 }
 
+// Cover Letter Simulation
+const CoverLetterSimulation = () => {
+     const [resumeData, setResumeData] = useState({
+        fullName: 'Priya Kumar',
+        experience: '• Organized school science fair for 150+ students, coordinating 20 teams.\n• Managed social media for the school\'s annual fest, increasing engagement by 30%.',
+        education: 'Delhi Public School, R.K. Puram\n- High School Diploma, Graduated May 2024',
+        skills: 'Public Speaking, Team Leadership, Microsoft Excel, Python (Beginner)'
+    });
+    const [jobDescription, setJobDescription] = useState('We are looking for a proactive and organized Event Coordinator Intern to join our team. The ideal candidate will assist in planning and executing company events, coordinating with vendors, and managing social media promotion. Strong communication and organizational skills are a must.');
+    const [generatedLetter, setGeneratedLetter] = useState<GenerateCoverLetterOutput | null>(null);
+    const [isGenerating, setIsGenerating] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const [isCopied, setIsCopied] = useState(false);
+
+    const handleGenerate = async () => {
+        setIsGenerating(true);
+        setError(null);
+        setGeneratedLetter(null);
+        try {
+            const result = await generateCoverLetter({ resumeData, jobDescription });
+            setGeneratedLetter(result);
+        } catch (e) {
+            setError("The AI failed to generate a cover letter. Please try again with a clearer job description.");
+            console.error(e);
+        } finally {
+            setIsGenerating(false);
+        }
+    };
+    
+    const handleCopy = () => {
+        if (generatedLetter) {
+            navigator.clipboard.writeText(generatedLetter.coverLetter);
+            setIsCopied(true);
+            setTimeout(() => setIsCopied(false), 2000);
+        }
+    }
+
+    return (
+        <div className="grid lg:grid-cols-2 gap-8">
+            <div className="space-y-4">
+                 <h2 className="text-xl font-bold font-headline">Generator Inputs</h2>
+                 <p className="text-sm text-muted-foreground">Enter the job description and your resume details. The AI will use this to write a tailored cover letter.</p>
+                 <Card>
+                     <CardHeader><CardTitle>Job Description</CardTitle></CardHeader>
+                     <CardContent>
+                         <Textarea 
+                            placeholder="Paste the job description here..."
+                            value={jobDescription}
+                            onChange={(e) => setJobDescription(e.target.value)}
+                            rows={8}
+                         />
+                     </CardContent>
+                 </Card>
+                 <Card>
+                     <CardHeader><CardTitle>Your Resume Details</CardTitle></CardHeader>
+                     <CardContent className="space-y-3">
+                         <div className="space-y-1"><Label>Full Name</Label><Input value={resumeData.fullName} onChange={e => setResumeData(d => ({...d, fullName: e.target.value}))}/></div>
+                         <div className="space-y-1"><Label>Experience</Label><Textarea value={resumeData.experience} onChange={e => setResumeData(d => ({...d, experience: e.target.value}))} rows={4}/></div>
+                         <div className="space-y-1"><Label>Skills</Label><Textarea value={resumeData.skills} onChange={e => setResumeData(d => ({...d, skills: e.target.value}))} rows={2}/></div>
+                     </CardContent>
+                 </Card>
+                 <Button onClick={handleGenerate} disabled={isGenerating} className="w-full">
+                     {isGenerating ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Sparkles className="w-4 h-4 mr-2" />}
+                     Generate Cover Letter
+                 </Button>
+            </div>
+             <div className="space-y-4">
+                 <h2 className="text-xl font-bold font-headline">Generated Cover Letter</h2>
+                 <div className="lg:sticky top-24 space-y-4">
+                    <Card className="min-h-[400px]">
+                        <CardContent className="p-6">
+                            {isGenerating && (
+                                <div className="flex items-center justify-center h-full">
+                                    <Loader2 className="w-8 h-8 animate-spin text-primary" />
+                                </div>
+                            )}
+                            {error && <Alert variant="destructive"><AlertTitle>Error</AlertTitle><AlertDescription>{error}</AlertDescription></Alert>}
+                            {generatedLetter && (
+                                <div className="prose prose-sm dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: generatedLetter.coverLetter.replace(/\n/g, '<br/>') }} />
+                            )}
+                            {!generatedLetter && !isGenerating && !error && (
+                                <div className="text-center text-muted-foreground h-full flex flex-col justify-center items-center">
+                                    <Mail className="w-12 h-12 mb-4" />
+                                    <p>Your generated cover letter will appear here.</p>
+                                </div>
+                            )}
+                        </CardContent>
+                    </Card>
+                    {generatedLetter && (
+                        <Button onClick={handleCopy} variant="outline" className="w-full">
+                            {isCopied ? <CheckCircle className="w-4 h-4 mr-2 text-green-500" /> : <Copy className="w-4 h-4 mr-2" />}
+                            {isCopied ? 'Copied!' : 'Copy to Clipboard'}
+                        </Button>
+                    )}
+                 </div>
+            </div>
+        </div>
+    )
+}
+
 
 // Business Idea Canvas Components
 const BusinessCanvasSimulation = () => {
@@ -739,6 +851,8 @@ const LabSimulation = ({ labId }: { labId: string }) => {
             return <PhishingSimulation />;
         case 'resume-builder-lab':
             return <ResumeBuilderSimulation />;
+        case 'cover-letter-lab':
+            return <CoverLetterSimulation />;
         case 'business-idea-canvas':
             return <BusinessCanvasSimulation />;
         case 'budgeting-challenge':
@@ -776,7 +890,7 @@ export default function LabDetailPage() {
     notFound();
   }
   const lab = labsData[labId];
-  const isSpecialLayout = ['resume-builder-lab', 'business-idea-canvas'].includes(labId);
+  const isSpecialLayout = ['resume-builder-lab', 'business-idea-canvas', 'cover-letter-lab'].includes(labId);
 
 
   return (
@@ -819,5 +933,3 @@ export default function LabDetailPage() {
     </div>
   );
 }
-
-    

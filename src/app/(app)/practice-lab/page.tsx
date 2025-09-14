@@ -4,7 +4,7 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { FlaskConical, ArrowRight, FileText, Banknote, ClipboardList, Lightbulb, ShieldAlert, Crown, Lock } from 'lucide-react';
+import { FlaskConical, ArrowRight, FileText, Banknote, ClipboardList, Lightbulb, ShieldAlert, Crown, Lock, Mail } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
@@ -42,11 +42,20 @@ const availableLabs: Lab[] = [
     },
     {
         id: 'resume-builder-lab',
-        title: 'Resume Builder Lab',
-        description: 'Create your first professional resume using our guided builder. Learn what to include to impress recruiters.',
+        title: 'AI Resume Builder & Reviewer',
+        description: 'Create a professional resume using our guided builder and get instant feedback from our AI career coach.',
         icon: ClipboardList,
-        tags: ['Careers', 'Branding', 'Interactive'],
+        tags: ['Careers', 'AI', 'Interactive'],
         href: '/practice-lab/resume-builder-lab',
+        is_interactive: true,
+    },
+     {
+        id: 'cover-letter-lab',
+        title: 'AI Cover Letter Generator',
+        description: 'Generate a personalized cover letter for any job description based on the details from your resume.',
+        icon: Mail,
+        tags: ['Careers', 'AI', 'New'],
+        href: '/practice-lab/cover-letter-lab',
         is_interactive: true,
     },
     {
@@ -96,7 +105,7 @@ export default function PracticeLabPage() {
                     <CardTitle className="font-headline text-xl">{lab.title}</CardTitle>
                     <div className="flex flex-wrap gap-2 mt-2">
                         {lab.tags.map(tag => (
-                            <Badge key={tag} variant="secondary" className="text-xs font-medium">{tag}</Badge>
+                            <Badge key={tag} variant={tag === 'New' ? 'default' : 'secondary'} className={cn("text-xs font-medium", tag === 'New' ? 'bg-primary/80' : '')}>{tag}</Badge>
                         ))}
                     </div>
                 </div>
