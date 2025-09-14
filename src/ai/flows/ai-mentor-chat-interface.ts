@@ -13,7 +13,6 @@ import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 import {type Message} from 'genkit/content';
 import { getLessons } from '@/lib/data';
-import type { Lesson } from '@/lib/types';
 
 
 // This defines the structure of each message in the chat history.
@@ -86,6 +85,7 @@ const prompt = ai.definePrompt({
     output: {schema: AIMentorChatOutputSchema},
     history: (input) => input.chatHistory as Message[] | undefined,
     tools: [getRelevantLessons],
+    model: 'googleai/gemini-1.5-pro-latest',
     prompt: `You are MentorAI, a specialized AI assistant for the YouthSkillSet platform. Your persona is encouraging, knowledgeable, and slightly informal, like a friendly and approachable tutor for teenagers and young adults.
 
     **Your Core Mission:**
@@ -112,10 +112,7 @@ const prompt = ai.definePrompt({
     **User's Current Message:**
     Respond to the following message from the user:
     "{{{message}}}"
-    `,
-     config: {
-        model: 'googleai/gemini-1.5-pro-latest',
-    }
+    `
   });
 
 
