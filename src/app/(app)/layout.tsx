@@ -49,7 +49,7 @@ const adminNavItems = [
 ];
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
-  const { userProfile } = useUserProfile();
+  const { userProfile, isLoading: isProfileLoading } = useUserProfile();
   const pathname = usePathname();
   const isMobile = useMobile();
   const [isMounted, setIsMounted] = useState(false);
@@ -84,7 +84,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
          </div>
           
         <nav className="hidden flex-1 justify-center flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
-           {isMounted && userProfile ? (
+           {isMounted && !isProfileLoading ? (
              <>
               {navItems.map((item) => {
                 const isActive = pathname.startsWith(item.href);
@@ -148,7 +148,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 </Link>
             </Button>
             <ThemeToggle />
-            {isMounted ? <UserNav /> : <Skeleton className="h-9 w-9 rounded-full" />}
+            {isMounted && !isProfileLoading ? <UserNav /> : <Skeleton className="h-9 w-9 rounded-full" />}
         </div>
         </header>
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8 pb-20 md:pb-8">
