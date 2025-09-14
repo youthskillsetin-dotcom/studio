@@ -41,17 +41,7 @@ export default async function AdminUsersPage() {
             <p className="text-muted-foreground">View, filter, and manage all registered users.</p>
         </div>
       </div>
-      <Card>
-        <CardHeader>
-          <CardTitle>All Users</CardTitle>
-          <CardDescription>
-            A list of all users in the system. Found {users.length} users.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <UserTable users={users} currentUserId={currentUserProfile.id} />
-        </CardContent>
-      </Card>
+      <UserTable users={users} currentUserId={currentUserProfile.id} />
     </div>
   );
 }

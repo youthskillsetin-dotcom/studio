@@ -4,10 +4,9 @@ import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
 import { getAllUsers, getUserProfile, getPosts } from '@/lib/data';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Users, Crown, BarChart, FileText, Bell, MessageSquare } from 'lucide-react';
+import { Users, Crown, BarChart, FileText, Bell, MessageSquare, ArrowRight, BookMarked, FilePlus2 } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
 
 export default async function AdminDashboardPage() {
   const cookieStore = cookies();
@@ -75,38 +74,45 @@ export default async function AdminDashboardPage() {
        <div className="mt-8">
             <h2 className="text-2xl font-bold font-headline mb-4">Quick Actions</h2>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                 <Card>
-                    <CardContent className="p-4 flex items-center justify-between">
-                        <div>
-                            <h3 className="font-semibold">User Management</h3>
-                            <p className="text-sm text-muted-foreground">View and manage all users.</p>
-                        </div>
-                        <Button asChild variant="outline" size="sm">
-                            <Link href="/admin/users">Go <ArrowRight className="w-4 h-4 ml-2"/></Link>
-                        </Button>
-                    </CardContent>
+                 <Card className="hover:bg-muted/50 transition-colors">
+                    <Link href="/admin/users">
+                        <CardHeader className="flex-row items-center gap-4">
+                            <Users className="w-6 h-6 text-primary" />
+                            <CardTitle className="text-base">User Management</CardTitle>
+                        </CardHeader>
+                    </Link>
                 </Card>
-                 <Card>
-                    <CardContent className="p-4 flex items-center justify-between">
-                        <div>
-                            <h3 className="font-semibold">Content Management</h3>
-                            <p className="text-sm text-muted-foreground">Edit lesson video URLs.</p>
-                        </div>
-                        <Button asChild variant="outline" size="sm">
-                            <Link href="/admin/content">Go <ArrowRight className="w-4 h-4 ml-2"/></Link>
-                        </Button>
-                    </CardContent>
+                <Card className="hover:bg-muted/50 transition-colors">
+                    <Link href="/admin/content/generator">
+                        <CardHeader className="flex-row items-center gap-4">
+                            <FilePlus2 className="w-6 h-6 text-primary" />
+                            <CardTitle className="text-base">Subtopic Generator</CardTitle>
+                        </CardHeader>
+                    </Link>
                 </Card>
-                 <Card>
-                    <CardContent className="p-4 flex items-center justify-between">
-                        <div>
-                            <h3 className="font-semibold">Send Notifications</h3>
-                            <p className="text-sm text-muted-foreground">Broadcast messages to users.</p>
-                        </div>
-                        <Button asChild variant="outline" size="sm">
-                            <Link href="/admin/notifications">Go <ArrowRight className="w-4 h-4 ml-2"/></Link>
-                        </Button>
-                    </CardContent>
+                <Card className="hover:bg-muted/50 transition-colors">
+                    <Link href="/admin/course-maker">
+                        <CardHeader className="flex-row items-center gap-4">
+                            <BookMarked className="w-6 h-6 text-primary" />
+                            <CardTitle className="text-base">Course Maker</CardTitle>
+                        </CardHeader>
+                    </Link>
+                </Card>
+                 <Card className="hover:bg-muted/50 transition-colors">
+                    <Link href="/admin/content">
+                        <CardHeader className="flex-row items-center gap-4">
+                            <FileText className="w-6 h-6 text-primary" />
+                            <CardTitle className="text-base">Content Management</CardTitle>
+                        </CardHeader>
+                    </Link>
+                </Card>
+                 <Card className="hover:bg-muted/50 transition-colors">
+                    <Link href="/admin/notifications">
+                         <CardHeader className="flex-row items-center gap-4">
+                            <Bell className="w-6 h-6 text-primary" />
+                            <CardTitle className="text-base">Send Notifications</CardTitle>
+                        </CardHeader>
+                    </Link>
                 </Card>
             </div>
        </div>
