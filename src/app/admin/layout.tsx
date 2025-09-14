@@ -5,13 +5,14 @@ import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
 import { getUserProfile } from '@/lib/data';
 import { cn } from '@/lib/utils';
-import { Home, Users, FileText } from 'lucide-react';
+import { Home, Users, FileText, Bell } from 'lucide-react';
 import { Logo } from '@/components/icons';
 
 const adminNavItems = [
     { href: "/admin", label: "Dashboard", icon: Home },
     { href: "/admin/users", label: "Users", icon: Users },
     { href: "/admin/content", label: "Content", icon: FileText },
+    { href: "/admin/notifications", label: "Notifications", icon: Bell },
 ];
 
 export default async function AdminLayout({

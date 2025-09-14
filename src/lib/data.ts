@@ -1,6 +1,6 @@
 
 import type { SupabaseClient } from '@supabase/supabase-js';
-import type { Lesson, Subtopic, UserSubtopicProgress, Post, CommentWithAuthor, PostWithAuthor, UserSubscription, UserProfile, UserProfileWithSubscription, Transaction } from './types';
+import type { Lesson, Subtopic, UserSubtopicProgress, Post, CommentWithAuthor, PostWithAuthor, UserSubscription, UserProfile, UserProfileWithSubscription, Transaction, Notification } from './types';
 import { unstable_noStore as noStore } from 'next/cache';
 import { supabaseAdmin } from './supabase/admin';
 
@@ -297,6 +297,25 @@ export async function getCommentsByPostId(postId: string): Promise<CommentWithAu
 
         return data.map(c => ({...c, profile: c.profile?.[0] ?? c.profile})) as CommentWithAuthor[];
     } catch(e) {
+        return [];
+    }
+}
+
+export async function getNotifications(): Promise<Notification[]> {
+    noStore();
+    try {
+        const { data, error } = await supabaseAdmin
+            .from('notifications')
+            .select('*')
+            .order('created_at', { ascending: false });
+
+        if (error) {
+            if (error.code !== '42P01') console.error('Error fetching notifications:', error);
+            return [];
+        }
+        return data as Notification[];
+    } catch (e) {
+        console.error('Unexpected error fetching notifications:', e);
         return [];
     }
 }

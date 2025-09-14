@@ -109,6 +109,14 @@ export interface Transaction {
 }
 
 
+export interface Notification {
+    id: number;
+    created_at: string;
+    title: string;
+    message: string;
+}
+
+
 // Types for Supabase joins
 export type PostWithAuthor = Omit<Post, 'author_email' | 'comments'> & {
   profile: { email: string } | null;

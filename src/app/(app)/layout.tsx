@@ -141,6 +141,12 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         </nav>
         
         <div className="flex flex-1 items-center justify-end gap-2">
+            <Button variant="ghost" size="icon" className="h-9 w-9" asChild>
+                <Link href="/notifications">
+                    <Bell className="h-5 w-5" />
+                    <span className="sr-only">Notifications</span>
+                </Link>
+            </Button>
             <ThemeToggle />
             {isMounted ? <UserNav /> : <Skeleton className="h-9 w-9 rounded-full" />}
         </div>
