@@ -1,6 +1,5 @@
 
 
-
 import type { SupabaseClient } from '@supabase/supabase-js';
 import type { Lesson, Subtopic, UserSubtopicProgress, Post, CommentWithAuthor, PostWithAuthor, UserSubscription, UserProfile, UserProfileWithSubscription, Transaction, Notification, Bounty } from './types';
 import { unstable_noStore as noStore } from 'next/cache';
@@ -243,6 +242,7 @@ export async function getUserProfile(supabaseClient: SupabaseClient): Promise<Us
 export async function getAllUsers(): Promise<UserProfileWithSubscription[]> {
   noStore();
   if (!supabaseAdmin) {
+    console.warn('Supabase admin client not initialized. Cannot fetch all users.');
     return [];
   }
   
@@ -301,19 +301,20 @@ export async function getAllUsers(): Promise<UserProfileWithSubscription[]> {
 export async function getPosts(): Promise<PostWithAuthor[]> {
     noStore();
     if (!supabaseAdmin) {
+        console.warn('Supabase admin client not initialized. Cannot fetch posts.');
         return [];
     }
     try {
         const { data, error } = await supabaseAdmin
             .from('posts')
-            .select(`
+            .select(\`
                 id,
                 created_at,
                 title,
                 content,
                 user_id,
                 profile:profiles(email, full_name)
-            `)
+            \`)
             .order('created_at', { ascending: false });
 
         if (error) {
@@ -330,19 +331,20 @@ export async function getPosts(): Promise<PostWithAuthor[]> {
 export async function getPostById(id: string): Promise<PostWithAuthor | null> {
     noStore();
     if (!supabaseAdmin) {
+        console.warn('Supabase admin client not initialized. Cannot fetch post by ID.');
         return null;
     }
      try {
         const { data, error } = await supabaseAdmin
             .from('posts')
-            .select(`
+            .select(\`
                 id,
                 created_at,
                 title,
                 content,
                 user_id,
                 profile:profiles(email, full_name)
-            `)
+            \`)
             .eq('id', id)
             .single();
 
@@ -361,20 +363,21 @@ export async function getPostById(id: string): Promise<PostWithAuthor | null> {
 export async function getCommentsByPostId(postId: string): Promise<CommentWithAuthor[]> {
     noStore();
     if (!supabaseAdmin) {
+        console.warn('Supabase admin client not initialized. Cannot fetch comments.');
         return [];
     }
 
      try {
         const { data, error } = await supabaseAdmin
             .from('comments')
-            .select(`
+            .select(\`
                 id,
                 created_at,
                 content,
                 user_id,
                 post_id,
                 profile:profiles(email, full_name, avatar_url)
-            `)
+            \`)
             .eq('post_id', postId)
             .order('created_at', { ascending: true });
 
@@ -393,6 +396,7 @@ export async function getCommentsByPostId(postId: string): Promise<CommentWithAu
 export async function getNotifications(): Promise<Notification[]> {
     noStore();
     if (!supabaseAdmin) {
+        console.warn('Supabase admin client not initialized. Cannot fetch notifications.');
         return [];
     }
     try {
@@ -431,10 +435,10 @@ export async function getUserCourses(supabase: SupabaseClient): Promise<Lesson[]
     try {
         const { data: courses, error } = await supabase
             .from('user_courses')
-            .select(`
+            .select(\`
                 *,
                 subtopics:user_subtopics(*)
-            `)
+            \`)
             .eq('user_id', user.id)
             .order('created_at', { ascending: false });
         
@@ -452,15 +456,18 @@ export async function getUserCourses(supabase: SupabaseClient): Promise<Lesson[]
 
 export async function getUserCourseById(id: string): Promise<Lesson | null> {
     noStore();
-    if (!supabaseAdmin) return null;
+    if (!supabaseAdmin) {
+        console.warn('Supabase admin client not initialized. Cannot fetch user course by ID.');
+        return null;
+    }
 
     try {
         const { data: course, error } = await supabaseAdmin
             .from('user_courses')
-            .select(`
+            .select(\`
                 *,
                 subtopics:user_subtopics(*)
-            `)
+            \`)
             .eq('id', id)
             .single();
         

@@ -32,7 +32,7 @@ export async function createNotificationAction(prevState: any, formData: FormDat
     await verifyAdmin();
     
     if (!supabaseAdmin) {
-      return { success: false, error: "The admin service is not configured. Please set the SUPABASE_SERVICE_ROLE_KEY in your environment variables." };
+      return { success: false, error: "The admin service is not configured. Please set the SUPABASE_SERVICE_ROLE_KEY in your environment variables to send notifications." };
     }
 
     const rawFormData = {
