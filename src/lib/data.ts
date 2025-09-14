@@ -187,13 +187,10 @@ export async function getAllUsers(): Promise<UserProfileWithSubscription[]> {
     const { data: authUsers, error: authError } = await supabaseAdmin.auth.admin.listUsers();
 
     if (authError) {
-      // If the error is an auth error (like invalid key), we stop and return empty.
       if (authError.message.includes('Invalid API key') || authError.message.includes('Unauthorized')) {
         console.warn('Could not fetch users: Invalid or missing Supabase service role key. Please check your .env file.');
         return [];
       }
-      // For other auth errors, log them but don't crash.
-      console.error('Error fetching users from Supabase Auth:', authError.message);
       return [];
     }
 
@@ -214,11 +211,15 @@ export async function getAllUsers(): Promise<UserProfileWithSubscription[]> {
       .select('*')
       .in('user_id', userIds);
 
-    if (profilesError) {
-      if (profilesError.code !== '42P01') console.error('Error fetching profiles:', profilesError.message);
+    if (profilesError?.code === '42P01') {
+      // Profiles table doesn't exist, proceed without it
+    } else if (profilesError) {
+      console.error('Error fetching profiles:', profilesError.message);
     }
-     if (subscriptionsError) {
-      if (subscriptionsError.code !== '42P01') console.error('Error fetching subscriptions:', subscriptionsError.message);
+     if (subscriptionsError?.code === '42P01') {
+      // Subscriptions table doesn't exist, proceed without it
+    } else if (subscriptionsError) {
+      console.error('Error fetching subscriptions:', subscriptionsError.message);
     }
 
     const profilesMap = new Map(profiles?.map(p => [p.id, { role: p.role, full_name: p.full_name, contact_no: p.contact_no }]) || []);
@@ -243,7 +244,6 @@ export async function getAllUsers(): Promise<UserProfileWithSubscription[]> {
 export async function getPosts(): Promise<PostWithAuthor[]> {
     noStore();
     if (!supabaseAdmin) {
-        console.warn('Supabase admin client not initialized. Cannot fetch posts.');
         return [];
     }
     try {
@@ -260,11 +260,9 @@ export async function getPosts(): Promise<PostWithAuthor[]> {
             .order('created_at', { ascending: false });
 
         if (error) {
-            if (error.code === '42P01') { // table does not exist
-                return []; 
-            }
-            console.error('Error fetching posts:', error.message);
-            return [];
+             // Silently fail if table doesn't exist
+            if (error.code === '42P01') return [];
+            throw error;
         }
         return data.map(p => ({...p, profile: p.profile?.[0] ?? p.profile})) as PostWithAuthor[];
     } catch(e: any) {
@@ -276,10 +274,8 @@ export async function getPosts(): Promise<PostWithAuthor[]> {
 export async function getPostById(id: string): Promise<PostWithAuthor | null> {
     noStore();
      try {
-        if (!supabaseAdmin) {
-            console.warn(`Supabase admin client not initialized. Cannot fetch post ${id}.`);
-            return null;
-        }
+        if (!supabaseAdmin) return null;
+
         const { data, error } = await supabaseAdmin
             .from('posts')
             .select(`
@@ -294,23 +290,22 @@ export async function getPostById(id: string): Promise<PostWithAuthor | null> {
             .single();
 
         if (error) {
-             if (error.code === '42P01' || error.code === 'PGRST116') return null;
-             console.error(`Error fetching post ${id}:`, error);
-            return null;
+            // Silently fail if table or row doesn't exist
+            if (error.code === '42P01' || error.code === 'PGRST116') return null;
+            throw error;
         }
 
         return data as PostWithAuthor;
-    } catch(e) {
+    } catch(e: any) {
+        console.error(`An unexpected error occurred in getPostById (${id}):`, e.message);
         return null;
     }
 }
 
 export async function getCommentsByPostId(postId: string): Promise<CommentWithAuthor[]> {
     noStore();
-    if (!supabaseAdmin) {
-        console.warn(`Supabase admin client not initialized. Cannot fetch comments for post ${postId}.`);
-        return [];
-    }
+    if (!supabaseAdmin) return [];
+
      try {
         const { data, error } = await supabaseAdmin
             .from('comments')
@@ -326,13 +321,14 @@ export async function getCommentsByPostId(postId: string): Promise<CommentWithAu
             .order('created_at', { ascending: true });
 
         if (error) {
+            // Silently fail if table doesn't exist
             if (error.code === '42P01') return [];
-            console.error(`Error fetching comments for post ${postId}:`, error);
-            return [];
+            throw error;
         }
 
         return data.map(c => ({...c, profile: c.profile?.[0] ?? c.profile})) as CommentWithAuthor[];
-    } catch(e) {
+    } catch(e: any) {
+        console.error(`An unexpected error occurred in getCommentsByPostId (${postId}):`, e.message);
         return [];
     }
 }
@@ -340,7 +336,6 @@ export async function getCommentsByPostId(postId: string): Promise<CommentWithAu
 export async function getNotifications(): Promise<Notification[]> {
     noStore();
     if (!supabaseAdmin) {
-        console.warn('Supabase admin client not initialized. Cannot fetch notifications.');
         return [];
     }
     try {
@@ -350,13 +345,13 @@ export async function getNotifications(): Promise<Notification[]> {
             .order('created_at', { ascending: false });
 
         if (error) {
+            // Silently fail if table doesn't exist
             if (error.code === '42P01') return [];
-            console.error('Error fetching notifications:', error);
-            return [];
+            throw error;
         }
         return data as Notification[];
-    } catch (e) {
-        console.error('Unexpected error fetching notifications:', e);
+    } catch (e: any) {
+        console.error('Unexpected error fetching notifications:', e.message);
         return [];
     }
 }
