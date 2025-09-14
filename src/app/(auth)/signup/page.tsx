@@ -68,8 +68,6 @@ export default function SignupPage() {
           full_name: values.fullName,
           contact_no: values.contact_no,
         },
-        // This will send a confirmation email with an OTP
-        // It's the default behavior, but we make it explicit
         emailRedirectTo: `${location.origin}/auth/callback`,
       },
     });
@@ -78,11 +76,12 @@ export default function SignupPage() {
       setError(error.message);
       setIsLoading(false);
     } else if (data.user) {
+        // If user is not null but identities is empty, it means the user already exists.
         if (data.user.identities && data.user.identities.length === 0) {
-            setError("This user already exists. Please try logging in.");
+            setError("A user with this email address already exists. Please log in instead.");
             setIsLoading(false);
         } else {
-            // Redirect to OTP verification page on successful signup request
+            // This is a new user signup, redirect to OTP verification.
             router.push(`/verify-otp?email=${encodeURIComponent(values.email)}`);
         }
     } else {
