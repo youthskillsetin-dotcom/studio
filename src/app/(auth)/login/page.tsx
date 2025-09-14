@@ -64,7 +64,7 @@ export default function LoginPage() {
 
     if (error) {
         if (error instanceof AuthApiError && error.message.includes('Email not confirmed')) {
-             router.push(`/verify-otp?email=${values.email}`);
+             router.push(`/verify-otp?email=${encodeURIComponent(values.email)}`);
         } else {
             setError(error.message);
         }
