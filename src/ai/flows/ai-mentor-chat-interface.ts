@@ -125,8 +125,19 @@ const aiMentorChatFlow = ai.defineFlow(
     inputSchema: AIMentorChatInputSchema,
     outputSchema: AIMentorChatOutputSchema,
   },
-  async input => {
-    const { output } = await prompt(input);
+  async (input) => {
+    // Transform the simple chat history from the client into the format Genkit expects.
+    const history: Message[] = (input.chatHistory || []).map(message => {
+        return {
+            role: message.role as 'user' | 'model', // Cast role
+            content: [{ text: message.content }] // Wrap string content in a Part object
+        };
+    });
+
+    const { output } = await prompt({
+        ...input,
+        chatHistory: history,
+    });
     
     if (!output) {
       throw new Error("The AI model failed to generate a valid response.");
