@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -13,7 +12,7 @@ import { Form, FormControl, FormField, FormItem, FormMessage, FormLabel } from '
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { generateCareerProfile, type GenerateCareerProfileOutput } from '@/ai/flows/generate-career-profile';
 import { generateCareerArchetypes, type GenerateCareerArchetypesOutput } from '@/ai/flows/generate-career-archetypes';
-import { Compass, Briefcase, Wand2, BookOpen, BarChart, IndianRupee, Rocket, Lightbulb, Brain, Star, Map, Building, BriefcaseBusiness, AlertTriangle, Download, ArrowRight, ArrowLeft, Users, Wrench, Puzzle, PaintBrush, Heart, User, Search } from 'lucide-react';
+import { Compass, Briefcase, Wand2, BookOpen, BarChart, IndianRupee, Rocket, Lightbulb, Brain, Star, Map, Building, BriefcaseBusiness, AlertTriangle, Download, ArrowRight, ArrowLeft, Users, Wrench, Puzzle, Paintbrush, Heart, User, Search } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -128,7 +127,7 @@ const RoadmapStep = ({ number, title, description }: { number: number, title: st
 const questions = [
     { name: 'teamwork', label: 'Do you prefer working in a team or on your own?', options: [{value: 'team', label: 'In a team', icon: Users}, {value: 'alone', label: 'On my own', icon: User}]},
     { name: 'workStyle', label: 'Would you rather build something with your hands or with ideas?', options: [{value: 'hands', label: 'With my hands', icon: Wrench}, {value: 'ideas', label: 'With ideas', icon: Lightbulb}]},
-    { name: 'interest', label: 'What excites you more?', options: [{value: 'puzzle', label: 'Solving a complex puzzle', icon: Puzzle}, {value: 'design', label: 'Creating a beautiful design', icon: PaintBrush}]},
+    { name: 'interest', label: 'What excites you more?', options: [{value: 'puzzle', label: 'Solving a complex puzzle', icon: Puzzle}, {value: 'design', label: 'Creating a beautiful design', icon: Paintbrush}]},
     { name: 'subject', label: 'Which sounds more interesting to understand?', options: [{value: 'money', label: 'How money moves around the world', icon: IndianRupee}, {value: 'people', label: 'How people think and connect', icon: Heart}]},
 ]
 
