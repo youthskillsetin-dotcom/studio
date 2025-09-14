@@ -213,10 +213,10 @@ export async function getAllUsers(): Promise<UserProfileWithSubscription[]> {
       .in('user_id', userIds);
 
     if (profilesError) {
-      console.error('Error fetching profiles:', profilesError.message);
+      if (profilesError.code !== '42P01') console.error('Error fetching profiles:', profilesError.message);
     }
      if (subscriptionsError) {
-      console.error('Error fetching subscriptions:', subscriptionsError.message);
+      if (subscriptionsError.code !== '42P01') console.error('Error fetching subscriptions:', subscriptionsError.message);
     }
 
     const profilesMap = new Map(profiles?.map(p => [p.id, { role: p.role, full_name: p.full_name, contact_no: p.contact_no }]) || []);
@@ -258,11 +258,14 @@ export async function getPosts(): Promise<PostWithAuthor[]> {
             .order('created_at', { ascending: false });
 
         if (error) {
-            if (error.code !== '42P01') console.error('Error fetching posts:', error);
+            // Gracefully handle if table does not exist
+            if (error.code === '42P01') return []; 
+            console.error('Error fetching posts:', error.message);
             return [];
         }
         return data.map(p => ({...p, profile: p.profile?.[0] ?? p.profile})) as PostWithAuthor[];
-    } catch(e) {
+    } catch(e: any) {
+        console.error('An unexpected error occurred in getPosts:', e.message);
         return [];
     }
 }
@@ -288,7 +291,8 @@ export async function getPostById(id: string): Promise<PostWithAuthor | null> {
             .single();
 
         if (error) {
-            if (error.code !== '42P01') console.error(`Error fetching post ${id}:`, error);
+             if (error.code === '42P01' || error.code === 'PGRST116') return null;
+             console.error(`Error fetching post ${id}:`, error);
             return null;
         }
 
@@ -319,7 +323,8 @@ export async function getCommentsByPostId(postId: string): Promise<CommentWithAu
             .order('created_at', { ascending: true });
 
         if (error) {
-            if (error.code !== '42P01') console.error(`Error fetching comments for post ${postId}:`, error);
+            if (error.code === '42P01') return [];
+            console.error(`Error fetching comments for post ${postId}:`, error);
             return [];
         }
 
@@ -342,7 +347,8 @@ export async function getNotifications(): Promise<Notification[]> {
             .order('created_at', { ascending: false });
 
         if (error) {
-            if (error.code !== '42P01') console.error('Error fetching notifications:', error);
+            if (error.code === '42P01') return [];
+            console.error('Error fetching notifications:', error);
             return [];
         }
         return data as Notification[];
