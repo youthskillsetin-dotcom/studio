@@ -16,7 +16,8 @@ import { Badge } from '@/components/ui/badge';
 import { format } from 'date-fns';
 import { UserCog } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { UserActions } from './user-actions';
+import { UserActions } from './_components/user-actions';
+import { UserTable } from './_components/user-table';
 
 export default async function AdminUsersPage() {
   const cookieStore = cookies();
@@ -37,7 +38,7 @@ export default async function AdminUsersPage() {
         <UserCog className="w-8 h-8" />
         <div>
             <h1 className="text-3xl font-bold font-headline">User Management</h1>
-            <p className="text-muted-foreground">View and manage all registered users.</p>
+            <p className="text-muted-foreground">View, filter, and manage all registered users.</p>
         </div>
       </div>
       <Card>
@@ -48,79 +49,7 @@ export default async function AdminUsersPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          {/* Table for larger screens */}
-          <div className="hidden md:block">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Email</TableHead>
-                  <TableHead>Full Name</TableHead>
-                  <TableHead>Role</TableHead>
-                  <TableHead>Joined On</TableHead>
-                  <TableHead className="text-right">Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {users.map((user) => (
-                  <TableRow key={user.id}>
-                    <TableCell className="font-medium">{user.email}</TableCell>
-                    <TableCell>{user.fullName || 'Not provided'}</TableCell>
-                    <TableCell>
-                      <Badge 
-                        variant={user.role === 'admin' ? 'destructive' : 'secondary'} 
-                        className={cn(
-                          {'bg-primary/20 text-primary border border-primary/30': user.role === 'premium'},
-                          {'bg-secondary/20 text-secondary-foreground border border-secondary/30': user.role === 'user'}
-                        )}>
-                          {user.role}
-                      </Badge>
-                    </TableCell>
-                    <TableCell>{user.created_at ? format(new Date(user.created_at), 'PPP') : 'N/A'}</TableCell>
-                    <TableCell className="text-right">
-                      {currentUserProfile.id !== user.id && (
-                          <UserActions user={user} />
-                      )}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-
-          {/* Card list for smaller screens */}
-          <div className="md:hidden space-y-4">
-            {users.map((user) => (
-              <Card key={user.id} className="rounded-xl">
-                <CardHeader>
-                   <CardTitle className="text-base font-semibold">{user.fullName || 'Not provided'}</CardTitle>
-                   <CardDescription className="text-xs">{user.email}</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-3 text-sm">
-                    <div className="flex justify-between">
-                        <span className="text-muted-foreground">Role</span>
-                         <Badge 
-                            variant={user.role === 'admin' ? 'destructive' : 'secondary'} 
-                            className={cn(
-                                'text-xs',
-                                {'bg-primary/20 text-primary border border-primary/30': user.role === 'premium'},
-                                {'bg-secondary/20 text-secondary-foreground border border-secondary/30': user.role === 'user'}
-                            )}>
-                            {user.role}
-                        </Badge>
-                    </div>
-                     <div className="flex justify-between">
-                        <span className="text-muted-foreground">Joined</span>
-                        <span>{user.created_at ? format(new Date(user.created_at), 'PPP') : 'N/A'}</span>
-                    </div>
-                </CardContent>
-                <CardFooter>
-                  {currentUserProfile.id !== user.id && (
-                    <UserActions user={user} />
-                  )}
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
+          <UserTable users={users} currentUserId={currentUserProfile.id} />
         </CardContent>
       </Card>
     </div>
