@@ -1,3 +1,4 @@
+
 'use server';
 
 import { createClient } from '@/lib/supabase/server';
@@ -29,6 +30,10 @@ const NotificationSchema = z.object({
 export async function createNotificationAction(prevState: any, formData: FormData): Promise<{success: boolean, error?: string, errors?: any}> {
   try {
     await verifyAdmin();
+    
+    if (!supabaseAdmin) {
+      return { success: false, error: "The admin service is not configured. Please set the SUPABASE_SERVICE_ROLE_KEY in your environment variables." };
+    }
 
     const rawFormData = {
       title: formData.get('title'),
