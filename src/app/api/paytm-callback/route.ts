@@ -6,30 +6,23 @@ import { supabaseAdmin } from '@/lib/supabase/admin';
 import crypto from 'crypto';
 
 /**
- * Function to verify Paytm checksum using Node.js crypto.
- * This is a critical security step.
- * @param {any} body - The request body from Paytm.
+ * Paytm Checksum verification utility.
+ * @param {object} params - The object containing all response parameters.
  * @param {string} key - The merchant key.
- * @param {string} checksum - The checksum sent by Paytm.
+ * @param {string} checksumhash - The checksum hash received from Paytm.
  * @returns {boolean} - True if the signature is valid, false otherwise.
  */
-function verifySignature(body: any, key: string, checksum: string): boolean {
+function verifySignature(params: any, key: string, checksumhash: string): boolean {
+    const bodyString = JSON.stringify(params);
+
     try {
-        if (typeof body !== 'object' || body === null || !key || !checksum) {
-            return false;
-        }
-
-        const bodyString = JSON.stringify(body);
-        
-        let received_checksum = decodeURIComponent(checksum);
-        const salt = received_checksum.slice(-4);
-        const sha256 = received_checksum.slice(0, -4);
+        const salt = checksumhash.slice(-4);
+        const sha256 = checksumhash.slice(0, -4);
         const hash = crypto.createHash('sha256').update(bodyString + '|' + salt).digest('hex');
-
-        return hash === sha256;
-
+        
+        return sha256 === hash;
     } catch (e) {
-        console.error("Signature verification error", e);
+        console.error("Signature verification error:", e);
         return false;
     }
 }
@@ -41,7 +34,9 @@ export async function POST(req: Request) {
         body = await req.json();
         
         const checksum = req.headers.get('x-checksum');
-        const merchantKey = process.env.PAYTM_MERCHANT_KEY;
+        
+        const isProduction = process.env.NODE_ENV === 'production';
+        const merchantKey = isProduction ? process.env.PAYTM_PROD_KEY : process.env.PAYTM_MERCHANT_KEY;
 
         if (!checksum || !merchantKey) {
             console.error("Callback Error: Checksum or merchant key missing.");
@@ -68,11 +63,9 @@ export async function POST(req: Request) {
 
         if (transactionError || !transaction) {
             console.error(`Transaction not found for orderId: ${ORDERID}`, transactionError);
-            // Even if transaction not found, redirect user to avoid showing an error page.
             return NextResponse.redirect(new URL('/subscribe?payment=failed&error=not_found', req.url));
         }
         
-        // Idempotency check: If already processed, just redirect.
         if (transaction.status === 'SUCCESS') {
             return NextResponse.redirect(new URL('/dashboard?payment=already_processed', req.url));
         }
@@ -117,5 +110,3 @@ export async function POST(req: Request) {
         return NextResponse.json({ error: `Webhook handler failed: ${e.message}` }, { status: 500 });
     }
 }
-
-    

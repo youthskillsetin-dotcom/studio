@@ -13,13 +13,13 @@ const plans = {
 };
 
 /**
- * Function to generate Paytm checksum using Node.js crypto.
+ * Function to generate Paytm checksum.
  * @param {Object} params
  * @param {string} key
  * @returns {Promise<string>}
  */
 async function generateSignature(params: any, key: string): Promise<string> {
-    const bodyString = JSON.stringify(params);
+    const bodyString = typeof params === 'string' ? params : JSON.stringify(params);
     const salt = crypto.randomBytes(4).toString('hex');
     const checksum = crypto.createHash('sha256').update(bodyString + '|' + salt).digest('hex') + salt;
     return Promise.resolve(checksum);
@@ -39,10 +39,12 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Admin client not initialized' }, { status: 500 });
   }
 
-  const mid = process.env.NEXT_PUBLIC_PAYTM_MID;
-  const merchantKey = process.env.PAYTM_MERCHANT_KEY;
+  const isProduction = process.env.NODE_ENV === 'production';
+
+  const mid = isProduction ? process.env.PAYTM_PROD_MID : process.env.NEXT_PUBLIC_PAYTM_MID;
+  const merchantKey = isProduction ? process.env.PAYTM_PROD_KEY : process.env.PAYTM_MERCHANT_KEY;
   const websiteName = process.env.PAYTM_WEBSITE || 'WEBSTAGING';
-  const paytmUrl = process.env.PAYTM_ENVIRONMENT === 'PROD'
+  const paytmUrl = isProduction
     ? 'https://securegw.paytm.in'
     : 'https://securegw-stage.paytm.in';
 
