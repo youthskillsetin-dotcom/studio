@@ -27,8 +27,8 @@ export function UserTable({ users, currentUserId }: UserTableProps) {
     const [searchTerm, setSearchTerm] = useState('');
 
     const filteredUsers = users.filter(user => 
-        user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        user.fullName?.toLowerCase().includes(searchTerm.toLowerCase())
+        (user.email && user.email.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        (user.fullName && user.fullName.toLowerCase().includes(searchTerm.toLowerCase()))
     );
 
     return (
@@ -122,4 +122,3 @@ export function UserTable({ users, currentUserId }: UserTableProps) {
         </div>
     )
 }
-
