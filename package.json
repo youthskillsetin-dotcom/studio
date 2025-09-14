@@ -12,9 +12,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@genkit-ai/googleai": "^1.15.0",
-    "@genkit-ai/next": "^1.15.0",
-    "@hookform/resolvers": "^3.10.0",
+    "@genkit-ai/googleai": "^1.18.0",
+    "@genkit-ai/next": "^1.18.0",
+    "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",
     "@radix-ui/react-avatar": "^1.1.0",
@@ -45,17 +45,17 @@
     "dotenv": "^16.4.5",
     "embla-carousel-react": "^8.1.7",
     "framer-motion": "^11.3.19",
-    "genkit": "^1.15.0",
+    "genkit": "^1.18.0",
     "input-otp": "^1.2.5",
     "jspdf": "^2.5.1",
     "lucide-react": "^0.417.0",
-    "next": "15.0.0-rc.0",
+    "next": "^14.2.5",
     "next-pwa": "^5.6.0",
     "patch-package": "^8.0.0",
-    "react": "19.0.0-rc.0",
+    "react": "^18.3.1",
     "react-day-picker": "^8.10.1",
-    "react-dom": "19.0.0-rc.0",
-    "react-hook-form": "^7.62.0",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.52.1",
     "recharts": "^2.12.7",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
@@ -65,15 +65,11 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.13",
     "@types/node": "^20",
-    "@types/react": "^19.0.0-rc.3",
-    "@types/react-dom": "^19.0.0-rc.3",
-    "genkit-cli": "^1.15.0",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5"
-  },
-  "overrides": {
-    "react": "19.0.0-rc.0",
-    "react-dom": "19.0.0-rc.0"
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "genkit-cli": "^1.18.0",
+    "postcss": "^8.4.39",
+    "tailwindcss": "^3.4.6",
+    "typescript": "^5.5.3"
   }
 }
