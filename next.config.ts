@@ -44,13 +44,6 @@ const nextConfig: NextConfig = {
       },
     ]
   },
-  ...(isDev && {
-    experimental: {
-      allowedDevOrigins: [
-        "https://6000-firebase-youthskillset-1757600502948.cluster-52r6vzs3ujeoctkkxpjif3x34a.cloudworkstations.dev",
-      ],
-    },
-  }),
 };
 
 export default pwaConfig(nextConfig);
