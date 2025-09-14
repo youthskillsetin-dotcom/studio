@@ -21,12 +21,12 @@ const ResumeDataSchema = z.object({
     skills: z.string().optional(),
 });
 
-export const GenerateResumeFeedbackInputSchema = z.object({
+const GenerateResumeFeedbackInputSchema = z.object({
   resumeData: ResumeDataSchema,
 });
 export type GenerateResumeFeedbackInput = z.infer<typeof GenerateResumeFeedbackInputSchema>;
 
-export const GenerateResumeFeedbackOutputSchema = z.object({
+const GenerateResumeFeedbackOutputSchema = z.object({
   overallScore: z.number().min(0).max(100).describe('An overall score for the resume from 0 to 100.'),
   overallFeedback: z.string().describe('A 2-3 sentence summary of the resume\'s strengths and key areas for improvement.'),
   sectionFeedback: z.object({

@@ -26,7 +26,7 @@ const PracticeQuestionSchema = z.object({
     answer: z.string().describe("The correct answer. For MCQs, this must exactly match one of the options."),
 });
 
-export const GenerateLessonContentOutputSchema = z.object({
+const GenerateLessonContentOutputSchema = z.object({
   title: z.string().describe("A concise, engaging title for the subtopic lesson."),
   content: z.string().describe("The lesson content, formatted as a single string of simple HTML. Use <h1>, <h2>, <p>, <ul>, and <li> tags. The content should be comprehensive and easy for a teenager to understand."),
   practice_questions: z.array(PracticeQuestionSchema).length(2).describe("An array of exactly 2 practice questions to test understanding of the content."),
