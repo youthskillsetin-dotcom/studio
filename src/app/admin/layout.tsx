@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import { notFound, usePathname } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
 import { getUserProfile } from '@/lib/data';
