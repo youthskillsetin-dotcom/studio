@@ -22,7 +22,6 @@ const chatSchema = z.object({
   message: z.string(), // Allow empty to handle the slash command
 });
 
-// This now uses a simple content string, matching the corrected backend flow.
 type Message = {
   role: 'user' | 'model';
   content: string;
@@ -35,15 +34,15 @@ const conversationStarters = [
   { title: 'Request a Quiz', prompt: 'Create a short quiz on personal finance.' },
 ];
 
-const initialMessage: Message = { role: 'model', content: "Hello! I'm MentorAI. How can I help you level up your skills today? Type `/` to see what I can do!" };
+const initialMessage: Message = { role: 'model', content: "Hello! I'm MentorAI. How can I help you level up your skills today?" };
 const CHAT_HISTORY_KEY = 'ai-mentor-chat-history';
 
 export default function AIChatInterface() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [showSlashCommands, setShowSlashCommands] = useState(false);
   const [copiedMessageIndex, setCopiedMessageIndex] = useState<number | null>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const [isMounted, setIsMounted] = useState(false);
 
   const form = useForm<z.infer<typeof chatSchema>>({
     resolver: zodResolver(chatSchema),
@@ -51,13 +50,9 @@ export default function AIChatInterface() {
   });
 
   const messageValue = form.watch('message');
-
+  
   useEffect(() => {
-    setShowSlashCommands(messageValue === '/');
-  }, [messageValue]);
-
-
-   useEffect(() => {
+    setIsMounted(true);
     // Load chat history from localStorage on initial render
     try {
       const savedHistory = localStorage.getItem(CHAT_HISTORY_KEY);
@@ -79,15 +74,15 @@ export default function AIChatInterface() {
         behavior: 'smooth',
       });
     }
-    // Save chat history to localStorage whenever it changes
-     if (messages.length > 0) {
+    // Save chat history to localStorage whenever it changes, but only on client
+     if (isMounted && messages.length > 0) {
       try {
         localStorage.setItem(CHAT_HISTORY_KEY, JSON.stringify(messages));
       } catch (error) {
         console.error("Failed to save chat history to localStorage", error);
       }
     }
-  }, [messages]);
+  }, [messages, isMounted]);
 
   const handleNewChat = () => {
     localStorage.removeItem(CHAT_HISTORY_KEY);
@@ -101,7 +96,6 @@ export default function AIChatInterface() {
     });
   };
 
-
   async function sendMessage(messageText: string) {
     if (!messageText.trim()) return;
 
@@ -110,10 +104,8 @@ export default function AIChatInterface() {
     setMessages(currentMessages);
     setIsLoading(true);
     form.reset({ message: '' });
-    setShowSlashCommands(false);
 
     try {
-      // The chat history for the API should not include the current user message
       const chatHistoryForApi = currentMessages.slice(0, -1);
       
       const response = await aiMentorChat({
@@ -133,7 +125,6 @@ export default function AIChatInterface() {
   }
 
   async function onSubmit(values: z.infer<typeof chatSchema>) {
-    if (values.message === '/') return; // Don't send if it's just the slash
     await sendMessage(values.message);
   }
 
@@ -141,11 +132,6 @@ export default function AIChatInterface() {
     form.setValue('message', starter);
     sendMessage(starter);
   };
-
-  const handleSlashCommandClick = (prompt: string) => {
-    sendMessage(prompt);
-  };
-
 
   return (
     <Card className="flex flex-col flex-grow relative">
@@ -165,9 +151,9 @@ export default function AIChatInterface() {
         </Button>
       </CardHeader>
       <CardContent className="flex-grow p-0">
-        <ScrollArea className="h-[calc(100vh-22rem)]" ref={scrollAreaRef}>
+        <ScrollArea className="h-[calc(100vh-22rem)] sm:h-[calc(100vh-23rem)]" ref={scrollAreaRef}>
           <div className="p-6 space-y-4">
-            {messages.map((message, index) => (
+            {isMounted && messages.map((message, index) => (
               <motion.div
                 key={index}
                 className={cn(
@@ -176,7 +162,7 @@ export default function AIChatInterface() {
                 )}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
+                transition={{ duration: 0.3, delay: 0.1 }}
               >
                 {message.role === 'model' && (
                   <Avatar className="h-8 w-8">
@@ -185,13 +171,13 @@ export default function AIChatInterface() {
                 )}
                 <div
                   className={cn(
-                    'max-w-md rounded-lg px-4 py-3 text-sm shadow-md',
+                    'max-w-md rounded-lg px-4 py-3 text-sm shadow-sm',
                     message.role === 'user'
-                      ? 'bg-accent/20 text-accent-foreground'
+                      ? 'bg-primary text-primary-foreground'
                       : 'bg-muted'
                   )}
                 >
-                  <div dangerouslySetInnerHTML={{ __html: message.content.replace(/\\n/g, '<br />') }} className="prose prose-sm dark:prose-invert max-w-none" />
+                  <div dangerouslySetInnerHTML={{ __html: message.content.replace(/\n/g, '<br />') }} className="prose prose-sm dark:prose-invert max-w-none" />
                 </div>
                  {message.role === 'model' && (
                   <TooltipProvider>
@@ -220,21 +206,7 @@ export default function AIChatInterface() {
               </motion.div>
             ))}
 
-            {messages.length > 1 && !isLoading && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="flex justify-center"
-              >
-                <Button variant="outline" onClick={handleNewChat} className="mt-4">
-                  <PlusCircle className="mr-2 h-4 w-4" />
-                  Create a new chat
-                </Button>
-              </motion.div>
-            )}
-
-            {messages.length <= 1 && !isLoading && (
+            {isMounted && messages.length <= 1 && !isLoading && (
               <motion.div 
                 className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4"
                 initial={{ opacity: 0, y: 10 }}
@@ -282,38 +254,6 @@ export default function AIChatInterface() {
           </div>
         </ScrollArea>
       </CardContent>
-       <AnimatePresence>
-        {showSlashCommands && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            transition={{ duration: 0.2 }}
-            className="absolute bottom-20 left-4 right-4 z-10"
-          >
-            <Card className="shadow-lg">
-              <CardHeader className="pb-2">
-                <p className="text-sm font-semibold">Conversation Starters</p>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-col gap-2">
-                  {conversationStarters.map((command) => (
-                    <Button
-                      key={command.title}
-                      variant="ghost"
-                      className="justify-start"
-                      onClick={() => handleSlashCommandClick(command.prompt)}
-                    >
-                      <Sparkles className="mr-2 h-4 w-4" />
-                      {command.prompt}
-                    </Button>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        )}
-      </AnimatePresence>
       <CardFooter className="border-t p-4">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="flex w-full items-center space-x-2">
@@ -323,7 +263,7 @@ export default function AIChatInterface() {
               render={({ field }) => (
                 <FormItem className="flex-1">
                   <FormControl>
-                    <Input placeholder="Ask MentorAI... (or type '/' for ideas)" {...field} autoComplete="off" disabled={isLoading} />
+                    <Input placeholder="Ask MentorAI..." {...field} autoComplete="off" disabled={isLoading} />
                   </FormControl>
                 </FormItem>
               )}

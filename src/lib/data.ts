@@ -119,6 +119,7 @@ export async function getUserSubscription(supabaseClient: SupabaseClient): Promi
             .single();
             
         if (error) { 
+            // 'PGRST116' means no rows were found, which is not a server error.
             if (error.code !== 'PGRST116') {
                console.warn("Error fetching user subscription:", error.message);
             }
@@ -146,6 +147,8 @@ export async function getUserProfile(supabaseClient: SupabaseClient): Promise<Us
             .eq('id', user.id)
             .single();
 
+        // 'PGRST116' means no rows were found. '42P01' means table doesn't exist.
+        // Neither are critical errors for this function.
         if (error && error.code !== 'PGRST116' && error.code !== '42P01') {
             console.warn("Error fetching user profile:", error.message);
         }
@@ -230,7 +233,7 @@ export async function getPosts(): Promise<PostWithAuthor[]> {
                 title,
                 content,
                 user_id,
-                profile:profiles(email)
+                profile:profiles(email, full_name)
             `)
             .order('created_at', { ascending: false });
 
@@ -238,7 +241,7 @@ export async function getPosts(): Promise<PostWithAuthor[]> {
             if (error.code !== '42P01') console.error('Error fetching posts:', error);
             return [];
         }
-        return data as PostWithAuthor[];
+        return data.map(p => ({...p, profile: p.profile?.[0] ?? p.profile})) as PostWithAuthor[];
     } catch(e) {
         return [];
     }
@@ -292,7 +295,7 @@ export async function getCommentsByPostId(postId: string): Promise<CommentWithAu
             return [];
         }
 
-        return data as CommentWithAuthor[];
+        return data.map(c => ({...c, profile: c.profile?.[0] ?? c.profile})) as CommentWithAuthor[];
     } catch(e) {
         return [];
     }

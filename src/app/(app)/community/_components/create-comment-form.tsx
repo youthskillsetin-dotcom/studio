@@ -7,7 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Send, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { UserProfile } from '@/lib/types';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
@@ -34,15 +34,17 @@ function SubmitButton() {
 
 
 export function CreateCommentForm({ postId, user }: { postId: string, user: UserProfile }) {
-  const [state, formAction] = useFormState(createCommentAction, { success: false });
+  const [state, formAction] = useFormState(createCommentAction, { success: false, errors: {} });
   const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
+  const [content, setContent] = useState('');
 
   useEffect(() => {
     if (state.success) {
       formRef.current?.reset();
+      setContent('');
     }
-    if (state.error) {
+    if (state.error && !state.errors) {
       toast({
         variant: 'destructive',
         title: 'Error',
@@ -68,6 +70,8 @@ export function CreateCommentForm({ postId, user }: { postId: string, user: User
                     placeholder="Share your thoughts..."
                     required
                     rows={3}
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
                 />
                 <input type="hidden" name="postId" value={postId} />
                  {state?.errors?.content && <p className="text-sm text-destructive">{state.errors.content}</p>}

@@ -8,13 +8,10 @@ import { Skeleton } from '../ui/skeleton';
 const quotes = [
     "The best way to predict the future is to create it.",
     "The only way to do great work is to love what you do.",
-    "Success is not final, failure is not fatal: it is the courage to continue that counts."
+    "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+    "The secret of getting ahead is getting started.",
+    "Believe you can and you're halfway there."
 ];
-
-const getDailyQuote = () => {
-    const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0).valueOf()) / 86400000);
-    return quotes[dayOfYear % quotes.length];
-};
 
 interface WelcomeHeaderProps {
   variants?: Variants;
@@ -29,12 +26,21 @@ function getFirstName(fullName?: string | null) {
 
 export function WelcomeHeader({ variants, name }: WelcomeHeaderProps) {
     const [quote, setQuote] = useState('');
-    const [hasMounted, setHasMounted] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
     
     useEffect(() => {
-        setHasMounted(true);
-        setQuote(getDailyQuote());
+        setIsMounted(true);
     }, []);
+    
+    useEffect(() => {
+        if (isMounted) {
+            const getDailyQuote = () => {
+                const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0).valueOf()) / 86400000);
+                return quotes[dayOfYear % quotes.length];
+            };
+            setQuote(getDailyQuote());
+        }
+    }, [isMounted]);
 
     return (
         <motion.div className="space-y-1.5" variants={variants}>
@@ -42,7 +48,7 @@ export function WelcomeHeader({ variants, name }: WelcomeHeaderProps) {
             Welcome Back, {getFirstName(name)}!
           </h1>
           <div className="text-muted-foreground text-lg">
-            {hasMounted ? quote : <Skeleton className="h-6 w-3/4" />}
+            {isMounted && quote ? quote : <Skeleton className="h-6 w-3/4" />}
           </div>
         </motion.div>
     )

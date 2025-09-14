@@ -30,7 +30,7 @@ function SubmitButton() {
 }
 
 export function CreatePostDialog() {
-  const [state, formAction] = useFormState(createPostAction, { success: false });
+  const [state, formAction] = useFormState(createPostAction, { success: false, errors: {} });
   const { toast } = useToast();
   const [open, setOpen] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
@@ -44,7 +44,7 @@ export function CreatePostDialog() {
       });
       setOpen(false); // Close the dialog on success
       formRef.current?.reset();
-    } else if (state.error) {
+    } else if (state.error && !state.errors) {
       toast({
         variant: 'destructive',
         title: 'Error',
@@ -71,12 +71,12 @@ export function CreatePostDialog() {
         <form action={formAction} ref={formRef} className="grid gap-4 py-4">
           <div className="grid gap-2">
             <label htmlFor="title">Title</label>
-            <Input id="title" name="title" placeholder="e.g., How do I start investing in stocks?" required />
+            <Input id="title" name="title" placeholder="e.g., How do I start investing in stocks?" required minLength={3} />
              {state?.errors?.title && <p className="text-sm text-destructive">{state.errors.title}</p>}
           </div>
           <div className="grid gap-2">
             <label htmlFor="content">Content</label>
-            <Textarea id="content" name="content" placeholder="Share more details here..." required rows={5}/>
+            <Textarea id="content" name="content" placeholder="Share more details here..." required rows={5} minLength={10}/>
              {state?.errors?.content && <p className="text-sm text-destructive">{state.errors.content}</p>}
           </div>
           <DialogFooter>

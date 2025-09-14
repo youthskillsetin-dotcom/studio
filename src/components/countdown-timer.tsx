@@ -8,41 +8,38 @@ interface CountdownTimerProps {
   targetDate: Date;
 }
 
+const calculateTimeLeft = (targetDate: Date) => {
+    const difference = +new Date(targetDate) - +new Date();
+    let timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
+
+    if (difference > 0) {
+        timeLeft = {
+            days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+            hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+            minutes: Math.floor((difference / 1000 / 60) % 60),
+            seconds: Math.floor((difference / 1000) % 60),
+        };
+    }
+    return timeLeft;
+};
+
 export function CountdownTimer({ targetDate }: CountdownTimerProps) {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
+  // Initialize with calculated time to avoid flash of 00:00:00
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(targetDate));
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
-
+  
   useEffect(() => {
     if (!isMounted) return;
 
-    const calculateTimeLeft = () => {
-      const difference = +targetDate - +new Date();
-      let newTimeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
-
-      if (difference > 0) {
-        newTimeLeft = {
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60),
-        };
-      }
-      return newTimeLeft;
-    };
-    
-    setTimeLeft(calculateTimeLeft());
+    // Set initial time left immediately on mount
+    setTimeLeft(calculateTimeLeft(targetDate));
 
     const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
+      setTimeLeft(calculateTimeLeft(targetDate));
     }, 1000);
 
     return () => clearInterval(timer);

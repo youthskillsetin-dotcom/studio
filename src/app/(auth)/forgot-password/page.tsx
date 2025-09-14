@@ -50,8 +50,11 @@ export default function ForgotPasswordPage() {
     setError(null);
     setIsSuccess(false);
     
+    // In a production app with working email, this would be the redirect URL.
+    // const redirectTo = `${window.location.origin}/update-password`;
+    
     const { error } = await supabase.auth.resetPasswordForEmail(values.email, {
-      redirectTo: `${window.location.origin}/update-password`,
+      // redirectTo,
     });
 
     if (error) {
@@ -83,7 +86,7 @@ export default function ForgotPasswordPage() {
                         <MailCheck className="h-4 w-4" />
                         <AlertTitle>Check your email</AlertTitle>
                         <AlertDescription>
-                        A password reset link has been sent to your email address. Please check your inbox (and spam folder).
+                        A password reset link has been sent to your email address. Please check your inbox (and spam folder). Note: In this demo, email sending is disabled.
                         </AlertDescription>
                     </Alert>
                 </CardContent>
@@ -107,6 +110,7 @@ export default function ForgotPasswordPage() {
                                 <Input
                                 placeholder="m@example.com"
                                 {...field}
+                                required
                                 />
                             </FormControl>
                             <FormMessage />
