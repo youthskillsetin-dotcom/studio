@@ -1,4 +1,3 @@
-
 'use server';
 
 import { createClient } from '@/lib/supabase/server';
@@ -17,7 +16,7 @@ const CommentSchema = z.object({
 });
 
 
-export async function createPostAction(formData: FormData) {
+export async function createPostAction(prevState: any, formData: FormData): Promise<{success: boolean, error?: string, errors?: any}> {
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
 
@@ -57,7 +56,7 @@ export async function createPostAction(formData: FormData) {
 }
 
 
-export async function createCommentAction(formData: FormData) {
+export async function createCommentAction(prevState: any, formData: FormData): Promise<{success: boolean, error?: string, errors?: any}> {
     const cookieStore = cookies();
     const supabase = createClient(cookieStore);
   

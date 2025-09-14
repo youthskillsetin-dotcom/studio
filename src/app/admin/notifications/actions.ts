@@ -1,4 +1,3 @@
-
 'use server';
 
 import { createClient } from '@/lib/supabase/server';
@@ -27,7 +26,7 @@ const NotificationSchema = z.object({
 });
 
 
-export async function createNotificationAction(prevState: any, formData: FormData) {
+export async function createNotificationAction(prevState: any, formData: FormData): Promise<{success: boolean, error?: string, errors?: any}> {
   try {
     await verifyAdmin();
 

@@ -1,4 +1,3 @@
-
 'use client';
 import {
   Dialog,
@@ -14,7 +13,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { createPostAction } from '../actions';
-import { useFormStatus, useFormState } from 'react-dom';
+import { useFormStatus } from 'react-dom';
+import { useActionState } from 'react';
 import { Plus, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { useEffect, useRef, useState } from 'react';
@@ -30,7 +30,7 @@ function SubmitButton() {
 }
 
 export function CreatePostDialog() {
-  const [state, formAction] = useFormState(createPostAction, { success: false, errors: {} });
+  const [state, formAction] = useActionState(createPostAction, { success: false, errors: {} });
   const { toast } = useToast();
   const [open, setOpen] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);

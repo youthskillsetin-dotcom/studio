@@ -1,6 +1,6 @@
-
 'use client';
-import { useFormState, useFormStatus } from 'react-dom';
+import { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { createNotificationAction } from '../actions';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -25,7 +25,7 @@ function SubmitButton() {
 
 
 export function CreateNotificationForm() {
-  const [state, formAction] = useFormState(createNotificationAction, { success: false, errors: {} });
+  const [state, formAction] = useActionState(createNotificationAction, { success: false, errors: {} });
   const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
 
