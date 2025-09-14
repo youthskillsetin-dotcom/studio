@@ -2,7 +2,6 @@
 import { config } from 'dotenv';
 config();
 
-import type {NextConfig} from 'next';
 import withPWA from 'next-pwa';
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -14,7 +13,8 @@ const pwaConfig = withPWA({
     disable: isDev,
 });
 
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   /* config options here */
   typescript: {
     ignoreBuildErrors: true,
