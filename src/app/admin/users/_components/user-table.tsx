@@ -41,7 +41,7 @@ export function UserTable({ users, currentUserId }: UserTableProps) {
                 />
             </div>
             {/* Table for larger screens */}
-            <div className="hidden md:block border rounded-lg">
+            <Card className="hidden md:block">
                 <Table>
                 <TableHeader>
                     <TableRow>
@@ -69,7 +69,7 @@ export function UserTable({ users, currentUserId }: UserTableProps) {
                         </TableCell>
                         <TableCell>{user.created_at ? format(new Date(user.created_at), 'PPP') : 'N/A'}</TableCell>
                         <TableCell className="text-right">
-                        {currentUserId !== user.id && (
+                        {currentUserId !== user.id && user.role !== 'admin' && (
                             <UserActions user={user} />
                         )}
                         </TableCell>
@@ -77,7 +77,7 @@ export function UserTable({ users, currentUserId }: UserTableProps) {
                     ))}
                 </TableBody>
                 </Table>
-            </div>
+            </Card>
 
              {/* Card list for smaller screens */}
             <div className="md:hidden space-y-4">
@@ -106,7 +106,7 @@ export function UserTable({ users, currentUserId }: UserTableProps) {
                         </div>
                     </CardContent>
                     <CardFooter>
-                    {currentUserId !== user.id && (
+                    {currentUserId !== user.id && user.role !== 'admin' && (
                         <UserActions user={user} />
                     )}
                     </CardFooter>

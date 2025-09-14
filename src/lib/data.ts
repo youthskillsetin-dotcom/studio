@@ -184,23 +184,25 @@ export async function getAllUsers(): Promise<UserProfileWithSubscription[]> {
   }
   
   try {
-    const { data: { users }, error } = await supabaseAdmin.auth.admin.listUsers();
+    const { data: authUsers, error: authError } = await supabaseAdmin.auth.admin.listUsers();
 
-    if (error) {
-        if (error.message.includes('Invalid API key')) {
-            console.warn('Could not fetch users: Invalid Supabase service role key. Please check your .env file.');
-            return [];
-        }
-        console.error('Error fetching users:', error?.message);
+    if (authError) {
+      // If the error is an auth error (like invalid key), we stop and return empty.
+      if (authError.message.includes('Invalid API key') || authError.message.includes('Unauthorized')) {
+        console.warn('Could not fetch users: Invalid or missing Supabase service role key. Please check your .env file.');
         return [];
+      }
+      // For other auth errors, log them but don't crash.
+      console.error('Error fetching users from Supabase Auth:', authError.message);
+      return [];
     }
 
-    if (!users) {
+    if (!authUsers || authUsers.users.length === 0) {
         return [];
     }
+    
+    const users = authUsers.users;
 
-
-    // Fetch profiles and subscriptions for all users
     const userIds = users.map(user => user.id);
     const { data: profiles, error: profilesError } = await supabaseAdmin
       .from('profiles')
@@ -241,7 +243,7 @@ export async function getAllUsers(): Promise<UserProfileWithSubscription[]> {
 export async function getPosts(): Promise<PostWithAuthor[]> {
     noStore();
     if (!supabaseAdmin) {
-        console.warn('Supabase admin client not initialized. Cannot fetch posts. Please check your .env file.');
+        console.warn('Supabase admin client not initialized. Cannot fetch posts.');
         return [];
     }
     try {
@@ -258,8 +260,9 @@ export async function getPosts(): Promise<PostWithAuthor[]> {
             .order('created_at', { ascending: false });
 
         if (error) {
-            // Gracefully handle if table does not exist
-            if (error.code === '42P01') return []; 
+            if (error.code === '42P01') { // table does not exist
+                return []; 
+            }
             console.error('Error fetching posts:', error.message);
             return [];
         }

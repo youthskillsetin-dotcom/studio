@@ -75,32 +75,38 @@ export default async function AdminDashboardPage() {
        <div className="mt-8">
             <h2 className="text-2xl font-bold font-headline mb-4">Quick Actions</h2>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                 <Card className="p-4 flex items-center justify-between">
-                    <div>
-                        <h3 className="font-semibold">User Management</h3>
-                        <p className="text-sm text-muted-foreground">View and manage all users.</p>
-                    </div>
-                    <Button asChild variant="outline" size="sm">
-                        <Link href="/admin/users">Go <ArrowRight className="w-4 h-4 ml-2"/></Link>
-                    </Button>
+                 <Card>
+                    <CardContent className="p-4 flex items-center justify-between">
+                        <div>
+                            <h3 className="font-semibold">User Management</h3>
+                            <p className="text-sm text-muted-foreground">View and manage all users.</p>
+                        </div>
+                        <Button asChild variant="outline" size="sm">
+                            <Link href="/admin/users">Go <ArrowRight className="w-4 h-4 ml-2"/></Link>
+                        </Button>
+                    </CardContent>
                 </Card>
-                 <Card className="p-4 flex items-center justify-between">
-                    <div>
-                        <h3 className="font-semibold">Content Management</h3>
-                        <p className="text-sm text-muted-foreground">Edit lesson video URLs.</p>
-                    </div>
-                     <Button asChild variant="outline" size="sm">
-                        <Link href="/admin/content">Go <ArrowRight className="w-4 h-4 ml-2"/></Link>
-                    </Button>
+                 <Card>
+                    <CardContent className="p-4 flex items-center justify-between">
+                        <div>
+                            <h3 className="font-semibold">Content Management</h3>
+                            <p className="text-sm text-muted-foreground">Edit lesson video URLs.</p>
+                        </div>
+                        <Button asChild variant="outline" size="sm">
+                            <Link href="/admin/content">Go <ArrowRight className="w-4 h-4 ml-2"/></Link>
+                        </Button>
+                    </CardContent>
                 </Card>
-                 <Card className="p-4 flex items-center justify-between">
-                    <div>
-                        <h3 className="font-semibold">Send Notifications</h3>
-                        <p className="text-sm text-muted-foreground">Broadcast messages to users.</p>
-                    </div>
-                     <Button asChild variant="outline" size="sm">
-                        <Link href="/admin/notifications">Go <ArrowRight className="w-4 h-4 ml-2"/></Link>
-                    </Button>
+                 <Card>
+                    <CardContent className="p-4 flex items-center justify-between">
+                        <div>
+                            <h3 className="font-semibold">Send Notifications</h3>
+                            <p className="text-sm text-muted-foreground">Broadcast messages to users.</p>
+                        </div>
+                        <Button asChild variant="outline" size="sm">
+                            <Link href="/admin/notifications">Go <ArrowRight className="w-4 h-4 ml-2"/></Link>
+                        </Button>
+                    </CardContent>
                 </Card>
             </div>
        </div>

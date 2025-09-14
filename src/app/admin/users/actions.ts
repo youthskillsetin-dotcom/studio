@@ -22,6 +22,8 @@ export async function grantPremiumAccess(userId: string): Promise<{success: bool
   try {
     await verifyAdmin();
 
+    if (!supabaseAdmin) throw new Error("Admin client not available.");
+
     // Update role in profiles table
     const { error: profileError } = await supabaseAdmin
         .from('profiles')
@@ -58,6 +60,8 @@ export async function grantPremiumAccess(userId: string): Promise<{success: bool
 export async function revokePremiumAccess(userId: string): Promise<{success: boolean, error?: string}> {
     try {
         await verifyAdmin();
+
+        if (!supabaseAdmin) throw new Error("Admin client not available.");
 
         // Update role in profiles table
         const { error: profileError } = await supabaseAdmin
