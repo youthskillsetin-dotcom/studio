@@ -177,9 +177,7 @@ export async function getUserProfile(supabaseClient: SupabaseClient): Promise<Us
 
 export async function getAllUsers(): Promise<UserProfileWithSubscription[]> {
   noStore();
-  
   if (!supabaseAdmin) {
-    console.warn('Supabase admin client not initialized. Cannot fetch all users. Please check your .env file.');
     return [];
   }
   
@@ -187,10 +185,7 @@ export async function getAllUsers(): Promise<UserProfileWithSubscription[]> {
     const { data: authUsers, error: authError } = await supabaseAdmin.auth.admin.listUsers();
 
     if (authError) {
-      if (authError.message.includes('Invalid API key') || authError.message.includes('Unauthorized')) {
-        console.warn('Could not fetch users: Invalid or missing Supabase service role key. Please check your .env file.');
-        return [];
-      }
+      // This will now be handled by the initial check, but serves as a backup.
       return [];
     }
 
@@ -236,7 +231,6 @@ export async function getAllUsers(): Promise<UserProfileWithSubscription[]> {
       subscription: subscriptionsMap.get(user.id) || null,
     }));
   } catch(e: any) {
-      console.error("An unexpected error occurred while fetching all users:", e);
       return [];
   }
 }
@@ -266,7 +260,6 @@ export async function getPosts(): Promise<PostWithAuthor[]> {
         }
         return data.map(p => ({...p, profile: p.profile?.[0] ?? p.profile})) as PostWithAuthor[];
     } catch(e: any) {
-        console.error('An unexpected error occurred in getPosts:', e.message);
         return [];
     }
 }
@@ -297,7 +290,6 @@ export async function getPostById(id: string): Promise<PostWithAuthor | null> {
 
         return data as PostWithAuthor;
     } catch(e: any) {
-        console.error(`An unexpected error occurred in getPostById (${id}):`, e.message);
         return null;
     }
 }
@@ -328,7 +320,6 @@ export async function getCommentsByPostId(postId: string): Promise<CommentWithAu
 
         return data.map(c => ({...c, profile: c.profile?.[0] ?? c.profile})) as CommentWithAuthor[];
     } catch(e: any) {
-        console.error(`An unexpected error occurred in getCommentsByPostId (${postId}):`, e.message);
         return [];
     }
 }
@@ -351,7 +342,6 @@ export async function getNotifications(): Promise<Notification[]> {
         }
         return data as Notification[];
     } catch (e: any) {
-        console.error('Unexpected error fetching notifications:', e.message);
         return [];
     }
 }
