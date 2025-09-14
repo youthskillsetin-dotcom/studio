@@ -24,26 +24,22 @@ const calculateTimeLeft = (targetDate: Date) => {
 };
 
 export function CountdownTimer({ targetDate }: CountdownTimerProps) {
-  // Initialize with calculated time to avoid flash of 00:00:00
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(targetDate));
+  // Initialize with a default value
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    // This effect runs only on the client, after hydration
     setIsMounted(true);
-  }, []);
-  
-  useEffect(() => {
-    if (!isMounted) return;
-
-    // Set initial time left immediately on mount
+    
+    // Set initial time left and start the timer
     setTimeLeft(calculateTimeLeft(targetDate));
-
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft(targetDate));
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [targetDate, isMounted]);
+  }, [targetDate]);
 
   const Casing = ({ value, label }: { value: number; label: string }) => (
     <div className="flex flex-col items-center justify-center bg-muted/80 p-4 rounded-lg w-24">
