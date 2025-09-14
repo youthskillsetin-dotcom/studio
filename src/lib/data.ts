@@ -1,5 +1,6 @@
 
 
+
 import type { SupabaseClient } from '@supabase/supabase-js';
 import type { Lesson, Subtopic, UserSubtopicProgress, Post, CommentWithAuthor, PostWithAuthor, UserSubscription, UserProfile, UserProfileWithSubscription, Transaction, Notification, Bounty } from './types';
 import { unstable_noStore as noStore } from 'next/cache';
@@ -13,14 +14,20 @@ import bountiesContent from '@/data/bounties.json';
 export async function getLessons(): Promise<Lesson[]> {
   noStore();
   try {
-    const lessons = sampleContent.lessons as Lesson[];
+    const publicLessons = sampleContent.lessons as Lesson[];
     const subtopics = sampleContent.subtopics as Subtopic[];
-
-    return lessons.map(lesson => ({
+    
+    // Combine public lessons with their subtopics
+    const lessonsWithSubtopics = publicLessons.map(lesson => ({
       ...lesson,
       is_public: true, // Mark public lessons
       subtopics: subtopics.filter(st => st.lesson_id === lesson.id)
-    })).sort((a,b) => a.order_index - b.order_index);
+    }));
+
+    // In a real app, you would fetch user-specific courses here and merge.
+    // For now, we are just returning the public content.
+    return lessonsWithSubtopics.sort((a,b) => a.order_index - b.order_index);
+
   } catch (error) {
     console.error("Failed to load or parse sample-content.json:", error);
     return [];
@@ -72,15 +79,14 @@ export async function getSubtopicById(id: string): Promise<Subtopic | null> {
       if (subtopic) return subtopic;
     }
     // If not found, check user subtopics
-    if (supabaseAdmin) {
-        const { data, error } = await supabaseAdmin.from('user_subtopics').select('*').eq('id', id).single();
-        if (error || !data) {
-            if (error && error.code !== 'PGRST116') console.error('Error fetching user subtopic', error);
-            return null;
-        }
-        return data as Subtopic;
+    if (!supabaseAdmin) return null;
+    
+    const { data, error } = await supabaseAdmin.from('user_subtopics').select('*').eq('id', id).single();
+    if (error || !data) {
+        if (error && error.code !== 'PGRST116') console.error('Error fetching user subtopic', error);
+        return null;
     }
-    return null;
+    return data as Subtopic;
 }
 
 export async function getSubtopicByIdWithRelations(id: string): Promise<(Subtopic & { lesson: Lesson; nextSubtopicId?: string }) | null> {
@@ -127,7 +133,8 @@ export async function getSubtopicByIdWithRelations(id: string): Promise<(Subtopi
     // Get all subtopics for the found lesson
     let subtopicsInLesson: Subtopic[] = [];
     if (isUserCourse) {
-        const { data } = await supabaseAdmin!.from('user_subtopics').select('*').eq('lesson_id', foundLesson.id);
+        if (!supabaseAdmin) return null;
+        const { data } = await supabaseAdmin.from('user_subtopics').select('*').eq('lesson_id', foundLesson.id);
         subtopicsInLesson = data || [];
     } else {
         subtopicsInLesson = foundLesson.subtopics;
@@ -242,10 +249,7 @@ export async function getAllUsers(): Promise<UserProfileWithSubscription[]> {
   try {
     const { data: authUsers, error: authError } = await supabaseAdmin.auth.admin.listUsers();
 
-    if (authError) {
-      if (authError.message === 'Invalid API key') return [];
-      throw authError;
-    }
+    if (authError) throw authError;
 
     if (!authUsers || authUsers.users.length === 0) {
         return [];
@@ -289,7 +293,6 @@ export async function getAllUsers(): Promise<UserProfileWithSubscription[]> {
       subscription: subscriptionsMap.get(user.id) || null,
     }));
   } catch(e: any) {
-      if (e.message.includes('Invalid API key')) return [];
       console.error('Unexpected error fetching users:', e.message);
       return [];
   }
@@ -314,12 +317,11 @@ export async function getPosts(): Promise<PostWithAuthor[]> {
             .order('created_at', { ascending: false });
 
         if (error) {
-            if (error.code === '42P01') return [];
+            if (error.code === '42P01') return []; // Table doesn't exist
             throw error;
         }
         return data.map(p => ({...p, profile: p.profile?.[0] ?? p.profile})) as PostWithAuthor[];
     } catch(e: any) {
-        if (e.message.includes('Invalid API key')) return [];
         console.error('Unexpected error fetching posts:', e.message);
         return [];
     }
@@ -327,9 +329,10 @@ export async function getPosts(): Promise<PostWithAuthor[]> {
 
 export async function getPostById(id: string): Promise<PostWithAuthor | null> {
     noStore();
+    if (!supabaseAdmin) {
+        return null;
+    }
      try {
-        if (!supabaseAdmin) return null;
-
         const { data, error } = await supabaseAdmin
             .from('posts')
             .select(`
@@ -344,13 +347,12 @@ export async function getPostById(id: string): Promise<PostWithAuthor | null> {
             .single();
 
         if (error) {
-            if (error.code === '42P01' || error.code === 'PGRST116') return null;
+            if (error.code === '42P01' || error.code === 'PGRST116') return null; // Table or row not found
             throw error;
         }
 
         return data as PostWithAuthor;
     } catch(e: any) {
-        if (e.message.includes('Invalid API key')) return null;
         console.error('Unexpected error fetching post by ID:', e.message);
         return null;
     }
@@ -358,7 +360,9 @@ export async function getPostById(id: string): Promise<PostWithAuthor | null> {
 
 export async function getCommentsByPostId(postId: string): Promise<CommentWithAuthor[]> {
     noStore();
-    if (!supabaseAdmin) return [];
+    if (!supabaseAdmin) {
+        return [];
+    }
 
      try {
         const { data, error } = await supabaseAdmin
@@ -375,13 +379,12 @@ export async function getCommentsByPostId(postId: string): Promise<CommentWithAu
             .order('created_at', { ascending: true });
 
         if (error) {
-            if (error.code === '42P01') return [];
+            if (error.code === '42P01') return []; // Table doesn't exist
             throw error;
         }
 
         return data.map(c => ({...c, profile: c.profile?.[0] ?? c.profile})) as CommentWithAuthor[];
     } catch(e: any) {
-        if (e.message.includes('Invalid API key')) return [];
         console.error('Unexpected error fetching comments:', e.message);
         return [];
     }
@@ -399,12 +402,11 @@ export async function getNotifications(): Promise<Notification[]> {
             .order('created_at', { ascending: false });
 
         if (error) {
-            if (error.code === '42P01') return [];
+            if (error.code === '42P01') return []; // Table doesn't exist
             throw error;
         }
         return data as Notification[];
     } catch (e: any) {
-        if (e.message.includes('Invalid API key')) return [];
         console.error('Unexpected error fetching notifications:', e.message);
         return [];
     }
@@ -426,40 +428,50 @@ export async function getUserCourses(supabase: SupabaseClient): Promise<Lesson[]
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return [];
 
-    const { data: courses, error } = await supabase
-        .from('user_courses')
-        .select(`
-            *,
-            subtopics:user_subtopics(*)
-        `)
-        .eq('user_id', user.id)
-        .order('created_at', { ascending: false });
-    
-    if (error) {
-        if (error.code !== '42P01') console.error("Error fetching user courses:", error);
+    try {
+        const { data: courses, error } = await supabase
+            .from('user_courses')
+            .select(`
+                *,
+                subtopics:user_subtopics(*)
+            `)
+            .eq('user_id', user.id)
+            .order('created_at', { ascending: false });
+        
+        if (error) {
+            if (error.code === '42P01') return []; // Table doesn't exist
+            throw error;
+        }
+
+        return courses.map(c => ({...c, is_public: false})) as Lesson[];
+    } catch(e: any) {
+        console.error("Error fetching user courses:", e.message);
         return [];
     }
-
-    return courses.map(c => ({...c, is_public: false})) as Lesson[];
 }
 
 export async function getUserCourseById(id: string): Promise<Lesson | null> {
     noStore();
     if (!supabaseAdmin) return null;
 
-    const { data: course, error } = await supabaseAdmin
-        .from('user_courses')
-        .select(`
-            *,
-            subtopics:user_subtopics(*)
-        `)
-        .eq('id', id)
-        .single();
-    
-    if (error) {
-        if (error.code !== 'PGRST116') console.error("Error fetching user course by id:", error);
+    try {
+        const { data: course, error } = await supabaseAdmin
+            .from('user_courses')
+            .select(`
+                *,
+                subtopics:user_subtopics(*)
+            `)
+            .eq('id', id)
+            .single();
+        
+        if (error) {
+            if (error.code !== 'PGRST116') console.error("Error fetching user course by id:", error);
+            return null;
+        }
+        
+        return {...course, is_public: false} as Lesson;
+    } catch (e: any) {
+        console.error("Unexpected error fetching user course by id:", e.message);
         return null;
     }
-    
-    return {...course, is_public: false} as Lesson;
 }

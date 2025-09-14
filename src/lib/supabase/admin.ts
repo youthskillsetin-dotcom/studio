@@ -18,7 +18,8 @@ if (supabaseUrl && supabaseServiceRoleKey) {
         },
     });
 } else {
-    console.warn('Supabase admin client could not be initialized. Make sure NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are set in your .env file.');
+    // We don't log a warning here anymore because not all environments (like client-side builds)
+    // will have the service role key. The functions using this client will handle the null case.
 }
 
 

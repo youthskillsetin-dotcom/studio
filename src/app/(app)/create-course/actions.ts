@@ -53,8 +53,11 @@ async function verifyPremiumUser() {
 
 export async function createUserCourseAction(values: CourseFormValues): Promise<{success: boolean, error?: string, lessonId?: string}> {
   try {
+    if (!supabaseAdmin) {
+        return { success: false, error: 'The course creation service is not available. Please contact support.' };
+    }
+    
     const user = await verifyPremiumUser();
-    if (!supabaseAdmin) throw new Error("Admin client is not initialized.");
 
     const validatedData = courseFormSchema.parse(values);
 
