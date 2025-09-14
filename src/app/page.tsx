@@ -130,17 +130,15 @@ export default function LandingPage() {
       }
 
       return (
-          <>
-            <div className="items-center gap-2 hidden md:flex">
-                <ThemeToggle />
-                <Button asChild variant="ghost">
-                  <Link href="/login">Log In</Link>
-                </Button>
-                <Button asChild>
-                  <Link href="/signup">Get Started</Link>
-                </Button>
-            </div>
-          </>
+          <div className="items-center gap-2 hidden md:flex">
+            <ThemeToggle />
+            <Button asChild variant="ghost">
+              <Link href="/login">Log In</Link>
+            </Button>
+            <Button asChild>
+              <Link href="/signup">Get Started</Link>
+            </Button>
+          </div>
       );
   }
 
