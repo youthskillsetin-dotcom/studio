@@ -179,17 +179,26 @@ export async function getAllUsers(): Promise<UserProfileWithSubscription[]> {
   noStore();
   
   if (!supabaseAdmin) {
-    console.warn('Supabase admin client not initialized. Cannot fetch all users.');
+    console.warn('Supabase admin client not initialized. Cannot fetch all users. Please check your .env file.');
     return [];
   }
   
   try {
     const { data: { users }, error } = await supabaseAdmin.auth.admin.listUsers();
 
-    if (error || !users) {
-      console.error('Error fetching users:', error?.message);
-      return [];
+    if (error) {
+        if (error.message.includes('Invalid API key')) {
+            console.warn('Could not fetch users: Invalid Supabase service role key. Please check your .env file.');
+            return [];
+        }
+        console.error('Error fetching users:', error?.message);
+        return [];
     }
+
+    if (!users) {
+        return [];
+    }
+
 
     // Fetch profiles and subscriptions for all users
     const userIds = users.map(user => user.id);
@@ -231,6 +240,10 @@ export async function getAllUsers(): Promise<UserProfileWithSubscription[]> {
 
 export async function getPosts(): Promise<PostWithAuthor[]> {
     noStore();
+    if (!supabaseAdmin) {
+        console.warn('Supabase admin client not initialized. Cannot fetch posts. Please check your .env file.');
+        return [];
+    }
     try {
         const { data, error } = await supabaseAdmin
             .from('posts')
@@ -257,6 +270,10 @@ export async function getPosts(): Promise<PostWithAuthor[]> {
 export async function getPostById(id: string): Promise<PostWithAuthor | null> {
     noStore();
      try {
+        if (!supabaseAdmin) {
+            console.warn(`Supabase admin client not initialized. Cannot fetch post ${id}.`);
+            return null;
+        }
         const { data, error } = await supabaseAdmin
             .from('posts')
             .select(`
@@ -283,6 +300,10 @@ export async function getPostById(id: string): Promise<PostWithAuthor | null> {
 
 export async function getCommentsByPostId(postId: string): Promise<CommentWithAuthor[]> {
     noStore();
+    if (!supabaseAdmin) {
+        console.warn(`Supabase admin client not initialized. Cannot fetch comments for post ${postId}.`);
+        return [];
+    }
      try {
         const { data, error } = await supabaseAdmin
             .from('comments')
