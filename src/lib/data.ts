@@ -176,6 +176,11 @@ export async function getUserProfile(supabaseClient: SupabaseClient): Promise<Us
 export async function getAllUsers(): Promise<UserProfileWithSubscription[]> {
   noStore();
   
+  if (!supabaseAdmin) {
+    console.warn('Supabase admin client not initialized. Cannot fetch all users.');
+    return [];
+  }
+  
   try {
     const { data: { users }, error } = await supabaseAdmin.auth.admin.listUsers();
 
@@ -303,6 +308,10 @@ export async function getCommentsByPostId(postId: string): Promise<CommentWithAu
 
 export async function getNotifications(): Promise<Notification[]> {
     noStore();
+    if (!supabaseAdmin) {
+        console.warn('Supabase admin client not initialized. Cannot fetch notifications.');
+        return [];
+    }
     try {
         const { data, error } = await supabaseAdmin
             .from('notifications')

@@ -65,4 +65,3 @@ export async function createNotificationAction(prevState: any, formData: FormDat
     return { success: false, error: error.message, errors: {} };
   }
 }
-

@@ -119,9 +119,9 @@ export interface Notification {
 
 // Types for Supabase joins
 export type PostWithAuthor = Omit<Post, 'author_email' | 'comments'> & {
-  profile: { email: string } | null;
+  profile: { email: string, full_name: string } | null;
 };
 
 export type CommentWithAuthor = Omit<Comment, 'author_email'> & {
-  profile: { email: string } | null;
+  profile: { email: string, full_name: string, avatar_url?: string } | null;
 };
