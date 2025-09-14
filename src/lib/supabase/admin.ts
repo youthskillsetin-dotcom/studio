@@ -18,8 +18,10 @@ if (supabaseUrl && supabaseServiceRoleKey) {
         },
     });
 } else {
-    // We don't log a warning here anymore because not all environments (like client-side builds)
-    // will have the service role key. The functions using this client will handle the null case.
+    // In development, it's helpful to know if the admin client is missing.
+    if (process.env.NODE_ENV === 'development') {
+        console.warn("Supabase admin client is not initialized. Ensure NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are set in your .env file.");
+    }
 }
 
 
