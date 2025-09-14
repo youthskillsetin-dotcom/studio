@@ -18,6 +18,7 @@ export async function getLessons(): Promise<Lesson[]> {
 
     return lessons.map(lesson => ({
       ...lesson,
+      is_public: true, // Mark public lessons
       subtopics: subtopics.filter(st => st.lesson_id === lesson.id)
     })).sort((a,b) => a.order_index - b.order_index);
   } catch (error) {
@@ -31,15 +32,29 @@ export async function getLessonById(id: string): Promise<Lesson | null> {
     noStore();
     const lessons = await getLessons();
     const lesson = lessons.find(l => l.id === id);
-    return lesson || null;
+    if (lesson) return lesson;
+    
+    // If not found in public lessons, check user-specific lessons
+    const userLesson = await getUserCourseById(id);
+    return userLesson;
 }
 
 export async function getLessonByIdWithSubtopics(id:string): Promise<Lesson | null> {
   noStore();
   const lessons = await getLessons();
-  const lesson = lessons.find((l) => l.id === id);
-  if (!lesson) return null;
-  return lesson;
+  let lesson = lessons.find((l) => l.id === id);
+  
+  if (lesson) {
+    return lesson;
+  }
+
+  // If not in public, check user courses
+  lesson = await getUserCourseById(id);
+  if (lesson) {
+     return lesson;
+  }
+
+  return null;
 }
 
 
@@ -56,6 +71,15 @@ export async function getSubtopicById(id: string): Promise<Subtopic | null> {
       const subtopic = lesson.subtopics.find(s => s.id === id);
       if (subtopic) return subtopic;
     }
+    // If not found, check user subtopics
+    if (supabaseAdmin) {
+        const { data, error } = await supabaseAdmin.from('user_subtopics').select('*').eq('id', id).single();
+        if (error || !data) {
+            if (error && error.code !== 'PGRST116') console.error('Error fetching user subtopic', error);
+            return null;
+        }
+        return data as Subtopic;
+    }
     return null;
 }
 
@@ -64,7 +88,9 @@ export async function getSubtopicByIdWithRelations(id: string): Promise<(Subtopi
     const lessons = await getLessons();
     let foundLesson: Lesson | null = null;
     let foundSubtopic: Subtopic | null = null;
+    let isUserCourse = false;
 
+    // Check public lessons first
     for (const lesson of lessons) {
         const subtopic = lesson.subtopics.find(s => s.id === id);
         if (subtopic) {
@@ -74,9 +100,41 @@ export async function getSubtopicByIdWithRelations(id: string): Promise<(Subtopi
         }
     }
     
+    // If not found, check user-generated content
+    if (!foundSubtopic && supabaseAdmin) {
+        const { data: subtopicData, error: subtopicError } = await supabaseAdmin
+            .from('user_subtopics')
+            .select('*')
+            .eq('id', id)
+            .single();
+
+        if (subtopicData) {
+            foundSubtopic = subtopicData as Subtopic;
+            const { data: courseData, error: courseError } = await supabaseAdmin
+                .from('user_courses')
+                .select('*')
+                .eq('id', subtopicData.lesson_id)
+                .single();
+            if (courseData) {
+                foundLesson = courseData as Lesson;
+                isUserCourse = true;
+            }
+        }
+    }
+    
     if (!foundSubtopic || !foundLesson) return null;
 
-    const subtopicsInLesson = foundLesson.subtopics.sort((a, b) => a.order_index - b.order_index);
+    // Get all subtopics for the found lesson
+    let subtopicsInLesson: Subtopic[] = [];
+    if (isUserCourse) {
+        const { data } = await supabaseAdmin!.from('user_subtopics').select('*').eq('lesson_id', foundLesson.id);
+        subtopicsInLesson = data || [];
+    } else {
+        subtopicsInLesson = foundLesson.subtopics;
+    }
+
+
+    subtopicsInLesson.sort((a, b) => a.order_index - b.order_index);
     const currentIndex = subtopicsInLesson.findIndex(s => s.id === id);
     const nextSubtopic = currentIndex !== -1 && currentIndex < subtopicsInLesson.length - 1
         ? subtopicsInLesson[currentIndex + 1]
@@ -185,8 +243,8 @@ export async function getAllUsers(): Promise<UserProfileWithSubscription[]> {
     const { data: authUsers, error: authError } = await supabaseAdmin.auth.admin.listUsers();
 
     if (authError) {
-      // This will now be handled by the initial check, but serves as a backup.
-      return [];
+      if (authError.message === 'Invalid API key') return [];
+      throw authError;
     }
 
     if (!authUsers || authUsers.users.length === 0) {
@@ -231,6 +289,8 @@ export async function getAllUsers(): Promise<UserProfileWithSubscription[]> {
       subscription: subscriptionsMap.get(user.id) || null,
     }));
   } catch(e: any) {
+      if (e.message.includes('Invalid API key')) return [];
+      console.error('Unexpected error fetching users:', e.message);
       return [];
   }
 }
@@ -254,12 +314,13 @@ export async function getPosts(): Promise<PostWithAuthor[]> {
             .order('created_at', { ascending: false });
 
         if (error) {
-             // Silently fail if table doesn't exist
             if (error.code === '42P01') return [];
             throw error;
         }
         return data.map(p => ({...p, profile: p.profile?.[0] ?? p.profile})) as PostWithAuthor[];
     } catch(e: any) {
+        if (e.message.includes('Invalid API key')) return [];
+        console.error('Unexpected error fetching posts:', e.message);
         return [];
     }
 }
@@ -283,13 +344,14 @@ export async function getPostById(id: string): Promise<PostWithAuthor | null> {
             .single();
 
         if (error) {
-            // Silently fail if table or row doesn't exist
             if (error.code === '42P01' || error.code === 'PGRST116') return null;
             throw error;
         }
 
         return data as PostWithAuthor;
     } catch(e: any) {
+        if (e.message.includes('Invalid API key')) return null;
+        console.error('Unexpected error fetching post by ID:', e.message);
         return null;
     }
 }
@@ -313,13 +375,14 @@ export async function getCommentsByPostId(postId: string): Promise<CommentWithAu
             .order('created_at', { ascending: true });
 
         if (error) {
-            // Silently fail if table doesn't exist
             if (error.code === '42P01') return [];
             throw error;
         }
 
         return data.map(c => ({...c, profile: c.profile?.[0] ?? c.profile})) as CommentWithAuthor[];
     } catch(e: any) {
+        if (e.message.includes('Invalid API key')) return [];
+        console.error('Unexpected error fetching comments:', e.message);
         return [];
     }
 }
@@ -336,12 +399,13 @@ export async function getNotifications(): Promise<Notification[]> {
             .order('created_at', { ascending: false });
 
         if (error) {
-            // Silently fail if table doesn't exist
             if (error.code === '42P01') return [];
             throw error;
         }
         return data as Notification[];
     } catch (e: any) {
+        if (e.message.includes('Invalid API key')) return [];
+        console.error('Unexpected error fetching notifications:', e.message);
         return [];
     }
 }
@@ -355,4 +419,47 @@ export async function getBounties(): Promise<Bounty[]> {
       console.error("Failed to load or parse bounties.json:", error);
       return [];
     }
+}
+
+export async function getUserCourses(supabase: SupabaseClient): Promise<Lesson[]> {
+    noStore();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return [];
+
+    const { data: courses, error } = await supabase
+        .from('user_courses')
+        .select(`
+            *,
+            subtopics:user_subtopics(*)
+        `)
+        .eq('user_id', user.id)
+        .order('created_at', { ascending: false });
+    
+    if (error) {
+        if (error.code !== '42P01') console.error("Error fetching user courses:", error);
+        return [];
+    }
+
+    return courses.map(c => ({...c, is_public: false})) as Lesson[];
+}
+
+export async function getUserCourseById(id: string): Promise<Lesson | null> {
+    noStore();
+    if (!supabaseAdmin) return null;
+
+    const { data: course, error } = await supabaseAdmin
+        .from('user_courses')
+        .select(`
+            *,
+            subtopics:user_subtopics(*)
+        `)
+        .eq('id', id)
+        .single();
+    
+    if (error) {
+        if (error.code !== 'PGRST116') console.error("Error fetching user course by id:", error);
+        return null;
+    }
+    
+    return {...course, is_public: false} as Lesson;
 }

@@ -8,6 +8,8 @@ export interface Lesson {
   order_index: number;
   created_at?: string;
   subtopics: Subtopic[];
+  user_id?: string; // For user-created courses
+  is_public?: boolean; // To distinguish public vs user-created
 }
 
 export interface PracticeQuestion {

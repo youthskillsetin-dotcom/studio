@@ -1,10 +1,11 @@
 
+
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import type { Lesson } from '@/lib/types';
 import { cn } from '@/lib/utils';
-import { Lock } from 'lucide-react';
+import { Lock, User } from 'lucide-react';
 import type { UserProfile } from '@/lib/types';
 
 interface LessonCardProps {
@@ -31,9 +32,16 @@ export function LessonCard({ lesson, hasPremium, userProfile }: LessonCardProps)
           <CardTitle className="text-xl font-headline">
             {lesson.title}
           </CardTitle>
-          <Badge variant={lesson.is_free ? "default" : "secondary"} className={cn(lesson.is_free ? 'bg-primary/10 text-primary border-primary/20' : 'bg-accent/10 text-accent-foreground border-accent/20', 'shrink-0')}>
-            {lesson.is_free ? 'Free' : 'Premium'}
-          </Badge>
+          {lesson.is_public ? (
+            <Badge variant={lesson.is_free ? "default" : "secondary"} className={cn(lesson.is_free ? 'bg-primary/10 text-primary border-primary/20' : 'bg-accent/10 text-accent-foreground border-accent/20', 'shrink-0')}>
+              {lesson.is_free ? 'Free' : 'Premium'}
+            </Badge>
+          ) : (
+             <Badge variant="outline" className="shrink-0 flex items-center gap-1">
+                <User className="w-3 h-3" />
+                My Course
+            </Badge>
+          )}
         </div>
       </CardHeader>
       <CardContent className="flex-grow">
