@@ -52,6 +52,9 @@ const prompt = ai.definePrompt({
   3.  **Ensure Variety:** The three archetypes should be different from each other and reflect the nuances of the user's answers. For example, if a user likes both puzzles and design, you might suggest an "Analyst" archetype and a "Creative Technologist" archetype.
   4.  **Format Correctly:** Ensure your output is a JSON object that strictly follows the provided schema, containing exactly three archetypes.
   `,
+  config: {
+    model: 'googleai/gemini-1.5-pro-latest',
+  }
 });
 
 const generateCareerArchetypesFlow = ai.defineFlow(
@@ -61,10 +64,7 @@ const generateCareerArchetypesFlow = ai.defineFlow(
     outputSchema: GenerateCareerArchetypesOutputSchema,
   },
   async (input) => {
-    const { output } = await prompt.generate({
-      input,
-      model: 'googleai/gemini-1.5-pro-latest',
-    });
+    const { output } = await prompt(input);
     
     if (!output) {
       throw new Error("The AI model failed to generate valid career archetypes.");

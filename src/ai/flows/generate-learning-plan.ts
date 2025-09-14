@@ -74,6 +74,9 @@ const prompt = ai.definePrompt({
         *   Present the steps clearly.
         *   End with a motivating conclusion.
     `,
+    config: {
+        model: 'googleai/gemini-1.5-pro-latest', // Pro model is better for tool use
+    }
 });
 
 const generateLearningPlanFlow = ai.defineFlow(
@@ -83,10 +86,7 @@ const generateLearningPlanFlow = ai.defineFlow(
     outputSchema: GenerateLearningPlanOutputSchema,
   },
   async (input) => {
-    const { output } = await prompt.generate({
-      input,
-      model: 'googleai/gemini-1.5-pro-latest', // Pro model is better for tool use
-    });
+    const { output } = await prompt(input);
 
     if (!output) {
       throw new Error("The AI model failed to generate a valid learning plan.");

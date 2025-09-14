@@ -40,6 +40,9 @@ Subtopic Title: {{{title}}}
 Subtopic Content:
 {{{content}}}
 `,
+  config: {
+    model: 'googleai/gemini-1.5-flash',
+  }
 });
 
 const generateSubtopicSummaryFlow = ai.defineFlow(
@@ -49,10 +52,7 @@ const generateSubtopicSummaryFlow = ai.defineFlow(
     outputSchema: GenerateSubtopicSummaryOutputSchema,
   },
   async input => {
-    const { output } = await prompt.generate({
-        input,
-        model: 'googleai/gemini-1.5-flash',
-    });
+    const { output } = await prompt(input);
     
     if (!output) {
         throw new Error("The AI model failed to generate a valid summary.");

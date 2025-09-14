@@ -71,6 +71,9 @@ const prompt = ai.definePrompt({
     Respond to the following message from the user:
     "{{{message}}}"
     `,
+     config: {
+        model: 'googleai/gemini-1.5-flash',
+    }
   });
 
 
@@ -81,10 +84,7 @@ const aiMentorChatFlow = ai.defineFlow(
     outputSchema: AIMentorChatOutputSchema,
   },
   async input => {
-    const { output } = await prompt.generate({
-      input,
-      model: 'googleai/gemini-1.5-flash',
-    });
+    const { output } = await prompt(input);
     
     if (!output) {
       throw new Error("The AI model failed to generate a valid response.");

@@ -58,6 +58,9 @@ const prompt = ai.definePrompt({
       *   Conclude with a summary and an encouraging closing statement to motivate the student.
   3.  **Format**: Ensure your entire feedback response is in well-structured markdown format. Use lists and bold text to make it easy to read.
   `,
+  config: {
+    model: 'googleai/gemini-1.5-flash',
+  }
 });
 
 const generateAIFeedbackFlow = ai.defineFlow(
@@ -67,10 +70,7 @@ const generateAIFeedbackFlow = ai.defineFlow(
     outputSchema: GenerateAIFeedbackOutputSchema,
   },
   async input => {
-    const { output } = await prompt.generate({
-        input,
-        model: 'googleai/gemini-1.5-flash',
-    });
+    const { output } = await prompt(input);
     
     if (!output) {
         throw new Error("The AI model failed to generate valid feedback.");

@@ -36,6 +36,9 @@ const prompt = ai.definePrompt({
 
   Career: {{{career}}}
   `,
+  config: {
+    model: 'googleai/gemini-1.5-flash',
+  }
 });
 
 const generateCareerSkillsFlow = ai.defineFlow(
@@ -45,10 +48,7 @@ const generateCareerSkillsFlow = ai.defineFlow(
     outputSchema: GenerateCareerSkillsOutputSchema,
   },
   async input => {
-    const { output } = await prompt.generate({
-        input,
-        model: 'googleai/gemini-1.5-flash',
-    });
+    const { output } = await prompt(input);
     
     if (!output) {
         throw new Error("The AI model failed to generate a valid skill list.");

@@ -70,6 +70,9 @@ const prompt = ai.definePrompt({
           *   **futureOutlook**: Write a concise 1-2 sentence projection on the future prospects of this career.
       *   **suggestedRoles**: List 3-4 related or entry-level job titles that a person pursuing this path could aim for.
       *   **hiringCompanies**: Name 3-4 specific, well-known companies or types of industries in India that hire for this role.`,
+  config: {
+    model: 'googleai/gemini-1.5-pro-latest',
+  }
 });
 
 const generateCareerProfileFlow = ai.defineFlow(
@@ -79,10 +82,7 @@ const generateCareerProfileFlow = ai.defineFlow(
     outputSchema: GenerateCareerProfileOutputSchema,
   },
   async (input) => {
-    const { output } = await prompt.generate({
-      input,
-      model: 'googleai/gemini-1.5-pro-latest',
-    });
+    const { output } = await prompt(input);
     
     if (!output) {
       throw new Error("The AI model failed to generate a valid career profile.");
