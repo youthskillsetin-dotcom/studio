@@ -1,39 +1,51 @@
--- Create the notifications table
-CREATE TABLE IF NOT EXISTS public.notifications (
-    id bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    created_at timestamp with time zone NOT NULL DEFAULT now(),
-    title text NOT NULL,
-    message text NOT NULL
+-- Create a custom type for user roles if it doesn't exist
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'user_role') THEN
+        CREATE TYPE user_role AS ENUM ('user', 'premium', 'admin');
+    END IF;
+END$$;
+
+
+-- Create the profiles table if it doesn't exist to ensure the policy dependency is met
+CREATE TABLE IF NOT EXISTS profiles (
+    id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+    role user_role NOT NULL DEFAULT 'user',
+    full_name TEXT,
+    avatar_url TEXT,
+    contact_no TEXT,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- Add comments for clarity
-COMMENT ON TABLE public.notifications IS 'Stores broadcast notifications for all users.';
 
--- Enable Row-Level Security
-ALTER TABLE public.notifications ENABLE ROW LEVEL SECURITY;
+-- Create the notifications table
+CREATE TABLE notifications (
+    id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    title TEXT NOT NULL,
+    message TEXT NOT NULL
+);
 
--- Create policies for the notifications table
--- 1. Allow public read access to everyone
+-- Enable Row-Level Security for the notifications table
+ALTER TABLE notifications ENABLE ROW LEVEL SECURITY;
+
+-- Policy: Allow all users to read notifications
 CREATE POLICY "Allow public read access to notifications"
 ON public.notifications
 FOR SELECT
-TO public
 USING (true);
 
--- 2. Allow admin users to insert new notifications
-CREATE POLICY "Allow admin to insert notifications"
+-- Policy: Allow only admins to create notifications
+CREATE POLICY "Allow admins to create notifications"
 ON public.notifications
 FOR INSERT
-TO authenticated
 WITH CHECK (
-  (SELECT role FROM public.profiles WHERE id = auth.uid()) = 'admin'
+  EXISTS (
+    SELECT 1
+    FROM profiles
+    WHERE profiles.id = auth.uid() AND profiles.role = 'admin'
+  )
 );
 
--- 3. (Optional) Allow admins to update/delete, though the app doesn't use this yet.
-CREATE POLICY "Allow admin to update/delete notifications"
-ON public.notifications
-FOR UPDATE, DELETE
-TO authenticated
-USING (
-  (SELECT role FROM public.profiles WHERE id = auth.uid()) = 'admin'
-);
+-- Note: We assume RLS is already enabled and policies are set for the 'profiles' table.
+-- This script only adds what is necessary for the 'notifications' table.
