@@ -1,0 +1,45 @@
+
+{
+    "bounties": [
+      {
+        "id": "bty-1",
+        "created_at": "2024-08-10T10:00:00Z",
+        "title": "Design a Logo for a Local Bakery",
+        "description": "We're opening a new bakery called 'The Rolling Pin' and need a simple, modern logo. We want it to feel warm and friendly. The main elements should be a rolling pin and a wheat stalk. The winner will have their design featured and receive full credit!",
+        "reward": "₹1,000",
+        "status": "open",
+        "author_name": "The Rolling Pin Bakery",
+        "tags": ["Design", "Branding"]
+      },
+      {
+        "id": "bty-2",
+        "created_at": "2024-08-09T14:30:00Z",
+        "title": "Analyze Customer Feedback Spreadsheet",
+        "description": "We have an Excel sheet with 100 rows of customer feedback. We need someone to use basic Excel functions or PivotTables to identify the top 3 most common complaints and create a simple bar chart visualizing the frequency of each complaint.",
+        "reward": "Premium Badge",
+        "status": "open",
+        "author_name": "YouthSkillSet",
+        "tags": ["Data", "Excel"]
+      },
+      {
+        "id": "bty-3",
+        "created_at": "2024-08-08T09:00:00Z",
+        "title": "Write a Python Script to Organize Files",
+        "description": "Create a simple Python script that sorts files in a directory into sub-folders based on their file extension (e.g., all '.jpg' files into an 'Images' folder, all '.pdf' files into a 'Documents' folder). The script should be well-commented.",
+        "reward": "₹500",
+        "status": "open",
+        "author_name": "Tech Co.",
+        "tags": ["Coding", "Python"]
+      },
+      {
+        "id": "bty-4",
+        "created_at": "2024-08-05T18:00:00Z",
+        "title": "Create a Social Media Post Template",
+        "description": "Design a reusable Instagram post template in Canva or Figma for our weekly 'Skill of the Week' feature. The template should be eye-catching and have placeholders for a title, a short description, and an icon.",
+        "reward": "Certificate of Contribution",
+        "status": "closed",
+        "author_name": "YouthSkillSet",
+        "tags": ["Design", "Social Media"]
+      }
+    ]
+}

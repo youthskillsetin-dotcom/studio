@@ -1,12 +1,14 @@
 
+
 import type { SupabaseClient } from '@supabase/supabase-js';
-import type { Lesson, Subtopic, UserSubtopicProgress, Post, CommentWithAuthor, PostWithAuthor, UserSubscription, UserProfile, UserProfileWithSubscription, Transaction, Notification } from './types';
+import type { Lesson, Subtopic, UserSubtopicProgress, Post, CommentWithAuthor, PostWithAuthor, UserSubscription, UserProfile, UserProfileWithSubscription, Transaction, Notification, Bounty } from './types';
 import { unstable_noStore as noStore } from 'next/cache';
 import { supabaseAdmin } from './supabase/admin';
 
 // This is a temporary workaround to simulate a database.
 // In a real application, this data would be fetched from Supabase.
 import sampleContent from '@/data/sample-content.json';
+import bountiesContent from '@/data/bounties.json';
 
 export async function getLessons(): Promise<Lesson[]> {
   noStore();
@@ -326,5 +328,16 @@ export async function getNotifications(): Promise<Notification[]> {
     } catch (e) {
         console.error('Unexpected error fetching notifications:', e);
         return [];
+    }
+}
+
+export async function getBounties(): Promise<Bounty[]> {
+    noStore();
+    try {
+      const bounties = bountiesContent.bounties as Bounty[];
+      return bounties.sort((a,b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+    } catch (error) {
+      console.error("Failed to load or parse bounties.json:", error);
+      return [];
     }
 }

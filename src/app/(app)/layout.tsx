@@ -15,6 +15,7 @@ import {
   Shield,
   Map,
   Users,
+  Award,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -38,6 +39,7 @@ const navItems = [
   { href: "/dashboard", icon: LayoutGrid, label: "Dashboard", premium: false },
   { href: "/lessons", icon: BookOpen, label: "Lessons", premium: false },
   { href: "/community", icon: Users, label: "Community", premium: true },
+  { href: "/bounties", icon: Award, label: "Bounties", premium: true },
   { href: "/learning-plan", icon: Map, label: "Learning Plan", premium: true },
   { href: "/practice-lab", icon: FlaskConical, label: "Practice Lab", premium: true},
   { href: "/career-guide", icon: Briefcase, label: "Career Guide", premium: true },

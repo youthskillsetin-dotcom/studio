@@ -116,6 +116,17 @@ export interface Notification {
     message: string;
 }
 
+export interface Bounty {
+    id: string;
+    created_at: string;
+    title: string;
+    description: string;
+    reward: string;
+    status: 'open' | 'in_progress' | 'closed';
+    author_name: string;
+    tags: string[];
+}
+
 
 // Types for Supabase joins
 export type PostWithAuthor = Omit<Post, 'author_email' | 'comments'> & {
