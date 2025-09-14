@@ -3,7 +3,7 @@ import type { Lesson } from '@/lib/types';
 import { LessonCard } from '@/components/lesson-card';
 import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
-import { getUserSubscription, getLessons } from '@/lib/data';
+import { getUserSubscription, getLessons, getUserProfile } from '@/lib/data';
 
 
 export default async function LessonsPage() {
@@ -13,6 +13,7 @@ export default async function LessonsPage() {
   const lessons: Lesson[] = await getLessons();
   
   const userSubscription = await getUserSubscription(supabase);
+  const userProfile = await getUserProfile(supabase);
   const hasPremium = userSubscription?.is_active ?? false;
 
   return (
@@ -24,7 +25,7 @@ export default async function LessonsPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {lessons.map((lesson: Lesson) => (
-          <LessonCard key={lesson.id} lesson={lesson} hasPremium={hasPremium} />
+          <LessonCard key={lesson.id} lesson={lesson} hasPremium={hasPremium} userProfile={userProfile} />
         ))}
       </div>
     </div>

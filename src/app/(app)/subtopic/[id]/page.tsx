@@ -8,7 +8,7 @@ import type { Subtopic, Lesson, PracticeQuestion } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
-import { getUserSubscription, getSubtopicByIdWithRelations, getSubtopicTitleById } from '@/lib/data';
+import { getUserSubscription, getSubtopicByIdWithRelations, getSubtopicTitleById, getUserProfile } from '@/lib/data';
 import { Suspense } from 'react';
 import { AISummaryCard, AISummaryCardSkeleton } from '@/components/ai-summary-card';
 import { Metadata, ResolvingMetadata } from 'next';
@@ -64,8 +64,10 @@ export default async function SubtopicPage({ params }: { params: { id: string } 
 
   // Enforce subscription check
   const userSubscription = await getUserSubscription(supabase);
+  const userProfile = await getUserProfile(supabase);
   const hasPremium = userSubscription?.is_active ?? false;
-  if (!lesson.is_free && !hasPremium) {
+  const isAdmin = userProfile?.role === 'admin';
+  if (!lesson.is_free && !hasPremium && !isAdmin) {
     redirect(`/lessons/${lesson.id}`);
   }
 

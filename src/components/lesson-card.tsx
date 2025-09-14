@@ -5,14 +5,17 @@ import { Badge } from '@/components/ui/badge';
 import type { Lesson } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { Lock } from 'lucide-react';
+import type { UserProfile } from '@/lib/types';
 
 interface LessonCardProps {
   lesson: Lesson;
   hasPremium: boolean;
+  userProfile: UserProfile | null;
 }
 
-export function LessonCard({ lesson, hasPremium }: LessonCardProps) {
-  const isLocked = !lesson.is_free && !hasPremium;
+export function LessonCard({ lesson, hasPremium, userProfile }: LessonCardProps) {
+  const isAdmin = userProfile?.role === 'admin';
+  const isLocked = !lesson.is_free && !hasPremium && !isAdmin;
 
   const CardInnerContent = () => (
     <Card

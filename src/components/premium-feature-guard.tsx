@@ -20,6 +20,7 @@ import { useRouter } from 'next/navigation';
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useUserProfile } from '@/hooks/use-user-profile';
 
 
 interface PremiumFeatureGuardProps {
@@ -31,6 +32,7 @@ interface PremiumFeatureGuardProps {
 
 export function PremiumFeatureGuard({ children, featureName, href, className }: PremiumFeatureGuardProps) {
   const { userSubscription } = useUserSubscription();
+  const { userProfile } = useUserProfile();
   const router = useRouter();
   
   // This state ensures the component renders the same way on server and client initially
@@ -40,15 +42,17 @@ export function PremiumFeatureGuard({ children, featureName, href, className }: 
   }, []);
   
   const hasPremium = userSubscription?.is_active ?? false;
+  const isAdmin = userProfile?.role === 'admin';
+  const hasAccess = hasPremium || isAdmin;
   
   const handleNavigate = (e: React.MouseEvent) => {
-    if (hasPremium) {
+    if (hasAccess) {
       router.push(href);
     }
   };
 
   // On the server, and during the initial client render before `isMounted` is true,
-  // we render a version that matches the `hasPremium = false` state but without the interactive dialog.
+  // we render a version that matches the `hasAccess = false` state but without the interactive dialog.
   if (!isMounted) {
     return (
       <button className={cn("flex items-center w-full", className)} disabled>
@@ -57,7 +61,7 @@ export function PremiumFeatureGuard({ children, featureName, href, className }: 
     )
   }
 
-  if (hasPremium) {
+  if (hasAccess) {
     return (
         <Link href={href} className={className}>
              {children}

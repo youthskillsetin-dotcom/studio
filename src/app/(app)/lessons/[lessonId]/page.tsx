@@ -6,7 +6,7 @@ import { CountdownTimer } from '@/components/countdown-timer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
-import { getUserSubscription, getLessonByIdWithSubtopics } from '@/lib/data';
+import { getUserSubscription, getLessonByIdWithSubtopics, getUserProfile } from '@/lib/data';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft } from 'lucide-react';
@@ -53,7 +53,9 @@ export default async function LessonDetailPage({ params }: { params: { lessonId:
 
   const subtopics = lesson.subtopics;
   const userSubscription = await getUserSubscription(supabase);
+  const userProfile = await getUserProfile(supabase);
   const hasPremium = userSubscription?.is_active ?? false;
+  const isAdmin = userProfile?.role === 'admin';
 
   const getNextUnlockTime = () => {
     const now = new Date();
@@ -110,7 +112,7 @@ export default async function LessonDetailPage({ params }: { params: { lessonId:
         <CardContent className="space-y-2">
           {subtopics && subtopics.length > 0 ? (
             subtopics.map((subtopic: Subtopic) => {
-              const isLocked = !lesson.is_free && !hasPremium;
+              const isLocked = !lesson.is_free && !hasPremium && !isAdmin;
               // Here we can assume a completed status based on another data source in a real app
               const status = isLocked ? 'locked' : 'unlocked';
               return (
