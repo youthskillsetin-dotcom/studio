@@ -1,136 +1,133 @@
--- Create the profiles table to store user data
-CREATE TABLE IF NOT EXISTS public.profiles (
-    id uuid NOT NULL PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
-    full_name text,
-    avatar_url text,
-    contact_no text,
-    role public.user_role DEFAULT 'user'::public.user_role NOT NULL,
-    created_at timestamp with time zone DEFAULT now()
+
+-- Create a table for public profiles
+create table if not exists profiles (
+  id uuid not null primary key references auth.users (id) on delete cascade,
+  full_name text,
+  email text,
+  avatar_url text,
+  contact_no text,
+  role text default 'user',
+  created_at timestamp with time zone default now()
 );
+comment on table profiles is 'Public profile information for each user.';
 
--- Comments for profiles table
-COMMENT ON TABLE public.profiles IS 'Stores public profile information for each user.';
-COMMENT ON COLUMN public.profiles.id IS 'Links to the auth.users table.';
+-- Set up Row Level Security (RLS)
+-- See https://supabase.com/docs/guides/auth/row-level-security
+alter table profiles enable row level security;
 
--- Create the subscriptions table to manage user plans
-CREATE TABLE IF NOT EXISTS public.subscriptions (
-    id uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY,
-    user_id uuid NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
-    is_active boolean DEFAULT false NOT NULL,
-    plan_name text,
-    expires_at timestamp with time zone,
-    created_at timestamp with time zone DEFAULT now(),
-    updated_at timestamp with time zone DEFAULT now()
+create policy "Public profiles are viewable by everyone." on profiles
+  for select using (true);
+
+create policy "Users can insert their own profile." on profiles
+  for insert with check (auth.uid() = id);
+
+create policy "Users can update own profile." on profiles
+  for update using (auth.uid() = id);
+
+-- This trigger automatically creates a profile for new users.
+create or replace function public.handle_new_user()
+returns trigger as $$
+begin
+  insert into public.profiles (id, full_name, avatar_url, email, contact_no, role)
+  values (new.id, new.raw_user_meta_data->>'full_name', new.raw_user_meta_data->>'avatar_url', new.email, new.raw_user_meta_data->>'contact_no', 'user');
+  return new;
+end;
+$$ language plpgsql security definer;
+
+-- Drop trigger if it exists to avoid errors on re-run
+drop trigger if exists on_auth_user_created on auth.users;
+
+create trigger on_auth_user_created
+  after insert on auth.users
+  for each row execute procedure public.handle_new_user();
+
+
+-- Subscriptions Table
+create table if not exists subscriptions (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null unique references public.profiles(id) on delete cascade,
+  plan_name text,
+  is_active boolean not null default false,
+  expires_at timestamp with time zone,
+  created_at timestamp with time zone default now(),
+  updated_at timestamp with time zone default now()
 );
-CREATE UNIQUE INDEX IF NOT EXISTS subscriptions_user_id_key ON public.subscriptions USING btree (user_id);
+comment on table subscriptions is 'Manages user subscription status.';
 
--- Comments for subscriptions table
-COMMENT ON TABLE public.subscriptions IS 'Manages user subscription status and plan details.';
+-- RLS for subscriptions
+alter table subscriptions enable row level security;
 
--- Create the transactions table to log payments
-CREATE TABLE IF NOT EXISTS public.transactions (
-    id uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY,
-    order_id text NOT NULL,
-    user_id uuid NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
-    plan_id text,
-    amount numeric,
-    status public.transaction_status DEFAULT 'PENDING'::public.transaction_status,
-    created_at timestamp with time zone DEFAULT now(),
-    updated_at timestamp with time zone DEFAULT now()
+create policy "Users can view their own subscription." on subscriptions
+  for select using (auth.uid() = user_id);
+
+
+-- Transactions Table
+create table if not exists transactions (
+    id uuid primary key default gen_random_uuid(),
+    order_id text not null unique,
+    user_id uuid not null references public.profiles(id) on delete cascade,
+    plan_id text not null,
+    amount numeric(10, 2) not null,
+    status text not null default 'PENDING',
+    created_at timestamp with time zone default now(),
+    updated_at timestamp with time zone default now()
 );
-CREATE UNIQUE INDEX IF NOT EXISTS transactions_order_id_key ON public.transactions USING btree (order_id);
+comment on table transactions is 'Logs all payment transactions.';
 
--- Comments for transactions table
-COMMENT ON TABLE public.transactions IS 'Logs payment transactions from the payment gateway.';
+-- RLS for transactions
+alter table transactions enable row level security;
+create policy "Users can view their own transactions." on transactions
+    for select using (auth.uid() = user_id);
 
--- Create the posts table for the community forum
-CREATE TABLE IF NOT EXISTS public.posts (
-    id uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY,
-    title text NOT NULL,
-    content text NOT NULL,
-    user_id uuid NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
-    created_at timestamp with time zone DEFAULT now()
+
+-- Community Posts Table
+create table if not exists posts (
+    id uuid primary key default gen_random_uuid(),
+    user_id uuid not null references public.profiles(id) on delete cascade,
+    title text not null,
+    content text not null,
+    created_at timestamp with time zone default now()
 );
+comment on table posts is 'Stores posts for the community forum.';
 
--- Comments for posts table
-COMMENT ON TABLE public.posts IS 'Stores user-generated posts for the community forum.';
+-- RLS for posts
+alter table posts enable row level security;
 
--- Create the comments table for the community forum
-CREATE TABLE IF NOT EXISTS public.comments (
-    id uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY,
-    content text NOT NULL,
-    post_id uuid NOT NULL REFERENCES public.posts(id) ON DELETE CASCADE,
-    user_id uuid NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
-    created_at timestamp with time zone DEFAULT now()
+create policy "Authenticated users can view all posts." on posts
+    for select using (auth.role() = 'authenticated');
+
+create policy "Users can insert their own posts." on posts
+    for insert with check (auth.uid() = user_id);
+
+create policy "Users can update their own posts." on posts
+    for update using (auth.uid() = user_id);
+
+create policy "Users can delete their own posts." on posts
+    for delete using (auth.uid() = user_id);
+
+
+-- Community Comments Table
+create table if not exists comments (
+    id uuid primary key default gen_random_uuid(),
+    user_id uuid not null references public.profiles(id) on delete cascade,
+    post_id uuid not null references public.posts(id) on delete cascade,
+    content text not null,
+    created_at timestamp with time zone default now()
 );
+comment on table comments is 'Stores comments for community posts.';
 
--- Comments for comments table
-COMMENT ON TABLE public.comments IS 'Stores comments on community posts.';
+-- RLS for comments
+alter table comments enable row level security;
 
--- Function to create a profile for a new user
-CREATE OR REPLACE FUNCTION public.handle_new_user()
-RETURNS trigger
-LANGUAGE plpgsql
-SECURITY DEFINER
-AS $$
-BEGIN
-  INSERT INTO public.profiles (id, full_name, role, contact_no, avatar_url)
-  VALUES (
-    new.id,
-    new.raw_user_meta_data->>'full_name',
-    'user',
-    new.raw_user_meta_data->>'contact_no',
-    new.raw_user_meta_data->>'avatar_url'
-  );
-  RETURN new;
-END;
-$$;
+create policy "Authenticated users can view all comments." on comments
+    for select using (auth.role() = 'authenticated');
 
--- Trigger to execute the function on new user creation
-DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
-CREATE TRIGGER on_auth_user_created
-  AFTER INSERT ON auth.users
-  FOR EACH ROW EXECUTE PROCEDURE public.handle_new_user();
+create policy "Users can insert their own comments." on comments
+    for insert with check (auth.uid() = user_id);
 
+create policy "Users can update their own comments." on comments
+    for update using (auth.uid() = user_id);
 
--- RLS Policies for Profiles
-ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
-DROP POLICY IF EXISTS "Public profiles are viewable by everyone." ON public.profiles;
-CREATE POLICY "Public profiles are viewable by everyone." ON public.profiles FOR SELECT USING (true);
-DROP POLICY IF EXISTS "Users can insert their own profile." ON public.profiles;
-CREATE POLICY "Users can insert their own profile." ON public.profiles FOR INSERT WITH CHECK (auth.uid() = id);
-DROP POLICY IF EXISTS "Users can update their own profile." ON public.profiles;
-CREATE POLICY "Users can update their own profile." ON public.profiles FOR UPDATE USING (auth.uid() = id);
+create policy "Users can delete their own comments." on comments
+    for delete using (auth.uid() = user_id);
 
-
--- RLS Policies for Subscriptions
-ALTER TABLE public.subscriptions ENABLE ROW LEVEL SECURITY;
-DROP POLICY IF EXISTS "Users can view their own subscription." ON public.subscriptions;
-CREATE POLICY "Users can view their own subscription." ON public.subscriptions FOR SELECT USING (auth.uid() = user_id);
-
--- RLS Policies for Posts
-ALTER TABLE public.posts ENABLE ROW LEVEL SECURITY;
-DROP POLICY IF EXISTS "Posts are viewable by everyone." ON public.posts;
-CREATE POLICY "Posts are viewable by everyone." ON public.posts FOR SELECT USING (true);
-DROP POLICY IF EXISTS "Users can create their own posts." ON public.posts;
-CREATE POLICY "Users can create their own posts." ON public.posts FOR INSERT WITH CHECK (auth.uid() = user_id);
-DROP POLICY IF EXISTS "Users can update their own posts." ON public.posts;
-CREATE POLICY "Users can update their own posts." ON public.posts FOR UPDATE USING (auth.uid() = user_id);
-DROP POLICY IF EXISTS "Users can delete their own posts." ON public.posts;
-CREATE POLICY "Users can delete their own posts." ON public.posts FOR DELETE USING (auth.uid() = user_id);
-
-
--- RLS Policies for Comments
-ALTER TABLE public.comments ENABLE ROW LEVEL SECURITY;
-DROP POLICY IF EXISTS "Comments are viewable by everyone." ON public.comments;
-CREATE POLICY "Comments are viewable by everyone." ON public.comments FOR SELECT USING (true);
-DROP POLICY IF EXISTS "Users can create their own comments." ON public.comments;
-CREATE POLICY "Users can create their own comments." ON public.comments FOR INSERT WITH CHECK (auth.uid() = user_id);
-DROP POLICY IF EXISTS "Users can update their own comments." ON public.comments;
-CREATE POLICY "Users can update their own comments." ON public.comments FOR UPDATE USING (auth.uid() = user_id);
-DROP POLICY IF EXISTS "Users can delete their own comments." ON public.comments;
-CREATE POLICY "Users can delete their own comments." ON public.comments FOR DELETE USING (auth.uid() = user_id);
-
-
--- No RLS for transactions as they are managed by admin/server roles.
-ALTER TABLE public.transactions DISABLE ROW LEVEL SECURITY;
