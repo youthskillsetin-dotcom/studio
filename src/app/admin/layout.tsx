@@ -55,7 +55,16 @@ export default async function AdminLayout({
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="flex flex-col">
-                <AdminNav isMobile={true} />
+                <nav className="grid gap-2 text-base font-medium">
+                    <Link
+                        href="/admin"
+                        className="flex items-center gap-2 text-lg font-semibold mb-4"
+                    >
+                        <Logo className="h-6 w-6 text-primary" />
+                        <span className="">Admin Panel</span>
+                    </Link>
+                    <AdminNav isMobile={true} />
+                </nav>
             </SheetContent>
           </Sheet>
           <div className="w-full flex-1" />

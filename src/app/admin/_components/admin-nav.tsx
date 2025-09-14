@@ -4,12 +4,13 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { Home, Users, FileText, Bell } from 'lucide-react';
+import { Home, Users, FileText, Bell, FilePlus2 } from 'lucide-react';
 
 const adminNavItems = [
     { href: "/admin", label: "Dashboard", icon: Home },
     { href: "/admin/users", label: "Users", icon: Users },
-    { href: "/admin/content", label: "Content", icon: FileText },
+    { href: "/admin/content", label: "Content Management", icon: FileText },
+    { href: "/admin/content/generator", label: "Content Generator", icon: FilePlus2 },
     { href: "/admin/notifications", label: "Notifications", icon: Bell },
 ];
 
