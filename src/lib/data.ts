@@ -307,14 +307,14 @@ export async function getPosts(): Promise<PostWithAuthor[]> {
     try {
         const { data, error } = await supabaseAdmin
             .from('posts')
-            .select(\`
+            .select(`
                 id,
                 created_at,
                 title,
                 content,
                 user_id,
                 profile:profiles(email, full_name)
-            \`)
+            `)
             .order('created_at', { ascending: false });
 
         if (error) {
@@ -337,14 +337,14 @@ export async function getPostById(id: string): Promise<PostWithAuthor | null> {
      try {
         const { data, error } = await supabaseAdmin
             .from('posts')
-            .select(\`
+            .select(`
                 id,
                 created_at,
                 title,
                 content,
                 user_id,
                 profile:profiles(email, full_name)
-            \`)
+            `)
             .eq('id', id)
             .single();
 
@@ -370,14 +370,14 @@ export async function getCommentsByPostId(postId: string): Promise<CommentWithAu
      try {
         const { data, error } = await supabaseAdmin
             .from('comments')
-            .select(\`
+            .select(`
                 id,
                 created_at,
                 content,
                 user_id,
                 post_id,
                 profile:profiles(email, full_name, avatar_url)
-            \`)
+            `)
             .eq('post_id', postId)
             .order('created_at', { ascending: true });
 
@@ -435,10 +435,10 @@ export async function getUserCourses(supabase: SupabaseClient): Promise<Lesson[]
     try {
         const { data: courses, error } = await supabase
             .from('user_courses')
-            .select(\`
+            .select(`
                 *,
                 subtopics:user_subtopics(*)
-            \`)
+            `)
             .eq('user_id', user.id)
             .order('created_at', { ascending: false });
         
@@ -464,10 +464,10 @@ export async function getUserCourseById(id: string): Promise<Lesson | null> {
     try {
         const { data: course, error } = await supabaseAdmin
             .from('user_courses')
-            .select(\`
+            .select(`
                 *,
                 subtopics:user_subtopics(*)
-            \`)
+            `)
             .eq('id', id)
             .single();
         
